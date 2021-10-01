@@ -1,0 +1,30 @@
+<nav *ngIf="pages && pages > 1">
+  <ul class="pagination justify-content-center">
+    <li *ngIf="showMoreLeft" class="page-item">
+      <a class="page-link" (click)="page(1)">1/...</a>
+    </li>
+    <li class="page-item child" *ngIf="current > 1">
+      <a class="page-link" (click)="page(current-1)">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">{{'BUTTON.BACK' | translate}}</span>
+      </a>
+    </li>
+    <li *ngFor="let i of pagesShow" class="page-item" [ngClass]="{'active': i === current}">
+      <a class="page-link" (click)="page(i)">{{i}}</a>
+    </li>
+    <li class="page-item" *ngIf="current < pages" (click)="page(current+1)">
+      <a class="page-link">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">{{'BUTTON.NEXT' | translate}}</span>
+      </a>
+    </li>
+    <li *ngIf="showMoreRight" class="page-item">
+      <a class="page-link" (click)="page(pages)">.../{{pages}}</a>
+    </li>
+  </ul>
+</nav>
+
+<div *ngIf="pages && pages > maxToShow" class="row">
+  <input type="number" class="col-1 form-control" [(ngModel)]="inputSearch" />
+  <a class="btn btn-sm btn-primary text-white ml-2" (click)="search(inputSearch)">{{'APP.BUTTON.PAGE' | translate}}</a>
+</div>

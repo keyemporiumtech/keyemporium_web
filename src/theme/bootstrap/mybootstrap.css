@@ -1,0 +1,115 @@
+/*!
+* Bootstrap v4.5.2 (https://getbootstrap.com/)
+* Copyright 2011-2020 The Bootstrap Authors
+* Copyright 2011-2020 Twitter, Inc.
+* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+*/
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --background: #ffffff;
+  --text: #212529;
+  --link: #007bff; /* usato per i link e la selezione di radio,checbox e gli item attivi .. */
+  --link-hover: #0056b3;
+  --border: #dee2e6;
+  --code: #e83e8c; /* usato per il code */
+  --mute: #6c757d; /* usato per i placeholder, i disabled, i text muted .. */
+  --primary: #007bff;
+  --primary2: #0062cc;
+  --primary3: #0069d9;
+  --primary4: #005cbf;
+  --text-primary: #ffffff;
+  --text-primary2: #004085;
+  --text-primary3: #002752;
+  --bb-primary: #b8daff;
+  --bb-primary2: #cce5ff;
+  --bb-primary3: #9fcdff;
+  --secondary: #6c757d;
+  --secondary2: #545b62;
+  --secondary3: #5a6268;
+  --secondary4: #4e555b;
+  --text-secondary: #ffffff;
+  --text-secondary2: #383d41;
+  --text-secondary3: #202326;
+  --bb-secondary: #d6d8db;
+  --bb-secondary2: #e2e3e5;
+  --bb-secondary3: #c8cbcf;
+  --success: #28a745;
+  --success2: #1e7e34;
+  --success3: #218838;
+  --success4: #1c7430;
+  --text-success: #ffffff;
+  --text-success2: #155724;
+  --text-success3: #0b2e13;
+  --bb-success: #c3e6cb;
+  --bb-success2: #d4edda;
+  --bb-success3: #b1dfbb;
+  --info: #17a2b8;
+  --info2: #117a8b;
+  --info3: #138496;
+  --info4: #10707f;
+  --text-info: #ffffff;
+  --text-info2: #0c5460;
+  --text-info3: #062c33;
+  --bb-info: #bee5eb;
+  --bb-info2: #d1ecf1;
+  --bb-info3: #abdde5;
+  --warning: #ffc107;
+  --warning2: #d39e00;
+  --warning3: #e0a800;
+  --warning4: #c69500;
+  --text-warning: #ffffff;
+  --text-warning2: #856404;
+  --text-warning3: #533f03;
+  --bb-warning: #ffeeba;
+  --bb-warning2: #fff3cd;
+  --bb-warning3: #ffe8a1;
+  --danger: #dc3545;
+  --danger2: #bd2130;
+  --danger3: #c82333;
+  --danger4: #b21f2d;
+  --text-danger: #ffffff;
+  --text-danger2: #721c24;
+  --text-danger3: #491217;
+  --bb-danger: #f5c6cb;
+  --bb-danger2: #f8d7da;
+  --bb-danger3: #f1b0b7;
+  --light: #f8f9fa;
+  --light2: #dae0e5;
+  --light3: #e2e6ea;
+  --light4: #d3d9df;
+  --text-light: #343a40;
+  --text-light2: #818182;
+  --text-light3: #686868;
+  --bb-light: #fdfdfe;
+  --bb-light2: #fefefe;
+  --bb-light3: #ececf6;
+  --dark: #343a40;
+  --dark2: #1d2124;
+  --dark3: #23272b;
+  --dark4: #171a1d;
+  --text-dark: #ffffff;
+  --text-dark2: #1b1e21;
+  --text-dark3: #040505;
+  --bb-dark: #c6c8ca;
+  --bb-dark2: #d6d8d9;
+  --bb-dark3: #b9bbbe;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}

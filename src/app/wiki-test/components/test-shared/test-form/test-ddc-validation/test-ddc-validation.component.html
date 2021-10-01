@@ -1,0 +1,361 @@
+<h4>Direttiva ddcValidation</h4>
+<div>
+  All'interno di un form è possibile aggiungere la direttiva <strong>ddcValidation</strong> ai campi di input.<br />
+  Questa direttiva fa scattare le validazioni e applica gli stili css opportuni per ogni tipo di controllo.<br /><br />
+
+  <h6>Validazione</h6>
+  <ul>
+    <li>1) In automatico viene validato <strong>al dirty o al touched</strong> del formControl associato all'input</li>
+    <li>2) con <strong>flgOnInitValidation a true</strong> viene validato subito, ancor prima di una interazione del
+      formControl</li>
+    <li>3) con <strong>flgOnSubmitValidation a true</strong> viene validato a seconda di come chiama il valore submitted
+      che passiamo alla direttiva.
+      E' possibile settare il submitted a true quando premiamo invio e a false quando resettiamo il form</li>
+  </ul>
+
+  <h6>Messaggi</h6>
+  <ul>
+    <li>con l'input <strong>supports: (string | StringTranslate)[]</strong> passiamo una lista di messaggi informativi
+      del campo che verranno sempre visualizzati</li>
+    <li>con l'input <strong>validations: MessageValidatorInterface[]</strong> passiamo il messaggio da mostrare a
+      specifici tipi di errore</li>
+    <li>con l'input <strong>valids: (string | StringTranslate)[]</strong> passiamo una lista di messaggi che
+      compariranno solo quando il formControl è valido
+      e quando l'input <strong>showValid</strong> è a true</li>
+    <li>con l'input <strong>styles: FormInputValidationStyleInterface[]</strong> passiamo messaggi che compariranno a
+      determinate condizioni</li>
+  </ul>
+
+  <h6>Stile</h6>
+  La direttiva prevede uno stile per il campo di input, una icona da aggiungere al campo e un div di messaggi sotto il
+  campo.<br />
+  Possiamo gestire lo stile con una classe CSS "XXX" per l'input, una classe CSS "XXX-icon" per l'icona e una classe
+  "XXX-message" per i messaggi.<br />
+  In ogni casso è possibile anche modificare solo il colore o l'icona fontawesome associata
+  <ul>
+    <li>Lo stile dei messaggi di supporto è guidato dalla classe CSS <strong>input-support</strong> di default,
+      modificabile con l'input <strong>classSupport</strong></li>
+    <li>Lo stile dei messaggi di errore è guidato dalla classe CSS <strong>input-invalid</strong> di default,
+      modificabile con l'input <strong>classInvalid</strong></li>
+    <li>Lo stile dei messaggi di valido è guidato dalla classe CSS <strong>input-valid</strong> di default, modificabile
+      con l'input <strong>classValid</strong></li>
+    <li>Lo stile dei messaggi generici in <strong>styles</strong> è guidato dalla classe CSS
+      <strong>input-generic</strong> di default, con l'aggiunta delle proprietà
+      <strong>color</strong> e <strong>icon</strong> di ogni specifico stile aggiunto
+    </li>
+  </ul>
+</div>
+
+<hr />
+<h5>validazione al dirty o touched</h5>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c1">Campo required e intero</label>
+    <input type="text" id="c1" class="form-control" [formControl]="form1.get('campo1')" ddcValidation
+      [validations]="validations.campo1" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>      
+
+      ```typescript
+        form: FormGroup;
+        constructor(private fb: FormBuilder) &#123;
+          this.form = this.fb.group(&#123;
+            campo: [undefined, [Validators.required, CustomValidators.isInteger]],
+            ...
+          &#125;);
+          this.validations = &#123;
+            campo: [
+              {
+                type: 'required',
+                message: 'VALIDATION.REQUIRED',
+              },
+              CustomValidatorsMessages.IS_INTEGER(),
+            ],
+            ...
+          &#125;;
+        &#125;
+      ```      
+
+      ```html
+        &lt;form *ngIf="form1" [formGroup]="form1"&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="c1"&gt;Campo required e intero&lt;/label&gt;
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+              [validations]="validations.campo" /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      ```
+    </div>
+  </pre>
+</div>
+
+<h5>flgOnInitValidation</h5>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c2">Campo required</label>
+    <input type="text" id="c2" class="form-control" [formControl]="form1.get('campo2')" ddcValidation
+      [validations]="validations.campo2" [flgOnInitValidation]="true" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>                
+      Aggiunta di **[flgOnInitValidation]="true"** al campo input
+
+      ```html
+        ...
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+              [validations]="validations.campo" [flgOnInitValidation]="true" /&gt;
+        ...
+      ```
+    </div>
+  </pre>
+</div>
+
+<h5>flgOnSubmiutValidation</h5>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c3">Campo required</label>
+    <input type="text" id="c3" class="form-control" [formControl]="form1.get('campo3')" ddcValidation
+      [validations]="validations.campo2" [flgOnSubmitValidation]="true" [submitted]="submitted1" />
+  </div>
+  <button type="reset" class="btn btn-light mr-2" (click)="onReset1()">Reset</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit1()">Submit</button>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>      
+
+      ```typescript
+        submitted: boolean;
+        ...
+        onSubmit1() &#123;
+          this.submitted = true;
+        &#125;
+        onReset1() &#123;
+          this.submitted = false;
+        &#125;
+      ```      
+
+      ```html
+      ...
+          &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+            [validations]="validations.campo" [flgOnInitValidation]="true" [submitted]="submitted" /&gt;
+      ...
+      &lt;button type="reset" class="btn btn-light mr-2" (click)="onReset()"&gt;Reset&lt;/button&gt;
+      &lt;button type="submit" class="btn btn-primary" (click)="onSubmit()"&gt;Submit&lt;/button&gt;
+    ```
+    </div>
+  </pre>
+</div>
+
+<hr />
+<h5>showValid</h5>
+<div>
+  Per mostrare quando il campo è valid aggiungere <strong>showValid a true</strong>
+</div>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c4">Campo required</label>
+    <input type="text" id="c4" class="form-control" [formControl]="form1.get('campo4')" ddcValidation
+      [validations]="validations.campo2" [flgOnInitValidation]="true" [showValid]="true" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>                
+      Aggiunta di **[showValid]="true"** al campo input
+
+      ```html
+        ...
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+              [validations]="validations.campo" [flgOnInitValidation]="true" [showValid]="true" /&gt;
+        ...
+      ```
+    </div>
+  </pre>
+</div>
+
+<hr />
+<h5>Icons</h5>
+<div>
+  Cambio le icone di validazione con <strong>iconValid</strong> e <strong>iconInvalid</strong>
+</div>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c4">Campo required</label>
+    <input type="text" id="c4" class="form-control" [formControl]="form1.get('campo4')" ddcValidation
+      [validations]="validations.campo2" [flgOnInitValidation]="true" [showValid]="true" [iconValid]="'fa fa-user'"
+      [iconInvalid]="'fa fa-eye'" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>                
+      Aggiunta di **[iconValid] e [iconInvalid]** al campo input
+
+      ```html
+        ...
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+                [validations]="validations.campo" [flgOnInitValidation]="true" [showValid]="true" 
+                [iconValid]="'fa fa-user'"
+                [iconInvalid]="'fa fa-eye'" /&gt;
+        ...
+      ```
+    </div>
+  </pre>
+</div>
+
+<hr />
+<h5>Supports</h5>
+<div>
+  Aggiungo messaggi informativo con <strong>supports</strong>
+</div>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c5">Campo required</label>
+    <input type="text" id="c5" class="form-control" [formControl]="form1.get('campo5')" ddcValidation
+      [supports]="['info 1', 'info 2']" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>                
+      Aggiunta di **[supports]** al campo input che può essere un array di `stringhe`, di `stringhe i18n` o `StringTranslate`
+
+      ```html
+        ...
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+              [supports]="['info 1', 'info 2']" /&gt;
+        ...
+      ```
+    </div>
+  </pre>
+</div>
+
+<hr />
+<div>
+  Aggiungo una icona per i messaggi informativi con <strong>iconSupport</strong><br />
+  <i>visibile solo il campo è valido e se <b>showValid</b> è false</i>
+</div>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c6">Campo required</label>
+    <input type="text" id="c6" class="form-control" [formControl]="form1.get('campo6')" ddcValidation
+      [validations]="validations.campo2" [flgOnInitValidation]="true" [iconSupport]="'fa fa-user'"
+      [supports]="['info 1', 'info 2']" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>                
+      Aggiunta di **[iconSupport]** al campo input che viene visualizzata quando il campo è valido e non ha altre condizioni di stile
+
+      ```html
+        ...
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+              [supports]="['info 1', 'info 2']" [iconSupport]="'fa fa-user'"/&gt;
+        ...
+      ```
+    </div>
+  </pre>
+</div>
+
+<hr />
+<h5>Styles</h5>
+<div>
+  Aggiungo messaggi di validazione per caso specifico con <strong>styles</strong><br />
+  <i>in questo caso se inserisco il valore 1 viene impostato un messaggio e uno stile specifico</i>
+</div>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c7">Campo required e numerico</label>
+    <input type="text" id="c7" class="form-control" [formControl]="form1.get('campo7')" ddcValidation
+      [flgOnInitValidation]="true" [validations]="validations.campo2" [styles]="[validationStyle1]" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+      Creazione di un oggetto `FormInputValidationStyleInterface` da aggiungere a **styles**
+
+      ```typescript
+        ngOnInit() &#123;
+          this.validationStyle1 = &#123;
+            condition: (control: FormControl) =&gt; &#123;
+              return +control.value === 1;
+            &#125;,
+            color: 'GoldenRod',
+            icon: 'fa fa-exclamation-triangle',
+            message: (control: FormControl) =&gt; 'prova validatore',
+          &#125;;                
+        &#125;
+      ```
+      ```html
+        ...
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+              [flgOnInitValidation]="true" [validations]="validations.campo"
+              [styles]="[validationStyle1]"/&gt;
+        ...
+      ```
+
+    </div>
+  </pre>
+</div>
+
+<div>
+  Aggiungo un'altra validazione specifica in <strong>styles</strong><br />
+  <i>in questo caso, oltre alla gestione del valore 1, impostato un messaggio e uno stile specifico anche nei casi in
+    cui il valore sia 2 o 3</i>
+</div>
+<form *ngIf="form1" [formGroup]="form1">
+  <div class="form-group">
+    <label for="c8">Campo required e numerico</label>
+    <input type="text" id="c8" class="form-control" [formControl]="form1.get('campo8')" ddcValidation
+      [flgOnInitValidation]="true" [validations]="validations.campo2" [styles]="[validationStyle1, validationStyle2]" />
+  </div>
+</form>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+      
+      Creazione di due oggetti `FormInputValidationStyleInterface` da aggiungere a **styles**
+
+      ```typescript
+        ngOnInit() &#123;
+          this.validationStyle1 = &#123;
+            condition: (control: FormControl) =&gt; &#123;
+              return +control.value === 1;
+            &#125;,
+            color: 'GoldenRod',
+            icon: 'fa fa-exclamation-triangle',
+            message: (control: FormControl) =&gt; 'prova validatore',
+          &#125;;
+
+          this.validationStyle2 = &#123;
+            condition: (control: FormControl) =&gt; &#123;
+              return +control.value === 2 || +control.value === 3;
+            &#125;,
+            color: 'darkblue',
+            icon: 'fa fa-info',
+            message: (control: FormControl) =&gt; &#123;
+              return 'condizione rispettata con valore ' + control.value;
+            &#125;,
+          &#125;;                
+        &#125;
+      ```
+      ```html
+        ...
+            &lt;input type="text" id="c1" class="form-control" [formControl]="form.get('campo')" ddcValidation
+              [flgOnInitValidation]="true" [validations]="validations.campo"
+              [styles]="[validationStyle1, validationStyle2]"/&gt;
+        ...
+      ```
+
+    </div>
+  </pre>
+</div>

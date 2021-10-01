@@ -1,0 +1,7 @@
+<input id="{{id}}" ddcDateValidation type="{{isTime ? 'datetime-local': 'date'}}" class="form-control"
+  [ngClass]="field.cssClass" [ngStyle]="field.cssStyle"
+  placeholder="{{translateKey(field.placeholder) | translate:translateParams(field.placeholder)}}"
+  [formControl]="field.formControl" [flgOnInitValidation]="field.flgOnInitValidation"
+  [flgOnSubmitValidation]="field.flgOnSubmitValidation" [submitted]="field.submitted" [showValid]="field.showValid"
+  [validations]="field.validations" [supports]="field.supports" [styles]="field.styles" [valids]="field.valids"
+  [min]="minValue" [max]="maxValue" [step]="step" [isTime]="isTime" [timezoneName]="timezoneName" />

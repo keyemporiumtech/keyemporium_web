@@ -1,0 +1,21 @@
+<div class="card text-center" [ngClass]="cssClassMessage">
+  <div *ngIf="currentMessage?.title" class="card-header"
+    [innerHtml]="translateKey(currentMessage?.title) | translate:translateParams(currentMessage?.title)">
+  </div>
+  <div class="card-body">
+    <div *ngIf="currentMessage?.text" class="card-text"
+      [innerHtml]="translateKey(currentMessage?.text) | translate:translateParams(currentMessage?.text)">
+    </div>
+    <div *ngIf="currentMessage?.exception && enableDebug" class="bg-dark mt-2">
+      <h5 class="card-title">Exception</h5>
+      <div class="card-text"
+        [innerHtml]="translateKey(currentMessage?.exception) | translate:translateParams(currentMessage?.exception)">
+      </div>
+    </div>
+    <a class="btn btn-primary mt-1" (click)="back()">{{'APP.BUTTON.BACK' | translate}}</a>
+  </div>
+
+  <div class="card-footer text-muted">
+    {{'APP.COPYRIGHT' | translate}}
+  </div>
+</div>

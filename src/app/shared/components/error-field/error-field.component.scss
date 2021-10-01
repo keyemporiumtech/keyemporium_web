@@ -1,0 +1,12 @@
+.error-container {
+  margin-top: .5rem;
+  .error-message {
+    color: red;
+    .icon {
+      color: darkred;
+    }
+    .text {
+      font-weight: bold;
+    }
+  }
+}

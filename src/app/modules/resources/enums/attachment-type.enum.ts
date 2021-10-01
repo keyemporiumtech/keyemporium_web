@@ -1,0 +1,15 @@
+export enum EnumAttachmentType {
+	CI = 1,
+	PASSPORT = 2,
+	CF = 3,
+	ADDRESS = 4,
+	CV = 5,
+	IMAGE = 6,
+	BOOK = 7,
+	AUDIO = 8,
+	VIDEO = 9,
+	DOC = 10,
+	SONG = 11,
+	MOVIE = 12,
+	DRIVING_LICENSE = 13,
+}

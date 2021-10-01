@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <h4>Layout bootstrap</h4>
+  <div class="row">
+    <div class="col col-12">
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('LAYOUT-GRID')">Grid</a>
+      <span class="ml-2">|</span>
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('LAYOUT-COLORS')">Colors</a>
+      <span class="ml-2">|</span>
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('LAYOUT-ALERTS')">Alerts</a>
+      <span class="ml-2">|</span>
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('LAYOUT-BADGES')">Badges</a>
+      <span class="ml-2">|</span>
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('LAYOUT-BUTTONS')">Buttons</a>
+      <span class="ml-2">|</span>
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('LAYOUT-CARDS')">Cards</a>
+      <span class="ml-2">|</span>
+    </div>
+  </div>
+
+  <h4>Layout style css</h4>
+  <div class="row">
+    <div class="col col-12">
+      <a class="ml-2 btn btn-sm btn-success" (click)="set('STYLE-LINES')">Lines</a>
+      <span class="ml-2">|</span>
+    </div>
+  </div>
+
+  <div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
+    <div class="col col-12 p-2">
+      <a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
+      <wiki-test-layout-grid *ngIf="view==='LAYOUT-GRID'"></wiki-test-layout-grid>
+      <wiki-test-layout-colors *ngIf="view==='LAYOUT-COLORS'"></wiki-test-layout-colors>
+      <wiki-test-layout-alerts *ngIf="view==='LAYOUT-ALERTS'"></wiki-test-layout-alerts>
+      <wiki-test-layout-badges *ngIf="view==='LAYOUT-BADGES'"></wiki-test-layout-badges>
+      <wiki-test-layout-buttons *ngIf="view==='LAYOUT-BUTTONS'"></wiki-test-layout-buttons>
+      <wiki-test-layout-cards *ngIf="view==='LAYOUT-CARDS'"></wiki-test-layout-cards>
+      <wiki-test-layout-lines *ngIf="view==='STYLE-LINES'"></wiki-test-layout-lines>
+    </div>
+  </div>
+
+  <hr />
+  <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
+</div>

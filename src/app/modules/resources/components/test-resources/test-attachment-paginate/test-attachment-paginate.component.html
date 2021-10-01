@@ -1,0 +1,13 @@
+<ddc-init-table-list [groups]="groups" [colsTable]="getColsTable()" [formFilters]="formFilters" [list]="list"
+  [pagesNumbers]="pagesNumbers" [current]="current" [orders]="orders" (resetEmit)="reset()" (searchEmit)="onSearch()"
+  (orderEmit)="order($event.key, $event.value)" (pageEmit)="page($event)" [templateActionsIntest]="headerActions"
+  [templateActionsRow]="rowActions">
+</ddc-init-table-list>
+
+<ng-template #headerActions>
+  <span class="fa fa-cog"></span>
+</ng-template>
+
+<ng-template #rowActions let-item="item">
+  <span class="fa fa-edit mr-2 cursor-pointer" (click)="edit(item)"></span>
+</ng-template>

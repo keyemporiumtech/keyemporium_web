@@ -1,0 +1,51 @@
+export const WorkCvList = {
+	profession: {
+		unique: 'profession/get',
+		paginate: 'profession/table',
+		save: 'profession/save',
+		edit: 'profession/edit',
+		delete: 'profession/delete',
+	},
+	professionattachment: {
+		unique: 'professionattachment/get',
+		paginate: 'professionattachment/table',
+		save: 'professionattachment/save',
+		edit: 'professionattachment/edit',
+		delete: 'professionattachment/delete',
+	},
+	professionexperience: {
+		unique: 'professionexperience/get',
+		paginate: 'professionexperience/table',
+		save: 'professionexperience/save',
+		edit: 'professionexperience/edit',
+		delete: 'professionexperience/delete',
+	},
+	professionreference: {
+		unique: 'professionreference/get',
+		paginate: 'professionreference/table',
+		save: 'professionreference/save',
+		edit: 'professionreference/edit',
+		delete: 'professionreference/delete',
+	},
+	professionrole: {
+		unique: 'professionrole/get',
+		paginate: 'professionrole/table',
+		save: 'professionrole/save',
+		edit: 'professionrole/edit',
+		delete: 'professionrole/delete',
+	},
+	professionschool: {
+		unique: 'professionschool/get',
+		paginate: 'professionschool/table',
+		save: 'professionschool/save',
+		edit: 'professionschool/edit',
+		delete: 'professionschool/delete',
+	},
+	professionskill: {
+		unique: 'professionskill/get',
+		paginate: 'professionskill/table',
+		save: 'professionskill/save',
+		edit: 'professionskill/edit',
+		delete: 'professionskill/delete',
+	},
+};

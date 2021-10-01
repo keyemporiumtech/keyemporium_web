@@ -1,0 +1,41 @@
+<div class="message-element">
+
+  <!-- DIV -->
+  <div id="{{idMessage}}" *ngIf="typeComponent == 'DIV' && currentMessage" [ngClass]="cssClassMessage">
+    <div *ngIf="currentMessage?.title" class="div-header"
+      [innerHtml]="translateKey(currentMessage?.title) | translate:translateParams(currentMessage?.title)"></div>
+    <div *ngIf="currentMessage?.text" class="div-body"
+      [innerHtml]="translateKey(currentMessage?.text) | translate:translateParams(currentMessage?.text)"></div>
+    <div *ngIf="currentMessage?.exception && enableDebug" class="div-exception"
+      [innerHtml]="translateKey(currentMessage?.exception) | translate:translateParams(currentMessage?.exception)">
+    </div>
+    <div class="div-footer">
+      <a (click)="close()"><span class="{{windowCloseIcon}}"></span></a>
+    </div>
+  </div>
+  <!-- MODAL -->
+  <div class="modal" tabindex="-1" role="dialog" id="{{idMessage}}" *ngIf="typeComponent ==='MODAL' && currentMessage"
+    [ngClass]="cssClassMessage">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 *ngIf="currentMessage?.title" class="modal-title"
+            [innerHtml]="translateKey(currentMessage?.title) | translate:translateParams(currentMessage?.title)"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div *ngIf="currentMessage?.text" class="modal-body"
+          [innerHtml]="translateKey(currentMessage?.text) | translate:translateParams(currentMessage?.text)">
+        </div>
+        <div *ngIf="currentMessage?.exception && enableDebug" class="modal-exception"
+          [innerHtml]="translateKey(currentMessage?.exception) | translate:translateParams(currentMessage?.exception)">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="close()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

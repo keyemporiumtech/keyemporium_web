@@ -1,0 +1,6 @@
+<form [formGroup]="formUserProfiles">
+  <label *ngIf="showLabel" for="{{id}}"
+    [innerHTML]="translateKey(selectProfiles.label) |translate: translateParams(selectProfiles.label)"></label>
+  <ddc-init-input-select #profiles [id]="id" [field]="selectProfiles" [options]="optionProfiles" [noMargin]="true">
+  </ddc-init-input-select>
+</form>

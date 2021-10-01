@@ -1,0 +1,1061 @@
+<h4>Campi di Input</h4>
+
+<div>
+  Tutti i componenti che modellano un input form si basano sul campo in Input <strong>field</strong> di tipo
+  <strong>FormFieldModel</strong>
+</div>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>      
+
+      ```typescript        
+        form: FormGroup;
+        constructor(private fb: FormBuilder) &#123;
+          this.form = this.fb.group(&#123;
+            campo: [undefined, [Validators.required]],
+            ...
+          &#125;);
+          this.validations = &#123;
+            campo: [
+              &#123;
+                type: 'required',
+                message: 'VALIDATION.REQUIRED',
+              &#125;,
+            ],
+            ...
+          &#125;;
+        &#125;
+        
+        // CREAZIONE DEL FIELD MODEL
+        
+        this.input: FormFieldModel = new FormFieldModel(
+          EnumFormType.SELECT,
+          this.form.get('campo') as FormControl,
+          'Select semplice',
+        )
+        .validation([...this.validations.campo1]) // aggiunge l'array delle validazioni
+        .onInit() // aggiunge il flagValidationOnInit;        
+        
+      ```     
+
+      Un modo alternativo per la creazione del formControl e del field è l'uso di <strong>MagicValidatorUtil</strong> o
+      di qualsiasi altra utility che estende, in maniera analoga, la classe <strong>BaseMagicValidator</strong>
+
+      ```typescript  
+        validations: any = &#123;&#125;;
+        form: FormGroup;
+
+        constructor(private fb: FormBuilder) &#123;
+          this.form = this.fb.group(&#123;
+            campo: new MagicValidatorUtil((this.validations.campo = []), undefined) // inizializza un array di validazioni nella chiave "campo"
+            .required() // aggiunge la validazione required
+            .build() // costruisce il form control,
+            ...
+          &#125;);          
+        &#125;
+        // CREAZIONE DEL FIELD MODEL
+        
+        this.input: FormFieldModel = new FormFieldModel(
+          EnumFormType.SELECT,
+          this.form.get('campo') as FormControl,
+          'Select semplice',
+        )
+        .validation([...this.validations.campo])
+        .onInit();        
+        
+      ``` 
+
+      Inoltre è possibile popolare le property da passare in Input ad un componente di form, utilizzando
+      i metodi <strong>setProperties</strong> o <strong>setProperty</strong> della classe <strong>FormFieldModel</strong>
+
+      ```typescript  
+        this.optionList = [
+          new OptionListModel(1, 'Primo'),
+          new OptionListModel(2, 'Secondo'),
+          new OptionListModel(3, 'Terzo'),
+        ];
+        // CREAZIONE DEL FIELD MODEL con setProperties
+        
+        this.input: FormFieldModel = new FormFieldModel(
+          EnumFormType.SELECT,
+          this.form.get('campo') as FormControl,
+          'Select semplice',
+        )
+        .validation([...this.validations.campo])
+        .setProperties(
+          &#123;
+            options: this.optionList
+          &#125;
+        )
+        .onInit();
+        
+        // CREAZIONE DEL FIELD MODEL con setProperty
+
+        this.input: FormFieldModel = new FormFieldModel(
+          EnumFormType.SELECT,
+          this.form.get('campo') as FormControl,
+          'Select semplice',
+        )
+        .validation([...this.validations.campo])
+        .setProperty('options', this.optionList)
+        .onInit();
+        
+      ``` 
+    </div>
+  </pre>
+</div>
+
+<!-- TEXT -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputText"
+  aria-expanded="false" aria-controls="collapseInputText">
+  Input Text
+</button>
+
+<div class="collapse" id="collapseInputText">
+  <form [formGroup]="form1">
+    <label>Input Text</label>
+    <ddc-init-input-text [field]="text1"></ddc-init-input-text>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'text1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('text1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(text1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('text1')">Reset</button>
+  </form>
+</div>
+
+<!-- NUMBER -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputNumber"
+  aria-expanded="false" aria-controls="collapseInputNumber">
+  Input Number
+</button>
+
+<div class="collapse" id="collapseInputNumber">
+  <div>
+    Al componente <strong>ddc-init-input-number</strong> possono essere passati i parametri
+    <ul>
+      <li><strong>min: number</strong> valore minimo settabile</li>
+      <li><strong>max: number</strong> valore massimo settabile</li>
+    </ul>
+    In ogni caso va comunque aggiunta una validazione se vogliamo rendere stringenti i valori min e max e obbligatorio
+    il
+    range
+
+    <div class="mt-3">
+      <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>      
+  
+        ```typescript        
+          form: FormGroup;
+          constructor(private fb: FormBuilder) &#123;
+            this.form = this.fb.group(&#123;
+              campo: [undefined, [Validators.required, Validators.min(2), Validators.max(6)]],
+              ...
+            &#125;);
+            this.validations = &#123;
+              campo: [
+                &#123;
+                  type: 'required',
+                  message: 'VALIDATION.REQUIRED',
+                &#125;,
+                &#123;
+                  type: 'min',
+                  message: 'VALIDATION.NUMBER.MIN',
+                  params: &#123; min: 2 &#125;,
+                &#125;,
+                &#123;
+                  type: 'max',
+                  message: 'VALIDATION.NUMBER.MAX',
+                  params: &#123; max: 6 &#125;,
+                &#125;,
+              ],
+              ...
+            &#125;;
+          &#125;
+          
+          // CREAZIONE DEL FIELD MODEL
+          this.input: FormFieldModel = new FormFieldModel(
+            EnumFormType.NUMBER,
+            this.form.get('campo') as FormControl,
+            'Numerico range',
+          )
+          .validation(this.validations.campo)
+          .onInit();          
+          
+        ```     
+  
+      </div>
+    </pre>
+    </div>
+  </div>
+
+
+  <form [formGroup]="form1">
+    <label>Input Number</label>
+    <ddc-init-input-number [field]="number1"></ddc-init-input-number>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'number1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('number1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(number1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('number1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Input Number compreso tra 2 e 6</label>
+    <ddc-init-input-number [field]="number2" [min]="2" [max]="6"></ddc-init-input-number>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'number2')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('number2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(number2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('number2')">Reset</button>
+  </form>
+</div>
+
+<!-- DECIMAL -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputDecimal"
+  aria-expanded="false" aria-controls="collapseInputDecimal">
+  Input Decimal
+</button>
+
+<div class="collapse" id="collapseInputDecimal">
+  <div>
+    Il componente <strong>ddc-init-input-decimal</strong> estende il comportamento di input-number, con la differenza
+    che vengono gestiti valori decimali e vengono aggiunti ulteriori parametri di gestione
+    <ul>
+      <li><strong>digits: number</strong> numero di cifre oltre la virgola</li>
+    </ul>
+    In ogni caso va comunque aggiunta una validazione se vogliamo rendere stringenti i valori min e max e obbligatorio
+    il
+    range, oppure se vogliamo controllare il rispetto del numero di cifre dopo la virgola
+
+    <div class="mt-3">
+      <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>      
+  
+        ```typescript        
+          form: FormGroup;
+          constructor(private fb: FormBuilder) &#123;
+            this.form = this.fb.group(&#123;
+              campo: [undefined, [Validators.required, Validators.min(2.05), Validators.max(12.15), CustomValidators.isDoublePrecision]],
+              campo2: [undefined, [Validators.required, Validators.min(2.05), Validators.max(12.15), CustomValidators.isSpecificPrecision(3)]],
+              ...
+            &#125;);
+            this.validations = &#123;
+              campo: [
+                &#123;
+                  type: 'required',
+                  message: 'VALIDATION.REQUIRED',
+                &#125;,
+                &#123;
+                  type: 'min',
+                  message: 'VALIDATION.NUMBER.MIN',
+                  params: &#123; min: 2.05 &#125;,
+                &#125;,
+                &#123;
+                  type: 'max',
+                  message: 'VALIDATION.NUMBER.MAX',
+                  params: &#123; max: 12.15 &#125;,
+                &#125;,
+                CustomValidatorsMessages.IS_DOUBLE_PRECISION()
+              ],
+              campo: [
+                &#123;
+                  type: 'required',
+                  message: 'VALIDATION.REQUIRED',
+                &#125;,
+                &#123;
+                  type: 'min',
+                  message: 'VALIDATION.NUMBER.MIN',
+                  params: &#123; min: 2.05 &#125;,
+                &#125;,
+                &#123;
+                  type: 'max',
+                  message: 'VALIDATION.NUMBER.MAX',
+                  params: &#123; max: 12.15 &#125;,
+                &#125;,
+                CustomValidatorsMessages.IS_SPECIFIC_PRECISION(3)
+              ],
+              ...
+            &#125;;
+          &#125;
+          
+          // CREAZIONE DEL FIELD MODEL
+          this.input: FormFieldModel = new FormFieldModel(
+            EnumFormType.DECIMAL,
+            this.form.get('campo') as FormControl,
+            'Decimal range',
+          )
+          .validation(this.validations.campo)
+          .onInit(); 
+          
+        ```     
+  
+      </div>
+    </pre>
+    </div>
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Decimal</label>
+    <ddc-init-input-decimal [field]="decimal1"></ddc-init-input-decimal>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'decimal1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Input Decimal compreso tra 2 e 6</label>
+    <ddc-init-input-decimal [field]="decimal2" [min]="2" [max]="6"></ddc-init-input-decimal>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'decimal2')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal2')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Input Decimal con 2 cifre decimali compreso tra 2.05 e 12.15</label>
+    <ddc-init-input-decimal [field]="decimal3" [min]="2.05" [max]="12.15" [digits]="2"></ddc-init-input-decimal>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2.04, 'decimal3')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal3')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal3)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal3')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Input Decimal con 3 cifre decimali compreso tra 2.05 e 12.15</label>
+    <ddc-init-input-decimal [field]="decimal4" [min]="2.05" [max]="12.15" [digits]="3"></ddc-init-input-decimal>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2.04, 'decimal4')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal4')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal4)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal4')">Reset</button>
+  </form>
+</div>
+
+<!-- CURRENCY -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputCurrency"
+  aria-expanded="false" aria-controls="collapseInputCurrency">
+  Input Currency
+</button>
+
+<div class="collapse" id="collapseInputCurrency">
+  <div>
+    Il componente <strong>ddc-init-input-currency</strong> estende il comportamento di input-decimal e se non viene
+    passato
+    un digits di default imposta il valore a 2
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Currency</label>
+    <ddc-init-input-currency [field]="currency1"></ddc-init-input-currency>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1.21, 'currency1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('currency1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(currency1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('currency1')">Reset</button>
+  </form>
+</div>
+
+<!-- SELECT -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputSelect"
+  aria-expanded="false" aria-controls="collapseInputSelect">
+  Input Select
+</button>
+
+<div class="collapse" id="collapseInputSelect">
+  <div>
+    Al componente <strong>ddc-init-input-select</strong> vanno passati i parametri
+    <ul>
+      <li><strong>options: OptionListModel[]</strong> sono le options della select</li>
+      <li><strong>defaultOptionText: string</strong> è il testo che viene mostrato per nessuna scelta o valore nullo
+        (<i>non obbligatorio, di default "---"</i>)</li>
+      <li><strong>defaultOption: OptionListModel</strong> è la option da considerare come nessuna scelta (<i>non
+          obbligatorio, di default key=null e value=defaultOptionText</i>)</li>
+      <li><strong>multiple: boolean</strong> se true indica che posso selezionare più record in multi select</li>
+    </ul>
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Select Single</label>
+    <ddc-init-input-select [field]="select1" [options]="optionList"></ddc-init-input-select>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'select1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Select Multiple</label>
+    <ddc-init-input-select [field]="select2" [options]="optionList" [multiple]="true"></ddc-init-input-select>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'select2')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select2')">Reset</button>
+  </form>
+</div>
+
+<!-- SELECT_DIV -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputSelectDiv"
+  aria-expanded="false" aria-controls="collapseInputSelectDiv">
+  Input Select DIV
+</button>
+
+<div class="collapse" id="collapseInputSelectDiv">
+  <div>
+    Se vogliamo delle options in formato html (esempio immagine + testo) è possibile usare il componente
+    <strong>form-select-div</strong>
+  </div>
+  <form [formGroup]="form1">
+    <label>Select Single DIV</label>
+    <ddc-init-form-select-div [field]="select3" [options]="optionListHTML"></ddc-init-form-select-div>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'select3')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select3')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select3)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select3')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Select Multiple DIV</label>
+    <ddc-init-form-select-div [field]="select4" [options]="optionListHTML" [multiple]="true"></ddc-init-form-select-div>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'select4')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select4')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select4)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select4')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Select Multiple DIV con maxSelectedView</label>
+    <ddc-init-form-select-div [field]="select5" [options]="optionListHTML" [multiple]="true" [maxSelectedView]="2">
+    </ddc-init-form-select-div>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'select5')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select5')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select5)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select5')">Reset</button>
+  </form>
+</div>
+
+<!-- CHECKBOX -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputCheckbox"
+  aria-expanded="false" aria-controls="collapseInputCheckbox">
+  Input Checkbox
+</button>
+
+<div class="collapse" id="collapseInputCheckbox">
+  <div>
+    Allo stesso modo delle select, per le checkbox <strong>input-checkbok</strong> possiamo passare un array di options.
+    Se l'array ha più di un elemento allora passiamo multiple=true, altrimenti il valore assunto dai check sarà sempre
+    l'ultimo selezionato.
+    Oltre ai parametri comuni con le select, questo componente ha un ulteriore parametro <strong>isHorizontal</strong>
+    per indicare una disposizione orizzontale
+  </div>
+  <form [formGroup]="form1">
+    <label>Checkbox Single</label>
+    <ddc-init-input-checkbox [field]="check1" [options]="optionSingle"></ddc-init-input-checkbox>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'check1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Checkbox Multipla</label>
+    <ddc-init-input-checkbox [field]="check2" [options]="optionList" [multiple]="true"></ddc-init-input-checkbox>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'check2')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check2')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Checkbox Multipla HTML</label>
+    <ddc-init-input-checkbox [field]="check3" [options]="optionListHTML" [multiple]="true"></ddc-init-input-checkbox>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'check3')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check3')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check3)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check3')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Checkbox Multipla Horizontal</label>
+    <ddc-init-input-checkbox [field]="check4" [options]="optionList" [multiple]="true" [isHorizontal]="true">
+    </ddc-init-input-checkbox>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'check4')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check4')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check4)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check4')">Reset</button>
+  </form>
+</div>
+
+<!-- RADIO -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputRadio"
+  aria-expanded="false" aria-controls="collapseInputRadio">
+  Input Radio
+</button>
+
+<div class="collapse" id="collapseInputRadio">
+  <div>
+    Allo stesso modo delle select, per le checkbox <strong>input-radio</strong> possiamo passare un array di options.
+    Il componente, a differenza della checkbox non ha il parametro multiple perchè non è possibile selezionare più
+    record.
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Radio Single</label>
+    <ddc-init-input-radio [field]="radio1" [options]="optionSingle"></ddc-init-input-radio>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'radio1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Radio Multipla</label>
+    <ddc-init-input-radio [field]="radio2" [options]="optionList"></ddc-init-input-radio>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio2')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio2')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Radio Multipla HTML</label>
+    <ddc-init-input-radio [field]="radio3" [options]="optionListHTML"></ddc-init-input-radio>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio3')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio3')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio3)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio3')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Radio Multipla Horizontal</label>
+    <ddc-init-input-radio [field]="radio4" [options]="optionList" [isHorizontal]="true">
+    </ddc-init-input-radio>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio4')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio4')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio4)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio4')">Reset</button>
+  </form>
+</div>
+
+<!-- DATE -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputDate"
+  aria-expanded="false" aria-controls="collapseInputDate">
+  Input Date
+</button>
+
+<div class="collapse" id="collapseInputDate">
+  <div>
+    Il componente <strong>ddc-init-input-date</strong> gestisce le date e se <strong>isTime=true</strong> anche le ore,
+    i minuti e i secondi.
+    Al componente <strong>ddc-init-input-date</strong> vanno passati i parametri
+    <ul>
+      <li><strong>min: any | Date | string | number | DateModel</strong> indica il minimo valore possibile di data</li>
+      <li><strong>max: any | Date | string | number | DateModel</strong> indica il massimo valore possibile di data</li>
+      <li><strong>step: number</strong> se isTime è true indica gli incrementi dei secondi possibili, altrimenti
+        l'incremento dei giorni</li>
+      <li><strong>isTime: boolean</strong> se è true indica una data con ore, minuti e secondi</li>
+    </ul>
+    Anche in questo caso è opportuno aggiungere le validazioni di errore quando si impostano i valori di min e max.
+
+    <div class="mt-3">
+      <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable> 
+
+        ```typescript
+                    
+          form: FormGroup;
+          constructor(private fb: FormBuilder) &#123;
+            this.form = this.fb.group(&#123;
+              campo: [undefined, [
+                Validators.required,
+                DateValidators.mustBeLessOrEqualThan(new DateModel('2020-10-29')),
+                DateValidators.mustBeGreaterOrEqualThan(new DateModel('2020-10-20')),
+              ]],
+              ...
+            &#125;);
+            this.validations = &#123;
+              campo: [
+                &#123;
+                  type: 'required',
+                  message: 'VALIDATION.REQUIRED',
+                &#125;,
+                DateValidatorsMessages.MUST_BE_GREATER_OR_EQUAL_THAN('20/10/2020'),
+                DateValidatorsMessages.MUST_BE_LESS_OR_EQUAL_THAN('29/10/2020'),
+              ],
+              ...
+            &#125;;
+          &#125;            
+
+        ```
+      </div>
+      </pre>
+    </div>
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Data</label>
+    <div>
+      Setta la data nel timezone memorizzato il localStorage (timezone del server settato dal modulo init).
+      Quindi converte la data passata in input nel timezone del server.
+    </div>
+    <ddc-init-input-date [field]="date1"></ddc-init-input-date>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date1')">2020-10-22
+      23:00:27-05:00</button>
+    <br />
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Data con Timezone</label>
+    <div>
+      Setta la data nel timezone passato con il parametro <strong>timezoneName</strong>.
+    </div>
+    <ddc-init-input-date [field]="date2" [timezoneName]="'Brazil/Acre'"></ddc-init-input-date>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date2')">2020-10-22
+      23:00:27-05:00</button>
+    <br />
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date2')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Data con Minimo, Massimo e step</label>
+    <ddc-init-input-date [field]="date3" [min]="'2020-10-20'" [max]="'2020-10-29'" [step]="2"></ddc-init-input-date>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date3')">2020-10-22
+      23:00:27-05:00</button>
+    <br />
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date3')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date3)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date3')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Data Time</label>
+    <ddc-init-input-date [field]="date4" [isTime]="true"></ddc-init-input-date>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date4')">2020-10-22
+      23:00:27-05:00</button>
+    <br />
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date4')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date4)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date4')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Data Time con Timezone</label>
+    <ddc-init-input-date [field]="date5" [timezoneName]="'Brazil/Acre'" [isTime]="true"></ddc-init-input-date>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date5')">2020-10-22
+      23:00:27-05:00</button>
+    <br />
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date5')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date5)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date5')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Data Time con Minimo, Massimo e step</label>
+    <ddc-init-input-date [field]="date6" [min]="'2020-10-20 00:01:00'" [max]="'2020-10-29 23:59:00'" [step]="2"
+      [isTime]="true">
+    </ddc-init-input-date>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date6')">2020-10-22
+      23:00:27-05:00</button>
+    <br />
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date6')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date6)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date6')">Reset</button>
+  </form>
+</div>
+
+<!-- TEXTAREA -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputTextarea"
+  aria-expanded="false" aria-controls="collapseInputTextarea">
+  Input Textarea
+</button>
+
+<div class="collapse" id="collapseInputTextarea">
+  <form [formGroup]="form1">
+    <label>Input Textarea</label>
+    <ddc-init-input-textarea [field]="textarea1"></ddc-init-input-textarea>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'textarea1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('textarea1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(textarea1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('textarea1')">Reset</button>
+  </form>
+</div>
+
+<!-- FILE -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputFile"
+  aria-expanded="false" aria-controls="collapseInputFile">
+  Input File
+</button>
+
+<div class="collapse" id="collapseInputFile">
+  <div>
+    Il componente <strong>ddc-init-input-file</strong> consente l'upload di uno o più files e vanno passati i parametri
+    <ul>
+      <li><strong>multiple: boolean</strong> se true indica che è possibile caricare più files</li>
+      <li><strong>numMaxFiles: number</strong> indica il numero massimo di files che è possibile caricare</li>
+      <li><strong>maxSize: number</strong> indica la dimensione massima di un file in upload</li>
+      <li><strong>maxSizeUnit: EnumSizeFormat</strong> indica a quale unità di misura si riferisce maxSize (di default
+        KB)</li>
+      <li><strong>extensions: string</strong> indica le estensioni di file ammesse, separate da virgola</li>
+    </ul>
+    Se vengono passati questi parametri il componente aggiunge già un messaggio di info e una validazione automatica,
+    per numero massimo di files, dimensione massima per file e estensioni ammesse.<br />
+    Altra cosa importante è che il valore del formControl è di tipo array <strong>FileEmbedModel[]</strong>,
+    quindi bisogna settare il valore in array anche per elemento singolo<br /><br />
+  </div>
+  <form [formGroup]="form1">
+    <label>Input File</label>
+    <ddc-init-input-file [field]="file1"></ddc-init-input-file>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([embedFile], 'file1')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(file1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('file1')">Reset</button>
+    <div id="content-file1">
+      {{form1.get('file1').value | json}}
+    </div>
+  </form>
+
+  <form [formGroup]="form1" class="mt-4">
+    <label>Input File validazione (estensioni pdf, doc e dimensione 1MB)</label>
+    <ddc-init-input-file [field]="file2" [extensions]="'pdf,doc'" [maxSize]="1" [maxSizeUnit]="EnumSizeFormat.MEGABYTE">
+    </ddc-init-input-file>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([embedFile], 'file2')">Testa Set valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(file2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('file2')">Reset</button>
+    <div id="content-file2">
+      {{form1.get('file2').value | json}}
+    </div>
+  </form>
+</div>
+
+
+<!-- AUTOCOMPLETE -->
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputAutocomplete"
+  aria-expanded="false" aria-controls="collapseInputAutocomplete">
+  Input Autocomplete
+</button>
+
+<div class="collapse" id="collapseInputAutocomplete">
+  <div>
+    Il componente <strong>ddc-init-input-autocomplete</strong> consente di effettuare una ricerca di
+    <strong>OptionListModel</strong>
+    a fronte di un inserimento di un certo numero di caratteri nel campo di input del form.<br />
+    Per fare questo sono necessari i parametri di Input <strong>digit</strong> e <strong>list</strong>.
+    <ul>
+      <li><strong>digit</strong> indica quanti caratteri scrivere prima che venga emessa una ricerca (di default 3)</li>
+      <li><strong>list</strong> è l'array da riempire con il risultato della ricerca</li>
+    </ul>
+    <br />
+
+    Al campo autocomplete posso settare come valore in input sia una <strong>stringa</strong> che un oggetto di tipo
+    <strong>OptionListModel</strong>,
+    mentre come valore in output mi dovrò aspettare sempre un OptionListModel
+    <ul>
+      <li><strong>string</strong> farà partire la ricerca e si metterà in attesa di una selezione (il valore corrente
+        sarà nullo)</li>
+      <li><strong>OptionListModel</strong> imposta il valore al formControl</li>
+    </ul>
+    <br />
+    <br /><br />
+  </div>
+  <div class="mt-3">
+    Possiamo richiamare la funzione di ricerca al <strong>searchEmit</strong> del componente
+    e quella di selezione dell'item al <strong>selectEmit</strong> del componente
+
+    <div class="mt-3">
+      <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```typescript
+          this.searchList = [
+            new OptionListModel(1, 'primo'),
+            new OptionListModel(2, 'secondo'),
+            new OptionListModel(3, 'terzo'),
+            new OptionListModel(4, 'quarto'),
+            new OptionListModel(5, 'quinto'),
+            new OptionListModel(6, 'sesto'),
+            new OptionListModel(7, 'settimo'),
+            new OptionListModel(8, 'ottavo'),
+            new OptionListModel(9, 'nono'),
+          ];
+          
+          ...
+
+          searchAutocomplete(term: string) &#123;            
+            this.listAutocomplete1 = this.searchList.filter((el) => &#123;
+              const desc: string = TranslateUtility.get(el.text, this.translate);
+              return desc.startsWith(term);
+            &#125;);
+          &#125;
+          selectAutocomplete(item: OptionListModel) &#123;
+            alert(
+              'hai selezionato il record con chiave ' +
+                item.key +
+                ' e testo ' +
+                TranslateUtility.get(item.text, this.translate),
+            );
+          &#123;
+        ```
+
+        ```html
+          &lt;ddc-init-input-autocomplete [field]="autocomplete1" [list]="listAutocomplete1"
+            (searchEmit)="searchAutocomplete($event)" (selectEmit)="selectAutocomplete($event)"&gt;&lt;/ddc-init-input-autocomplete&gt;              
+        ```
+      </div>
+      </pre>
+    </div>
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Autocomplete con emitters</label>
+    <ddc-init-input-autocomplete [field]="autocomplete1" [list]="listAutocomplete1"
+      (searchEmit)="searchAutocomplete($event)" (selectEmit)="selectAutocomplete($event)" [digits]="2">
+    </ddc-init-input-autocomplete>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('se', 'autocomplete1')">Testa Set valore
+      string</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(optionItem, 'autocomplete1')">Testa Set valore
+      Option</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(autocomplete1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('autocomplete1')">Reset</button>
+  </form>
+  <div id="content-autocomplete1">
+    {{form1.get('autocomplete1').value | json}}
+  </div>
+
+
+  <div class="mt-3">
+    Oppure Possiamo passare una funzione di ricerca con l'Input <strong>search</strong> al componente.
+    In questo caso non sarà necessario passare anche una <strong>list</strong>
+
+    <div class="mt-3">
+      <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```typescript
+          fnSearchAutocomplete = (term: string) =&gt; &#123;
+            const list = this.searchList.filter((el) =&gt; &#123;
+              const desc: string = TranslateUtility.get(el.text, this.translate);
+              return desc.startsWith(term);
+            &#125;);
+            return of(list);
+          &#125;;
+        ```
+
+        ```html
+          &lt;ddc-init-input-autocomplete [field]="autocomplete2" [search]="fnSearchAutocomplete" 
+            (selectEmit)="selectAutocomplete($event)"&gt;&lt;/ddc-init-input-autocomplete&gt;              
+        ```
+      </div>
+      </pre>
+    </div>
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Autocomplete con funzione search</label>
+    <ddc-init-input-autocomplete [field]="autocomplete2" [search]="fnSearchAutocomplete"
+      (selectEmit)="selectAutocomplete($event)" [digits]="2">
+    </ddc-init-input-autocomplete>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('se', 'autocomplete2')">Testa Set valore
+      string</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(optionItem, 'autocomplete2')">Testa Set valore
+      Option</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(autocomplete2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('autocomplete2')">Reset</button>
+  </form>
+
+  <div id="content-autocomplete2">
+    {{form1.get('autocomplete2').value | json}}
+  </div>
+</div>
+
+
+<!-- PHONE -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputPhone"
+  aria-expanded="false" aria-controls="collapseInputPhone">
+  Input Phone
+</button>
+
+<div class="collapse" id="collapseInputPhone">
+  <div>
+    Il componente <strong>ddc-init-input-phone</strong> è composto da un prefisso e un numero.
+    Ha la validazione automatica che il campo numero sia numerico e i seguenti Input.
+    <ul>
+      <li><strong>prefixes</strong> è una lista di <strong>OptionListModel</strong> per popolare i prefissi</li>
+      <li><strong>dropdownPrefix</strong> se true indica che la lista dei prefissi va rappresentata con un pulsante in
+        dropdown e che accetta options con testo in html</li>
+    </ul>
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Phone</label>
+    <ddc-init-input-phone [field]="phone1" [prefixes]="optionsPrefix"></ddc-init-input-phone>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('+39 3447665432', 'phone1')">Testa Set
+      valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('phone1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(phone1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('phone1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Input Phone con dropdown</label>
+    <ddc-init-input-phone [field]="phone2" [prefixes]="optionsPrefixHtml" [dropdownPrefix]="true">
+    </ddc-init-input-phone>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('+39 3447665432', 'phone2')">Testa Set
+      valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('phone2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(phone2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('phone2')">Reset</button>
+  </form>
+</div>
+
+<!-- EMAIL -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputEmail"
+  aria-expanded="false" aria-controls="collapseInputEmail">
+  Input Email
+</button>
+
+<div class="collapse" id="collapseInputEmail">
+  <div>
+    Il componente <strong>ddc-init-input-email</strong> aggiunge la validazione automatica dell'email
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Email</label>
+    <ddc-init-input-email [field]="email1"></ddc-init-input-email>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('prova@email.it', 'email1')">Testa Set
+      valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('email1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(email1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('email1')">Reset</button>
+  </form>
+
+
+</div>
+
+<!-- COLOR -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputColor"
+  aria-expanded="false" aria-controls="collapseInputColor">
+  Input Color
+</button>
+
+<div class="collapse" id="collapseInputColor">
+  <div>
+    Il componente <strong>ddc-init-input-color</strong> consente una selezione del colore
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Color</label>
+    <ddc-init-input-color [field]="color1"></ddc-init-input-color>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('#000000', 'color1')">Testa Set
+      valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('color1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(color1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('color1')">Reset</button>
+  </form>
+</div>
+
+
+<!-- PASSWORD -->
+<hr class="line line-lg bg-info mt-3" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputPassword"
+  aria-expanded="false" aria-controls="collapseInputPassword">
+  Input Password
+</button>
+
+<div class="collapse" id="collapseInputPassword">
+  <div>
+    Il componente <strong>ddc-init-input-password</strong> consente di gestire un campo nascosto
+  </div>
+
+  <form [formGroup]="form1">
+    <label>Input Password</label>
+    <ddc-init-input-password [field]="password1"></ddc-init-input-password>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('pass001', 'password1')">Testa Set
+      valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('password1')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(password1)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('password1')">Reset</button>
+  </form>
+
+  <form [formGroup]="form1">
+    <label>Input Password con validazioni</label>
+    <ddc-init-input-password [field]="password2" [minLength]="5" [maxLength]="10" [almostOneLower]="true"
+      [almostOneUpper]="true" [almostOneNumber]="true" [automaticValidators]="true"></ddc-init-input-password>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('pass001', 'password2')">Testa Set
+      valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('password2')">Testa Read valore</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(password2)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('password2')">Reset</button>
+  </form>
+</div>
+
+
+<hr class="line line-lg bg-danger mt-5" />
+<h5>Validazioni automatiche</h5>
+
+<div>
+  Nei componenti di field è possibile aggiungere delle validazioni in maniera automatica al settaggio di un particolare
+  Input.<br />
+  Per rendere questa automazione possibile bisogna passara al componente il parametro <strong>automaticValidators a
+    true</strong> e
+  settare l'input appropriato.<br />
+
+  Alcuni Input di validazione automatica sono
+  <ul>
+    <li><strong>pattern</strong> per tutti i campi</li>
+    <li><strong>minLength e maxLength</strong> per i campi di tipo TEXT e TEXTAREA</li>
+    <li><strong>min e max</strong> per i campi di tipo NUMBER, DECIMAL, CURRENCY e DATE</li>
+    <li><strong>digits</strong> per i campi di tipo DECIMAL e CURRENCY</li>
+  </ul>
+</div>
+<form [formGroup]="form1" class="mt-3">
+  <label>Input Text con validazione automatica minLength 2</label>
+  <ddc-init-input-text [field]="text1AV" [automaticValidators]="true" [minLength]="2"></ddc-init-input-text>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'text1AV')">Testa Set valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('text1AV')">Testa Read valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(text1AV)">Abilita/Disabilita</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('text1AV')">Reset</button>
+</form>
+
+<form [formGroup]="form1" class="mt-3">
+  <label>Input Text con validazione automatica minLength 2 e maxLength 4</label>
+  <ddc-init-input-text [field]="text2AV" [automaticValidators]="true" [minLength]="2" [maxLength]="4">
+  </ddc-init-input-text>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'text2AV')">Testa Set valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('text2AV')">Testa Read valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(text2AV)">Abilita/Disabilita</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('text2AV')">Reset</button>
+</form>
+
+<form [formGroup]="form1" class="mt-3">
+  <label>Input Number con min 2 e max 6</label>
+  <ddc-init-input-number [field]="number1AV" [automaticValidators]="true" [min]="2" [max]="6">
+  </ddc-init-input-number>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'number1AV')">Testa Set valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('number1AV')">Testa Read valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(number1AV)">Abilita/Disabilita</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('number1AV')">Reset</button>
+</form>
+
+<form [formGroup]="form1" class="mt-3">
+  <label>Input Decimal con min 2.15, max 6.25 e digits 2</label>
+  <ddc-init-input-decimal [field]="decimal1AV" [automaticValidators]="true" [min]="2.15" [max]="6.25" [digits]="2">
+  </ddc-init-input-decimal>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'decimal1AV')">Testa Set valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal1AV')">Testa Read valore</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal1AV)">Abilita/Disabilita</button>
+  <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal1AV')">Reset</button>
+</form>

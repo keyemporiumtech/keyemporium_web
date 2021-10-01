@@ -1,0 +1,13 @@
+<h4>Playlist</h4>
+
+<button class="btn btn-sm btn-info text-white mr-2 mt-2" type="button" data-toggle="collapse"
+  data-target="#collapsePlaylistAudio" aria-expanded="false" aria-controls="collapsePlaylistAudio"
+  (click)="openCloseBox('PLAYLIST_AUDIO', 'collapsePlaylistAudio')">
+  Playlist Audio
+</button>
+
+<hr />
+
+<div class="collapse" id="collapsePlaylistAudio">
+  <wiki-test-shared-playlist-audio *ngIf="box === 'PLAYLIST_AUDIO'"></wiki-test-shared-playlist-audio>
+</div>

@@ -1,0 +1,11 @@
+{
+    "/REST": {
+        "target": "https://localhost/keyemporium_rest",
+        "changeOrigin": true,
+        "secure": false,
+        "pathRewrite": {
+        "^/REST": ""
+        },
+        "logLevel": "debug"
+    }
+}

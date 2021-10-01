@@ -1,0 +1,370 @@
+/* You can add global styles to this file, and also import other style files */
+
+.background-none {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/** --------------- MESSAGE-ELEMENT **/
+.message-element {
+  .modal-exception {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+  }
+
+  /** DIV */
+  .div-info {
+    .div-header {
+      background-color: $info;
+      color: $light;
+    }
+    .div-body {
+      background-color: $light;
+      color: $dark;
+    }
+    .div-footer {
+      background-color: $info;
+      color: $light;
+    }
+    .div-exception {
+      background-color: purple;
+      color: white;
+    }
+  }
+  .div-warning {
+    .div-header {
+      background-color: $warning;
+      color: $dark;
+    }
+    .div-body {
+      background-color: $light;
+      color: $dark;
+    }
+    .div-footer {
+      background-color: $warning;
+      color: $light;
+    }
+    .div-exception {
+      background-color: purple;
+      color: white;
+    }
+  }
+  .div-error {
+    .div-header, .modal-header{
+      background-color: $error;
+      color: $light;
+    }
+    .div-body, .modal-body{
+      background-color: $light;
+      color: $dark;
+    }
+    .div-footer {
+      background-color: $error;
+      color: $light;
+    }
+    .div-exception {
+      background-color: purple;
+      color: white;
+    }
+  }
+
+  /** MODAL */
+  .modal-info {
+    .modal-header {
+      background-color: $info;
+      color: $light;
+    }
+    .modal-body {
+      background-color: $light;
+      color: $dark;
+    }
+    .modal-footer {
+      background-color: $info;
+      color: $light;
+    }
+    .modal-exception {
+      background-color: purple;
+      color: white;
+    }
+  }
+  .modal-warning {
+    .modal-header {
+      background-color: $warning;
+      color: $dark;
+    }
+    .modal-body {
+      background-color: $light;
+      color: $dark;
+    }
+    .modal-footer {
+      background-color: $warning;
+      color: $light;
+    }
+    .modal-exception {
+      background-color: purple;
+      color: white;
+    }
+  }
+  .modal-error {
+    .modal-header{
+      background-color: $error;
+      color: $light;
+    }
+    .modal-body{
+      background-color: $light;
+      color: $dark;
+    }
+    .modal-footer {
+      background-color: $error;
+      color: $light;
+    }
+    .modal-exception {
+      background-color: purple;
+      color: white;
+    }
+  }
+
+}
+
+/** LINES **/
+.line {
+  background-color: #000;
+}
+.line-xl {
+  height: 1rem;
+}
+.line-lg {
+  height: .7rem;
+}
+.line-md {
+  height: .5rem;
+}
+.line-sm {
+  height: .3rem;
+}
+.line-xs {
+  height: .1rem;
+}
+
+/* BANNER COOKIE */
+.banner-cookie {
+  background-color: #6c757d !important;
+
+  .close{
+    color: darkred !important;   
+  }
+  .text {    
+    text-align: center;
+    /* top or bottom */
+    .more-info {
+      float: right;
+      margin-right: 1rem;
+    }
+    .accept{
+      float: right;
+      margin-right: 1rem;
+    }
+  }
+  .more-info {
+    text-align:center;
+  }
+  .accept{
+    text-align:center;
+  }
+}
+
+/* FORMS */
+
+/* select div */
+.selectdiv {
+  width: 100%;
+
+  .disabled {
+    background-color: $mute;
+  }
+  .selected {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; 
+  }
+  .selected-inner {
+    background-color: $primary;
+    color: $text-primary !important;      
+  }
+  .selected-outdor {    
+    color: $mute !important;
+    display: inline;
+    margin-left: .5rem;        
+  }
+  .items {
+    border: 1px #000 solid;
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+    z-index: 999;     
+    .item {
+      padding: .5rem;
+      display: flex;
+      flex-wrap: wrap;      
+    }
+  }  
+}
+
+.select-image-icon {
+  margin: .5rem;
+  width: 1.5rem;
+}
+
+/* input file */
+.listfiles-trash-button {
+  cursor: pointer;    
+}
+.listfiles {
+  border: 1px $mute solid;  
+  .item {
+    color: $text;
+    font-weight: $weight;
+    padding: .4rem;
+  }
+  .item-close {
+    cursor: pointer;    
+    color: $danger;
+  }
+}
+
+/* autocomplete */
+.autocomplete-container{
+  position: relative;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+
+  .item{
+    padding: .5rem!important;
+    border: 1px #000 solid;
+    cursor: pointer;
+  }
+
+  .item-not-found{
+    color: $mute;
+  }
+
+  .item-over{
+    background-color: $primary3;
+    color: $text-primary;
+    font-weight: bold;
+  }
+}
+
+/* phone */
+.dropdown-prefix{
+  width: 100%;
+  .dropdown-toggle{
+    width: 100%;
+  }
+  .dropdown-menu{
+    .dropdown-item{
+
+    }
+    .dropdown-item-selected{
+      font-weight: bold;
+      background-color: $primary;
+      color: $text-primary !important;
+    }
+  }
+}
+
+/* FORMS: messages */
+.input-generic-message {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;   
+}
+
+.input-valid {
+  border: 1px solid $success;
+}
+.input-valid-icon {
+  color: $success;
+}
+.input-valid-message {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: $success;
+  position: relative;
+  z-index: -1;  
+}
+
+.input-invalid {
+  border: 1px solid $danger;
+}
+.input-invalid-icon {
+  color: $danger;
+}
+.input-invalid-message {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: $danger;
+  position: relative;
+  z-index: -1;  
+}
+
+.input-support {  
+}
+.input-support-icon {
+  color: $secondary;
+}
+.input-support-message {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: $secondary;
+  position: relative;
+  z-index: -1;  
+}
+
+/* PAGINATION */
+.order {
+  cursor: pointer;
+}
+.order-selected{
+  color: $link;
+}
+
+/* PLAYLIST */
+.playlist {
+  margin: .5rem;  
+
+  .audio-item {
+    border: 1px #000 solid;
+    border-radius: .5rem;
+    padding: .5rem;
+    
+    .audio-title {
+      font-size: 8px;
+      font-weight: bold;
+    }
+    .audio-description {
+      font-size: 8px;
+      font-style: italic;
+    }
+    .audio-author {
+      font-size: 8px;
+      font-weight: bold;
+    }
+    .audio-duration {
+      font-size: 8px;    
+    }
+  }
+}
+
+
+

@@ -1,0 +1,20 @@
+<ul class="nav justify-content-center footer-public" style="height: 8rem;">
+  <li class="nav-item">
+    <a class="nav-link" (click)="privacy()">{{'APP.PRIVACY.TITLE' | translate}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="cookie()">{{'APP.COOKIE.TITLE' | translate}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="term()">{{'APP.TERM.TITLE' | translate}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" tabindex="-1" aria-disabled="true" [innerHtml]="'APP.COPYRIGHT' | translate"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" tabindex="-1" aria-disabled="true">ver. {{VERSION}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" tabindex="-1" aria-disabled="true">template {{TEMPLATE_VERSION}}</a>
+  </li>
+</ul>

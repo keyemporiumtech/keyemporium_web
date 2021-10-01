@@ -1,0 +1,53 @@
+{
+  "VALIDATION": {
+    "ADDRESS": {
+      "ALMOST_NATION_CITY": "Indicare la nazione e la città"
+    },
+    "ALMOST_ONE_LOWER": "Il campo deve contenere almeno un carattere minuscolo",
+    "ALMOST_ONE_UPPER": "Il campo deve contenere almeno un carattere maiuscolo",
+    "ALMOST_ONE_NUMBER": "Il campo deve contenere almeno un carattere numerico",
+    "CREDITCARD": "Carta di credito non valida",
+    "DATE": {
+      "NOT_VALID": "Data non valida",
+      "DATE_GREATER_OR_EQUAL_THEN": "La data deve essere maggiore o uguale di {{ other }}",
+      "DATE_GREATER_THEN": "La data deve essere maggiore di {{ other }}",
+      "DATE_GREATER_OR_EQUAL_THEN_CURRENT": "La data deve essere maggiore o uguale della data attuale",
+      "DATE_GREATER_THEN_CURRENT": "La data deve essere maggiore della data attuale",
+      "DATE_LESS_OR_EQUAL_THEN": "La data deve essere minore o uguale di {{ other }}",
+      "DATE_LESS_THEN": "La data deve essere minore di {{ other }}",
+      "DATE_LESS_OR_EQUAL_THEN_CURRENT": "La data deve essere minore o uguale della data attuale",
+      "DATE_LESS_THEN_CURRENT": "La data deve essere minore della data attuale"
+    },
+    "DOUBLE_PRECISION": "Sono ammessi valori decimali in doppia precisione",
+    "SPECIFIC_PRECISION": "Sono ammessi solo {{ digits }} valori decimali dopo la virgola",
+    "EMAIL": "Email non valida",
+    "IBAN": "Iban non valido",
+    "INTEGER": "Sono ammessi solo numeri",
+    "INVALID": "Valore non valido",
+    "MIN_LENGTH": "Il campo deve essere più di {{ min }} caratteri",
+    "MAX_LENGTH": "Il campo deve essere meno di {{ max }} caratteri",
+    "MIN_MAX_LENGTH": "Il campo deve essere più di {{ min }} caratteri e meno di {{ max }} caratteri",
+    "NOT_EQUAL": "Il valore campo \"{{ field1 }}\" è diverso dal valore del campo \"{{ field2 }}\"",
+    "NUMBER": {
+      "MAX": "Non sono ammessi valori maggiori di {{ max }}",
+      "MIN": "Non sono ammessi valori inferiori di {{ min }}"
+    },
+    "PATTERN": "Pattern {{ pattern }} non rispettato",
+    "REFERENCE": {
+      "PHONE": "Indicare il numero di telefono",
+      "PREFIX": "Indicare il prefisso",
+      "PREFIX_AND_PHONE": "Indicare il prefisso e il numero di telefono"
+    },
+    "REQUIRED": "Campo obbligatorio",
+    "UPLOAD": {
+      "FILE_EXT": "Il file {{ filename }} ha estensione {{ fileext }} mentre sono ammessi soltanto le estensioni {{ ext }}",
+      "FILE_EXT_INFO": "Estensioni {{ ext }}",
+      "GENERIC_ERROR": "Errore di upload",
+      "MAX_SIZE": "Il file {{ filename }} ha dimensione {{ filesize }} mentre sono ammessi soltanto file di dimensione massima {{ size }} {{ unit }}",
+      "MAX_SIZE_INFO": "Dimensione massima {{ size }} {{ unit }}",
+      "MAX_NUM_UPLOAD": "Si possono allegare al massimo {{ max }} files",
+      "MAX_NUM_UPLOAD_FILE": "Massimo {{ max }} files"
+    },
+    "URL": "URL non valida (deve avere come prefisso http:// o https:// o www.)"
+  }
+}

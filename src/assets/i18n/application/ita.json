@@ -1,0 +1,58 @@
+{
+  "APP": {
+    "I18N": "Italiano",
+    "COPYRIGHT": "&copy; DDC INIT",
+    "BUTTON": {
+      "BACK": "Indietro",
+      "CANCEL": "Annulla",
+      "CONFIRM": "Conferma",
+      "HIDE": "Nascondi",
+      "LOGIN": "Login",
+      "OK": "Ok",
+      "RESET": "Pulisici",
+      "PAGE": "Vai a Pagina",
+      "SEARCH": "Cerca",
+      "SHOW": "Mostra"
+    },
+    "COOKIE": {
+      "ACCEPT": "Accetta",
+      "INFO": "Questo è il messaggio che deve comparire nel banner cookie",
+      "MORE_INFO": "Leggi",
+      "TITLE": "Cookie Policy"
+    },
+    "LABEL": {
+      "ADDRESS": {
+        "TYPE": "Tipo di indirizzo",
+        "NATION": "Nazione",
+        "REGION": "Regione",
+        "PROVINCE": "Provincia",
+        "CITY": "Città",
+        "COMMUNITY": "Community",
+        "ZIP": "C.A.P.",
+        "STREET": "Via/Piazza/Contrada",
+        "NUM": "Numero Civico"
+      },
+      "CREDITCARD": "Numero di carta di credito",
+      "IBAN": "IBAN",
+      "LANGUAGE": "Lingua",
+      "NATION": "Nazione",
+      "PROFILE": "Profilo"
+    },
+    "LOADER": {
+      "MESSAGE_WAIT": "Attendere"
+    },
+    "MAP": {
+      "DISABLE_SCROLL": "Disabilita Scroll",
+      "ENABLE_SCROLL": "Abilita Scroll"
+    },
+    "PLATFORM": {
+      "MESSAGE_IS_MOBILE": "Vuoi navigare l'applicazione mobile ?"
+    },
+    "PRIVACY": {
+      "TITLE": "Privacy Policy"
+    },
+    "TERM": {
+      "TITLE": "Condizioni d'uso"
+    }
+  }
+}

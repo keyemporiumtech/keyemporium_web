@@ -1,0 +1,67 @@
+<h4>Banner Cookie</h4>
+
+<div>
+  Lo stile del banner dei cookie è definito in <strong>styles.scss</strong>
+</div>
+
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.TOP)">Posizione TOP</a>
+<span class="ml-2">|</span>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.BOTTOM)">Posizione BOTTOM</a>
+<span class="ml-2">|</span>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.RIGHT)">Posizione RIGHT</a>
+<span class="ml-2">|</span>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.LEFT)">Posizione LEFT</a>
+
+<div class="mt-3">
+  <ddc-init-banner-cookie *ngIf="load" #bannerTest [id]="'test'" [position]="position" [text]="'banner di prova'"
+    [delayLoad]="1000" (emitClose)="close()">
+  </ddc-init-banner-cookie>
+</div>
+
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+      
+      Lo stile del banner dei cookie è definito dentro `styles.scss` e si può modificare o sovrascivere in base alle esigenze
+
+      ```css
+        .banner-cookie &#123;
+          background-color: #6c757d !important;
+        
+          .close&#123;
+            color: darkred !important;   
+          &#125;
+          .text &#123;
+            text-align: center;
+            /* top or bottom */
+            .more-info &#123;
+              float: right;
+              margin-right: 1rem;
+            &#125;
+            .accept&#123;
+              float: right;
+              margin-right: 1rem;
+            &#125;
+          &#125;
+          .more-info &#123;
+            text-align:center;
+          &#125;
+          .accept&#123;
+            text-align:center;
+          &#125;
+        &#125;
+      ```
+
+      L'utilizzo è registrato in `app.component.html`
+
+      ```html
+        ...
+        &lt;ddc-init-banner-cookie [text]="'APP.COOKIE.INFO'"&gt;&lt;/ddc-init-banner-cookie&gt;
+        ...
+      ```
+
+      Per modificare lo stile dei pulsanti "Leggi" e "Accetta" bisogna passare i parametri **moreInfoClass** o **moreInfoStyle** e **acceptClass** o **acceptStyle**
+
+    </div>
+  </pre>
+</div>

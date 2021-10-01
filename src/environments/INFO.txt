@@ -1,0 +1,120 @@
+# ----------------- environment
+VERSION
+- application-public/template/footer-public.component
+
+appName
+- app.component
+- application-public/template/header-public.component
+- kit/logger/logger-layout-info.component
+
+api.tokenApp
+- rest/abstract/base-rest.service
+
+api.privacyPolicy
+api.cookiePolicy
+api.termPolicy
+url.privacyPolicy
+url.cookiePolicy
+url.termPolicy
+- init/api-init.service
+
+api.socket
+- default.timezoneChatSocketName
+- rest/abstract/chat/base-chat-socket.service
+
+url.message
+- kit/message/message.service
+
+url.home
+- application-public/template/header-public.component
+- kit/message/message.service
+
+messages.idMessagePrincipal
+- application-public/template/footer-public.component
+- modules/api/api.service
+- wiki/test-commons-page
+
+security.servername
+- rest/abstract/base-rest.service
+
+default.language
+- app.module
+- init/api-init.service
+- kit/locale/locale.service
+
+default.languageName
+default.currencySymbol
+default.currencyName
+default.nationName
+default.timezoneVal
+default.timezoneName
+- init/api-init.service
+
+default.languages
+default.currencies
+- rest/abstract/base-locale.service
+
+default.currency
+- init/api-init.service
+- kit/locale/locale.service
+
+default.nation
+- init/api-init.service
+- kit/locale/locale.service
+- rest/abstract/base-locale.service
+
+
+# ----------------- template
+icons.genericClose
+- shared/banner-cookie.component
+- shared/input-file.component
+- shared/file-page.component
+
+icons.windowClose
+- shared/message-element.component
+
+icons.deleteAll
+- shared/input-file.component
+
+icons.showField
+icons.hideField
+- kit/html/ddc-input-password.directive
+
+icons.iconValid
+- shared/ddc-validation.directive
+- shared/base-input.component
+
+icons.iconInvalid
+- shared/ddc-validation.directive
+- shared/base-input.component
+- shared/input-file.component
+- shared/input-phone.component
+
+icons.iconReset
+- shared/table-list.component
+
+icons.iconSearch
+- shared/table-list.component
+- shared/input-autocomplete.component
+
+styles.inputIcon
+- kit/html/ddc-input-password.directive
+- shared/ddc-validation.directive
+
+# ----------------- component
+component.cookie
+- shared/banner-cookie.component
+
+component.phone
+- shared/input-phone.component
+
+component.autocomplete
+- kit/abstract/base-autocomplete.component
+- shared/autocomplete.component
+
+component.pagination
+- modules/test
+- shared/table-order.component
+
+component.file
+- shared/input-file.component

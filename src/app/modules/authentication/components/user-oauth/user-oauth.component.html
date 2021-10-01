@@ -1,0 +1,12 @@
+<div *ngIf="!isLoggedin && isReady">
+  <div>
+    <button type="button" (click)="signInGoogle()" class="btn btn-danger m-2">Login with Google</button>
+  </div>
+  <div>
+    <button type="button" (click)="signInFacebook()" class="btn btn-info m-2">Login with Facebook</button>
+  </div>
+</div>
+
+<div *ngIf="isLoggedin && isReady">
+  <button type="button" (click)="signOut()" class="btn btn-primary">Log Out</button>
+</div>
