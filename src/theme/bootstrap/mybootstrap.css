@@ -18,23 +18,23 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --background: #ffffff;
-  --text: #212529;
-  --link: #007bff; /* usato per i link e la selezione di radio,checbox e gli item attivi .. */
-  --link-hover: #0056b3;
+  --background: #2f323b;
+  --text: #949ba2;
+  --link: #efeb6b; /* usato per i link e la selezione di radio,checbox e gli item attivi .. */
+  --link-hover: #c0c266;
   --border: #dee2e6;
   --code: #e83e8c; /* usato per il code */
   --mute: #6c757d; /* usato per i placeholder, i disabled, i text muted .. */
-  --primary: #007bff;
-  --primary2: #0062cc;
-  --primary3: #0069d9;
-  --primary4: #005cbf;
+  --primary: #77a6ca;
+  --primary2: #728ba7;
+  --primary3: #7098c2;
+  --primary4: #637a92;
   --text-primary: #ffffff;
   --text-primary2: #004085;
   --text-primary3: #002752;
-  --bb-primary: #b8daff;
-  --bb-primary2: #cce5ff;
-  --bb-primary3: #9fcdff;
+  --bb-primary: #bcd3eb;
+  --bb-primary2: #dae7f6;
+  --bb-primary3: #a8bcd1;
   --secondary: #6c757d;
   --secondary2: #545b62;
   --secondary3: #5a6268;
@@ -89,9 +89,9 @@
   --light2: #dae0e5;
   --light3: #e2e6ea;
   --light4: #d3d9df;
-  --text-light: #343a40;
-  --text-light2: #818182;
-  --text-light3: #686868;
+  --text-light: #0d0c0c;
+  --text-light2: #333333;
+  --text-light3: #3b3b3b;
   --bb-light: #fdfdfe;
   --bb-light2: #fefefe;
   --bb-light3: #ececf6;
