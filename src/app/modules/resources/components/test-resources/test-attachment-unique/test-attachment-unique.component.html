@@ -1,0 +1,79 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="url">{{translateKey(FLD_url.label)| translate:translateParams(FLD_url.label)}}</label>
+      <ddc-init-input-text [id]="'url'" [field]="FLD_url"></ddc-init-input-text>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="path">{{translateKey(FLD_path.label)| translate:translateParams(FLD_path.label)}}</label>
+      <ddc-init-input-text [id]="'path'" [field]="FLD_path"></ddc-init-input-text>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group" ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+      <label for="name">{{translateKey(FLD_name.label)| translate:translateParams(FLD_name.label)}}</label>
+      <ddc-init-input-text [id]="'name'" [field]="FLD_name"></ddc-init-input-text>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+      <label for="cid">{{translateKey(FLD_cid.label)| translate:translateParams(FLD_cid.label)}}</label>
+      <ddc-init-input-text [id]="'cid'" [field]="FLD_cid"></ddc-init-input-text>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+      <label for="cod">{{translateKey(FLD_cod.label)| translate:translateParams(FLD_cod.label)}}</label>
+      <ddc-init-input-text [id]="'cod'" [field]="FLD_cod"></ddc-init-input-text>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="desc">{{translateKey(FLD_desc.label)| translate:translateParams(FLD_desc.label)}}</label>
+    <ddc-init-input-textarea [id]="'desc'" [field]="FLD_desc"></ddc-init-input-textarea>
+  </div>
+  <div class="form-row">
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="ext">{{translateKey(FLD_ext.label)| translate:translateParams(FLD_ext.label)}}</label>
+      <ddc-init-input-text [id]="'ext'" [field]="FLD_ext"></ddc-init-input-text>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="size">{{translateKey(FLD_size.label)| translate:translateParams(FLD_size.label)}}</label>
+      <ddc-init-input-number [id]="'size'" [field]="FLD_size"></ddc-init-input-number>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="mimetype">{{translateKey(FLD_mimetype.label)| translate:translateParams(FLD_mimetype.label)}}</label>
+      <ddc-init-input-text [id]="'mimetype'" [field]="FLD_mimetype"></ddc-init-input-text>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="type">{{translateKey(FLD_type.label)| translate:translateParams(FLD_type.label)}}</label>
+      <ddc-init-input-text [id]="'type'" [field]="FLD_type"></ddc-init-input-text>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tpattachment">{{translateKey(FLD_tpattachment.label)|
+      translate:translateParams(FLD_tpattachment.label)}}</label>
+    <ddc-init-input-select [id]="'tpattachment'" [field]="FLD_tpattachment" [options]="tpattachments">
+    </ddc-init-input-select>
+  </div>
+</form>
+
+<div>
+  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.UPDATE)">
+    <span class="fa fa-edit mr-2"></span>Modifica
+  </a>
+  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.DETAIL)">
+    <span class="fa fa-eye mr-2"></span>Lettura
+  </a>
+  <button class="btn btn-sm btn-dark text-white mr-2" [disabled]="!form.valid" (click)="save()">
+    <span class="fa fa-save mr-2"></span>Salva
+  </button>
+  <div *ngIf="modelToSave">{{modelToSave | json}}</div>
+</div>
+
+<!-- OTHER -->
+<div *ngIf="model">
+  <strong>sizeString:</strong> {{model?.sizeString}}<br />
+  <strong>sizeStringFixed:</strong> {{model?.sizeStringFixed}}<br />
+  <div *ngIf="model.fileEmbed" class="mt-1" style="width: 20%;height: 150px">
+    <ddc-init-embed-file [object]="model.fileEmbed" [flagClose]="false" [flagTitle]="true">
+    </ddc-init-embed-file>
+  </div>
+</div>

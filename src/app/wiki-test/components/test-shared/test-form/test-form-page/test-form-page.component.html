@@ -1,0 +1,222 @@
+<h4>Form Page</h4>
+
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapsePageForm1"
+  aria-expanded="false" aria-controls="collapsePageForm1">
+  con FormGroup in Input
+</button>
+
+<div class="collapse" id="collapsePageForm1">
+  <div class="mt-3">
+    Questa struttura di <strong>ddc-init-form-page</strong> mostra un uso del componente con passaggio in input di un
+    FormGroup.<br />
+    Questo componente sfrutta un array di <strong>FormGroupModel</strong> per definire le righe e le colonne da mostrare
+    nel form.
+    Quando passiamo il FormGroup è possibile costruire i gruppi utilizzando due metodi
+    <ul>
+      <li><strong>singleField</strong> per campo singolo su una riga</li>
+      <li><strong>multipleField</strong> per più campi su una riga</li>
+    </ul>
+
+    In particolare questa gestione necessita la costruzione del gruppo a partire da oggetti
+    <strong>FormFieldModel</strong>
+  </div>
+  <div class="mt-3">
+    <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>      
+  
+        ```typescript
+          // CREAZIONE DEL FORM     
+          form: FormGroup;
+          validations1: any = &#123;&#125;;
+
+          constructor(private fb: FormBuilder) &#123;
+            this.form = this.fb.group(&#123;
+              row1: new MagicValidatorUtil((this.validations1.row1 = []), undefined).required().build(),
+              row2A: new MagicValidatorUtil((this.validations1.row2A = []), undefined)
+                .required()
+                .isInteger()
+                .build(),
+              row2B: new MagicValidatorUtil((this.validations1.row2B = []), undefined).build(),
+              row3A: new MagicValidatorUtil((this.validations1.row3A = []), undefined).required().build(),
+              row3B: new MagicValidatorUtil((this.validations1.row3B = []), undefined).required().build(),
+              row4: new MagicValidatorUtil((this.validations1.row4 = []), undefined).required().build(),
+              ...
+            &#125;);            
+          
+          // CREAZIONE DEI GRUPPI
+          groups: FormGroupModel[] = [];
+
+          // riga 1 con un solo campo (dimensione colonna totale)
+          this.groups.push(
+            new FormGroupModel().singleField(
+              new FormFieldModel(
+                EnumFormType.TEXT,
+                this.form1.get('row1') as FormControl,
+                'Riga 1 - Campo 1',
+              ).validation(this.validations1.row1),
+            ),
+
+            // riga 2 con 2 campi, entrambi della stessa dimensione in colonna
+            new FormGroupModel().multipleField(
+              [
+                new FormFieldModel(
+                  EnumFormType.NUMBER,
+                  this.form1.get('row2A') as FormControl,
+                  'Riga 2 - Campo 1',
+                ).validation(this.validations1.row2A),
+                new FormFieldModel(
+                  EnumFormType.TEXT,
+                  this.form1.get('row2B') as FormControl,
+                  'Riga 2 - Campo 2',
+                ).validation(this.validations1.row2B),
+              ],
+              '6|6|6',
+            ),
+
+            // riga 3 con 2 campo, uno a dimensione 1/3 e l'altro a 2/3
+            new FormGroupModel().multipleField([
+              new FormFieldModel(
+                EnumFormType.TEXT,
+                this.form1.get('row3A') as FormControl,
+                'Riga 3 - Campo 1',
+              )
+                .validation(this.validations1.row2A)
+                .colGroup('4|4|6'),
+              new FormFieldModel(
+                EnumFormType.TEXT,
+                this.form1.get('row3B') as FormControl,
+                'Riga 3 - Campo 2',
+              )
+                .validation(this.validations1.row3B)
+                .colGroup('8|8|6'),
+            ]),
+
+            // riga 4 con un solo campo e con dimensione a colonna a metà
+            new FormGroupModel().singleField(
+              new FormFieldModel(
+                EnumFormType.TEXT,
+                this.form1.get('row4') as FormControl,
+                'Riga 4 - Campo 1',
+              )
+                .validation(this.validations1.row4)
+                .colGroup('6|6|12'),
+            ),
+          );  
+          
+        ``` 
+        
+        ```html
+          &lt;ddc-init-form-page [form]="form1" [flgOnInitValidation]="true" [groups]="groups1"&gt;&lt;/ddc-init-form-page&gt;
+        ```
+  
+      </div>
+    </pre>
+  </div>
+
+  <ddc-init-form-page [form]="form1" [flgOnInitValidation]="true" [groups]="groups1"></ddc-init-form-page>
+
+</div>
+
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapsePageForm2"
+  aria-expanded="false" aria-controls="collapsePageForm2">
+  senza FormGroup
+</button>
+
+<div class="collapse" id="collapsePageForm2">
+  <div class="mt-3">
+    Questa struttura di <strong>ddc-init-form-page</strong> mostra un uso del componente senza passaggio in input di un
+    FormGroup.<br />
+    Sarà il componente a costruire automaticamente il gruppo di controls a partire da un array di
+    <strong>FormGroupModel</strong>.<br />
+    A differenza del caso precedente è possibile costruire i gruppi utilizzando due metodi
+    <ul>
+      <li><strong>single</strong> per campo singolo su una riga</li>
+      <li><strong>multiple</strong> per più campi su una riga</li>
+    </ul>
+
+    In particolare questa gestione necessita la costruzione del gruppo a partire da oggetti
+    <strong>FormFieldPageModel</strong>.<br />
+    Inoltre non è più necessario definire nei <strong>FormFieldModel</strong> il FormControl, perchè sarà il componente
+    ad assegnarlo automaticamente
+  </div>
+  <div class="mt-3">
+    <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>      
+  
+        ```typescript
+          
+          validations2: any = &#123;&#125;;
+
+          
+          // CREAZIONE DEI GRUPPI
+          groups: FormGroupModel[] = [];
+
+          // riga 1 con un solo campo (dimensione colonna totale)
+          this.groups.push(
+            new FormGroupModel().single(
+              new FormFieldPageModel(
+                'row1',
+                new MagicValidatorUtil((this.validations2.row1 = []), undefined).required(),
+                new FormFieldModel(EnumFormType.TEXT, undefined, 'Riga 1 - Campo 1'),
+              ),
+            ),
+
+            // riga 2 con 2 campi, entrambi della stessa dimensione in colonna
+            new FormGroupModel().multiple(
+              [
+                new FormFieldPageModel(
+                  'row2A',
+                  new MagicValidatorUtil((this.validations2.row2A = []), undefined)
+                    .required()
+                    .isInteger(),
+                  new FormFieldModel(EnumFormType.NUMBER, undefined, 'Riga 2 - Campo 1'),
+                ),
+                new FormFieldPageModel(
+                  'row2B',
+                  new MagicValidatorUtil((this.validations2.row2B = []), undefined),
+                  new FormFieldModel(EnumFormType.TEXT, undefined, 'Riga 2 - Campo 2'),
+                ),
+              ],
+              '6|6|6',
+            ),
+
+            // riga 3 con 2 campo, uno a dimensione 1/3 e l'altro a 2/3
+            new FormGroupModel().multiple([
+              new FormFieldPageModel(
+                'row3A',
+                new MagicValidatorUtil((this.validations2.row3A = []), undefined).required().isInteger(),
+                new FormFieldModel(EnumFormType.TEXT, undefined, 'Riga 3 - Campo 1').colGroup('4|4|6'),
+              ),
+              new FormFieldPageModel(
+                'row3B',
+                new MagicValidatorUtil((this.validations2.row3B = []), undefined),
+                new FormFieldModel(EnumFormType.TEXT, undefined, 'Riga 3 - Campo 2').colGroup('8|8|6'),
+              ),
+            ]),
+
+            // riga 4 con un solo campo e con dimensione a colonna a metà
+            new FormGroupModel().single(
+              new FormFieldPageModel(
+                'row4',
+                new MagicValidatorUtil((this.validations2.row4 = []), undefined).required(),
+                new FormFieldModel(EnumFormType.TEXT, undefined, 'Riga 4 - Campo 1'),
+              ),
+              '6|6|12',
+            ),
+          );  
+          
+        ``` 
+        
+        ```html
+          &lt;ddc-init-form-page [flgOnInitValidation]="true" [groups]="groups"&gt;&lt;/ddc-init-form-page&gt;
+        ```
+  
+      </div>
+    </pre>
+  </div>
+
+  <ddc-init-form-page [flgOnInitValidation]="true" [groups]="groups2"></ddc-init-form-page>
+
+</div>

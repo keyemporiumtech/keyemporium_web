@@ -1,0 +1,22 @@
+<ddc-init-banner #bannerCookie [bannerClass]="'banner-cookie'" [position]="position" [flgClose]="flgClose"
+  [closeIcon]="closeIcon" [text]="text" [flgLoad]="flgLoad" [delayLoad]="delayLoad" [fadeIn]="fadeIn"
+  [fadeOut]="fadeOut" [backgroundColor]="backgroundColor" [textColor]="textColor" (closeEmit)="onClose()"
+  (openEmit)="onOpen()" (bannerClickEmit)="accept()">
+  <ng-container *ngIf="position === EnumBannerPosition.TOP || position === EnumBannerPosition.BOTTOM" inner-text>
+    <a role="button" class="more-info mr-2" [ngClass]="moreInfoClass" [ngStyle]="moreInfoStyle" (click)="moreInfo()"
+      [innerHTML]="'APP.COOKIE.MORE_INFO' | translate">
+    </a>
+    <a role="button" class="accept mr-2" [ngClass]="acceptClass" [ngStyle]="acceptStyle" (click)="accept()"
+      [innerHTML]="'APP.COOKIE.ACCEPT' | translate">
+    </a>
+  </ng-container>
+
+  <div *ngIf="position === EnumBannerPosition.LEFT || position === EnumBannerPosition.RIGHT" outdor-text>
+    <a role="button" class="more-info mr-2" [ngClass]="moreInfoClass" [ngStyle]="moreInfoStyle" (click)="moreInfo()"
+      [innerHTML]="'APP.COOKIE.MORE_INFO' | translate">
+    </a>
+    <a role="button" class="accept mr-2" [ngClass]="acceptClass" [ngStyle]="acceptStyle" (click)="accept()"
+      [innerHTML]="'APP.COOKIE.ACCEPT' | translate">
+    </a>
+  </div>
+</ddc-init-banner>

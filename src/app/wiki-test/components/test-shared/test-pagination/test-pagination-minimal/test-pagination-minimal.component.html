@@ -1,0 +1,205 @@
+<h4>Lista senza ricerca e senza paginazione</h4>
+
+
+<div class="mt-3">
+  Per mostrare una tabella con una lista basta solamente passare al componente <strong>ddc-init-table-list</strong>
+  un template di colonne e una lista di elementi
+</div>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>            
+
+      ```typescript
+          getColsTable(): ColTableModel[] &#123;
+              const cols: ColTableModel[] = [];
+              cols.push(&#123; label: 'Codice', key: 'codice', fieldModel: 'codice' &#125;);
+              cols.push(&#123; label: 'Numero', key: 'numero', fieldModel: 'numero' &#125;);
+              cols.push(&#123; label: 'Data', key: 'data', fieldModel: 'dataFormat' &#125;);
+              return cols;
+          &#125;
+        
+          getList(): ProvaPaginationModel[] &#123;
+              return [
+                new ProvaPaginationModel('A001', 1, '2020-10-02'),
+                new ProvaPaginationModel('A002', 2, '2020-11-02'),
+                new ProvaPaginationModel('A003', 3, '2020-12-02'),
+                new ProvaPaginationModel('B001', 4, '2020-10-12'),
+                new ProvaPaginationModel('B002', 5, '2020-11-12'),
+                new ProvaPaginationModel('B003', 6, '2020-12-12'),
+                new ProvaPaginationModel('C001', 7, '2020-10-22'),
+              ];
+          &#125;
+      ```    
+      
+     
+
+      ```html
+        ...
+        &lt;ddc-init-table-list [colsTable]="getColsTable()" [list]="getList()"&gt;&lt;/ddc-init-table-list&gt;
+        ...
+      ```      
+
+    </div>
+  </pre>
+</div>
+<ddc-init-table-list [colsTable]="getColsTable()" [list]="getList()">
+</ddc-init-table-list>
+
+<div class="mt-3">
+  Se vogliamo aggiungere un form di ricerca allora bisogna implementare:
+  <ul>
+    <li>un FormGroup (da passare come <strong>formFilters</strong>)</li>
+    <li>un array di FormGroupModel (da passare come <strong>groups</strong>)</li>
+    <li>una funzione per il reset della ricerca</li>
+    <li>una funzione per l'applicazione dei filtri al click sul pulsante cerca</li>
+  </ul>
+</div>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>            
+
+      ```typescript
+
+          formFilters: FormGroup;
+          constructor(private fb: FormBuilder) &#123;
+              this.formFilters = this.fb.group(&#123;
+                codice: [undefined, []],
+                numero: [undefined, []],
+                data: [undefined, []],
+              &#125;);
+          &#125;
+
+          getGroups(): FormGroupModel[] &#123;
+              const groups: FormGroupModel[] = [];
+              groups.push(
+                new FormGroupModel().singleField(
+                  new FormFieldModel(
+                    EnumFormType.TEXT,
+                    this.formFilters.get('codice') as FormControl,
+                    'Cerca per codice',
+                  ),
+                ),
+
+                new FormGroupModel().multipleField([
+                  new FormFieldModel(
+                    EnumFormType.NUMBER,
+                    this.formFilters.get('numero') as FormControl,
+                    'Cerca per numero',
+                  ).colGroup('4|4|6'),
+                  new FormFieldModel(
+                    EnumFormType.TEXT,
+                    this.formFilters.get('data') as FormControl,
+                    'Cerca per data',
+                  ).colGroup('8|8|6'),
+                ]),
+              );
+              return groups;
+          &#125;
+      ```
+
+      La lista deve essere dinamica in base ai filtri, quindi bisogna passare una variabile list,
+      mentre bisogna assegnare i groups per forza ad una variabile altrimenti, da funzione viene rigenerato
+      il form ad ogni changes dei campi
+
+      ```typescript
+
+          // dichiarazione
+          list: ProvaPaginationModel[] = [];
+          groups: FormGroupModel[] = [];
+
+          ... 
+
+          // inizializzazione
+          this.list= this.getList(); 
+          this.groups = this.getGroups();
+        
+          reset() &#123;
+              this.list= this.getList();
+          &#125;
+
+          search() &#123;
+              if (this.formFilters) &#123;
+                const values = this.formFilters.getRawValue();
+                if (values.codice) &#123;
+                  this.list = this.list.filter((record) => record['codice'].startsWith(values.codice));
+                &#125;
+                if (values.numero) &#123;
+                  this.list = this.list.filter((record) => record['numero'] === values.numero);
+                &#125;
+                if (values.data) &#123;
+                  this.list = this.list.filter(
+                    (record) =>
+                      new DateModel(record['data']).toString() === new DateModel(values.data).toString(),
+                  );
+                &#125;
+              &#125;
+          &#125;
+      ```         
+
+      ```html
+        ...
+        &lt;ddc-init-table-list [groups]="groups" [colsTable]="getColsTable()" [flgOnInitValidation]="true"
+        [formFilters]="formFilters" [list]="list" (resetEmit)="reset()" (searchEmit)="search()"&gt;&lt;/ddc-init-table-list&gt;
+        ...
+      ```      
+
+    </div>
+  </pre>
+</div>
+
+<ddc-init-table-list [groups]="groups" [colsTable]="getColsTable()" [flgOnInitValidation]="true"
+  [formFilters]="formFilters" [list]="list" (resetEmit)="reset()" (searchEmit)="search()">
+</ddc-init-table-list>
+
+<div class="mt-3">
+  Se vogliamo aggiungere una colonna personalizzata bisogna creare un template di colonna per l'intestazione e una per
+  il record in tabella
+</div>
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>            
+
+      ```typescript
+      
+          edit(item: ProvaPaginationModel) &#123;
+              alert("hai selezionato l'item con codice " + item.codice);
+          &#125;
+
+      ```         
+
+      ```html
+
+        ...
+
+        &lt;ddc-init-table-list [groups]="groups" [colsTable]="getColsTable()" [flgOnInitValidation]="true"
+            [formFilters]="formFilters" [list]="list" (resetEmit)="reset()" (searchEmit)="search()"
+            [templateActionsIntest]="headerActions" [templateActionsRow]="rowActions"&gt;&lt;/ddc-init-table-list&gt;
+
+        &lt;ng-template #headerActions&gt;
+            &lt;span class="fa fa-cog"&gt;&lt;/span&gt;
+        &lt;/ng-template>
+        
+        &lt;ng-template #rowActions let-item="item"&gt;
+            &lt;span class="fa fa-edit mr-2 cursor-pointer" (click)="edit(item)"&gt;&lt;/span&gt;
+        &lt;/ng-template&gt;
+        
+        ...
+
+      ```      
+
+    </div>
+  </pre>
+</div>
+
+<ddc-init-table-list [groups]="groups" [colsTable]="getColsTable()" [flgOnInitValidation]="true"
+  [formFilters]="formFilters" [list]="list" (resetEmit)="reset()" (searchEmit)="search()"
+  [templateActionsIntest]="headerActions" [templateActionsRow]="rowActions">
+</ddc-init-table-list>
+
+<ng-template #headerActions>
+  <span class="fa fa-cog"></span>
+</ng-template>
+
+<ng-template #rowActions let-item="item">
+  <span class="fa fa-edit mr-2 cursor-pointer" (click)="edit(item)"></span>
+</ng-template>

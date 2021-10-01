@@ -1,0 +1,104 @@
+<h4>Visualizzazione files</h4>
+
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="go('test PDF', 'application/pdf', EnumTypeMime.APPLICATION, 'pdf', 'assets/test/pdf/test.pdf')">PDF
+  link</a>
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="load('test PDF', 'application/pdf', EnumTypeMime.APPLICATION, 'pdf', 'assets/test/pdf/test.pdf')">PDF
+  embed</a>
+<span class="ml-2">|</span>
+
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="go('test MP3', 'audio/mp3', EnumTypeMime.AUDIO, 'mp3', 'assets/test/audio/test.mp3')">MP3
+  link</a>
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="load('test MP3', 'audio/mp3', EnumTypeMime.AUDIO, 'mp3', 'assets/test/audio/test.mp3')">MP3
+  embed</a>
+<span class="ml-2">|</span>
+
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="go('test MP4', 'video/mp4', EnumTypeMime.VIDEO, 'mp4', 'assets/test/video/test.mp4','320px','320px' )">MP4
+  link</a>
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="load('test MP4', 'video/mp4', EnumTypeMime.VIDEO, 'mp4', 'assets/test/video/test.mp4','320px','320px' )">MP4
+  embed</a>
+<span class="ml-2">|</span>
+
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="go('test YOUTUBE', undefined, EnumTypeMime.YOUTUBE, undefined, 'TkuVgey_EVE','320px','320px' )">YOUTUBE
+  link</a>
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="load('test YOUTUBE', undefined, EnumTypeMime.YOUTUBE, undefined, 'TkuVgey_EVE','320px','320px' )">YOUTUBE
+  embed</a>
+<span class="ml-2">|</span>
+
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="go('test JPEG', 'image/jpeg', EnumTypeMime.IMAGE, 'mp4', 'assets/test/image/test.jpg' )">JPEG
+  link</a>
+<a class="ml-2 btn btn-sm btn-info text-white"
+  (click)="load('test JPEG', 'image/jpeg', EnumTypeMime.IMAGE, 'mp4', 'assets/test/image/test.jpg' )">JPEG
+  embed</a>
+<span class="ml-2">|</span>
+
+<div class="mt-3">
+  <ddc-init-file-page *ngIf="embedFile" [fileEmbed]="embedFile" [width]="width" [height]="heigth"
+    (closeEmit)="close($event)"></ddc-init-file-page>
+</div>
+
+<div class="mt-3">
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+      ## Visualizzazione di un file nell'applicazione
+
+      - Per visualizzare un file è possibile usare il componente `ddc-init-file-page` del module **shared**
+      - Passare in input un oggetto di tipo `FileEmbedModel` che può essere costruito con il servizio `FileService` della libreria **kit**
+
+      ```typescript
+        const embedFile = this.fileService.buildFileEmbed(title, mime, type, ext, content, path);
+        // ESEMPIO PDF
+        this.fileService.buildFileEmbed('test PDF', 'application/pdf', EnumTypeMime.APPLICATION, 'pdf', undefined, 'assets/test/pdf/test.pdf');
+        // ESEMPIO MP3/AUDIO
+        this.fileService.buildFileEmbed('test AUDIO', 'audio/mp3', EnumTypeMime.AUDIO, 'mp3', undefined, 'assets/test/audio/test.mp3');
+        // ESEMPIO MP4/VIDEO
+        this.fileService.buildFileEmbed('test VIDEO', 'video/mp4', EnumTypeMime.VIDEO, 'mp4', undefined, 'assets/test/video/test.mp4');
+        // ESEMPIO YOUTUBE
+        this.fileService.buildFileEmbed('test YOUTUBE', undefined, EnumTypeMime.YOUTUBE, undefined, undefined, 'TkuVgey_EVE');
+      ```
+
+      - è possibile usare il content di un file chiamando la funzione `readFile` di `FileEmbedModel`
+
+      ```typescript
+      this.fileService.readFile('assets/test/pdf/test.pdf').subscribe((data) => &#123;
+        this.fileService
+          .buildFileEmbedBlob('title', 'application/pdf', EnumTypeMime.APPLICATION, 'pdf', data)
+          .subscribe((res) => &#123;
+            const fileLoaded: FileEmbedModel = res;
+            fileLoaded.content = fileLoaded.resource;
+            fileLoaded.resource = undefined;
+            fileLoaded.back = undefined;
+            this.file2 = fileLoaded;
+          &#125;);
+        &#125;);
+      ```
+
+      ```html      
+      &lt;ddc-init-file-page [fileEmbed]="embedFile"&gt;&lt;/ddc-init-embed-file&gt;
+      ```
+
+      - è possibile passare una dimensione per gli allegati di tipo video (di default occupa il 90% del div che lo contiene, solitamente basta passare solo height)
+      - per le immagini invece è il div che contiene il componente a guidare le dimensioni. L'immagine nel componente occuperà sempre il 100% dello spazio
+
+      ```html      
+      &lt;ddc-init-file-page [fileEmbed]="embedFile" [width]="'320px'" [height]="'640px'"&gt;&lt;/ddc-init-embed-file&gt;
+      ```
+
+      ## Navigazione alla pagina di visualizzazione
+
+      ```typescript
+      const embedFile = this.fileService.buildFileEmbed(title, mime, type, ext, content, path);
+      this.applicationStorage.fileEmbed.setObj(fileEmbed);
+      this.router.navigate(['commons', 'file', 1]);
+      ```
+    </div>
+  </pre>
+</div>

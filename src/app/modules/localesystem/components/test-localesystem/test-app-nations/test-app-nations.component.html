@@ -1,0 +1,21 @@
+<h5>Nazioni di sistema</h5>
+
+
+<!--<strong>FILTRO ENVIRONMENT</strong>: {{filtersEnv | json}}<br />-->
+
+<div class="row">
+  <div class="col-4">
+    <h6>Con immagine</h6>
+    <ddc-init-app-nations (changeEmit)="resolveCurrent()"></ddc-init-app-nations>
+  </div>
+  <div class="col-4">
+    <h6>Senza immagine</h6>
+    <ddc-init-app-nations [showImage]="false" (changeEmit)="resolveCurrent()"></ddc-init-app-nations>
+  </div>
+  <div class="col-4">
+    <h6>Senza filtro</h6>
+    <ddc-init-app-nations [showImage]="false" [filters]="[]" (changeEmit)="resolveCurrent()"></ddc-init-app-nations>
+  </div>
+</div>
+
+<strong>NAZIONE CORRENTE</strong>: {{nationCod}} - {{nationName}}<br />

@@ -1,0 +1,9 @@
+[
+    {
+      "name": "child1",
+      "hasChildren": true
+    }, 
+    {
+      "name": "child2"
+    }
+]

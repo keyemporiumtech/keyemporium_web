@@ -1,0 +1,82 @@
+<h4>Modulo Openstreetmap</h4>
+
+
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseGeoService"
+  aria-expanded="false" aria-controls="collapseGeoService">
+  OpenstreetmapService
+</button>
+
+<div class="collapse" id="collapseGeoService">
+  <div class="mt-3">
+    Il servizio <strong>OpenstreetmapService</strong> viene utilizzato per le chiamate di geolocalizzazione
+    <ul>
+      <li>searchOpenstreetLocationList(
+        term: string,
+        limit: number,
+        excludeids?: string[],
+        extratags?: boolean,
+        language?: string,
+        ): <b>Observable&lt;OpenstreetLocationModel[]&gt;</b> - <i>Cerca una lista di indirizzi utilizzando
+          OpenstreetMap</i></li>
+      <li>searchOpenstreetLocationUnique(
+        term: string,
+        extratags?: boolean,
+        language?: string,
+        ): <b>Observable&lt;OpenstreetLocation&gt;</b> - <i>Cerca un indirizzo utilizzando
+          OpenstreetMap</i></li>
+      <li>searchOpenstreetLocations(
+        paramRequest?: OpenstreetRequest,
+        paramSearch?: OpenstreetRequestSearch,
+        paramDetails?: OpenstreetRequestDetails,
+        paramLimit?: OpenstreetRequestLimit,
+        paramPolygon?: OpenstreetRequestPolygon,
+        ): <b>Observable&lt;OpenstreetLocationModel[]&gt;</b> - <i>Cerca una lista di indirizzi utilizzando
+          tutti i parametri OpenstreetMap</i></li>
+      <li>reverseOpenstreetLocationUnique(
+        latitude: number,
+        longitude: number,
+        extratags?: boolean,
+        language?: string,
+        ): <b>Observable&lt;OpenstreetLocationModel&gt;</b> - <i>Cerca un indirizzo per latitudine e longitudine
+          utilizzando OpenstreetMap</i></li>
+      <li>reverseOpenstreetLocation(
+        latitude: number,
+        longitude: number,
+        paramRequest?: OpenstreetRequest,
+        paramDetails?: OpenstreetRequestDetails,
+        paramLimit?: OpenstreetRequestLimit,
+        ): <b>Observable&lt;OpenstreetLocationModel&gt;</b> - <i>Cerca un indirizzo per tutti i parametri
+          OpenstreetMap</i></li>
+    </ul>
+
+  </div>
+  <h5>Esempi di ricerca</h5>
+  <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+      ```typescript
+        
+      ```
+    </div>
+  </pre>
+
+  <label>Cerca</label>
+  <input class="form-control" type="text" [(ngModel)]="search" /><br />
+  <hr />
+  <label>latitudine</label>
+  <input class="form-control" type="number" step="any" [(ngModel)]="latitude" /><br />
+  <label>longitudine</label>
+  <input class="form-control" type="number" step="any" [(ngModel)]="longitude" /><br />
+  <hr />
+  <a class="btn btn-sm btn-info" (click)="list()">Cerca lista</a>
+  <a class="btn btn-sm btn-info ml-2" (click)="unique()">Cerca univoco</a>
+  <a class="btn btn-sm btn-info ml-2" (click)="reverse()">Cerca per latitudine e longitudine</a>
+  <hr />
+  <a class="btn btn-sm btn-info" (click)="list(true)">Cerca lista con extratags</a>
+  <a class="btn btn-sm btn-info ml-2" (click)="unique(true)">Cerca univoco con extratags</a>
+  <a class="btn btn-sm btn-info ml-2" (click)="reverse(true)">Cerca per latitudine e longitudine con extratags</a>
+
+  <div *ngIf="output" class="mt-2">
+    {{ output | json}}
+  </div>
+</div>

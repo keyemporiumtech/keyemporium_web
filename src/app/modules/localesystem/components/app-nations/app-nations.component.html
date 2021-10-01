@@ -1,0 +1,12 @@
+<form [formGroup]="formNation">
+  <label *ngIf="showLabel" for="{{id}}"
+    [innerHTML]="translateKey(selectNations.label) |translate: translateParams(selectNations.label)"></label>
+  <ng-container *ngIf="!showImage">
+    <ddc-init-input-select #nations [id]="id" [field]="selectNations" [options]="optionNations" [noMargin]="true">
+    </ddc-init-input-select>
+  </ng-container>
+  <ng-container *ngIf="showImage">
+    <ddc-init-form-select-div #nations [id]="id" [field]="selectNations" [options]="optionNations">
+    </ddc-init-form-select-div>
+  </ng-container>
+</form>

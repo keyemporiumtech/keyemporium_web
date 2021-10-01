@@ -1,0 +1,5 @@
+export enum EnumSkillType {
+	KNOWLEDGMENTS = 1,
+	LANGUAGES = 2,
+	PRODUCTS_INSTRUMENTS = 3,
+}

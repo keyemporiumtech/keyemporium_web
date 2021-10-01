@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark">
+
+  <a class="navbar-brand" (click)="home()">
+    <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <span [innerHtml]="appTitle"></span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseLocaleChoice"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseUserUtil"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse navbar-right" id="collapseLocaleChoice">
+    LINGUE
+  </div>
+  <div class="collapse navbar-collapse" id="collapseUserUtil">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link">{{'APP.BUTTON.LOGIN' | translate}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/wiki'">wiki</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>

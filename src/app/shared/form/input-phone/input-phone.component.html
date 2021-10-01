@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-2">
+
+    <select *ngIf="!dropdownPrefix" class="form-control" [formControl]="form.get('prefix')" [ngClass]="cssInputPrefix">
+      <option value="">
+        {{translateKey(currentPrefix ? currentPrefix.text : defaultPrefixText ) |
+        translate:translateParams(currentPrefix ? currentPrefix.text : defaultPrefixText)}}
+      </option>
+      <option *ngFor="let prefix of prefixes" [value]="prefix.key">
+        {{translateKey(prefix.text)|translate:translateParams(prefix.text)}}
+      </option>
+    </select>
+
+    <div *ngIf="dropdownPrefix" class="dropdown dropdown-prefix" [ngClass]="cssDropdownClass"
+      [ngStyle]="cssDropdownStyle">
+      <button class="dropdown-toggle" [ngClass]="cssDropdownButtonClass" type="button" id="dropdownPrefix_{{id}}"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        [innerHTML]="translateKey(currentPrefix ? currentPrefix.text : defaultPrefixText ) | translate:translateParams(currentPrefix ? currentPrefix.text : defaultPrefixText)">
+      </button>
+      <div class="dropdown-menu" [attr.aria-labelledby]="'dropdownPrefix_'+id">
+        <div class="dropdown-item" [ngClass]="{'dropdown-item-selected': !form.get('prefix').value}"
+          (click)="form.get('prefix').setValue('')"
+          [innerHTML]="translateKey(defaultPrefixText)|translate:translateParams(defaultPrefixText)"></div>
+        <ng-container *ngFor="let prefix of prefixes">
+          <div class="dropdown-item" [ngClass]="{'dropdown-item-selected': form.get('prefix').value === prefix.key}"
+            (click)="form.get('prefix').setValue(prefix.key)"
+            [innerHTML]="translateKey(prefix.text)|translate:translateParams(prefix.text)"></div>
+        </ng-container>
+      </div>
+    </div>
+
+    <span *ngIf="iconClassPrefix" style="float: right;left: -25px;margin-top: -25px;position: relative;cursor: pointer"
+      [ngClass]="iconClassPrefix" [style.color]="iconColorPrefix"></span>
+
+  </div>
+  <div class="col-10">
+    <input class="form-control" type="tel" [formControl]="form.get('phone')" [ngClass]="cssInputPhone" />
+    <span *ngIf="iconClassPhone" style="float: right;left: -25px;margin-top: -25px;position: relative;cursor: pointer"
+      [ngClass]="iconClassPhone" [style.color]="iconColorPhone"></span>
+  </div>
+  <span *ngIf="iconClass" style="float: right;left: -25px;margin-top: -25px;position: relative;cursor: pointer"
+    [ngClass]="iconClass" [style.color]="iconColor"></span>
+</div>
+
+<div *ngFor="let support of field.supports" class="input-support-message">
+  {{translateKey(support) |translate:translateParams(support)}}
+</div>
+
+<div *ngFor="let error of errorMessages" class="input-invalid-message">
+  {{translateKey(error) |translate:translateParams(error)}}
+</div>
+
+<div *ngFor="let valid of validMessages" class="input-valid-message">
+  {{translateKey(valid) |translate:translateParams(valid)}}
+</div>
+
+<div *ngFor="let styleMessage of styleMessages"
+  [ngClass]="styleMessage.class ? styleMessage.class+'-message' : 'input-generic-message'"
+  [style.color]="styleMessage.color">
+  {{translateKey(styleMessage.message()) |translate:translateParams(styleMessage.message())}}
+</div>

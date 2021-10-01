@@ -1,0 +1,4 @@
+<ddc-init-table-list *ngIf="formFilters" [groups]="getGroups()" [colsTable]="getColsTable()" [formFilters]="formFilters"
+  [flgOnInitValidation]="true" [list]="list" [pagesNumbers]="pagesNumbers" [current]="current" [orders]="orders"
+  (resetEmit)="reset()" (searchEmit)="search()" (orderEmit)="order($event.key, $event.value)" (pageEmit)="page($event)">
+</ddc-init-table-list>

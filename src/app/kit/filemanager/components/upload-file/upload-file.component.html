@@ -1,0 +1,39 @@
+<input type="file" class="form-control" [ngClass]="inputClass" [ngStyle]="inputStyle"
+  (change)="selectFiles($event.target.files)" [id]="id" [name]="name" [multiple]="multiple"
+  [formControl]="form.get('inputFile')" ngDefaultControl />
+
+<span *ngIf="icon" style="float: right;left: -25px;margin-top: -25px;position: relative;cursor: pointer"
+  [ngClass]="icon" [style.color]="iconColor"></span>
+
+<ddc-init-progress-bar #progressInternal [color]="colorInternalLoad" [showText]="true" [hideOnComplete]="true"
+  [showOnStart]="true" size="'sm'">
+</ddc-init-progress-bar>
+
+<ddc-init-progress-bar #progressExternal [color]="colorExternalLoad" [showText]="true" [hideOnComplete]="true"
+  [showOnStart]="true" size="'sm'">
+</ddc-init-progress-bar>
+
+<ng-content select="[input-bottom]"></ng-content>
+<ng-container *ngIf="error && showErrors">
+  <div *ngFor="let errorMessage of errorMessages; let i=index" style="cursor: pointer" [ngClass]="errorClass"
+    [ngStyle]="errorStyle">
+    <span [innerHtml]="translateKey(errorMessage) | translate:translateParams(errorMessage) "
+      (click)="removeErrorMessage(i)"></span>
+  </div>
+</ng-container>
+
+<div *ngIf="attachments && attachments.length" [ngClass]="classCleanFiles" [ngStyle]="styleCleanFiles"
+  (click)="form.get('inputFile').reset(); removeAllFiles()">
+  <span class="{{deleteItems}} text-danger"></span>
+</div>
+
+<div class="mt-2" [ngClass]="infoClass" [ngStyle]="infoStyle">
+  <div *ngFor="let item of attachments" class="item row">
+    <div class="col-8">{{item?.name}}</div>
+    <div class="col-3">{{item?.sizeFormat?.size | number:'1.1-2'}} {{item.sizeFormat?.unit}}</div>
+    <div class="item-close col-1" [ngClass]="classRemoveFile" [ngStyle]="styleRemoveFile"
+      (click)="removeFile(item.name)">
+      <span class="{{closeItem}} float-right"></span>
+    </div>
+  </div>
+</div>

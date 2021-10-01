@@ -1,0 +1,92 @@
+<ng-container *ngIf="field" [ngSwitch]="field.type">
+
+  <div [ngClass]="{'row': field.sizeLabel}">
+    <label *ngIf="field.label" [ngClass]="field.sizeLabelCol">{{translateKey(field.label) |
+      translate:translateParams(field.label)}}</label>
+
+    <div [class.input-group]="field.prepend || field.append" [ngClass]="field.sizeCol">
+
+      <!--PREPEND-->
+      <div *ngIf="field.prepend" class="input-group-prepend">
+        <div class="input-group-text"
+          [innerHTML]="translateKey(field.prepend) | translate:translateParams(field.prepend)"></div>
+      </div>
+      <!--INPUTS-->
+
+      <ddc-init-input-text *ngSwitchCase="EnumFormType.TEXT" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators"></ddc-init-input-text>
+
+      <ddc-init-input-textarea *ngSwitchCase="EnumFormType.TEXTAREA" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators"></ddc-init-input-textarea>
+
+      <ddc-init-input-number *ngSwitchCase="EnumFormType.NUMBER" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [min]="min" [max]="max">
+      </ddc-init-input-number>
+
+      <ddc-init-input-decimal *ngSwitchCase="EnumFormType.DECIMAL" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [min]="min" [max]="max" [digits]="digits" [step]="step">
+      </ddc-init-input-decimal>
+
+      <ddc-init-input-currency *ngSwitchCase="EnumFormType.CURRENCY" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [min]="min" [max]="max" [digits]="digits" [step]="step"
+        [currencySymbol]="currencySymbol">
+      </ddc-init-input-currency>
+
+      <ddc-init-input-select *ngSwitchCase="EnumFormType.SELECT" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [options]="options" [defaultOption]="defaultOption"
+        [defaultOptionText]="defaultOptionText" [multiple]="multiple">
+      </ddc-init-input-select>
+
+      <ddc-init-form-select-div *ngSwitchCase="EnumFormType.SELECT_DIV" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [options]="options" [defaultOption]="defaultOption"
+        [defaultOptionText]="defaultOptionText" [multiple]="multiple" [maxSelectedView]="maxSelectedView">
+      </ddc-init-form-select-div>
+
+      <ddc-init-input-checkbox *ngSwitchCase="EnumFormType.CHECKBOX" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [options]="options" [defaultOption]="defaultOption"
+        [defaultOptionText]="defaultOptionText" [multiple]="multiple" [isHorizontal]="isHorizontal">
+      </ddc-init-input-checkbox>
+
+      <ddc-init-input-radio *ngSwitchCase="EnumFormType.RADIO" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [options]="options" [isHorizontal]="isHorizontal">
+      </ddc-init-input-radio>
+
+      <ddc-init-input-date *ngSwitchCase="EnumFormType.DATE" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [min]="min" [max]="max" [step]="step" [timezoneName]="timezoneName"
+        [isTime]="isTime">
+      </ddc-init-input-date>
+
+      <ddc-init-input-file *ngSwitchCase="EnumFormType.FILE" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [multiple]="multiple" [maxSize]="maxSize"
+        [maxSizeUnit]="maxSizeUnit" [extensions]="extensions" [numMaxFiles]="numMaxFiles">
+      </ddc-init-input-file>
+
+      <ddc-init-input-autocomplete *ngSwitchCase="EnumFormType.SEARCH" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [digits]="digits" [textNoRecords]="textNoRecords" [list]="list"
+        [search]="search" (searchEmit)="onSearch($event)" (selectEmit)="onSelect($event)" (overEmit)="onOver($event)"
+        (outEmit)="onOut($event)">
+      </ddc-init-input-autocomplete>
+
+      <ddc-init-input-phone *ngSwitchCase="EnumFormType.PHONE" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators" [prefixes]="prefixes" [defaultPrefixText]="defaultPrefixText"
+        [dropdownPrefix]="dropdownPrefix" [cssDropdownClass]="cssDropdownClass" [cssDropdownStyle]="cssDropdownStyle"
+        [cssDropdownButtonClass]="cssDropdownButtonClass"></ddc-init-input-phone>
+
+      <ddc-init-input-email *ngSwitchCase="EnumFormType.EMAIL" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators"></ddc-init-input-email>
+
+      <ddc-init-input-color *ngSwitchCase="EnumFormType.COLOR" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators"></ddc-init-input-color>
+
+      <ddc-init-input-password *ngSwitchCase="EnumFormType.PASSWORD" [id]="id" [field]="field"
+        [automaticValidators]="automaticValidators"></ddc-init-input-password>
+
+      <!--APPEND-->
+      <div *ngIf="field.append" class="input-group-append">
+        <div class="input-group-text"
+          [innerHTML]="translateKey(field.append) | translate:translateParams(field.append)"></div>
+      </div>
+    </div>
+
+  </div>
+</ng-container>

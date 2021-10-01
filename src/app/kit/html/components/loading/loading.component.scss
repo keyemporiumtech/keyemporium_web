@@ -1,0 +1,44 @@
+/*
+https://loading.io/css/
+Just use standard CSS variables:
+
+Your global css (eg: styles.css)
+
+body {
+  --my-var: #000
+}
+In your component's css o whatever it is:
+
+span {
+  color: var(--my-var)
+}
+*/
+ddc-init-loading {
+  z-index: 999;
+  display: none;
+  background: rgba(255, 255, 255, 0.8);
+  
+
+  &.loading {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      top: 0px;
+      left: 0px;      
+     // border: 1px solid red;
+      div{
+          position: absolute;
+          top: calc(50% - 14px);
+          left: calc(50% - 14px);
+      }
+
+  }
+
+
+}
+
+.container-loading{
+  position: relative;
+}

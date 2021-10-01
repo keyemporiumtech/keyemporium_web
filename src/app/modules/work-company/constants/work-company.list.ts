@@ -1,0 +1,51 @@
+export const WorkCompanyList = {
+	activityuser: {
+		unique: 'activityuser/get',
+		paginate: 'activityuser/table',
+		save: 'activityuser/save',
+		edit: 'activityuser/edit',
+		delete: 'activityuser/delete',
+	},
+	workexperience: {
+		unique: 'workexperience/get',
+		paginate: 'workexperience/table',
+		save: 'workexperience/save',
+		edit: 'workexperience/edit',
+		delete: 'workexperience/delete',
+	},
+	workexperiencecompany: {
+		unique: 'workexperiencecompany/get',
+		paginate: 'workexperiencecompany/table',
+		save: 'workexperiencecompany/save',
+		edit: 'workexperiencecompany/edit',
+		delete: 'workexperiencecompany/delete',
+	},
+	workexperiencerole: {
+		unique: 'workexperiencerole/get',
+		paginate: 'workexperiencerole/table',
+		save: 'workexperiencerole/save',
+		edit: 'workexperiencerole/edit',
+		delete: 'workexperiencerole/delete',
+	},
+	workexperienceskill: {
+		unique: 'workexperienceskill/get',
+		paginate: 'workexperienceskill/table',
+		save: 'workexperienceskill/save',
+		edit: 'workexperienceskill/edit',
+		delete: 'workexperienceskill/delete',
+	},
+	workrole: {
+		unique: 'workrole/get',
+		paginate: 'workrole/table',
+		save: 'workrole/save',
+		edit: 'workrole/edit',
+		delete: 'workrole/delete',
+	},
+	workskill: {
+		unique: 'workskill/get',
+		paginate: 'workskill/table',
+		save: 'workskill/save',
+		edit: 'workskill/edit',
+		delete: 'workskill/delete',
+	},
+};

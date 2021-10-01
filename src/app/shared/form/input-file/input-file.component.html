@@ -1,0 +1,29 @@
+<ddc-init-upload-file #uploadFile [id]="'file_'+id" [inputClass]="cssInput" [inputStyle]="field.cssStyle"
+  [icon]="iconClass" [iconColor]="iconColor" [maxSize]="maxSize" [extensions]="extensions" [numMaxFiles]="numMaxFiles"
+  [multiple]="multiple" [readonly]="field.formControl.disabled" (emitFiles)="onAddFiles($event)"
+  (emitError)="onError($event)" [errorClass]="'input-invalid-message'" [showErrors]="true"
+  [classCleanFiles]="'listfiles-trash-button'" [infoClass]="'listfiles'" [closeItem]="closeItem"
+  [deleteItems]="deleteItems">
+
+  <div input-bottom>
+    <div *ngFor="let support of field.supports" class="input-support-message">
+      {{translateKey(support) |translate:translateParams(support)}}
+    </div>
+
+    <div *ngFor="let error of errorMessages" class="input-invalid-message">
+      {{translateKey(error) |translate:translateParams(error)}}
+    </div>
+
+    <ng-container *ngIf="!uploadFile.error">
+      <div *ngFor="let valid of validMessages" class="input-valid-message">
+        {{translateKey(valid) |translate:translateParams(valid)}}
+      </div>
+    </ng-container>
+
+    <div *ngFor="let styleMessage of styleMessages"
+      [ngClass]="styleMessage.class ? styleMessage.class+'-message' : 'input-generic-message'"
+      [style.color]="styleMessage.color">
+      {{translateKey(styleMessage) |translate:translateParams(styleMessage)}}
+    </div>
+  </div>
+</ddc-init-upload-file>

@@ -1,0 +1,132 @@
+<h5>Componente address</h5>
+<div class="lead">
+  Componente per la gestione di un form per indirizzi.<br />
+  Il componente estende <strong>BaseAddressComponent</strong>.<br />
+
+  Parametri di Input ereditati da BaseAddressComponent: <br />
+  <ul>
+    <li>form: <b>FormGroup</b> - <i>Form che contiene l'address</i></li>
+    <li>labelTitle : <b>string | StringTranslate</b> - <i>Titolo del componente</i></li>
+    <li>fieldNation: <b>FormControl</b> - <i>FormControl select della nazione</i></li>
+    <li>fieldRegion: <b>FormControl</b> - <i>FormControl select della regione</i></li>
+    <li>fieldProvince: <b>FormControl</b> - <i>FormControl select della provincia</i></li>
+    <li>fieldCommunity: <b>FormControl</b> - <i>FormControl select della community</i></li>
+    <li>fieldCity: <b>FormControl</b> - <i>FormControl select della città</i></li>
+    <li>fieldStreet: <b>FormControl</b> - <i>FormControl text della via</i></li>
+    <li>fieldNum: <b>FormControl</b> - <i>FormControl text del numero della via</i></li>
+    <li>fieldZip: <b>FormControl</b> - <i>FormControl text del codice postale</i></li>
+    <li>fieldLatitude: <b>FormControl</b> - <i>FormControl text della latitudine</i></li>
+    <li>fieldLongitude: <b>FormControl</b> - <i>FormControl text della longitudine</i></li>
+    <li>readonly : <b>boolean</b> - <i>Se true tutti i campi vengono disabilitati</i></li>
+    <li>address : <b>any</b> - <i>Indirizzo fornito in input</i></li>
+  </ul>
+
+  Parametri di Output ereditati da BaseAddressComponent: <br />
+  <ul>
+    <li>nationEmitter: <b>EventEmitter</b> - <i>Emette la nazione selezionata</i></li>
+    <li>regionEmitter: <b>EventEmitter</b> - <i>Emette la regione selezionata</i></li>
+    <li>provinceEmitter: <b>EventEmitter</b> - <i>Emette la provincia selezionata</i></li>
+    <li>communityEmitter: <b>EventEmitter</b> - <i>Emette la community selezionata</i></li>
+    <li>cityEmitter: <b>EventEmitter</b> - <i>Emette la città selezionata</i></li>
+    <li>geoRefEmitter: <b>EventEmitter</b> - <i>Emette un <b>GeoRefInterface</b> quando le coordinate sono
+        impostate</i></li>
+  </ul>
+
+  Parametri di Input ulteriori : <br />
+  <ul>
+    <li>tpaddressFlag: <b>boolean</b> - <i>Indica se includere il tipo di indirizzo</i></li>
+    <li>fieldTpAddress: <b>FormControl</b> - <i>FormControl select del tipo di indirizzo</i></li>
+    <li>tpaddress: <b>EnumAddressType</b> - <i>Tipologia di indirizzo da settare</i></li>
+    <li>tpaddresses: <b>EnumAddressType[]</b> - <i>Tipologie di indirizzo settabili</i></li>
+    <li>tpaddressReadonly: <b>boolean</b> - <i>Indica se il tipo di indirizzo è di sola lettura</i></li>
+    <li>validationsAddress: <b>any</b> - <i>Oggetto di validazione nel caso il form sia passato esternamente</i></li>
+    <li>required: <b>boolean</b> - <i>Se il form non è passato esternamente e required=true imposta alcuni campi a
+        required</i></li>
+    <li>isoForCommunity: <b>string[]</b> - <i>Nazioni per le quali è previsto anche il campo community</i></li>
+    <li>flgAutocomplete: <b>boolean</b> - <i>Indica se mostrare una text di autocompletamento per la ricerca su db</i>
+    </li>
+    <li>flgSearch: <b>boolean</b> - <i>Indica se mostrare una text di ricerca da openstreetmap</i></li>
+  </ul>
+</div>
+
+<button class="btn btn-xs btn-secondary" (click)="set('BASE')">Componente base</button>
+<button class="btn btn-xs btn-secondary ml-2" (click)="set('EXTERNAL')">Passaggio del form da esterno</button>
+<button class="btn btn-xs btn-secondary ml-2" (click)="set('AUTOCOMPLETE')">con ricerca in autocomplete</button>
+<button class="btn btn-xs btn-secondary ml-2" (click)="set('OPENSTREETMAP')">con ricerca da openstreetmap</button>
+<button class="btn btn-xs btn-secondary ml-2" (click)="set('MAP')">con mappa</button>
+
+<div class="row" *ngIf="example === 'BASE'">
+  <div class="col-12">
+    <h6>Base</h6>
+    <i>Il form viene costruito automaticamente dal componente</i>
+    <ddc-init-input-address></ddc-init-input-address>
+  </div>
+</div>
+
+<div class="row" *ngIf="example === 'AUTOCOMPLETE'">
+  <div class="col-12">
+    <h6>Ricerca su db</h6>
+    <i>Visibile un campo di ricerca con autocompletamento</i>
+    <ddc-init-input-address [flgAutocomplete]="true"></ddc-init-input-address>
+  </div>
+</div>
+
+<div class="row" *ngIf="example === 'OPENSTREETMAP'">
+  <div class="col-12">
+    <h6>Ricerca su openstreetmap</h6>
+    <i>Visibile un campo di ricerca per openstreetmap</i>
+    <ddc-init-input-address [flgSearch]="true"></ddc-init-input-address>
+  </div>
+</div>
+
+<div class="row" *ngIf="example === 'EXTERNAL'">
+  <div class="col-12">
+    <h6>Form esterno</h6>
+    <i>Il form viene passato dall'esterno</i>
+
+    <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+          ```typescript
+            
+            this.validations = &#123;&#125;;
+            this.formAddress = this.fb.group(&#123;
+              nation: new MagicValidatorUtil((this.validations.nation = []), undefined).build(),
+              region: new MagicValidatorUtil((this.validations.region = []), undefined).build(),
+              province: new MagicValidatorUtil((this.validations.province = []), undefined).build(),
+              community: new MagicValidatorUtil((this.validations.community = []), undefined).build(),
+              city: new MagicValidatorUtil((this.validations.city = []), undefined).build(),
+              street: new MagicValidatorUtil((this.validations.street = []), undefined).build(),
+              num: new MagicValidatorUtil((this.validations.num = []), undefined).build(),
+              zip: new MagicValidatorUtil((this.validations.zip = []), undefined).build(),
+              geo1: new MagicValidatorUtil((this.validations.geo1 = []), undefined).build(),
+              geo2: new MagicValidatorUtil((this.validations.geo2 = []), undefined).build(),
+            &#125;); 
+
+          ```
+                  
+          ```html
+
+            &lt;form [formGroup]="formAddress"&gt;
+              &lt;ddc-init-input-address [form]="formAddress" [validationsAddress]="validations" [fieldNation]="'nation'" [fieldRegion]="'region'"
+                [fieldProvince]="'province'" [fieldCommunity]="'community'" [fieldCity]="'city'" [fieldStreet]="'street'"
+                [fieldNum]="'num'" [fieldZip]="'zip'" [fieldLatitude]="'geo1'" [fieldLongitude]="'geo2'"&gt;&lt;/ddc-init-input-address&gt;
+            &lt;/form&gt;
+
+          ```
+      </div>
+    </pre>
+
+    <ddc-init-input-address [form]="formAddress" [validationsAddress]="validations" [fieldNation]="'nation'"
+      [fieldRegion]="'region'" [fieldProvince]="'province'" [fieldCommunity]="'community'" [fieldCity]="'city'"
+      [fieldStreet]="'street'" [fieldNum]="'num'" [fieldZip]="'zip'" [fieldLatitude]="'geo1'" [fieldLongitude]="'geo2'">
+    </ddc-init-input-address>
+  </div>
+</div>
+
+<div class="row" *ngIf="example === 'MAP'">
+  <div class="col-12">
+    <h6>Esempio con mappa</h6>
+    <i>Visibile la mappa che varia quando sono riempiti via e numero civico</i>
+    <ddc-init-input-address [flgMap]="true"></ddc-init-input-address>
+  </div>
+</div>

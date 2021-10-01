@@ -1,0 +1,7 @@
+<div *ngIf="!hide" [@fadeInOut] class="progress-bar-component" [ngClass]="cssClass" [ngStyle]="cssStyle">
+  <div class="progress-container" [style.background-color]="backgroundColor" [style.height]="height">
+    <div #progress class="progress-grow" [style.background-color]="color" [style.height]="height" [style.width]="'0px'">
+    </div>
+  </div>
+  <div *ngIf="showText" class="progress-text">{{current+'%'}}</div>
+</div>

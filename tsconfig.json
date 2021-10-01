@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "module": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom",
+      "dom.iterable"
+    ],
+    "paths": {
+      "@ddc/kit": [
+        "src/app/kit",
+        "src/app/kit/*"
+      ],
+      "@ddc/rest": [
+        "src/app/rest",
+        "src/app/rest/*"
+      ],
+      "@ddc/oauth-social": [
+        "src/app/oauth-social",
+        "src/app/oauth-social/*"
+      ]
+    }
+  }
+}

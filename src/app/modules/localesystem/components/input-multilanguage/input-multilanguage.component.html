@@ -1,0 +1,30 @@
+<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+<form [formGroup]="form">
+
+  <div *ngIf="ready" class="form-group row">
+    <div class="col-lg-8">
+      <ddc-init-input-textarea [field]="contentField"></ddc-init-input-textarea>
+    </div>
+    <div class="col-lg-4">
+      <ng-container *ngIf="!showImage">
+        <ddc-init-input-select #languages [id]="id" [field]="languageField" [options]="optionsLanguages"
+          [noMargin]="true" (emitValueChanged)="manageChange($event)">
+        </ddc-init-input-select>
+      </ng-container>
+      <ng-container *ngIf="showImage">
+        <ddc-init-form-select-div #languages [id]="id" [field]="languageField" [options]="optionsLanguages"
+          (emitValueChanged)="manageChange($event)">
+        </ddc-init-form-select-div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div>
+    <a class="btn btn-sm btn-danger text-white mr-2" (click)="deleteRecord()">
+      <span class="fa fa-trash mr-2"></span>
+    </a>
+    <button class="btn btn-sm btn-primary text-white mr-2" [disabled]="!form.valid" (click)="save()">
+      <span class="fa fa-save mr-2"></span>
+    </button>
+  </div>
+</form>

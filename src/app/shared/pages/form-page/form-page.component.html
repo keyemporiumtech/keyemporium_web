@@ -1,0 +1,13 @@
+<form *ngIf="form && groups && groups.length">
+
+  <ng-container *ngFor="let group of groups">
+    <div class="form-row">
+      <div *ngFor="let field of group.fields"
+        class="{{ 'form-group' +  (field.sizeGroupCol ? field.sizeGroupCol : group.sizeCol) }}">
+        <ddc-init-input-generic [control]="field.formControl" [field]="field">
+        </ddc-init-input-generic>
+      </div>
+    </div>
+  </ng-container>
+
+</form>
