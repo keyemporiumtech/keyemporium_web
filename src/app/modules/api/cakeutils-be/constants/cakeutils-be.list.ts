@@ -10,4 +10,9 @@ export const cakeutilsBeList = {
 		edit: 'typological/edit',
 		delete: 'typological/delete',
 	},
+	cookiemanager: {
+		update: 'cookiemanager/update',
+		cookies: 'cookiemanager/cookies',
+		cookie: 'cookiemanager/cookie',
+	},
 };

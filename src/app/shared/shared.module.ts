@@ -43,6 +43,8 @@ import { InputPasswordComponent } from './form/input-password/input-password.com
 import { AddressSearchComponent } from './components/address-search/address-search.component';
 import { CheckPlatformComponent } from './components/check-platform/check-platform.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { CookieChoiceComponent } from './components/banner-cookie/cookie-choice/cookie-choice.component';
+import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
 
 @NgModule({
 	declarations: [
@@ -83,6 +85,8 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 		InputPasswordComponent,
 		AddressSearchComponent,
 		CheckPlatformComponent,
+		CookieChoiceComponent,
+		CookiePageComponent,
 	],
 	imports: [
 		CommonModule,
@@ -132,6 +136,8 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 		InputPasswordComponent,
 		AddressSearchComponent,
 		CheckPlatformComponent,
+		CookieChoiceComponent,
+		CookiePageComponent,
 	],
 })
 export class SharedModule {

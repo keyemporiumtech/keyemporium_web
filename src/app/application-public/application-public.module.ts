@@ -14,7 +14,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationSharedModule } from '../application-shared/application-shared.module';
 import { LoginComponent } from './pages/login/login.component';
 import { LocalesystemModule } from '../modules/localesystem/localesystem.module';
-import { CookieChoiceComponent } from './components/cookie-choice/cookie-choice.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +22,6 @@ import { CookieChoiceComponent } from './components/cookie-choice/cookie-choice.
 		FooterPublicComponent,
 		HomePublicComponent,
 		LoginComponent,
-		CookieChoiceComponent,
 	],
 	imports: [
 		CommonModule,

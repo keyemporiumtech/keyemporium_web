@@ -14,6 +14,7 @@
         <ng-content></ng-content>
       </div>
       <div class="modal-footer" [ngClass]="classFooter">
+        <ng-content select="[footer-content]"></ng-content>
         <button *ngIf="flagButtonClose" type="button" [ngClass]="classButtonClose" data-dismiss="modal"
           [innerHTML]="translateKey(textButtonClose) | translate:translateParams(textButtonClose)"
           (click)="onClickClose($event)"></button>

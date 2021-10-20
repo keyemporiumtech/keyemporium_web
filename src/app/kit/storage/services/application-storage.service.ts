@@ -88,6 +88,19 @@ export class ApplicationStorageService extends BaseService {
 		return 'ApplicationStorageService';
 	}
 
+	public create(key: string, value?: string | any) {
+		this[key] = new ApplicationStorageModel(key);
+		if (value && typeof value === 'string') {
+			this[key].set(value);
+		} else if (value) {
+			this[key].setObj(value);
+		}
+	}
+
+	public get(key: string): ApplicationStorageModel {
+		return this[key];
+	}
+
 	/**
 	 * Getter memoLogin
 	 * @return {ApplicationStorageModel}
