@@ -1,22 +1,42 @@
 <ddc-init-banner #bannerCookie [bannerClass]="'banner-cookie'" [position]="position" [flgClose]="flgClose"
   [closeIcon]="closeIcon" [text]="text" [flgLoad]="flgLoad" [delayLoad]="delayLoad" [fadeIn]="fadeIn"
   [fadeOut]="fadeOut" [backgroundColor]="backgroundColor" [textColor]="textColor" (closeEmit)="onClose()"
-  (openEmit)="onOpen()" (bannerClickEmit)="accept()">
-  <ng-container *ngIf="position === EnumBannerPosition.TOP || position === EnumBannerPosition.BOTTOM" inner-text>
+  (openEmit)="onOpen()" (bannerClickEmit)="edit()">
+  <ng-container *ngIf="showButtons && (position === EnumBannerPosition.TOP || position === EnumBannerPosition.BOTTOM)"
+    inner-text>
     <a role="button" class="more-info mr-2" [ngClass]="moreInfoClass" [ngStyle]="moreInfoStyle" (click)="moreInfo()"
       [innerHTML]="'APP.COOKIE.MORE_INFO' | translate">
     </a>
-    <a role="button" class="accept mr-2" [ngClass]="acceptClass" [ngStyle]="acceptStyle" (click)="accept()"
-      [innerHTML]="'APP.COOKIE.ACCEPT' | translate">
+    <a role="button" class="refuse mr-2" [ngClass]="refuseClass" [ngStyle]="refuseStyle" (click)="refuse()"
+      [innerHTML]="'APP.COOKIE.CHOICE.REFUSE' | translate">
+    </a>
+    <a role="button" class="edit mr-2" [ngClass]="editClass" [ngStyle]="editStyle" (click)="edit()"
+      [innerHTML]="'APP.COOKIE.CHOICE.EDIT' | translate">
+    </a>
+    <a role="button" class="accept mr-2" [ngClass]="acceptClass" [ngStyle]="acceptStyle" (click)="acceptAll()"
+      [innerHTML]="'APP.COOKIE.CHOICE.ACCEPT_ALL' | translate">
     </a>
   </ng-container>
 
-  <div *ngIf="position === EnumBannerPosition.LEFT || position === EnumBannerPosition.RIGHT" outdor-text>
+  <div *ngIf="showButtons && (position === EnumBannerPosition.LEFT || position === EnumBannerPosition.RIGHT)"
+    outdor-text>
     <a role="button" class="more-info mr-2" [ngClass]="moreInfoClass" [ngStyle]="moreInfoStyle" (click)="moreInfo()"
       [innerHTML]="'APP.COOKIE.MORE_INFO' | translate">
     </a>
-    <a role="button" class="accept mr-2" [ngClass]="acceptClass" [ngStyle]="acceptStyle" (click)="accept()"
-      [innerHTML]="'APP.COOKIE.ACCEPT' | translate">
+    <a role="button" class="refuse mr-2" [ngClass]="refuseClass" [ngStyle]="refuseStyle" (click)="refuse()"
+      [innerHTML]="'APP.COOKIE.CHOICE.REFUSE' | translate">
+    </a>
+    <a role="button" class="edit mr-2" [ngClass]="editClass" [ngStyle]="editStyle" (click)="edit()"
+      [innerHTML]="'APP.COOKIE.CHOICE.EDIT' | translate">
+    </a>
+    <a role="button" class="accept mr-2" [ngClass]="acceptClass" [ngStyle]="acceptStyle" (click)="acceptAll()"
+      [innerHTML]="'APP.COOKIE.CHOICE.ACCEPT_ALL' | translate">
     </a>
   </div>
 </ddc-init-banner>
+
+<ddc-init-modal #modalEdit [classDimension]="'modal-xl'" [scrollable]="true" [title]="'APP.COOKIE.CHOICE.TITLE'"
+  [flagButtonClose]="false" [flagButtonOk]="false">
+  <ddc-init-cookie-choice [operation]="operation" (operationEmit)="onChoice($event)" (linkEmit)="onLink($event)">
+  </ddc-init-cookie-choice>
+</ddc-init-modal>

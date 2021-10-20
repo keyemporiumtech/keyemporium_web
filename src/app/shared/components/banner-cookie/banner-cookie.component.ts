@@ -11,6 +11,9 @@ import {
 import { Router } from '@angular/router';
 import { template } from '../../../../environments/template/template';
 import { component } from '../../../../environments/template/component';
+import { EnumCookieOperation } from '../../enums/cookie/cookie-operation.enum';
+import { ModalComponent } from '../modal/modal.component';
+import { EnumCookieNavigation } from '../../enums/cookie/cookie-navigation.enum';
 declare var $: any;
 
 @Component({
@@ -40,18 +43,34 @@ export class BannerCookieComponent extends BaseComponent {
 	@Input() moreInfoStyle: any;
 	@Input() acceptClass: any;
 	@Input() acceptStyle: any;
+	@Input() editClass: any;
+	@Input() editStyle: any;
+	@Input() refuseClass: any;
+	@Input() refuseStyle: any;
 	// emitters
 	@Output() emitLoad: EventEmitter<string> = new EventEmitter<string>();
 	@Output() emitClose: EventEmitter<string> = new EventEmitter<string>();
 	@Output() emitMoreInfo: EventEmitter<string> = new EventEmitter<string>();
 	@Output() emitAccept: EventEmitter<string> = new EventEmitter<string>();
 
+	// services
+	applicationStorage: ApplicationStorageService;
+	router: Router;
+
+	// cookie choice
+	@ViewChild('modalEdit') modalEdit: ModalComponent;
+	operation: EnumCookieOperation;
+	@Input() showButtons: boolean;
+
 	constructor(
 		applicationLogger: ApplicationLoggerService,
-		private applicationStorage: ApplicationStorageService,
-		private router: Router,
+		applicationStorage: ApplicationStorageService,
+		router: Router,
 	) {
 		super(applicationLogger);
+		this.applicationStorage = applicationStorage;
+		this.router = router;
+		this.applicationStorage.create('cookieId', 'cookiePolicy' + this.id);
 	}
 
 	ngOnInitForChildren() {
@@ -67,6 +86,12 @@ export class BannerCookieComponent extends BaseComponent {
 		}
 		if (!this.acceptClass) {
 			this.acceptClass = component.cookie.acceptClass;
+		}
+		if (!this.refuseClass) {
+			this.refuseClass = component.cookie.refuseClass;
+		}
+		if (!this.editClass) {
+			this.editClass = component.cookie.editClass;
 		}
 		if (!this.backgroundColor) {
 			this.backgroundColor = component.cookie.backgroundColor;
@@ -97,6 +122,9 @@ export class BannerCookieComponent extends BaseComponent {
 		if (!storageVariable) {
 			this.emitLoad.emit('cookiePolicy' + this.id);
 		}
+		if (!this.showButtons) {
+			this.edit();
+		}
 	}
 
 	onClose() {
@@ -112,7 +140,31 @@ export class BannerCookieComponent extends BaseComponent {
 		this.router.navigate(['commons', 'file', 1]);
 	}
 
-	accept() {
+	refuse() {
+		this.operation = EnumCookieOperation.REFUSAL;
 		this.bannerCookie.close();
+	}
+
+	edit() {
+		this.modalEdit.openModal();
+	}
+
+	acceptAll() {
+		this.operation = EnumCookieOperation.ACCEPT_ALL;
+		this.bannerCookie.close();
+	}
+
+	// choice
+	onChoice(val: EnumCookieOperation) {
+		if (val) {
+			this.bannerCookie.close();
+			this.modalEdit.closeModal();
+		}
+	}
+
+	onLink(val: EnumCookieNavigation) {
+		if (val) {
+			this.modalEdit.closeModal();
+		}
 	}
 }

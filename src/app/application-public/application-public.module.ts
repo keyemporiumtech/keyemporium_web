@@ -12,6 +12,8 @@ import { FooterPublicComponent } from './template/footer-public/footer-public.co
 import { HomePublicComponent } from './pages/home-public/home-public.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationSharedModule } from '../application-shared/application-shared.module';
+import { LoginComponent } from './pages/login/login.component';
+import { LocalesystemModule } from '../modules/localesystem/localesystem.module';
 
 @NgModule({
 	declarations: [
@@ -19,6 +21,7 @@ import { ApplicationSharedModule } from '../application-shared/application-share
 		HeaderPublicComponent,
 		FooterPublicComponent,
 		HomePublicComponent,
+		LoginComponent,
 	],
 	imports: [
 		CommonModule,
@@ -31,6 +34,8 @@ import { ApplicationSharedModule } from '../application-shared/application-share
 		// forms
 		FormsModule,
 		ReactiveFormsModule,
+		// modules
+		LocalesystemModule.forRoot(),
 	],
 })
 export class ApplicationPublicModule {

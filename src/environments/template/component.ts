@@ -2,6 +2,8 @@ export const component = {
 	cookie: {
 		moreInfoClass: 'btn btn-sm btn-info text-white',
 		acceptClass: 'btn btn-sm btn-dark text-white',
+		refuseClass: 'btn btn-sm btn-light text-dark',
+		editClass: 'btn btn-sm btn-primary text-white',
 		backgroundColor: '#000',
 		textColor: '#fff',
 		delay: 4000,

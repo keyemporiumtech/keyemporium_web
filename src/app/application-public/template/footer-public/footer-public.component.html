@@ -9,12 +9,14 @@
     <a class="nav-link" (click)="term()">{{'APP.TERM.TITLE' | translate}}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" tabindex="-1" aria-disabled="true" [innerHtml]="'APP.COPYRIGHT' | translate"></a>
+    <a class="nav-link disabled" tabindex="-1" aria-disabled="true" [innerHtml]="'PERSONAL.COPYRIGHT' | translate"></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" tabindex="-1" aria-disabled="true">ver. {{VERSION}}</a>
+    <a class="nav-link disabled" tabindex="-1" aria-disabled="true">v{{VERSION}}</a>
   </li>
+  <!--
   <li class="nav-item">
     <a class="nav-link disabled" tabindex="-1" aria-disabled="true">template {{TEMPLATE_VERSION}}</a>
   </li>
+  -->
 </ul>
