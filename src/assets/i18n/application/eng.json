@@ -16,6 +16,7 @@
     },
     "COOKIE": {
       "ACCEPT": "Accetta",
+      "ATTENTION_CLOSE": "ATTENZIONE!! Chiudendo si accetteranno i cookie. Resterà comunque possibile modificare la scelta dalla pagina di Gestione dei cookie",
       "CHOICE": {
         "ACCEPT": "Accetta selezionati",
         "ACCEPT_ALL": "Accetta tutti",

@@ -19,6 +19,8 @@ import { map } from 'rxjs/operators';
 import { EnumCookieType } from '../../../../shared/enums/cookie/cookie-type.enum';
 import { CookieConverter } from '../converters/cookie.converter';
 import { CookieModel } from '../models/cookie.model';
+import { CookieStatusConverter } from '../converters/cookie-status.converter';
+import { CookieStatusModel } from '../models/cookie-status.model';
 
 @Injectable()
 export class CookiemanagerService extends ApiService {
@@ -113,6 +115,36 @@ export class CookiemanagerService extends ApiService {
 			url,
 			body,
 			new CookieConverter(),
+			requestManager,
+			responseManager,
+		);
+	}
+
+	status(
+		key?: string,
+		type?: EnumCookieType,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<CookieStatusModel> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'key', key);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.STRING,
+			'type',
+			type ? type.toString() : undefined,
+		);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + cakeutilsBeList.cookiemanager.status;
+		return this.get(
+			this.httpHeaders,
+			url,
+			body,
+			new CookieStatusConverter(),
 			requestManager,
 			responseManager,
 		);

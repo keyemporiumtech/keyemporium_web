@@ -14,5 +14,6 @@ export const cakeutilsBeList = {
 		update: 'cookiemanager/update',
 		cookies: 'cookiemanager/cookies',
 		cookie: 'cookiemanager/cookie',
+		status: 'cookiemanager/status',
 	},
 };
