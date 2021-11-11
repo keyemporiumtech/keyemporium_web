@@ -74,6 +74,7 @@ export * from "./html/components/loading/models/base-loading.model";
 export * from "./html/components/progress/progress.component";
 export * from "./html/components/progress-bar/progress-bar.component";
 export * from "./html/directives/ddc-contenteditable.directive";
+export * from "./html/directives/ddc-css-var.directive";
 export * from "./html/directives/ddc-input-password.directive";
 export * from "./html/enums/banner-position.enum";
 export * from "./html/enums/browser-name.enum";

@@ -1,5 +1,13 @@
 # CHANGELOG KIT
 
+## 1.2.0 - 11/11/2021
+
+> Versione che aggiunge la direttiva `DdcCssVar` per il settaggio dei valori css variabili
+
+### changes
+
+- `[feature]` Aggiunta la direttiva `DdcCssVar` nel modulo `html`
+
 ## 1.1.0 - 14/10/2021
 
 > Versione che aggiunge ad `ApplicationStorageService` la possibilità di creare variabili di storage on flat

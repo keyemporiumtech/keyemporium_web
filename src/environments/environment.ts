@@ -117,6 +117,7 @@ export const environment = {
 		currencies: true,
 		nations: true,
 		init: true,
+		cookie: false,
 	},
 	logger: {
 		request: true,

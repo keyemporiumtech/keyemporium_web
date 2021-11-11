@@ -94,6 +94,7 @@ export const environment = {
 		currencies: true,
 		nations: true,
 		init: true,
+		cookie: true,
 	},
 	logger: {
 		request: true,
