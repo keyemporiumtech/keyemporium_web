@@ -1,5 +1,8 @@
 {
   "PERSONAL": {
+    "BUTTON": {
+      "LOGIN": "Login"
+    },
     "COOKIE": {
       "ACCEPT": "Accetta tutti",
       "DELETE": "Rifiuta",
@@ -24,8 +27,14 @@
     },
     "COPYRIGHT": "&copy; Keyemporium",
     "LABEL": {
+      "EMAIL": "Indirizzo Email",
       "EXPIRATION": "Scadenza",
+      "PASSWORD": "Password",
       "TYPE": "Tipo"
+    },
+    "LOGIN": {
+      "REMEMBERME": "Ricordami",
+      "TITLE": "Entra in Keyemporium"
     }
   }
 }
