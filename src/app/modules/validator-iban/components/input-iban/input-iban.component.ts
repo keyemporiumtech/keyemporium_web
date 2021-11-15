@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, AbstractControl } from '@angular/forms';
 import {
 	BaseComponent,
 	ApplicationLoggerService,
@@ -14,7 +14,7 @@ import { IbanValidator } from '../../validators/iban.validator';
 import { ApiFast } from '../../../api/cakeutils/utility/api-fast.utility';
 import { DbFilterInterface } from '../../../api/cakeutils/interfaces/db-filter.interface';
 import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
-import { QueryUtility } from '@ddc/rest';
+import { QueryUtility, RequestUtility } from '@ddc/rest';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { IbanUtility } from '../../utility/iban.utility';
 import { InputSelectComponent } from '../../../../shared/form/input-select/input-select.component';
@@ -27,6 +27,8 @@ import { InputSelectComponent } from '../../../../shared/form/input-select/input
 export class InputIbanComponent extends BaseComponent {
 	@Input() showImage: boolean;
 	@Input() filters: string[];
+	@Input() debounce: number = 1000;
+	@Input() extControl: FormControl | AbstractControl;
 	@ViewChild('nations') nations: InputSelectComponent;
 
 	nationByIban: string;
@@ -55,6 +57,7 @@ export class InputIbanComponent extends BaseComponent {
 	// sub
 	subNations: Subscription;
 	subStatusIban: Subscription;
+	subValueIban: Subscription;
 	subPattern: Subscription;
 	subChildNations: Subscription;
 
@@ -77,7 +80,10 @@ export class InputIbanComponent extends BaseComponent {
 			new MagicValidatorUtil((this.validations.iban = []), undefined)
 				.required()
 				.pushAsync(
-					IbanValidator.validate(this.formIban.get('nation'), this.ibanService),
+					RequestUtility.debounceAsyncValidator(
+						IbanValidator.validate(this.formIban.get('nation'), this.ibanService),
+						this.debounce,
+					),
 					IbanValidator.IBAN(),
 				)
 				.buildControl(),
@@ -144,6 +150,15 @@ export class InputIbanComponent extends BaseComponent {
 			.subscribe((status) => {
 				this.manageStatusIban(status);
 			});
+
+		this.subValueIban = this.formIban
+			.get('iban')
+			.valueChanges.pipe(distinctUntilChanged())
+			.subscribe((value) => {
+				if (this.extControl) {
+					this.extControl.setValue(value);
+				}
+			});
 	}
 	ngAfterViewInitForChildren() {
 		this.subChildNations = WaitElementsUtility.waitWhileViewChildIsReady(this, 'nations').subscribe(
@@ -160,6 +175,9 @@ export class InputIbanComponent extends BaseComponent {
 		}
 		if (this.subStatusIban) {
 			this.subStatusIban.unsubscribe();
+		}
+		if (this.subValueIban) {
+			this.subValueIban.unsubscribe();
 		}
 		if (this.subPattern) {
 			this.subPattern.unsubscribe();

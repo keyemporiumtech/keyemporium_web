@@ -50,6 +50,7 @@ import { TestRestComponent } from './components/test-rest/test-rest.component';
 import { TestRestOpenstreetmapComponent } from './components/test-rest/test-rest-openstreetmap/test-rest-openstreetmap.component';
 import { TestSharedAddressSearchComponent } from './components/test-shared/test-shared-address-search/test-shared-address-search.component';
 import { TestRestOauthLoginComponent } from './components/test-rest/test-rest-oauth-login/test-rest-oauth-login.component';
+import { ValidatorPasswordModule } from '../modules/validator-password/validator-password.module';
 @NgModule({
 	declarations: [
 		TestHomeComponent,
@@ -105,6 +106,7 @@ import { TestRestOauthLoginComponent } from './components/test-rest/test-rest-oa
 		LocalesystemModule.forRoot(),
 		ValidatorIbanModule.forRoot(),
 		ValidatorCreditcardModule.forRoot(),
+		ValidatorPasswordModule.forRoot(),
 	],
 })
 export class WikiTestModule {

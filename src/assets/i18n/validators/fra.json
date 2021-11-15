@@ -32,6 +32,7 @@
       "MAX": "Non sono ammessi valori maggiori di {{ max }}",
       "MIN": "Non sono ammessi valori inferiori di {{ min }}"
     },
+    "PASSWORD": "Password non valida",
     "PATTERN": "Pattern {{ pattern }} non rispettato",
     "REFERENCE": {
       "PHONE": "Indiquez le numéro de téléphone",

@@ -16,3 +16,37 @@
     </ddc-init-input-creditcard>
   </div>
 </div>
+
+<hr />
+<div class="row">
+  <div class="col-12" *ngIf="form">
+    <h5>Uso del componente all'interno di un form</h5>
+
+    <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+        ```typescript
+        form: FormGroup;
+
+        ...
+
+        this.form = this.fb.group(&#123;
+          myCC: [undefined],
+        &#125;);
+        ```
+
+
+        ```html
+        &lt;ddc-init-input-creditcard [extControl]="this.form.get('myCC')" [cc]="&#123;mm: '05', yy: '2025', cvc: '416', num_cc: '5102486337448689'&#125;"&gt;&lt;/ddc-init-input-creditcardc&gt;
+        ```
+    </div>
+    </pre>
+
+    <form [formGroup]="form">
+      <ddc-init-input-creditcard [extControl]="this.form.get('myCC')"
+        [cc]="{mm: '05', yy: '2025', cvc: '416', num_cc: '5102486337448689'}"></ddc-init-input-creditcard>
+    </form>
+
+    <br />
+    {{this.form.get('myCC').value}}
+  </div>
+</div>
