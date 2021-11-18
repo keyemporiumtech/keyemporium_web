@@ -48,7 +48,9 @@ export class InputPasswordAsyncComponent extends BaseComponent {
 		super(applicationLogger);
 		// build form
 		this.formPassword = this.fb.group({});
+	}
 
+	ngOnInitForChildren() {
 		this.formPassword.addControl(
 			'password',
 			new MagicValidatorUtil((this.validations.password = []), undefined)
@@ -68,9 +70,6 @@ export class InputPasswordAsyncComponent extends BaseComponent {
 				)
 				.buildControl(),
 		);
-	}
-
-	ngOnInitForChildren() {
 		// creation form
 		this.inputPassword = new FormFieldModel(
 			EnumFormType.PASSWORD,

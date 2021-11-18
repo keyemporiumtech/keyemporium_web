@@ -14,6 +14,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationSharedModule } from '../application-shared/application-shared.module';
 import { LoginComponent } from './pages/login/login.component';
 import { LocalesystemModule } from '../modules/localesystem/localesystem.module';
+import { ValidatorPasswordModule } from '../modules/validator-password/validator-password.module';
+import { ConfirmLoginComponent } from './pages/confirm-login/confirm-login.component';
+import { AuthenticationModule } from '../modules/authentication/authentication.module';
 
 @NgModule({
 	declarations: [
@@ -22,6 +25,7 @@ import { LocalesystemModule } from '../modules/localesystem/localesystem.module'
 		FooterPublicComponent,
 		HomePublicComponent,
 		LoginComponent,
+		ConfirmLoginComponent,
 	],
 	imports: [
 		CommonModule,
@@ -36,6 +40,8 @@ import { LocalesystemModule } from '../modules/localesystem/localesystem.module'
 		ReactiveFormsModule,
 		// modules
 		LocalesystemModule.forRoot(),
+		ValidatorPasswordModule.forRoot(),
+		AuthenticationModule.forRoot(),
 	],
 })
 export class ApplicationPublicModule {

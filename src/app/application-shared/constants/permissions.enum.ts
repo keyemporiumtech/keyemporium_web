@@ -1,0 +1,5 @@
+export enum EnumPermissions {
+	SUPERVISOR = 'SUPERVISOR',
+	PROFILE = 'PROFILE',
+	ALL_PROFILES = 'ALL_PROFILES',
+}

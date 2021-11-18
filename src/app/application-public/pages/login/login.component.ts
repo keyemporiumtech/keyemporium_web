@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
 	BaseFormComponent,
 	ApplicationLoggerService,
@@ -10,6 +10,14 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FormFieldModel } from '../../../shared/models/form/form-field.model';
 import { Observable, of } from 'rxjs';
 import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
+import { InputPasswordAsyncComponent } from '../../../modules/validator-password/components/input-password-async/input-password-async.component';
+import { EnumOauthLoginType, SocialLoginService } from '@ddc/rest';
+import {
+	UserAuthRequest,
+	AuthenticationService,
+} from '../../../modules/authentication/base/authentication.service';
+import { ConfirmoperationRequest } from '../../../modules/authentication/dtos/confirmoperation-request';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'public-login',
@@ -19,11 +27,17 @@ import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
 export class LoginComponent extends BaseFormComponent {
 	// fields
 	FLD_email: FormFieldModel;
-	FLD_password: FormFieldModel;
 	FLD_remember: FormFieldModel;
 	optionRemeber: OptionListModel[];
+	@ViewChild('pwd1') pwd1: InputPasswordAsyncComponent;
 
-	constructor(applicationLogger: ApplicationLoggerService, fb: FormBuilder) {
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		fb: FormBuilder,
+		private router: Router,
+		private oauthService: SocialLoginService,
+		private authenticationService: AuthenticationService,
+	) {
 		super(applicationLogger, fb);
 		this.initFields();
 		this.optionRemeber = [new OptionListModel(1, 'PERSONAL.LOGIN.REMEMBERME')];
@@ -49,12 +63,15 @@ export class LoginComponent extends BaseFormComponent {
 	setLoaderAsync(): Observable<boolean> {
 		return of(true);
 	}
-	extractData() {
+	extractData(): UserAuthRequest {
 		const values = this.form.getRawValue();
-		const model: any = {};
-		model.email = values.email;
+		const model: UserAuthRequest = {};
+		model.username = values.email;
 		model.password = values.password;
-		model.remember = values.remember && values.remember === 1 ? true : false;
+		model.rememberme = values.remember && values.remember === 1 ? true : false;
+		const confirm: ConfirmoperationRequest = {};
+		confirm.flgemail = 1;
+		model.confirm = confirm;
 		return model;
 	}
 
@@ -63,7 +80,9 @@ export class LoginComponent extends BaseFormComponent {
 	}
 	fillForm(form: FormGroup, model: any) {
 		form.get('email').setValue(model.email);
-		form.get('password').setValue(model.password);
+		if (this.pwd1 && this.pwd1.formPassword && this.pwd1.formPassword.get('password')) {
+			this.pwd1.formPassword.get('password').setValue(model.password);
+		}
 		form.get('remember').setValue(model.remember);
 	}
 	setModelBehaviour(): BehaviourObserverModel {
@@ -76,16 +95,19 @@ export class LoginComponent extends BaseFormComponent {
 	getModelFieldForId(): string {
 		return 'email';
 	}
-	saveModel(model: any): Observable<any> {
-		console.error(model);
-		return of(model);
+	saveModel(model: UserAuthRequest): Observable<boolean> {
+		return this.authenticationService.loginPin(model, model.confirm);
 	}
 	updateModel(model: any): Observable<any> {
 		return of(model);
 	}
 	saveModelBehaviour(): BehaviourObserverModel {
 		const funPre = () => {};
-		const funOk = (res: any) => {};
+		const funOk = (res: boolean) => {
+			if (res) {
+				this.router.navigate(['app', 'confirm_login']);
+			}
+		};
 		const funError = (err: any) => {};
 		return new BehaviourObserverModel(funPre, funOk, funError);
 	}
@@ -107,13 +129,7 @@ export class LoginComponent extends BaseFormComponent {
 		)
 			.validation(this.validationMessages.email)
 			.onInit();
-		this.FLD_password = new FormFieldModel(
-			EnumFormType.PASSWORD,
-			this.form.get('password') as FormControl,
-			'PERSONAL.LABEL.PASSWORD',
-		)
-			.validation(this.validationMessages.password)
-			.onInit();
+
 		this.FLD_remember = new FormFieldModel(
 			EnumFormType.CHECKBOX,
 			this.form.get('remember') as FormControl,
@@ -121,5 +137,14 @@ export class LoginComponent extends BaseFormComponent {
 		)
 			.validation(this.validationMessages.remember)
 			.onInit();
+	}
+
+	// SOCIAL
+	signInGoogle() {
+		this.oauthService.signIn(EnumOauthLoginType.GOOGLE);
+	}
+
+	signInFacebook() {
+		this.oauthService.signIn(EnumOauthLoginType.FACEBOOK);
 	}
 }

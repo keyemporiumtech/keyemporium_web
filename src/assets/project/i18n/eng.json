@@ -3,6 +3,10 @@
     "BUTTON": {
       "LOGIN": "Login"
     },
+    "CONFIRM_LOGIN": {
+      "PIN": "Inserisci il codice ricevuto per validare il tuo accesso",
+      "TITLE": "Entra in Keyemporium"
+    },
     "COOKIE": {
       "ACCEPT": "Accetta tutti",
       "DELETE": "Rifiuta",
@@ -34,6 +38,8 @@
     },
     "LOGIN": {
       "REMEMBERME": "Ricordami",
+      "SIGNIN_GOOGLE": "Entra con Google",
+      "SIGNIN_FACEBOOK": "Entra con Facebook",
       "TITLE": "Entra in Keyemporium"
     }
   }

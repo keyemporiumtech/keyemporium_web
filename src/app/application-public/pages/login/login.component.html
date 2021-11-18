@@ -6,18 +6,27 @@
     <label for="inputEmail">{{translateKey(FLD_email.label)| translate:translateParams(FLD_email.label)}}</label>
     <ddc-init-input-text [id]="'inputEmail'" [field]="FLD_email"></ddc-init-input-text>
 
-    <label for="inputPassword">{{translateKey(FLD_password.label)|
-      translate:translateParams(FLD_password.label)}}</label>
-    <ddc-init-input-password [id]="'inputPassword'" [field]="FLD_password"></ddc-init-input-password>
+    <label for="inputPassword">{{'PERSONAL.LABEL.PASSWORD' | translate}}</label>
+    <ddc-init-input-password-async #pwd1 [id]="'inputPassword'" [max]="15" [extControl]="form.get('password')">
+    </ddc-init-input-password-async>
 
 
     <div class="checkbox mb-3">
-      <label>{{translateKey(FLD_remember.label)| translate:translateParams(FLD_remember.label)}}</label>
       <ddc-init-input-checkbox [field]="FLD_remember" [options]="optionRemeber"></ddc-init-input-checkbox>
     </div>
     <button class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid" (click)="save()">
       {{'PERSONAL.BUTTON.LOGIN'| translate}}
     </button>
-    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    <button type="button" (click)="signInGoogle()" class="btn btn-lg btn-danger btn-block">
+      <span [style.float]="'left'"><img src="assets/project/images/social-google.png" alt="" height="42"></span>
+      <span class="ml-2">{{'PERSONAL.LOGIN.SIGNIN_GOOGLE' | translate}}</span>
+    </button>
+    <button type="button" (click)="signInFacebook()" class="btn btn-lg btn-info btn-block">
+      <span [style.float]="'left'"><img src="assets/project/images/social-facebook.png" alt="" height="42"></span>
+      <span class="ml-2">{{'PERSONAL.LOGIN.SIGNIN_FACEBOOK' | translate}}</span>
+    </button>
+    <p class="mt-5 mb-3 text-muted" [innerHTML]="'PERSONAL.COPYRIGHT' | translate"></p>
   </form>
+
+
 </div>
