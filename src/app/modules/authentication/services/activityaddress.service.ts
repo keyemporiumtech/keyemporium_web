@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -48,12 +49,14 @@ export class ActivityaddressService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<ActivityaddressModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activityaddress', id);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -74,11 +77,13 @@ export class ActivityaddressService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<PaginatorModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestCakeUtility.addPaginator(body, paginator);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -98,6 +103,7 @@ export class ActivityaddressService extends ApiService {
 		activityaddressIn: ActivityaddressModel,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -107,6 +113,7 @@ export class ActivityaddressService extends ApiService {
 			'activityaddress',
 			ActivityaddressUtilConverter.toDto(activityaddressIn),
 		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -120,6 +127,7 @@ export class ActivityaddressService extends ApiService {
 		id?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -130,6 +138,7 @@ export class ActivityaddressService extends ApiService {
 			ActivityaddressUtilConverter.toDto(activityaddressIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activityaddress', id);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -162,12 +171,14 @@ export class ActivityaddressService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<ActivityaddressModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activity', id_activity);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'activityname', activityname);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -190,12 +201,14 @@ export class ActivityaddressService extends ApiService {
 		cod?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<boolean> {
 		let body: HttpParams = new HttpParams();
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activity', id_activity);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'activityname', activityname);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activityaddress', id);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod_activityaddress', cod);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -211,9 +224,9 @@ export class ActivityaddressService extends ApiService {
 		addressIn: AddressModel,
 		tpaddress: EnumAddressType,
 		flgprincipal?: boolean,
-		group?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -226,7 +239,7 @@ export class ActivityaddressService extends ApiService {
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'tpaddress', tpaddress.toString());
 		body = RequestUtility.addParam(body, EnumParamType.BOOLEAN, 'flgprincipal', flgprincipal);
-		body = RequestUtility.addParam(body, EnumParamType.STRING, 'group', group);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url

@@ -16,4 +16,18 @@ export const cakeutilsBeList = {
 		cookie: 'cookiemanager/cookie',
 		status: 'cookiemanager/status',
 	},
+	group: {
+		unique: 'group/get',
+		paginate: 'group/table',
+		save: 'group/save',
+		edit: 'group/edit',
+		delete: 'group/delete',
+	},
+	grouprelation: {
+		unique: 'grouprelation/get',
+		paginate: 'grouprelation/table',
+		save: 'grouprelation/save',
+		edit: 'grouprelation/edit',
+		delete: 'grouprelation/delete',
+	},
 };

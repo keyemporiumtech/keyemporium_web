@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -48,12 +49,14 @@ export class ActivityreferenceService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<ActivityreferenceModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activityreference', id);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -74,11 +77,13 @@ export class ActivityreferenceService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<PaginatorModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestCakeUtility.addPaginator(body, paginator);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -98,6 +103,7 @@ export class ActivityreferenceService extends ApiService {
 		activityreferenceIn: ActivityreferenceModel,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -107,6 +113,7 @@ export class ActivityreferenceService extends ApiService {
 			'activityreference',
 			ActivityreferenceUtilConverter.toDto(activityreferenceIn),
 		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -120,6 +127,7 @@ export class ActivityreferenceService extends ApiService {
 		id?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -130,6 +138,7 @@ export class ActivityreferenceService extends ApiService {
 			ActivityreferenceUtilConverter.toDto(activityreferenceIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activityreference', id);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -163,6 +172,7 @@ export class ActivityreferenceService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<ActivityreferenceModel> {
 		let body: HttpParams = new HttpParams();
 
@@ -170,6 +180,7 @@ export class ActivityreferenceService extends ApiService {
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'activityname', activityname);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'type', type.toString());
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -193,6 +204,7 @@ export class ActivityreferenceService extends ApiService {
 		type?: EnumContactreferenceType,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<boolean> {
 		let body: HttpParams = new HttpParams();
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activity', id_activity);
@@ -200,6 +212,7 @@ export class ActivityreferenceService extends ApiService {
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activityreference', id);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod_activityreference', cod);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'type', type.toString());
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -215,9 +228,9 @@ export class ActivityreferenceService extends ApiService {
 		referenceIn: ContactreferenceModel,
 		tpreference: EnumContactreferenceType,
 		flgprincipal?: boolean,
-		group?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -235,7 +248,7 @@ export class ActivityreferenceService extends ApiService {
 			tpreference.toString(),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.BOOLEAN, 'flgprincipal', flgprincipal);
-		body = RequestUtility.addParam(body, EnumParamType.STRING, 'group', group);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url

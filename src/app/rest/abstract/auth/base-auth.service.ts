@@ -89,7 +89,7 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 			responseManager,
 		).pipe(
 			map((res) => {
-				this.setProfile(this.getProfileFromLogin(res));
+				this.setProfile(this.getProfileFromLogin(res), this.getUsernameFromLogin(res));
 				this.applicationStorage.userLogged.setObj(this.getUserLoggedByResponse(res));
 				this.applicationStorage.userId.set(this.getUserLoggedIdByResponse(res));
 				this.applicationStorage.userImage.set(this.getUserLoggedImageByResponse(res));
@@ -167,18 +167,35 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 		);
 	}
 
-	setProfile(profile: string, callback?: () => any) {
-		this.subProfile = forkJoin(this.loadPermissions(profile), this.loadSedi(profile)).subscribe(
-			(data) => {
-				this.permissions = data[0];
-				this.sedi = data[1];
-				if (callback) {
-					callback();
-				}
-				this.applicationStorage.profile.set(profile);
-				this.profileChange.next(profile);
-			},
+	changeProfile(
+		username: string,
+		profile: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<any> {
+		this.changeProfileBehaviour().actionPre();
+		return this.fnChangeProfile(username, profile, requestManager, responseManager).pipe(
+			map((res) => {
+				return this.changeProfileBehaviour().actionResponse(res);
+			}),
 		);
+	}
+
+	setProfile(profile: string, username?: string, callback?: () => any) {
+		const $obsProfile = username ? this.changeProfile(username, profile) : of(true);
+		this.subProfile = forkJoin(
+			this.loadPermissions(profile),
+			this.loadSedi(profile),
+			$obsProfile,
+		).subscribe((data) => {
+			this.permissions = data[0];
+			this.sedi = data[1];
+			if (callback) {
+				callback();
+			}
+			this.applicationStorage.profile.set(profile);
+			this.profileChange.next(profile);
+		});
 	}
 
 	/**
@@ -551,6 +568,12 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 	abstract getProfileFromLogin(body: any): string;
 
 	/**
+	 * Ritona il valore dello username utente dalla response del login.
+	 * @param body body della response di login
+	 */
+	abstract getUsernameFromLogin(body: any): string;
+
+	/**
 	 * chiamata che effettua il logout di un utente
 	 * @param user oggetto utente
 	 */
@@ -594,6 +617,23 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 	 * La funzione actionResponse deve ritornare il risultato della chiamata
 	 */
 	abstract loadPermissionsBehaviour(): BehaviourObserverModel;
+
+	/**
+	 * Chiamata che memorizza il cambio profilo lato BE
+	 * @param username nome utente
+	 * @param profile profilo da settare per l'utente
+	 */
+	abstract fnChangeProfile(
+		username: string,
+		profile: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<any>;
+	/**
+	 * Ritona un BehaviourObserverModel per la definizione delle funzioni da eseguire prima e dopo la chiamata changeProfile().
+	 * La funzione actionResponse deve ritornare il risultato della chiamata
+	 */
+	abstract changeProfileBehaviour(): BehaviourObserverModel;
 
 	/**
 	 * Chiamata che ritorna la lista delle sedi di competenza di un profilo

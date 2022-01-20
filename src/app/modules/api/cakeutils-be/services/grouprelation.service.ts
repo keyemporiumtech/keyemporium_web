@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
+import { RequestGroupsConditionsInterface } from '../../cakeutils/interfaces/request-groups-conditions.interface';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -16,20 +16,20 @@ import {
 	ResponseManagerInterface,
 } from '@ddc/rest';
 import { Injectable } from '@angular/core';
-import { MailreceiverModel } from '../models/mailreceiver.model';
+import { GrouprelationModel } from '../models/grouprelation.model';
 import {
-	MailreceiverConverter,
-	MailreceiverUtilConverter,
-} from '../converters/mailreceiver.converter';
+	GrouprelationConverter,
+	GrouprelationUtilConverter,
+} from '../converters/grouprelation.converter';
 import { map } from 'rxjs/operators';
-import { ApiService } from '../../api/cakeutils/base/api.service';
-import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
-import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
-import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
-import { communicationList } from '../constants/communication.list';
+import { ApiService } from '../../cakeutils/base/api.service';
+import { RequestConditionInterface } from '../../cakeutils/interfaces/request-conditions.interface';
+import { RequestCakeUtility } from '../../cakeutils/utility/request-cake.utility';
+import { cakeutilsBeList } from '../constants/cakeutils-be.list';
+import { RequestPaginatorInterface } from '../../cakeutils/interfaces/request-paginator.interface';
 
 @Injectable()
-export class MailreceiverService extends ApiService {
+export class GrouprelationService extends ApiService {
 	constructor(
 		applicationLogger: ApplicationLoggerService,
 		messageService: MessageService,
@@ -38,32 +38,32 @@ export class MailreceiverService extends ApiService {
 		http: HttpClient,
 	) {
 		super(applicationLogger, messageService, applicationStorage, innerStorage, http);
-		this.flgInnerToken = true;
 	}
 
 	unique(
 		id?: string,
+		cod?: string,
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 		conditionsGroup?: RequestGroupsConditionsInterface,
-	): Observable<MailreceiverModel> {
+	): Observable<GrouprelationModel> {
 		let body: HttpParams = new HttpParams();
 
-		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_mailreceiver', id);
-
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_grouprelation', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
 		body = RequestCakeUtility.addConditions(body, conditions);
 		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + communicationList.mailreceiver.unique;
+				: this.environment.api.services + cakeutilsBeList.grouprelation.unique;
 		return this.get(
 			this.httpHeaders,
 			url,
 			body,
-			new MailreceiverConverter(),
+			new GrouprelationConverter(),
 			requestManager,
 			responseManager,
 		);
@@ -85,19 +85,19 @@ export class MailreceiverService extends ApiService {
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + communicationList.mailreceiver.paginate;
+				: this.environment.api.services + cakeutilsBeList.grouprelation.paginate;
 		return this.get(
 			this.httpHeaders,
 			url,
 			body,
-			new PaginatorConverter(new MailreceiverConverter()),
+			new PaginatorConverter(new GrouprelationConverter()),
 			requestManager,
 			responseManager,
 		);
 	}
 
 	save(
-		mailreceiverIn: MailreceiverModel,
+		grouprelationIn: GrouprelationModel,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 		conditionsGroup?: RequestGroupsConditionsInterface,
@@ -107,20 +107,20 @@ export class MailreceiverService extends ApiService {
 		body = RequestUtility.addParam(
 			body,
 			EnumParamType.OBJECT,
-			'mailreceiver',
-			MailreceiverUtilConverter.toDto(mailreceiverIn),
+			'grouprelation',
+			GrouprelationUtilConverter.toDto(grouprelationIn),
 		);
 		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + communicationList.mailreceiver.save;
+				: this.environment.api.services + cakeutilsBeList.grouprelation.save;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
 	}
 
 	edit(
-		mailreceiverIn: MailreceiverModel,
+		grouprelationIn: GrouprelationModel,
 		id?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
@@ -131,16 +131,16 @@ export class MailreceiverService extends ApiService {
 		body = RequestUtility.addParam(
 			body,
 			EnumParamType.OBJECT,
-			'mailreceiver',
-			MailreceiverUtilConverter.toDto(mailreceiverIn),
+			'grouprelation',
+			GrouprelationUtilConverter.toDto(grouprelationIn),
 		);
-		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_mailreceiver', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_grouprelation', id);
 		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + communicationList.mailreceiver.edit;
+				: this.environment.api.services + cakeutilsBeList.grouprelation.edit;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
 	}
 
@@ -151,12 +151,12 @@ export class MailreceiverService extends ApiService {
 	): Observable<boolean> {
 		let body: HttpParams = new HttpParams();
 
-		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_mailreceiver', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_grouprelation', id);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + communicationList.mailreceiver.delete;
+				: this.environment.api.services + cakeutilsBeList.grouprelation.delete;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),
 		);

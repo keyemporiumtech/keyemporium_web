@@ -91,10 +91,11 @@ export class ProfilePageComponent extends BaseFormComponent {
 			idUserParam !== this.idUserLogged &&
 			!this.authenticationService.checkPermissions([
 				EnumPermissions.SUPERVISOR,
-				EnumPermissions.ALL_PROFILES,
+				EnumPermissions.CHANGE_PROFILES,
 			])
 		) {
 			this.readonly = true;
+			this.id_user = idUserParam;
 		} else {
 			this.id_user = idUserParam;
 		}
@@ -136,6 +137,7 @@ export class ProfilePageComponent extends BaseFormComponent {
 	extractData(): UserModel {
 		const values = this.form.getRawValue();
 		const model: UserModel = this.model;
+		model.id = this.id_user;
 		model.username = values.email;
 		model.name = values.name;
 		model.surname = values.surname;
@@ -152,11 +154,7 @@ export class ProfilePageComponent extends BaseFormComponent {
 	}
 	saveModelBehaviour(): BehaviourObserverModel {
 		const funPre = () => {};
-		const funOk = (res: boolean) => {
-			if (res) {
-				this.router.navigate(['app', 'confirm_login']);
-			}
-		};
+		const funOk = (res: string) => {};
 		const funError = (err: any) => {};
 		return new BehaviourObserverModel(funPre, funOk, funError);
 	}

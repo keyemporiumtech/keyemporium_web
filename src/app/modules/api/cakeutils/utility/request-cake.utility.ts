@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { RequestConditionInterface } from '../interfaces/request-conditions.interface';
 import { RequestPaginatorInterface } from '../interfaces/request-paginator.interface';
+import { RequestGroupsConditionsInterface } from '../interfaces/request-groups-conditions.interface';
 
 export class RequestCakeUtility {
 	static addConditions(httpParam: HttpParams, conditions: RequestConditionInterface): HttpParams {
@@ -38,6 +39,31 @@ export class RequestCakeUtility {
 			httpParam = httpParam.append(
 				'paginate',
 				paginator.paginate ? JSON.stringify(paginator.paginate) : null,
+			);
+		}
+		return httpParam;
+	}
+
+	static addConditionsGroups(
+		httpParam: HttpParams,
+		conditions: RequestGroupsConditionsInterface,
+	): HttpParams {
+		if (conditions) {
+			httpParam = httpParam.append(
+				'groupssave',
+				conditions.groupssave ? JSON.stringify(conditions.groupssave) : null,
+			);
+			httpParam = httpParam.append(
+				'groupsdel',
+				conditions.groupsdel ? JSON.stringify(conditions.groupsdel) : null,
+			);
+			httpParam = httpParam.append(
+				'groups',
+				conditions.groups ? JSON.stringify(conditions.groups) : null,
+			);
+			httpParam = httpParam.append(
+				'likegroups',
+				conditions.likegroups ? conditions.likegroups.toString() : null,
 			);
 		}
 		return httpParam;

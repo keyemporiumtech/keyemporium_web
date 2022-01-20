@@ -85,27 +85,6 @@ export class InputCreditcardComponent extends BaseComponent {
 			cvc: new MagicValidatorUtil((this.validations.cvc = []), undefined).required().build(),
 		});
 
-		this.formCC.addControl(
-			'num_cc',
-			new MagicValidatorUtil((this.validations.num_cc = []), undefined)
-				.required()
-				.pushAsync(
-					RequestUtility.debounceAsyncValidator(
-						CreditcardValidator.validate(
-							this.formCC.get('mm'),
-							this.formCC.get('yy'),
-							this.formCC.get('cvc'),
-							this.creditcardService,
-						),
-						this.debounce,
-					),
-					CreditcardValidator.CREDITCARD(),
-				)
-				.buildControl(),
-		);
-		this.formCC.get('num_cc').disable();
-		this.formCC.get('type').disable();
-
 		// init
 		let valMM: string;
 		for (let i = 1; i <= 12; i++) {
@@ -126,6 +105,26 @@ export class InputCreditcardComponent extends BaseComponent {
 	}
 
 	ngOnInitForChildren() {
+		this.formCC.addControl(
+			'num_cc',
+			new MagicValidatorUtil((this.validations.num_cc = []), undefined)
+				.required()
+				.pushAsync(
+					RequestUtility.debounceAsyncValidator(
+						CreditcardValidator.validate(
+							this.formCC.get('mm'),
+							this.formCC.get('yy'),
+							this.formCC.get('cvc'),
+							this.creditcardService,
+						),
+						this.debounce,
+					),
+					CreditcardValidator.CREDITCARD(),
+				)
+				.buildControl(),
+		);
+		this.formCC.get('num_cc').disable();
+		this.formCC.get('type').disable();
 		// valuechanges
 		this.subValues = this.formCC.valueChanges
 			.pipe(

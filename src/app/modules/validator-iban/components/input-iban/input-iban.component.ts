@@ -74,7 +74,9 @@ export class InputIbanComponent extends BaseComponent {
 		this.formIban = this.fb.group({
 			nation: new MagicValidatorUtil((this.validations.nation = []), undefined).required().build(),
 		});
+	}
 
+	ngOnInitForChildren() {
 		this.formIban.addControl(
 			'iban',
 			new MagicValidatorUtil((this.validations.iban = []), undefined)
@@ -89,9 +91,8 @@ export class InputIbanComponent extends BaseComponent {
 				.buildControl(),
 		);
 		this.formIban.get('iban').disable();
-	}
 
-	ngOnInitForChildren() {
+		// filter
 		const filters: DbFilterInterface[] = [];
 		if (this.filters && this.filters.length) {
 			filters.push(ApiFast.queryField('cod', this.filters));

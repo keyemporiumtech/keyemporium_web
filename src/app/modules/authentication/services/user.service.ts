@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -44,12 +45,14 @@ export class UserService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<UserModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_user', id);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -70,11 +73,13 @@ export class UserService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<PaginatorModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestCakeUtility.addPaginator(body, paginator);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -94,6 +99,7 @@ export class UserService extends ApiService {
 		userIn: UserModel,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -103,6 +109,7 @@ export class UserService extends ApiService {
 			'user',
 			UserUtilConverter.toDto(userIn),
 		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -116,6 +123,7 @@ export class UserService extends ApiService {
 		id?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -126,6 +134,7 @@ export class UserService extends ApiService {
 			UserUtilConverter.toDto(userIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_user', id);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -160,6 +169,7 @@ export class UserService extends ApiService {
 		confirm?: ConfirmoperationRequest,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -182,6 +192,7 @@ export class UserService extends ApiService {
 		pin: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -228,6 +239,29 @@ export class UserService extends ApiService {
 			requestManager && requestManager.url
 				? requestManager.url
 				: this.environment.api.services + authenticationList.user.logout;
+		responseManager = ApiServiceUtility.sendTokenBuildRM(this.applicationStorage, responseManager);
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
+			map((res) => (res === 1 ? true : false)),
+		);
+	}
+
+	changeProfile(
+		profile: string,
+		id?: string,
+		username?: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<boolean> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'profile', profile);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.user.changeProfile;
 		responseManager = ApiServiceUtility.sendTokenBuildRM(this.applicationStorage, responseManager);
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),

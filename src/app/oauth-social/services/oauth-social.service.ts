@@ -55,13 +55,15 @@ export class OAuthSocialService {
 	 */
 	constructor(
 		@Inject('SocialAuthServiceConfig')
-		config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig>,
+		config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig> | any,
 	) {
 		if (config instanceof Promise) {
 			// tslint:disable-next-line:no-shadowed-variable
 			config.then((config) => {
 				this.initialize(config);
 			});
+		} else if (typeof config === 'function') {
+			this.initialize(config());
 		} else {
 			this.initialize(config);
 		}

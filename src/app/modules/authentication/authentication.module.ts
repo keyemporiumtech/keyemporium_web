@@ -10,7 +10,6 @@ import { AuthenticationService } from './base/authentication.service';
 import { ActivityService } from './services/activity.service';
 import { ClienttokenService } from './services/clienttoken.service';
 import { ContactreferenceService } from './services/contactreference.service';
-import { GroupService } from './services/group.service';
 import { PermissionService } from './services/permission.service';
 import { ProfileService } from './services/profile.service';
 import { UserService } from './services/user.service';
@@ -79,7 +78,6 @@ export class AuthenticationModule {
 				ActivityService,
 				ClienttokenService,
 				ContactreferenceService,
-				GroupService,
 				PermissionService,
 				ProfileService,
 				ProfilepermissionService,

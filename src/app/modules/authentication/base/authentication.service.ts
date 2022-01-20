@@ -6,6 +6,7 @@ import {
 	AuthUtility,
 	TokenDecodeInterface,
 	PaginatorModel,
+	QueryUtility,
 } from '@ddc/rest';
 import { Injectable } from '@angular/core';
 import {
@@ -13,6 +14,7 @@ import {
 	ApplicationStorageService,
 	InnerStorageService,
 	BehaviourObserverModel,
+	FileService,
 } from '@ddc/kit';
 import { restConstants } from '../../api/cakeutils/constants/rest.constants';
 import { Observable, throwError, forkJoin, of } from 'rxjs';
@@ -30,6 +32,10 @@ import { ProfilepermissionService } from '../services/profilepermission.service'
 import { ApiFast } from '../../api/cakeutils/utility/api-fast.utility';
 import { HttpClient } from '@angular/common/http';
 import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utility';
+import { UserattachmentService } from '../services/userattachment.service';
+import { EnumAttachmentType } from '../../resources/enums/attachment-type.enum';
+import { UserattachmentModel } from '../models/userattachment.model';
+import { AttachmentModel } from '../../resources/models/attachment.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -37,9 +43,11 @@ import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utili
 export class AuthenticationService extends BaseAuthService {
 	http: HttpClient;
 	translateService: TranslateService;
+	fileService: FileService;
 	userService: UserService;
 	userprofileService: UserprofileService;
 	profilepermissionService: ProfilepermissionService;
+	userattachmentService: UserattachmentService;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -47,16 +55,20 @@ export class AuthenticationService extends BaseAuthService {
 		innerStorage: InnerStorageService,
 		http: HttpClient,
 		translateService: TranslateService,
+		fileService: FileService,
 		userService: UserService,
 		userprofileService: UserprofileService,
 		profilepermissionService: ProfilepermissionService,
+		userattachmentService: UserattachmentService,
 	) {
 		super(applicationLogger, applicationStorage, innerStorage);
 		this.http = http;
 		this.translateService = translateService;
+		this.fileService = fileService;
 		this.userService = userService;
 		this.userprofileService = userprofileService;
 		this.profilepermissionService = profilepermissionService;
+		this.userattachmentService = userattachmentService;
 	}
 
 	getDefaultMessage(): ResponseMessageInterface {
@@ -141,16 +153,21 @@ export class AuthenticationService extends BaseAuthService {
 	}
 
 	getProfileFromLogin(body: UserAuthResponse): string {
-		return body.payload.profile;
+		return body && body.payload ? body.payload.profile : undefined;
 	}
-	getUserLoggedByResponse(res: UserAuthResponse): PayloadUserInterface {
-		return res.payload;
+	getUserLoggedByResponse(body: UserAuthResponse): PayloadUserInterface {
+		return body ? body.payload : undefined;
 	}
-	getUserLoggedIdByResponse(res: UserAuthResponse): string {
-		return res.user.id;
+	getUserLoggedIdByResponse(body: UserAuthResponse): string {
+		return body && body.user ? body.user.id : undefined;
 	}
-	getUserLoggedImageByResponse(res: UserAuthResponse): string {
-		return undefined;
+	getUserLoggedImageByResponse(body: UserAuthResponse): string {
+		return body && body.image
+			? this.fileService.getBase64ByContent(body.image.content, body.image.mimetype)
+			: undefined;
+	}
+	getUsernameFromLogin(body: UserAuthResponse): string {
+		return body && body.payload ? body.payload.username : undefined;
 	}
 
 	// LOGIN CON LA VERIFICA TRAMITE PIN
@@ -345,6 +362,40 @@ export class AuthenticationService extends BaseAuthService {
 		return new BehaviourObserverModel(funPre, funOk, funError);
 	}
 
+	// PROFILE
+	changeProfile(
+		username: string,
+		profile: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<boolean> {
+		return super.changeProfile(username, profile, requestManager, responseManager);
+	}
+
+	fnChangeProfile(
+		username: string,
+		profile: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<boolean> {
+		return this.userService.changeProfile(
+			profile,
+			undefined,
+			username,
+			requestManager,
+			responseManager,
+		);
+	}
+
+	changeProfileBehaviour(): BehaviourObserverModel {
+		const funPre = () => {};
+		const funOk = (res: any) => {
+			return res;
+		};
+		const funError = (err: any) => {};
+		return new BehaviourObserverModel(funPre, funOk, funError);
+	}
+
 	// VERIFY : GESTIONE NON PREVISTA
 	// I servizi rest inviano automaticamente i codici di verifica pin e mail se previsti, quindi non è necessario gestirli
 
@@ -399,8 +450,11 @@ export class AuthenticationService extends BaseAuthService {
 
 			// uso i dati di decodifica per ottenere le info di profilo, utente e immagine
 			const userPayload = JSON.parse(decodedToken.payload.data);
-			const conditions: RequestConditionInterface = {
+			const conditionsProfile: RequestConditionInterface = {
 				belongs: ['user_fk', 'profile_fk'],
+			};
+			const conditionsAttachment: RequestConditionInterface = {
+				belongs: ['attachment_fk'],
 			};
 			return forkJoin(
 				this.userprofileService.paginate(
@@ -408,21 +462,35 @@ export class AuthenticationService extends BaseAuthService {
 						ApiFast.queryField('user_fk.username', user.username),
 						ApiFast.queryField('flgdefault', 1),
 					]),
-					conditions,
+					conditionsProfile,
 				),
 				this.userService.unique(undefined, user.username),
-				// TODO: Aggiungere user attachment
+				this.userattachmentService.principal(
+					undefined,
+					user.username,
+					EnumAttachmentType.IMAGE,
+					conditionsAttachment,
+					undefined,
+					QueryUtility.SKIP_ERROR_RES,
+				),
 			).pipe(
 				map((data) => {
 					const userAuth: UserAuthResponse = {};
 					const paginatorModel: PaginatorModel = data[0];
-					userAuth.user = data[1];
 					if (paginatorModel && paginatorModel.list && paginatorModel.list.length) {
 						const userprofile: UserprofileModel = paginatorModel.list[0];
 						userPayload.profile = userprofile.profile.cod;
 						userAuth.userprofile = userprofile;
 					}
+
+					userAuth.user = data[1];
 					userAuth.payload = userPayload;
+
+					const userAttachment: UserattachmentModel = data[2];
+					if (userAttachment && userAttachment.attachment && userAttachment.attachment.id) {
+						userAuth.image = userAttachment.attachment;
+					}
+
 					return userAuth;
 				}),
 			);
@@ -443,4 +511,5 @@ export interface UserAuthResponse {
 	user?: UserModel;
 	userprofile?: UserprofileModel;
 	payload?: PayloadUserInterface;
+	image?: AttachmentModel;
 }
