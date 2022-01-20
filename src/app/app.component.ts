@@ -10,10 +10,12 @@ export class AppComponent {
 	title: string = '';
 	idMessageModal: string = '';
 	idMessageDiv: string = '';
+	flagCookie: boolean;
 
 	constructor() {
 		this.title = environment.appName;
 		this.idMessageModal = environment.messages.idMessageModal;
 		this.idMessageDiv = environment.messages.idMessageDiv;
+		this.flagCookie = environment.enable.cookie;
 	}
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
 	selector: 'wiki-test-input-creditcard',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./test-input-creditcard.component.scss'],
 })
 export class TestInputCreditcardComponent implements OnInit {
-	constructor() {}
+	form: FormGroup;
+
+	constructor(private fb: FormBuilder) {
+		this.form = this.fb.group({
+			myCC: [undefined],
+		});
+	}
 
 	ngOnInit() {}
 }

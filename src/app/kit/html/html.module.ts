@@ -24,11 +24,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { DdcCssVarDirective } from './directives/ddc-css-var.directive';
 
 @NgModule({
 	declarations: [
 		DdcContenteditableDirective,
 		DdcInputPasswordDirective,
+		DdcCssVarDirective,
 		EscapeHtmlPipe,
 		EscapeUrlPipe,
 		ProgressComponent,
@@ -60,6 +62,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
 	exports: [
 		DdcContenteditableDirective,
 		DdcInputPasswordDirective,
+		DdcCssVarDirective,
 		EscapeHtmlPipe,
 		EscapeUrlPipe,
 		ProgressComponent,

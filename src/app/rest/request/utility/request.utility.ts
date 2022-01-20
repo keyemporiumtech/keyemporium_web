@@ -1,5 +1,8 @@
 import { HttpParams } from '@angular/common/http';
 import { EnumParamType } from '../enums/param-type.enum';
+import { AsyncValidatorFn, AbstractControl } from '@angular/forms';
+import { of, Observable } from 'rxjs';
+import { switchMap, delay, distinctUntilChanged, first } from 'rxjs/operators';
 
 export class RequestUtility {
 	static addParam(
@@ -25,5 +28,25 @@ export class RequestUtility {
 			default:
 				return httpParam.append(key, null);
 		}
+	}
+
+	static debounceAsyncValidator(inputValidator: AsyncValidatorFn, time: number): AsyncValidatorFn {
+		return (control: AbstractControl): Observable<{ [key: string]: any } | undefined> => {
+			return of(control.value).pipe(
+				delay(time),
+				distinctUntilChanged(),
+				switchMap(() => inputValidator(control)),
+				first(),
+			);
+		};
+	}
+
+	static debounceAsyncByValue<T>(value: any, time: number, async: Observable<T>): Observable<T> {
+		return of(value).pipe(
+			delay(time),
+			distinctUntilChanged(),
+			switchMap(() => async),
+			first(),
+		);
 	}
 }

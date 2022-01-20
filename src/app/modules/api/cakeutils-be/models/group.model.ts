@@ -1,13 +1,9 @@
-import { ApiModel } from '../../api/cakeutils/base/api.model';
-import { UserModel } from './user.model';
-import { ActivityModel } from './activity.model';
+import { ApiModel } from '../../cakeutils/base/api.model';
 
 export class GroupModel extends ApiModel {
 	private _cod: string;
 	private _title: string;
 	private _description: string;
-	private _user: UserModel;
-	private _activity: ActivityModel;
 	private _symbol: string;
 	private _flgused: boolean;
 
@@ -33,22 +29,6 @@ export class GroupModel extends ApiModel {
 	 */
 	public get description(): string {
 		return this._description;
-	}
-
-	/**
-	 * Getter user
-	 * @return {UserModel}
-	 */
-	public get user(): UserModel {
-		return this._user;
-	}
-
-	/**
-	 * Getter activity
-	 * @return {ActivityModel}
-	 */
-	public get activity(): ActivityModel {
-		return this._activity;
 	}
 
 	/**
@@ -89,22 +69,6 @@ export class GroupModel extends ApiModel {
 	 */
 	public set description(value: string) {
 		this._description = value;
-	}
-
-	/**
-	 * Setter user
-	 * @param {UserModel} value
-	 */
-	public set user(value: UserModel) {
-		this._user = value;
-	}
-
-	/**
-	 * Setter activity
-	 * @param {ActivityModel} value
-	 */
-	public set activity(value: ActivityModel) {
-		this._activity = value;
 	}
 
 	/**

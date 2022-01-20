@@ -25,6 +25,7 @@ import { map } from 'rxjs/operators';
 import { NationModel } from '../../localesystem/models/nation.model';
 import { NationConverter } from '../../localesystem/converters/nation.converter';
 import { IbanResponseInterface } from '../interfaces/iban-response.interface';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 
 @Injectable()
 export class IbanService extends ApiService {
@@ -86,11 +87,13 @@ export class IbanService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<NationModel[]> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestCakeUtility.addPaginator(body, paginator);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url

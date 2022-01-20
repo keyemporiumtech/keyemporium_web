@@ -1,33 +1,29 @@
-<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
-<form [formGroup]="formCC">
-
-
-  <div *ngIf="ready" class="form-group row">
-    <div class="col-lg-2">
-      <label>{{selectMM.label | translate}}</label>
-      <ddc-init-input-select #months [field]="selectMM" [options]="optionMM" [noMargin]="true">
-      </ddc-init-input-select>
-    </div>
-    <div class="col-lg-3">
-      <label>{{selectYY.label | translate}}</label>
-      <ddc-init-input-select #years [field]="selectYY" [options]="optionYY" [noMargin]="true">
-      </ddc-init-input-select>
-    </div>
-    <div class="col-lg-3">
-      <label>{{inputCvc.label | translate}}</label>
-      <ddc-init-input-text [field]="inputCvc"></ddc-init-input-text>
-    </div>
+<div *ngIf="ready" class="form-group row">
+  <div class="col-lg-2">
+    <label>{{selectMM.label | translate}}</label>
+    <ddc-init-input-select #months [field]="selectMM" [options]="optionMM" [noMargin]="true">
+    </ddc-init-input-select>
   </div>
+  <div class="col-lg-3">
+    <label>{{selectYY.label | translate}}</label>
+    <ddc-init-input-select #years [field]="selectYY" [options]="optionYY" [noMargin]="true">
+    </ddc-init-input-select>
+  </div>
+  <div class="col-lg-3">
+    <label>{{inputCvc.label | translate}}</label>
+    <ddc-init-input-text [field]="inputCvc"></ddc-init-input-text>
+  </div>
+</div>
 
-  <div *ngIf="ready" class="form-group row">
-    <div class="col-lg-8">
-      <label>{{inputCC.label | translate}}</label>
-      <ddc-init-input-text [field]="inputCC"></ddc-init-input-text>
-      <ddc-init-app-loading [loading]="loadingCC"></ddc-init-app-loading>
-      <div *ngIf="messageCC" class="input-invalid-message">{{messageCC}}</div>
-    </div>
-    <div class="col-lg-4">
-      <!--
+<div *ngIf="ready" class="form-group row">
+  <div class="col-lg-8">
+    <label>{{inputCC.label | translate}}</label>
+    <ddc-init-app-loading [loading]="loadingCC"></ddc-init-app-loading>
+    <ddc-init-input-text [field]="inputCC"></ddc-init-input-text>
+    <div *ngIf="messageCC" class="input-invalid-message">{{messageCC}}</div>
+  </div>
+  <div class="col-lg-4">
+    <!--
       <label>{{selectTypes.label | translate}}</label>
       <ng-container *ngIf="!showImage">
         <ddc-init-input-select #types [id]="id" [field]="selectTypes" [options]="optionTypes" [noMargin]="true"
@@ -40,9 +36,8 @@
         </ddc-init-form-select-div>
       </ng-container>
       -->
-      <div *ngIf="textType" [style.margin-top]="'2.2rem'"
-        [innerHTML]="translateKey(textType) | translate:translateParams(textType) | escapehtml">
-      </div>
+    <div *ngIf="textType" [style.margin-top]="'2.2rem'"
+      [innerHTML]="translateKey(textType) | translate:translateParams(textType) | escapehtml">
     </div>
   </div>
-</form>
+</div>

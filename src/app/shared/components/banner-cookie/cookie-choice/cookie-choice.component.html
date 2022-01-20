@@ -82,7 +82,8 @@
         <div class="col col-2">
           <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" disabled id="switchPreference" [checked]="isPreference"
-              [disabled]="!listPreference || !listPreference.length">
+              [disabled]="!listPreference || !listPreference.length"
+              (change)="toggleCheck(cookieType.PREFERENCE, $event)">
             <label class="custom-control-label" for="switchPreference">&nbsp;</label>
           </div>
         </div>
@@ -124,7 +125,7 @@
         <div class="col col-2">
           <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" disabled id="switchStatistic" [checked]="isStatistic"
-              [disabled]="!listStatistic || !listStatistic.length">
+              [disabled]="!listStatistic || !listStatistic.length" (change)="toggleCheck(cookieType.STATISTIC, $event)">
             <label class="custom-control-label" for="switchStatistic">&nbsp;</label>
           </div>
         </div>

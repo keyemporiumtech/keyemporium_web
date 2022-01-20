@@ -21,7 +21,7 @@
   <div class="mt-3">
     <pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
-        
+
         ```html
           &lt;a class="btn btn-xs btn-primary mr-2" (click)="progressBar1.start()"&gt;Start&lt;/a&gt;
           &lt;a class="btn btn-xs btn-danger mr-2" (click)="progressBar1.stop()"&gt;Stop&lt;/a&gt;
@@ -29,9 +29,9 @@
           &lt;ddc-init-progress-bar #progressBar1 [cssClass]="'mt-2'" [backgroundColor]="'darkgray'" [color]="'darkblue'"
             [height]="'16px'" [intervalGrow]="0.05" [showText]="true"&gt;
           &lt;/ddc-init-progress-bar&gt;
-           
+
         ```
-  
+
       </div>
     </pre>
   </div>
@@ -71,4 +71,42 @@
   <strong>xlg</strong>
   <ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'xlg'">
   </ddc-init-progress-bar>
+</div>
+
+
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseCssVars"
+  aria-expanded="false" aria-controls="collapseCssVars">
+  DdcCssVarDirective
+</button>
+
+<div class="collapse" id="collapseCssVars">
+  <div class="mt-3">
+    La direttiva <strong>DdcCssVarDirective</strong> consente di assegnare proprietà di stile con valore una variabile
+    css
+    e viene configuarto con i seguenti parametri di input
+    <ul>
+      <li><strong>cssVars</strong> Array di oggetti key,value dove key è la proprietà css e value è la variabile da
+        assegnare</li>
+    </ul>
+
+  </div>
+  <div class="mt-3">
+    <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+          &lt;div ddcCssVar [cssVars]="[&#123;key:'background', value:'dark'&#125;, &#123;key:'color', value:'light'&#125;]"&gt;Text for div&lt;/div&gt;
+
+        ```
+
+      </div>
+    </pre>
+  </div>
+
+  <h5>Esempio di settaggio variabili</h5>
+  <div ddcCssVar [cssVars]="[{key:'background', value:'dark'}, {key:'color', value:'light'}]">
+    <span class="m-2">Text for div</span>
+  </div>
+  <hr />
 </div>

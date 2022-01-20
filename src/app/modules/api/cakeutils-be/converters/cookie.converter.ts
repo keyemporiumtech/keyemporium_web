@@ -19,7 +19,7 @@ export class CookieConverter extends BaseApiConverter<CookieModel, CookieDTO> {
 		model.durationDesc = dto.durationDesc;
 		model.type = dto.type;
 		model.value = dto.value;
-		model.hash = dto.hash;
+		this.convertBooleanToModel(dto, model, 'hash');
 		model.protocol = dto.protocol;
 		model.link = dto.link;
 		// enums
@@ -38,7 +38,7 @@ export class CookieConverter extends BaseApiConverter<CookieModel, CookieDTO> {
 		dto.durationDesc = model.durationDesc;
 		dto.type = model.type;
 		dto.value = model.value;
-		dto.hash = model.hash;
+		this.convertBooleanToDto(dto, model, 'hash');
 		dto.protocol = model.protocol;
 		dto.link = model.link;
 		return dto;

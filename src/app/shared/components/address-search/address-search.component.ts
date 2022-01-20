@@ -5,7 +5,12 @@ import {
 	OptionListModel,
 	StringTranslate,
 } from '@ddc/kit';
-import { OpenstreetmapService, OpenstreetLocationModel, EsriGeoService } from '@ddc/rest';
+import {
+	OpenstreetmapService,
+	OpenstreetLocationModel,
+	EsriGeoService,
+	RequestUtility,
+} from '@ddc/rest';
 import { Subscription } from 'rxjs';
 import { FormFieldModel } from '../../models/form/form-field.model';
 import { distinctUntilChanged, map } from 'rxjs/operators';
@@ -17,6 +22,7 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
 })
 export class AddressSearchComponent extends BaseComponent {
 	@Input() limit: number = 5;
+	@Input() debounce: number = 1000;
 	@Input() extratags: boolean = true;
 	@Input() field: FormFieldModel;
 	@Input() textNotFound: string | StringTranslate;
@@ -38,6 +44,8 @@ export class AddressSearchComponent extends BaseComponent {
 	// sub
 	subResult: Subscription;
 	subInputChange: Subscription;
+	// flags
+	loadingResults: boolean;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -113,17 +121,37 @@ export class AddressSearchComponent extends BaseComponent {
 						this.results.push(new OptionListModel(el.name, el.name, payload));
 					});
 				}
+				return true;
 			}),
 		);
 
-		this.subResult = this.flgEsri ? $obsEsri.subscribe() : $obsOpenstreet.subscribe();
+		this.loadingResults = true;
+		this.subResult = RequestUtility.debounceAsyncByValue(
+			term,
+			this.debounce,
+			this.flgEsri ? $obsEsri : $obsOpenstreet,
+		).subscribe(
+			(res) => {
+				this.loadingResults = false;
+			},
+			(err) => {
+				this.loadingResults = false;
+			},
+		);
 	}
 
 	more() {
 		const term: string = this.field.formControl.value;
-		this.subResult = this.openstreetService
-			.searchOpenstreetLocationList(term, this.limit, this.excludeids, this.extratags)
-			.subscribe((res) => {
+		const $obs = this.openstreetService.searchOpenstreetLocationList(
+			term,
+			this.limit,
+			this.excludeids,
+			this.extratags,
+		);
+
+		this.loadingResults = true;
+		this.subResult = RequestUtility.debounceAsyncByValue(term, this.debounce, $obs).subscribe(
+			(res) => {
 				res.forEach((el) => {
 					this.results.push(new OptionListModel(el.place_id, el.display_name, el));
 					this.excludeids.push('' + el.place_id);
@@ -133,7 +161,12 @@ export class AddressSearchComponent extends BaseComponent {
 				} else {
 					this.showNoResults = false;
 				}
-			});
+				this.loadingResults = false;
+			},
+			(err) => {
+				this.loadingResults = false;
+			},
+		);
 	}
 
 	fnSelect(item: OptionListModel) {

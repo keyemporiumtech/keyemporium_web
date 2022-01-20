@@ -8,7 +8,7 @@ import { OAuthSocialService, SocialAuthServiceConfig } from './services/oauth-so
 	imports: [CommonModule],
 })
 export class OAuthSocialModule {
-	static forRoot(config: SocialAuthServiceConfig) {
+	static forRoot(config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig> | any) {
 		return {
 			ngModule: OAuthSocialModule,
 			providers: [

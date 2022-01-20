@@ -30,7 +30,7 @@ export class BannerCookieComponent extends BaseComponent {
 	@Input() flgClose: boolean;
 	@Input() closeIcon: string;
 	// text
-	@Input() text: string | StringTranslate;
+	@Input() text: string | StringTranslate = 'APP.COOKIE.ATTENTION_CLOSE';
 	// operations
 	@Input() flgLoad: boolean = true;
 	@Input() delayLoad: number;
@@ -130,6 +130,7 @@ export class BannerCookieComponent extends BaseComponent {
 	onClose() {
 		this.emitClose.emit('cookiePolicy' + this.id);
 		this.applicationStorage.bannerStatus.set('cookiePolicy' + this.id);
+		this.modalEdit.closeModal();
 	}
 
 	moreInfo() {

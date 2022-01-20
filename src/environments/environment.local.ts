@@ -49,6 +49,14 @@ export const environment = {
 			// 'https://www.googleapis.com/auth/user.phonenumbers.read',
 		],
 		google_oauth_apiKey: 'AIzaSyCu3X4UzhI_3qGoFKZ7UXIH8UstCytsFNM',
+		google_oauth_fields: [
+			'ageRanges',
+			// 'addresses',
+			'biographies',
+			'birthdays',
+			'genders',
+			// 'phoneNumbers',
+		],
 		facebook_oauth_app_name: 'TESTING',
 		facebook_oauth_app_id: '565642658004447',
 		facebook_oauth_scopes: [
@@ -61,6 +69,18 @@ export const environment = {
 			// 'user_location',
 		],
 		facebook_oauth_apiKey: '',
+		facebook_oauth_fields: [
+			'name',
+			'email',
+			'picture',
+			'first_name',
+			'last_name',
+			'birthday',
+			'gender',
+			// 'hometown',
+			'link',
+			// 'location',
+		],
 	},
 	messages: {
 		idMessagePrincipal: 'appMessage',
@@ -97,6 +117,7 @@ export const environment = {
 		currencies: true,
 		nations: true,
 		init: true,
+		cookie: true,
 	},
 	logger: {
 		request: true,

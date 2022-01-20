@@ -50,7 +50,7 @@ export function provideSocialConfig(): SocialAuthServiceConfig {
 
 @NgModule({
 	declarations: [],
-	imports: [CommonModule, OAuthSocialModule.forRoot(provideSocialConfig())],
+	imports: [CommonModule, OAuthSocialModule.forRoot(provideSocialConfig)],
 	exports: [],
 })
 export class SocialModule {

@@ -1,0 +1,17 @@
+<div class="text-center">
+  <form class="form-signin" [formGroup]="form">
+    <img class="mb-4" src="assets/logo.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">{{'PERSONAL.CONFIRM_LOGIN.TITLE' | translate}}</h1>
+
+    <label for="inputPin">{{'PERSONAL.CONFIRM_LOGIN.PIN' | translate}}</label>
+    <ddc-init-input-password [id]="'inputPin'" [field]="FLD_pin">
+    </ddc-init-input-password>
+
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid" (click)="save()">
+      {{'PERSONAL.BUTTON.LOGIN'| translate}}
+    </button>
+    <p class="mt-5 mb-3 text-muted" [innerHTML]="'PERSONAL.COPYRIGHT' | translate"></p>
+  </form>
+
+
+</div>

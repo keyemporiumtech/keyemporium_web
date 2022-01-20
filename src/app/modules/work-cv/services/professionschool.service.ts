@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -46,6 +47,7 @@ export class ProfessionschoolService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<ProfessionschoolModel> {
 		let body: HttpParams = new HttpParams();
 
@@ -53,6 +55,7 @@ export class ProfessionschoolService extends ApiService {
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
 
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -73,11 +76,13 @@ export class ProfessionschoolService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<PaginatorModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestCakeUtility.addPaginator(body, paginator);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -97,6 +102,7 @@ export class ProfessionschoolService extends ApiService {
 		professionschoolIn: ProfessionschoolModel,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -106,6 +112,7 @@ export class ProfessionschoolService extends ApiService {
 			'professionschool',
 			ProfessionschoolUtilConverter.toDto(professionschoolIn),
 		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -119,6 +126,7 @@ export class ProfessionschoolService extends ApiService {
 		id?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -129,6 +137,7 @@ export class ProfessionschoolService extends ApiService {
 			ProfessionschoolUtilConverter.toDto(professionschoolIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_professionschool', id);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url

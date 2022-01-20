@@ -10,6 +10,7 @@ import { CreditcardService } from './services/creditcard.service';
 import { InputCreditcardComponent } from './components/input-creditcard/input-creditcard.component';
 import { TestValidatorCreditcardComponent } from './components/test-validator-creditcard/test-validator-creditcard.component';
 import { TestInputCreditcardComponent } from './components/test-validator-creditcard/test-input-creditcard/test-input-creditcard.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
 	declarations: [
@@ -26,6 +27,7 @@ import { TestInputCreditcardComponent } from './components/test-validator-credit
 		KitModule,
 		SharedModule,
 		ApiModule,
+		MarkdownModule,
 	],
 	exports: [
 		InputCreditcardComponent,

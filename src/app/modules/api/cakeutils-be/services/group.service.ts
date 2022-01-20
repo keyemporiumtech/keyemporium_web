@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestGroupsConditionsInterface } from '../../cakeutils/interfaces/request-groups-conditions.interface';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -18,11 +19,11 @@ import { Injectable } from '@angular/core';
 import { GroupModel } from '../models/group.model';
 import { GroupConverter, GroupUtilConverter } from '../converters/group.converter';
 import { map } from 'rxjs/operators';
-import { ApiService } from '../../api/cakeutils/base/api.service';
-import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
-import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
-import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
-import { authenticationList } from '../constants/authentication.list';
+import { ApiService } from '../../cakeutils/base/api.service';
+import { RequestConditionInterface } from '../../cakeutils/interfaces/request-conditions.interface';
+import { RequestCakeUtility } from '../../cakeutils/utility/request-cake.utility';
+import { cakeutilsBeList } from '../constants/cakeutils-be.list';
+import { RequestPaginatorInterface } from '../../cakeutils/interfaces/request-paginator.interface';
 
 @Injectable()
 export class GroupService extends ApiService {
@@ -42,17 +43,19 @@ export class GroupService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<GroupModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_group', id);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + authenticationList.group.unique;
+				: this.environment.api.services + cakeutilsBeList.group.unique;
 		return this.get(
 			this.httpHeaders,
 			url,
@@ -68,16 +71,18 @@ export class GroupService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<PaginatorModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestCakeUtility.addPaginator(body, paginator);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + authenticationList.group.paginate;
+				: this.environment.api.services + cakeutilsBeList.group.paginate;
 		return this.get(
 			this.httpHeaders,
 			url,
@@ -92,6 +97,7 @@ export class GroupService extends ApiService {
 		groupIn: GroupModel,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -101,11 +107,12 @@ export class GroupService extends ApiService {
 			'group',
 			GroupUtilConverter.toDto(groupIn),
 		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + authenticationList.group.save;
+				: this.environment.api.services + cakeutilsBeList.group.save;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
 	}
 
@@ -114,6 +121,7 @@ export class GroupService extends ApiService {
 		id?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -124,11 +132,12 @@ export class GroupService extends ApiService {
 			GroupUtilConverter.toDto(groupIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_group', id);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + authenticationList.group.edit;
+				: this.environment.api.services + cakeutilsBeList.group.edit;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
 	}
 
@@ -144,7 +153,7 @@ export class GroupService extends ApiService {
 		const url =
 			requestManager && requestManager.url
 				? requestManager.url
-				: this.environment.api.services + authenticationList.group.delete;
+				: this.environment.api.services + cakeutilsBeList.group.delete;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),
 		);

@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -45,12 +46,14 @@ export class PhonereceiverService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<PhonereceiverModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_phonereceiver', id);
 
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -71,11 +74,13 @@ export class PhonereceiverService extends ApiService {
 		conditions?: RequestConditionInterface,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<PaginatorModel> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestCakeUtility.addPaginator(body, paginator);
 		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -95,6 +100,7 @@ export class PhonereceiverService extends ApiService {
 		phonereceiverIn: PhonereceiverModel,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -104,6 +110,7 @@ export class PhonereceiverService extends ApiService {
 			'phonereceiver',
 			PhonereceiverUtilConverter.toDto(phonereceiverIn),
 		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url
@@ -117,6 +124,7 @@ export class PhonereceiverService extends ApiService {
 		id?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
 	): Observable<string> {
 		let body: HttpParams = new HttpParams();
 
@@ -127,6 +135,7 @@ export class PhonereceiverService extends ApiService {
 			PhonereceiverUtilConverter.toDto(phonereceiverIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_phonereceiver', id);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =
 			requestManager && requestManager.url

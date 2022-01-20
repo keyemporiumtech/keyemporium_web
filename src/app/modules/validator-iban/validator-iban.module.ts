@@ -10,6 +10,7 @@ import { ApiModule } from '../api/api.module';
 import { InputIbanComponent } from './components/input-iban/input-iban.component';
 import { TestValidatorIbanComponent } from './components/test-validator-iban/test-validator-iban.component';
 import { TestInputIbanComponent } from './components/test-validator-iban/test-input-iban/test-input-iban.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
 	declarations: [InputIbanComponent, TestValidatorIbanComponent, TestInputIbanComponent],
@@ -22,6 +23,7 @@ import { TestInputIbanComponent } from './components/test-validator-iban/test-in
 		KitModule,
 		SharedModule,
 		ApiModule,
+		MarkdownModule,
 	],
 	exports: [InputIbanComponent, TestValidatorIbanComponent, TestInputIbanComponent],
 })

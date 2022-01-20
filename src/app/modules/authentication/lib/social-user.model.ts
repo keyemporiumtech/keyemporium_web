@@ -4,7 +4,6 @@ import { ContactreferenceModel } from '../models/contactreference.model';
 import { ApiModel } from '../../api/cakeutils/base/api.model';
 
 export class SocialUserModel extends ApiModel {
-	private _id: string;
 	private _provider: string;
 	private _photoUrl: string;
 	private _authToken: string;
@@ -13,14 +12,6 @@ export class SocialUserModel extends ApiModel {
 	private _user: UserModel;
 	private _addresses: AddressModel[];
 	private _phones: ContactreferenceModel[];
-
-	/**
-	 * Getter id
-	 * @return {string}
-	 */
-	public get id(): string {
-		return this._id;
-	}
 
 	/**
 	 * Getter provider
@@ -84,14 +75,6 @@ export class SocialUserModel extends ApiModel {
 	 */
 	public get phones(): ContactreferenceModel[] {
 		return this._phones;
-	}
-
-	/**
-	 * Setter id
-	 * @param {string} value
-	 */
-	public set id(value: string) {
-		this._id = value;
 	}
 
 	/**

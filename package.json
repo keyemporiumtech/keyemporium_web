@@ -1,6 +1,6 @@
 {
   "name": "keyemporium-web",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -71,7 +71,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
-    "barrelsby": "^2.2.0",
+    "barrelsby": "^1.0.2",
     "codelyzer": "~4.5.0",
     "css-minify": "^1.0.1",
     "jasmine-core": "~2.99.1",

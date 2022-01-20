@@ -7,13 +7,13 @@ import {
 	WaitElementsUtility,
 	StringTranslate,
 } from '@ddc/kit';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { CreditcardService } from '../../services/creditcard.service';
 import { InputSelectComponent } from '../../../../shared/form/input-select/input-select.component';
 import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
 import { CreditcardValidator } from '../../validators/creditcard.validator';
 import { Subscription, of } from 'rxjs';
-import { QueryUtility } from '@ddc/rest';
+import { QueryUtility, RequestUtility } from '@ddc/rest';
 import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
 import { distinctUntilChanged, switchMap } from 'rxjs/operators';
 
@@ -24,6 +24,8 @@ import { distinctUntilChanged, switchMap } from 'rxjs/operators';
 })
 export class InputCreditcardComponent extends BaseComponent {
 	@Input() showImage: boolean;
+	@Input() debounce: number = 1000;
+	@Input() extControl: FormControl | AbstractControl;
 	@ViewChild('types') types: InputSelectComponent;
 	@ViewChild('months') months: InputSelectComponent;
 	@ViewChild('years') years: InputSelectComponent;
@@ -60,6 +62,7 @@ export class InputCreditcardComponent extends BaseComponent {
 	// sub
 	subTypes: Subscription;
 	subStatusCC: Subscription;
+	subValueCC: Subscription;
 	subCC: Subscription;
 	subValues: Subscription;
 	subInputs: Subscription;
@@ -82,24 +85,6 @@ export class InputCreditcardComponent extends BaseComponent {
 			cvc: new MagicValidatorUtil((this.validations.cvc = []), undefined).required().build(),
 		});
 
-		this.formCC.addControl(
-			'num_cc',
-			new MagicValidatorUtil((this.validations.num_cc = []), undefined)
-				.required()
-				.pushAsync(
-					CreditcardValidator.validate(
-						this.formCC.get('mm'),
-						this.formCC.get('yy'),
-						this.formCC.get('cvc'),
-						this.creditcardService,
-					),
-					CreditcardValidator.CREDITCARD(),
-				)
-				.buildControl(),
-		);
-		this.formCC.get('num_cc').disable();
-		this.formCC.get('type').disable();
-
 		// init
 		let valMM: string;
 		for (let i = 1; i <= 12; i++) {
@@ -120,6 +105,26 @@ export class InputCreditcardComponent extends BaseComponent {
 	}
 
 	ngOnInitForChildren() {
+		this.formCC.addControl(
+			'num_cc',
+			new MagicValidatorUtil((this.validations.num_cc = []), undefined)
+				.required()
+				.pushAsync(
+					RequestUtility.debounceAsyncValidator(
+						CreditcardValidator.validate(
+							this.formCC.get('mm'),
+							this.formCC.get('yy'),
+							this.formCC.get('cvc'),
+							this.creditcardService,
+						),
+						this.debounce,
+					),
+					CreditcardValidator.CREDITCARD(),
+				)
+				.buildControl(),
+		);
+		this.formCC.get('num_cc').disable();
+		this.formCC.get('type').disable();
 		// valuechanges
 		this.subValues = this.formCC.valueChanges
 			.pipe(
@@ -142,6 +147,15 @@ export class InputCreditcardComponent extends BaseComponent {
 			.statusChanges.pipe(distinctUntilChanged())
 			.subscribe((status) => {
 				this.manageStatusCC(status);
+			});
+
+		this.subValueCC = this.formCC
+			.get('num_cc')
+			.valueChanges.pipe(distinctUntilChanged())
+			.subscribe((value) => {
+				if (this.extControl) {
+					this.extControl.setValue(value);
+				}
 			});
 
 		// loadings
@@ -242,6 +256,9 @@ export class InputCreditcardComponent extends BaseComponent {
 		}
 		if (this.subStatusCC) {
 			this.subStatusCC.unsubscribe();
+		}
+		if (this.subValueCC) {
+			this.subValueCC.unsubscribe();
 		}
 		if (this.subCC) {
 			this.subCC.unsubscribe();

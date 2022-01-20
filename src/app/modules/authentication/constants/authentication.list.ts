@@ -20,6 +20,7 @@ export const authenticationList = {
 		confirmlogin: 'user/confirmLogin',
 		checksession: 'user/checkSession',
 		logout: 'user/logout',
+		changeProfile: 'user/changeProfile',
 	},
 	activity: {
 		unique: 'activity/get',
@@ -39,13 +40,6 @@ export const authenticationList = {
 		delete: 'contactreference/delete',
 		tpcontactreference: 'activity/tpcontactreference',
 		tpsocialreference: 'activity/tpsocialreference',
-	},
-	group: {
-		unique: 'group/get',
-		paginate: 'group/table',
-		save: 'group/save',
-		edit: 'group/edit',
-		delete: 'group/delete',
 	},
 	userreport: {
 		unique: 'userreport/get',

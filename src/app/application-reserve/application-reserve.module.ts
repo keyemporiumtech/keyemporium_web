@@ -12,6 +12,9 @@ import { HomeReserveComponent } from './pages/home-reserve/home-reserve.componen
 import { LayoutReserveComponent } from './template/layout-reserve/layout-reserve.component';
 import { HeaderReserveComponent } from './template/header-reserve/header-reserve.component';
 import { FooterReserveComponent } from './template/footer-reserve/footer-reserve.component';
+import { AuthenticationModule } from '../modules/authentication/authentication.module';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ValidatorPasswordModule } from '../modules/validator-password/validator-password.module';
 
 @NgModule({
 	declarations: [
@@ -19,6 +22,7 @@ import { FooterReserveComponent } from './template/footer-reserve/footer-reserve
 		LayoutReserveComponent,
 		HeaderReserveComponent,
 		FooterReserveComponent,
+		ProfilePageComponent,
 	],
 	imports: [
 		CommonModule,
@@ -31,6 +35,9 @@ import { FooterReserveComponent } from './template/footer-reserve/footer-reserve
 		// forms
 		FormsModule,
 		ReactiveFormsModule,
+		// modules
+		ValidatorPasswordModule.forRoot(),
+		AuthenticationModule.forRoot(),
 	],
 })
 export class ApplicationReserveModule {

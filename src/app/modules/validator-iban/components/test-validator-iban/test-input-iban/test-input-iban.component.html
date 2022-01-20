@@ -13,3 +13,37 @@
     <ddc-init-input-iban [iban]="'IT 67 A 03109 05024 000511362038'"></ddc-init-input-iban>
   </div>
 </div>
+
+<hr />
+<div class="row">
+  <div class="col-12" *ngIf="form">
+    <h5>Uso del componente all'interno di un form</h5>
+
+    <pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+        ```typescript
+        form: FormGroup;
+
+        ...
+
+        this.form = this.fb.group(&#123;
+          myIban: [undefined],
+        &#125;);
+        ```
+
+
+        ```html
+        &lt;ddc-init-input-iban [extControl]="this.form.get('myIban')" [iban]="'IT 67 A 03109 05024 000511362038'"&gt;&lt;/ddc-init-input-iban&gt;
+        ```
+    </div>
+    </pre>
+
+    <form [formGroup]="form">
+      <ddc-init-input-iban [extControl]="this.form.get('myIban')" [iban]="'IT 67 A 03109 05024 000511362038'">
+      </ddc-init-input-iban>
+    </form>
+
+    <br />
+    {{this.form.get('myIban').value}}
+  </div>
+</div>

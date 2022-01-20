@@ -1,5 +1,46 @@
 {
   "PERSONAL": {
-    "COPYRIGHT": "&copy; Keyemporium"
+    "BUTTON": {
+      "LOGIN": "Login"
+    },
+    "CONFIRM_LOGIN": {
+      "PIN": "Inserisci il codice ricevuto per validare il tuo accesso",
+      "TITLE": "Entra in Keyemporium"
+    },
+    "COOKIE": {
+      "ACCEPT": "Accetta tutti",
+      "DELETE": "Rifiuta",
+      "EDIT": "Personalizza",
+      "INFO": "<strong>Questo sito web utilizza i cookie</strong><br/>Utilizziamo i cookie per personalizzare contenuti ed annunci, per fornire funzionalità dei social media e per analizzare il nostro traffico. Condividiamo inoltre informazioni sul modo in cui utilizza il nostro sito con i nostri partner che si occupano di analisi dei dati web, pubblicità e social media, i quali potrebbero combinarle con altre informazioni che ha fornito loro o che hanno raccolto dal suo utilizzo dei loro servizi.",
+      "INFO_CLOSE": "Chiudendo il banner si accetteranno tutti i cookie.",
+      "INFO_DELETE": "Rifiutando l'utilizzo dei cookie necessari non sarà possibile navigare il sito.",
+      "NAV1": "Consenso",
+      "NAV2": "Personalizza",
+      "NAV3": "Informazione sui cookie",
+      "LINK_EXTERNAL": "Per saperne di più sul fornitore",
+      "NECESSARY": {
+        "TITLE": "Necessari",
+        "DESCRIPTION": "I cookie necessari contribuiscono a rendere fruibile il sito web abilitandone funzionalità di base quali la navigazione sulle pagine e l'accesso alle aree protette del sito. Il sito web non è in grado di funzionare correttamente senza questi cookie.",
+        "CAKEPHP": "Questa tipologia di cookie permette il corretto funzionamento di alcune sezioni del Sito. Sono di tipo persistenti (una volta chiuso il browser non vengono distrutti ma rimangono fino ad una data di scadenza preimpostata). Sono necessari quindi a visualizzare correttamente il sito e sono solo in relazione ai servizi tecnici offerti e verranno quindi sempre utilizzati e inviati, a meno che non si modifichi le impostazioni nel proprio browser"
+      },
+      "PREFERENCE": {
+        "TITLE": "Preferenze",
+        "DESCRIPTION": "I cookie di preferenza consentono al sito web di memorizzare informazioni che ne influenzano il comportamento o l'aspetto, quali la lingua preferita o la località nella quale ti trovi.",
+        "KEYPROFILE": "Questa tipologia di cookie memorizza i dati anagrafici dell'utente per proporre soluzioni di navigazione attinenti a luoghi, età e lingua"
+      }
+    },
+    "COPYRIGHT": "&copy; Keyemporium",
+    "LABEL": {
+      "EMAIL": "Indirizzo Email",
+      "EXPIRATION": "Scadenza",
+      "PASSWORD": "Password",
+      "TYPE": "Tipo"
+    },
+    "LOGIN": {
+      "REMEMBERME": "Ricordami",
+      "SIGNIN_GOOGLE": "Entra con Google",
+      "SIGNIN_FACEBOOK": "Entra con Facebook",
+      "TITLE": "Entra in Keyemporium"
+    }
   }
 }

@@ -10,7 +10,7 @@ export class CookieModel extends ApiModel {
 	private _protocol: string;
 	private _type: string; // EnumCookieType
 	private _value: any; // any
-	private _hash: number; // boolean
+	private _hash: boolean;
 
 	// enum
 	private _typeEnum: EnumCookieType; // EnumCookieType
@@ -81,9 +81,9 @@ export class CookieModel extends ApiModel {
 
 	/**
 	 * Getter hash
-	 * @return {number}
+	 * @return {boolean}
 	 */
-	public get hash(): number {
+	public get hash(): boolean {
 		return this._hash;
 	}
 
@@ -161,9 +161,9 @@ export class CookieModel extends ApiModel {
 
 	/**
 	 * Setter hash
-	 * @param {number} value
+	 * @param {boolean} value
 	 */
-	public set hash(value: number) {
+	public set hash(value: boolean) {
 		this._hash = value;
 	}
 

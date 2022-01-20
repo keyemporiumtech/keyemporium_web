@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { template } from '../../../../environments/template/template';
 import { BaseInputComponent } from '../base-input.component';
+import { RequestUtility } from '@ddc/rest';
 
 @Component({
 	selector: 'ddc-init-input-autocomplete',
@@ -21,6 +22,7 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 	@ViewChild('autocomplete') autocomplete: AutocompleteComponent;
 	@Input() textNoRecords: string | StringTranslate;
 	@Input() digits: number;
+	@Input() debounce: number = 1000;
 	@Input() list: OptionListModel[];
 	@Output() searchEmit = new EventEmitter<string>(); // evento che scatta quando viene avviata la ricerca (emette il parametro di ricerca)
 	@Output() selectEmit = new EventEmitter<OptionListModel>(); // evento che scatta al click di un item (emette l'item)
@@ -31,6 +33,8 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 	// functions
 	@Input() search: (term: string) => Observable<OptionListModel[]>;
 	subSearch: Subscription;
+	// flags
+	loadingResults: boolean;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -113,9 +117,20 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 		this.searchEmit.emit(term);
 
 		if (this.search) {
-			this.subSearch = this.search(term).subscribe((list) => {
-				this.list = list;
-			});
+			this.loadingResults = true;
+			this.subSearch = RequestUtility.debounceAsyncByValue(
+				term,
+				this.debounce,
+				this.search(term),
+			).subscribe(
+				(list) => {
+					this.list = list;
+					this.loadingResults = false;
+				},
+				(err) => {
+					this.loadingResults = false;
+				},
+			);
 		}
 	}
 	onSelect(item: OptionListModel) {

@@ -6,6 +6,8 @@ import { KitModule } from '@ddc/kit';
 import { TestfkService } from './services/testfk.service';
 import { TypologicalService } from './services/typological.service';
 import { CookiemanagerService } from './services/cookiemanager.service';
+import { GroupService } from './services/group.service';
+import { GrouprelationService } from './services/grouprelation.service';
 
 @NgModule({
 	declarations: [],
@@ -15,7 +17,13 @@ export class CakeutilsBeModule {
 	static forRoot() {
 		return {
 			ngModule: CakeutilsBeModule,
-			providers: [TestfkService, TypologicalService, CookiemanagerService],
+			providers: [
+				TestfkService,
+				TypologicalService,
+				CookiemanagerService,
+				GroupService,
+				GrouprelationService,
+			],
 		};
 	}
 }

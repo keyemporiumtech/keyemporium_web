@@ -1,15 +1,150 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {
+	BaseFormComponent,
+	ApplicationLoggerService,
+	MagicValidatorUtil,
+	BehaviourObserverModel,
+	OptionListModel,
+} from '@ddc/kit';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormFieldModel } from '../../../shared/models/form/form-field.model';
+import { Observable, of } from 'rxjs';
+import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
+import { InputPasswordAsyncComponent } from '../../../modules/validator-password/components/input-password-async/input-password-async.component';
+import { EnumOauthLoginType, SocialLoginService } from '@ddc/rest';
+import {
+	UserAuthRequest,
+	AuthenticationService,
+} from '../../../modules/authentication/base/authentication.service';
+import { ConfirmoperationRequest } from '../../../modules/authentication/dtos/confirmoperation-request';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'keyemporium-web-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+	selector: 'public-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseFormComponent {
+	// fields
+	FLD_email: FormFieldModel;
+	FLD_remember: FormFieldModel;
+	optionRemeber: OptionListModel[];
+	@ViewChild('pwd1') pwd1: InputPasswordAsyncComponent;
 
-  constructor() { }
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		fb: FormBuilder,
+		private router: Router,
+		private oauthService: SocialLoginService,
+		private authenticationService: AuthenticationService,
+	) {
+		super(applicationLogger, fb);
+		this.initFields();
+		this.optionRemeber = [new OptionListModel(1, 'PERSONAL.LOGIN.REMEMBERME')];
+	}
 
-  ngOnInit() {
-  }
+	getForm(): FormGroup {
+		return this.fb.group({
+			email: new MagicValidatorUtil((this.validationMessages.email = []), undefined)
+				.required()
+				.email()
+				.build(),
+			password: new MagicValidatorUtil((this.validationMessages.password = []), undefined)
+				.required()
+				.build(),
+			remember: new MagicValidatorUtil((this.validationMessages.remember = []), undefined).build(),
+		});
+	}
+	getValidationMessages() {
+		return {};
+	}
+	setValueChanges() {}
+	setLoader() {}
+	setLoaderAsync(): Observable<boolean> {
+		return of(true);
+	}
+	extractData(): UserAuthRequest {
+		const values = this.form.getRawValue();
+		const model: UserAuthRequest = {};
+		model.username = values.email;
+		model.password = values.password;
+		model.rememberme = values.remember && values.remember === 1 ? true : false;
+		const confirm: ConfirmoperationRequest = {};
+		confirm.flgemail = 1;
+		model.confirm = confirm;
+		return model;
+	}
 
+	setModel(): Observable<any> {
+		return of({});
+	}
+	fillForm(form: FormGroup, model: any) {
+		form.get('email').setValue(model.email);
+		if (this.pwd1 && this.pwd1.formPassword && this.pwd1.formPassword.get('password')) {
+			this.pwd1.formPassword.get('password').setValue(model.password);
+		}
+		form.get('remember').setValue(model.remember);
+	}
+	setModelBehaviour(): BehaviourObserverModel {
+		const funPre = () => {};
+		const funOk = (res: any) => {};
+		const funError = (err: any) => {};
+		return new BehaviourObserverModel(funPre, funOk, funError);
+	}
+	afterModel(res: any) {}
+	getModelFieldForId(): string {
+		return 'email';
+	}
+	saveModel(model: UserAuthRequest): Observable<boolean> {
+		return this.authenticationService.loginPin(model, model.confirm);
+	}
+	updateModel(model: any): Observable<any> {
+		return of(model);
+	}
+	saveModelBehaviour(): BehaviourObserverModel {
+		const funPre = () => {};
+		const funOk = (res: boolean) => {
+			if (res) {
+				this.router.navigate(['app', 'confirm_login']);
+			}
+		};
+		const funError = (err: any) => {};
+		return new BehaviourObserverModel(funPre, funOk, funError);
+	}
+	afterSave(res: any) {}
+	ngOnInitForChildren() {}
+	ngAfterViewInitForChildren() {}
+	ngOnDestroyForChildren() {}
+
+	getClassName(): string {
+		return 'LoginComponent';
+	}
+
+	// COMPONENTE
+	initFields() {
+		this.FLD_email = new FormFieldModel(
+			EnumFormType.TEXT,
+			this.form.get('email') as FormControl,
+			'PERSONAL.LABEL.EMAIL',
+		)
+			.validation(this.validationMessages.email)
+			.onInit();
+
+		this.FLD_remember = new FormFieldModel(
+			EnumFormType.CHECKBOX,
+			this.form.get('remember') as FormControl,
+			'PERSONAL.LOGIN.REMEMBERME',
+		)
+			.validation(this.validationMessages.remember)
+			.onInit();
+	}
+
+	// SOCIAL
+	signInGoogle() {
+		this.oauthService.signIn(EnumOauthLoginType.GOOGLE);
+	}
+
+	signInFacebook() {
+		this.oauthService.signIn(EnumOauthLoginType.FACEBOOK);
+	}
 }

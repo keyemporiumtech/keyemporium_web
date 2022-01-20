@@ -1,17 +1,32 @@
 <div class="text-center">
-  <form class="form-signin">
+  <form class="form-signin" [formGroup]="form">
     <img class="mb-4" src="assets/logo.png" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <h1 class="h3 mb-3 font-weight-normal">{{'PERSONAL.LOGIN.TITLE' | translate}}</h1>
+
+    <label for="inputEmail">{{translateKey(FLD_email.label)| translate:translateParams(FLD_email.label)}}</label>
+    <ddc-init-input-text [id]="'inputEmail'" [field]="FLD_email"></ddc-init-input-text>
+
+    <label for="inputPassword">{{'PERSONAL.LABEL.PASSWORD' | translate}}</label>
+    <ddc-init-input-password-async #pwd1 [id]="'inputPassword'" [max]="15" [extControl]="form.get('password')">
+    </ddc-init-input-password-async>
+
+
     <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+      <ddc-init-input-checkbox [field]="FLD_remember" [options]="optionRemeber"></ddc-init-input-checkbox>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid" (click)="save()">
+      {{'PERSONAL.BUTTON.LOGIN'| translate}}
+    </button>
+    <button type="button" (click)="signInGoogle()" class="btn btn-lg btn-danger btn-block">
+      <span [style.float]="'left'"><img src="assets/project/images/social-google.png" alt="" height="42"></span>
+      <span class="ml-2">{{'PERSONAL.LOGIN.SIGNIN_GOOGLE' | translate}}</span>
+    </button>
+    <button type="button" (click)="signInFacebook()" class="btn btn-lg btn-info btn-block">
+      <span [style.float]="'left'"><img src="assets/project/images/social-facebook.png" alt="" height="42"></span>
+      <span class="ml-2">{{'PERSONAL.LOGIN.SIGNIN_FACEBOOK' | translate}}</span>
+    </button>
+    <p class="mt-5 mb-3 text-muted" [innerHTML]="'PERSONAL.COPYRIGHT' | translate"></p>
   </form>
+
+
 </div>

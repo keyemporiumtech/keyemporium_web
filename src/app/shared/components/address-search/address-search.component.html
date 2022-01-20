@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-10 autocomplete-container">
+    <ddc-init-app-loading [loading]="loadingResults"></ddc-init-app-loading>
     <ddc-init-input-text *ngIf="field" [field]="field"></ddc-init-input-text>
     <div *ngIf="results && results.length" [ngClass]="infoClass" [ngStyle]="infoStyle">
       <div *ngFor="let item of results" class="item" [ngClass]="item.cssClass" [ngStyle]="item.cssStyle"

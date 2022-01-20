@@ -13,11 +13,12 @@ import { EnumCookieNavigation } from '../../../enums/cookie/cookie-navigation.en
 import { cookies } from '../../../../../config/cookie/cookies';
 import { cookieInfo } from '../../../../../config/cookie/cookie-info';
 import { environment } from '../../../../../environments/environment';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin } from 'rxjs';
 import { CookiemanagerService } from '../../../../modules/api/cakeutils-be/services/cookiemanager.service';
 import { CookieModel } from '../../../../modules/api/cakeutils-be/models/cookie.model';
 import { CookieConverter } from '../../../../modules/api/cakeutils-be/converters/cookie.converter';
 import { CookieDTO } from '../../../../modules/api/cakeutils-be/dtos/cookie.dto';
+import { CookieStatusModel } from '../../../../modules/api/cakeutils-be/models/cookie-status.model';
 
 @Component({
 	selector: 'ddc-init-cookie-choice',
@@ -29,9 +30,10 @@ export class CookieChoiceComponent extends BaseComponent {
 	lastUpdate;
 	appName;
 	converter: CookieConverter;
+	cookieType = EnumCookieType;
 
 	// sub
-	subList: Subscription;
+	subCookies: Subscription;
 	subRefuse: Subscription;
 	subAccept: Subscription;
 	subAcceptAll: Subscription;
@@ -80,7 +82,7 @@ export class CookieChoiceComponent extends BaseComponent {
 		this.cookies = this.converter.convertToModelList(cookies as CookieDTO[]);
 		this.lastUpdate = cookieInfo.lastUpdate;
 		this.appName = environment.appName;
-		this.evalStatus();
+		// this.evalStatus();
 		this.applicationStorage = applicationStorage;
 		this.router = router;
 		this.cookiemanager = cookiemanager;
@@ -88,18 +90,23 @@ export class CookieChoiceComponent extends BaseComponent {
 
 	ngOnInitForChildren() {
 		if (this.flgRemote) {
-			this.subList = this.cookiemanager.cookies().subscribe((res) => {
-				this.cookies = res;
+			this.subCookies = forkJoin(
+				this.cookiemanager.cookies(),
+				this.cookiemanager.status(),
+			).subscribe((data) => {
+				this.cookies = data[0];
 				this.filterList();
+				this.evalInitiStatus(data[1]);
 			});
 		} else {
 			this.filterList();
+			this.evalStatus();
 		}
 	}
 	ngAfterViewInitForChildren() {}
 	ngOnDestroyForChildren() {
-		if (this.subList) {
-			this.subList.unsubscribe();
+		if (this.subCookies) {
+			this.subCookies.unsubscribe();
 		}
 		if (this.subRefuse) {
 			this.subRefuse.unsubscribe();
@@ -127,6 +134,14 @@ export class CookieChoiceComponent extends BaseComponent {
 		}
 	}
 
+	private evalInitiStatus(status: CookieStatusModel) {
+		CookieUtils.set(EnumCookieType.NECESSARY, status.isNecessary);
+		CookieUtils.set(EnumCookieType.PREFERENCE, status.isPreference);
+		CookieUtils.set(EnumCookieType.STATISTIC, status.isStatistic);
+		CookieUtils.set(EnumCookieType.MARKETING, status.isMarketing);
+		CookieUtils.set(EnumCookieType.NOT_CLASSIFIED, status.isNotClassified);
+		this.evalStatus();
+	}
 	private evalStatus() {
 		this.isPreference = CookieUtils.check(EnumCookieType.PREFERENCE);
 		this.isStatistic = CookieUtils.check(EnumCookieType.STATISTIC);
@@ -172,11 +187,14 @@ export class CookieChoiceComponent extends BaseComponent {
 		}
 	}
 
+	toggleCheck(type: EnumCookieType, val: any) {
+		if (val && val.target) {
+			CookieUtils.set(type, val.target.checked);
+		}
+	}
+
 	accept() {
-		CookieUtils.set(EnumCookieType.PREFERENCE, this.isPreference);
-		CookieUtils.set(EnumCookieType.STATISTIC, this.isStatistic);
-		CookieUtils.set(EnumCookieType.MARKETING, this.isMarketing);
-		CookieUtils.set(EnumCookieType.NOT_CLASSIFIED, this.isNotClassified);
+		this.evalStatus();
 		this.operationEmit.emit(EnumCookieOperation.ACCEPT);
 		this.closeBanner();
 		if (this.flgRemote) {
