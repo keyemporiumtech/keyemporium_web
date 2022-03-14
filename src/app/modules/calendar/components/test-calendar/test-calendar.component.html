@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <h4>Modulo calendar</h4>
+  <div class="row">
+    <div class="col col-12">
+      <a class="m-2 btn btn-sm btn-danger text-white" (click)="setDetailEvent()">Test chiamata
+        event/unique</a>
+      <span class="m-2">|</span>
+      <a class="m-2 btn btn-sm btn-danger text-white" (click)="set('EVENT-LIST')">Test chiamata
+        event/list</a>
+    </div>
+  </div>
+
+  <!--
+  <div class="row mt-2">
+    <div class="col col-12">
+      <a class="m-2 btn btn-sm btn-danger text-white" (click)="setDetailMimetype()">Test chiamata
+        mimetype/unique</a>
+      <span class="m-2">|</span>
+      <a class="m-2 btn btn-sm btn-danger text-white" (click)="set('MIMETYPE-LIST')">Test chiamata mimetype/list</a>
+    </div>
+  </div>
+  -->
+
+  <div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
+    <div class="col col-12 p-2">
+      <a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
+      <wiki-test-event-unique *ngIf="view==='EVENT-UNIQUE'" [idIn]="idEvent">
+      </wiki-test-event-unique>
+      <wiki-test-event-paginate *ngIf="view==='EVENT-LIST'" (emitSelected)="setDetailEvent($event)">
+      </wiki-test-event-paginate>
+    </div>
+  </div>
+</div>

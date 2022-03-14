@@ -1,0 +1,55 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="cod">{{translateKey(FLD_cod.label)| translate:translateParams(FLD_cod.label)}}</label>
+      <ddc-init-input-text [id]="'cod'" [field]="FLD_cod"></ddc-init-input-text>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="title">{{translateKey(FLD_title.label)| translate:translateParams(FLD_title.label)}}</label>
+      <ddc-init-input-text [id]="'title'" [field]="FLD_title"></ddc-init-input-text>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">{{translateKey(FLD_description.label)|
+      translate:translateParams(FLD_description.label)}}</label>
+    <ddc-init-input-textarea [id]="'description'" [field]="FLD_description"></ddc-init-input-textarea>
+  </div>
+  <div class="form-row">
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="dtainit">{{translateKey(FLD_dtainit.label)| translate:translateParams(FLD_dtainit.label)}}</label>
+      <ddc-init-input-date [id]="'dtainit'" [field]="FLD_dtainit"></ddc-init-input-date>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="dtaend">{{translateKey(FLD_dtaend.label)| translate:translateParams(FLD_dtaend.label)}}</label>
+      <ddc-init-input-date [id]="'dtaend'" [field]="FLD_dtaend"></ddc-init-input-date>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="tpevent">{{translateKey(FLD_tpevent.label)|
+        translate:translateParams(FLD_tpevent.label)}}</label>
+      <ddc-init-input-select [id]="'tpevent'" [field]="FLD_tpevent" [options]="tpevents">
+      </ddc-init-input-select>
+    </div>
+    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+      <label for="tpcat">{{translateKey(FLD_tpcat.label)|
+        translate:translateParams(FLD_tpcat.label)}}</label>
+      <ddc-init-input-select [id]="'tpcat'" [field]="FLD_tpcat" [options]="tpcats">
+      </ddc-init-input-select>
+    </div>
+  </div>
+
+</form>
+
+<div>
+  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.UPDATE)">
+    <span class="fa fa-edit mr-2"></span>Modifica
+  </a>
+  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.DETAIL)">
+    <span class="fa fa-eye mr-2"></span>Lettura
+  </a>
+  <button class="btn btn-sm btn-dark text-white mr-2" [disabled]="!form.valid" (click)="save()">
+    <span class="fa fa-save mr-2"></span>Salva
+  </button>
+  <div *ngIf="modelToSave">{{modelToSave | json}}</div>
+</div>

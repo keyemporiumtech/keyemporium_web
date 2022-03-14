@@ -1,0 +1,11 @@
+export enum EnumEventType {
+	EVENT = 1,
+	APPOINTMENT = 2,
+	REMEMBER_NOTE = 3,
+	REMEMBER_DATE = 4,
+	PUBLIC_CONTEST = 5,
+	PROJECT = 6,
+	WORK_OFFERS = 7,
+	CONTEST = 8,
+	PROMOTION = 9,
+}

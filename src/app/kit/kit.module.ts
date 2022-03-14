@@ -16,6 +16,7 @@ import { FilemanagerModule } from './filemanager/filemanager.module';
 import { QrcodeModule } from './qrcode/qrcode.module';
 import { TreeHtmlModule } from './tree-html/tree-html.module';
 import { ValidatorsModule } from './validators/validators.module';
+import { ChartsModule } from './charts/charts.module';
 
 @NgModule({
 	declarations: [],
@@ -40,6 +41,7 @@ import { ValidatorsModule } from './validators/validators.module';
 		QrcodeModule.forRoot(),
 		TreeHtmlModule.forRoot(),
 		ValidatorsModule.forRoot(),
+		ChartsModule.forRoot(),
 	],
 	exports: [
 		ConfigModule,
@@ -56,6 +58,7 @@ import { ValidatorsModule } from './validators/validators.module';
 		QrcodeModule,
 		TreeHtmlModule,
 		ValidatorsModule,
+		ChartsModule,
 	],
 })
 export class KitModule {

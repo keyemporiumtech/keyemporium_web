@@ -1,5 +1,10 @@
 # CHANGELOG KIT
 
+## 2.0.0 - 14/03/2022
+
+> Versione che aggiunge il modulo `charts` per la gestione di grafici
+
+- `[update]` Aggiunta del modulo `charts`
 ## 1.2.0 - 11/11/2021
 
 > Versione che aggiunge la direttiva `DdcCssVar` per il settaggio dei valori css variabili

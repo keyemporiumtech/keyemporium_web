@@ -1,0 +1,12 @@
+export enum EnumPaymentType {
+	BONIFICO = 1,
+	BOLLETTINO = 2,
+	RID = 3,
+	WEB = 4,
+	CONTANTI = 5,
+	ASSEGNO = 6,
+	ASSEGNO_CIRCOLARE = 7,
+	CAMBIALE = 8,
+	RICEVUTA_BANCARIA = 9,
+	MAV = 10,
+}
