@@ -42,7 +42,7 @@ export class BalanceService extends ApiService {
 		http: HttpClient,
 	) {
 		super(applicationLogger, messageService, applicationStorage, innerStorage, http);
-		this.flgInnerToken = true;
+		this.flgInnerToken = false;
 	}
 
 	unique(

@@ -1,8 +1,18 @@
 # CHANGELOG KIT
 
+## 2.0.1 - XX/03/2022
+
+> Versione che 
+
+### changes
+
+- `[fix]` Aggiunto il controllo sull'esistenza dei campi in input nel metodo `getBase64ByContent` di `FileService` del modulo `filemanager`
+
 ## 2.0.0 - 14/03/2022
 
 > Versione che aggiunge il modulo `charts` per la gestione di grafici
+
+### changes
 
 - `[update]` Aggiunta del modulo `charts`
 ## 1.2.0 - 11/11/2021

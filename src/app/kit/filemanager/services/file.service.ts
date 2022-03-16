@@ -257,6 +257,9 @@ export class FileService extends BaseService {
 	 * @param contentType mimetype del file
 	 */
 	getBase64ByContent(content: any, contentType: string): string {
+		if (!content || !contentType) {
+			return undefined;
+		}
 		if (content.indexOf(';base64') !== -1) {
 			return content;
 		}
