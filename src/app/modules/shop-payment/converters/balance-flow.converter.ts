@@ -29,6 +29,8 @@ export class BalanceFlowConverter extends BaseApiConverter<BalanceFlowModel, Bal
 		model.deposit = dto.deposit;
 		model.payed = dto.payed;
 		model.payments = PaymentUtilConverter.toModelList(dto.payments);
+		model.pages = dto.pages;
+		model.count = dto.count;
 		return model;
 	}
 	public convertToDto(model?: BalanceFlowModel): BalanceFlowDTO {
@@ -56,6 +58,8 @@ export class BalanceFlowConverter extends BaseApiConverter<BalanceFlowModel, Bal
 		model.deposit = model.deposit;
 		model.payed = model.payed;
 		dto.payments = PaymentUtilConverter.toDtoList(model.payments);
+		dto.pages = model.pages;
+		dto.count = model.count;
 		return dto;
 	}
 	public getEmptyModel(): BalanceFlowModel {

@@ -176,6 +176,7 @@ export class PocketService extends ApiService {
 	addProduct(
 		productIn: ProductModel,
 		id: string,
+		priceIn?: PriceModel,
 		id_product?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
@@ -189,6 +190,12 @@ export class PocketService extends ApiService {
 			ProductUtilConverter.toDto(productIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_pocket', id);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'price',
+			PriceUtilConverter.toDto(priceIn),
+		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_product', id_product);
 
 		const url =
@@ -203,6 +210,7 @@ export class PocketService extends ApiService {
 	addService(
 		serviceIn: ServiceModel,
 		id: string,
+		priceIn?: PriceModel,
 		id_service?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
@@ -216,6 +224,12 @@ export class PocketService extends ApiService {
 			ServiceUtilConverter.toDto(serviceIn),
 		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_pocket', id);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'price',
+			PriceUtilConverter.toDto(priceIn),
+		);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_service', id_service);
 
 		const url =

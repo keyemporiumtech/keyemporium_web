@@ -21,4 +21,6 @@ export class BalanceFlowDTO extends ApiDTO {
 	public deposit: number;
 	public payed: number;
 	public payments: PaymentDTO[];
+	public pages: number;
+	public count: number;
 }

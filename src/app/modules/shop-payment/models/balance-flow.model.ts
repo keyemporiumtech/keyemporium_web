@@ -21,6 +21,8 @@ export class BalanceFlowModel extends ApiModel {
 	private _deposit: number;
 	private _payed: number;
 	private _payments: PaymentModel[];
+	private _pages: number;
+	private _count: number;
 
 	/**
 	 * Getter priceIn
@@ -324,5 +326,37 @@ export class BalanceFlowModel extends ApiModel {
 	 */
 	public set payments(value: PaymentModel[]) {
 		this._payments = value;
+	}
+
+	/**
+	 * Getter pages
+	 * @return {number}
+	 */
+	public get pages(): number {
+		return this._pages;
+	}
+
+	/**
+	 * Getter count
+	 * @return {number}
+	 */
+	public get count(): number {
+		return this._count;
+	}
+
+	/**
+	 * Setter pages
+	 * @param {number} value
+	 */
+	public set pages(value: number) {
+		this._pages = value;
+	}
+
+	/**
+	 * Setter count
+	 * @param {number} value
+	 */
+	public set count(value: number) {
+		this._count = value;
 	}
 }
