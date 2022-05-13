@@ -1,5 +1,10 @@
 # CHANGELOG REST
 
+
+## 3.1.0 - XX/XX/2022
+
+- `[feature]` **request**: Aggiunte le funzioni `getQueryParametersByArray` e `getQueryParametersByMap` in `RequestUtility`
+
 ## 3.0.0 - 20/01/2022
 
 - `[update]` **abstract**: Modifica del servizio `base-auth` con l'aggiunta della funzione BE di `changeProfile` durante il set di un profilo utente

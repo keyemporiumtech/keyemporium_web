@@ -23,4 +23,6 @@ export class BalanceFlowDTO extends ApiDTO {
 	public payments: PaymentDTO[];
 	public pages: number;
 	public count: number;
+	public groupcod: string;
+	public month: string;
 }

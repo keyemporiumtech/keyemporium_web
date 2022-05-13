@@ -5,5 +5,8 @@ export const utilCurrencyList = {
 		save: 'currency/save',
 		edit: 'currency/edit',
 		delete: 'currency/delete',
+		setup: 'currency/setup',
+		current: 'currency/current',
+		convert: 'currency/convert',
 	},
 };

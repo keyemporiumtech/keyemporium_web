@@ -32,6 +32,7 @@ export class ChartComponent extends BaseComponent {
 	// options
 	@Input() showCurrencySymbol: boolean;
 	@Input() currencySymbol: string;
+	@Input() appendText: string;
 	@Input() options: ChartOptionsInterface;
 	@Input() height: any = '400px';
 	@Input() legendTitle: string = '';
@@ -138,6 +139,9 @@ export class ChartComponent extends BaseComponent {
 	}
 	makeValueTooltip(obj: ChartElementInterface) {
 		let val = this.valueText(obj.text ? obj.text : obj.value);
+		if (this.appendText) {
+			val += this.appendText;
+		}
 		if (this.showCurrencySymbol) {
 			val +=
 				' ' +
@@ -150,6 +154,9 @@ export class ChartComponent extends BaseComponent {
 	}
 	private valueTextCurrency(value: number | string): string {
 		let val = this.valueText(value);
+		if (this.appendText) {
+			val += this.appendText;
+		}
 		if (this.showCurrencySymbol) {
 			val +=
 				' ' +

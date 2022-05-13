@@ -31,6 +31,8 @@ export class BalanceFlowConverter extends BaseApiConverter<BalanceFlowModel, Bal
 		model.payments = PaymentUtilConverter.toModelList(dto.payments);
 		model.pages = dto.pages;
 		model.count = dto.count;
+		model.groupcod = dto.groupcod;
+		model.month = dto.month;
 		return model;
 	}
 	public convertToDto(model?: BalanceFlowModel): BalanceFlowDTO {
@@ -39,27 +41,29 @@ export class BalanceFlowConverter extends BaseApiConverter<BalanceFlowModel, Bal
 		}
 		const dto = new BalanceFlowDTO();
 		this.convertCommonPropertiesToDto(dto, model);
-		model.priceIn = model.priceIn;
-		model.priceOut = model.priceOut;
-		model.ivaIn = model.ivaIn;
-		model.ivaOut = model.ivaOut;
-		model.discountIn = model.discountIn;
-		model.discountOut = model.discountOut;
-		model.taxIn = model.taxIn;
-		model.taxOut = model.taxOut;
-		model.totalIn = model.totalIn;
-		model.totalOut = model.totalOut;
-		model.totalsumIn = model.totalsumIn;
-		model.totalsumOut = model.totalsumOut;
-		model.currencyCod = model.currencyCod;
-		model.currencyTitle = model.currencyTitle;
-		model.currencySymbol = model.currencySymbol;
-		model.currencyIcon = model.currencyIcon;
-		model.deposit = model.deposit;
-		model.payed = model.payed;
+		dto.priceIn = model.priceIn;
+		dto.priceOut = model.priceOut;
+		dto.ivaIn = model.ivaIn;
+		dto.ivaOut = model.ivaOut;
+		dto.discountIn = model.discountIn;
+		dto.discountOut = model.discountOut;
+		dto.taxIn = model.taxIn;
+		dto.taxOut = model.taxOut;
+		dto.totalIn = model.totalIn;
+		dto.totalOut = model.totalOut;
+		dto.totalsumIn = model.totalsumIn;
+		dto.totalsumOut = model.totalsumOut;
+		dto.currencyCod = model.currencyCod;
+		dto.currencyTitle = model.currencyTitle;
+		dto.currencySymbol = model.currencySymbol;
+		dto.currencyIcon = model.currencyIcon;
+		dto.deposit = model.deposit;
+		dto.payed = model.payed;
 		dto.payments = PaymentUtilConverter.toDtoList(model.payments);
 		dto.pages = model.pages;
 		dto.count = model.count;
+		dto.groupcod = model.groupcod;
+		dto.month = model.month;
 		return dto;
 	}
 	public getEmptyModel(): BalanceFlowModel {

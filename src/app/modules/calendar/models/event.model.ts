@@ -2,6 +2,7 @@ import { TypologicalModel } from '../../api/cakeutils-be/models/typological.mode
 import { ApiModel } from '../../api/cakeutils/base/api.model';
 import { EnumEventType } from '../enums/event-type.enum';
 import { EnumCatType } from '../../authentication/enums/cat-type.enum';
+import { DateModel } from '@ddc/kit';
 
 export class EventModel extends ApiModel {
 	private _cod: string;
@@ -15,6 +16,22 @@ export class EventModel extends ApiModel {
 	// enums
 	private _tpcatEnum: EnumCatType;
 	private _tpeventEnum: EnumEventType;
+
+	public get dtainitModel(): DateModel {
+		return new DateModel(this.dtainit);
+	}
+	public get dtainitFormat(): string {
+		const dateModel = new DateModel(this.dtainit);
+		return dateModel.toString();
+	}
+
+	public get dtaendModel(): DateModel {
+		return new DateModel(this.dtaend);
+	}
+	public get dtaendFormat(): string {
+		const dateModel = new DateModel(this.dtaend);
+		return dateModel.toString();
+	}
 
 	/**
 	 * Getter cod

@@ -30,6 +30,18 @@ export class RequestUtility {
 		}
 	}
 
+	static getQueryParametersByArray(params: string[]): string {
+		return params && params.length ? '?' + params.join('&') : undefined;
+	}
+
+	static getQueryParametersByMap(params: Map<string, string>): string {
+		const paramsArr: string[] = [];
+		for (const [key, value] of params.entries()) {
+			paramsArr.push(key + '=' + value);
+		}
+		return this.getQueryParametersByArray(paramsArr);
+	}
+
 	static debounceAsyncValidator(inputValidator: AsyncValidatorFn, time: number): AsyncValidatorFn {
 		return (control: AbstractControl): Observable<{ [key: string]: any } | undefined> => {
 			return of(control.value).pipe(

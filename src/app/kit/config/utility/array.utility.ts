@@ -105,4 +105,8 @@ export class ArrayUtility {
 	static differenceSymmetrical(a: any[], b: any[]) {
 		return a.filter((x) => !b.includes(x)).concat(b.filter((x) => !a.includes(x)));
 	}
+
+	static sum(arr: any[], key: string): number {
+		return arr.reduce((a, b) => a + (b[key] || 0), 0);
+	}
 }

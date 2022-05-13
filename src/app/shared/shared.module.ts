@@ -45,6 +45,8 @@ import { CheckPlatformComponent } from './components/check-platform/check-platfo
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { CookieChoiceComponent } from './components/banner-cookie/cookie-choice/cookie-choice.component';
 import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
+import { AccordionContainerComponent } from './components/accordion-container/accordion-container.component';
 
 @NgModule({
 	declarations: [
@@ -87,6 +89,8 @@ import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
 		CheckPlatformComponent,
 		CookieChoiceComponent,
 		CookiePageComponent,
+		AccordionComponent,
+		AccordionContainerComponent,
 	],
 	imports: [
 		CommonModule,
@@ -138,6 +142,8 @@ import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
 		CheckPlatformComponent,
 		CookieChoiceComponent,
 		CookiePageComponent,
+		AccordionComponent,
+		AccordionContainerComponent,
 	],
 })
 export class SharedModule {

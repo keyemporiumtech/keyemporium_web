@@ -55,6 +55,7 @@ export class PaymentConverter extends BaseApiConverter<PaymentModel, PaymentDTO>
 			this.getPropertyForFk('tppayment', 'tppayment_fk', new TypologicalConverter()),
 			new TypologicalModel(),
 		);
+		model.balance_id = dto.balance_id;
 		return model;
 	}
 	public convertToDto(model?: PaymentModel): PaymentDTO {
@@ -91,6 +92,7 @@ export class PaymentConverter extends BaseApiConverter<PaymentModel, PaymentDTO>
 			model,
 			this.getPropertyForFk('tppayment', 'tppayment_fk', new TypologicalConverter()),
 		);
+		dto.balance_id = model.balance_id;
 		return dto;
 	}
 	public getEmptyModel(): PaymentModel {

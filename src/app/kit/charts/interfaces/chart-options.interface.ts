@@ -18,7 +18,8 @@ export interface ChartOptionsInterface {
 		| 'neons'
 		| 'picnic'
 		| 'night'
-		| 'nightLights';
+		| 'nightLights'
+		| string;
 	colorScheme?: ChartColorSchemaInterface;
 	schemeType?: string;
 	customColors?: any[];
@@ -38,5 +39,6 @@ export interface ChartOptionsInterface {
 		| 'Step'
 		| 'Step After'
 		| 'Step Before'
-		| 'default';
+		| 'default'
+		| string;
 }

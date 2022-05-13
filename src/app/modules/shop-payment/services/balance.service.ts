@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
 import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
@@ -239,6 +239,97 @@ export class BalanceService extends ApiService {
 				? requestManager.url
 				: this.environment.api.services + shopPaymentList.balance.payments;
 		return this.get(
+			this.httpHeaders,
+			url,
+			body,
+			new BalanceFlowConverter(),
+			requestManager,
+			responseManager,
+		);
+	}
+
+	groupPayments(
+		filtersIn: BalanceFlowFilter,
+		id?: string,
+		cod?: string,
+		id_balances?: string[],
+		cods?: string[],
+		id_user?: string,
+		username?: string,
+		id_activity?: string,
+		piva?: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<BalanceFlowModel[]> {
+		let body: HttpParams = new HttpParams();
+
+		filtersIn.flgGroupcod = 1;
+
+		body = RequestUtility.addParam(body, EnumParamType.OBJECT, 'filters', filtersIn);
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_balance', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
+
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'id_balances', id_balances);
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'cods', cods);
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_user', id_user);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activity', id_activity);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'piva', piva);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + shopPaymentList.balance.payments;
+		return this.getList(
+			this.httpHeaders,
+			url,
+			body,
+			new BalanceFlowConverter(),
+			requestManager,
+			responseManager,
+		);
+	}
+
+	monthPayments(
+		filtersIn: BalanceFlowFilter,
+		year: number,
+		id?: string,
+		cod?: string,
+		id_balances?: string[],
+		cods?: string[],
+		id_user?: string,
+		username?: string,
+		id_activity?: string,
+		piva?: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<BalanceFlowModel[]> {
+		let body: HttpParams = new HttpParams();
+
+		filtersIn.year = year;
+
+		body = RequestUtility.addParam(body, EnumParamType.OBJECT, 'filters', filtersIn);
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_balance', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
+
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'id_balances', id_balances);
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'cods', cods);
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_user', id_user);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activity', id_activity);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'piva', piva);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + shopPaymentList.balance.payments;
+		return this.getList(
 			this.httpHeaders,
 			url,
 			body,

@@ -160,4 +160,73 @@ export class CurrencyService extends ApiService {
 			map((res) => (res === 1 ? true : false)),
 		);
 	}
+
+	// --------------- SESSION
+	setup(
+		cod: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<CurrencyModel> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + utilCurrencyList.currency.setup;
+		return this.get(
+			this.httpHeaders,
+			url,
+			body,
+			new CurrencyConverter(),
+			requestManager,
+			responseManager,
+		);
+	}
+
+	current(
+		conditions?: RequestConditionInterface,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<CurrencyModel> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + utilCurrencyList.currency.current;
+		return this.get(
+			this.httpHeaders,
+			url,
+			body,
+			new CurrencyConverter(),
+			requestManager,
+			responseManager,
+		);
+	}
+
+	convert(
+		from: string,
+		to: string,
+		rate: number,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<number> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'from', from);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'to', to);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'rate', rate);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + utilCurrencyList.currency.convert;
+		return this.get(this.httpHeaders, url, body, undefined, undefined, responseManager);
+	}
 }

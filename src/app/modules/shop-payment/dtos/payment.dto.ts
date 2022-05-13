@@ -21,4 +21,6 @@ export class PaymentDTO extends ApiDTO {
 	public user_fk: UserDTO;
 	public tppayment: string;
 	public tppayment_fk: TypologicalDTO;
+	// virtualfields
+	public balance_id: string;
 }

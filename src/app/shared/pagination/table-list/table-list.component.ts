@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ApplicationLoggerService, BaseComponent } from '@ddc/kit';
+import { ApplicationLoggerService, BaseComponent, ObjectUtility } from '@ddc/kit';
 import { environment } from '../../../../environments/environment';
 import { ColTableModel } from '../../models/pagination/col-table.model';
 import { FormGroupModel } from '../../models/form/form-group.model';
@@ -74,5 +74,10 @@ export class TableListComponent extends BaseComponent {
 	}
 	page(val: number) {
 		this.pageEmit.emit(val);
+	}
+
+	// utils
+	resolveProperty(property: string, obj: any) {
+		return ObjectUtility.resolvePropertyModel(property, obj);
 	}
 }

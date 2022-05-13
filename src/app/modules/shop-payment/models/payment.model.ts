@@ -3,6 +3,7 @@ import { PriceModel } from '../../shop-warehouse/models/price.model';
 import { PaymentmethodModel } from './paymentmethod.model';
 import { UserModel } from '../../authentication/models/user.model';
 import { TypologicalModel } from '../../api/cakeutils-be/models/typological.model';
+import { DateModel } from '@ddc/kit';
 
 export class PaymentModel extends ApiModel {
 	private _cod: string;
@@ -17,6 +18,16 @@ export class PaymentModel extends ApiModel {
 	private _flgconfirm: boolean;
 	private _user: UserModel;
 	private _tppayment: TypologicalModel;
+	// virtualfields
+	private _balance_id: string;
+
+	public get dtapaymentModel(): DateModel {
+		return new DateModel(this.dtapayment);
+	}
+	public get dtapaymentFormat(): string {
+		const dateModel = new DateModel(this.dtapayment);
+		return dateModel.toString();
+	}
 
 	/**
 	 * Getter cod
@@ -208,5 +219,21 @@ export class PaymentModel extends ApiModel {
 	 */
 	public set tppayment(value: TypologicalModel) {
 		this._tppayment = value;
+	}
+
+	/**
+	 * Getter balance_id
+	 * @return {string}
+	 */
+	public get balance_id(): string {
+		return this._balance_id;
+	}
+
+	/**
+	 * Setter balance_id
+	 * @param {string} value
+	 */
+	public set balance_id(value: string) {
+		this._balance_id = value;
 	}
 }

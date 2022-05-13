@@ -5,12 +5,12 @@
       [flgOnSubmitValidation]="flgOnSubmitValidation" [submitted]="submitted" [groups]="groups"></ddc-init-form-page>
     <button class="mr-2 btn btn-dark btn-sm rounded-0 text-uppercase px-5 d-block d-sm-inline-block mt-sm-0 mt-3"
       (click)="reset()">
-      <i class="{{iconReset}} mr-2"></i>
+      <span class="{{iconReset}} mr-2"></span>
       {{'APP.BUTTON.RESET' | translate}}
     </button>
-    <button class="mr-2 btn btn-key btn-sm rounded-0 text-uppercase px-5 d-block d-sm-inline-block mt-sm-0 mt-3"
+    <button class="mr-2 btn btn-primary btn-sm rounded-0 text-uppercase px-5 d-block d-sm-inline-block mt-sm-0 mt-3"
       [disabled]="!formFilters.valid" (click)="search()">
-      <i class="{{iconSearch}} mr-2"></i>
+      <span class="{{iconSearch}} mr-2"></span>
       {{'APP.BUTTON.SEARCH' | translate}}
     </button>
   </ng-container>
@@ -36,7 +36,14 @@
 
       <tbody>
         <tr *ngFor="let res of list">
-          <td *ngFor="let col of colsTable">{{res[col.fieldModel]}}</td>
+          <td *ngFor="let col of colsTable">
+            <ng-container *ngIf="col.template; else fieldValue">
+              <ng-container *ngTemplateOutlet="col.template; context: {item: res}"></ng-container>
+            </ng-container>
+            <ng-template #fieldValue>
+              {{resolveProperty(col.fieldModel,res)}}
+            </ng-template>
+          </td>
           <td *ngIf="templateActionsRow">
             <ng-container *ngTemplateOutlet="templateActionsRow; context: {item: res}"></ng-container>
           </td>

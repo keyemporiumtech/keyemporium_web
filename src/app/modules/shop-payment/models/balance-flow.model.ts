@@ -23,6 +23,44 @@ export class BalanceFlowModel extends ApiModel {
 	private _payments: PaymentModel[];
 	private _pages: number;
 	private _count: number;
+	private _groupcod: string;
+	private _month: string;
+
+	get totalCalc(): number {
+		return this.totalsumIn - this.totalsumOut;
+	}
+
+	/**
+	 * Getter groupcod
+	 * @return {string}
+	 */
+	public get groupcod(): string {
+		return this._groupcod;
+	}
+
+	/**
+	 * Getter month
+	 * @return {string}
+	 */
+	public get month(): string {
+		return this._month;
+	}
+
+	/**
+	 * Setter groupcod
+	 * @param {string} value
+	 */
+	public set groupcod(value: string) {
+		this._groupcod = value;
+	}
+
+	/**
+	 * Setter $month
+	 * @param {string} value
+	 */
+	public set month(value: string) {
+		this._month = value;
+	}
 
 	/**
 	 * Getter priceIn
