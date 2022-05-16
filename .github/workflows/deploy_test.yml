@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Go to env
+        run: cd keyemporium_web
+
       - name: Use Node
         uses: actions/setup-node@v2
         with:
