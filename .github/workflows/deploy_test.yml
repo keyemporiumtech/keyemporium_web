@@ -25,7 +25,7 @@ jobs:
 
       - name: Copy files
         run: |
-          xcopy .\src\config\test\* .\build\${{ secrets.APP_NAME }} /E/Y
+          xcopy .\src\config\test .\build\${{ secrets.APP_NAME }} /E/Y
 
       # FTP
       - uses: actions/checkout@v1
