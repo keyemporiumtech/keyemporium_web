@@ -13,10 +13,12 @@ jobs:
         with:
           node-version: "10.16.0"
       - name: Install NPM Modules
-        run: npm install
+        run: |
+          npm install -g @angular/cli@7.3.1
+          npm install
 
       - name: Build Project
-        run: npm run build::prod
+        run: npm run build::prod-lnx
 
       - name: Copy files
         run: |

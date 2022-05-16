@@ -16,13 +16,12 @@ jobs:
         with:
           node-version: "10.16.0"
       - name: Install NPM Modules
-        run:
-          | # Esecuzione dei comandi di setup e build del progetto Angular, non dimenticando il parametro --base-href nel comando di build!
+        run: |
           npm install -g @angular/cli@7.3.1
           npm install
 
       - name: Build Project
-        run: npm run build::test
+        run: npm run build::test-lnx
 
       - name: Copy files
         run: |
