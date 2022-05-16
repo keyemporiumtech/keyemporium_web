@@ -15,4 +15,4 @@ jobs:
         run: |
           dir
           mkdir dist
-          xcopy src\config\test\ dist\${{ secrets.APP_NAME }} /E/Y
+          xcopy src\config\deply\test\ dist\${{ secrets.APP_NAME }} /E/Y
