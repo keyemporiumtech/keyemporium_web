@@ -23,12 +23,9 @@ jobs:
       - name: Build Project
         run: npm run build::test
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
       - name: Copy files
         run: |
-          cp -R ./src/config/test/. ./build/${{ secrets.APP_NAME }}
+          xcopy .\src\config\test\* .\build\${{ secrets.APP_NAME }} /E/Y
 
       # FTP
       - uses: actions/checkout@v1
