@@ -25,7 +25,7 @@ jobs:
 
       - name: Copy files
         run: |
-          xcopy .\src\config\test .\build\${{ secrets.APP_NAME }} /E/Y
+          xcopy .\src\config\test .\dist\${{ secrets.APP_NAME }} /E/Y
 
       # FTP
       - uses: actions/checkout@v1
@@ -36,5 +36,5 @@ jobs:
           url: ftp://${{ secrets.FTP_SERVER }}/${{ secrets.PATH_TEST }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          syncroot: "./build/${{ secrets.APP_NAME }}"
+          syncroot: "./dist/${{ secrets.APP_NAME }}"
           options: "--auto-init"
