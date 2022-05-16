@@ -5,7 +5,7 @@ on:
       - "v*"
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -21,8 +21,11 @@ jobs:
           npm install
 
       - name: Build Project
-        run: npm run build::test-lnx
+        run: npm run build::test
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Copy files
         run: |
           cp -R ./src/config/test/. ./build/${{ secrets.APP_NAME }}
