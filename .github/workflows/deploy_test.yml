@@ -8,9 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Go to env
-        run: cd keyemporium_web
+        with:
+          repository: ""
 
       - name: Use Node
         uses: actions/setup-node@v2
