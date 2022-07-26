@@ -144,6 +144,11 @@ export const environment = {
 			security: '#F2D7D5',
 		},
 	},
+	contacts: {
+		contactName: '',
+		contactEmail: '',
+		contactPhone: '',
+	},
 };
 
 /*

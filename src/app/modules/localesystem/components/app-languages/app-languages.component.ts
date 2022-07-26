@@ -98,4 +98,18 @@ export class AppLanguagesComponent extends BaseComponent {
 	getClassName(): string {
 		return 'AppLanguagesComponent';
 	}
+
+	// utils
+	selectByCod(cod: string) {
+		const language = this.optionLanguages.find((el) => el.key === cod);
+		if (language && this.languages) {
+			this.languages.selectItem(language);
+		}
+	}
+	select(language: OptionListModel) {
+		const index = this.optionLanguages.findIndex((el) => el.key === language.key);
+		if (index !== -1 && this.languages) {
+			this.languages.selectItem(language);
+		}
+	}
 }
