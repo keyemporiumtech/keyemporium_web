@@ -1,8 +1,10 @@
 # CHANGELOG REST
 
+> Versione che integra funzioni per la gestione dei query parameters in `RequestUtility` e aggiunge il modulo `maps` per consentire ad una utility di generare l'iframe html di google maps
 
-## 3.1.0 - XX/XX/2022
+## 3.1.0 - 26/07/2022
 
+- `[feature]` Aggiunto il nuovo modulo `maps` per integrare google maps con al momento utility per la creazione di iframe embed
 - `[feature]` **request**: Aggiunte le funzioni `getQueryParametersByArray` e `getQueryParametersByMap` in `RequestUtility`
 
 ## 3.0.0 - 20/01/2022

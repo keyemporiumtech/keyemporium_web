@@ -12,6 +12,7 @@ export const communicationList = {
 		save: 'mail/save',
 		edit: 'mail/edit',
 		delete: 'mail/delete',
+		send: 'mail/send',
 		read: 'mail/getRead',
 		list: 'mail/tableRead',
 	},

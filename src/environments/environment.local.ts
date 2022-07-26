@@ -145,9 +145,9 @@ export const environment = {
 		},
 	},
 	contacts: {
-		contactName: '',
-		contactEmail: '',
-		contactPhone: '',
+		contactName: 'Keyemporium Team',
+		contactEmail: 'keyemporium.tech@gmail.it',
+		contactPhone: '+393281044127',
 	},
 };
 

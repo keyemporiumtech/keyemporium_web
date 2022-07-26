@@ -12,6 +12,7 @@ export class ApplicationStorageService extends BaseService {
 	private _test: ApplicationStorageModel;
 	// routing
 	private _backUrl: ApplicationStorageModel;
+	private _storedUrls: ApplicationStorageModel;
 	// locale
 	private _language: ApplicationStorageModel;
 	private _languageName: ApplicationStorageModel;
@@ -54,6 +55,7 @@ export class ApplicationStorageService extends BaseService {
 		this.environment = this.applicationLogger.environment;
 		this.test = new ApplicationStorageModel('test');
 		this.backUrl = new ApplicationStorageModel('back');
+		this.storedUrls = new ApplicationStorageModel('storedUrls');
 		this.language = new ApplicationStorageModel('lang');
 		this.languageName = new ApplicationStorageModel('languageName');
 		this.languagePayload = new ApplicationStorageModel('languagePayload');
@@ -595,5 +597,21 @@ export class ApplicationStorageService extends BaseService {
 	 */
 	public set nationPayload(value: ApplicationStorageModel) {
 		this._nationPayload = value;
+	}
+
+	/**
+	 * Getter storedUrls
+	 * @return {ApplicationStorageModel}
+	 */
+	public get storedUrls(): ApplicationStorageModel {
+		return this._storedUrls;
+	}
+
+	/**
+	 * Setter storedUrls
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set storedUrls(value: ApplicationStorageModel) {
+		this._storedUrls = value;
 	}
 }

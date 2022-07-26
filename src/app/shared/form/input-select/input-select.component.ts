@@ -145,7 +145,22 @@ export class InputSelectComponent extends BaseInputComponent {
 		}
 	}
 
+	setOnlySelectedOption(option: OptionListModel) {
+		if (this.multiple) {
+			this.setOnlySelectedOptionForMultiple(option);
+		} else {
+			this.setOnlySelectedOptionForSingle(option);
+		}
+	}
+
 	// single
+	setOnlySelectedOptionForSingle(option: OptionListModel) {
+		const selected = this.options.find((el) => el.key === option.key);
+		if (selected) {
+			this.selectedOption = option;
+			this.selectedOptions = [option];
+		}
+	}
 
 	/**
 	 * Setta il valore al control secondo l'item option selezionato
@@ -163,7 +178,20 @@ export class InputSelectComponent extends BaseInputComponent {
 	}
 
 	// multiple
-
+	setOnlySelectedOptionForMultiple(option: OptionListModel) {
+		const selected = this.options.find((el) => el.key === option.key);
+		if (selected) {
+			this.selectedOption = this.defaultOption;
+			if (this.selectedOptions && this.selectedOptions.length) {
+				const index = this.selectedOptions.findIndex((el) => el.key === option.key);
+				if (index === -1) {
+					this.selectedOptions.push(option);
+				}
+			} else {
+				this.selectedOptions = [option];
+			}
+		}
+	}
 	/**
 	 * Aggiunge o toglie un item alla lista selectedOptions e
 	 * Setta il valore al control secondo gli items selectedOptions

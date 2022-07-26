@@ -13,6 +13,7 @@ import { QueryModule } from './query/query.module';
 import { OpenstreetmapModule } from './openstreetmap/openstreetmap.module';
 import { EsriModule } from './esri/esri.module';
 import { SocialModule } from './social/social.module';
+import { MapsModule } from './maps/maps.module';
 
 @NgModule({
 	declarations: [],
@@ -31,6 +32,7 @@ import { SocialModule } from './social/social.module';
 		OpenstreetmapModule.forRoot(),
 		EsriModule.forRoot(),
 		SocialModule.forRoot(),
+		MapsModule.forRoot(),
 	],
 	exports: [
 		InitialModule,
@@ -44,6 +46,7 @@ import { SocialModule } from './social/social.module';
 		OpenstreetmapModule,
 		EsriModule,
 		SocialModule,
+		MapsModule,
 	],
 })
 export class RestModule {

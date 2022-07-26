@@ -1,11 +1,16 @@
 # CHANGELOG KIT
 
-## 2.1.0 - XX/03/2022
+## 2.1.0 - 26/07/2022
 
-> Versione che 
+> Versione che refactorizza il routing con l'introduzione degli extra navigation in `PreviousRouteService`. Inoltre aggiunge la pipe `showcurrency` e utility per date e array.
 
 ### changes
 
+- `[feature]` **storage**: Aggiunta la variabile di storage `storedUrls`
+- `[feature]` **routing**: Integrazione della navigazione con i NavigationExtras
+  - Aggiunta l'interfaccia `MapRouteInterface`
+  - Aggiunto il metodo `navigate` in `PreviousRouteService` e modifica del metodo `back`
+  - Aggiunto dei metodi `cleanUrl`, `splitUrl` e `splitUrlNavigationExtrasQueryParameters` in `PageUtility`
 - `[fix]` Aggiunto il controllo sull'esistenza dei campi in input nel metodo `getBase64ByContent` di `FileService` del modulo `filemanager`
 - `[feature]` **locale**: Aggiunta la pipe `showcurrency`
 - `[feature]` **timing**: Aggiunta l'interfaccia `DurationInterface` e tutti i metodi di utility in `DateUtility` per aggiungere o sottrarre valori ad una data

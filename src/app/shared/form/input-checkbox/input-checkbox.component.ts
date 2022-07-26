@@ -27,5 +27,6 @@ export class InputCheckboxComponent extends InputSelectComponent {
 	setAutomaticValidations() {}
 	setPropertiesFromField() {
 		this.isHorizontal = this.field.property.isHorizontal;
+		this.options = this.field.property.options;
 	}
 }

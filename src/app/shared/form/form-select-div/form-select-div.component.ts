@@ -12,6 +12,7 @@ export class FormSelectDivComponent extends InputSelectComponent {
 	@Input() cssStyleDisabled: any;
 	@Input() cssClassSelected: any;
 	@Input() cssStyleSelected: any;
+	@Input() hideArrows: boolean;
 	open: boolean = false;
 
 	constructor(applicationLogger: ApplicationLoggerService) {

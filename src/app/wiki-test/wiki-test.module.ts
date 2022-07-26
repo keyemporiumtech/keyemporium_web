@@ -51,6 +51,8 @@ import { TestRestOpenstreetmapComponent } from './components/test-rest/test-rest
 import { TestSharedAddressSearchComponent } from './components/test-shared/test-shared-address-search/test-shared-address-search.component';
 import { TestRestOauthLoginComponent } from './components/test-rest/test-rest-oauth-login/test-rest-oauth-login.component';
 import { ValidatorPasswordModule } from '../modules/validator-password/validator-password.module';
+import { TestKitChartsComponent } from './components/test-kit/test-kit-charts/test-kit-charts.component';
+import { TestKitRoutingComponent } from './components/test-kit/test-kit-routing/test-kit-routing.component';
 @NgModule({
 	declarations: [
 		TestHomeComponent,
@@ -89,6 +91,8 @@ import { ValidatorPasswordModule } from '../modules/validator-password/validator
 		TestSharedAddressSearchComponent,
 		VersioningComponent,
 		TestRestOauthLoginComponent,
+		TestKitChartsComponent,
+		TestKitRoutingComponent,
 	],
 	imports: [
 		CommonModule,

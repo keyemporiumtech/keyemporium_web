@@ -1,0 +1,82 @@
+<h4>Modulo Routing</h4>
+
+
+<hr class="line line-lg bg-info" />
+<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapsePageUtility"
+  aria-expanded="false" aria-controls="collapsePageUtility">
+  PageUtility
+</button>
+
+<div class="collapse" id="collapsePageUtility">
+  <div class="mt-3">
+    La classe <strong>PageUtility</strong> consente di utilizzare delle funzioni per la gestione di url e parametri
+    <ul>
+      <li><strong>cleanUrl</strong> rimuove dalla url tutto quello che precede la navigazione interna (host, cancelletto
+        ...)</li>
+      <li><strong>splitUrl</strong> scompone una url in due parti, l'array della url e l'array dei parametri con il
+        segno =</li>
+      <li><strong>splitUrlNavigationExtrasQueryParameters</strong> scompone una url generando i parametri come
+        NavigationExtras</li>
+    </ul>
+
+  </div>
+  <div class="mt-3">
+    <pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```ts
+          PageUtility.splitUrlNavigationExtrasQueryParameters(this.router.url); // scompone la url corrente e se ci sono parametri li mette in extras
+
+
+        ```
+
+      </div>
+    </pre>
+  </div>
+
+
+  <hr />
+  <div class="mt-2"><strong>{{current}}</strong></div>
+  <button class="btn btn-sm btn-primary m-1" (click)="cleanUrlCurrent = cleanUrl(current)">cleanUrl</button>
+  <button class="btn btn-sm btn-primary m-1" (click)="splitUrlCurrent = splitUrl(current)">splitUrl</button>
+  <button class="btn btn-sm btn-primary m-1"
+    (click)="splitUrlNavigationExtrasQueryParametersCurrent = splitUrlNavigationExtrasQueryParameters(current)">splitUrlNavigationExtrasQueryParameters</button>
+  <br />
+  {{cleanUrlCurrent | json}}<br />
+  {{splitUrlCurrent | json}}<br />
+  {{splitUrlNavigationExtrasQueryParametersCurrent | json}}<br />
+
+  <hr />
+  <div class="mt-2"><strong>{{url1}}</strong></div>
+  <button class="btn btn-sm btn-primary m-1" (click)="cleanUrl1 = cleanUrl(url1)">cleanUrl</button>
+  <button class="btn btn-sm btn-primary m-1" (click)="splitUrl1 = splitUrl(url1)">splitUrl</button>
+  <button class="btn btn-sm btn-primary m-1"
+    (click)="splitUrlNavigationExtrasQueryParameters1 = splitUrlNavigationExtrasQueryParameters(url1)">splitUrlNavigationExtrasQueryParameters</button>
+  <br />
+  {{cleanUrl1 | json}}<br />
+  {{splitUrl1 | json}}<br />
+  {{splitUrlNavigationExtrasQueryParameters1 | json}}<br />
+
+  <hr />
+  <div class="mt-2"><strong>{{url2}}</strong></div>
+  <button class="btn btn-sm btn-primary m-1" (click)="cleanUrl2 = cleanUrl(url2)">cleanUrl</button>
+  <button class="btn btn-sm btn-primary m-1" (click)="splitUrl2 = splitUrl(url2)">splitUrl</button>
+  <button class="btn btn-sm btn-primary m-1"
+    (click)="splitUrlNavigationExtrasQueryParameters2 = splitUrlNavigationExtrasQueryParameters(url2)">splitUrlNavigationExtrasQueryParameters</button>
+  <br />
+  {{cleanUrl2 | json}}<br />
+  {{splitUrl2 | json}}<br />
+  {{splitUrlNavigationExtrasQueryParameters2 | json}}<br />
+
+  <hr />
+  <div class="mt-2"><strong>{{url3}}</strong></div>
+  <button class="btn btn-sm btn-primary m-1" (click)="cleanUrl3 = cleanUrl(url3)">cleanUrl</button>
+  <button class="btn btn-sm btn-primary m-1" (click)="splitUrl3 = splitUrl(url3)">splitUrl</button>
+  <button class="btn btn-sm btn-primary m-1"
+    (click)="splitUrlNavigationExtrasQueryParameters3 = splitUrlNavigationExtrasQueryParameters(url3)">splitUrlNavigationExtrasQueryParameters</button>
+  <br />
+  {{cleanUrl3 | json}}<br />
+  {{splitUrl3 | json}}<br />
+  {{splitUrlNavigationExtrasQueryParameters3 | json}}<br />
+
+</div>

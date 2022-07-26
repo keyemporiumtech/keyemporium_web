@@ -7,6 +7,10 @@
       <a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-HTML')">Modulo Html</a>
       <span class="ml-2">|</span>
       <a class="ml-2 btn btn-sm btn-warning" (click)="set('BOOTSTRAP-FORMS')">Bootstrap Forms</a>
+      <span class="ml-2">|</span>
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-CHARTS')">Modulo Charts</a>
+      <span class="ml-2">|</span>
+      <a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-ROUTING')">Modulo Routing</a>
     </div>
   </div>
 
@@ -15,6 +19,8 @@
       <a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
       <wiki-test-kit-validators *ngIf="view==='KIT-VALIDATORS'"></wiki-test-kit-validators>
       <wiki-test-kit-html *ngIf="view === 'KIT-HTML'"></wiki-test-kit-html>
+      <wiki-test-kit-charts *ngIf="view === 'KIT-CHARTS'"></wiki-test-kit-charts>
+      <wiki-test-kit-routing *ngIf="view === 'KIT-ROUTING'"></wiki-test-kit-routing>
     </div>
   </div>
 

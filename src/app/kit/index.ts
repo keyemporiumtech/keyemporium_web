@@ -109,6 +109,7 @@ export * from "./qrcode/qrcode.module";
 export * from "./qrcode/components/reader/qrcode-reader.component";
 export * from "./qrcode/components/scanner/qrcode-scanner.component";
 export * from "./routing/routing.module";
+export * from "./routing/interfaces/map-route.interface";
 export * from "./routing/models/route-url.model";
 export * from "./routing/services/previous-route.service";
 export * from "./routing/utility/page.utility";

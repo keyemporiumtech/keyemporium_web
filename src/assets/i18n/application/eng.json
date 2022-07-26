@@ -19,54 +19,54 @@
       "SHOW": "Mostra"
     },
     "COOKIE": {
-      "ACCEPT": "Accetta",
-      "ATTENTION_CLOSE": "ATTENZIONE!! Chiudendo si accetteranno i cookie. Resterà comunque possibile modificare la scelta dalla pagina di Gestione dei cookie",
+      "ACCEPT": "Accept",
+      "ATTENTION_CLOSE": "WARNING! Closing will accept cookies. You will still be able to change your choice from the Cookie Management page",
       "CHOICE": {
-        "ACCEPT": "Accetta selezionati",
-        "ACCEPT_ALL": "Accetta tutti",
-        "EDIT": "Personalizza",
-        "NAV1": "Consenso",
-        "NAV1_INFO": "<strong>Questo sito web utilizza i cookie</strong><br/>Utilizziamo i cookie per personalizzare contenuti ed annunci, per fornire funzionalità dei social media e per analizzare il nostro traffico. Condividiamo inoltre informazioni sul modo in cui utilizza il nostro sito con i nostri partner che si occupano di analisi dei dati web, pubblicità e social media, i quali potrebbero combinarle con altre informazioni che ha fornito loro o che hanno raccolto dal suo utilizzo dei loro servizi.",
-        "NAV2": "Personalizza",
-        "NAV2_INFO": "In questa sezione è possibile analizzare il dettaglio di ogni cookie applicativo e personalizzare l'accettazione del gruppo di cookies da accettare",
-        "NAV3": "Informazione sui cookie",
-        "NAV3_INFO1": "I cookie sono piccoli file di testo che possono essere utilizzati dai siti web per rendere più efficiente l'esperienza per l'utente.",
-        "NAV3_INFO2": "La legge afferma che possiamo memorizzare i cookie sul suo dispositivo se sono strettamente necessari per il funzionamento di questo sito. Per tutti gli altri tipi di cookie abbiamo bisogno del suo permesso.",
-        "NAV3_INFO3": "Questo sito utilizza diversi tipi di cookie. Alcuni cookie sono collocate da servizi di terzi che compaiono sulle nostre pagine.",
-        "NAV3_INFO4": "In qualsiasi momento è possibile modificare o revocare il proprio consenso sul nostro sito Web dalla ",
-        "NAV3_INFO4_LINK": "Dichiarazione dei cookie",
-        "NAV3_INFO5": "Scopra di più su chi siamo, come può contattarci e come trattiamo i dati personali nella nostra ",
-        "NAV3_INFO5_LINK": "Informativa sulla privacy",
-        "NAV3_INFO6": "Scopra di più su come gestiamo i cookie nella nostra ",
-        "NAV3_INFO6_LINK": "Informativa sui cookie",
-        "REFUSE": "Rifiuta",
-        "TITLE": "Gestione dei Cookie"
+        "ACCEPT": "Accept selected",
+        "ACCEPT_ALL": "Accept all",
+        "EDIT": "Customise",
+        "NAV1": "Consent",
+        "NAV1_INFO": "<strong>This website uses cookies</strong><br/>We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about how you use our site with our web analytics, advertising and social media partners, who may combine it with other information you have provided to them or that they have collected from your use of their services.",
+        "NAV2": "Customise",
+        "NAV2_INFO": "In this section you can analyse the details of each application cookie and customise the group of cookies to be accepted",
+        "NAV3": "Information on cookies",
+        "NAV3_INFO1": "Cookies are small text files that can be used by websites to make the user experience more efficient.",
+        "NAV3_INFO2": "The law states that we can store cookies on your device if they are strictly necessary for the operation of this site. For all other types of cookies we need your permission.",
+        "NAV3_INFO3": "This site uses different types of cookies. Some cookies are placed by third-party services that appear on our pages.",
+        "NAV3_INFO4": "You can change or revoke your consent on our website at any time from the ",
+        "NAV3_INFO4_LINK": "Cookie Declaration",
+        "NAV3_INFO5": "Find out more about who we are, how you can contact us and how we process personal data in our ",
+        "NAV3_INFO5_LINK": "Privacy policy",
+        "NAV3_INFO6": "Find out more about how we handle cookies in our ",
+        "NAV3_INFO6_LINK": "Cookie policy",
+        "REFUSE": "Reject",
+        "TITLE": "Cookie Management"
       },
       "INFO": "Questo è il messaggio che deve comparire nel banner cookie",
-      "LAST_UPDATE": "Dichiarazione Cookie aggiornata il {{ dtaCookie }} da {{ appName }}",
-      "LINK_EXTERNAL": "Per saperne di più sul fornitore",
+      "LAST_UPDATE": "Cookie Statement updated on {{ dtaCookie }} by {{ appName }}",
+      "LINK_EXTERNAL": "Learn more about the supplier",
       "MARKETING": {
         "TITLE": "Marketing",
-        "DESCRIPTION": "I cookie di marketing vengono utilizzati per tracciare i visitatori sui siti web. La finalità è quella di presentare annunci pubblicitari che siano rilevanti e coinvolgenti per il singolo utente e quindi di maggior valore per editori e inserzionisti di terze parti."
+        "DESCRIPTION": "Marketing cookies are used to track visitors to websites. The purpose is to present advertisements that are relevant and engaging to the individual user and therefore of greater value to third-party publishers and advertisers."
       },
-      "MORE_INFO": "Leggi",
+      "MORE_INFO": "More Info",
       "NECESSARY": {
-        "TITLE": "Necessari",
-        "DESCRIPTION": "I cookie necessari contribuiscono a rendere fruibile il sito web abilitandone funzionalità di base quali la navigazione sulle pagine e l'accesso alle aree protette del sito. Il sito web non è in grado di funzionare correttamente senza questi cookie.",
-        "CAKEPHP": "Questa tipologia di cookie permette il corretto funzionamento di alcune sezioni del Sito. Sono di tipo persistenti (una volta chiuso il browser non vengono distrutti ma rimangono fino ad una data di scadenza preimpostata). Sono necessari quindi a visualizzare correttamente il sito e sono solo in relazione ai servizi tecnici offerti e verranno quindi sempre utilizzati e inviati, a meno che non si modifichi le impostazioni nel proprio browser"
+        "TITLE": "Necessary",
+        "DESCRIPTION": "Necessary cookies contribute to the usability of the website by enabling basic functionality such as page navigation and access to secure areas of the website. The website cannot function properly without these cookies.",
+        "CAKEPHP": "This type of cookie allows certain sections of the Site to function properly. They are of the persistent type (once the browser is closed, they are not destroyed but remain until a preset expiry date). They are therefore necessary to display the site correctly and are only in relation to the technical services offered and will therefore always be used and sent, unless you change the settings in your browser"
       },
       "NOT_CLASSIFIED": {
-        "TITLE": "Non classificati",
-        "DESCRIPTION": "I cookie non classificati sono i cookie che sono in fase di classificazione, insieme ai fornitori di cookie individuali."
+        "TITLE": "Unclassified",
+        "DESCRIPTION": "Unclassified cookies are cookies that are in the process of being classified, along with individual cookie providers."
       },
       "PREFERENCE": {
-        "TITLE": "Preferenze",
-        "DESCRIPTION": "I cookie di preferenza consentono al sito web di memorizzare informazioni che ne influenzano il comportamento o l'aspetto, quali la lingua preferita o la località nella quale ti trovi.",
-        "PROFILE": "Questa tipologia di cookie memorizza i dati anagrafici dell'utente per proporre soluzioni di navigazione attinenti a luoghi, età e lingua"
+        "TITLE": "Preferences",
+        "DESCRIPTION": "Preference cookies allow the website to store information that influences its behaviour or appearance, such as your preferred language or location.",
+        "PROFILE": "This type of cookie stores the user's biographical data in order to propose navigation solutions relevant to location, age and language"
       },
       "STATISTIC": {
-        "TITLE": "Statistiche",
-        "DESCRIPTION": "I cookie statistici aiutano i proprietari del sito web a capire come i visitatori interagiscono con i siti raccogliendo e trasmettendo informazioni in forma anonima."
+        "TITLE": "Statistics",
+        "DESCRIPTION": "Statistical cookies help website owners understand how visitors interact with the sites by collecting and transmitting information in an anonymous form."
       },
       "TITLE": "Cookie Policy"
     },

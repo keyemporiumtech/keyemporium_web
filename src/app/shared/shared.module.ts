@@ -47,6 +47,7 @@ import { CookieChoiceComponent } from './components/banner-cookie/cookie-choice/
 import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { AccordionContainerComponent } from './components/accordion-container/accordion-container.component';
+import { GmapComponent } from './components/gmap/gmap.component';
 
 @NgModule({
 	declarations: [
@@ -91,6 +92,7 @@ import { AccordionContainerComponent } from './components/accordion-container/ac
 		CookiePageComponent,
 		AccordionComponent,
 		AccordionContainerComponent,
+		GmapComponent,
 	],
 	imports: [
 		CommonModule,
@@ -144,6 +146,7 @@ import { AccordionContainerComponent } from './components/accordion-container/ac
 		CookiePageComponent,
 		AccordionComponent,
 		AccordionContainerComponent,
+		GmapComponent,
 	],
 })
 export class SharedModule {

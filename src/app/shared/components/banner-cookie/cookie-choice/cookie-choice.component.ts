@@ -7,6 +7,7 @@ import {
 	BaseComponent,
 	ApplicationLoggerService,
 	FileEmbedModel,
+	PreviousRouteService,
 } from '@ddc/kit';
 import { Router } from '@angular/router';
 import { EnumCookieNavigation } from '../../../enums/cookie/cookie-navigation.enum';
@@ -48,6 +49,7 @@ export class CookieChoiceComponent extends BaseComponent {
 	}
 
 	@Input() flgRemote: boolean = true;
+	@Input() isPage: boolean = false;
 
 	@Output() operationEmit: EventEmitter<EnumCookieOperation> = new EventEmitter<
 		EnumCookieOperation
@@ -69,12 +71,14 @@ export class CookieChoiceComponent extends BaseComponent {
 	// services
 	applicationStorage: ApplicationStorageService;
 	router: Router;
+	previouseRoute: PreviousRouteService;
 	cookiemanager: CookiemanagerService;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
 		applicationStorage: ApplicationStorageService,
 		router: Router,
+		previouseRoute: PreviousRouteService,
 		cookiemanager: CookiemanagerService,
 	) {
 		super(applicationLogger);
@@ -85,6 +89,7 @@ export class CookieChoiceComponent extends BaseComponent {
 		// this.evalStatus();
 		this.applicationStorage = applicationStorage;
 		this.router = router;
+		this.previouseRoute = previouseRoute;
 		this.cookiemanager = cookiemanager;
 	}
 
@@ -167,7 +172,7 @@ export class CookieChoiceComponent extends BaseComponent {
 
 	private closeBanner() {
 		const storageVariable: string = this.applicationStorage.bannerStatus.get();
-		if (!storageVariable) {
+		if (!storageVariable && this.applicationStorage.get('cookieId')) {
 			const cookieId = this.applicationStorage.get('cookieId').get();
 			this.applicationStorage.bannerStatus.set(cookieId);
 		}
@@ -183,7 +188,13 @@ export class CookieChoiceComponent extends BaseComponent {
 		this.operationEmit.emit(EnumCookieOperation.REFUSAL);
 		this.closeBanner();
 		if (this.flgRemote) {
-			this.subRefuse = this.cookiemanager.update(false, false, false, false, true).subscribe();
+			this.subRefuse = this.cookiemanager
+				.update(false, false, false, false, true)
+				.subscribe((res) => {
+					this.evalPage();
+				});
+		} else {
+			this.evalPage();
 		}
 	}
 
@@ -200,7 +211,11 @@ export class CookieChoiceComponent extends BaseComponent {
 		if (this.flgRemote) {
 			this.subAccept = this.cookiemanager
 				.update(this.isPreference, this.isStatistic, this.isMarketing, this.isNotClassified, true)
-				.subscribe();
+				.subscribe((res) => {
+					this.evalPage();
+				});
+		} else {
+			this.evalPage();
 		}
 	}
 
@@ -213,7 +228,19 @@ export class CookieChoiceComponent extends BaseComponent {
 		this.operationEmit.emit(EnumCookieOperation.ACCEPT_ALL);
 		this.closeBanner();
 		if (this.flgRemote) {
-			this.subAcceptAll = this.cookiemanager.update(true, true, true, true, true).subscribe();
+			this.subAcceptAll = this.cookiemanager
+				.update(true, true, true, true, true)
+				.subscribe((res) => {
+					this.evalPage();
+				});
+		} else {
+			this.evalPage();
+		}
+	}
+
+	private evalPage() {
+		if (this.isPage) {
+			this.previouseRoute.back();
 		}
 	}
 
@@ -221,7 +248,7 @@ export class CookieChoiceComponent extends BaseComponent {
 
 	goToPageCookie() {
 		this.linkEmit.emit(EnumCookieNavigation.COOKIE_CHOICE);
-		this.router.navigate(['commons', 'cookies']);
+		this.previouseRoute.navigate(['commons', 'cookies']);
 	}
 	goToPrivacyPolicy() {
 		this.linkEmit.emit(EnumCookieNavigation.PRIVACY_POLICY);

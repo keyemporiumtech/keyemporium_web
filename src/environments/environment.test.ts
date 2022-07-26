@@ -142,8 +142,8 @@ export const environment = {
 		},
 	},
 	contacts: {
-		contactName: '',
-		contactEmail: '',
-		contactPhone: '',
+		contactName: 'Keyemporium Team',
+		contactEmail: 'keyemporium.manager@gmail.com',
+		contactPhone: '393281044127',
 	},
 };

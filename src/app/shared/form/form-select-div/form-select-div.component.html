@@ -24,7 +24,7 @@
         [innerHTML]="translateKey(option.text) | translate:translateParams(option.text) | escapehtml"
         (click)="clickOpenClose()"></a>
     </ng-container>
-    <a *ngIf="field.formControl.enabled" class="m-1 float-right" (click)="clickOpenClose()">
+    <a *ngIf="field.formControl.enabled && !hideArrows" class="m-1 float-right" (click)="clickOpenClose()">
       <span class="fa {{open ? 'fa-arrow-up' : 'fa-arrow-down'}}"></span>
     </a>
   </ng-container>
