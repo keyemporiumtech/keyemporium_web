@@ -30,6 +30,26 @@ export class RequestUtility {
 		}
 	}
 
+	static getObjQueryParametersByArray(params: string[], qp?: any): any {
+		const ret: any = qp ? qp : {};
+		let arrRet: string[] = [];
+		for (const q of params) {
+			arrRet = q.split('=');
+			if (arrRet && arrRet.length === 2) {
+				ret[arrRet[0]] = arrRet[1];
+			}
+		}
+		return ret;
+	}
+
+	static getObjQueryParametersByMap(params: Map<string, string>, qp?: any): any {
+		const paramsArr: string[] = [];
+		for (const [key, value] of params.entries()) {
+			paramsArr.push(key + '=' + value);
+		}
+		return this.getObjQueryParametersByArray(paramsArr, qp);
+	}
+
 	static getQueryParametersByArray(params: string[]): string {
 		return params && params.length ? '?' + params.join('&') : undefined;
 	}

@@ -68,6 +68,7 @@ export abstract class BaseRestService extends BaseService {
 					: this.environment.api.tokenApp,
 			);
 		}
+		this._httpHeaders = this._httpHeaders.append('clientId', this.environment.security.servername);
 		return this._httpHeaders;
 	}
 

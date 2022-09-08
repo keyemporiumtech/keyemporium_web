@@ -138,8 +138,9 @@ export abstract class BaseFormComponent extends BaseComponent
 	 * Cambia la modalità (DETAIL, UPDATE o NEW) di visualizzazione del form
 	 * @param mode modalità di visualizzazione
 	 * @param initReset se fornita definisce un pattern di inizializzazione del form al reset (modalità NEW)
+	 * @param initUpdate se fornita definisce un pattern di inizializzazione del form all'edit  (modalità UPDATE)
 	 */
-	changeMode(mode: EnumFormMode, initReset?: () => {}) {
+	changeMode(mode: EnumFormMode, initReset?: () => any, initUpdate?: () => any) {
 		this.mode = mode;
 		switch (mode) {
 			case EnumFormMode.DETAIL:
@@ -149,6 +150,7 @@ export abstract class BaseFormComponent extends BaseComponent
 			case EnumFormMode.UPDATE:
 				this.enable();
 				this.readonly = false;
+				initUpdate();
 				break;
 			case EnumFormMode.NEW:
 				this.enable();

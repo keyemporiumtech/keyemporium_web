@@ -169,7 +169,11 @@ export class InputSelectComponent extends BaseInputComponent {
 	 */
 	checkOptionForSingle(option: OptionListModel, optionsEvent?: any) {
 		if (this.field && this.evalIfEnable()) {
-			if (this.field.formControl.value !== option.key) {
+			if (this.isSelected(option)) {
+				this.field.formControl.setValue(undefined, optionsEvent);
+				this.selectedOption = undefined;
+				this.selectedOptions = [];
+			} else if (this.field.formControl.value !== option.key) {
 				this.field.formControl.setValue(option.key, optionsEvent);
 				this.selectedOption = option;
 				this.selectedOptions = [option];

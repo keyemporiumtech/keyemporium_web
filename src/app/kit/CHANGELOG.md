@@ -1,5 +1,16 @@
 # CHANGELOG KIT
 
+## 2.2.0 - XX/XX/2022
+
+> Versione che perfeziona il servizio `BrowserService` e aggiunge una funzione al mode Edit di un form.
+> Inoltre perfezione il metodo `splitUrlNavigationExtrasQueryParameters` di `PageUtility`
+
+### changes
+
+- `[feature]` **config**: Modificato il metodo `getBrowserName` di `BrowserService` per consentire di trovare edge anche con il codice edg
+- `[feature]` **abstract**: Aggiunto il parametro `initUpdate` alla funzione `changeMode` di `BaseForm` per consentire di eseguire una funzione al change mode edit
+- `[fix]` **routing**: Fixato il metodo `splitUrlNavigationExtrasQueryParameters` di `PageUtility` per consentire che un parametro già presente in url venga aggiornato se richiesto
+
 ## 2.1.0 - 26/07/2022
 
 > Versione che refactorizza il routing con l'introduzione degli extra navigation in `PreviousRouteService`. Inoltre aggiunge la pipe `showcurrency` e utility per date e array.

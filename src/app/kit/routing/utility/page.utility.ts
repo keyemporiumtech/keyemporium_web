@@ -115,7 +115,9 @@ export class PageUtility {
 					if (!extrasTmp.hasOwnProperty('queryParams')) {
 						extrasTmp.queryParams = {};
 					}
-					extrasTmp.queryParams[arrParamKV[0]] = arrParamKV[1];
+					if (!extrasTmp.queryParams.hasOwnProperty(arrParamKV[0])) {
+						extrasTmp.queryParams[arrParamKV[0]] = arrParamKV[1];
+					}
 				}
 			}
 		}
