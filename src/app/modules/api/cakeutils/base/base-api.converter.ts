@@ -139,10 +139,10 @@ export abstract class BaseApiConverter<M extends ApiModel, D extends ApiDTO> ext
 
 	// base64 content
 	convertBase64ToModel(value: string) {
-		return value ? value.replace(' ', '') : undefined;
+		return value ? value.replace(new RegExp(' ', 'g'), '') : undefined;
 	}
 	convertBase64ToDto(value: string) {
-		return value ? value.replace(' ', '') : null;
+		return value ? value.replace(new RegExp(' ', 'g'), '') : null;
 	}
 }
 

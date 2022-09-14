@@ -1,62 +1,47 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {
 	BaseFormComponent,
+	OptionListModel,
 	ApplicationLoggerService,
 	MagicValidatorUtil,
-	ApplicationStorageService,
-	OptionListModel,
-	RouteNavigationUtility,
-	PageUtility,
 	BehaviourObserverModel,
+	EnumFormMode,
 } from '@ddc/kit';
 import { FormFieldModel } from '../../../shared/models/form/form-field.model';
-import { InputPasswordAsyncComponent } from '../../../modules/validator-password/components/input-password-async/input-password-async.component';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
-import { of, Observable, Subscription } from 'rxjs';
+import { UserService } from '../../../modules/authentication/services/user.service';
+import { Observable, of } from 'rxjs';
 import { TypologicalUtility } from '../../../application-shared/utility/Typological.utility';
 import { UserModel } from '../../../modules/authentication/models/user.model';
-import { UserService } from '../../../modules/authentication/services/user.service';
 import { UserConverter } from '../../../modules/authentication/converters/user.converter';
-import { AuthenticationService } from '../../../modules/authentication/base/authentication.service';
-import { EnumPermissions } from '../../../application-shared/constants/permissions.enum';
+import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
 
 @Component({
-	selector: 'reserve-profile-page',
-	templateUrl: './profile-page.component.html',
-	styleUrls: ['./profile-page.component.scss'],
+	selector: 'reserve-profile',
+	templateUrl: './profile.component.html',
+	styleUrls: ['./profile.component.scss'],
 })
-export class ProfilePageComponent extends BaseFormComponent {
+export class ProfileComponent extends BaseFormComponent {
+	@Input() id_user: string;
+	@Input() blocked: boolean;
+	@Input() viewmode: boolean = true;
+	@Output() emitViewMode: EventEmitter<boolean> = new EventEmitter<boolean>();
 	// fields
-	FLD_image: FormFieldModel;
 	FLD_email: FormFieldModel;
 	FLD_name: FormFieldModel;
 	FLD_surname: FormFieldModel;
 	FLD_sex: FormFieldModel;
 	FLD_born: FormFieldModel;
 	optionsSex: OptionListModel[] = [];
-	// objects
-	routeUtil: RouteNavigationUtility;
-	// var
-	id_user: string;
-	idUserLogged: string;
-	// sub
 
 	// @ViewChild('pwd1') pwd1: InputPasswordAsyncComponent;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
 		fb: FormBuilder,
-		private router: Router,
-		private activatedRoute: ActivatedRoute,
-		private applicationStorage: ApplicationStorageService,
 		private userService: UserService,
-		private authenticationService: AuthenticationService,
 	) {
 		super(applicationLogger, fb);
-		this.routeUtil = new RouteNavigationUtility(router, activatedRoute);
-		this.idUserLogged = this.applicationStorage.userId.get();
 		this.initFields();
 	}
 
@@ -83,23 +68,7 @@ export class ProfilePageComponent extends BaseFormComponent {
 	getValidationMessages() {
 		return {};
 	}
-	setValueChanges() {
-		const idUserParam = PageUtility.decodeParam(this.routeUtil.snapshot.paramMap.get('ID_USER'));
-		if (!idUserParam) {
-			this.id_user = this.idUserLogged;
-		} else if (
-			idUserParam !== this.idUserLogged &&
-			!this.authenticationService.checkPermissions([
-				EnumPermissions.SUPERVISOR,
-				EnumPermissions.CHANGE_PROFILES,
-			])
-		) {
-			this.readonly = true;
-			this.id_user = idUserParam;
-		} else {
-			this.id_user = idUserParam;
-		}
-	}
+	setValueChanges() {}
 	setLoader() {}
 	setLoaderAsync(): Observable<boolean> {
 		this.optionsSex = TypologicalUtility.getSexOptions();
@@ -116,7 +85,7 @@ export class ProfilePageComponent extends BaseFormComponent {
 		form.get('name').setValue(model.name);
 		form.get('surname').setValue(model.surname);
 		form.get('sex').setValue(model.sex);
-		form.get('born').setValue(model.born);
+		form.get('born').setValue(model.bornModel.toString('YYYY-MM-DD'));
 		/*
 		if (this.pwd1 && this.pwd1.formPassword && this.pwd1.formPassword.get('password')) {
 			this.pwd1.formPassword.get('password').setValue(model.password);
@@ -159,7 +128,13 @@ export class ProfilePageComponent extends BaseFormComponent {
 		return new BehaviourObserverModel(funPre, funOk, funError);
 	}
 	afterSave(res: any) {}
-	ngOnInitForChildren() {}
+	ngOnInitForChildren() {
+		if (this.blocked) {
+			this.changeViewMode(true, true);
+		} else if (this.viewmode) {
+			this.changeViewMode(true, true);
+		}
+	}
 	ngAfterViewInitForChildren() {}
 	ngOnDestroyForChildren() {}
 
@@ -208,5 +183,18 @@ export class ProfilePageComponent extends BaseFormComponent {
 		)
 			.validation(this.validationMessages.born)
 			.onInit();
+	}
+
+	changeViewMode(val: boolean, notload?: boolean) {
+		if (val) {
+			super.changeMode(EnumFormMode.DETAIL);
+			if (!notload) {
+				this.reloadModel();
+			}
+		} else {
+			super.changeMode(EnumFormMode.UPDATE);
+		}
+		this.viewmode = val;
+		this.emitViewMode.emit(this.viewmode);
 	}
 }

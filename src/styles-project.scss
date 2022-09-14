@@ -1,0 +1,32 @@
+/* You can add global styles for your project */
+
+/* ----------------------------------------------- KEYEMPORIUM */
+.autocomplete-container {
+  background-color:unset;
+}
+.icon-sex {
+  max-height: 2.5rem;
+}
+/* --- page */
+.container-page {
+  padding: 3.5rem !important;
+}
+.container-page-title {
+  border: 1px $bb-dark3 solid;
+  border-radius: .5rem;
+  background-color: $bb-dark3;
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+
+.container-page-title img.page-title-icon {
+  height: 4rem;
+}
+.container-page-title span.page-title-text {
+  color: $info4;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+  position: relative;
+  top: 0.5rem;
+}

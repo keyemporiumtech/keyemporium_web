@@ -1,6 +1,8 @@
 {
   "PERSONAL": {
     "BUTTON": {
+      "BACK": "Annulla",
+      "LOAD": "Carica",
       "LOGIN": "Login"
     },
     "CONFIRM_LOGIN": {
@@ -31,9 +33,14 @@
     },
     "COPYRIGHT": "&copy; Keyemporium",
     "LABEL": {
+      "BORN": "Data di nascita",
       "EMAIL": "Indirizzo Email",
       "EXPIRATION": "Scadenza",
+      "IMAGE": "Immagine",
+      "NAME": "Nome",
       "PASSWORD": "Password",
+      "SEX": "Sesso",
+      "SURNAME": "Cognome",
       "TYPE": "Tipo"
     },
     "LOGIN": {
@@ -41,6 +48,19 @@
       "SIGNIN_GOOGLE": "Entra con Google",
       "SIGNIN_FACEBOOK": "Entra con Facebook",
       "TITLE": "Entra in Keyemporium"
+    },
+    "VIC": {
+      "ADDRESS": {
+        "TITLE_PRINCIPAL": "Indirizzo principale"
+      },
+      "IMAGE": {
+        "TITLE_PRINCIPAL": "Immagine di profilo"
+      },
+      "PROFILE": {
+        "TITLE": "Informazioni anagrafiche"
+      },
+      "QRCODE": "codice link",
+      "TITLE": "Virtual Identity Card"
     }
   }
 }

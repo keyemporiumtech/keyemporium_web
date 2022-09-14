@@ -1,0 +1,19 @@
+<div *ngIf="!viewmode">
+  <ddc-init-input-address #addressCmp [address]="address"></ddc-init-input-address>
+</div>
+
+<div *ngIf="viewmode && address" [innerHTML]="address.html_address"></div>
+
+<div *ngIf="!blocked" class="mt-2">
+  <a *ngIf="id_user && viewmode" class="mr-2" (click)="changeViewMode(false)" title="{{'APP.BUTTON.EDIT' | translate}}">
+    <span class="fa fa-edit mr-2 text-primary"></span>
+  </a>
+  <a *ngIf="id_user && !viewmode" class="mr-2" (click)="changeViewMode(true)"
+    title="{{'PERSONAL.BUTTON.BACK' | translate}}">
+    <span class="fa fa-times mr-2 text-danger"></span>
+  </a>
+  <a *ngIf="!viewmode && (id_address || id_user)" class="mr-2" (click)="save()"
+    title="{{'PERSONAL.BUTTON.LOAD' | translate}}">
+    <span class="fa fa-save mr-2 text-success"></span>
+  </a>
+</div>

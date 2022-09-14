@@ -154,9 +154,9 @@
   background-color: #6c757d !important;
 
   .close{
-    color: darkred !important;   
+    color: darkred !important;
   }
-  .text {    
+  .text {
     text-align: center;
     /* top or bottom */
     .more-info {
@@ -188,29 +188,29 @@
   .selected {
     width: 100%;
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
   }
   .selected-inner {
     background-color: $primary;
-    color: $text-primary !important;      
+    color: $text-primary !important;
   }
-  .selected-outdor {    
+  .selected-outdor {
     color: $mute !important;
     display: inline;
-    margin-left: .5rem;        
+    margin-left: .5rem;
   }
   .items {
     border: 1px #000 solid;
     background-color: #fff;
     width: 100%;
     position: relative;
-    z-index: 999;     
+    z-index: 999;
     .item {
       padding: .5rem;
       display: flex;
-      flex-wrap: wrap;      
+      flex-wrap: wrap;
     }
-  }  
+  }
 }
 
 .select-image-icon {
@@ -220,17 +220,17 @@
 
 /* input file */
 .listfiles-trash-button {
-  cursor: pointer;    
+  cursor: pointer;
 }
 .listfiles {
-  border: 1px $mute solid;  
+  border: 1px $mute solid;
   .item {
     color: $text;
     font-weight: $weight;
     padding: .4rem;
   }
   .item-close {
-    cursor: pointer;    
+    cursor: pointer;
     color: $danger;
   }
 }
@@ -284,7 +284,7 @@
 .input-generic-message {
   width: 100%;
   margin-top: .25rem;
-  font-size: 80%;   
+  font-size: 80%;
 }
 
 .input-valid {
@@ -299,7 +299,7 @@
   font-size: 80%;
   color: $success;
   position: relative;
-  z-index: -1;  
+  z-index: -1;
 }
 
 .input-invalid {
@@ -314,10 +314,10 @@
   font-size: 80%;
   color: $danger;
   position: relative;
-  z-index: -1;  
+  z-index: -1;
 }
 
-.input-support {  
+.input-support {
 }
 .input-support-icon {
   color: $secondary;
@@ -328,7 +328,7 @@
   font-size: 80%;
   color: $secondary;
   position: relative;
-  z-index: -1;  
+  z-index: -1;
 }
 
 /* PAGINATION */
@@ -341,13 +341,13 @@
 
 /* PLAYLIST */
 .playlist {
-  margin: .5rem;  
+  margin: .5rem;
 
   .audio-item {
     border: 1px #000 solid;
     border-radius: .5rem;
     padding: .5rem;
-    
+
     .audio-title {
       font-size: 8px;
       font-weight: bold;
@@ -361,10 +361,33 @@
       font-weight: bold;
     }
     .audio-duration {
-      font-size: 8px;    
+      font-size: 8px;
     }
   }
 }
 
 
 
+
+
+/* Smartphones 1 ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+
+}
+
+/* Smartphones 1 ----------- */
+@media only screen
+and (min-width : 481px)
+and (max-device-width : 767px) {
+
+
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+/* Styles */
+}

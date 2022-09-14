@@ -121,6 +121,7 @@ export * from "./storage/services/inner-storage.service";
 export * from "./timing/timing.module";
 export * from "./timing/interfaces/duration.interface";
 export * from "./timing/models/date.model";
+export * from "./timing/pipes/date-model.pipe";
 export * from "./timing/services/time.service";
 export * from "./timing/utility/date.utility";
 export * from "./translation/translation.module";

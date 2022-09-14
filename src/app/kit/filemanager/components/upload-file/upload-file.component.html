@@ -5,12 +5,12 @@
 <span *ngIf="icon" style="float: right;left: -25px;margin-top: -25px;position: relative;cursor: pointer"
   [ngClass]="icon" [style.color]="iconColor"></span>
 
-<ddc-init-progress-bar #progressInternal [color]="colorInternalLoad" [showText]="true" [hideOnComplete]="true"
-  [showOnStart]="true" size="'sm'">
+<ddc-init-progress-bar *ngIf="showProgress" #progressInternal [color]="colorInternalLoad" [showText]="true"
+  [hideOnComplete]="true" [showOnStart]="true" size="'sm'">
 </ddc-init-progress-bar>
 
-<ddc-init-progress-bar #progressExternal [color]="colorExternalLoad" [showText]="true" [hideOnComplete]="true"
-  [showOnStart]="true" size="'sm'">
+<ddc-init-progress-bar *ngIf="showProgress" #progressExternal [color]="colorExternalLoad" [showText]="true"
+  [hideOnComplete]="true" [showOnStart]="true" size="'sm'">
 </ddc-init-progress-bar>
 
 <ng-content select="[input-bottom]"></ng-content>
@@ -22,12 +22,12 @@
   </div>
 </ng-container>
 
-<div *ngIf="attachments && attachments.length" [ngClass]="classCleanFiles" [ngStyle]="styleCleanFiles"
+<div *ngIf="showFiles && attachments && attachments.length" [ngClass]="classCleanFiles" [ngStyle]="styleCleanFiles"
   (click)="form.get('inputFile').reset(); removeAllFiles()">
   <span class="{{deleteItems}} text-danger"></span>
 </div>
 
-<div class="mt-2" [ngClass]="infoClass" [ngStyle]="infoStyle">
+<div *ngIf="showFiles" class="mt-2" [ngClass]="infoClass" [ngStyle]="infoStyle">
   <div *ngFor="let item of attachments" class="item row">
     <div class="col-8">{{item?.name}}</div>
     <div class="col-3">{{item?.sizeFormat?.size | number:'1.1-2'}} {{item.sizeFormat?.unit}}</div>

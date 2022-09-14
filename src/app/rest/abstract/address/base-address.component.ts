@@ -35,7 +35,9 @@ export abstract class BaseAddressComponent extends BaseComponent
 	@Input('address')
 	set address(address: any) {
 		this._address = address;
-		this.fillAddress(address);
+		if (this.loaded) {
+			this.fillAddress(address);
+		}
 	}
 	// options
 	nationOptions: OptionListModel[];
@@ -422,6 +424,7 @@ export abstract class BaseAddressComponent extends BaseComponent
 					}
 					// edit or detail
 					this.loaded = true;
+					this.fillAddress(this.address);
 					this.manageAddressNation(this.address);
 				}
 				this.stopLoading();
@@ -547,7 +550,9 @@ export abstract class BaseAddressComponent extends BaseComponent
 	private manageAddressNation(address: any) {
 		if (address) {
 			const valueForNation = this.getAddressValueForNation(address);
-			this.form.get(this.fieldNation).setValue(valueForNation);
+			this.subManageNation = WaitElementsUtility.createDelayForFunction(of(true), () => {
+				this.form.get(this.fieldNation).setValue(valueForNation);
+			}).subscribe();
 		}
 	}
 	private manageAddressRegion(address: any) {

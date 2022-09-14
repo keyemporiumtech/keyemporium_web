@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeReserveComponent } from './pages/home-reserve/home-reserve.component';
 import { LayoutReserveComponent } from './template/layout-reserve/layout-reserve.component';
 import { AuthenticationGuard } from '../modules/authentication/base/authentication.guard';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { VicPageComponent } from './pages/vic-page/vic-page.component';
 
 const routes: Routes = [
 	{
@@ -12,7 +12,7 @@ const routes: Routes = [
 		canActivate: [AuthenticationGuard],
 		children: [
 			{ path: '', component: HomeReserveComponent },
-			{ path: 'profile', component: ProfilePageComponent },
+			{ path: 'vic', component: VicPageComponent },
 		],
 	},
 ];

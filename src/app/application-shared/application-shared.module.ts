@@ -6,9 +6,11 @@ import { RestModule } from '@ddc/rest';
 import { SharedModule } from '../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageContainerComponent } from './components/page-container/page-container.component';
+import { SexHtmlPipe } from './pipes/sex-html.pipe';
 
 @NgModule({
-	declarations: [],
+	declarations: [PageContainerComponent, SexHtmlPipe],
 	imports: [
 		CommonModule,
 		KitModule,
@@ -19,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 		FormsModule,
 		ReactiveFormsModule,
 	],
-	exports: [],
+	exports: [PageContainerComponent, SexHtmlPipe],
 })
 export class ApplicationSharedModule {
 	constructor(environmentLoader: EnvironmentLoaderService) {

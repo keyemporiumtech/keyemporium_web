@@ -476,7 +476,7 @@ export class InputAddressComponent extends BaseAddressComponent
 		return undefined;
 	}
 	getCitySelected(): CityModel {
-		const index = this.cityOptions.findIndex((el) => el.key === this.citySelected[0]);
+		const index = this.cityOptions.findIndex((el) => el.key === this.citySelected);
 		if (index !== -1) {
 			return this.cityOptions[index].payload;
 		}
@@ -722,23 +722,25 @@ export class InputAddressComponent extends BaseAddressComponent
 
 	// MANAGE MODEL
 	fillAddress(address: AddressModel) {
-		if (this.fieldNation) {
-			this.form.get(this.fieldNation).setValue(address.nation ? address.nation.id : undefined);
-		}
-		if (this.fieldStreet) {
-			this.form.get(this.fieldStreet).setValue(address.street);
-		}
-		if (this.fieldNum) {
-			this.form.get(this.fieldNum).setValue(address.number);
-		}
-		if (this.fieldZip) {
-			this.form.get(this.fieldZip).setValue(address.zip);
-		}
-		if (this.fieldLatitude) {
-			this.form.get(this.fieldLatitude).setValue(address.geo1);
-		}
-		if (this.fieldLongitude) {
-			this.form.get(this.fieldLongitude).setValue(address.geo2);
+		if (address) {
+			if (this.fieldNation) {
+				this.form.get(this.fieldNation).setValue(address.nation ? address.nation.id : undefined);
+			}
+			if (this.fieldStreet) {
+				this.form.get(this.fieldStreet).setValue(address.street);
+			}
+			if (this.fieldNum) {
+				this.form.get(this.fieldNum).setValue(address.number);
+			}
+			if (this.fieldZip) {
+				this.form.get(this.fieldZip).setValue(address.zip);
+			}
+			if (this.fieldLatitude) {
+				this.form.get(this.fieldLatitude).setValue(address.geo1);
+			}
+			if (this.fieldLongitude) {
+				this.form.get(this.fieldLongitude).setValue(address.geo2);
+			}
 		}
 	}
 

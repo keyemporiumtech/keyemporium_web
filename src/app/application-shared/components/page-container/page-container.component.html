@@ -1,0 +1,10 @@
+<div class="container-page">
+
+  <div class="container-page-title">
+    <img *ngIf="imgSrc" [src]="imgSrc" class="img-fluid mr-2 page-title-icon" />
+    <span *ngIf="title" class="page-title-text">{{translateKey(title) | translate:translateParams(title)}}</span>
+    <ng-content select="[page-title]"></ng-content>
+  </div>
+
+  <ng-content select="[page-content]"></ng-content>
+</div>

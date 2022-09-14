@@ -3,7 +3,7 @@
   [multiple]="multiple" [readonly]="field.formControl.disabled" (emitFiles)="onAddFiles($event)"
   (emitError)="onError($event)" [errorClass]="'input-invalid-message'" [showErrors]="true"
   [classCleanFiles]="'listfiles-trash-button'" [infoClass]="'listfiles'" [closeItem]="closeItem"
-  [deleteItems]="deleteItems">
+  [deleteItems]="deleteItems" [showProgress]="showProgress" [showFiles]="showFiles">
 
   <div input-bottom>
     <div *ngFor="let support of field.supports" class="input-support-message">

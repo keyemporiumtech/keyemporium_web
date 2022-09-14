@@ -20,10 +20,12 @@ export class AttachmentUtility {
 	): AttachmentModel {
 		const converter = new AttachmentConverter();
 		const attachment = converter.getEmptyModel();
-		attachment.url = file.name;
+		// attachment.url = file.name;
+		const info = fileService.getMimeAndContentByBase64(file.content);
 		attachment.name = file.name.split('.' + file.ext).join('');
 		attachment.ext = file.ext;
-		attachment.content = file.content;
+		attachment.mimetype = info.mimetype;
+		attachment.content = info.content;
 		if (file.sizeFormat.unit === EnumSizeFormat.KILOBYTE) {
 			attachment.size = file.sizeFormat.size;
 		} else {

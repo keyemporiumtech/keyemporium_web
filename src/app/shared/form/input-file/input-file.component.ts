@@ -26,6 +26,9 @@ export class InputFileComponent extends BaseInputComponent {
 	@Input() extensions: string;
 	@Input() closeItem: string;
 	@Input() deleteItems: string;
+	// flags
+	@Input() showProgress: boolean = true;
+	@Input() showFiles: boolean = true;
 
 	VALUE_FROM_UPLOAD: boolean;
 	// subscriptions

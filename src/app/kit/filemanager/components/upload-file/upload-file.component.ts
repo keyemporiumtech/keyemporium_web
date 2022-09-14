@@ -23,7 +23,7 @@ export class UploadFileComponent extends BaseComponent {
 	@Output() emitRemoveFiles = new EventEmitter<FileEmbedModel[]>();
 	@Output() emitError = new EventEmitter<boolean>();
 	// functionality
-	@Input() multiple: boolean;
+	@Input() multiple: boolean = true;
 	@Input() showErrors: boolean;
 	// @Input() uploadOnChange: boolean;
 	// @Input() url: string;
@@ -68,6 +68,9 @@ export class UploadFileComponent extends BaseComponent {
 	@Input() colorInternalLoad: any; // colore della progress bar di upload in locale
 	@Input() colorExternalLoad: any; // colore della progress bar di upload su server
 	@Input() externalLoad: (attachments: FileEmbedModel[]) => Observable<any>;
+	// flags
+	@Input() showProgress: boolean = true;
+	@Input() showFiles: boolean = true;
 	// used
 	fileArr: File[] = [];
 	form: FormGroup;
@@ -208,6 +211,9 @@ export class UploadFileComponent extends BaseComponent {
 	addFileEmbed(file: FileEmbedModel) {
 		this.validateFile(file);
 		if (!this.error) {
+			if (!this.multiple) {
+				this.attachments.length = 0;
+			}
 			this.attachments.push(file);
 			this.emitAddFile.emit(file);
 			this.resetFile();
@@ -220,6 +226,9 @@ export class UploadFileComponent extends BaseComponent {
 	 * @param file file da caricare di tipo [File]{@link File}
 	 */
 	addFile(file: File) {
+		if (!this.multiple) {
+			this.fileArr.length = 0;
+		}
 		this.fileArr.unshift(file);
 		const attachment = new FileEmbedModel();
 		attachment.name = file.name;

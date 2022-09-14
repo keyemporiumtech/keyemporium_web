@@ -6,9 +6,9 @@
 </div>
 <div class="mt-3">
   <pre>
-    <div markdown ngPreserveWhitespaces ngNonBindable>      
+    <div markdown ngPreserveWhitespaces ngNonBindable>
 
-      ```typescript        
+      ```typescript
         form: FormGroup;
         constructor(private fb: FormBuilder) &#123;
           this.form = this.fb.group(&#123;
@@ -25,23 +25,23 @@
             ...
           &#125;;
         &#125;
-        
+
         // CREAZIONE DEL FIELD MODEL
-        
+
         this.input: FormFieldModel = new FormFieldModel(
           EnumFormType.SELECT,
           this.form.get('campo') as FormControl,
           'Select semplice',
         )
         .validation([...this.validations.campo1]) // aggiunge l'array delle validazioni
-        .onInit() // aggiunge il flagValidationOnInit;        
-        
-      ```     
+        .onInit() // aggiunge il flagValidationOnInit;
+
+      ```
 
       Un modo alternativo per la creazione del formControl e del field è l'uso di <strong>MagicValidatorUtil</strong> o
       di qualsiasi altra utility che estende, in maniera analoga, la classe <strong>BaseMagicValidator</strong>
 
-      ```typescript  
+      ```typescript
         validations: any = &#123;&#125;;
         form: FormGroup;
 
@@ -51,31 +51,31 @@
             .required() // aggiunge la validazione required
             .build() // costruisce il form control,
             ...
-          &#125;);          
+          &#125;);
         &#125;
         // CREAZIONE DEL FIELD MODEL
-        
+
         this.input: FormFieldModel = new FormFieldModel(
           EnumFormType.SELECT,
           this.form.get('campo') as FormControl,
           'Select semplice',
         )
         .validation([...this.validations.campo])
-        .onInit();        
-        
-      ``` 
+        .onInit();
+
+      ```
 
       Inoltre è possibile popolare le property da passare in Input ad un componente di form, utilizzando
       i metodi <strong>setProperties</strong> o <strong>setProperty</strong> della classe <strong>FormFieldModel</strong>
 
-      ```typescript  
+      ```typescript
         this.optionList = [
           new OptionListModel(1, 'Primo'),
           new OptionListModel(2, 'Secondo'),
           new OptionListModel(3, 'Terzo'),
         ];
         // CREAZIONE DEL FIELD MODEL con setProperties
-        
+
         this.input: FormFieldModel = new FormFieldModel(
           EnumFormType.SELECT,
           this.form.get('campo') as FormControl,
@@ -88,7 +88,7 @@
           &#125;
         )
         .onInit();
-        
+
         // CREAZIONE DEL FIELD MODEL con setProperty
 
         this.input: FormFieldModel = new FormFieldModel(
@@ -99,8 +99,8 @@
         .validation([...this.validations.campo])
         .setProperty('options', this.optionList)
         .onInit();
-        
-      ``` 
+
+      ```
     </div>
   </pre>
 </div>
@@ -143,9 +143,9 @@
 
     <div class="mt-3">
       <pre>
-      <div markdown ngPreserveWhitespaces ngNonBindable>      
-  
-        ```typescript        
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```typescript
           form: FormGroup;
           constructor(private fb: FormBuilder) &#123;
             this.form = this.fb.group(&#123;
@@ -172,7 +172,7 @@
               ...
             &#125;;
           &#125;
-          
+
           // CREAZIONE DEL FIELD MODEL
           this.input: FormFieldModel = new FormFieldModel(
             EnumFormType.NUMBER,
@@ -180,10 +180,10 @@
             'Numerico range',
           )
           .validation(this.validations.campo)
-          .onInit();          
-          
-        ```     
-  
+          .onInit();
+
+        ```
+
       </div>
     </pre>
     </div>
@@ -229,9 +229,9 @@
 
     <div class="mt-3">
       <pre>
-      <div markdown ngPreserveWhitespaces ngNonBindable>      
-  
-        ```typescript        
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```typescript
           form: FormGroup;
           constructor(private fb: FormBuilder) &#123;
             this.form = this.fb.group(&#123;
@@ -277,7 +277,7 @@
               ...
             &#125;;
           &#125;
-          
+
           // CREAZIONE DEL FIELD MODEL
           this.input: FormFieldModel = new FormFieldModel(
             EnumFormType.DECIMAL,
@@ -285,10 +285,10 @@
             'Decimal range',
           )
           .validation(this.validations.campo)
-          .onInit(); 
-          
-        ```     
-  
+          .onInit();
+
+        ```
+
       </div>
     </pre>
     </div>
@@ -563,10 +563,10 @@
 
     <div class="mt-3">
       <pre>
-      <div markdown ngPreserveWhitespaces ngNonBindable> 
+      <div markdown ngPreserveWhitespaces ngNonBindable>
 
         ```typescript
-                    
+
           form: FormGroup;
           constructor(private fb: FormBuilder) &#123;
             this.form = this.fb.group(&#123;
@@ -588,7 +588,7 @@
               ],
               ...
             &#125;;
-          &#125;            
+          &#125;
 
         ```
       </div>
@@ -788,10 +788,10 @@
             new OptionListModel(8, 'ottavo'),
             new OptionListModel(9, 'nono'),
           ];
-          
+
           ...
 
-          searchAutocomplete(term: string) &#123;            
+          searchAutocomplete(term: string) &#123;
             this.listAutocomplete1 = this.searchList.filter((el) => &#123;
               const desc: string = TranslateUtility.get(el.text, this.translate);
               return desc.startsWith(term);
@@ -809,7 +809,7 @@
 
         ```html
           &lt;ddc-init-input-autocomplete [field]="autocomplete1" [list]="listAutocomplete1"
-            (searchEmit)="searchAutocomplete($event)" (selectEmit)="selectAutocomplete($event)"&gt;&lt;/ddc-init-input-autocomplete&gt;              
+            (searchEmit)="searchAutocomplete($event)" (selectEmit)="selectAutocomplete($event)"&gt;&lt;/ddc-init-input-autocomplete&gt;
         ```
       </div>
       </pre>
@@ -852,8 +852,8 @@
         ```
 
         ```html
-          &lt;ddc-init-input-autocomplete [field]="autocomplete2" [search]="fnSearchAutocomplete" 
-            (selectEmit)="selectAutocomplete($event)"&gt;&lt;/ddc-init-input-autocomplete&gt;              
+          &lt;ddc-init-input-autocomplete [field]="autocomplete2" [search]="fnSearchAutocomplete"
+            (selectEmit)="selectAutocomplete($event)"&gt;&lt;/ddc-init-input-autocomplete&gt;
         ```
       </div>
       </pre>

@@ -1,0 +1,77 @@
+<div class="container-loading" *ngIf="form">
+  <ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+
+  <form *ngIf="!viewmode" [formGroup]="form">
+    <div class="form-row">
+      <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+        <label for="name">{{translateKey(FLD_name.label)| translate:translateParams(FLD_name.label)}}</label>
+        <ddc-init-input-text [id]="'name'" [field]="FLD_name"></ddc-init-input-text>
+      </div>
+      <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+        <label for="surname">{{translateKey(FLD_surname.label)| translate:translateParams(FLD_surname.label)}}</label>
+        <ddc-init-input-text [id]="'surname'" [field]="FLD_surname"></ddc-init-input-text>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+        <label for="email">{{translateKey(FLD_email.label)| translate:translateParams(FLD_email.label)}}</label>
+        <ddc-init-input-email [id]="'email'" [field]="FLD_email"></ddc-init-input-email>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" ddcBtsSize [btsSize]="'8|8|12'" [btsPrefix]="'col-'">
+        <label for="born">{{translateKey(FLD_born.label)| translate:translateParams(FLD_born.label)}}</label>
+        <ddc-init-input-date [id]="'born'" [field]="FLD_born"></ddc-init-input-date>
+      </div>
+      <div class="form-group" ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+        <label for="sex">{{translateKey(FLD_sex.label)| translate:translateParams(FLD_sex.label)}}</label>
+        <ddc-init-input-select [id]="'sex'" [field]="FLD_sex" [options]="optionsSex" [noMargin]="true">
+        </ddc-init-input-select>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="viewmode && form">
+    <dl class="row mb-0 redial-line-height-2_5">
+      <dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{translateKey(FLD_name.label)|
+        translate:translateParams(FLD_name.label)}}</dt>
+      <dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{form.get('name')?.value}}</dd>
+    </dl>
+    <dl class="row mb-0 redial-line-height-2_5">
+      <dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{translateKey(FLD_surname.label)|
+        translate:translateParams(FLD_surname.label)}}</dt>
+      <dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{form.get('surname')?.value}}</dd>
+    </dl>
+    <dl class="row mb-0 redial-line-height-2_5">
+      <dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{translateKey(FLD_email.label)|
+        translate:translateParams(FLD_email.label)}}</dt>
+      <dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{form.get('email')?.value}}</dd>
+    </dl>
+    <dl class="row mb-0 redial-line-height-2_5">
+      <dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{translateKey(FLD_born.label)|
+        translate:translateParams(FLD_born.label)}}</dt>
+      <dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{form.get('born')?.value | datemodel}}</dd>
+    </dl>
+    <dl class="row mb-0 redial-line-height-2_5">
+      <dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{translateKey(FLD_sex.label)|
+        translate:translateParams(FLD_sex.label)}}</dt>
+      <dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'" [innerHTML]="form.get('sex')?.value | sexhtml"></dd>
+    </dl>
+  </div>
+
+  <div *ngIf="!blocked" class="mt-2">
+    <a *ngIf="id_user && mode === formMode.DETAIL" class="mr-2" (click)="changeViewMode(false)"
+      title="{{'APP.BUTTON.EDIT' | translate}}">
+      <span class="fa fa-edit mr-2 text-primary"></span>
+    </a>
+    <a *ngIf="id_user && mode !== formMode.DETAIL" class="mr-2" (click)="changeViewMode(true)"
+      title="{{'PERSONAL.BUTTON.BACK' | translate}}">
+      <span class="fa fa-times mr-2 text-danger"></span>
+    </a>
+    <a *ngIf="!readonly && form.valid" class="mr-2" (click)="save()" title="{{'APP.BUTTON.SAVE' | translate}}">
+      <span class="fa fa-save mr-2 text-success"></span>
+    </a>
+    <!--<div *ngIf="modelToSave">{{modelToSave | json}}</div>-->
+  </div>
+
+</div>
