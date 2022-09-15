@@ -2,32 +2,29 @@
   <div page-content>
     <div class="row">
       <div *ngIf="sizeImagePrincipal" ddcBtsSize [btsSize]="sizeImagePrincipal" [btsPrefix]="'col-'" class="m-3">
-        <span class="title-s2">{{'PERSONAL.VIC.IMAGE.TITLE_PRINCIPAL' | translate}}</span>
-        <hr class="line line-md bg-primary" />
+        <shared-sub-title [title]="'PERSONAL.VIC.IMAGE.TITLE_PRINCIPAL'"></shared-sub-title>
         <reserve-profile-image [id_user]="id_user" [flgPrincipal]="true" [blocked]="blocked"
           (emitViewMode)="changeSizeImagePrincipal($event)"></reserve-profile-image>
       </div>
       <div *ngIf="sizeProfile" ddcBtsSize [btsSize]="sizeProfile" [btsPrefix]="'col-'" class="m-3">
-        <span class="title-s2">{{'PERSONAL.VIC.PROFILE.TITLE' | translate}}</span>
-        <hr class="line line-md bg-primary" />
+        <shared-sub-title [title]="'PERSONAL.VIC.PROFILE.TITLE'"></shared-sub-title>
         <reserve-profile [id_user]="id_user" [blocked]="blocked" (emitViewMode)="changeSizeProfile($event)">
         </reserve-profile>
       </div>
       <div class="p-2" ddcBtsSize [btsSize]="'2|6|12'" [btsPrefix]="'col-'" class="m-3">
-        <span class="title-s2">{{'PERSONAL.VIC.QRCODE' | translate}}</span>
-        <hr class="line line-md bg-primary" />
+        <shared-sub-title [title]="'PERSONAL.VIC.QRCODE'"></shared-sub-title>
         <ddc-init-qrcode-reader *ngIf="textQr" [id]="'cod_user_vic'" [text]="textQr">
         </ddc-init-qrcode-reader>
       </div>
       <div *ngIf="sizeAddressPrincipal" ddcBtsSize [btsSize]="sizeAddressPrincipal" [btsPrefix]="'col-'" class="m-3">
-        <span class="title-s2">{{'PERSONAL.VIC.ADDRESS.TITLE_PRINCIPAL' | translate}}</span>
-        <hr class="line line-md bg-primary" />
+        <shared-sub-title [title]="'PERSONAL.VIC.ADDRESS.TITLE_PRINCIPAL'"></shared-sub-title>
         <reserve-profile-address [id_user]="id_user" [flgPrincipal]="true" [blocked]="blocked"
           (emitViewMode)="changeSizeAddressPrincipal($event)">
         </reserve-profile-address>
       </div>
     </div>
 
+    <shared-line-filled></shared-line-filled>
     <div class="row">
 
     </div>

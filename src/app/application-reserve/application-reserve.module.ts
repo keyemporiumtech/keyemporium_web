@@ -20,6 +20,7 @@ import { VicPageComponent } from './pages/vic-page/vic-page.component';
 import { ProfileImageComponent } from './components/profile/profile-image/profile-image.component';
 import { ProfileAddressComponent } from './components/profile/profile-address/profile-address.component';
 import { LocalesystemModule } from '../modules/localesystem/localesystem.module';
+import { ProfileCellComponent } from './components/profile/profile-cell/profile-cell.component';
 
 @NgModule({
 	declarations: [
@@ -31,6 +32,7 @@ import { LocalesystemModule } from '../modules/localesystem/localesystem.module'
 		ProfileImageComponent,
 		VicPageComponent,
 		ProfileAddressComponent,
+		ProfileCellComponent,
 	],
 	imports: [
 		CommonModule,

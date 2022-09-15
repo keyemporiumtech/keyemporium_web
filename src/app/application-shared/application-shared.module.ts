@@ -8,9 +8,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageContainerComponent } from './components/page-container/page-container.component';
 import { SexHtmlPipe } from './pipes/sex-html.pipe';
+import { SubTitleComponent } from './components/sub-title/sub-title.component';
+import { LineFilledComponent } from './components/line-filled/line-filled.component';
 
 @NgModule({
-	declarations: [PageContainerComponent, SexHtmlPipe],
+	declarations: [PageContainerComponent, SexHtmlPipe, SubTitleComponent, LineFilledComponent],
 	imports: [
 		CommonModule,
 		KitModule,
@@ -21,7 +23,7 @@ import { SexHtmlPipe } from './pipes/sex-html.pipe';
 		FormsModule,
 		ReactiveFormsModule,
 	],
-	exports: [PageContainerComponent, SexHtmlPipe],
+	exports: [PageContainerComponent, SexHtmlPipe, SubTitleComponent, LineFilledComponent],
 })
 export class ApplicationSharedModule {
 	constructor(environmentLoader: EnvironmentLoaderService) {
