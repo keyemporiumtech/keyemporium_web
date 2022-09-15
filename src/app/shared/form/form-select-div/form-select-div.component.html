@@ -2,7 +2,7 @@
   [flgOnInitValidation]="field.flgOnInitValidation" [flgOnSubmitValidation]="field.flgOnSubmitValidation"
   [submitted]="field.submitted" [showValid]="field.showValid" [validations]="field.validations"
   [supports]="field.supports" [styles]="field.styles" [valids]="field.valids">
-  <a *ngIf="!selectedOptions || !selectedOptions.length"
+  <a *ngIf="selectedOption && (!selectedOptions || !selectedOptions.length)"
     class="selected selected-outdor mb-2 {{field && field.formControl && field.formControl.disabled ? 'disabled' : ''}}"
     [ngClass]="field && field.formControl && field.formControl.disabled ? cssClassDisabled : cssClassSelected"
     [ngStyle]="field && field.formControl && field.formControl.disabled ? cssStyleDisabled : cssStyleSelected"

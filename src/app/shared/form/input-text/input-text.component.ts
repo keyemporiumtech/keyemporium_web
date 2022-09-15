@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { ApplicationLoggerService, CustomValidatorsMessages } from '@ddc/kit';
 import { BaseInputComponent } from '../base-input.component';
@@ -7,6 +7,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-text',
 	templateUrl: './input-text.component.html',
 	styleUrls: ['./input-text.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputTextComponent extends BaseInputComponent {
 	@Input() minLength: number;

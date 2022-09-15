@@ -4,6 +4,7 @@
 
 > Versione che aggiunge l'invio in header del clientId e i metodi da utilizzare in previous route per la gestione dei parametri tramite oggetti queryParams
 
+- `[feature]` **abstract** Aggiunto in `BaseAddress` il fillAddress dopo il loaded
 - `[feature]` **abstract** Aggiunto in `BaseRestService` l'invio del clientId letto dall'environment
 - `[feature]` **request** Aggiunti i metodi `getObjQueryParametersByMap` e `getObjQueryParametersByMap` in `RequestUtility`
 

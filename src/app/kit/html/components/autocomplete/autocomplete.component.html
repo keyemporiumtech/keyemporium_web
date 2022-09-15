@@ -1,14 +1,15 @@
 <input id="{{id}}" type="text" class="form-control" [ngClass]="inputClass" [ngStyle]="inputStyle"
   placeholder="{{translateKey(placeholder) | translate:translateParams(placeholder)}}" [formControl]="form.get('text')"
-  (keyup)="onKeyUp($event.target.value)" ngDefaultControl />
+  (keyup)="onKeyUp($event.target.value)" (focus)="onFocus($event.target.value)" (focusout)="onFocusOut()"
+  ngDefaultControl />
 
 <span *ngIf="icon" style="float: right;left: -25px;margin-top: -25px;position: relative;cursor: pointer"
   [ngClass]="icon" [style.color]="iconColor"></span>
 
 <div *ngIf="list && list.length" [ngClass]="infoClass" [ngStyle]="infoStyle">
   <div *ngFor="let item of list" class="item" [ngClass]="item.cssClass" [ngStyle]="item.cssStyle"
-    [innerHTML]="translateKey(item.text) | translate:translateParams(item.text)" (click)="onClickItem(item)"
-    (mouseover)="onOverItem(item)" (mouseout)="onOutItem(item)">
+    [innerHTML]="translateKey(item.text) | translate:translateParams(item.text) | escapehtml"
+    (click)="onClickItem(item)" (mouseover)="onOverItem(item)" (mouseout)="onOutItem(item)">
   </div>
 </div>
 

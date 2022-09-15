@@ -82,6 +82,13 @@
         "STREET": "Via/Piazza/Contrada",
         "NUM": "Numero Civico"
       },
+      "CONTACTREFERENCE": {
+        "DESCRIPTION": "Titolo del contatto",
+        "TYPE": "Tipo di contatto",
+        "TEL": "Prefisso",
+        "SOCIAL": "Tipo di social",
+        "VAL": "Contatto"
+      },
       "CREDITCARD": "Numero di carta di credito",
       "EXPIRATION": "Scadenza",
       "IBAN": "IBAN",

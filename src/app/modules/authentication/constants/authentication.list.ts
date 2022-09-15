@@ -38,8 +38,8 @@ export const authenticationList = {
 		save: 'contactreference/save',
 		edit: 'contactreference/edit',
 		delete: 'contactreference/delete',
-		tpcontactreference: 'activity/tpcontactreference',
-		tpsocialreference: 'activity/tpsocialreference',
+		tpcontactreference: 'contactreference/tpcontactreference',
+		tpsocialreference: 'contactreference/tpsocialreference',
 	},
 	userreport: {
 		unique: 'userreport/get',

@@ -76,6 +76,7 @@ export class TestFormInputsComponent implements OnInit, OnDestroy {
 	// AUTOCOMPLETE
 	autocomplete1: FormFieldModel;
 	autocomplete2: FormFieldModel;
+	autocomplete3: FormFieldModel;
 	searchList: OptionListModel[];
 	listAutocomplete1: OptionListModel[];
 	optionItem: OptionListModel;
@@ -177,6 +178,7 @@ export class TestFormInputsComponent implements OnInit, OnDestroy {
 				.build(),
 			autocomplete1: [undefined, [Validators.required]],
 			autocomplete2: [undefined, [Validators.required]],
+			autocomplete3: [undefined, [Validators.required]],
 			phone1: [undefined, [Validators.required]],
 			phone2: [undefined, [Validators.required]],
 			email1: [undefined, [Validators.required]],
@@ -598,6 +600,14 @@ export class TestFormInputsComponent implements OnInit, OnDestroy {
 			EnumFormType.SEARCH,
 			this.form1.get('autocomplete2') as FormControl,
 			'Input Autocomplete con funzione search',
+		)
+			.validation([...this.validations.campo1])
+			.onInit();
+
+		this.autocomplete3 = new FormFieldModel(
+			EnumFormType.SEARCH,
+			this.form1.get('autocomplete3') as FormControl,
+			'Input Autocomplete con lista completa',
 		)
 			.validation([...this.validations.campo1])
 			.onInit();

@@ -3,10 +3,16 @@
 ## 2.2.0 - XX/XX/2022
 
 > Versione che perfeziona il servizio `BrowserService` e aggiunge una funzione al mode Edit di un form.
-> Inoltre perfezione il metodo `splitUrlNavigationExtrasQueryParameters` di `PageUtility`
+> Inoltre perfezione il metodo `splitUrlNavigationExtrasQueryParameters` di `PageUtility`.
+> Inoltre in `upload-file` è stata introdotta la gestione di file singoli e la possibilità di non visualizzare la progress bar e la lista di files.
 
 ### changes
 
+- `[fix]` **html** : Fix in `input-autocomplete` con aggiunta della pipe escapehtml per i testi in option
+- `[feature]` **html** e **abstract** : Aggiunta la gestione degli eventi `termEmitter` e `focusEmitter` e un nuovo input `listAll` per far caricare una lista completa al focus sull'`input-autocomplete` con term vuoto
+- `[feature]` **timing**: Aggiunta la pipe `datemodel`
+- `[feature]` **filemanager**: Aggiunti gli input `showProgress` e `showFiles` in `upload-file` 
+- `[feature]` **filemanager**: Aggiunta la gestione di singolo file quando la property `multiple` è false in `upload-file` 
 - `[feature]` **config**: Modificato il metodo `getBrowserName` di `BrowserService` per consentire di trovare edge anche con il codice edg
 - `[feature]` **abstract**: Aggiunto il parametro `initUpdate` alla funzione `changeMode` di `BaseForm` per consentire di eseguire una funzione al change mode edit
 - `[fix]` **routing**: Fixato il metodo `splitUrlNavigationExtrasQueryParameters` di `PageUtility` per consentire che un parametro già presente in url venga aggiornato se richiesto

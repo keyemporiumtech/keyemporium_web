@@ -42,7 +42,7 @@ import { TypologicalModel } from '../../../api/cakeutils-be/models/typological.m
 import { AddressUtility } from '../../utility/address.utility';
 import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
 import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { InputTextComponent } from '../../../../shared/form/input-text/input-text.component';
 
 @Component({
@@ -744,11 +744,15 @@ export class InputAddressComponent extends BaseAddressComponent
 		}
 	}
 
-	exportAddress(): AddressModel {
+	exportAddress(form?: FormGroup): AddressModel {
+		if (!form) {
+			form = this.form;
+		}
 		const addressModel: AddressModel = new AddressModel();
-		addressModel.street = this.fieldStreet ? this.form.get(this.fieldStreet).value : undefined;
-		addressModel.number = this.fieldNum ? this.form.get(this.fieldNum).value : undefined;
-		addressModel.zip = this.form.get(this.fieldZip).value;
+		addressModel.id = this.address ? this.address.id : undefined;
+		addressModel.street = this.fieldStreet ? form.get(this.fieldStreet).value : undefined;
+		addressModel.number = this.fieldNum ? form.get(this.fieldNum).value : undefined;
+		addressModel.zip = form.get(this.fieldZip).value;
 		addressModel.nation = this.getNationSelected();
 		const regionModel: CityModel = this.getRegionSelected();
 		addressModel.region = regionModel ? regionModel.region : undefined;
@@ -758,10 +762,10 @@ export class InputAddressComponent extends BaseAddressComponent
 		addressModel.place = addressModel.city ? addressModel.city.place : undefined;
 		addressModel.tpaddress = new TypologicalModel();
 		addressModel.tpaddress.id = this.fieldTpaddress
-			? this.form.get(this.fieldTpaddress).value
+			? form.get(this.fieldTpaddress).value
 			: undefined;
-		addressModel.geo1 = this.fieldLatitude ? this.form.get(this.fieldLatitude).value : undefined;
-		addressModel.geo2 = this.fieldLongitude ? this.form.get(this.fieldLongitude).value : undefined;
+		addressModel.geo1 = this.fieldLatitude ? form.get(this.fieldLatitude).value : undefined;
+		addressModel.geo2 = this.fieldLongitude ? form.get(this.fieldLongitude).value : undefined;
 		return addressModel;
 	}
 
@@ -790,7 +794,7 @@ export class InputAddressComponent extends BaseAddressComponent
 						if (el) {
 							this.mapGeo1 = el.feature.geometry.y;
 							this.mapGeo2 = el.feature.geometry.x;
-							const address = this.exportAddress();
+							const address = this.exportAddress(this.form);
 							this.mapAddressText = address.html_address;
 						}
 					}),

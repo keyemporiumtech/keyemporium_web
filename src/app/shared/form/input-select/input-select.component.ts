@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ApplicationLoggerService, OptionListModel } from '@ddc/kit';
 import { BaseInputComponent } from '../base-input.component';
 
@@ -6,6 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-select',
 	templateUrl: './input-select.component.html',
 	styleUrls: ['./input-select.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputSelectComponent extends BaseInputComponent {
 	@Input() options: OptionListModel[];

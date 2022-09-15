@@ -1,14 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ApplicationLoggerService } from '@ddc/kit';
 import { BaseInputComponent } from '../base-input.component';
+import { ApplicationLoggerService, CustomValidators, CustomValidatorsMessages } from '@ddc/kit';
 
 @Component({
-	selector: 'ddc-init-input-color',
-	templateUrl: './input-color.component.html',
-	styleUrls: ['./input-color.component.scss'],
+	selector: 'ddc-init-input-url',
+	templateUrl: './input-url.component.html',
+	styleUrls: ['./input-url.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputColorComponent extends BaseInputComponent {
+export class InputUrlComponent extends BaseInputComponent {
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}
@@ -23,9 +23,14 @@ export class InputColorComponent extends BaseInputComponent {
 		super.ngOnDestroyForChildren();
 	}
 	getClassName(): string {
-		return 'InputColorComponent';
+		return 'InputUrlComponent';
+	}
+
+	setAutomaticValidations() {
+		this.addOtherValidation(CustomValidators.isUrl);
+		this.field.validations.push(CustomValidatorsMessages.IS_URL());
+		this.inAutomatic = true;
 	}
 
 	setPropertiesFromField() {}
-	setAutomaticValidations() {}
 }

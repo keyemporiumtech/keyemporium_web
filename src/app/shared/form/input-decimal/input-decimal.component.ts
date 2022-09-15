@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ApplicationLoggerService, CustomValidators, CustomValidatorsMessages } from '@ddc/kit';
 import { InputNumberComponent } from '../input-number/input-number.component';
 
@@ -6,6 +6,7 @@ import { InputNumberComponent } from '../input-number/input-number.component';
 	selector: 'ddc-init-input-decimal',
 	templateUrl: './input-decimal.component.html',
 	styleUrls: ['./input-decimal.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputDecimalComponent extends InputNumberComponent {
 	@Input() digits: number;

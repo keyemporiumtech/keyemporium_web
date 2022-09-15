@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ApplicationLoggerService, ApplicationStorageService } from '@ddc/kit';
 import { InputDecimalComponent } from '../input-decimal/input-decimal.component';
 
@@ -6,6 +6,7 @@ import { InputDecimalComponent } from '../input-decimal/input-decimal.component'
 	selector: 'ddc-init-input-currency',
 	templateUrl: './input-currency.component.html',
 	styleUrls: ['./input-currency.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputCurrencyComponent extends InputDecimalComponent {
 	@Input() currencySymbol: string;

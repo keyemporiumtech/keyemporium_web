@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	DateModel,
@@ -14,6 +14,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-generic',
 	templateUrl: './input-generic.component.html',
 	styleUrls: ['./input-generic.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputGenericComponent extends BaseInputComponent {
 	// SELECT - SELECT_DIV - CHECKBOX - RADIO

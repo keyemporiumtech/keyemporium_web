@@ -140,7 +140,9 @@ export abstract class BaseInputComponent extends BaseComponent {
 	evalUpdateValidations() {
 		if (this.inAutomatic) {
 			this.fieldValidator = this.field.formControl.validator;
-			this.addOtherValidation(this.fieldValidator);
+			if (this.fieldValidator) {
+				this.addOtherValidation(this.fieldValidator);
+			}
 			this.field.formControl.setValidators(this.otherValidations);
 			this.field.formControl.updateValueAndValidity({ onlySelf: true, emitEvent: false });
 		}

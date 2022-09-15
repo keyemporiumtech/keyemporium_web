@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { BaseInputComponent } from '../base-input.component';
 import {
 	ApplicationLoggerService,
@@ -12,6 +12,7 @@ import { Validators } from '@angular/forms';
 	selector: 'ddc-init-input-password',
 	templateUrl: './input-password.component.html',
 	styleUrls: ['./input-password.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputPasswordComponent extends BaseInputComponent {
 	@Input() minLength: number;

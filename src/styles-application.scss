@@ -167,6 +167,14 @@
       float: right;
       margin-right: 1rem;
     }
+    .refuse{
+      float: right;
+      margin-right: 1rem;
+    }
+    .edit{
+      float: right;
+      margin-right: 1rem;
+    }
   }
   .more-info {
     text-align:center;
@@ -205,6 +213,8 @@
     width: 100%;
     position: relative;
     z-index: 999;
+    max-height: 15rem;
+    overflow-y: auto;
     .item {
       padding: .5rem;
       display: flex;
@@ -240,10 +250,11 @@
   position: relative;
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
   left: 0;
   right: 0;
   background-color: #fff;
+  max-height: 15rem;
+  overflow-y: auto;
 
   .item{
     padding: .5rem!important;
@@ -368,26 +379,3 @@
 
 
 
-
-
-/* Smartphones 1 ----------- */
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-
-}
-
-/* Smartphones 1 ----------- */
-@media only screen
-and (min-width : 481px)
-and (max-device-width : 767px) {
-
-
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px) {
-/* Styles */
-}

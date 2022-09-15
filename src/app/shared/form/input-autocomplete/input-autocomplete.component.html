@@ -3,7 +3,8 @@
   [placeholder]="translateKey(field.placeholder) | translate:translateParams(field.placeholder)" [inputClass]="cssInput"
   [inputStyle]="field.cssStyle" [icon]="iconClass" [iconColor]="iconColor" [infoClass]="'autocomplete-container'"
   (searchEmit)="onSearch($event)" (selectEmit)="onSelect($event)" (overEmit)="onOver($event)" (outEmit)="onOut($event)"
-  [maxDigit]="digits" [list]="list" [textNotFound]="textNoRecords">
+  (termEmit)="onTerm($event)" (focusEmit)="onFocus($event)" [maxDigit]="digits" [list]="list" [listAll]="listAll"
+  [textNotFound]="textNoRecords">
   <div input-bottom>
     <div *ngFor="let support of field.supports" class="input-support-message">
       {{translateKey(support) |translate:translateParams(support)}}

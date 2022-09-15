@@ -876,6 +876,23 @@
   <div id="content-autocomplete2">
     {{form1.get('autocomplete2').value | json}}
   </div>
+
+  <form [formGroup]="form1" class="mt-2">
+    <label>Input Autocomplete con lista completa al focus</label>
+    <ddc-init-input-autocomplete [field]="autocomplete3" [list]="listAutocomplete1" [listAll]="searchList"
+      (searchEmit)="searchAutocomplete($event)" (selectEmit)="selectAutocomplete($event)" [digits]="2">
+    </ddc-init-input-autocomplete>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('se', 'autocomplete3')">Testa Set valore
+      string</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(optionItem, 'autocomplete3')">Testa Set valore
+      Option</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(autocomplete3)">Abilita/Disabilita</button>
+    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('autocomplete3')">Reset</button>
+  </form>
+
+  <div id="content-autocomplete3">
+    {{form1.get('autocomplete3').value | json}}
+  </div>
 </div>
 
 

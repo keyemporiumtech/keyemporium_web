@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	EnumSizeFormat,
@@ -15,6 +15,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-file',
 	templateUrl: './input-file.component.html',
 	styleUrls: ['./input-file.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputFileComponent extends BaseInputComponent {
 	@ViewChild('uploadFile') uploadFile: UploadFileComponent;

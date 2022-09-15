@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	Output,
+	ViewChild,
+	ChangeDetectionStrategy,
+} from '@angular/core';
 import {
 	ApplicationLoggerService,
 	AutocompleteComponent,
@@ -17,6 +24,7 @@ import { RequestUtility } from '@ddc/rest';
 	selector: 'ddc-init-input-autocomplete',
 	templateUrl: './input-autocomplete.component.html',
 	styleUrls: ['./input-autocomplete.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputAutocompleteComponent extends BaseInputComponent {
 	@ViewChild('autocomplete') autocomplete: AutocompleteComponent;
@@ -24,10 +32,13 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 	@Input() digits: number;
 	@Input() debounce: number = 1000;
 	@Input() list: OptionListModel[];
+	@Input() listAll: OptionListModel[];
 	@Output() searchEmit = new EventEmitter<string>(); // evento che scatta quando viene avviata la ricerca (emette il parametro di ricerca)
+	@Output() termEmit = new EventEmitter<string>(); // evento che scatta quando al keyup (emette il parametro di ricerca)
 	@Output() selectEmit = new EventEmitter<OptionListModel>(); // evento che scatta al click di un item (emette l'item)
 	@Output() overEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando si passa con il mouse sopra l'item (emette l'item)
 	@Output() outEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando il mouse lascia un item (emette l'item)
+	@Output() focusEmit = new EventEmitter<string>(); // evento che scatta quando il componente di input prende il focus
 	subStatus: Subscription;
 	subValue: Subscription;
 	// functions
@@ -133,15 +144,24 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 			);
 		}
 	}
+	onTerm(term: string) {
+		this.termEmit.emit(term);
+	}
 	onSelect(item: OptionListModel) {
 		this.selectEmit.emit(item);
 		this.field.formControl.setValue(item);
+		if (item.textClear) {
+			this.autocomplete.form.get('text').setValue(item.textClear);
+		}
 	}
 	onOver(item: OptionListModel) {
 		this.overEmit.emit(item);
 	}
 	onOut(item: OptionListModel) {
 		this.outEmit.emit(item);
+	}
+	onFocus(term: string) {
+		this.focusEmit.emit(term);
 	}
 
 	setAutomaticValidations() {}

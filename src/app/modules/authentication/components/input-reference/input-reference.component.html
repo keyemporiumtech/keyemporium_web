@@ -1,0 +1,62 @@
+<div class="container-loading" *ngIf="form" [ngClass]="cssClass" [ngStyle]="cssStyle">
+  <ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+
+  <div *ngIf="labelTitle" [innerHtml]="translateKey(labelTitle) | translate:translateParams(labelTitle)"></div>
+
+  <div class="row mt-2">
+    <div *ngIf="tpreferenceFlag && loadedTpreference" ddcBtsSize [btsSize]="'4|6|12'" [btsPrefix]="'col-'">
+      <label>{{'APP.LABEL.CONTACTREFERENCE.TYPE' | translate}}</label>
+      <ddc-init-input-select #tpreferenceComponent [field]="tpReferenceFormField" [options]="optionsTpreference"
+        [noMargin]="true">
+      </ddc-init-input-select>
+    </div>
+    <div *ngIf="descriptionFlag" ddcBtsSize [btsSize]="'8|6|12'" [btsPrefix]="'col-'">
+      <label>{{'APP.LABEL.CONTACTREFERENCE.DESCRIPTION' | translate}}</label>
+      <ddc-init-input-text [field]="descriptionFormField"></ddc-init-input-text>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div *ngIf="loadedPrefix" ddcBtsSize [btsSize]="'2|2|12'" [btsPrefix]="'col-'"
+      [attr.hidden]="!showPrefix ? true : null">
+      <label>{{'APP.LABEL.CONTACTREFERENCE.TEL' | translate}}</label>
+      <!--
+      <ddc-init-form-select-div *ngIf="flgHtmlPrefix" [field]="telFormField" [options]="telOptions">
+      </ddc-init-form-select-div>
+      -->
+      <ddc-init-input-autocomplete *ngIf="flgHtmlPrefix" [field]="telFormSearch" [list]="telListSearch"
+        [listAll]="telOptions" (searchEmit)="searchTel($event)" (selectEmit)="selectTel($event)" [digits]="2">
+      </ddc-init-input-autocomplete>
+
+      <ddc-init-input-select *ngIf="!flgHtmlPrefix" [field]="telFormField" [options]="telOptions" [noMargin]="true">
+      </ddc-init-input-select>
+    </div>
+
+    <div *ngIf="loadedSocial" ddcBtsSize [btsSize]="'2|4|12'" [btsPrefix]="'col-'"
+      [attr.hidden]="!showSocial ? true : null">
+      <label>{{'APP.LABEL.CONTACTREFERENCE.SOCIAL' | translate}}</label>
+      <!--
+      <ddc-init-form-select-div *ngIf="flgHtmlSocial" [field]="socialFormField" [options]="socialOptions">
+      </ddc-init-form-select-div>
+      -->
+      <ddc-init-input-autocomplete *ngIf="flgHtmlSocial" [field]="socialFormSearch" [list]="socialListSearch"
+        [listAll]="socialOptions" (searchEmit)="searchSocial($event)" (selectEmit)="selectSocial($event)" [digits]="2">
+      </ddc-init-input-autocomplete>
+
+      <ddc-init-input-select *ngIf="!flgHtmlSocial" [field]="socialFormField" [options]="socialOptions"
+        [noMargin]="true">
+      </ddc-init-input-select>
+    </div>
+
+    <div ddcBtsSize [btsSize]="'8|6|12'" [btsPrefix]="'col-'">
+      <label>{{'APP.LABEL.CONTACTREFERENCE.VAL' | translate}}</label>
+      <ddc-init-input-url *ngIf="enableLink" [field]="valFormField"></ddc-init-input-url>
+      <ddc-init-input-email *ngIf="enableEmail" [field]="valFormField"></ddc-init-input-email>
+      <ddc-init-input-number *ngIf="enableNumber" [field]="valFormField"></ddc-init-input-number>
+      <ddc-init-input-text *ngIf="!enableLink && !enableEmail && !enableNumber" [field]="valFormField">
+      </ddc-init-input-text>
+    </div>
+
+  </div>
+
+</div>
