@@ -142,6 +142,7 @@ export class InputReferenceComponent extends BaseReferenceComponent
 					case EnumContactreferenceType.CEL.toString():
 					case EnumContactreferenceType.TEL.toString():
 					case EnumContactreferenceType.FAX.toString():
+						this.loadTels();
 						this.enableEmail = false;
 						this.enableLink = false;
 						this.enableNumber = true;
@@ -174,6 +175,7 @@ export class InputReferenceComponent extends BaseReferenceComponent
 						break;
 					case EnumContactreferenceType.SITE.toString():
 					case EnumContactreferenceType.BLOG.toString():
+						this.loadSocials();
 						this.enableEmail = false;
 						this.enableLink = true;
 						this.enableNumber = false;

@@ -11,7 +11,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-date',
 	templateUrl: './input-date.component.html',
 	styleUrls: ['./input-date.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputDateComponent extends BaseInputComponent {
 	private _min: any | Date | string | number | DateModel;

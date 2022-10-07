@@ -1,9 +1,18 @@
 {
   "PERSONAL": {
     "BUTTON": {
+      "ADD": "Aggiungi",
       "BACK": "Annulla",
+      "CLOSE": "Chiudi",
+      "DELETE": "Elimina",
+      "EDIT": "Modifica",
+      "ENTER": "Accedi",
       "LOAD": "Carica",
       "LOGIN": "Login"
+    },
+    "CIC": {
+      "DESCRIPTION": "Profilo aziendale di un utente dove sono memorizzate le aziende per cui lavora o di cui è titolare",
+      "TITLE": "Company Identity Card"
     },
     "CONFIRM_LOGIN": {
       "PIN": "Inserisci il codice ricevuto per validare il tuo accesso",
@@ -33,10 +42,12 @@
     },
     "COPYRIGHT": "&copy; Keyemporium",
     "LABEL": {
+      "ATTACHMENT": "Allegato",
       "BORN": "Data di nascita",
       "EMAIL": "Indirizzo Email",
       "EXPIRATION": "Scadenza",
       "IMAGE": "Immagine",
+      "INFO": "Info",
       "NAME": "Nome",
       "PASSWORD": "Password",
       "SEX": "Sesso",
@@ -49,12 +60,44 @@
       "SIGNIN_FACEBOOK": "Entra con Facebook",
       "TITLE": "Entra in Keyemporium"
     },
+    "PIC": {
+      "DESCRIPTION": "Profilo professionale di un utente dove sono memorizzate le informazioni sulla professione, le passioni e le attitudini",
+      "TITLE": "Professional Identity Card"
+    },
     "VIC": {
       "ADDRESS": {
+        "ADD_ADDRESS": "Aggiungi un domicilio",
+        "DELETE_ADDRESS_CONFIRM": "Sei sicuro di voler cancellare {{address}}?",
+        "EDIT_ADDRESS": "Modifica {{address}}",
+        "TITLE_LIST": "Indirizzi",
         "TITLE_PRINCIPAL": "Indirizzo"
       },
+      "ATTACHMENT": {
+        "ADD_ADDRESS": "Certificato di residenza",
+        "ADD_CF": "Codice fiscale",
+        "ADD_CI": "Carta di identità",
+        "ADD_DRIVING_LICENSE": "Patente",
+        "ADD_PASSPORT": "Passaporto",
+        "DELETE_ATTACHMENT_CONFIRM": "Sei sicuro di voler cancellare {{tp}}: {{name}}?",
+        "EDIT_ATTACHMENT": "Modifica {{tp}}: {{name}}",
+        "EMPTY_LIST": "Non ci sono allegati caricati",
+        "TITLE_LIST": "Allegati e Documenti"
+      },
+      "DESCRIPTION": "Profilo anagrafico di un utente dove sono memorizzate le informazioni che aumentano la credibilità del profilo stesso",
       "IMAGE": {
+        "ADD_IMAGE": "Nuova foto",
+        "DELETE_IMAGE_CONFIRM": "Sei sicuro di voler cancellare la foto {{name}}?",
+        "EDIT_IMAGE": "Modifica foto {{name}}",
+        "EMPTY_LIST": "Non ci sono altre foto caricate",
+        "TITLE_LIST": "Foto",
         "TITLE_PRINCIPAL": "Immagine di profilo"
+      },
+      "LINK": {
+        "TITLE_LIST": "Social, Blog e Siti web"
+      },
+      "PHONE": {
+        "TITLE_LIST": "Numeri di telefono",
+        "TITLE_PRINCIPAL": "Telefono"
       },
       "PROFILE": {
         "TITLE": "Informazioni anagrafiche"

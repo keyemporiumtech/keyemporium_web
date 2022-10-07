@@ -6,7 +6,7 @@ import { ApplicationLoggerService, CustomValidators, CustomValidatorsMessages } 
 	selector: 'ddc-init-input-url',
 	templateUrl: './input-url.component.html',
 	styleUrls: ['./input-url.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputUrlComponent extends BaseInputComponent {
 	constructor(applicationLogger: ApplicationLoggerService) {

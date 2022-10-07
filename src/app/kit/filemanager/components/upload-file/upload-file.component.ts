@@ -250,7 +250,10 @@ export class UploadFileComponent extends BaseComponent {
 			if (!fileData) {
 				this.colorInternalLoad = StyleUtility.getProperty('--error');
 			}
-			attachment.content = fileData;
+			const data = this.fileService.getMimeAndContentByBase64(fileData);
+			attachment.mime = data.mimetype;
+			attachment.content = data.content;
+			attachment.resource = fileData;
 			this.addFileEmbed(attachment);
 			this.progressInternal.stop();
 		};

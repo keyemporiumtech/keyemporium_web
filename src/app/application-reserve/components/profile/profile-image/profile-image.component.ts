@@ -37,6 +37,7 @@ export class ProfileImageComponent extends BaseComponent {
 	@Input() blocked: boolean;
 	@Input() viewmode: boolean = true;
 	@Output() emitViewMode: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output() emitSave: EventEmitter<boolean> = new EventEmitter<boolean>();
 	// form
 	FLD_image: FormFieldModel;
 	formImage: FormGroup;
@@ -86,9 +87,12 @@ export class ProfileImageComponent extends BaseComponent {
 			this.file = undefined;
 			if (res) {
 				this.file = res[0];
-				this.imageSrc = this.file.content;
+				this.imageSrc = this.file.resource;
 			} else if (this.image) {
-				this.imageSrc = this.image.content;
+				this.imageSrc = this.fileService.getBase64ByContent(
+					this.image.content,
+					this.image.mimetype,
+				);
 			} else {
 				this.imageSrc = 'assets/project/images/user.png';
 			}
@@ -203,11 +207,17 @@ export class ProfileImageComponent extends BaseComponent {
 		}
 
 		if ($obs) {
-			this.subSave = $obs.subscribe((res) => {
-				if (res) {
-					this.file = undefined;
-				}
-			});
+			this.subSave = $obs.subscribe(
+				(res) => {
+					if (res) {
+						this.file = undefined;
+						this.emitSave.emit(true);
+					}
+				},
+				(err) => {
+					this.emitSave.emit(false);
+				},
+			);
 		}
 	}
 

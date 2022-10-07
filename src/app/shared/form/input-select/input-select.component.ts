@@ -6,7 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-select',
 	templateUrl: './input-select.component.html',
 	styleUrls: ['./input-select.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputSelectComponent extends BaseInputComponent {
 	@Input() options: OptionListModel[];

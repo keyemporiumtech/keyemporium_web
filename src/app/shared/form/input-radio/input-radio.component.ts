@@ -6,7 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-radio',
 	templateUrl: './input-radio.component.html',
 	styleUrls: ['./input-radio.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputRadioComponent extends BaseInputComponent {
 	@Input() options: OptionListModel[];

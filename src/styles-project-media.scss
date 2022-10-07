@@ -33,5 +33,9 @@ and (max-device-width : 767px) {
 @media only screen
 and (min-device-width : 768px)
 and (max-device-width : 1024px) {
-
+  .card-section {
+    width: 14rem;
+    display: inline-block;
+    margin: 1rem;
+  }
 }

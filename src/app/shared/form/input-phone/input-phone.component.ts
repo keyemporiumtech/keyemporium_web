@@ -21,7 +21,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-phone',
 	templateUrl: './input-phone.component.html',
 	styleUrls: ['./input-phone.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputPhoneComponent extends BaseInputComponent {
 	@Input() prefixes: OptionListModel[];

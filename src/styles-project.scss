@@ -1,10 +1,16 @@
 /* You can add global styles for your project */
 
 /* ----------------------------------------------- KEYEMPORIUM */
+.input-support-message{
+  position: unset;
+}
 .autocomplete-container {
   background-color:unset;
 }
 .icon-sex {
+  max-height: 2.5rem;
+}
+.icon-list {
   max-height: 2.5rem;
 }
 /* --- page */
@@ -29,4 +35,10 @@
   line-height: 1.2;
   position: relative;
   top: 0.5rem;
+}
+
+.card-section {
+  width: 28rem;
+  display: inline-block;
+  margin: 1rem;
 }

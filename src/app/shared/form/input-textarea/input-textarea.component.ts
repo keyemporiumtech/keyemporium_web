@@ -7,7 +7,7 @@ import { InputTextComponent } from '../input-text/input-text.component';
 	selector: 'ddc-init-input-textarea',
 	templateUrl: './input-textarea.component.html',
 	styleUrls: ['./input-textarea.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputTextareaComponent extends InputTextComponent {
 	constructor(applicationLogger: ApplicationLoggerService) {

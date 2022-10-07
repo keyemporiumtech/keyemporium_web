@@ -8,9 +8,12 @@
 
 ### changes
 
+- `[fix]` **filemanager**: Fix `setFileContent` in `upload-file` per la gestione del content e del mimetype
+- `[feature]` **abstract**: Aggiunto il metodo `reloadModel` in `BaseForm` per ricaricare un modello dopo l'ngOnInit
 - `[fix]` **html** : Fix in `input-autocomplete` con aggiunta della pipe escapehtml per i testi in option
 - `[feature]` **html** e **abstract** : Aggiunta la gestione degli eventi `termEmitter` e `focusEmitter` e un nuovo input `listAll` per far caricare una lista completa al focus sull'`input-autocomplete` con term vuoto
 - `[feature]` **timing**: Aggiunta la pipe `datemodel`
+- `[fix]` **filemanager**: reimpostata la gestione di content e resource all'upload del file in `upload-file` 
 - `[feature]` **filemanager**: Aggiunti gli input `showProgress` e `showFiles` in `upload-file` 
 - `[feature]` **filemanager**: Aggiunta la gestione di singolo file quando la property `multiple` è false in `upload-file` 
 - `[feature]` **config**: Modificato il metodo `getBrowserName` di `BrowserService` per consentire di trovare edge anche con il codice edg

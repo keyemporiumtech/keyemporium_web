@@ -10,6 +10,7 @@ import { EnumContactreferenceType } from '../../../../modules/authentication/enu
 import { QueryUtility } from '@ddc/rest';
 import { map } from 'rxjs/operators';
 import { TypologicalModel } from '../../../../modules/api/cakeutils-be/models/typological.model';
+import { InputReferenceComponent } from '../../../../modules/authentication/components/input-reference/input-reference.component';
 
 @Component({
 	selector: 'reserve-profile-cell',
@@ -23,9 +24,10 @@ export class ProfileCellComponent extends BaseComponent {
 	@Input() blocked: boolean;
 	@Input() viewmode: boolean = true;
 	@Output() emitViewMode: EventEmitter<boolean> = new EventEmitter<boolean>();
-	@ViewChild('cellCmp') cellCmp: InputAddressComponent;
+	@ViewChild('cellCmp') cellCmp: InputReferenceComponent;
 	// var
 	cell: ContactreferenceModel;
+	EnumContactreferenceType = EnumContactreferenceType;
 	// principal
 	principal: UserreferenceModel;
 	// sub
@@ -121,7 +123,7 @@ export class ProfileCellComponent extends BaseComponent {
 		let $obs: Observable<string>;
 		let model: ContactreferenceModel;
 		if (this.cellCmp && this.cellCmp.form && this.cellCmp.form.valid) {
-			model = this.cellCmp.exportContactreference();
+			model = this.cellCmp.exportReference();
 			model.cod = this.cell ? this.cell.cod : undefined;
 			model.tpcontactreference = new TypologicalModel();
 			model.tpcontactreference.id = EnumContactreferenceType.CEL;

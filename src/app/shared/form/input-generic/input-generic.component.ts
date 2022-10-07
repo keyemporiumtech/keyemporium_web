@@ -14,7 +14,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-generic',
 	templateUrl: './input-generic.component.html',
 	styleUrls: ['./input-generic.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputGenericComponent extends BaseInputComponent {
 	// SELECT - SELECT_DIV - CHECKBOX - RADIO

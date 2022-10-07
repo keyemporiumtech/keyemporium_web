@@ -122,6 +122,30 @@ export abstract class BaseFormComponent extends BaseComponent
 		}
 	}
 
+	reloadModel() {
+		this.startLoading();
+		this.setModelBehaviour().actionPre();
+		this.subModel = this.setModel().subscribe(
+			(res) => {
+				this.setModelBehaviour().actionResponse(res);
+				if (res) {
+					this._model = res;
+					this.idModel = ObjectUtility.resolvePropertyModel(this.getModelFieldForId(), this.model);
+					this.fillForm(this.form, this.model);
+				} else {
+					this._model = {};
+				}
+				this.afterModel(res);
+				this.loadEmit.emit(this.idModel);
+				this.stopLoading();
+			},
+			(err) => {
+				this.setModelBehaviour().actionError(err);
+				this.stopLoading();
+			},
+		);
+	}
+
 	enable() {
 		this.form.enable();
 	}

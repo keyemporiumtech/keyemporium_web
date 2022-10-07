@@ -34,9 +34,16 @@ export class AttachmentModel extends ApiModel {
 	}
 	get sizeStringFixed(): string {
 		if (this.sizeFormat) {
-			return this.sizeFormat.size.toFixed(2) + ' ' + this.sizeFormat.unit;
+			return Number(this.sizeFormat.size).toFixed(2) + ' ' + this.sizeFormat.unit;
 		}
 		return '';
+	}
+
+	get src(): string {
+		if (this.mimetype && this.content) {
+			return 'data:' + this.mimetype + ';base64,' + this.content;
+		}
+		return undefined;
 	}
 
 	/**

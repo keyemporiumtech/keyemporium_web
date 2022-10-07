@@ -6,7 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-email',
 	templateUrl: './input-email.component.html',
 	styleUrls: ['./input-email.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputEmailComponent extends BaseInputComponent {
 	constructor(applicationLogger: ApplicationLoggerService) {

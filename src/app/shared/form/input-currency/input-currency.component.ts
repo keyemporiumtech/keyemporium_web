@@ -6,7 +6,7 @@ import { InputDecimalComponent } from '../input-decimal/input-decimal.component'
 	selector: 'ddc-init-input-currency',
 	templateUrl: './input-currency.component.html',
 	styleUrls: ['./input-currency.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputCurrencyComponent extends InputDecimalComponent {
 	@Input() currencySymbol: string;

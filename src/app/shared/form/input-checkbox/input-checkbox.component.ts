@@ -6,7 +6,7 @@ import { InputSelectComponent } from '../input-select/input-select.component';
 	selector: 'ddc-init-input-checkbox',
 	templateUrl: './input-checkbox.component.html',
 	styleUrls: ['./input-checkbox.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputCheckboxComponent extends InputSelectComponent {
 	@Input() isHorizontal: boolean;

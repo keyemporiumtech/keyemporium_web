@@ -10,9 +10,16 @@ import { PageContainerComponent } from './components/page-container/page-contain
 import { SexHtmlPipe } from './pipes/sex-html.pipe';
 import { SubTitleComponent } from './components/sub-title/sub-title.component';
 import { LineFilledComponent } from './components/line-filled/line-filled.component';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
-	declarations: [PageContainerComponent, SexHtmlPipe, SubTitleComponent, LineFilledComponent],
+	declarations: [
+		PageContainerComponent,
+		SexHtmlPipe,
+		SubTitleComponent,
+		LineFilledComponent,
+		ConfirmationModalComponent,
+	],
 	imports: [
 		CommonModule,
 		KitModule,
@@ -23,7 +30,13 @@ import { LineFilledComponent } from './components/line-filled/line-filled.compon
 		FormsModule,
 		ReactiveFormsModule,
 	],
-	exports: [PageContainerComponent, SexHtmlPipe, SubTitleComponent, LineFilledComponent],
+	exports: [
+		PageContainerComponent,
+		SexHtmlPipe,
+		SubTitleComponent,
+		LineFilledComponent,
+		ConfirmationModalComponent,
+	],
 })
 export class ApplicationSharedModule {
 	constructor(environmentLoader: EnvironmentLoaderService) {

@@ -1,3 +1,67 @@
-<p>
-  home-reserve works!
-</p>
+<div class="row p-3 text-center">
+  <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+
+    <div class="card card-section border-primary mb-3">
+      <div class="card-header">VIC</div>
+      <div class="card-body text-primary">
+        <h5 class="card-title text-center">{{'PERSONAL.VIC.TITLE' | translate}}</h5>
+        <div class="text-center">
+          <img src="assets/project/images/vic.png" class="img-fluid" [style.height]="'5rem'" />
+        </div>
+        <div class="text-center mt-2">
+          {{'PERSONAL.VIC.DESCRIPTION' | translate}}
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary btn-sm mr-2" (click)="goToVic()" title="{{'PERSONAL.BUTTON.ENTER' | translate}}">
+          {{'PERSONAL.BUTTON.ENTER' | translate}}
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+
+    <div class="card card-section border-primary mb-3">
+      <div class="card-header">PIC</div>
+      <div class="card-body text-primary">
+        <h5 class="card-title text-center">{{'PERSONAL.PIC.TITLE' | translate}}</h5>
+        <div class="text-center">
+          <img src="assets/project/images/pic.png" class="img-fluid" [style.height]="'5rem'" />
+        </div>
+        <div class="text-center mt-2">
+          {{'PERSONAL.PIC.DESCRIPTION' | translate}}
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary btn-sm mr-2" (click)="goToPic()" title="{{'PERSONAL.BUTTON.ENTER' | translate}}">
+          {{'PERSONAL.BUTTON.ENTER' | translate}}
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+
+    <div class="card card-section border-primary mb-3">
+      <div class="card-header">CIC</div>
+      <div class="card-body text-primary">
+        <h5 class="card-title text-center">{{'PERSONAL.CIC.TITLE' | translate}}</h5>
+        <div class="text-center">
+          <img src="assets/project/images/cic.png" class="img-fluid" [style.height]="'5rem'" />
+        </div>
+        <div class="text-center mt-2">
+          {{'PERSONAL.CIC.DESCRIPTION' | translate}}
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary btn-sm mr-2" (click)="goToVic()" title="{{'PERSONAL.BUTTON.ENTER' | translate}}">
+          {{'PERSONAL.BUTTON.ENTER' | translate}}
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -26,6 +26,7 @@ export class VicPageComponent extends BasePageComponent {
 	sizeImagePrincipal;
 	sizeProfile;
 	sizeAddressPrincipal;
+	sizePhonePrincipal;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -43,6 +44,7 @@ export class VicPageComponent extends BasePageComponent {
 
 	ngOnInitForChildren() {
 		this.changeSizeAddressPrincipal(true);
+		this.changeSizePhonePrincipal(true);
 		this.changeSizeImagePrincipal(true);
 		this.changeSizeProfile(true);
 	}
@@ -89,5 +91,8 @@ export class VicPageComponent extends BasePageComponent {
 	}
 	changeSizeAddressPrincipal(viewmode: boolean) {
 		this.sizeAddressPrincipal = viewmode ? '2|4|12' : '8|12|12';
+	}
+	changeSizePhonePrincipal(viewmode: boolean) {
+		this.sizePhonePrincipal = viewmode ? '2|4|12' : '8|12|12';
 	}
 }

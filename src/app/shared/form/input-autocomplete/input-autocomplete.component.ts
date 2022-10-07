@@ -24,7 +24,7 @@ import { RequestUtility } from '@ddc/rest';
 	selector: 'ddc-init-input-autocomplete',
 	templateUrl: './input-autocomplete.component.html',
 	styleUrls: ['./input-autocomplete.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputAutocompleteComponent extends BaseInputComponent {
 	@ViewChild('autocomplete') autocomplete: AutocompleteComponent;

@@ -21,6 +21,15 @@ import { ProfileImageComponent } from './components/profile/profile-image/profil
 import { ProfileAddressComponent } from './components/profile/profile-address/profile-address.component';
 import { LocalesystemModule } from '../modules/localesystem/localesystem.module';
 import { ProfileCellComponent } from './components/profile/profile-cell/profile-cell.component';
+import { ProfileListComponent } from './components/profile-list/profile-list.component';
+import { ProfileListImagesComponent } from './components/profile-list/profile-list-images/profile-list-images.component';
+import { ProfileListAttachmentsComponent } from './components/profile-list/profile-list-attachments/profile-list-attachments.component';
+import { ProfileListAddressesComponent } from './components/profile-list/profile-list-addresses/profile-list-addresses.component';
+import { ProfileListPhonesComponent } from './components/profile-list/profile-list-phones/profile-list-phones.component';
+import { ProfileListEmailsComponent } from './components/profile-list/profile-list-emails/profile-list-emails.component';
+import { ProfileListLinksComponent } from './components/profile-list/profile-list-links/profile-list-links.component';
+import { AppKeyemporiumModule } from '../modules/app-keyemporium/app-keyemporium.module';
+import { ProfileAttachmentComponent } from './components/profile/profile-attachment/profile-attachment.component';
 
 @NgModule({
 	declarations: [
@@ -33,6 +42,14 @@ import { ProfileCellComponent } from './components/profile/profile-cell/profile-
 		VicPageComponent,
 		ProfileAddressComponent,
 		ProfileCellComponent,
+		ProfileListComponent,
+		ProfileListImagesComponent,
+		ProfileListAttachmentsComponent,
+		ProfileListAddressesComponent,
+		ProfileListPhonesComponent,
+		ProfileListEmailsComponent,
+		ProfileListLinksComponent,
+		ProfileAttachmentComponent,
 	],
 	imports: [
 		CommonModule,
@@ -50,6 +67,7 @@ import { ProfileCellComponent } from './components/profile/profile-cell/profile-
 		AuthenticationModule.forRoot(),
 		ResourcesModule.forRoot(),
 		LocalesystemModule.forRoot(),
+		AppKeyemporiumModule.forRoot(),
 	],
 })
 export class ApplicationReserveModule {

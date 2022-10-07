@@ -6,7 +6,7 @@ import { InputNumberComponent } from '../input-number/input-number.component';
 	selector: 'ddc-init-input-decimal',
 	templateUrl: './input-decimal.component.html',
 	styleUrls: ['./input-decimal.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputDecimalComponent extends InputNumberComponent {
 	@Input() digits: number;

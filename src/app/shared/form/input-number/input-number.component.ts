@@ -7,7 +7,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-number',
 	templateUrl: './input-number.component.html',
 	styleUrls: ['./input-number.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputNumberComponent extends BaseInputComponent {
 	@Input() min: number;

@@ -6,7 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-color',
 	templateUrl: './input-color.component.html',
 	styleUrls: ['./input-color.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputColorComponent extends BaseInputComponent {
 	constructor(applicationLogger: ApplicationLoggerService) {
