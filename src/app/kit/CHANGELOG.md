@@ -1,6 +1,6 @@
 # CHANGELOG KIT
 
-## 2.2.0 - XX/XX/2022
+## 2.2.0 - 17/10/2022
 
 > Versione che perfeziona il servizio `BrowserService` e aggiunge una funzione al mode Edit di un form.
 > Inoltre perfezione il metodo `splitUrlNavigationExtrasQueryParameters` di `PageUtility`.

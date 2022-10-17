@@ -1,6 +1,6 @@
 # CHANGELOG REST
 
-## 3.2.0 - XX/07/2022
+## 3.2.0 - 17/10/2022
 
 > Versione che aggiunge l'invio in header del clientId e i metodi da utilizzare in previous route per la gestione dei parametri tramite oggetti queryParams
 
