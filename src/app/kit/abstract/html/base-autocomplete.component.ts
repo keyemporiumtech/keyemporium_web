@@ -1,6 +1,6 @@
 import { BaseComponent } from '../base.component';
 import { ApplicationLoggerService } from '../../logger/services/application-logger.service';
-import { EventEmitter, Output, Input } from '@angular/core';
+import { EventEmitter, Output, Input, Directive } from '@angular/core';
 import { StringTranslate } from '../../translation/models/string-translate.model';
 import { OptionListModel } from '../../html/models/option-list.model';
 import { component } from '../../../../environments/template/component';
@@ -10,6 +10,8 @@ import { component } from '../../../../environments/template/component';
  *
  * L'item usato è di tipo [OptionListModel]{@link OptionListModel}
  */
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseAutocompleteComponent extends BaseComponent {
 	@Output() searchEmit = new EventEmitter<string>(); // evento che scatta quando viene avviata la ricerca (emette il parametro di ricerca)
 	@Output() termEmit = new EventEmitter<string>(); // evento che scatta quando al keyup (emette il parametro di ricerca)

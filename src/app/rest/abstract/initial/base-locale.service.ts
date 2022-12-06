@@ -7,12 +7,14 @@ import {
 	BaseService,
 } from '@ddc/kit';
 import { Observable, Subscription } from 'rxjs';
-import { OnInit, OnDestroy } from '@angular/core';
+import { OnInit, OnDestroy, Directive } from '@angular/core';
 
 /**
  * Classe per la gestione utente delle lingue, valute e nazioni di sistema.
  *
  */
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseLocaleService<
 		L extends BaseModel,
 		C extends BaseModel,

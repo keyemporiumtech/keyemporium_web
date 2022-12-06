@@ -98,9 +98,10 @@
 
 		<div
 			*ngFor="let option of options"
-			class="item {{ isSelected(option) ? 'selected selected-inner' : '' }}"
+			class="item {{ isSelected(option) ? 'selected selected-inner' : '' }} {{
+				field && field.formControl && field.formControl.disabled ? 'disabled' : ''
+			}}"
 			style="cursor: pointer"
-			class="{{ field && field.formControl && field.formControl.disabled ? 'disabled' : '' }}"
 			[ngClass]="option.cssClass"
 			[ngStyle]="option.cssStyle"
 			[innerHTML]="

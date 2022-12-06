@@ -11,6 +11,10 @@
 			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-CHARTS')">Modulo Charts</a>
 			<span class="ml-2">|</span>
 			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-ROUTING')">Modulo Routing</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-TREE-HTML')">Modulo Tree Html</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-QRCODE')">Modulo Qrcode</a>
 		</div>
 	</div>
 
@@ -21,6 +25,8 @@
 			<wiki-test-kit-html *ngIf="view === 'KIT-HTML'"></wiki-test-kit-html>
 			<wiki-test-kit-charts *ngIf="view === 'KIT-CHARTS'"></wiki-test-kit-charts>
 			<wiki-test-kit-routing *ngIf="view === 'KIT-ROUTING'"></wiki-test-kit-routing>
+			<wiki-test-kit-tree-html *ngIf="view === 'KIT-TREE-HTML'"></wiki-test-kit-tree-html>
+			<wiki-test-kit-qrcode *ngIf="view === 'KIT-QRCODE'"></wiki-test-kit-qrcode>
 		</div>
 	</div>
 

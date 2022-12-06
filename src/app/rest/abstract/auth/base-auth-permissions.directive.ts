@@ -7,6 +7,7 @@ import {
 	Renderer2,
 	EmbeddedViewRef,
 	Input,
+	Directive,
 } from '@angular/core';
 import { RenderElService, KeyvalueObject } from '@ddc/kit';
 import { Observable, Subscription } from 'rxjs';
@@ -24,6 +25,8 @@ import { Observable, Subscription } from 'rxjs';
  * }
  * ugual modo per keyAuthPermissionStyleDefault e keyAuthPermissionStyleActive
  */
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseAuthPermissionsDirective implements OnInit, OnDestroy {
 	private _permissions: string[] = [];
 	private element: ElementRef;

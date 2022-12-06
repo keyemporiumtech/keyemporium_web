@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	EnumSizeFormat,
@@ -18,7 +18,7 @@ import { BaseInputComponent } from '../base-input.component';
 	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputFileComponent extends BaseInputComponent {
-	@ViewChild('uploadFile') uploadFile: UploadFileComponent;
+	@ViewChild('uploadFile', { static: false }) uploadFile: UploadFileComponent;
 	@Input() name: string;
 	@Input() multiple: boolean;
 	@Input() numMaxFiles: number;
@@ -34,7 +34,7 @@ export class InputFileComponent extends BaseInputComponent {
 	VALUE_FROM_UPLOAD: boolean;
 	// subscriptions
 	subValues: Subscription;
-	subStatus: Subscription;
+	declare subStatus: Subscription;
 
 	lastValue;
 	constructor(applicationLogger: ApplicationLoggerService) {

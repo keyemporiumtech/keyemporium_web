@@ -1,5 +1,13 @@
 import { BaseComponent } from '../base.component';
-import { OnInit, OnDestroy, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+	OnInit,
+	OnDestroy,
+	AfterViewInit,
+	Input,
+	Output,
+	EventEmitter,
+	Directive,
+} from '@angular/core';
 import { ApplicationLoggerService } from '../../logger/services/application-logger.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -7,6 +15,8 @@ import { BehaviourObserverModel } from '../../config/models/behaviour-observer.m
 import { ObjectUtility } from '../../config/utility/object.utility';
 import { EnumFormMode } from '../../html/enums/form-mode.enum';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseFormComponent
 	extends BaseComponent
 	implements OnInit, OnDestroy, AfterViewInit

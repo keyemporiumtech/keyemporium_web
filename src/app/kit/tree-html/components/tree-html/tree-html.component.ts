@@ -1,6 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Output, EventEmitter, ViewChild } from '@angular/core';
-import { ITreeOptions, IActionMapping, TreeNode, TreeComponent } from 'angular-tree-component';
+import {
+	ITreeOptions,
+	IActionMapping,
+	TreeNode,
+	TreeComponent,
+} from '@circlon/angular-tree-component';
 import { BaseComponent } from '../../../abstract/base.component';
 import { ApplicationLoggerService } from '../../../logger/services/application-logger.service';
 import { TreeHtmlModel } from '../../models/tree-html.model';
@@ -17,7 +22,7 @@ import { EnumKeyMouseEvent } from '../../../html/enums/key-mouse-event.enum';
 export class TreeHtmlComponent extends BaseComponent {
 	@Output() manageEvent: EventEmitter<any> = new EventEmitter<any>();
 	@Output() childrenEmit: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
-	@ViewChild('tree') tree: TreeComponent;
+	@ViewChild('tree', { static: false }) tree: TreeComponent;
 	@Input() nodes: TreeHtmlModel[];
 	@Input() childrens: TreeHtmlModel[];
 	@Input() initialOptions: ITreeOptions;

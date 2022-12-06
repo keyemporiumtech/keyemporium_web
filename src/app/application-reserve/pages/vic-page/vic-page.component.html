@@ -9,6 +9,7 @@
 				class="m-3"
 			>
 				<shared-sub-title [title]="'PERSONAL.VIC.IMAGE.TITLE_PRINCIPAL'"></shared-sub-title>
+
 				<reserve-profile-image
 					[id_user]="id_user"
 					[flgPrincipal]="true"
@@ -16,8 +17,10 @@
 					(emitViewMode)="changeSizeImagePrincipal($event)"
 				></reserve-profile-image>
 			</div>
+
 			<div *ngIf="sizeProfile" ddcBtsSize [btsSize]="sizeProfile" [btsPrefix]="'col-'" class="m-3">
 				<shared-sub-title [title]="'PERSONAL.VIC.PROFILE.TITLE'"></shared-sub-title>
+
 				<reserve-profile
 					[id_user]="id_user"
 					[blocked]="blocked"
@@ -25,11 +28,14 @@
 				>
 				</reserve-profile>
 			</div>
-			<div class="p-2" ddcBtsSize [btsSize]="'2|6|12'" [btsPrefix]="'col-'" class="m-3">
+
+			<div ddcBtsSize [btsSize]="'2|6|12'" [btsPrefix]="'col-'" class="p-2 m-3">
 				<shared-sub-title [title]="'PERSONAL.VIC.QRCODE'"></shared-sub-title>
+
 				<ddc-init-qrcode-reader *ngIf="textQr" [id]="'cod_user_vic'" [text]="textQr">
 				</ddc-init-qrcode-reader>
 			</div>
+
 			<div
 				*ngIf="sizeAddressPrincipal"
 				ddcBtsSize
@@ -38,6 +44,7 @@
 				class="m-3"
 			>
 				<shared-sub-title [title]="'PERSONAL.VIC.ADDRESS.TITLE_PRINCIPAL'"></shared-sub-title>
+
 				<reserve-profile-address
 					[id_user]="id_user"
 					[flgPrincipal]="true"
@@ -46,6 +53,7 @@
 				>
 				</reserve-profile-address>
 			</div>
+
 			<div
 				*ngIf="sizePhonePrincipal"
 				ddcBtsSize
@@ -54,6 +62,7 @@
 				class="m-3"
 			>
 				<shared-sub-title [title]="'PERSONAL.VIC.PHONE.TITLE_PRINCIPAL'"></shared-sub-title>
+
 				<reserve-profile-cell
 					[id_user]="id_user"
 					[flgPrincipal]="true"

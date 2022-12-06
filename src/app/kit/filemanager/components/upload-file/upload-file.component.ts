@@ -63,8 +63,8 @@ export class UploadFileComponent extends BaseComponent {
 	@Input() icon: any;
 	@Input() iconColor: string;
 	// progress
-	@ViewChild('progressInternal') progressInternal: ProgressBarComponent;
-	@ViewChild('progressExternal') progressExternal: ProgressBarComponent;
+	@ViewChild('progressInternal', { static: false }) progressInternal: ProgressBarComponent;
+	@ViewChild('progressExternal', { static: false }) progressExternal: ProgressBarComponent;
 	@Input() colorInternalLoad: any; // colore della progress bar di upload in locale
 	@Input() colorExternalLoad: any; // colore della progress bar di upload su server
 	@Input() externalLoad: (attachments: FileEmbedModel[]) => Observable<any>;

@@ -1,11 +1,4 @@
-import {
-	Component,
-	EventEmitter,
-	Input,
-	Output,
-	ViewChild,
-	ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	AutocompleteComponent,
@@ -13,12 +6,12 @@ import {
 	StringTranslate,
 	TranslateUtility,
 } from '@ddc/kit';
+import { RequestUtility } from '@ddc/rest';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { template } from '../../../../environments/template/template';
 import { BaseInputComponent } from '../base-input.component';
-import { RequestUtility } from '@ddc/rest';
 
 @Component({
 	selector: 'ddc-init-input-autocomplete',
@@ -27,7 +20,7 @@ import { RequestUtility } from '@ddc/rest';
 	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputAutocompleteComponent extends BaseInputComponent {
-	@ViewChild('autocomplete') autocomplete: AutocompleteComponent;
+	@ViewChild('autocomplete', { static: false }) autocomplete: AutocompleteComponent;
 	@Input() textNoRecords: string | StringTranslate;
 	@Input() digits: number;
 	@Input() debounce: number = 1000;
@@ -39,7 +32,7 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 	@Output() overEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando si passa con il mouse sopra l'item (emette l'item)
 	@Output() outEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando il mouse lascia un item (emette l'item)
 	@Output() focusEmit = new EventEmitter<string>(); // evento che scatta quando il componente di input prende il focus
-	subStatus: Subscription;
+	declare subStatus: Subscription;
 	subValue: Subscription;
 	// functions
 	@Input() search: (term: string) => Observable<OptionListModel[]>;

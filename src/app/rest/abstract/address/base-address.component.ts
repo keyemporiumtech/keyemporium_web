@@ -6,12 +6,22 @@ import {
 	StringTranslate,
 	WaitElementsUtility,
 } from '@ddc/kit';
-import { Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import {
+	Input,
+	Output,
+	EventEmitter,
+	OnInit,
+	OnDestroy,
+	AfterViewInit,
+	Directive,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription, Observable, of } from 'rxjs';
 import { GeoRefInterface } from '../../geo/interfaces/geo-ref.interface';
 import { distinctUntilChanged } from 'rxjs/operators';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseAddressComponent
 	extends BaseComponent
 	implements OnInit, OnDestroy, AfterViewInit

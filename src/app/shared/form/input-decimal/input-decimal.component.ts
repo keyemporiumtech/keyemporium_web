@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApplicationLoggerService, CustomValidators, CustomValidatorsMessages } from '@ddc/kit';
 import { InputNumberComponent } from '../input-number/input-number.component';
 
@@ -11,7 +11,7 @@ import { InputNumberComponent } from '../input-number/input-number.component';
 export class InputDecimalComponent extends InputNumberComponent {
 	@Input() digits: number;
 	@Input() step: string = 'any';
-	pattern: string;
+	declare pattern: string;
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}

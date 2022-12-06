@@ -8,7 +8,7 @@ import {
 } from '@ddc/kit';
 import { Observable, BehaviorSubject, forkJoin, of, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { OnDestroy } from '@angular/core';
+import { Directive, OnDestroy } from '@angular/core';
 import { ResponseManagerInterface } from '../../response/interfaces/response-manager.interface';
 import { ResponseMessageInterface } from '../../response/interfaces/response-message.interface';
 import { RequestManagerInterface } from '../../request/interfaces/request-manager.interface';
@@ -19,6 +19,8 @@ import { AuthUtility } from '../../auth/utility/auth.utility';
  * Classe per la gestione delle informazioni utente e di sessione.
  *
  */
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseAuthService extends BaseService implements OnDestroy {
 	innerStorage: InnerStorageService;
 	profileChange: BehaviorSubject<string> = new BehaviorSubject<string>('');

@@ -1,13 +1,15 @@
 import { BaseComponent } from './base.component';
 import { ApplicationLoggerService } from '../logger/services/application-logger.service';
 import { Subscription } from 'rxjs';
-import { OnDestroy } from '@angular/core';
+import { OnDestroy, Component, Directive } from '@angular/core';
 import { Data, ParamMap, Router, ActivatedRoute } from '@angular/router';
 import { RouteNavigationUtility } from '../routing/utility/route-navigation.utility';
 
 /**
  * Da estendere nella creazione di componenti di pagina navigabili
  */
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BasePageComponent extends BaseComponent implements OnDestroy {
 	router: Router;
 	activatedRoute: ActivatedRoute;

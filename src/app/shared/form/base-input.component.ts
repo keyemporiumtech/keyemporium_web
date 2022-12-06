@@ -1,4 +1,4 @@
-import { Input, EventEmitter, Output } from '@angular/core';
+import { Input, EventEmitter, Output, Directive } from '@angular/core';
 import { FormControl, ValidatorFn, Validators } from '@angular/forms';
 import {
 	ApplicationLoggerService,
@@ -14,6 +14,8 @@ import { FormInputValidationStyleInterface } from '../interfaces/form/form-input
 import { FormFieldModel } from '../models/form/form-field.model';
 import { FormValidatorsUtil } from '../utils/form-validators.util';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseInputComponent extends BaseComponent {
 	@Input() control: FormControl;
 	@Input() field: FormFieldModel;

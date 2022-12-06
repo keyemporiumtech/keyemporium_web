@@ -1,0 +1,99 @@
+<h4>Modulo Qrcode</h4>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseQrcodeReader"
+	aria-expanded="false"
+	aria-controls="collapseQrcodeReader"
+>
+	QrcodeReader
+</button>
+
+<div class="collapse" id="collapseQrcodeReader">
+	<div class="mt-3">
+		Il componente <strong>QrcodeReader</strong> consente di leggere un testo e mostrare il relativo
+		qrcode e viene configuarto con i seguenti parametri di input <strong>TODO</strong>
+		<!--
+    <ul>
+      <li><strong>nodes: TreeHtmlModel[]</strong> che definisce l'array dei nodi principali</li>
+      <li><strong>childrens: TreeHtmlModel[]</strong> che definisce un array di nodi figli</li>
+      <li><strong>initialOptions: ITreeOptions</strong> che definisce i parametri di configurazione del componente</li>
+      <li><strong>flgCheckbox: boolean</strong> se true fa comparire le checkbox sui nodi</li>
+      <li><strong>flgCheckboxDistinct: boolean</strong> se true gestisce distintamente i checkbox</li>
+      <li><strong>fnForChildren</strong> dato un nodo con <b>node.children=undefined</b> e <b>node.hasChildren=true</b>
+        e le proprietà <b>flgLoadChildrens=true</b> e <b>flgUseFnForChildren=true</b>,
+        questa funzione identifica la chiamata da fare al click del nodo per caricare in maniera asincrona i suoi figli
+      </li>
+    </ul>
+    -->
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+
+          &lt;ddc-init-qrcode-reader [text]="'Prova lettura qrcode'"&gt;&lt;/ddc-init-qrcode-reader &gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>qrcode reader semplice</h5>
+	<ddc-init-qrcode-reader [text]="'Prova lettura qrcode'"> </ddc-init-qrcode-reader>
+	<hr />
+</div>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseQrcodeScanner"
+	aria-expanded="false"
+	aria-controls="collapseQrcodeScanner"
+>
+	QrcodeScanner
+</button>
+
+<div class="collapse" id="collapseQrcodeScanner">
+	<div class="mt-3">
+		Il componente <strong>QrcodeScanner</strong> consente di scansionare un qrcode e mostrarne il
+		testo e viene configuarto con i seguenti parametri di input <strong>TODO</strong>
+		<!--
+    <ul>
+      <li><strong>nodes: TreeHtmlModel[]</strong> che definisce l'array dei nodi principali</li>
+      <li><strong>childrens: TreeHtmlModel[]</strong> che definisce un array di nodi figli</li>
+      <li><strong>initialOptions: ITreeOptions</strong> che definisce i parametri di configurazione del componente</li>
+      <li><strong>flgCheckbox: boolean</strong> se true fa comparire le checkbox sui nodi</li>
+      <li><strong>flgCheckboxDistinct: boolean</strong> se true gestisce distintamente i checkbox</li>
+      <li><strong>fnForChildren</strong> dato un nodo con <b>node.children=undefined</b> e <b>node.hasChildren=true</b>
+        e le proprietà <b>flgLoadChildrens=true</b> e <b>flgUseFnForChildren=true</b>,
+        questa funzione identifica la chiamata da fare al click del nodo per caricare in maniera asincrona i suoi figli
+      </li>
+    </ul>
+    -->
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+
+          &lt;ddc-init-qrcode-scanner&gt;&lt;/ddc-init-qrcode-scanner &gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>qrcode scanner semplice</h5>
+	<ddc-init-qrcode-scanner></ddc-init-qrcode-scanner>
+	<hr />
+</div>

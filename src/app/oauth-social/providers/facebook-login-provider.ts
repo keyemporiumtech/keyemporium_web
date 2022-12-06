@@ -17,7 +17,7 @@ export class FacebookLoginProvider extends BaseLoginProvider {
 
 	constructor(
 		private clientId: string,
-		initOptions: Object = {},
+		initOptions: any = {},
 		private apiKey: string,
 		private fields?: string,
 	) {

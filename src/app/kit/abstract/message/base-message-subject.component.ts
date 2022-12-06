@@ -1,12 +1,14 @@
 import { BaseComponent } from '../base.component';
 import { ApplicationLoggerService } from '../../logger/services/application-logger.service';
-import { Input, AfterViewChecked } from '@angular/core';
+import { Input, AfterViewChecked, Directive } from '@angular/core';
 import { MessageService } from '../../message/services/message.service';
 import { Subscription } from 'rxjs';
 import { MessageModel } from '../../message/models/message.model';
 import { EnumMessageType } from '../../message/enums/message-type.enum';
 declare var $: any;
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseMessageSubjectComponent
 	extends BaseComponent
 	implements AfterViewChecked

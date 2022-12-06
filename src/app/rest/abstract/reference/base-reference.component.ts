@@ -5,10 +5,12 @@ import {
 	OptionListModel,
 	BehaviourObserverModel,
 } from '@ddc/kit';
-import { OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { OnInit, OnDestroy, Input, Output, EventEmitter, Directive } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseReferenceComponent extends BaseComponent implements OnInit, OnDestroy {
 	@Input() form: FormGroup;
 	@Input() labelTitle: string | StringTranslate;

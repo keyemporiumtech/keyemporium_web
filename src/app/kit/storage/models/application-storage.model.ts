@@ -1,11 +1,10 @@
 import { StringTranslate } from '../../translation/models/string-translate.model';
 import { TranslateService } from '@ngx-translate/core';
-import { OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { InnerStorageService } from '../services/inner-storage.service';
 import { ObjectUtility } from '../../config/utility/object.utility';
 
-export class ApplicationStorageModel implements OnDestroy {
+export class ApplicationStorageModel {
 	private _key: string;
 	// sub
 	subTranslate1: Subscription;
@@ -53,7 +52,7 @@ export class ApplicationStorageModel implements OnDestroy {
 		return innerStorage.get(this.key);
 	}
 
-	ngOnDestroy() {
+	setDestroy() {
 		if (this.subTranslate1) {
 			this.subTranslate1.unsubscribe();
 		}
