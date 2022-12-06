@@ -1,11 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import { version } from '../../package.json';
-import { template } from '../../versioning.json';
+import packageInfo from '../../package.json';
+import versioningInfo from '../../versioning.json';
 export const environment = {
-	VERSION: version,
-	TEMPLATE_VERSION: template,
+	VERSION: packageInfo.version,
+	TEMPLATE_VERSION: versioningInfo.template,
 	production: true,
 	appName: '&copy; Keyemporium',
 	clientId: 'keyemporium-web',

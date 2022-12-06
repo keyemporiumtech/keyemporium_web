@@ -10,7 +10,7 @@
       "prefix": "keyemporium-web",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
@@ -34,10 +34,24 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/resources/leafletlib/leaflet.css"
+              "src/assets/resources/leafletlib/leaflet.css",
+              "src/theme/bootstrap/mybootstrap.css",
+              "src/theme/bootstrap/css/bootstrap.css",
+              "src/assets/resources/markdown/prismjs/themes/prism.css"
             ],
             "scripts": [
               "src/assets/resources/leafletlib/leaflet.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "moment-timezone",
+              "crypto-js",
+              "angularx-qrcode",
+              "@cordobo/qrcode",
+              "qrcode",
+              "pdfjs-dist/es5/web/pdf_viewer",
+              "pdfjs-dist/es5/build/pdf",
+              "moment",
+              "clone-deep"
             ]
           },
           "configurations": {
@@ -48,7 +62,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
@@ -72,7 +93,14 @@
                   "with": "src/environments/environment.test.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
@@ -96,7 +124,14 @@
                   "with": "src/environments/environment.local.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
@@ -156,14 +191,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         }
