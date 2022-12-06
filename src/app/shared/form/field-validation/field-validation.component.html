@@ -1,12 +1,23 @@
 <div *ngIf="validations && validations.length">
-  <ng-container *ngFor="let validation of validations">
-    <div *ngIf="hasError(validation) && isCome()" class="{{classInvalid}}"
-      [innerHTML]="translateKey(getValidationMessage(validation)) | translate:translateParams(getValidationMessage(validation))">
-    </div>
-  </ng-container>
+	<ng-container *ngFor="let validation of validations">
+		<div
+			*ngIf="hasError(validation) && isCome()"
+			class="{{ classInvalid }}"
+			[innerHTML]="
+				translateKey(getValidationMessage(validation))
+					| translate : translateParams(getValidationMessage(validation))
+			"
+		></div>
+	</ng-container>
 </div>
-<div *ngIf="showValid && messageValid && control.valid" class="{{classValid}}"
-  [innerHTML]="translateKey(messageValid) | translate:translateParams(messageValid)"></div>
+<div
+	*ngIf="showValid && messageValid && control.valid"
+	class="{{ classValid }}"
+	[innerHTML]="translateKey(messageValid) | translate : translateParams(messageValid)"
+></div>
 
-<small *ngIf="messageSupport" class="{{classSupport}}"
-  [innerHTML]="translateKey(messageSupport) | translate:translateParams(messageSupport)"></small>
+<small
+	*ngIf="messageSupport"
+	class="{{ classSupport }}"
+	[innerHTML]="translateKey(messageSupport) | translate : translateParams(messageSupport)"
+></small>

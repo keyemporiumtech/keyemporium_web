@@ -7,8 +7,10 @@ import { MessageModel } from '../../message/models/message.model';
 import { EnumMessageType } from '../../message/enums/message-type.enum';
 declare var $: any;
 
-export abstract class BaseMessageSubjectComponent extends BaseComponent
-	implements AfterViewChecked {
+export abstract class BaseMessageSubjectComponent
+	extends BaseComponent
+	implements AfterViewChecked
+{
 	private _environment: any;
 	@Input() idMessage: string;
 	@Input() typeComponent: 'DIV' | 'MODAL';

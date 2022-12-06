@@ -1,39 +1,67 @@
 <h4>Gestione dei forms</h4>
 
-<button class="btn btn-sm btn-info mr-2" type="button" data-toggle="collapse" data-target="#collapseFormInputs"
-  aria-expanded="false" aria-controls="collapseFormInputs" (click)="openCloseBox('FORM_INPUTS', 'collapseFormInputs')">
-  Campi di Input
+<button
+	class="btn btn-sm btn-info mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseFormInputs"
+	aria-expanded="false"
+	aria-controls="collapseFormInputs"
+	(click)="openCloseBox('FORM_INPUTS', 'collapseFormInputs')"
+>
+	Campi di Input
 </button>
 
-<button class="btn btn-sm btn-info mr-2" type="button" data-toggle="collapse" data-target="#collapseDirective"
-  aria-expanded="false" aria-controls="collapseDirective" (click)="openCloseBox('DDC_VALIDATION', 'collapseDirective')">
-  Direttiva ddcValidation
+<button
+	class="btn btn-sm btn-info mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseDirective"
+	aria-expanded="false"
+	aria-controls="collapseDirective"
+	(click)="openCloseBox('DDC_VALIDATION', 'collapseDirective')"
+>
+	Direttiva ddcValidation
 </button>
 
-<button class="btn btn-sm btn-info mr-2" type="button" data-toggle="collapse" data-target="#collapseInput"
-  aria-expanded="false" aria-controls="collapseInput" (click)="openCloseBox('INPUT_GENERIC', 'collapseInput')">
-  Componente InputGeneric
+<button
+	class="btn btn-sm btn-info mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInput"
+	aria-expanded="false"
+	aria-controls="collapseInput"
+	(click)="openCloseBox('INPUT_GENERIC', 'collapseInput')"
+>
+	Componente InputGeneric
 </button>
 
-<button class="btn btn-sm btn-info mr-2" type="button" data-toggle="collapse" data-target="#collapsePageForm"
-  aria-expanded="false" aria-controls="collapsePageForm" (click)="openCloseBox('FORM_PAGE', 'collapsePageForm')">
-  Page Form
+<button
+	class="btn btn-sm btn-info mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapsePageForm"
+	aria-expanded="false"
+	aria-controls="collapsePageForm"
+	(click)="openCloseBox('FORM_PAGE', 'collapsePageForm')"
+>
+	Page Form
 </button>
 
 <hr />
 
 <div class="collapse" id="collapseFormInputs">
-  <wiki-test-form-inputs *ngIf="box === 'FORM_INPUTS'"></wiki-test-form-inputs>
+	<wiki-test-form-inputs *ngIf="box === 'FORM_INPUTS'"></wiki-test-form-inputs>
 </div>
 
 <div class="collapse" id="collapseDirective">
-  <wiki-test-ddc-validation *ngIf="box === 'DDC_VALIDATION'"></wiki-test-ddc-validation>
+	<wiki-test-ddc-validation *ngIf="box === 'DDC_VALIDATION'"></wiki-test-ddc-validation>
 </div>
 
 <div class="collapse" id="collapseInput">
-  <wiki-test-input-generic *ngIf="box === 'INPUT_GENERIC'"></wiki-test-input-generic>
+	<wiki-test-input-generic *ngIf="box === 'INPUT_GENERIC'"></wiki-test-input-generic>
 </div>
 
 <div class="collapse" id="collapsePageForm">
-  <wiki-test-form-page *ngIf="box === 'FORM_PAGE'"></wiki-test-form-page>
+	<wiki-test-form-page *ngIf="box === 'FORM_PAGE'"></wiki-test-form-page>
 </div>

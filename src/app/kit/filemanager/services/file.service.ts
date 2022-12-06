@@ -141,11 +141,7 @@ export class FileService extends BaseService {
 	}
 
 	getFilename(path: string): string {
-		return path
-			.split('\\')
-			.pop()
-			.split('/')
-			.pop();
+		return path.split('\\').pop().split('/').pop();
 	}
 
 	/**

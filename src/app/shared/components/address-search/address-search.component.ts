@@ -33,9 +33,8 @@ export class AddressSearchComponent extends BaseComponent {
 	@Input() flgEsri: boolean;
 	// more
 	@Input() flgMore: boolean;
-	@Output() addressEmit: EventEmitter<OpenstreetLocationModel> = new EventEmitter<
-		OpenstreetLocationModel
-	>();
+	@Output() addressEmit: EventEmitter<OpenstreetLocationModel> =
+		new EventEmitter<OpenstreetLocationModel>();
 	@Output() overEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando si passa con il mouse sopra l'item (emette l'item)
 	@Output() outEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando il mouse lascia un item (emette l'item)
 	results: OptionListModel[];

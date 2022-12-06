@@ -50,8 +50,10 @@ import { InputTextComponent } from '../../../../shared/form/input-text/input-tex
 	templateUrl: './input-address.component.html',
 	styleUrls: ['./input-address.component.scss'],
 })
-export class InputAddressComponent extends BaseAddressComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+export class InputAddressComponent
+	extends BaseAddressComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Input() cssClass: any;
 	@Input() cssStyle: any;
 	@Input() isoForCommunity: string[];

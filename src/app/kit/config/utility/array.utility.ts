@@ -9,7 +9,7 @@ export class ArrayUtility {
 	}
 
 	static sortAscByField(items: any, field: string) {
-		return items.sort(function(a, b) {
+		return items.sort(function (a, b) {
 			if (a[field] && b[field]) {
 				const nameA = typeof a[field] === 'string' ? a[field].toUpperCase() : a[field]; // ignora maiuscole e minuscole
 				const nameB = typeof b[field] === 'string' ? b[field].toUpperCase() : b[field]; // ignora maiuscole e minuscole
@@ -26,7 +26,7 @@ export class ArrayUtility {
 	}
 
 	static sortDescByField(items: any, field: string) {
-		return items.sort(function(a, b) {
+		return items.sort(function (a, b) {
 			if (a[field] && b[field]) {
 				const nameA = typeof a[field] === 'string' ? a[field].toUpperCase() : a[field]; // ignora maiuscole e minuscole
 				const nameB = typeof b[field] === 'string' ? b[field].toUpperCase() : b[field]; // ignora maiuscole e minuscole

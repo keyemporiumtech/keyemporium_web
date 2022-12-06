@@ -14,10 +14,13 @@ import { OnInit, OnDestroy } from '@angular/core';
  *
  */
 export abstract class BaseLocaleService<
-	L extends BaseModel,
-	C extends BaseModel,
-	N extends BaseModel
-> extends BaseService implements OnInit, OnDestroy {
+		L extends BaseModel,
+		C extends BaseModel,
+		N extends BaseModel,
+	>
+	extends BaseService
+	implements OnInit, OnDestroy
+{
 	environment: any;
 	localeService: LocaleService;
 	languages: L[];

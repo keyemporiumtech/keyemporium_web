@@ -1,26 +1,56 @@
 <div class="p-2">
-  <ddc-init-embed-file *ngIf="file" [object]="file" [flagClose]="false" [flagTitle]="true" [height]="'15rem'">
-  </ddc-init-embed-file>
-  <img *ngIf="!file && attachmentSrc" [src]="attachmentSrc" class="img-fluid" [style.max-height]="'15rem'" />
+	<ddc-init-embed-file
+		*ngIf="file"
+		[object]="file"
+		[flagClose]="false"
+		[flagTitle]="true"
+		[height]="'15rem'"
+	>
+	</ddc-init-embed-file>
+	<img
+		*ngIf="!file && attachmentSrc"
+		[src]="attachmentSrc"
+		class="img-fluid"
+		[style.max-height]="'15rem'"
+	/>
 </div>
 
 <div *ngIf="!viewmode">
-  <ddc-init-input-file #uploadCmp [field]="FLD_attachment" [multiple]="false" [showFiles]="false"
-    [extensions]="APP_CONSTANT.ATTACHMENT_EXT" [maxSize]="APP_CONSTANT.ATTACHMENT_SIZE"
-    [maxSizeUnit]="EnumSizeFormat.MEGABYTE">
-  </ddc-init-input-file>
+	<ddc-init-input-file
+		#uploadCmp
+		[field]="FLD_attachment"
+		[multiple]="false"
+		[showFiles]="false"
+		[extensions]="APP_CONSTANT.ATTACHMENT_EXT"
+		[maxSize]="APP_CONSTANT.ATTACHMENT_SIZE"
+		[maxSizeUnit]="EnumSizeFormat.MEGABYTE"
+	>
+	</ddc-init-input-file>
 </div>
 
 <div *ngIf="!blocked" class="mt-2">
-  <a *ngIf="id_user && viewmode" class="mr-2" (click)="changeViewMode(false)" title="{{'APP.BUTTON.EDIT' | translate}}">
-    <span class="fa fa-edit mr-2 text-primary"></span>
-  </a>
-  <a *ngIf="id_user && !viewmode" class="mr-2" (click)="changeViewMode(true)"
-    title="{{'PERSONAL.BUTTON.BACK' | translate}}">
-    <span class="fa fa-times mr-2 text-danger"></span>
-  </a>
-  <a *ngIf="!viewmode && fileLoad && (id_attachment || id_user)" class="mr-2" (click)="save()"
-    title="{{'PERSONAL.BUTTON.LOAD' | translate}}">
-    <span class="fa fa-cloud-upload-alt mr-2 text-success"></span>
-  </a>
+	<a
+		*ngIf="id_user && viewmode"
+		class="mr-2"
+		(click)="changeViewMode(false)"
+		title="{{ 'APP.BUTTON.EDIT' | translate }}"
+	>
+		<span class="fa fa-edit mr-2 text-primary"></span>
+	</a>
+	<a
+		*ngIf="id_user && !viewmode"
+		class="mr-2"
+		(click)="changeViewMode(true)"
+		title="{{ 'PERSONAL.BUTTON.BACK' | translate }}"
+	>
+		<span class="fa fa-times mr-2 text-danger"></span>
+	</a>
+	<a
+		*ngIf="!viewmode && fileLoad && (id_attachment || id_user)"
+		class="mr-2"
+		(click)="save()"
+		title="{{ 'PERSONAL.BUTTON.LOAD' | translate }}"
+	>
+		<span class="fa fa-cloud-upload-alt mr-2 text-success"></span>
+	</a>
 </div>

@@ -1,73 +1,74 @@
 <div class="container-fluid">
+	<nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" (click)="home()">
+			<img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+			<span [innerHtml]="appTitle"></span>
+		</a>
+	</nav>
 
-  <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark">
+	<h2>Grafica</h2>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/layout'">layout</a>
+		</div>
+	</div>
+	<h2>Test dei moduli</h2>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/commons-pages'"
+				>commons-pages</a
+			>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/shared'">shared</a>
+		</div>
+	</div>
 
-    <a class="navbar-brand" (click)="home()">
-      <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      <span [innerHtml]="appTitle"></span>
-    </a>
-  </nav>
+	<h2>Moduli integrati</h2>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/test-modules'"
+				>tutti i moduli</a
+			>
+		</div>
+	</div>
 
-  <h2>Grafica</h2>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/layout'">layout</a>
-    </div>
-  </div>
-  <h2>Test dei moduli</h2>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/commons-pages'">commons-pages</a>
-    </div>
-  </div>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/shared'">shared</a>
-    </div>
-  </div>
+	<h2>Librerie</h2>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/test-kit'">kit</a>
+			<a class="btn btn-sm btn-dark text-white ml-2" [routerLink]="'/wiki/test-rest'">rest</a>
+		</div>
+	</div>
 
-  <h2>Moduli integrati</h2>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/test-modules'">tutti i moduli</a>
-    </div>
-  </div>
+	<h2>Informazioni di sistema</h2>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<dl>
+				<dt>localStorage.getItem('timezoneServer')</dt>
+				<dd>{{ timezoneServer }}</dd>
+				<dt>localStorage.getItem('timezoneNameServer')</dt>
+				<dd>{{ timezoneServerName }}</dd>
+				<dt>applicationStorage.language.get()</dt>
+				<dd>{{ languageCod }}</dd>
+				<dt>applicationStorage.languageName.get()</dt>
+				<dd>{{ languageName }}</dd>
+				<dt>applicationStorage.currency.get()</dt>
+				<dd>{{ currencyCod }}</dd>
+				<dt>applicationStorage.currencyName.get()</dt>
+				<dd>{{ currencyName }}</dd>
+				<dt>applicationStorage.currencySymbol.get()</dt>
+				<dd>{{ currencySymbol }}</dd>
+				<dt>applicationStorage.nation.get()</dt>
+				<dd>{{ nationCod }}</dd>
+				<dt>applicationStorage.nationName.get()</dt>
+				<dd>{{ nationName }}</dd>
+			</dl>
+		</div>
+	</div>
 
-  <h2>Librerie</h2>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki/test-kit'">kit</a>
-      <a class="btn btn-sm btn-dark text-white ml-2" [routerLink]="'/wiki/test-rest'">rest</a>
-    </div>
-  </div>
-
-
-  <h2>Informazioni di sistema</h2>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <dl>
-        <dt>localStorage.getItem('timezoneServer')</dt>
-        <dd>{{timezoneServer}}</dd>
-        <dt>localStorage.getItem('timezoneNameServer')</dt>
-        <dd>{{timezoneServerName}}</dd>
-        <dt>applicationStorage.language.get()</dt>
-        <dd>{{languageCod}}</dd>
-        <dt>applicationStorage.languageName.get()</dt>
-        <dd>{{languageName}}</dd>
-        <dt>applicationStorage.currency.get()</dt>
-        <dd>{{currencyCod}}</dd>
-        <dt>applicationStorage.currencyName.get()</dt>
-        <dd>{{currencyName}}</dd>
-        <dt>applicationStorage.currencySymbol.get()</dt>
-        <dd>{{currencySymbol}}</dd>
-        <dt>applicationStorage.nation.get()</dt>
-        <dd>{{nationCod}}</dd>
-        <dt>applicationStorage.nationName.get()</dt>
-        <dd>{{nationName}}</dd>
-      </dl>
-    </div>
-  </div>
-
-  <h2>Versions</h2>
-  <wiki-versioning></wiki-versioning>
+	<h2>Versions</h2>
+	<wiki-versioning></wiki-versioning>
 </div>

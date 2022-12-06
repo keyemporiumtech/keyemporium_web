@@ -1,6 +1,14 @@
-<video #playerElementRef [attr.width]="width" [attr.height]="height" [attr.poster]="pathImage"
-  [attr.autoplay]="autoplay" [attr.controls]="controls" [attr.loop]="loop" [attr.muted]="muted"
-  [attr.preload]="preload">
-  <source [src]="path" [attr.type]="mimeType">
-  {{browserNotSupported}}
+<video
+	#playerElementRef
+	[attr.width]="width"
+	[attr.height]="height"
+	[attr.poster]="pathImage"
+	[attr.autoplay]="autoplay"
+	[attr.controls]="controls"
+	[attr.loop]="loop"
+	[attr.muted]="muted"
+	[attr.preload]="preload"
+>
+	<source [src]="path" [attr.type]="mimeType" />
+	{{ browserNotSupported }}
 </video>

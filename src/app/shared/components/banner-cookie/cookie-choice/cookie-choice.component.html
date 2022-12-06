@@ -1,282 +1,374 @@
 <ul class="nav nav-tabs" id="cookieTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="nav1-tab" data-toggle="tab" href="#nav1" role="tab" aria-controls="nav1"
-      aria-selected="true">
-      {{'APP.COOKIE.CHOICE.NAV1' | translate}}
-    </a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="nav2-tab" data-toggle="tab" href="#nav2" role="tab" aria-controls="nav2"
-      aria-selected="false">
-      {{'APP.COOKIE.CHOICE.NAV2' | translate}}
-    </a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="nav3-tab" data-toggle="tab" href="#nav3" role="tab" aria-controls="nav3"
-      aria-selected="false">
-      {{'APP.COOKIE.CHOICE.NAV3' | translate}}
-    </a>
-  </li>
+	<li class="nav-item" role="presentation">
+		<a
+			class="nav-link active"
+			id="nav1-tab"
+			data-toggle="tab"
+			href="#nav1"
+			role="tab"
+			aria-controls="nav1"
+			aria-selected="true"
+		>
+			{{ 'APP.COOKIE.CHOICE.NAV1' | translate }}
+		</a>
+	</li>
+	<li class="nav-item" role="presentation">
+		<a
+			class="nav-link"
+			id="nav2-tab"
+			data-toggle="tab"
+			href="#nav2"
+			role="tab"
+			aria-controls="nav2"
+			aria-selected="false"
+		>
+			{{ 'APP.COOKIE.CHOICE.NAV2' | translate }}
+		</a>
+	</li>
+	<li class="nav-item" role="presentation">
+		<a
+			class="nav-link"
+			id="nav3-tab"
+			data-toggle="tab"
+			href="#nav3"
+			role="tab"
+			aria-controls="nav3"
+			aria-selected="false"
+		>
+			{{ 'APP.COOKIE.CHOICE.NAV3' | translate }}
+		</a>
+	</li>
 </ul>
 <div class="tab-content" id="cookieTabContent">
-  <div class="tab-pane fade show active" id="nav1" role="tabpanel" aria-labelledby="nav1-tab">
-    <div class="mt-2" [innerHTML]="'APP.COOKIE.CHOICE.NAV1' | translate"></div>
-    <hr />
-    <div [innerHTML]="'APP.COOKIE.CHOICE.NAV1_INFO' | translate"></div>
-  </div>
-  <div class="tab-pane fade" id="nav2" role="tabpanel" aria-labelledby="nav2-tab">
-    <div class="mt-2" [innerHTML]="'APP.COOKIE.CHOICE.NAV2' | translate"></div>
-    <hr />
-    <div [innerHTML]="'APP.COOKIE.CHOICE.NAV2_INFO' | translate"></div>
+	<div class="tab-pane fade show active" id="nav1" role="tabpanel" aria-labelledby="nav1-tab">
+		<div class="mt-2" [innerHTML]="'APP.COOKIE.CHOICE.NAV1' | translate"></div>
+		<hr />
+		<div [innerHTML]="'APP.COOKIE.CHOICE.NAV1_INFO' | translate"></div>
+	</div>
+	<div class="tab-pane fade" id="nav2" role="tabpanel" aria-labelledby="nav2-tab">
+		<div class="mt-2" [innerHTML]="'APP.COOKIE.CHOICE.NAV2' | translate"></div>
+		<hr />
+		<div [innerHTML]="'APP.COOKIE.CHOICE.NAV2_INFO' | translate"></div>
 
+		<div class="container">
+			<!--NECESSARY -->
+			<div class="row mt-2">
+				<div
+					class="col col-10 btn btn-secondary"
+					data-toggle="collapse"
+					href="#collapseNecessary"
+					role="button"
+					aria-expanded="false"
+					aria-controls="collapseNecessary"
+				>
+					{{ 'APP.COOKIE.NECESSARY.TITLE' | translate }}
+					<span class="badge badge-pill badge-light">{{ listNecessary.length }}</span>
+				</div>
+				<div class="col col-2">
+					<div class="custom-control custom-switch">
+						<input
+							type="checkbox"
+							class="custom-control-input"
+							disabled
+							id="switchNecessary"
+							[checked]="isNecessary"
+						/>
+						<label class="custom-control-label" for="switchNecessary">&nbsp;</label>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="collapseNecessary">
+				<div class="mt-2">
+					<div [innerHTML]="'APP.COOKIE.NECESSARY.DESCRIPTION' | translate"></div>
 
-    <div class="container">
-      <!--NECESSARY -->
-      <div class="row mt-2">
-        <div class="col col-10 btn btn-secondary" data-toggle="collapse" href="#collapseNecessary" role="button"
-          aria-expanded="false" aria-controls="collapseNecessary">
-          {{'APP.COOKIE.NECESSARY.TITLE' | translate}} <span
-            class="badge badge-pill badge-light">{{listNecessary.length}}</span>
-        </div>
-        <div class="col col-2">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" disabled id="switchNecessary" [checked]="isNecessary">
-            <label class="custom-control-label" for="switchNecessary">&nbsp;</label>
-          </div>
-        </div>
-      </div>
-      <div class="collapse" id="collapseNecessary">
-        <div class="mt-2">
+					<div class="card bg-secondary card-body mt-2" *ngFor="let cookie of listNecessary">
+						<h5 class="card-title">{{ cookie.name }}</h5>
+						<br />
+						<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+							{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+						</a>
+						<hr />
+						<div [innerHTML]="cookie.description | translate"></div>
+						<hr />
+						<div class="row">
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+								>: <span>{{ cookie.durationDesc }}</span>
+							</div>
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+								>: <span>{{ cookie.protocol }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-          <div [innerHTML]="'APP.COOKIE.NECESSARY.DESCRIPTION' | translate"></div>
+			<!--PREFERENCE -->
+			<div class="row mt-2">
+				<div
+					class="col col-10 btn btn-primary"
+					data-toggle="collapse"
+					href="#collapsePreference"
+					role="button"
+					aria-expanded="false"
+					aria-controls="collapsePreference"
+				>
+					{{ 'APP.COOKIE.PREFERENCE.TITLE' | translate }}
+					<span class="badge badge-pill badge-light">{{ listPreference.length }}</span>
+				</div>
+				<div class="col col-2">
+					<div class="custom-control custom-switch">
+						<input
+							type="checkbox"
+							class="custom-control-input"
+							disabled
+							id="switchPreference"
+							[checked]="isPreference"
+							[disabled]="!listPreference || !listPreference.length"
+							(change)="toggleCheck(cookieType.PREFERENCE, $event)"
+						/>
+						<label class="custom-control-label" for="switchPreference">&nbsp;</label>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="collapsePreference">
+				<div class="mt-2">
+					<div [innerHTML]="'APP.COOKIE.PREFERENCE.DESCRIPTION' | translate"></div>
 
+					<div class="card bg-primary card-body mt-2" *ngFor="let cookie of listPreference">
+						<h5 class="card-title">{{ cookie.name }}</h5>
+						<br />
+						<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+							{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+						</a>
+						<hr />
+						<div [innerHTML]="cookie.description | translate"></div>
+						<hr />
+						<div class="row">
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+								>: <span>{{ cookie.durationDesc }}</span>
+							</div>
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+								>: <span>{{ cookie.protocol }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-          <div class="card bg-secondary card-body mt-2" *ngFor="let cookie of listNecessary">
-            <h5 class="card-title">{{cookie.name}}</h5><br />
-            <a *ngIf="cookie.link" class="card-link" href="{{cookie.link}}" target="_blank">
-              {{'APP.COOKIE.LINK_EXTERNAL' | translate}}
-            </a>
-            <hr />
-            <div [innerHTML]="cookie.description | translate"></div>
-            <hr />
-            <div class="row">
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.EXPIRATION' | translate}}</strong>: <span>{{cookie.durationDesc}}</span>
-              </div>
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.TYPE' | translate}}</strong>: <span>{{cookie.protocol}}</span>
-              </div>
-            </div>
-          </div>
+			<!--STATISTIC-->
+			<div class="row mt-2">
+				<div
+					class="col col-10 btn btn-primary"
+					data-toggle="collapse"
+					href="#collapseStatistic"
+					role="button"
+					aria-expanded="false"
+					aria-controls="collapseStatistic"
+				>
+					{{ 'APP.COOKIE.STATISTIC.TITLE' | translate }}
+					<span class="badge badge-pill badge-light">{{ listStatistic.length }}</span>
+				</div>
+				<div class="col col-2">
+					<div class="custom-control custom-switch">
+						<input
+							type="checkbox"
+							class="custom-control-input"
+							disabled
+							id="switchStatistic"
+							[checked]="isStatistic"
+							[disabled]="!listStatistic || !listStatistic.length"
+							(change)="toggleCheck(cookieType.STATISTIC, $event)"
+						/>
+						<label class="custom-control-label" for="switchStatistic">&nbsp;</label>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="collapseStatistic">
+				<div class="mt-2">
+					<div [innerHTML]="'APP.COOKIE.STATISTIC.DESCRIPTION' | translate"></div>
 
-        </div>
-      </div>
+					<div class="card bg-primary card-body mt-2" *ngFor="let cookie of listStatistic">
+						<h5 class="card-title">{{ cookie.name }}</h5>
+						<br />
+						<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+							{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+						</a>
+						<hr />
+						<div [innerHTML]="cookie.description | translate"></div>
+						<hr />
+						<div class="row">
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+								>: <span>{{ cookie.durationDesc }}</span>
+							</div>
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+								>: <span>{{ cookie.protocol }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <!--PREFERENCE -->
-      <div class="row mt-2">
-        <div class="col col-10 btn btn-primary" data-toggle="collapse" href="#collapsePreference" role="button"
-          aria-expanded="false" aria-controls="collapsePreference">
-          {{'APP.COOKIE.PREFERENCE.TITLE' | translate}} <span
-            class="badge badge-pill badge-light">{{listPreference.length}}</span>
-        </div>
-        <div class="col col-2">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" disabled id="switchPreference" [checked]="isPreference"
-              [disabled]="!listPreference || !listPreference.length"
-              (change)="toggleCheck(cookieType.PREFERENCE, $event)">
-            <label class="custom-control-label" for="switchPreference">&nbsp;</label>
-          </div>
-        </div>
-      </div>
-      <div class="collapse" id="collapsePreference">
-        <div class="mt-2">
+			<!--MARKETING-->
+			<div class="row mt-2">
+				<div
+					class="col col-10 btn btn-primary"
+					data-toggle="collapse"
+					href="#collapseMarketing"
+					role="button"
+					aria-expanded="false"
+					aria-controls="collapseMarketing"
+				>
+					{{ 'APP.COOKIE.MARKETING.TITLE' | translate }}
+					<span class="badge badge-pill badge-light">{{ listMarketing.length }}</span>
+				</div>
+				<div class="col col-2">
+					<div class="custom-control custom-switch">
+						<input
+							type="checkbox"
+							class="custom-control-input"
+							disabled
+							id="switchMarketing"
+							[checked]="isMarketing"
+							[disabled]="!listMarketing || !listMarketing.length"
+						/>
+						<label class="custom-control-label" for="switchMarketing">&nbsp;</label>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="collapseMarketing">
+				<div class="mt-2">
+					<div [innerHTML]="'APP.COOKIE.MARKETING.DESCRIPTION' | translate"></div>
 
-          <div [innerHTML]="'APP.COOKIE.PREFERENCE.DESCRIPTION' | translate"></div>
+					<div class="card bg-primary card-body mt-2" *ngFor="let cookie of listMarketing">
+						<h5 class="card-title">{{ cookie.name }}</h5>
+						<br />
+						<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+							{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+						</a>
+						<hr />
+						<div [innerHTML]="cookie.description | translate"></div>
+						<hr />
+						<div class="row">
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+								>: <span>{{ cookie.durationDesc }}</span>
+							</div>
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+								>: <span>{{ cookie.protocol }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<!--NOT_CLASSIFIED-->
+			<div class="row mt-2">
+				<div
+					class="col col-10 btn btn-primary"
+					data-toggle="collapse"
+					href="#collapseNotClassified"
+					role="button"
+					aria-expanded="false"
+					aria-controls="collapseNotClassified"
+				>
+					{{ 'APP.COOKIE.NOT_CLASSIFIED.TITLE' | translate }}
+					<span class="badge badge-pill badge-light">{{ listNotClassified.length }}</span>
+				</div>
+				<div class="col col-2">
+					<div class="custom-control custom-switch">
+						<input
+							type="checkbox"
+							class="custom-control-input"
+							disabled
+							id="switchNotClassified"
+							[checked]="isNotClassified"
+							[disabled]="!listNotClassified || !listNotClassified.length"
+						/>
+						<label class="custom-control-label" for="switchNotClassified">&nbsp;</label>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="collapseNotClassified">
+				<div class="mt-2">
+					<div [innerHTML]="'APP.COOKIE.NOT_CLASSIFIED.DESCRIPTION' | translate"></div>
 
-          <div class="card bg-primary card-body mt-2" *ngFor="let cookie of listPreference">
-            <h5 class="card-title">{{cookie.name}}</h5><br />
-            <a *ngIf="cookie.link" class="card-link" href="{{cookie.link}}" target="_blank">
-              {{'APP.COOKIE.LINK_EXTERNAL' | translate}}
-            </a>
-            <hr />
-            <div [innerHTML]="cookie.description | translate"></div>
-            <hr />
-            <div class="row">
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.EXPIRATION' | translate}}</strong>: <span>{{cookie.durationDesc}}</span>
-              </div>
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.TYPE' | translate}}</strong>: <span>{{cookie.protocol}}</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!--STATISTIC-->
-      <div class="row mt-2">
-        <div class="col col-10 btn btn-primary" data-toggle="collapse" href="#collapseStatistic" role="button"
-          aria-expanded="false" aria-controls="collapseStatistic">
-          {{'APP.COOKIE.STATISTIC.TITLE' | translate}} <span
-            class="badge badge-pill badge-light">{{listStatistic.length}}</span>
-        </div>
-        <div class="col col-2">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" disabled id="switchStatistic" [checked]="isStatistic"
-              [disabled]="!listStatistic || !listStatistic.length" (change)="toggleCheck(cookieType.STATISTIC, $event)">
-            <label class="custom-control-label" for="switchStatistic">&nbsp;</label>
-          </div>
-        </div>
-      </div>
-      <div class="collapse" id="collapseStatistic">
-        <div class="mt-2">
-
-          <div [innerHTML]="'APP.COOKIE.STATISTIC.DESCRIPTION' | translate"></div>
-
-
-          <div class="card bg-primary card-body mt-2" *ngFor="let cookie of listStatistic">
-            <h5 class="card-title">{{cookie.name}}</h5><br />
-            <a *ngIf="cookie.link" class="card-link" href="{{cookie.link}}" target="_blank">
-              {{'APP.COOKIE.LINK_EXTERNAL' | translate}}
-            </a>
-            <hr />
-            <div [innerHTML]="cookie.description | translate"></div>
-            <hr />
-            <div class="row">
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.EXPIRATION' | translate}}</strong>: <span>{{cookie.durationDesc}}</span>
-              </div>
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.TYPE' | translate}}</strong>: <span>{{cookie.protocol}}</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!--MARKETING-->
-      <div class="row mt-2">
-        <div class="col col-10 btn btn-primary" data-toggle="collapse" href="#collapseMarketing" role="button"
-          aria-expanded="false" aria-controls="collapseMarketing">
-          {{'APP.COOKIE.MARKETING.TITLE' | translate}} <span
-            class="badge badge-pill badge-light">{{listMarketing.length}}</span>
-        </div>
-        <div class="col col-2">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" disabled id="switchMarketing" [checked]="isMarketing"
-              [disabled]="!listMarketing || !listMarketing.length">
-            <label class="custom-control-label" for="switchMarketing">&nbsp;</label>
-          </div>
-        </div>
-      </div>
-      <div class="collapse" id="collapseMarketing">
-        <div class="mt-2">
-
-          <div [innerHTML]="'APP.COOKIE.MARKETING.DESCRIPTION' | translate"></div>
-
-
-          <div class="card bg-primary card-body mt-2" *ngFor="let cookie of listMarketing">
-            <h5 class="card-title">{{cookie.name}}</h5><br />
-            <a *ngIf="cookie.link" class="card-link" href="{{cookie.link}}" target="_blank">
-              {{'APP.COOKIE.LINK_EXTERNAL' | translate}}
-            </a>
-            <hr />
-            <div [innerHTML]="cookie.description | translate"></div>
-            <hr />
-            <div class="row">
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.EXPIRATION' | translate}}</strong>: <span>{{cookie.durationDesc}}</span>
-              </div>
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.TYPE' | translate}}</strong>: <span>{{cookie.protocol}}</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!--NOT_CLASSIFIED-->
-      <div class="row mt-2">
-        <div class="col col-10 btn btn-primary" data-toggle="collapse" href="#collapseNotClassified" role="button"
-          aria-expanded="false" aria-controls="collapseNotClassified">
-          {{'APP.COOKIE.NOT_CLASSIFIED.TITLE' | translate}} <span
-            class="badge badge-pill badge-light">{{listNotClassified.length}}</span>
-        </div>
-        <div class="col col-2">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" disabled id="switchNotClassified"
-              [checked]="isNotClassified" [disabled]="!listNotClassified || !listNotClassified.length">
-            <label class="custom-control-label" for="switchNotClassified">&nbsp;</label>
-          </div>
-        </div>
-      </div>
-      <div class="collapse" id="collapseNotClassified">
-        <div class="mt-2">
-
-          <div [innerHTML]="'APP.COOKIE.NOT_CLASSIFIED.DESCRIPTION' | translate"></div>
-
-
-          <div class="card bg-primary card-body mt-2" *ngFor="let cookie of listNotClassified">
-            <h5 class="card-title">{{cookie.name}}</h5><br />
-            <a *ngIf="cookie.link" class="card-link" href="{{cookie.link}}" target="_blank">
-              {{'APP.COOKIE.LINK_EXTERNAL' | translate}}
-            </a>
-            <hr />
-            <div [innerHTML]="cookie.description | translate"></div>
-            <hr />
-            <div class="row">
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.EXPIRATION' | translate}}</strong>: <span>{{cookie.durationDesc}}</span>
-              </div>
-              <div class="col col-6">
-                <strong>{{'APP.LABEL.TYPE' | translate}}</strong>: <span>{{cookie.protocol}}</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-
-  </div>
-  <div class="tab-pane fade" id="nav3" role="tabpanel" aria-labelledby="nav3-tab">
-    <div class="mt-2" [innerHTML]="'APP.COOKIE.CHOICE.NAV3' | translate"></div>
-    <hr />
-    <div [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO1' | translate"></div>
-    <div [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO2' | translate"></div>
-    <div [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO3' | translate"></div>
-    <div>
-      <span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO4' | translate"></span>
-      <a (click)="goToPageCookie()">{{'APP.COOKIE.CHOICE.NAV3_INFO4_LINK' | translate}}</a>
-    </div>
-    <div>
-      <span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO5' | translate"></span>
-      <a (click)="goToPrivacyPolicy()">{{'APP.COOKIE.CHOICE.NAV3_INFO5_LINK' | translate}}</a>
-    </div>
-    <div>
-      <span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO6' | translate"></span>
-      <a (click)="goToCookiePolicy()">{{'APP.COOKIE.CHOICE.NAV3_INFO6_LINK' | translate}}</a>
-    </div>
-  </div>
+					<div class="card bg-primary card-body mt-2" *ngFor="let cookie of listNotClassified">
+						<h5 class="card-title">{{ cookie.name }}</h5>
+						<br />
+						<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+							{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+						</a>
+						<hr />
+						<div [innerHTML]="cookie.description | translate"></div>
+						<hr />
+						<div class="row">
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+								>: <span>{{ cookie.durationDesc }}</span>
+							</div>
+							<div class="col col-6">
+								<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+								>: <span>{{ cookie.protocol }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane fade" id="nav3" role="tabpanel" aria-labelledby="nav3-tab">
+		<div class="mt-2" [innerHTML]="'APP.COOKIE.CHOICE.NAV3' | translate"></div>
+		<hr />
+		<div [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO1' | translate"></div>
+		<div [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO2' | translate"></div>
+		<div [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO3' | translate"></div>
+		<div>
+			<span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO4' | translate"></span>
+			<a (click)="goToPageCookie()">{{ 'APP.COOKIE.CHOICE.NAV3_INFO4_LINK' | translate }}</a>
+		</div>
+		<div>
+			<span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO5' | translate"></span>
+			<a (click)="goToPrivacyPolicy()">{{ 'APP.COOKIE.CHOICE.NAV3_INFO5_LINK' | translate }}</a>
+		</div>
+		<div>
+			<span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO6' | translate"></span>
+			<a (click)="goToCookiePolicy()">{{ 'APP.COOKIE.CHOICE.NAV3_INFO6_LINK' | translate }}</a>
+		</div>
+	</div>
 </div>
 
 <hr />
-<p [innerHTML]="'APP.COOKIE.LAST_UPDATE' | translate:{dtaCookie: lastUpdate, appName: appName}"></p>
+<p
+	[innerHTML]="'APP.COOKIE.LAST_UPDATE' | translate : { dtaCookie: lastUpdate, appName: appName }"
+></p>
 <hr />
 <div class="text-center m-2">
-  <a role="button" class="btn btn-sm btn-secondary mr-2" (click)="refuse()"
-    [innerHTML]="'APP.COOKIE.CHOICE.REFUSE' | translate">
-  </a>
-  <a role="button" class="btn btn-sm btn-primary mr-2" (click)="accept()"
-    [innerHTML]="'APP.COOKIE.CHOICE.ACCEPT' | translate">
-  </a>
-  <a role="button" class="btn btn-sm btn-primary accept mr-2" (click)="acceptAll()"
-    [innerHTML]="'APP.COOKIE.CHOICE.ACCEPT_ALL' | translate">
-  </a>
+	<a
+		role="button"
+		class="btn btn-sm btn-secondary mr-2"
+		(click)="refuse()"
+		[innerHTML]="'APP.COOKIE.CHOICE.REFUSE' | translate"
+	>
+	</a>
+	<a
+		role="button"
+		class="btn btn-sm btn-primary mr-2"
+		(click)="accept()"
+		[innerHTML]="'APP.COOKIE.CHOICE.ACCEPT' | translate"
+	>
+	</a>
+	<a
+		role="button"
+		class="btn btn-sm btn-primary accept mr-2"
+		(click)="acceptAll()"
+		[innerHTML]="'APP.COOKIE.CHOICE.ACCEPT_ALL' | translate"
+	>
+	</a>
 </div>

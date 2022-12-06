@@ -7,8 +7,10 @@ import { BehaviourObserverModel } from '../../config/models/behaviour-observer.m
 import { ObjectUtility } from '../../config/utility/object.utility';
 import { EnumFormMode } from '../../html/enums/form-mode.enum';
 
-export abstract class BaseFormComponent extends BaseComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+export abstract class BaseFormComponent
+	extends BaseComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	/**
 	 * Emesso al caricamento del modello da api
 	 */

@@ -12,8 +12,10 @@ import { PaginatorModel } from '../../pagination/models/paginator.model';
 /**
  * Classe da estendere per la definizione di un componente di ricerca
  */
-export abstract class BaseSearchComponent<M extends BaseModel> extends BaseComponent
-	implements OnInit, OnDestroy {
+export abstract class BaseSearchComponent<M extends BaseModel>
+	extends BaseComponent
+	implements OnInit, OnDestroy
+{
 	@Input() searchOnLoad: boolean; // avvio della ricerca all'onLoad del componente
 	@Input() formFilters: FormGroup; // filtri di ricerca iniziali
 	@Input() initFilters: any[]; // filtri di ricerca iniziali

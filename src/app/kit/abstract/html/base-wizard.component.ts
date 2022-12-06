@@ -10,8 +10,10 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
  * - definire una funzione fillForm() per ogni step
  * - definire una funzione extractData() per ogni step
  */
-export abstract class BaseWizardComponent extends BaseFormComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+export abstract class BaseWizardComponent
+	extends BaseFormComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Output() nextEmit: EventEmitter<number> = new EventEmitter<number>();
 	@Output() prevEmit: EventEmitter<number> = new EventEmitter<number>();
 	@Input() extractDuringNavigation: boolean; // estrae i dati di un step al next o al goToStep

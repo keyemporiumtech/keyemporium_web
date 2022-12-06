@@ -5,8 +5,10 @@ import { OnDestroy, Input } from '@angular/core';
 /**
  * Da estendere per creare un componente che verifica un codice inviato per autorizzare operazione
  */
-export abstract class BaseConfirmOperationVerifyComponent extends BaseComponent
-	implements OnDestroy {
+export abstract class BaseConfirmOperationVerifyComponent
+	extends BaseComponent
+	implements OnDestroy
+{
 	// sub
 	subVerify: Subscription;
 

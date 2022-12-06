@@ -80,10 +80,7 @@ export class GoogleLoginProvider extends BaseLoginProvider {
 				};
 
 				if (options.refreshToken) {
-					this.auth2.currentUser
-						.get()
-						.reloadAuthResponse()
-						.then(resolveUser);
+					this.auth2.currentUser.get().reloadAuthResponse().then(resolveUser);
 				} else {
 					const res = this.auth2.currentUser.get().getAuthResponse(true);
 					resolveUser(res);
@@ -209,11 +206,11 @@ export class GoogleLoginProvider extends BaseLoginProvider {
 					personFields: fields,
 				})
 				.then(
-					function(response) {
+					function (response) {
 						// Handle the results here (response.result has the parsed body).
 						resolve(response.result);
 					},
-					function(err) {
+					function (err) {
 						reject(err);
 					},
 				);

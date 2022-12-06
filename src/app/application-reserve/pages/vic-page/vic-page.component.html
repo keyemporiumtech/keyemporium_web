@@ -1,57 +1,113 @@
 <shared-page-container [imgSrc]="'assets/project/images/vic.png'" [title]="'PERSONAL.VIC.TITLE'">
-  <div page-content>
-    <div class="row">
-      <div *ngIf="sizeImagePrincipal" ddcBtsSize [btsSize]="sizeImagePrincipal" [btsPrefix]="'col-'" class="m-3">
-        <shared-sub-title [title]="'PERSONAL.VIC.IMAGE.TITLE_PRINCIPAL'"></shared-sub-title>
-        <reserve-profile-image [id_user]="id_user" [flgPrincipal]="true" [blocked]="blocked"
-          (emitViewMode)="changeSizeImagePrincipal($event)"></reserve-profile-image>
-      </div>
-      <div *ngIf="sizeProfile" ddcBtsSize [btsSize]="sizeProfile" [btsPrefix]="'col-'" class="m-3">
-        <shared-sub-title [title]="'PERSONAL.VIC.PROFILE.TITLE'"></shared-sub-title>
-        <reserve-profile [id_user]="id_user" [blocked]="blocked" (emitViewMode)="changeSizeProfile($event)">
-        </reserve-profile>
-      </div>
-      <div class="p-2" ddcBtsSize [btsSize]="'2|6|12'" [btsPrefix]="'col-'" class="m-3">
-        <shared-sub-title [title]="'PERSONAL.VIC.QRCODE'"></shared-sub-title>
-        <ddc-init-qrcode-reader *ngIf="textQr" [id]="'cod_user_vic'" [text]="textQr">
-        </ddc-init-qrcode-reader>
-      </div>
-      <div *ngIf="sizeAddressPrincipal" ddcBtsSize [btsSize]="sizeAddressPrincipal" [btsPrefix]="'col-'" class="m-3">
-        <shared-sub-title [title]="'PERSONAL.VIC.ADDRESS.TITLE_PRINCIPAL'"></shared-sub-title>
-        <reserve-profile-address [id_user]="id_user" [flgPrincipal]="true" [blocked]="blocked"
-          (emitViewMode)="changeSizeAddressPrincipal($event)">
-        </reserve-profile-address>
-      </div>
-      <div *ngIf="sizePhonePrincipal" ddcBtsSize [btsSize]="sizePhonePrincipal" [btsPrefix]="'col-'" class="m-3">
-        <shared-sub-title [title]="'PERSONAL.VIC.PHONE.TITLE_PRINCIPAL'"></shared-sub-title>
-        <reserve-profile-cell [id_user]="id_user" [flgPrincipal]="true" [blocked]="blocked"
-          (emitViewMode)="changeSizePhonePrincipal($event)">
-        </reserve-profile-cell>
-      </div>
-    </div>
+	<div page-content>
+		<div class="row">
+			<div
+				*ngIf="sizeImagePrincipal"
+				ddcBtsSize
+				[btsSize]="sizeImagePrincipal"
+				[btsPrefix]="'col-'"
+				class="m-3"
+			>
+				<shared-sub-title [title]="'PERSONAL.VIC.IMAGE.TITLE_PRINCIPAL'"></shared-sub-title>
+				<reserve-profile-image
+					[id_user]="id_user"
+					[flgPrincipal]="true"
+					[blocked]="blocked"
+					(emitViewMode)="changeSizeImagePrincipal($event)"
+				></reserve-profile-image>
+			</div>
+			<div *ngIf="sizeProfile" ddcBtsSize [btsSize]="sizeProfile" [btsPrefix]="'col-'" class="m-3">
+				<shared-sub-title [title]="'PERSONAL.VIC.PROFILE.TITLE'"></shared-sub-title>
+				<reserve-profile
+					[id_user]="id_user"
+					[blocked]="blocked"
+					(emitViewMode)="changeSizeProfile($event)"
+				>
+				</reserve-profile>
+			</div>
+			<div class="p-2" ddcBtsSize [btsSize]="'2|6|12'" [btsPrefix]="'col-'" class="m-3">
+				<shared-sub-title [title]="'PERSONAL.VIC.QRCODE'"></shared-sub-title>
+				<ddc-init-qrcode-reader *ngIf="textQr" [id]="'cod_user_vic'" [text]="textQr">
+				</ddc-init-qrcode-reader>
+			</div>
+			<div
+				*ngIf="sizeAddressPrincipal"
+				ddcBtsSize
+				[btsSize]="sizeAddressPrincipal"
+				[btsPrefix]="'col-'"
+				class="m-3"
+			>
+				<shared-sub-title [title]="'PERSONAL.VIC.ADDRESS.TITLE_PRINCIPAL'"></shared-sub-title>
+				<reserve-profile-address
+					[id_user]="id_user"
+					[flgPrincipal]="true"
+					[blocked]="blocked"
+					(emitViewMode)="changeSizeAddressPrincipal($event)"
+				>
+				</reserve-profile-address>
+			</div>
+			<div
+				*ngIf="sizePhonePrincipal"
+				ddcBtsSize
+				[btsSize]="sizePhonePrincipal"
+				[btsPrefix]="'col-'"
+				class="m-3"
+			>
+				<shared-sub-title [title]="'PERSONAL.VIC.PHONE.TITLE_PRINCIPAL'"></shared-sub-title>
+				<reserve-profile-cell
+					[id_user]="id_user"
+					[flgPrincipal]="true"
+					[blocked]="blocked"
+					(emitViewMode)="changeSizePhonePrincipal($event)"
+				>
+				</reserve-profile-cell>
+			</div>
+		</div>
 
-    <shared-line-filled></shared-line-filled>
+		<shared-line-filled></shared-line-filled>
 
+		<ddc-init-accordion-container #containerProfileList [cssContainer]="'m-3'">
+			<ddc-init-accordion
+				#accordionProfileImages
+				[parent]="containerProfileList"
+				[cssButton]="'btn btn-primary'"
+				[styleButton]="{ width: '100%' }"
+				[label]="'PERSONAL.VIC.IMAGE.TITLE_LIST'"
+			>
+				<div
+					*ngIf="accordionProfileImages.open"
+					class="mt-3"
+					accordion-content
+					[style.border]="'2px gray solid'"
+					[style.padding]="'1rem'"
+				>
+					<reserve-profile-list-images
+						[id_user]="id_user"
+						[blocked]="blocked"
+					></reserve-profile-list-images>
+				</div>
+			</ddc-init-accordion>
 
-    <ddc-init-accordion-container #containerProfileList [cssContainer]="'m-3'">
-
-      <ddc-init-accordion #accordionProfileImages [parent]="containerProfileList" [cssButton]="'btn btn-primary'"
-        [styleButton]="{'width': '100%'}" [label]="'PERSONAL.VIC.IMAGE.TITLE_LIST'">
-        <div *ngIf="accordionProfileImages.open" class="mt-3" accordion-content [style.border]="'2px gray solid'"
-          [style.padding]="'1rem'">
-          <reserve-profile-list-images [id_user]="id_user" [blocked]="blocked"></reserve-profile-list-images>
-        </div>
-      </ddc-init-accordion>
-
-      <ddc-init-accordion #accordionProfileAttachments [parent]="containerProfileList" [cssButton]="'btn btn-primary'"
-        [styleButton]="{'width': '100%'}" [label]="'PERSONAL.VIC.ATTACHMENT.TITLE_LIST'">
-        <div *ngIf="accordionProfileAttachments.open" class="mt-3" accordion-content [style.border]="'2px gray solid'"
-          [style.padding]="'1rem'">
-          <reserve-profile-list-attachments [id_user]="id_user" [blocked]="blocked"></reserve-profile-list-attachments>
-        </div>
-      </ddc-init-accordion>
-
-    </ddc-init-accordion-container>
-
-  </div>
+			<ddc-init-accordion
+				#accordionProfileAttachments
+				[parent]="containerProfileList"
+				[cssButton]="'btn btn-primary'"
+				[styleButton]="{ width: '100%' }"
+				[label]="'PERSONAL.VIC.ATTACHMENT.TITLE_LIST'"
+			>
+				<div
+					*ngIf="accordionProfileAttachments.open"
+					class="mt-3"
+					accordion-content
+					[style.border]="'2px gray solid'"
+					[style.padding]="'1rem'"
+				>
+					<reserve-profile-list-attachments
+						[id_user]="id_user"
+						[blocked]="blocked"
+					></reserve-profile-list-attachments>
+				</div>
+			</ddc-init-accordion>
+		</ddc-init-accordion-container>
+	</div>
 </shared-page-container>

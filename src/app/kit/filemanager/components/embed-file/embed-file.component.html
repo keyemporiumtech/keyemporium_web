@@ -1,36 +1,77 @@
 <div *ngIf="flagTitle || flagClose" class="row">
-  <div *ngIf="flagTitle" class="col col-11">
-    <h2 class="file-title" [innerHTML]="translateKey(object?.title) | translate:translateParams(object?.title)"></h2>
-  </div>
-  <div *ngIf="flagClose" class="col col-1">
-    <a (click)="onClose($event)" [ngClass]="classLinkClose" [ngStyle]="styleLinkClose">
-      <div *ngIf="htmlIconClose" [innerHTML]="htmlIconClose"></div>
-      <span *ngIf="classIconClose" [ngClass]="classIconClose"></span>
-    </a>
-  </div>
+	<div *ngIf="flagTitle" class="col col-11">
+		<h2
+			class="file-title"
+			[innerHTML]="translateKey(object?.title) | translate : translateParams(object?.title)"
+		></h2>
+	</div>
+	<div *ngIf="flagClose" class="col col-1">
+		<a (click)="onClose($event)" [ngClass]="classLinkClose" [ngStyle]="styleLinkClose">
+			<div *ngIf="htmlIconClose" [innerHTML]="htmlIconClose"></div>
+			<span *ngIf="classIconClose" [ngClass]="classIconClose"></span>
+		</a>
+	</div>
 </div>
 
 <ng-container *ngIf="object && getSrc()">
-  <pdf-viewer *ngIf="getTypeEmbed() === typeEmbed.PDF" [src]="getSrc()" [render-text]="true"
-    [render-text-mode]="renderText" [original-size]="pdfOriginalSize" [show-all]="true" [autoresize]="autoresize">
-  </pdf-viewer>
+	<pdf-viewer
+		*ngIf="getTypeEmbed() === typeEmbed.PDF"
+		[src]="getSrc()"
+		[render-text]="true"
+		[render-text-mode]="renderText"
+		[original-size]="pdfOriginalSize"
+		[show-all]="true"
+		[autoresize]="autoresize"
+	>
+	</pdf-viewer>
 
-  <ddc-init-embed-audio *ngIf="getTypeEmbed() === typeEmbed.AUDIO" [controls]="true" [path]="getSrc() | escapeurl"
-    [mimeType]="object.mime" [browserNotSupported]="'Your browser does not support the audio tag.'">
-  </ddc-init-embed-audio>
+	<ddc-init-embed-audio
+		*ngIf="getTypeEmbed() === typeEmbed.AUDIO"
+		[controls]="true"
+		[path]="getSrc() | escapeurl"
+		[mimeType]="object.mime"
+		[browserNotSupported]="'Your browser does not support the audio tag.'"
+	>
+	</ddc-init-embed-audio>
 
-  <ddc-init-embed-video *ngIf="getTypeEmbed() === typeEmbed.VIDEO" [width]="width" [height]="height" [controls]="true"
-    [path]="getSrc() | escapeurl" [mimeType]="object.mime"
-    [browserNotSupported]="'Your browser does not support the video tag.'"></ddc-init-embed-video>
+	<ddc-init-embed-video
+		*ngIf="getTypeEmbed() === typeEmbed.VIDEO"
+		[width]="width"
+		[height]="height"
+		[controls]="true"
+		[path]="getSrc() | escapeurl"
+		[mimeType]="object.mime"
+		[browserNotSupported]="'Your browser does not support the video tag.'"
+	></ddc-init-embed-video>
 
-  <img *ngIf="getTypeEmbed() === typeEmbed.IMAGE" style="width: 100%" [src]="getSrc() | escapeurl" />
-  <embed *ngIf="getTypeEmbed() === typeEmbed.EMBED" width="100%" [attr.height]="height" [src]="getSrc() | escapeurl"
-    type="{{object?.mime}}" />
-  <!-- -->
-  <iframe *ngIf="getTypeEmbed() === typeEmbed.IFRAME" [attr.width]="width" [attr.height]="height"
-    [src]="getSrc() | escapeurl" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<img
+		*ngIf="getTypeEmbed() === typeEmbed.IMAGE"
+		style="width: 100%"
+		[src]="getSrc() | escapeurl"
+	/>
+	<embed
+		*ngIf="getTypeEmbed() === typeEmbed.EMBED"
+		width="100%"
+		[attr.height]="height"
+		[src]="getSrc() | escapeurl"
+		type="{{ object?.mime }}"
+	/>
+	<!-- -->
+	<iframe
+		*ngIf="getTypeEmbed() === typeEmbed.IFRAME"
+		[attr.width]="width"
+		[attr.height]="height"
+		[src]="getSrc() | escapeurl"
+		frameborder="0"
+		webkitallowfullscreen
+		mozallowfullscreen
+		allowfullscreen
+	></iframe>
 
-  <ddc-init-embed-youtube *ngIf="this.object.type === typeMime.YOUTUBE" [video]="getSrc()" [width]="width"
-    [height]="height"></ddc-init-embed-youtube>
-
+	<ddc-init-embed-youtube
+		*ngIf="this.object.type === typeMime.YOUTUBE"
+		[video]="getSrc()"
+		[width]="width"
+		[height]="height"
+	></ddc-init-embed-youtube>
 </ng-container>

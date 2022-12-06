@@ -1,9 +1,25 @@
 <div class="progress">
-  <div *ngIf="min < 0" class="progress-bar progress-negative" [ngClass]="bgClassNegative" role="progressbar"
-    [style.width]="widthNegative+'%'" [attr.aria-valuenow]="widthNegative" [attr.aria-valuemin]="min"
-    [attr.aria-valuemax]="max">{{min+'%'}}</div>
-  <div class="progress-bar" [ngClass]="bgClass" role="progressbar" [style.width]="width+'%'"
-    [attr.aria-valuenow]="value" [attr.aria-valuemin]="min" [attr.aria-valuemax]="max">
-    <span *ngIf="flgText">{{value+'%'}}</span>
-  </div>
+	<div
+		*ngIf="min < 0"
+		class="progress-bar progress-negative"
+		[ngClass]="bgClassNegative"
+		role="progressbar"
+		[style.width]="widthNegative + '%'"
+		[attr.aria-valuenow]="widthNegative"
+		[attr.aria-valuemin]="min"
+		[attr.aria-valuemax]="max"
+	>
+		{{ min + '%' }}
+	</div>
+	<div
+		class="progress-bar"
+		[ngClass]="bgClass"
+		role="progressbar"
+		[style.width]="width + '%'"
+		[attr.aria-valuenow]="value"
+		[attr.aria-valuemin]="min"
+		[attr.aria-valuemax]="max"
+	>
+		<span *ngIf="flgText">{{ value + '%' }}</span>
+	</div>
 </div>

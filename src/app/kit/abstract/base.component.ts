@@ -4,8 +4,10 @@ import { ApplicationLoggerService } from '../logger/services/application-logger.
 /**
  * Da estendere nella creazione di componenti da includere nelle pagine
  */
-export abstract class BaseComponent extends BaseClassModel
-	implements OnInit, OnDestroy, AfterViewInit {
+export abstract class BaseComponent
+	extends BaseClassModel
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Input() id: string;
 	/**
 	 * Usato per passare il loading dall'esterno

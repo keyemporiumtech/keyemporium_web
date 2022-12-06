@@ -1,11 +1,24 @@
 <div class="row">
-  <div class="col-10">
-    <input id="{{id}}" ddcValidation type="color" class="form-control" [ngClass]="field.cssClass"
-      [ngStyle]="field.cssStyle" [formControl]="field.formControl" [flgOnInitValidation]="field.flgOnInitValidation"
-      [flgOnSubmitValidation]="field.flgOnSubmitValidation" [submitted]="field.submitted" [showValid]="field.showValid"
-      [validations]="field.validations" [supports]="field.supports" [styles]="field.styles" [valids]="field.valids" />
-  </div>
-  <div class="col-2">
-    <strong>{{field.formControl.value}}</strong>
-  </div>
+	<div class="col-10">
+		<input
+			id="{{ id }}"
+			ddcValidation
+			type="color"
+			class="form-control"
+			[ngClass]="field.cssClass"
+			[ngStyle]="field.cssStyle"
+			[formControl]="field.formControl"
+			[flgOnInitValidation]="field.flgOnInitValidation"
+			[flgOnSubmitValidation]="field.flgOnSubmitValidation"
+			[submitted]="field.submitted"
+			[showValid]="field.showValid"
+			[validations]="field.validations"
+			[supports]="field.supports"
+			[styles]="field.styles"
+			[valids]="field.valids"
+		/>
+	</div>
+	<div class="col-2">
+		<strong>{{ field.formControl.value }}</strong>
+	</div>
 </div>

@@ -1,7 +1,10 @@
 <div *ngIf="modules && modules.length">
-  <div *ngFor="let el of modules" class="row alert"
-    [ngClass]="el.version === '0.0.0' ? 'alert-danger' : 'alert-success'">
-    <div class="col-8">{{el.module}}</div>
-    <div class="col-4 text-center">{{el.version}}</div>
-  </div>
+	<div
+		*ngFor="let el of modules"
+		class="row alert"
+		[ngClass]="el.version === '0.0.0' ? 'alert-danger' : 'alert-success'"
+	>
+		<div class="col-8">{{ el.module }}</div>
+		<div class="col-4 text-center">{{ el.version }}</div>
+	</div>
 </div>

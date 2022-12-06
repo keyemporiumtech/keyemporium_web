@@ -12,8 +12,10 @@ import { Subscription, Observable, of } from 'rxjs';
 import { GeoRefInterface } from '../../geo/interfaces/geo-ref.interface';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-export abstract class BaseAddressComponent extends BaseComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+export abstract class BaseAddressComponent
+	extends BaseComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Input() form: FormGroup;
 	@Input() labelTitle: string | StringTranslate;
 	@Input() fieldNation: string;

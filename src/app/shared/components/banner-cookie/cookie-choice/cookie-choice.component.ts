@@ -51,9 +51,8 @@ export class CookieChoiceComponent extends BaseComponent {
 	@Input() flgRemote: boolean = true;
 	@Input() isPage: boolean = false;
 
-	@Output() operationEmit: EventEmitter<EnumCookieOperation> = new EventEmitter<
-		EnumCookieOperation
-	>();
+	@Output() operationEmit: EventEmitter<EnumCookieOperation> =
+		new EventEmitter<EnumCookieOperation>();
 
 	@Output() linkEmit: EventEmitter<EnumCookieNavigation> = new EventEmitter<EnumCookieNavigation>();
 

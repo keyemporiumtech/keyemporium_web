@@ -56,7 +56,7 @@ export class PageUtility {
 		}
 		return (
 			arrBaseUrl
-				.filter(function(value, index, arr) {
+				.filter(function (value, index, arr) {
 					return (
 						value &&
 						value.indexOf('http') === -1 &&

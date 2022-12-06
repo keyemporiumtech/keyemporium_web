@@ -1,81 +1,112 @@
 <h5>Componente address</h5>
 <div class="lead">
-  Componente per la gestione di un form per contatti.<br />
-  Il componente estende <strong>BaseReferenceComponent</strong>.<br />
+	Componente per la gestione di un form per contatti.<br />
+	Il componente estende <strong>BaseReferenceComponent</strong>.<br />
 
-  Parametri di Input ereditati da BaseReferenceComponent: <br />
-  <ul>
-    <li>form: <b>FormGroup</b> - <i>Form che contiene il contactreference</i></li>
-    <li>labelTitle : <b>string | StringTranslate</b> - <i>Titolo del componente</i></li>
-    <li>fieldTel: <b>FormControl</b> - <i>FormControl select del prefisso</i></li>
-    <li>fieldSocial: <b>FormControl</b> - <i>FormControl select della tipologia di social</i></li>
-    <li>fieldVal: <b>FormControl</b> - <i>FormControl select del valore del contatto</i></li>
-    <li>readonly : <b>boolean</b> - <i>Se true tutti i campi vengono disabilitati</i></li>
-    <li>reference : <b>any</b> - <i>Contatto fornito in input</i></li>
-  </ul>
+	Parametri di Input ereditati da BaseReferenceComponent: <br />
+	<ul>
+		<li>form: <b>FormGroup</b> - <i>Form che contiene il contactreference</i></li>
+		<li>labelTitle : <b>string | StringTranslate</b> - <i>Titolo del componente</i></li>
+		<li>fieldTel: <b>FormControl</b> - <i>FormControl select del prefisso</i></li>
+		<li>fieldSocial: <b>FormControl</b> - <i>FormControl select della tipologia di social</i></li>
+		<li>fieldVal: <b>FormControl</b> - <i>FormControl select del valore del contatto</i></li>
+		<li>readonly : <b>boolean</b> - <i>Se true tutti i campi vengono disabilitati</i></li>
+		<li>reference : <b>any</b> - <i>Contatto fornito in input</i></li>
+	</ul>
 
-  Parametri di Output ereditati da BaseReferenceComponent: <br />
-  <ul>
-    <li>telEmitter: <b>EventEmitter</b> - <i>Emette il prefisso selezionato</i></li>
-    <li>socialEmitter: <b>EventEmitter</b> - <i>Emette il tipo di social selezionato</i></li>
-    <li>valEmitter: <b>EventEmitter</b> - <i>Emette il valore del contatto selezionato</i></li>
-  </ul>
+	Parametri di Output ereditati da BaseReferenceComponent: <br />
+	<ul>
+		<li>telEmitter: <b>EventEmitter</b> - <i>Emette il prefisso selezionato</i></li>
+		<li>socialEmitter: <b>EventEmitter</b> - <i>Emette il tipo di social selezionato</i></li>
+		<li>valEmitter: <b>EventEmitter</b> - <i>Emette il valore del contatto selezionato</i></li>
+	</ul>
 
-  Parametri di Input ulteriori : <br />
-  <ul>
-    <li>flgHtmlPrefix: <b>boolean</b> - <i>Indica se mostrare le bandiere delle nazioni sul prefisso</i></li>
-    <li>flgHtmlSocial: <b>boolean</b> - <i>Indica se mostrare le icone dei social</i></li>
-    <li>tpreferenceFlag: <b>boolean</b> - <i>Indica se includere il tipo di contatto</i></li>
-    <li>fieldTpReference: <b>FormControl</b> - <i>FormControl select del tipo di contatto</i></li>
-    <li>tpreference: <b>EnumContactreferenceType</b> - <i>Tipologia di contatto da settare</i></li>
-    <li>tpreferences: <b>EnumContactreferenceType[]</b> - <i>Tipologie di contatto settabili</i></li>
-    <li>tpreferenceReadonly: <b>boolean</b> - <i>Indica se il tipo di contatto è di sola lettura</i></li>
-    <li>validationsReference: <b>any</b> - <i>Oggetto di validazione nel caso il form sia passato esternamente</i></li>
-    <li>required: <b>boolean</b> - <i>Se il form non è passato esternamente e required=true imposta alcuni campi a
-        required</i></li>
-  </ul>
+	Parametri di Input ulteriori : <br />
+	<ul>
+		<li>
+			flgHtmlPrefix: <b>boolean</b> -
+			<i>Indica se mostrare le bandiere delle nazioni sul prefisso</i>
+		</li>
+		<li>flgHtmlSocial: <b>boolean</b> - <i>Indica se mostrare le icone dei social</i></li>
+		<li>tpreferenceFlag: <b>boolean</b> - <i>Indica se includere il tipo di contatto</i></li>
+		<li>fieldTpReference: <b>FormControl</b> - <i>FormControl select del tipo di contatto</i></li>
+		<li>tpreference: <b>EnumContactreferenceType</b> - <i>Tipologia di contatto da settare</i></li>
+		<li>
+			tpreferences: <b>EnumContactreferenceType[]</b> - <i>Tipologie di contatto settabili</i>
+		</li>
+		<li>
+			tpreferenceReadonly: <b>boolean</b> - <i>Indica se il tipo di contatto è di sola lettura</i>
+		</li>
+		<li>
+			validationsReference: <b>any</b> -
+			<i>Oggetto di validazione nel caso il form sia passato esternamente</i>
+		</li>
+		<li>
+			required: <b>boolean</b> -
+			<i>Se il form non è passato esternamente e required=true imposta alcuni campi a required</i>
+		</li>
+	</ul>
 </div>
 
 <button class="btn btn-xs btn-secondary" (click)="set('BASE')">Componente base</button>
-<button class="btn btn-xs btn-secondary ml-2" (click)="set('EXTERNAL')">Passaggio del form da esterno</button>
-<button class="btn btn-xs btn-secondary ml-2" (click)="set('ICONS')">Componente con icone e scelta del tipo</button>
-<button class="btn btn-xs btn-secondary ml-2" (click)="set('FLAGS')">Componente scelta del tipo e descrizione</button>
+<button class="btn btn-xs btn-secondary ml-2" (click)="set('EXTERNAL')">
+	Passaggio del form da esterno
+</button>
+<button class="btn btn-xs btn-secondary ml-2" (click)="set('ICONS')">
+	Componente con icone e scelta del tipo
+</button>
+<button class="btn btn-xs btn-secondary ml-2" (click)="set('FLAGS')">
+	Componente scelta del tipo e descrizione
+</button>
 
 <div class="row" *ngIf="example === 'BASE'">
-  <div class="col-12">
-    <h6>Base</h6>
-    <i>Il form viene costruito automaticamente dal componente con il passaggio di <strong>tpreference</strong></i>
-    <ddc-init-input-reference [tpreference]="EnumContactreferenceType.CEL"></ddc-init-input-reference>
-  </div>
+	<div class="col-12">
+		<h6>Base</h6>
+		<i
+			>Il form viene costruito automaticamente dal componente con il passaggio di
+			<strong>tpreference</strong></i
+		>
+		<ddc-init-input-reference
+			[tpreference]="EnumContactreferenceType.CEL"
+		></ddc-init-input-reference>
+	</div>
 </div>
 
 <div class="row" *ngIf="example === 'ICONS'">
-  <div class="col-12">
-    <h6>Con icone e tipo</h6>
-    <i>Il form viene costruito automaticamente dal componente con il passaggio di <strong>tpreferenceFlag</strong>,
-      <strong>flgHtmlPrefix</strong> e <strong>flgHtmlSocial</strong> a true</i>
-    <ddc-init-input-reference [tpreferenceFlag]="true" [flgHtmlPrefix]="true" [flgHtmlSocial]="true">
-    </ddc-init-input-reference>
-  </div>
+	<div class="col-12">
+		<h6>Con icone e tipo</h6>
+		<i
+			>Il form viene costruito automaticamente dal componente con il passaggio di
+			<strong>tpreferenceFlag</strong>, <strong>flgHtmlPrefix</strong> e
+			<strong>flgHtmlSocial</strong> a true</i
+		>
+		<ddc-init-input-reference
+			[tpreferenceFlag]="true"
+			[flgHtmlPrefix]="true"
+			[flgHtmlSocial]="true"
+		>
+		</ddc-init-input-reference>
+	</div>
 </div>
 
 <div class="row" *ngIf="example === 'FLAGS'">
-  <div class="col-12">
-    <h6>Con tipo e descrizione</h6>
-    <i>Il form viene costruito automaticamente dal componente con il passaggio di <strong>tpreferenceFlag</strong> e
-      <strong>descriptionFlag</strong> a true</i>
-    <ddc-init-input-reference [tpreferenceFlag]="true" [descriptionFlag]="true">
-    </ddc-init-input-reference>
-  </div>
+	<div class="col-12">
+		<h6>Con tipo e descrizione</h6>
+		<i
+			>Il form viene costruito automaticamente dal componente con il passaggio di
+			<strong>tpreferenceFlag</strong> e <strong>descriptionFlag</strong> a true</i
+		>
+		<ddc-init-input-reference [tpreferenceFlag]="true" [descriptionFlag]="true">
+		</ddc-init-input-reference>
+	</div>
 </div>
 
-
 <div class="row" *ngIf="example === 'EXTERNAL'">
-  <div class="col-12">
-    <h6>Form esterno</h6>
-    <i>Il form viene passato dall'esterno</i>
+	<div class="col-12">
+		<h6>Form esterno</h6>
+		<i>Il form viene passato dall'esterno</i>
 
-    <pre>
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
           ```typescript
 
@@ -99,8 +130,14 @@
       </div>
     </pre>
 
-    <ddc-init-input-reference [tpreference]="EnumContactreferenceType.CEL" [form]="formReference"
-      [validationsReference]="validations" [fieldTel]="'tel'" [fieldSocial]="'social'" [fieldVal]="'val'">
-    </ddc-init-input-reference>
-  </div>
+		<ddc-init-input-reference
+			[tpreference]="EnumContactreferenceType.CEL"
+			[form]="formReference"
+			[validationsReference]="validations"
+			[fieldTel]="'tel'"
+			[fieldSocial]="'social'"
+			[fieldVal]="'val'"
+		>
+		</ddc-init-input-reference>
+	</div>
 </div>

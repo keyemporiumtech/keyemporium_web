@@ -1,27 +1,43 @@
 <ddc-init-app-loading [loading]="loadingResults"></ddc-init-app-loading>
-<ddc-init-autocomplete #autocomplete [id]="id"
-  [placeholder]="translateKey(field.placeholder) | translate:translateParams(field.placeholder)" [inputClass]="cssInput"
-  [inputStyle]="field.cssStyle" [icon]="iconClass" [iconColor]="iconColor" [infoClass]="'autocomplete-container'"
-  (searchEmit)="onSearch($event)" (selectEmit)="onSelect($event)" (overEmit)="onOver($event)" (outEmit)="onOut($event)"
-  (termEmit)="onTerm($event)" (focusEmit)="onFocus($event)" [maxDigit]="digits" [list]="list" [listAll]="listAll"
-  [textNotFound]="textNoRecords">
-  <div input-bottom>
-    <div *ngFor="let support of field.supports" class="input-support-message">
-      {{translateKey(support) |translate:translateParams(support)}}
-    </div>
+<ddc-init-autocomplete
+	#autocomplete
+	[id]="id"
+	[placeholder]="translateKey(field.placeholder) | translate : translateParams(field.placeholder)"
+	[inputClass]="cssInput"
+	[inputStyle]="field.cssStyle"
+	[icon]="iconClass"
+	[iconColor]="iconColor"
+	[infoClass]="'autocomplete-container'"
+	(searchEmit)="onSearch($event)"
+	(selectEmit)="onSelect($event)"
+	(overEmit)="onOver($event)"
+	(outEmit)="onOut($event)"
+	(termEmit)="onTerm($event)"
+	(focusEmit)="onFocus($event)"
+	[maxDigit]="digits"
+	[list]="list"
+	[listAll]="listAll"
+	[textNotFound]="textNoRecords"
+>
+	<div input-bottom>
+		<div *ngFor="let support of field.supports" class="input-support-message">
+			{{ translateKey(support) | translate : translateParams(support) }}
+		</div>
 
-    <div *ngFor="let error of errorMessages" class="input-invalid-message">
-      {{translateKey(error) |translate:translateParams(error)}}
-    </div>
+		<div *ngFor="let error of errorMessages" class="input-invalid-message">
+			{{ translateKey(error) | translate : translateParams(error) }}
+		</div>
 
-    <div *ngFor="let valid of validMessages" class="input-valid-message">
-      {{translateKey(valid) |translate:translateParams(valid)}}
-    </div>
+		<div *ngFor="let valid of validMessages" class="input-valid-message">
+			{{ translateKey(valid) | translate : translateParams(valid) }}
+		</div>
 
-    <div *ngFor="let styleMessage of styleMessages"
-      [ngClass]="styleMessage.class ? styleMessage.class+'-message' : 'input-generic-message'"
-      [style.color]="styleMessage.color">
-      {{translateKey(styleMessage) |translate:translateParams(styleMessage)}}
-    </div>
-  </div>
+		<div
+			*ngFor="let styleMessage of styleMessages"
+			[ngClass]="styleMessage.class ? styleMessage.class + '-message' : 'input-generic-message'"
+			[style.color]="styleMessage.color"
+		>
+			{{ translateKey(styleMessage) | translate : translateParams(styleMessage) }}
+		</div>
+	</div>
 </ddc-init-autocomplete>
