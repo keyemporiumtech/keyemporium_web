@@ -12,7 +12,7 @@ import { AuthenticationService } from '../base/authentication.service';
 import { Observable } from 'rxjs';
 
 @Directive({
-	// tslint:disable-next-line:directive-selector
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '[auth-permissions]',
 })
 export class AuthenticationPermissionsDirective extends BaseAuthPermissionsDirective {

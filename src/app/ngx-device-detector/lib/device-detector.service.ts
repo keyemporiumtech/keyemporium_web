@@ -1,4 +1,4 @@
-// tslint:disable: variable-name
+/* eslint-disable @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match */
 /**
  * Created by ahsanayaz on 08/11/2016.
  */

@@ -22,7 +22,7 @@ export function escapeLabel(label: any): string {
 	return label.toLocaleString().replace(/[&'`"<>]/g, (match) => {
 		return {
 			'&': '&amp;',
-			// tslint:disable-next-line: quotemark
+			// eslint-disable-next-line @typescript-eslint/quotes
 			"'": '&#x27;',
 			'`': '&#x60;',
 			'"': '&quot;',

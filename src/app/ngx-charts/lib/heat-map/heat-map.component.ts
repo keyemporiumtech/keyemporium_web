@@ -252,7 +252,7 @@ export class HeatMapComponent extends BaseChartComponent {
 				.replace('[', '')
 				.replace(']', '')
 				.replace('px', '')
-				// tslint:disable-next-line: quotemark
+				// eslint-disable-next-line @typescript-eslint/quotes
 				.replace("'", '');
 
 			if (value.includes(',')) {

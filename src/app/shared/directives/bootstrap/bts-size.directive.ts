@@ -5,7 +5,7 @@ import { BootstrapUtils } from '../../utils/bootstrap-utils';
 	selector: '[ddcBtsSize]',
 })
 export class BtsSizeDirective implements OnInit, OnChanges {
-	// tslint:disable:no-input-rename
+	/* eslint-disable @angular-eslint/no-input-rename */
 
 	@Input('btsSize') btsSize: string;
 	private _currentSize: string;

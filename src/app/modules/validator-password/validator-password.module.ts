@@ -8,7 +8,7 @@ import { KitModule } from '@ddc/kit';
 import { SharedModule } from '../../shared/shared.module';
 import { ApiModule } from '../api/api.module';
 import { TestValidatorPasswordComponent } from './components/test-validator-password/test-validator-password.component';
-// tslint:disable-next-line:max-line-length
+// eslint-disable-next-line max-len
 import { TestInputPasswordAsyncComponent } from './components/test-validator-password/test-input-password-async/test-input-password-async.component';
 import { InputPasswordAsyncComponent } from './components/input-password-async/input-password-async.component';
 import { MarkdownModule } from 'ngx-markdown';

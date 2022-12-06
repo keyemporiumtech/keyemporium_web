@@ -58,7 +58,7 @@ export class OAuthSocialService {
 		config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig> | any,
 	) {
 		if (config instanceof Promise) {
-			// tslint:disable-next-line:no-shadowed-variable
+			// eslint-disable-next-line @typescript-eslint/no-shadow
 			config.then((config) => {
 				this.initialize(config);
 			});
@@ -94,7 +94,7 @@ export class OAuthSocialService {
 								this._authState.next(user);
 								loggedIn = true;
 							})
-							// tslint:disable-next-line:no-console
+							// eslint-disable-next-line no-console
 							.catch(console.debug);
 					});
 					Promise.all(loginStatusPromises).catch(() => {

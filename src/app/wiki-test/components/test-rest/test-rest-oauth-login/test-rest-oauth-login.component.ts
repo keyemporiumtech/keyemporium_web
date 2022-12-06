@@ -86,7 +86,7 @@ export class TestRestOauthLoginComponent implements OnInit, OnDestroy {
 
 	checkPage(id: string, token: string) {
 		id =
-			// tslint:disable-next-line:max-line-length
+			// eslint-disable-next-line max-len
 			'YXNpZADpBWEY4Y0JPN2RPVWJESmhIc1VHWVFiVDRUMVp4TXpmRDFRbW13RDZADMUExdzVmaFdxTG9xdEhYQml6NDdNdC1HckVZAWlo4a1VZAZA3h5SldMRVkzd2djaWhhQ21kS1hzcThKLUxGQ05ZAenFB';
 		this.http
 			.get('https://graph.facebook.com/' + id + '&access_token=' + token)

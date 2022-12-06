@@ -1,4 +1,4 @@
-// tslint:disable:max-line-length
+/* eslint-disable max-len */
 export const restConstants = {
 	innertoken:
 		'RGd5eEU3RE9GbDF4bjNhQ3lMTG1OV1hzL2p6UTNubUUyUjVXK1h0Um5IUVZLSHZoOGdPMWhLNGJGZTlKYVA0Tw==',

@@ -51,11 +51,11 @@ describe('DeviceDetectorService', () => {
 		},
 	));
 
-	// tslint:disable-next-line: max-line-length
+	// eslint-disable-next-line max-len
 	it('should detect an iPad correctly', inject(
 		[DeviceDetectorService],
 		(service: DeviceDetectorService) => {
-			// tslint:disable-next-line:max-line-length
+			// eslint-disable-next-line max-len
 			const userAgent = `Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1`;
 			expect(service.isDesktop(userAgent)).toBeFalsy();
 			expect(service.isTablet(userAgent)).toBeTruthy();
@@ -88,7 +88,7 @@ describe('DeviceDetectorService', () => {
 	it('should return true, os=`iOS`, browser=`Safari`, device=`iPhone` and browser_version=`11.0` when system is mobile', inject(
 		[DeviceDetectorService],
 		(service: DeviceDetectorService) => {
-			// tslint:disable-next-line:max-line-length
+			// eslint-disable-next-line max-len
 			const userAgent = `Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 Version/11.0 Mobile/15A372 Safari/604.1`;
 			service.setDeviceInfo(userAgent);
 			expect(service.isMobile(userAgent)).toBeTruthy();
@@ -110,7 +110,7 @@ describe('DeviceDetectorService', () => {
 	it('should detect Tesla given the user agents', inject(
 		[DeviceDetectorService],
 		(service: DeviceDetectorService) => {
-			// tslint:disable-next-line: max-line-length
+			// eslint-disable-next-line max-len
 			const userAgent = `Mozilla/5.0 (X11; GNU/Linux) AppleWebKit/537.36 (KHTML, like Gecko) Chromium/75.0.3770.100 Chrome/75.0.3770.100 Safari/537.36 Tesla/2019.32.11.1-d39e85a`;
 			service.setDeviceInfo(userAgent);
 			expect(service.device).toBe('Tesla');
@@ -119,7 +119,7 @@ describe('DeviceDetectorService', () => {
 
 	// commenting this test for now until we have a good way of detecting using userAgent
 	// xit('should detect iOS 13 for iPhone', inject([DeviceDetectorService], (service: DeviceDetectorService) => {
-	//   // tslint:disable-next-line:max-line-length
+	// eslint-disable-next-line
 	//   const userAgent =
 	//     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15';
 	//   expect(service.isMobile(userAgent)).toBeFalsy();
@@ -163,7 +163,7 @@ describe('DeviceDetectorService', () => {
 	it('should not consider a desktop device as tablet', inject(
 		[DeviceDetectorService],
 		(service: DeviceDetectorService) => {
-			// tslint:disable-next-line:max-line-length
+			// eslint-disable-next-line max-len
 			const userAgent =
 				'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36';
 			expect(service.isMobile(userAgent)).toBeFalsy();

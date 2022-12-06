@@ -5,7 +5,7 @@ import { KeyvalueObject } from '../../config/interface/keyvalue.object';
 	selector: '[ddcCssVar]',
 })
 export class DdcCssVarDirective implements OnInit {
-	// tslint:disable:no-input-rename
+	/* eslint-disable @angular-eslint/no-input-rename */
 	@Input('cssVars') cssVars: KeyvalueObject[] = [];
 
 	constructor(private el: ElementRef) {}
