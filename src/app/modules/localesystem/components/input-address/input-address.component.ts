@@ -60,7 +60,7 @@ export class InputAddressComponent
 	@Input() flgAutocomplete: boolean;
 	@Input() flgSearch: boolean;
 	// TP ADDRESS
-	@ViewChild('tpaddressComponent') tpaddressComponent: InputSelectComponent;
+	@ViewChild('tpaddressComponent', { static: false }) tpaddressComponent: InputSelectComponent;
 	@Input() fieldTpaddress: string;
 	@Input() tpaddress: EnumAddressType;
 	@Input() tpaddresses: EnumAddressType[];
@@ -91,8 +91,8 @@ export class InputAddressComponent
 	searchFormField: FormFieldModel;
 	// BLUR
 	subBlur: Subscription;
-	@ViewChild('streetComponent') streetComponent: InputTextComponent;
-	@ViewChild('numComponent') numComponent: InputTextComponent;
+	@ViewChild('streetComponent', { static: false }) streetComponent: InputTextComponent;
+	@ViewChild('numComponent', { static: false }) numComponent: InputTextComponent;
 	lastStreet: string = '';
 	lastNum: string = '';
 	// MAP

@@ -47,7 +47,7 @@ export class InputReferenceComponent
 	@Input() flgHtmlPrefix: boolean;
 	@Input() flgHtmlSocial: boolean;
 	// TP REFERENCE
-	@ViewChild('tpreferenceComponent') tpreferenceComponent: InputSelectComponent;
+	@ViewChild('tpreferenceComponent', { static: false }) tpreferenceComponent: InputSelectComponent;
 	@Input() fieldTpreference: string;
 	@Input() tpreference: EnumContactreferenceType;
 	@Input() tpreferences: EnumContactreferenceType[];

@@ -14,4 +14,6 @@ export class HomeReserveComponent implements OnInit {
 	goToVic() {
 		this.router.navigate(['reserve', 'vic']);
 	}
+
+	goToPic() {}
 }

@@ -27,7 +27,7 @@ export class AppLanguagesComponent extends BaseComponent {
 	@Input() label: string | StringTranslate;
 	@Input() showLabel: boolean = true;
 	@Input() hideArrows: boolean = false;
-	@ViewChild('languages') languages: InputSelectComponent;
+	@ViewChild('languages', { static: false }) languages: InputSelectComponent;
 
 	formLanguage: FormGroup;
 	validations: any = {};
