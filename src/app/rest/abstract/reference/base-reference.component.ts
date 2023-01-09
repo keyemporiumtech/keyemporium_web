@@ -5,10 +5,12 @@ import {
 	OptionListModel,
 	BehaviourObserverModel,
 } from '@ddc/kit';
-import { OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { OnInit, OnDestroy, Input, Output, EventEmitter, Directive } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseReferenceComponent extends BaseComponent implements OnInit, OnDestroy {
 	@Input() form: FormGroup;
 	@Input() labelTitle: string | StringTranslate;
@@ -24,6 +26,9 @@ export abstract class BaseReferenceComponent extends BaseComponent implements On
 	@Input('reference')
 	set reference(reference: any) {
 		this._reference = reference;
+		// if (this.loaded) {
+		this.fillReference(reference);
+		// }
 	}
 	// options
 	telOptions: OptionListModel[];
@@ -40,6 +45,8 @@ export abstract class BaseReferenceComponent extends BaseComponent implements On
 	subFieldTel: Subscription;
 	subFieldSocial: Subscription;
 	subFieldVal: Subscription;
+	// used
+	loaded: boolean;
 
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
@@ -177,7 +184,7 @@ export abstract class BaseReferenceComponent extends BaseComponent implements On
 
 	abstract fnSocials(): Observable<any[]>;
 	abstract behaviourSocials(): BehaviourObserverModel;
-	abstract decodeSocialToOptionList(nation: any): OptionListModel;
+	abstract decodeSocialToOptionList(social: any): OptionListModel;
 
 	// gestione reference input
 
@@ -187,4 +194,5 @@ export abstract class BaseReferenceComponent extends BaseComponent implements On
 
 	// gestione export
 	abstract exportReference(form: FormGroup): any;
+	abstract fillReference(reference: any);
 }

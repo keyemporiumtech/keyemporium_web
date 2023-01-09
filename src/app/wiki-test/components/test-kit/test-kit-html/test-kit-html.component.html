@@ -1,25 +1,32 @@
 <h4>Modulo Html</h4>
 
-
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseProgressBar"
-  aria-expanded="false" aria-controls="collapseProgressBar">
-  ProgressBarComponent
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseProgressBar"
+	aria-expanded="false"
+	aria-controls="collapseProgressBar"
+>
+	ProgressBarComponent
 </button>
 
 <div class="collapse" id="collapseProgressBar">
-  <div class="mt-3">
-    Il componente <strong>ProgressBarComponent</strong> consente di eseguire una barra di progressione percentuale
-    e viene configuarto con i seguenti parametri di input
-    <ul>
-      <li><strong>backgroundColor</strong> che definisce il colore dello sfondo vuoto della barra di avanzamento</li>
-      <li><strong>color</strong> che definisce il colore proprio della barra di avanzamento</li>
-      <li><strong>height</strong> che definisce lo spessore in altezza della barra</li>
-    </ul>
-
-  </div>
-  <div class="mt-3">
-    <pre>
+	<div class="mt-3">
+		Il componente <strong>ProgressBarComponent</strong> consente di eseguire una barra di
+		progressione percentuale e viene configuarto con i seguenti parametri di input
+		<ul>
+			<li>
+				<strong>backgroundColor</strong> che definisce il colore dello sfondo vuoto della barra di
+				avanzamento
+			</li>
+			<li><strong>color</strong> che definisce il colore proprio della barra di avanzamento</li>
+			<li><strong>height</strong> che definisce lo spessore in altezza della barra</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
 
         ```html
@@ -34,65 +41,70 @@
 
       </div>
     </pre>
-  </div>
+	</div>
 
-  <h5>Progress Bar semplice</h5>
-  <a class="btn btn-xs btn-primary mr-2" (click)="progressBar1.start()">Start</a>
-  <a class="btn btn-xs btn-warning mr-2" (click)="progressBar1.pause()">Pause</a>
-  <a class="btn btn-xs btn-warning mr-2" (click)="progressBar1.resume()">Resume</a>
-  <a class="btn btn-xs btn-danger mr-2" (click)="progressBar1.stop()">Stop</a>
-  <ddc-init-progress-bar #progressBar1 [cssClass]="'mt-2'" [showText]="true">
-  </ddc-init-progress-bar>
-  <hr />
+	<h5>Progress Bar semplice</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="progressBar1.start()">Start</a>
+	<a class="btn btn-xs btn-warning mr-2" (click)="progressBar1.pause()">Pause</a>
+	<a class="btn btn-xs btn-warning mr-2" (click)="progressBar1.resume()">Resume</a>
+	<a class="btn btn-xs btn-danger mr-2" (click)="progressBar1.stop()">Stop</a>
+	<ddc-init-progress-bar #progressBar1 [cssClass]="'mt-2'" [showText]="true">
+	</ddc-init-progress-bar>
+	<hr />
 
-  <h5>ProgressBar con showOnStart e hideOnComplete</h5>
-  <a class="btn btn-xs btn-primary mr-2" (click)="progressBar2.start()">Start</a>
-  <a class="btn btn-xs btn-warning mr-2" (click)="progressBar2.pause()">Pause</a>
-  <a class="btn btn-xs btn-warning mr-2" (click)="progressBar2.resume()">Resume</a>
-  <a class="btn btn-xs btn-danger mr-2" (click)="progressBar2.stop()">Stop</a>
-  <ddc-init-progress-bar #progressBar2 [cssClass]="'mt-2'" [showText]="true" [showOnStart]="true"
-    [hideOnComplete]="true">
-  </ddc-init-progress-bar>
-  <hr />
+	<h5>ProgressBar con showOnStart e hideOnComplete</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="progressBar2.start()">Start</a>
+	<a class="btn btn-xs btn-warning mr-2" (click)="progressBar2.pause()">Pause</a>
+	<a class="btn btn-xs btn-warning mr-2" (click)="progressBar2.resume()">Resume</a>
+	<a class="btn btn-xs btn-danger mr-2" (click)="progressBar2.stop()">Stop</a>
+	<ddc-init-progress-bar
+		#progressBar2
+		[cssClass]="'mt-2'"
+		[showText]="true"
+		[showOnStart]="true"
+		[hideOnComplete]="true"
+	>
+	</ddc-init-progress-bar>
+	<hr />
 
-  <h5>ProgressBar sizes</h5>
-  <strong>xs</strong>
-  <ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'xs'">
-  </ddc-init-progress-bar>
-  <strong>sm</strong>
-  <ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'sm'">
-  </ddc-init-progress-bar>
-  <strong>md</strong>
-  <ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'md'">
-  </ddc-init-progress-bar>
-  <strong>lg</strong>
-  <ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'lg'">
-  </ddc-init-progress-bar>
-  <strong>xlg</strong>
-  <ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'xlg'">
-  </ddc-init-progress-bar>
+	<h5>ProgressBar sizes</h5>
+	<strong>xs</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'xs'"> </ddc-init-progress-bar>
+	<strong>sm</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'sm'"> </ddc-init-progress-bar>
+	<strong>md</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'md'"> </ddc-init-progress-bar>
+	<strong>lg</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'lg'"> </ddc-init-progress-bar>
+	<strong>xlg</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'xlg'"> </ddc-init-progress-bar>
 </div>
 
-
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseCssVars"
-  aria-expanded="false" aria-controls="collapseCssVars">
-  DdcCssVarDirective
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseCssVars"
+	aria-expanded="false"
+	aria-controls="collapseCssVars"
+>
+	DdcCssVarDirective
 </button>
 
 <div class="collapse" id="collapseCssVars">
-  <div class="mt-3">
-    La direttiva <strong>DdcCssVarDirective</strong> consente di assegnare proprietà di stile con valore una variabile
-    css
-    e viene configuarto con i seguenti parametri di input
-    <ul>
-      <li><strong>cssVars</strong> Array di oggetti key,value dove key è la proprietà css e value è la variabile da
-        assegnare</li>
-    </ul>
-
-  </div>
-  <div class="mt-3">
-    <pre>
+	<div class="mt-3">
+		La direttiva <strong>DdcCssVarDirective</strong> consente di assegnare proprietà di stile con
+		valore una variabile css e viene configuarto con i seguenti parametri di input
+		<ul>
+			<li>
+				<strong>cssVars</strong> Array di oggetti key,value dove key è la proprietà css e value è la
+				variabile da assegnare
+			</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
 
         ```html
@@ -102,11 +114,17 @@
 
       </div>
     </pre>
-  </div>
+	</div>
 
-  <h5>Esempio di settaggio variabili</h5>
-  <div ddcCssVar [cssVars]="[{key:'background', value:'dark'}, {key:'color', value:'light'}]">
-    <span class="m-2">Text for div</span>
-  </div>
-  <hr />
+	<h5>Esempio di settaggio variabili</h5>
+	<div
+		ddcCssVar
+		[cssVars]="[
+			{ key: 'background', value: 'dark' },
+			{ key: 'color', value: 'light' }
+		]"
+	>
+		<span class="m-2">Text for div</span>
+	</div>
+	<hr />
 </div>

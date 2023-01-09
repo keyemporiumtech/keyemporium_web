@@ -42,7 +42,7 @@ import { TypologicalModel } from '../../../api/cakeutils-be/models/typological.m
 import { AddressUtility } from '../../utility/address.utility';
 import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
 import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { InputTextComponent } from '../../../../shared/form/input-text/input-text.component';
 
 @Component({
@@ -50,15 +50,17 @@ import { InputTextComponent } from '../../../../shared/form/input-text/input-tex
 	templateUrl: './input-address.component.html',
 	styleUrls: ['./input-address.component.scss'],
 })
-export class InputAddressComponent extends BaseAddressComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+export class InputAddressComponent
+	extends BaseAddressComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Input() cssClass: any;
 	@Input() cssStyle: any;
 	@Input() isoForCommunity: string[];
 	@Input() flgAutocomplete: boolean;
 	@Input() flgSearch: boolean;
 	// TP ADDRESS
-	@ViewChild('tpaddressComponent') tpaddressComponent: InputSelectComponent;
+	@ViewChild('tpaddressComponent', { static: false }) tpaddressComponent: InputSelectComponent;
 	@Input() fieldTpaddress: string;
 	@Input() tpaddress: EnumAddressType;
 	@Input() tpaddresses: EnumAddressType[];
@@ -89,8 +91,8 @@ export class InputAddressComponent extends BaseAddressComponent
 	searchFormField: FormFieldModel;
 	// BLUR
 	subBlur: Subscription;
-	@ViewChild('streetComponent') streetComponent: InputTextComponent;
-	@ViewChild('numComponent') numComponent: InputTextComponent;
+	@ViewChild('streetComponent', { static: false }) streetComponent: InputTextComponent;
+	@ViewChild('numComponent', { static: false }) numComponent: InputTextComponent;
 	lastStreet: string = '';
 	lastNum: string = '';
 	// MAP
@@ -476,7 +478,7 @@ export class InputAddressComponent extends BaseAddressComponent
 		return undefined;
 	}
 	getCitySelected(): CityModel {
-		const index = this.cityOptions.findIndex((el) => el.key === this.citySelected[0]);
+		const index = this.cityOptions.findIndex((el) => el.key === this.citySelected);
 		if (index !== -1) {
 			return this.cityOptions[index].payload;
 		}
@@ -722,31 +724,37 @@ export class InputAddressComponent extends BaseAddressComponent
 
 	// MANAGE MODEL
 	fillAddress(address: AddressModel) {
-		if (this.fieldNation) {
-			this.form.get(this.fieldNation).setValue(address.nation ? address.nation.id : undefined);
-		}
-		if (this.fieldStreet) {
-			this.form.get(this.fieldStreet).setValue(address.street);
-		}
-		if (this.fieldNum) {
-			this.form.get(this.fieldNum).setValue(address.number);
-		}
-		if (this.fieldZip) {
-			this.form.get(this.fieldZip).setValue(address.zip);
-		}
-		if (this.fieldLatitude) {
-			this.form.get(this.fieldLatitude).setValue(address.geo1);
-		}
-		if (this.fieldLongitude) {
-			this.form.get(this.fieldLongitude).setValue(address.geo2);
+		if (address) {
+			if (this.fieldNation) {
+				this.form.get(this.fieldNation).setValue(address.nation ? address.nation.id : undefined);
+			}
+			if (this.fieldStreet) {
+				this.form.get(this.fieldStreet).setValue(address.street);
+			}
+			if (this.fieldNum) {
+				this.form.get(this.fieldNum).setValue(address.number);
+			}
+			if (this.fieldZip) {
+				this.form.get(this.fieldZip).setValue(address.zip);
+			}
+			if (this.fieldLatitude) {
+				this.form.get(this.fieldLatitude).setValue(address.geo1);
+			}
+			if (this.fieldLongitude) {
+				this.form.get(this.fieldLongitude).setValue(address.geo2);
+			}
 		}
 	}
 
-	exportAddress(): AddressModel {
+	exportAddress(form?: FormGroup): AddressModel {
+		if (!form) {
+			form = this.form;
+		}
 		const addressModel: AddressModel = new AddressModel();
-		addressModel.street = this.fieldStreet ? this.form.get(this.fieldStreet).value : undefined;
-		addressModel.number = this.fieldNum ? this.form.get(this.fieldNum).value : undefined;
-		addressModel.zip = this.form.get(this.fieldZip).value;
+		addressModel.id = this.address ? this.address.id : undefined;
+		addressModel.street = this.fieldStreet ? form.get(this.fieldStreet).value : undefined;
+		addressModel.number = this.fieldNum ? form.get(this.fieldNum).value : undefined;
+		addressModel.zip = form.get(this.fieldZip).value;
 		addressModel.nation = this.getNationSelected();
 		const regionModel: CityModel = this.getRegionSelected();
 		addressModel.region = regionModel ? regionModel.region : undefined;
@@ -756,10 +764,10 @@ export class InputAddressComponent extends BaseAddressComponent
 		addressModel.place = addressModel.city ? addressModel.city.place : undefined;
 		addressModel.tpaddress = new TypologicalModel();
 		addressModel.tpaddress.id = this.fieldTpaddress
-			? this.form.get(this.fieldTpaddress).value
+			? form.get(this.fieldTpaddress).value
 			: undefined;
-		addressModel.geo1 = this.fieldLatitude ? this.form.get(this.fieldLatitude).value : undefined;
-		addressModel.geo2 = this.fieldLongitude ? this.form.get(this.fieldLongitude).value : undefined;
+		addressModel.geo1 = this.fieldLatitude ? form.get(this.fieldLatitude).value : undefined;
+		addressModel.geo2 = this.fieldLongitude ? form.get(this.fieldLongitude).value : undefined;
 		return addressModel;
 	}
 
@@ -788,7 +796,7 @@ export class InputAddressComponent extends BaseAddressComponent
 						if (el) {
 							this.mapGeo1 = el.feature.geometry.y;
 							this.mapGeo2 = el.feature.geometry.x;
-							const address = this.exportAddress();
+							const address = this.exportAddress(this.form);
 							this.mapAddressText = address.html_address;
 						}
 					}),

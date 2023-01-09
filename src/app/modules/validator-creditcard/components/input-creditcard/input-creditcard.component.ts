@@ -26,9 +26,9 @@ export class InputCreditcardComponent extends BaseComponent {
 	@Input() showImage: boolean;
 	@Input() debounce: number = 1000;
 	@Input() extControl: FormControl | AbstractControl;
-	@ViewChild('types') types: InputSelectComponent;
-	@ViewChild('months') months: InputSelectComponent;
-	@ViewChild('years') years: InputSelectComponent;
+	@ViewChild('types', { static: false }) types: InputSelectComponent;
+	@ViewChild('months', { static: false }) months: InputSelectComponent;
+	@ViewChild('years', { static: false }) years: InputSelectComponent;
 
 	private _cc: any;
 	@Input() set cc(value: {

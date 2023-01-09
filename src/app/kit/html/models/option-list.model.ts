@@ -8,4 +8,6 @@ export class OptionListModel {
 		public cssClass?: any,
 		public cssStyle?: any,
 	) {}
+
+	public textClear?: string;
 }

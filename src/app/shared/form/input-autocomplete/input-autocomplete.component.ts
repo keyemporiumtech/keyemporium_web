@@ -6,29 +6,33 @@ import {
 	StringTranslate,
 	TranslateUtility,
 } from '@ddc/kit';
+import { RequestUtility } from '@ddc/rest';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { template } from '../../../../environments/template/template';
 import { BaseInputComponent } from '../base-input.component';
-import { RequestUtility } from '@ddc/rest';
 
 @Component({
 	selector: 'ddc-init-input-autocomplete',
 	templateUrl: './input-autocomplete.component.html',
 	styleUrls: ['./input-autocomplete.component.scss'],
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputAutocompleteComponent extends BaseInputComponent {
-	@ViewChild('autocomplete') autocomplete: AutocompleteComponent;
+	@ViewChild('autocomplete', { static: false }) autocomplete: AutocompleteComponent;
 	@Input() textNoRecords: string | StringTranslate;
 	@Input() digits: number;
 	@Input() debounce: number = 1000;
 	@Input() list: OptionListModel[];
+	@Input() listAll: OptionListModel[];
 	@Output() searchEmit = new EventEmitter<string>(); // evento che scatta quando viene avviata la ricerca (emette il parametro di ricerca)
+	@Output() termEmit = new EventEmitter<string>(); // evento che scatta quando al keyup (emette il parametro di ricerca)
 	@Output() selectEmit = new EventEmitter<OptionListModel>(); // evento che scatta al click di un item (emette l'item)
 	@Output() overEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando si passa con il mouse sopra l'item (emette l'item)
 	@Output() outEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando il mouse lascia un item (emette l'item)
-	subStatus: Subscription;
+	@Output() focusEmit = new EventEmitter<string>(); // evento che scatta quando il componente di input prende il focus
+	declare subStatus: Subscription;
 	subValue: Subscription;
 	// functions
 	@Input() search: (term: string) => Observable<OptionListModel[]>;
@@ -133,15 +137,24 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 			);
 		}
 	}
+	onTerm(term: string) {
+		this.termEmit.emit(term);
+	}
 	onSelect(item: OptionListModel) {
 		this.selectEmit.emit(item);
 		this.field.formControl.setValue(item);
+		if (item.textClear) {
+			this.autocomplete.form.get('text').setValue(item.textClear);
+		}
 	}
 	onOver(item: OptionListModel) {
 		this.overEmit.emit(item);
 	}
 	onOut(item: OptionListModel) {
 		this.outEmit.emit(item);
+	}
+	onFocus(term: string) {
+		this.focusEmit.emit(term);
 	}
 
 	setAutomaticValidations() {}

@@ -9,7 +9,7 @@ export class ArrayUtility {
 	}
 
 	static sortAscByField(items: any, field: string) {
-		return items.sort(function(a, b) {
+		return items.sort(function (a, b) {
 			if (a[field] && b[field]) {
 				const nameA = typeof a[field] === 'string' ? a[field].toUpperCase() : a[field]; // ignora maiuscole e minuscole
 				const nameB = typeof b[field] === 'string' ? b[field].toUpperCase() : b[field]; // ignora maiuscole e minuscole
@@ -26,7 +26,7 @@ export class ArrayUtility {
 	}
 
 	static sortDescByField(items: any, field: string) {
-		return items.sort(function(a, b) {
+		return items.sort(function (a, b) {
 			if (a[field] && b[field]) {
 				const nameA = typeof a[field] === 'string' ? a[field].toUpperCase() : a[field]; // ignora maiuscole e minuscole
 				const nameB = typeof b[field] === 'string' ? b[field].toUpperCase() : b[field]; // ignora maiuscole e minuscole
@@ -104,5 +104,9 @@ export class ArrayUtility {
 	 */
 	static differenceSymmetrical(a: any[], b: any[]) {
 		return a.filter((x) => !b.includes(x)).concat(b.filter((x) => !a.includes(x)));
+	}
+
+	static sum(arr: any[], key: string): number {
+		return arr.reduce((a, b) => a + (b[key] || 0), 0);
 	}
 }

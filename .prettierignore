@@ -1,2 +1,5 @@
-*.html
-summary.json
+# Ignore everything:
+  /*
+
+  # Except myapp:
+  !/src

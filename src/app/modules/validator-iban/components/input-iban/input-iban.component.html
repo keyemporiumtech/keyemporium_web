@@ -1,21 +1,32 @@
 <div *ngIf="ready" class="form-group row">
-  <div class="col-lg-8">
-    <ddc-init-app-loading [loading]="loadingIban"></ddc-init-app-loading>
-    <ddc-init-input-text [field]="inputIban"></ddc-init-input-text>
-    <div *ngIf="messageIban" class="input-invalid-message">{{messageIban}}</div>
-  </div>
-  <div class="col-lg-4">
-    <ng-container *ngIf="!showImage">
-      <ddc-init-input-select #nations [id]="id" [field]="selectNations" [options]="optionNations" [noMargin]="true"
-        (emitValueChanged)="manageChangeNation($event)">
-      </ddc-init-input-select>
-    </ng-container>
-    <ng-container *ngIf="showImage">
-      <ddc-init-form-select-div #nations [id]="id" [field]="selectNations" [options]="optionNations"
-        (emitValueChanged)="manageChangeNation($event)">
-      </ddc-init-form-select-div>
-    </ng-container>
-  </div>
+	<div class="col-lg-8">
+		<ddc-init-app-loading [loading]="loadingIban"></ddc-init-app-loading>
+		<ddc-init-input-text [field]="inputIban"></ddc-init-input-text>
+		<div *ngIf="messageIban" class="input-invalid-message">{{ messageIban }}</div>
+	</div>
+	<div class="col-lg-4">
+		<ng-container *ngIf="!showImage">
+			<ddc-init-input-select
+				#nations
+				[id]="id"
+				[field]="selectNations"
+				[options]="optionNations"
+				[noMargin]="true"
+				(emitValueChanged)="manageChangeNation($event)"
+			>
+			</ddc-init-input-select>
+		</ng-container>
+		<ng-container *ngIf="showImage">
+			<ddc-init-form-select-div
+				#nations
+				[id]="id"
+				[field]="selectNations"
+				[options]="optionNations"
+				(emitValueChanged)="manageChangeNation($event)"
+			>
+			</ddc-init-form-select-div>
+		</ng-container>
+	</div>
 </div>
 
 <div *ngIf="patternIban" [innerHTML]="patternIban"></div>

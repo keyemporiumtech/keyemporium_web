@@ -1,22 +1,28 @@
 <h5>Lingue di sistema</h5>
 
-
-<strong>FILTRO ENVIRONMENT</strong>: {{filtersEnv | json}}<br />
+<strong>FILTRO ENVIRONMENT</strong>: {{ filtersEnv | json }}<br />
 
 <div class="row">
-  <div class="col-4">
-    <h6>Con immagine</h6>
-    <ddc-init-app-languages (changeEmit)="resolveCurrent()"></ddc-init-app-languages>
-  </div>
-  <div class="col-4">
-    <h6>Senza immagine</h6>
-    <ddc-init-app-languages [showImage]="false" (changeEmit)="resolveCurrent()"></ddc-init-app-languages>
-  </div>
-  <div class="col-4">
-    <h6>Senza filtro</h6>
-    <ddc-init-app-languages [showImage]="false" [filters]="[]" (changeEmit)="resolveCurrent()"></ddc-init-app-languages>
-  </div>
+	<div class="col-4">
+		<h6>Con immagine</h6>
+		<ddc-init-app-languages (changeEmit)="resolveCurrent()"></ddc-init-app-languages>
+	</div>
+	<div class="col-4">
+		<h6>Senza immagine</h6>
+		<ddc-init-app-languages
+			[showImage]="false"
+			(changeEmit)="resolveCurrent()"
+		></ddc-init-app-languages>
+	</div>
+	<div class="col-4">
+		<h6>Senza filtro</h6>
+		<ddc-init-app-languages
+			[showImage]="false"
+			[filters]="[]"
+			(changeEmit)="resolveCurrent()"
+		></ddc-init-app-languages>
+	</div>
 </div>
 
-<strong>LINGUA CORRENTE</strong>: {{languageCod}} - {{languageName}}<br />
-<strong>TRADUZIONE IN </strong>: {{'APP.I18N' | translate}}<br />
+<strong>LINGUA CORRENTE</strong>: {{ languageCod }} - {{ languageName }}<br />
+<strong>TRADUZIONE IN </strong>: {{ 'APP.I18N' | translate }}<br />

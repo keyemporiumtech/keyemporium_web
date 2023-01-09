@@ -1,22 +1,28 @@
 <div class="container-fluid">
-  <h4>Libreria rest</h4>
-  <div class="row">
-    <div class="col col-12">
-      <a class="ml-2 btn btn-sm btn-warning" (click)="set('REST-OPENSTREETMAP')">Modulo Openstreetmap</a>
-      <span class="ml-2">|</span>
-      <a class="ml-2 btn btn-sm btn-warning" (click)="set('REST-OAUTH-LOGIN')">Modulo Oauth-login</a>
-      <span class="ml-2">|</span>
-    </div>
-  </div>
+	<h4>Libreria rest</h4>
+	<div class="row">
+		<div class="col col-12">
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('REST-OPENSTREETMAP')"
+				>Modulo Openstreetmap</a
+			>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('REST-OAUTH-LOGIN')"
+				>Modulo Oauth-login</a
+			>
+			<span class="ml-2">|</span>
+		</div>
+	</div>
 
-  <div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
-    <div class="col col-12 p-2">
-      <a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
-      <wiki-test-rest-openstreetmap *ngIf="view==='REST-OPENSTREETMAP'"></wiki-test-rest-openstreetmap>
-      <wiki-test-rest-oauth-login *ngIf="view==='REST-OAUTH-LOGIN'"></wiki-test-rest-oauth-login>
-    </div>
-  </div>
+	<div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
+		<div class="col col-12 p-2">
+			<a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
+			<wiki-test-rest-openstreetmap
+				*ngIf="view === 'REST-OPENSTREETMAP'"
+			></wiki-test-rest-openstreetmap>
+			<wiki-test-rest-oauth-login *ngIf="view === 'REST-OAUTH-LOGIN'"></wiki-test-rest-oauth-login>
+		</div>
+	</div>
 
-  <hr />
-  <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
+	<hr />
+	<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
 </div>

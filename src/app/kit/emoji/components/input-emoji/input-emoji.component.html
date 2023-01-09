@@ -1,23 +1,36 @@
 <!--<input type="text" [attr.id]="id" (keyup.enter)="onEnter" [(ngModel)]="input" (ngModelChange)="onChange($event)" />-->
-<div #inputeditable class="form-control" [ngClass]="classInput" [ngStyle]="styleInput" ddcContenteditable
-  contenteditable="true" [model]="input" (update)="onChange($event)" (keyup.enter)="onKeyEnter()"
-  (keypress)="onKeyPress($event)"></div>
+<div
+	#inputeditable
+	class="form-control"
+	[ngClass]="classInput"
+	[ngStyle]="styleInput"
+	ddcContenteditable
+	contenteditable="true"
+	[model]="input"
+	(update)="onChange($event)"
+	(keyup.enter)="onKeyEnter()"
+	(keypress)="onKeyPress($event)"
+></div>
 <div class="emoji-opener" (click)="togglePopup()"></div>
 <div class="emoji-search" [ngClass]="popupAnchor" [hidden]="!popupOpen">
-  <div class="search-header">
-    <input type="search" [(ngModel)]="filterEmojis" placeholder="Search..." />
-  </div>
-  <div class="search-category">
-    <ng-container *ngFor="let cat of categories; let i=index">
-      <span [innerHTML]="cat.icon.html" title="{{cat.title}}" (click)="clickCategory(i)"></span>
-    </ng-container>
-    <!--<i class="em em-{{getEmojiName(cat.icon)}}"></i>-->
-  </div>
-  <div class="emojis-container">
-    <ng-container *ngFor="let emoji of getFilteredEmojis()">
-      <span *ngIf="emoji && emoji.shortname && emoji.shortname!==''" [innerHTML]="emoji.html" title="{{emoji.name}}"
-        (click)="onEmojiClick(emoji.shortname)"></span>
-    </ng-container>
-    <!--<i class="em em-{{getEmojiName(emoji)}}"></i>-->
-  </div>
+	<div class="search-header">
+		<input type="search" [(ngModel)]="filterEmojis" placeholder="Search..." />
+	</div>
+	<div class="search-category">
+		<ng-container *ngFor="let cat of categories; let i = index">
+			<span [innerHTML]="cat.icon.html" title="{{ cat.title }}" (click)="clickCategory(i)"></span>
+		</ng-container>
+		<!--<i class="em em-{{getEmojiName(cat.icon)}}"></i>-->
+	</div>
+	<div class="emojis-container">
+		<ng-container *ngFor="let emoji of getFilteredEmojis()">
+			<span
+				*ngIf="emoji && emoji.shortname && emoji.shortname !== ''"
+				[innerHTML]="emoji.html"
+				title="{{ emoji.name }}"
+				(click)="onEmojiClick(emoji.shortname)"
+			></span>
+		</ng-container>
+		<!--<i class="em em-{{getEmojiName(emoji)}}"></i>-->
+	</div>
 </div>

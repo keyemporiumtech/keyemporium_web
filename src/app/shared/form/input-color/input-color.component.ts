@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ApplicationLoggerService } from '@ddc/kit';
 import { BaseInputComponent } from '../base-input.component';
 
@@ -6,6 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-color',
 	templateUrl: './input-color.component.html',
 	styleUrls: ['./input-color.component.scss'],
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputColorComponent extends BaseInputComponent {
 	constructor(applicationLogger: ApplicationLoggerService) {

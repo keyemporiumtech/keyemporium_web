@@ -1,7 +1,7 @@
 export class ObjectUtility {
 	static isEmptyObject(obj) {
 		for (const prop in obj) {
-			if (obj.hasOwnProperty(prop)) {
+			if (Object.prototype.hasOwnProperty.call(obj, prop)) {
 				return false;
 			}
 		}
@@ -38,7 +38,7 @@ export class ObjectUtility {
 		name?: string,
 	): boolean {
 		if (
-			model.hasOwnProperty(fieldForId ? fieldForId : 'id') &&
+			Object.prototype.hasOwnProperty.call(model, fieldForId ? fieldForId : 'id') &&
 			!model[fieldForId ? fieldForId : 'id']
 		) {
 			return true;
@@ -52,7 +52,7 @@ export class ObjectUtility {
 		except?: string[],
 		name?: string,
 	): boolean {
-		if (!model.hasOwnProperty(fieldForId ? fieldForId : 'id')) {
+		if (!Object.prototype.hasOwnProperty.call(model, fieldForId ? fieldForId : 'id')) {
 			return true;
 		}
 		return this.isEmptyIdModel(model, fieldForId, except, name);

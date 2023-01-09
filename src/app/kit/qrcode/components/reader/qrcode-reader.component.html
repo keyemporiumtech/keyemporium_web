@@ -1,9 +1,11 @@
-<qrcode #qrcoderef
-  [attr.id] = "id"
-  [allowEmptyString]="allowEmptyString"
-  [colorlight]="colorlight"
-  [colordark]="colordark"
-  [level]="level"
-  [qrdata]="text" 
-  [size]="size" 
-  [usesvg]="usesvg"></qrcode>
+<qrcode
+	#qrcoderef
+	[attr.id]="id"
+	[allowEmptyString]="allowEmptyString"
+	[colorLight]="colorlight"
+	[colorDark]="colordark"
+	[errorCorrectionLevel]="level"
+	[qrdata]="text"
+	[width]="size"
+	[elementType]="usesvg ? 'svg' : 'canvas'"
+></qrcode>

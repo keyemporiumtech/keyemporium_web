@@ -1,55 +1,82 @@
 <div class="container-fluid">
+	<ng-container *ngIf="formFilters">
+		<ddc-init-form-page
+			[form]="formFilters"
+			[flgOnInitValidation]="flgOnInitValidation"
+			[flgOnSubmitValidation]="flgOnSubmitValidation"
+			[submitted]="submitted"
+			[groups]="groups"
+		></ddc-init-form-page>
+		<button
+			class="mr-2 btn btn-dark btn-sm rounded-0 text-uppercase px-5 d-block d-sm-inline-block mt-sm-0 mt-3"
+			(click)="reset()"
+		>
+			<span class="{{ iconReset }} mr-2"></span>
+			{{ 'APP.BUTTON.RESET' | translate }}
+		</button>
+		<button
+			class="mr-2 btn btn-primary btn-sm rounded-0 text-uppercase px-5 d-block d-sm-inline-block mt-sm-0 mt-3"
+			[disabled]="!formFilters.valid"
+			(click)="search()"
+		>
+			<span class="{{ iconSearch }} mr-2"></span>
+			{{ 'APP.BUTTON.SEARCH' | translate }}
+		</button>
+	</ng-container>
 
-  <ng-container *ngIf="formFilters">
-    <ddc-init-form-page [form]="formFilters" [flgOnInitValidation]="flgOnInitValidation"
-      [flgOnSubmitValidation]="flgOnSubmitValidation" [submitted]="submitted" [groups]="groups"></ddc-init-form-page>
-    <button class="mr-2 btn btn-dark btn-sm rounded-0 text-uppercase px-5 d-block d-sm-inline-block mt-sm-0 mt-3"
-      (click)="reset()">
-      <i class="{{iconReset}} mr-2"></i>
-      {{'APP.BUTTON.RESET' | translate}}
-    </button>
-    <button class="mr-2 btn btn-key btn-sm rounded-0 text-uppercase px-5 d-block d-sm-inline-block mt-sm-0 mt-3"
-      [disabled]="!formFilters.valid" (click)="search()">
-      <i class="{{iconSearch}} mr-2"></i>
-      {{'APP.BUTTON.SEARCH' | translate}}
-    </button>
-  </ng-container>
+	<div class="container-loading">
+		<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
 
-  <div class="container-loading">
+		<table
+			*ngIf="list && list.length"
+			class="table table-bordered mt-3 mb-0 redial-font-weight-500 table-responsive d-md-table"
+		>
+			<thead class="redial-dark">
+				<tr>
+					<th *ngFor="let col of colsTable" scope="col">
+						<span>{{ translateKey(col.label) | translate : translateParams(col.label) }}</span>
+						<ddc-init-table-order
+							*ngIf="orders && orders.length"
+							[orders]="orders"
+							[key]="col.key"
+							(ascEmit)="order(col.key, 'asc')"
+							(descEmit)="order(col.key, 'desc')"
+						></ddc-init-table-order>
+					</th>
+					<th *ngIf="templateActionsIntest">
+						<ng-container *ngTemplateOutlet="templateActionsIntest"></ng-container>
+					</th>
+				</tr>
+			</thead>
 
-    <ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+			<tbody>
+				<tr *ngFor="let res of list">
+					<td *ngFor="let col of colsTable">
+						<ng-container *ngIf="col.template; else fieldValue">
+							<ng-container *ngTemplateOutlet="col.template; context: { item: res }"></ng-container>
+						</ng-container>
+						<ng-template #fieldValue>
+							{{ resolveProperty(col.fieldModel, res) }}
+						</ng-template>
+					</td>
+					<td *ngIf="templateActionsRow">
+						<ng-container
+							*ngTemplateOutlet="templateActionsRow; context: { item: res }"
+						></ng-container>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <table *ngIf="list && list.length"
-      class="table table-bordered mt-3 mb-0 redial-font-weight-500 table-responsive d-md-table">
-      <thead class="redial-dark">
-        <tr>
-          <th *ngFor="let col of colsTable" scope="col">
-            <span>{{translateKey(col.label) | translate:translateParams(col.label)}}</span>
-            <ddc-init-table-order *ngIf="orders && orders.length" [orders]="orders" [key]="col.key"
-              (ascEmit)="order(col.key, 'asc')" (descEmit)="order(col.key, 'desc')"></ddc-init-table-order>
-          </th>
-          <th *ngIf="templateActionsIntest">
-            <ng-container *ngTemplateOutlet="templateActionsIntest"></ng-container>
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let res of list">
-          <td *ngFor="let col of colsTable">{{res[col.fieldModel]}}</td>
-          <td *ngIf="templateActionsRow">
-            <ng-container *ngTemplateOutlet="templateActionsRow; context: {item: res}"></ng-container>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div *ngIf="pagesNumbers && pagesNumbers.length" class="row mt-2">
-      <div class="col-12 col-sm-12">
-        <ddc-init-table-paginate [pagesNumbers]="pagesNumbers" [current]="current" (pageEmit)="page($event)">
-        </ddc-init-table-paginate>
-      </div>
-    </div>
-
-  </div>
+		<div *ngIf="pagesNumbers && pagesNumbers.length" class="row mt-2">
+			<div class="col-12 col-sm-12">
+				<ddc-init-table-paginate
+					[pagesNumbers]="pagesNumbers"
+					[current]="current"
+					(pageEmit)="page($event)"
+				>
+				</ddc-init-table-paginate>
+			</div>
+		</div>
+	</div>
 </div>

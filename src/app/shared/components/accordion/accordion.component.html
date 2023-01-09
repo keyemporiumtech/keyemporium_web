@@ -1,0 +1,38 @@
+<h2
+	*ngIf="ready"
+	class="accordion-header"
+	id="{{ headingId }}"
+	[ngClass]="cssHeading"
+	[ngStyle]="styleHeading"
+>
+	<button
+		class="accordion-button"
+		type="button"
+		[attr.data-toggle]="'collapse'"
+		[attr.data-target]="'#' + accordionId"
+		[attr.aria-expanded]="'true'"
+		[attr.aria-controls]="accordionId"
+		(click)="onClick()"
+		[ngClass]="cssButton"
+		[ngStyle]="styleButton"
+	>
+		<span
+			*ngIf="label"
+			[innerHtml]="translateKey(label) | translate : translateParams(label)"
+		></span>
+		<ng-content select="[button-content]"></ng-content>
+	</button>
+</h2>
+<div
+	*ngIf="ready"
+	id="{{ accordionId }}"
+	class="accordion-collapse collapse"
+	[attr.aria-labelledby]="headingId"
+	[attr.data-parent]="parent ? '#' + parent.id : null"
+	[ngClass]="cssAccordion"
+	[ngStyle]="styleAccordion"
+>
+	<div *ngIf="open" class="accordion-body" [ngClass]="cssContent" [ngStyle]="styleContent">
+		<ng-content select="[accordion-content]"></ng-content>
+	</div>
+</div>

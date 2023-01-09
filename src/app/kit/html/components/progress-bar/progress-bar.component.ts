@@ -39,7 +39,7 @@ export class ProgressBarComponent extends BaseComponent {
 	@Input() intervalGrow: number = 0.05; // s
 	@Input() timeoutHide: number = 0.5; // s
 
-	@ViewChild('progress') progress;
+	@ViewChild('progress', { static: false }) progress;
 	subProgress: Subscription;
 	current: number = 0;
 	status: 'PAUSE' | 'STOP' | 'PLAY' = 'STOP';

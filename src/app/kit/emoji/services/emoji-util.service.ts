@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EmojiBuilderUtil } from '../utils/emoji-builder.util';
 
+/* eslint-disable no-useless-escape */
 const PARSE_REGEX = /:([a-zA-Z0-9_\-\+]+):/g;
 
 @Injectable({

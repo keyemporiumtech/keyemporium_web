@@ -2,10 +2,27 @@
 <ddc-init-audio-playlist [playlist]="playlist"></ddc-init-audio-playlist>
 
 <div>Playlist con autoplay e loop</div>
-<button *ngIf="!autoplayExample" class="btn btn-sm btn-info text-white mr-2 mt-2" type="button"
-  (click)="autoplayStart()">Avvia</button>
-<button *ngIf="autoplayExample" class="btn btn-sm btn-info text-white mr-2 mt-2" type="button"
-  (click)="autoplayStart()">Stoppa</button>
+<button
+	*ngIf="!autoplayExample"
+	class="btn btn-sm btn-info text-white mr-2 mt-2"
+	type="button"
+	(click)="autoplayStart()"
+>
+	Avvia
+</button>
+<button
+	*ngIf="autoplayExample"
+	class="btn btn-sm btn-info text-white mr-2 mt-2"
+	type="button"
+	(click)="autoplayStart()"
+>
+	Stoppa
+</button>
 
-<ddc-init-audio-playlist *ngIf="autoplayExample" [playlist]="playlist" [autoplay]="true" [loop]="true">
+<ddc-init-audio-playlist
+	*ngIf="autoplayExample"
+	[playlist]="playlist"
+	[autoplay]="true"
+	[loop]="true"
+>
 </ddc-init-audio-playlist>

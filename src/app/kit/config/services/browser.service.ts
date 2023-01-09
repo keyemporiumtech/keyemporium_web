@@ -18,6 +18,7 @@ export class BrowserService extends BaseService {
 		const agent = window.navigator.userAgent.toLowerCase();
 		switch (true) {
 			case agent.indexOf('edge') > -1:
+			case agent.indexOf('edg') > -1:
 				return 'edge';
 			case agent.indexOf('opr') > -1 && !!(<any>window).opr:
 				return 'opera';

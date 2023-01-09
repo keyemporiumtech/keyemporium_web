@@ -10,9 +10,7 @@ export abstract class BaseClassModel {
 	constructor(applicationLoggerService: ApplicationLoggerService) {
 		this.log = LoggerService.getLogger(this.getClassName());
 		this.applicationLogger = applicationLoggerService;
-		this.id = Math.random()
-			.toString(36)
-			.replace('0.', '');
+		this.id = Math.random().toString(36).replace('0.', '');
 		this.applicationLogger.logConstructor(this.log, this.getClassName(), this.getId());
 	}
 

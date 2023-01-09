@@ -25,7 +25,7 @@ export class TypologicalModel extends ApiModel {
 			  '"/>'
 			: '';
 		content +=
-			'<span class="' + cssTextClass + '" class="' + cssTextStyle + '">' + this.title + '</span>';
+			'<span class="' + cssTextClass + '" style="' + cssTextStyle + '">' + this.title + '</span>';
 		return content;
 	}
 

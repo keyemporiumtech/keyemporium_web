@@ -1,0 +1,41 @@
+/* You can add global styles for your project for RESPONSIVE */
+
+/* Smartphones 1 ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  .container-page-title img.page-title-icon {
+    left: 30%;
+    position: relative;
+  }
+  .container-page-title span.page-title-text {
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+/* Smartphones 2 ----------- */
+@media only screen
+and (min-width : 481px)
+and (max-device-width : 767px) {
+  .container-page-title img.page-title-icon {
+    left: 38%;
+    position: relative;
+  }
+  .container-page-title span.page-title-text {
+    display: flex;
+    text-align: center;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+  .card-section {
+    width: 14rem;
+    display: inline-block;
+    margin: 1rem;
+  }
+}

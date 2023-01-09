@@ -29,7 +29,7 @@ export class InputIbanComponent extends BaseComponent {
 	@Input() filters: string[];
 	@Input() debounce: number = 1000;
 	@Input() extControl: FormControl | AbstractControl;
-	@ViewChild('nations') nations: InputSelectComponent;
+	@ViewChild('nations', { static: false }) nations: InputSelectComponent;
 
 	nationByIban: string;
 	@Input() set iban(value: string) {

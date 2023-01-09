@@ -20,10 +20,19 @@ export class AttachmentUtility {
 	): AttachmentModel {
 		const converter = new AttachmentConverter();
 		const attachment = converter.getEmptyModel();
-		attachment.url = file.name;
+		// attachment.url = file.name;
+		if (!file.mime || !file.content) {
+			const info = fileService.getMimeAndContentByBase64(file.resource);
+			attachment.mimetype = info.mimetype;
+			attachment.content = info.content;
+		} else {
+			attachment.mimetype = file.mime;
+			attachment.content = file.content;
+		}
+
 		attachment.name = file.name.split('.' + file.ext).join('');
 		attachment.ext = file.ext;
-		attachment.content = file.content;
+
 		if (file.sizeFormat.unit === EnumSizeFormat.KILOBYTE) {
 			attachment.size = file.sizeFormat.size;
 		} else {
@@ -41,7 +50,7 @@ export class AttachmentUtility {
 		file.ext = attachment.ext;
 		file.size = +attachment.size;
 		file.sizeFormat = new SizeFormat(+attachment.size, EnumSizeFormat.KILOBYTE);
-		file.resource = attachment.content;
+		file.content = attachment.content;
 		file.mime = attachment.mimetype;
 		// file.type = attachment.type;
 		file.title = title;

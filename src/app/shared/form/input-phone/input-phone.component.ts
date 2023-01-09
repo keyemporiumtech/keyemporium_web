@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {
 	ApplicationLoggerService,
@@ -21,6 +21,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-phone',
 	templateUrl: './input-phone.component.html',
 	styleUrls: ['./input-phone.component.scss'],
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputPhoneComponent extends BaseInputComponent {
 	@Input() prefixes: OptionListModel[];

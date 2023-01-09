@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TreeModule } from 'angular-tree-component';
+import { TreeModule } from '@circlon/angular-tree-component';
 import { TreeHtmlComponent } from './components/tree-html/tree-html.component';
 
 @NgModule({

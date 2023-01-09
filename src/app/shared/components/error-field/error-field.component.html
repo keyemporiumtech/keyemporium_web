@@ -1,9 +1,14 @@
 <div *ngIf="validations && validations.length" [ngClass]="classContainer">
-  <ng-container *ngFor="let validation of validations">
-    <div class="error-message" *ngIf="isShow(validation) && hasError(validation) && isCome()">
-      <span *ngIf="icon" class="icon mr-2" [ngClass]="icon"></span>
-      <span class="text"
-        [innerHTML]="translateKey(getMessageType(validation)) | translate:translateParams(getMessageParamsType(validation))"></span>
-    </div>
-  </ng-container>
+	<ng-container *ngFor="let validation of validations">
+		<div class="error-message" *ngIf="isShow(validation) && hasError(validation) && isCome()">
+			<span *ngIf="icon" class="icon mr-2" [ngClass]="icon"></span>
+			<span
+				class="text"
+				[innerHTML]="
+					translateKey(getMessageType(validation))
+						| translate : translateParams(getMessageParamsType(validation))
+				"
+			></span>
+		</div>
+	</ng-container>
 </div>

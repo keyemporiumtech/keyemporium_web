@@ -23,7 +23,7 @@ declare var $: any;
 })
 export class BannerCookieComponent extends BaseComponent {
 	EnumBannerPosition = EnumBannerPosition;
-	@ViewChild('bannerCookie') bannerCookie: BannerComponent;
+	@ViewChild('bannerCookie', { static: false }) bannerCookie: BannerComponent;
 	// inputs
 	@Input() position: EnumBannerPosition = EnumBannerPosition.BOTTOM;
 	// close
@@ -58,7 +58,7 @@ export class BannerCookieComponent extends BaseComponent {
 	router: Router;
 
 	// cookie choice
-	@ViewChild('modalEdit') modalEdit: ModalComponent;
+	@ViewChild('modalEdit', { static: false }) modalEdit: ModalComponent;
 	operation: EnumCookieOperation;
 	@Input() showButtons: boolean;
 

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoadAppComponent } from './init/components/load-app/load-app.component';
 
 const routes: Routes = [
@@ -14,19 +14,26 @@ const routes: Routes = [
 			},
 			{
 				path: 'app',
-				loadChildren: './application-public/application-public.module#ApplicationPublicModule',
+				loadChildren: () =>
+					import('./application-public/application-public.module').then(
+						(m) => m.ApplicationPublicModule,
+					),
 			},
 			{
 				path: 'reserve',
-				loadChildren: './application-reserve/application-reserve.module#ApplicationReserveModule',
+				loadChildren: () =>
+					import('./application-reserve/application-reserve.module').then(
+						(m) => m.ApplicationReserveModule,
+					),
 			},
 			{
 				path: 'commons',
-				loadChildren: './commons-pages/commons-pages.module#CommonsPagesModule',
+				loadChildren: () =>
+					import('./commons-pages/commons-pages.module').then((m) => m.CommonsPagesModule),
 			},
 			{
 				path: 'wiki',
-				loadChildren: './wiki-test/wiki-test.module#WikiTestModule',
+				loadChildren: () => import('./wiki-test/wiki-test.module').then((m) => m.WikiTestModule),
 			},
 		],
 	},

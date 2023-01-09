@@ -1,23 +1,35 @@
 <div class="container-fluid">
-  <h4>Libreria kit</h4>
-  <div class="row">
-    <div class="col col-12">
-      <a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-VALIDATORS')">Modulo Validators</a>
-      <span class="ml-2">|</span>
-      <a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-HTML')">Modulo Html</a>
-      <span class="ml-2">|</span>
-      <a class="ml-2 btn btn-sm btn-warning" (click)="set('BOOTSTRAP-FORMS')">Bootstrap Forms</a>
-    </div>
-  </div>
+	<h4>Libreria kit</h4>
+	<div class="row">
+		<div class="col col-12">
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-VALIDATORS')">Modulo Validators</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-HTML')">Modulo Html</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('BOOTSTRAP-FORMS')">Bootstrap Forms</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-CHARTS')">Modulo Charts</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-ROUTING')">Modulo Routing</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-TREE-HTML')">Modulo Tree Html</a>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-QRCODE')">Modulo Qrcode</a>
+		</div>
+	</div>
 
-  <div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
-    <div class="col col-12 p-2">
-      <a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
-      <wiki-test-kit-validators *ngIf="view==='KIT-VALIDATORS'"></wiki-test-kit-validators>
-      <wiki-test-kit-html *ngIf="view === 'KIT-HTML'"></wiki-test-kit-html>
-    </div>
-  </div>
+	<div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
+		<div class="col col-12 p-2">
+			<a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
+			<wiki-test-kit-validators *ngIf="view === 'KIT-VALIDATORS'"></wiki-test-kit-validators>
+			<wiki-test-kit-html *ngIf="view === 'KIT-HTML'"></wiki-test-kit-html>
+			<wiki-test-kit-charts *ngIf="view === 'KIT-CHARTS'"></wiki-test-kit-charts>
+			<wiki-test-kit-routing *ngIf="view === 'KIT-ROUTING'"></wiki-test-kit-routing>
+			<wiki-test-kit-tree-html *ngIf="view === 'KIT-TREE-HTML'"></wiki-test-kit-tree-html>
+			<wiki-test-kit-qrcode *ngIf="view === 'KIT-QRCODE'"></wiki-test-kit-qrcode>
+		</div>
+	</div>
 
-  <hr />
-  <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
+	<hr />
+	<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
 </div>

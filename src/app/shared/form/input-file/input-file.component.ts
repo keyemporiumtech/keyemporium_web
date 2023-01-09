@@ -15,9 +15,10 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-file',
 	templateUrl: './input-file.component.html',
 	styleUrls: ['./input-file.component.scss'],
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputFileComponent extends BaseInputComponent {
-	@ViewChild('uploadFile') uploadFile: UploadFileComponent;
+	@ViewChild('uploadFile', { static: false }) uploadFile: UploadFileComponent;
 	@Input() name: string;
 	@Input() multiple: boolean;
 	@Input() numMaxFiles: number;
@@ -26,11 +27,14 @@ export class InputFileComponent extends BaseInputComponent {
 	@Input() extensions: string;
 	@Input() closeItem: string;
 	@Input() deleteItems: string;
+	// flags
+	@Input() showProgress: boolean = true;
+	@Input() showFiles: boolean = true;
 
 	VALUE_FROM_UPLOAD: boolean;
 	// subscriptions
 	subValues: Subscription;
-	subStatus: Subscription;
+	declare subStatus: Subscription;
 
 	lastValue;
 	constructor(applicationLogger: ApplicationLoggerService) {

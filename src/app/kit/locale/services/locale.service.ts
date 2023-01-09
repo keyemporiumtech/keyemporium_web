@@ -43,25 +43,25 @@ export class LocaleService extends BaseService {
 	}
 
 	changeLocalLanguage(cod: string) {
-		if (cod !== this._applicationStorage.language.get()) {
-			this._translate.setDefaultLang(cod);
-			this._translate.use(cod);
-			this._applicationStorage.language.set(cod);
-			this.applicationLogger.logSystemLanguageSet(this.log, cod);
-		}
+		// if (cod !== this._applicationStorage.language.get()) {
+		this._translate.setDefaultLang(cod);
+		this._translate.use(cod);
+		this._applicationStorage.language.set(cod);
+		this.applicationLogger.logSystemLanguageSet(this.log, cod);
+		// }
 	}
 
 	changeLocalCurrency(cod: string) {
-		if (cod !== this._applicationStorage.currency.get()) {
-			this._applicationStorage.currency.set(cod);
-			this.applicationLogger.logSystemCurrencySet(this.log, cod);
-		}
+		// if (cod !== this._applicationStorage.currency.get()) {
+		this._applicationStorage.currency.set(cod);
+		this.applicationLogger.logSystemCurrencySet(this.log, cod);
+		// }
 	}
 	changeLocalNation(cod: string) {
-		if (cod !== this._applicationStorage.nation.get()) {
-			this._applicationStorage.nation.set(cod);
-			this.applicationLogger.logSystemNationSet(this.log, cod);
-		}
+		// if (cod !== this._applicationStorage.nation.get()) {
+		this._applicationStorage.nation.set(cod);
+		this.applicationLogger.logSystemNationSet(this.log, cod);
+		// }
 	}
 
 	/**

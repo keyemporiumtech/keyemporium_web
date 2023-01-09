@@ -31,7 +31,7 @@ export class DdcValidationDirective implements OnInit, OnChanges, OnDestroy, Aft
 	private _divSupport: any;
 	private INITIALIZED: boolean;
 
-	// tslint:disable:no-input-rename
+	/* eslint-disable @angular-eslint/no-input-rename */
 
 	// CONTROLS INPUT
 	@Input('formControl') formControl: FormControl = undefined;

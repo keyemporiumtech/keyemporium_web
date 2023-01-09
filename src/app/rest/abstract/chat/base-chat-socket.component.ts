@@ -1,6 +1,6 @@
 import { BaseComponent, ApplicationLoggerService, DateModel } from '@ddc/kit';
 import { BaseChatSocketService } from './base-chat-socket.service';
-import { Input, OnInit, OnDestroy } from '@angular/core';
+import { Input, OnInit, OnDestroy, Directive } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { EnumMessageExchangeType } from '../../chat/enums/message-exchange-type.enum';
 import { FormControl } from '@angular/forms';
@@ -8,6 +8,8 @@ import { MessageFromChatToSocketInterface } from '../../chat/models/message-from
 import { ContactChatModel } from '../../chat/models/contact-chat.model';
 import { component } from '../../../../environments/template/component';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseChatSocketComponent extends BaseComponent implements OnInit, OnDestroy {
 	environment: any;
 	@Input() userId: string;

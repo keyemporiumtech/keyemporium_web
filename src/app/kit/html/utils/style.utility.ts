@@ -25,9 +25,7 @@ export class StyleUtility {
 
 	static getProperty(propertyName: string) {
 		const root = document.documentElement;
-		return getComputedStyle(root, null)
-			.getPropertyValue(propertyName)
-			.trim();
+		return getComputedStyle(root, null).getPropertyValue(propertyName).trim();
 	}
 
 	static extractKeyValueFromStringStyle(style: string): KeyvalueObject | KeyvalueObject[] {

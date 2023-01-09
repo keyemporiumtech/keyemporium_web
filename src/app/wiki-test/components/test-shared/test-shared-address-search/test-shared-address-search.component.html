@@ -1,22 +1,32 @@
 <h4>Address Search</h4>
 
 <div>
-  Componente per la ricerca di indirizzi.<br />
+	Componente per la ricerca di indirizzi.<br />
 
-  Parametri di Input : <br />
-  <ul>
-    <li>limit: <b>number</b> - <i>numero massimo di record (default 5)</i></li>
-    <li>digits: <b>number</b> - <i>numero massimo di caratteri digitati prima della ricerca (default 3)</i></li>
-    <li>extratags: <b>boolean</b> - <i>Aggiunta di informazioni per indirizzo (default true)</i></li>
-    <li>field : <b>FormFieldModel</b> - <i>Campo di input associato</i></li>
-    <li>flgMore: <b>boolean</b> - <i>Indica se è necessario mostrare il pulsante more per risultati multipli</i></li>
-  </ul>
+	Parametri di Input : <br />
+	<ul>
+		<li>limit: <b>number</b> - <i>numero massimo di record (default 5)</i></li>
+		<li>
+			digits: <b>number</b> -
+			<i>numero massimo di caratteri digitati prima della ricerca (default 3)</i>
+		</li>
+		<li>
+			extratags: <b>boolean</b> - <i>Aggiunta di informazioni per indirizzo (default true)</i>
+		</li>
+		<li>field : <b>FormFieldModel</b> - <i>Campo di input associato</i></li>
+		<li>
+			flgMore: <b>boolean</b> -
+			<i>Indica se è necessario mostrare il pulsante more per risultati multipli</i>
+		</li>
+	</ul>
 
-  Parametri di Output : <br />
-  <ul>
-    <li>addressEmit: <b>EventEmitter&lt;OpenstreetLocationModel&gt;</b> - <i>numero massimo di record (default 5)</i>
-    </li>
-  </ul>
+	Parametri di Output : <br />
+	<ul>
+		<li>
+			addressEmit: <b>EventEmitter&lt;OpenstreetLocationModel&gt;</b> -
+			<i>numero massimo di record (default 5)</i>
+		</li>
+	</ul>
 </div>
 
 <hr class="separatore" />
@@ -31,17 +41,19 @@
   </div>
 </pre>
 
-
 <div class="row m-3">
-  <h6>Cerca indirizzo</h6>
-  <div class="col col-12">
-    <form [formGroup]="form">
-      <ddc-init-address-search [id]="'as1'" [field]="autocomplete1" (addressEmit)="keepAddress($event)">
-      </ddc-init-address-search>
-    </form>
-  </div>
+	<h6>Cerca indirizzo</h6>
+	<div class="col col-12">
+		<form [formGroup]="form">
+			<ddc-init-address-search
+				[id]="'as1'"
+				[field]="autocomplete1"
+				(addressEmit)="keepAddress($event)"
+			>
+			</ddc-init-address-search>
+		</form>
+	</div>
 
-  Ultimo selezionato:<br />
-  {{lastSelected | json}}
-
+	Ultimo selezionato:<br />
+	{{ lastSelected | json }}
 </div>

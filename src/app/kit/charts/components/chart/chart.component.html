@@ -1,0 +1,507 @@
+<!--CONTAINER CHART-->
+<div *ngIf="data" [style.height]="height">
+	<ng-template #tooltipContentInner let-model="model">
+		<div class="tooltip-label" [innerHtml]="makeLabelTooltip(model)"></div>
+		<div class="tooltip-val" [innerHtml]="makeValueTooltip(model)"></div>
+	</ng-template>
+
+	<!--VERTICAL_BAR-->
+	<ngx-charts-bar-vertical
+		*ngIf="typeChart === chartType.VERTICAL_BAR"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[customColors]="options.customColors"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[roundDomains]="roundDomains"
+		[roundEdges]="roundEdges"
+		[yScaleMax]="yScaleMax"
+		[noBarWhenZero]="noBarWhenZero"
+		[showDataLabel]="showDataLabel"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-vertical>
+
+	<ngx-charts-bar-horizontal
+		*ngIf="typeChart === chartType.HORIZONTAL_BAR"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[customColors]="options.customColors"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[roundDomains]="roundDomains"
+		[roundEdges]="roundEdges"
+		[xScaleMax]="xScaleMax"
+		[noBarWhenZero]="noBarWhenZero"
+		[showDataLabel]="showDataLabel"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-horizontal>
+
+	<ngx-charts-bar-vertical-2d
+		*ngIf="typeChart === chartType.VERTICAL_BAR_GROUPED"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[groupPadding]="groupPadding"
+		[roundDomains]="roundDomains"
+		[roundEdges]="roundEdges"
+		[yScaleMax]="yScaleMax"
+		[noBarWhenZero]="noBarWhenZero"
+		[showDataLabel]="showDataLabel"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-vertical-2d>
+
+	<ngx-charts-bar-horizontal-2d
+		*ngIf="typeChart === chartType.HORIZONTAL_BAR_GROUPED"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[groupPadding]="groupPadding"
+		[roundDomains]="roundDomains"
+		[roundEdges]="roundEdges"
+		[xScaleMax]="xScaleMax"
+		[noBarWhenZero]="noBarWhenZero"
+		[showDataLabel]="showDataLabel"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-horizontal-2d>
+
+	<ngx-charts-bar-vertical-stacked
+		*ngIf="typeChart === chartType.VERTICAL_BAR_STACKED"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[roundDomains]="roundDomains"
+		[yScaleMax]="yScaleMax"
+		[noBarWhenZero]="noBarWhenZero"
+		[showDataLabel]="showDataLabel"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-vertical-stacked>
+
+	<ngx-charts-bar-horizontal-stacked
+		*ngIf="typeChart === chartType.HORIZONTAL_BAR_STACKED"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[roundDomains]="roundDomains"
+		[showDataLabel]="showDataLabel"
+		[xScaleMax]="xScaleMax"
+		[noBarWhenZero]="noBarWhenZero"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-horizontal-stacked>
+
+	<ngx-charts-bar-vertical-normalized
+		*ngIf="typeChart === chartType.VERTICAL_BAR_NORMALIZED"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[roundDomains]="roundDomains"
+		[noBarWhenZero]="noBarWhenZero"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-vertical-normalized>
+
+	<ngx-charts-bar-horizontal-normalized
+		*ngIf="typeChart === chartType.HORIZONTAL_BAR_NORMALIZED"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[tooltipDisabled]="tooltipDisabled"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[showGridLines]="showGridLines"
+		[barPadding]="barPadding"
+		[roundDomains]="roundDomains"
+		[noBarWhenZero]="noBarWhenZero"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-bar-horizontal-normalized>
+
+	<!-- PIE -->
+	<ngx-charts-pie-chart
+		*ngIf="typeChart === chartType.PIE"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[results]="data"
+		[animations]="animations"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[explodeSlices]="explodeSlices"
+		[labels]="showLabels"
+		[doughnut]="doughnut"
+		[arcWidth]="arcWidth"
+		[gradient]="gradient"
+		[tooltipDisabled]="tooltipDisabled"
+		(dblclick)="OnDblclick($event)"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-pie-chart>
+
+	<!--    [valueFormatting]="valueFormatting"-->
+	<ngx-charts-advanced-pie-chart
+		*ngIf="typeChart === chartType.PIE_ADVANCED"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[results]="data"
+		[animations]="animations"
+		[gradient]="gradient"
+		[tooltipDisabled]="tooltipDisabled"
+		[valueFormatting]="valueFormatting"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-advanced-pie-chart>
+	<ngx-charts-pie-grid
+		*ngIf="typeChart === chartType.PIE_GRID"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[results]="data"
+		[animations]="animations"
+		[tooltipDisabled]="tooltipDisabled"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+		<ng-template #tooltipTemplate let-model="model">
+			<ng-container
+				*ngTemplateOutlet="
+					tooltipContent ? tooltipContent : tooltipContentInner;
+					context: { model: model }
+				"
+			>
+			</ng-container>
+		</ng-template>
+	</ngx-charts-pie-grid>
+
+	<!-- LINE -->
+	<ngx-charts-line-chart
+		*ngIf="typeChart === chartType.LINE"
+		class="chart-container"
+		[view]="options.view"
+		[scheme]="options.colorScheme"
+		[schemeType]="options.schemeType"
+		[results]="data"
+		[animations]="animations"
+		[legend]="showLegend"
+		[legendTitle]="legendTitle"
+		[legendPosition]="legendPosition"
+		[gradient]="gradient"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[showXAxisLabel]="showXAxisLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[xAxisLabel]="xAxisLabel"
+		[yAxisLabel]="yAxisLabel"
+		[autoScale]="autoScale"
+		[xScaleMin]="xScaleMin"
+		[xScaleMax]="xScaleMax"
+		[yScaleMin]="yScaleMin"
+		[yScaleMax]="yScaleMax"
+		[timeline]="timeline"
+		[showGridLines]="showGridLines"
+		[curve]="curve"
+		[rangeFillOpacity]="rangeFillOpacity"
+		[roundDomains]="roundDomains"
+		[tooltipDisabled]="tooltipDisabled"
+		[trimXAxisTicks]="trimXAxisTicks"
+		[trimYAxisTicks]="trimYAxisTicks"
+		[rotateXAxisTicks]="rotateXAxisTicks"
+		[maxXAxisTickLength]="maxXAxisTickLength"
+		[maxYAxisTickLength]="maxYAxisTickLength"
+		(select)="onSelectData($event)"
+		(legendLabelClick)="onLegendLabelClick($event)"
+		(activate)="onActivateData($event)"
+		(deactivate)="onDeactivateData($event)"
+	>
+	</ngx-charts-line-chart>
+</div>
+<!--CONTAINER CHART-->

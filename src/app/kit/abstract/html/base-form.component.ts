@@ -1,5 +1,13 @@
 import { BaseComponent } from '../base.component';
-import { OnInit, OnDestroy, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+	OnInit,
+	OnDestroy,
+	AfterViewInit,
+	Input,
+	Output,
+	EventEmitter,
+	Directive,
+} from '@angular/core';
 import { ApplicationLoggerService } from '../../logger/services/application-logger.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -7,8 +15,12 @@ import { BehaviourObserverModel } from '../../config/models/behaviour-observer.m
 import { ObjectUtility } from '../../config/utility/object.utility';
 import { EnumFormMode } from '../../html/enums/form-mode.enum';
 
-export abstract class BaseFormComponent extends BaseComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
+export abstract class BaseFormComponent
+	extends BaseComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	/**
 	 * Emesso al caricamento del modello da api
 	 */
@@ -122,6 +134,30 @@ export abstract class BaseFormComponent extends BaseComponent
 		}
 	}
 
+	reloadModel() {
+		this.startLoading();
+		this.setModelBehaviour().actionPre();
+		this.subModel = this.setModel().subscribe(
+			(res) => {
+				this.setModelBehaviour().actionResponse(res);
+				if (res) {
+					this._model = res;
+					this.idModel = ObjectUtility.resolvePropertyModel(this.getModelFieldForId(), this.model);
+					this.fillForm(this.form, this.model);
+				} else {
+					this._model = {};
+				}
+				this.afterModel(res);
+				this.loadEmit.emit(this.idModel);
+				this.stopLoading();
+			},
+			(err) => {
+				this.setModelBehaviour().actionError(err);
+				this.stopLoading();
+			},
+		);
+	}
+
 	enable() {
 		this.form.enable();
 	}
@@ -138,8 +174,9 @@ export abstract class BaseFormComponent extends BaseComponent
 	 * Cambia la modalità (DETAIL, UPDATE o NEW) di visualizzazione del form
 	 * @param mode modalità di visualizzazione
 	 * @param initReset se fornita definisce un pattern di inizializzazione del form al reset (modalità NEW)
+	 * @param initUpdate se fornita definisce un pattern di inizializzazione del form all'edit  (modalità UPDATE)
 	 */
-	changeMode(mode: EnumFormMode, initReset?: () => {}) {
+	changeMode(mode: EnumFormMode, initReset?: () => any, initUpdate?: () => any) {
 		this.mode = mode;
 		switch (mode) {
 			case EnumFormMode.DETAIL:
@@ -149,6 +186,9 @@ export abstract class BaseFormComponent extends BaseComponent
 			case EnumFormMode.UPDATE:
 				this.enable();
 				this.readonly = false;
+				if (initUpdate) {
+					initUpdate();
+				}
 				break;
 			case EnumFormMode.NEW:
 				this.enable();

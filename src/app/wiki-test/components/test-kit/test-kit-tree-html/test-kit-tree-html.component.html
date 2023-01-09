@@ -1,0 +1,88 @@
+<h4>Modulo Tree Html</h4>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseTreeHtml"
+	aria-expanded="false"
+	aria-controls="collapseTreeHtml"
+>
+	TreeHtmlComponent
+</button>
+
+<div class="collapse" id="collapseTreeHtml">
+	<div class="mt-3">
+		Il componente <strong>TreeHtmlComponent</strong> consente di costruire un albero di navigazione
+		e viene configuarto con i seguenti parametri di input
+		<ul>
+			<li><strong>nodes: TreeHtmlModel[]</strong> che definisce l'array dei nodi principali</li>
+			<li><strong>childrens: TreeHtmlModel[]</strong> che definisce un array di nodi figli</li>
+			<li>
+				<strong>initialOptions: ITreeOptions</strong> che definisce i parametri di configurazione
+				del componente
+			</li>
+			<li><strong>flgCheckbox: boolean</strong> se true fa comparire le checkbox sui nodi</li>
+			<li>
+				<strong>flgCheckboxDistinct: boolean</strong> se true gestisce distintamente i checkbox
+			</li>
+			<li>
+				<strong>fnForChildren</strong> dato un nodo con <b>node.children=undefined</b> e
+				<b>node.hasChildren=true</b> e le proprietà <b>flgLoadChildrens=true</b> e
+				<b>flgUseFnForChildren=true</b>, questa funzione identifica la chiamata da fare al click del
+				nodo per caricare in maniera asincrona i suoi figli
+			</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```ts
+          const nodeA1 = new TreeHtmlModel();
+          nodeA1.id = 1;
+          nodeA1.name = 'Nodo 1';
+          nodeA1.hasChildren = true; /* important */
+          ...
+          const nodeA1_1 = new TreeHtmlModel();
+          nodeA1_1.id = 1.1;
+          nodeA1_1.name = 'Foglia 1.1';
+          nodeA1_1.hasChildren = false; /* important */
+          ...
+
+          nodeA1.children = [nodeA1_1, nodeA1_2];
+
+          this.nodesA = [nodeA1, nodeA2];
+
+        ```
+
+        ```html
+
+          &lt;ddc-init-tree-html [nodes]="nodesA"&gt;&lt;/ddc-init-tree-html &gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>tree html semplice</h5>
+	<ddc-init-tree-html *ngIf="nodesA && nodesA.length" [nodes]="nodesA"> </ddc-init-tree-html>
+	<hr />
+
+	<h5>tree html con checkbox (seleziona intero nodo con figli)</h5>
+	<ddc-init-tree-html *ngIf="nodesB && nodesB.length" [nodes]="nodesB" [flgCheckbox]="true">
+	</ddc-init-tree-html>
+	<hr />
+
+	<h5>tree html con checkbox distinte (selezione singoli nodi e figli)</h5>
+	<ddc-init-tree-html
+		*ngIf="nodesC && nodesC.length"
+		[nodes]="nodesC"
+		[flgCheckbox]="true"
+		[flgCheckboxDistinct]="true"
+	>
+	</ddc-init-tree-html>
+	<hr />
+</div>

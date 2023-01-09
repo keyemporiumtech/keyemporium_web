@@ -34,6 +34,8 @@ import { ActivityaddressService } from './services/activityaddress.service';
 import { ActivityattachmentService } from './services/activityattachment.service';
 import { OauthloginService } from './services/oauthlogin.service';
 import { TestUserOauthComponent } from './components/test-authentication/test-user-oauth/test-user-oauth.component';
+import { InputReferenceComponent } from './components/input-reference/input-reference.component';
+import { TestInputReferenceComponent } from './components/test-authentication/test-input-reference/test-input-reference.component';
 
 @NgModule({
 	declarations: [
@@ -45,6 +47,8 @@ import { TestUserOauthComponent } from './components/test-authentication/test-us
 		UserProfilesComponent,
 		UserOauthComponent,
 		TestUserOauthComponent,
+		InputReferenceComponent,
+		TestInputReferenceComponent,
 	],
 	imports: [
 		CommonModule,
@@ -65,6 +69,8 @@ import { TestUserOauthComponent } from './components/test-authentication/test-us
 		UserProfilesComponent,
 		UserOauthComponent,
 		TestUserOauthComponent,
+		InputReferenceComponent,
+		TestInputReferenceComponent,
 	],
 })
 export class AuthenticationModule {

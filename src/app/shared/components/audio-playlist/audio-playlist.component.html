@@ -1,26 +1,38 @@
-<div *ngFor="let audio of playlist; let i=index" class="playlist">
-
-  <div class="row audio-item">
-    <div class="col">
-      <div *ngIf="audio.title" class="audio-title"
-        [innerHTML]="translateKey(audio.title)| translate:translateParams(audio.title)"></div>
-      <span *ngIf="audio.author" class="audio-author">({{audio.author}})</span>
-      <hr />
-      <div *ngIf="audio.description" class="audio-description"
-        [innerHTML]="translateKey(audio.description)| translate:translateParams(audio.description)"></div>
-    </div>
-    <div class="col">
-      <div [hidden]="i!==currentPlaylistIndex">
-        <ddc-init-embed-audio #embedAudios [path]="audio.path" [controls]="controls" [initVolume]="initVolume"
-          (endedEmit)="onEnd($event)">
-        </ddc-init-embed-audio>
-      </div>
-      <div [hidden]="i===currentPlaylistIndex">
-        <span *ngIf="audio.duration" class="audio-duration">{{audio.durationText}}</span>
-        <a class="btn btn-sm btn-primary ml-2" (click)="change(i)">
-          <span class="fa fa-play text-white"></span>
-        </a>
-      </div>
-    </div>
-  </div>
+<div *ngFor="let audio of playlist; let i = index" class="playlist">
+	<div class="row audio-item">
+		<div class="col">
+			<div
+				*ngIf="audio.title"
+				class="audio-title"
+				[innerHTML]="translateKey(audio.title) | translate : translateParams(audio.title)"
+			></div>
+			<span *ngIf="audio.author" class="audio-author">({{ audio.author }})</span>
+			<hr />
+			<div
+				*ngIf="audio.description"
+				class="audio-description"
+				[innerHTML]="
+					translateKey(audio.description) | translate : translateParams(audio.description)
+				"
+			></div>
+		</div>
+		<div class="col">
+			<div [hidden]="i !== currentPlaylistIndex">
+				<ddc-init-embed-audio
+					#embedAudios
+					[path]="audio.path"
+					[controls]="controls"
+					[initVolume]="initVolume"
+					(endedEmit)="onEnd($event)"
+				>
+				</ddc-init-embed-audio>
+			</div>
+			<div [hidden]="i === currentPlaylistIndex">
+				<span *ngIf="audio.duration" class="audio-duration">{{ audio.durationText }}</span>
+				<a class="btn btn-sm btn-primary ml-2" (click)="change(i)">
+					<span class="fa fa-play text-white"></span>
+				</a>
+			</div>
+		</div>
+	</div>
 </div>

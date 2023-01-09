@@ -1,5 +1,5 @@
 import { BaseComponent, ApplicationLoggerService } from '@ddc/kit';
-import { OnChanges, Input } from '@angular/core';
+import { OnChanges, Input, Directive } from '@angular/core';
 import { MapIconInterface } from '../../openstreetmap/interfaces/map-icon.interface';
 import { MapMarkerInterface } from '../../openstreetmap/interfaces/map-marker.interface';
 import { Subscription, timer } from 'rxjs';
@@ -7,6 +7,8 @@ import { OpenstreetmapService } from '../../openstreetmap/services/openstreetmap
 import { OpenstreetLocationModel } from '../../openstreetmap/models/openstreet-location.model';
 declare let L: any;
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseMapComponent extends BaseComponent implements OnChanges {
 	@Input() latitude: number;
 	@Input() longitude: number;

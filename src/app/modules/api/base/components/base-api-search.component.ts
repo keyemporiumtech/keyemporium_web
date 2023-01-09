@@ -5,12 +5,14 @@ import { ApiModel } from '../../cakeutils/base/api.model';
 import { DBPaginateInterface } from '../../cakeutils/interfaces/db-paginate.interface';
 import { DBOrderInterface } from '../../cakeutils/interfaces/db-order.interface';
 import { DbFilterInterface } from '../../cakeutils/interfaces/db-filter.interface';
-import { Input } from '@angular/core';
+import { Input, Directive } from '@angular/core';
 import { ApiInputQueryInterface } from '../../cakeutils/interfaces/api-input-query.interface';
 
 /**
  * Classe da estendere per la definizione di un componente di ricerca
  */
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseApiSearchComponent<M extends ApiModel> extends BaseSearchComponent<M> {
 	@Input() querySearch: ApiInputQueryInterface;
 

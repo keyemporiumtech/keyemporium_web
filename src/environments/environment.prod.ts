@@ -1,11 +1,11 @@
-import { version } from '../../package.json';
-import { template } from '../../versioning.json';
+import packageInfo from '../../package.json';
+import versioningInfo from '../../versioning.json';
 export const environment = {
-	VERSION: version,
-	TEMPLATE_VERSION: template,
+	VERSION: packageInfo.version,
+	TEMPLATE_VERSION: versioningInfo.template,
 	production: true,
 	appName: '&copy; Keyemporium',
-	clientId: 'keyemporium-web',
+	clientId: 'KEYEMPORIUM_REST',
 	activityPIVA: undefined,
 	api: {
 		tokenApp: 'ab7414e3975ae96b2d6ef4bf641252feda9d633b',
@@ -140,5 +140,10 @@ export const environment = {
 			serviceFunctions: '#1b2631',
 			security: '#F2D7D5',
 		},
+	},
+	contacts: {
+		contactName: 'Keyemporium Team',
+		contactEmail: 'keyemporium.manager@gmail.com',
+		contactPhone: '393281044127',
 	},
 };

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ApplicationLoggerService, CustomValidators, CustomValidatorsMessages } from '@ddc/kit';
 import { BaseInputComponent } from '../base-input.component';
 
@@ -6,6 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-email',
 	templateUrl: './input-email.component.html',
 	styleUrls: ['./input-email.component.scss'],
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputEmailComponent extends BaseInputComponent {
 	constructor(applicationLogger: ApplicationLoggerService) {

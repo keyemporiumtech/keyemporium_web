@@ -30,6 +30,8 @@ export * from "./esri/services/esri-geo.service";
 export * from "./geo/interfaces/geo-ref.interface";
 export * from "./geo/utility/geo.utility";
 export * from "./initial/initial.module";
+export * from "./maps/maps.module";
+export * from "./maps/utility/maps.utility";
 export * from "./openstreetmap/openstreetmap.module";
 export * from "./openstreetmap/converters/openstreet-address.converter";
 export * from "./openstreetmap/converters/openstreet-extratag-image.converter";

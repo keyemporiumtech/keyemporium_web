@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ApplicationLoggerService, OptionListModel } from '@ddc/kit';
 import { BaseInputComponent } from '../base-input.component';
 
@@ -6,6 +6,7 @@ import { BaseInputComponent } from '../base-input.component';
 	selector: 'ddc-init-input-radio',
 	templateUrl: './input-radio.component.html',
 	styleUrls: ['./input-radio.component.scss'],
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputRadioComponent extends BaseInputComponent {
 	@Input() options: OptionListModel[];

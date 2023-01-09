@@ -42,9 +42,12 @@ import { InputColorComponent } from './form/input-color/input-color.component';
 import { InputPasswordComponent } from './form/input-password/input-password.component';
 import { AddressSearchComponent } from './components/address-search/address-search.component';
 import { CheckPlatformComponent } from './components/check-platform/check-platform.component';
-import { DeviceDetectorModule } from 'ngx-device-detector';
 import { CookieChoiceComponent } from './components/banner-cookie/cookie-choice/cookie-choice.component';
 import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
+import { AccordionContainerComponent } from './components/accordion-container/accordion-container.component';
+import { GmapComponent } from './components/gmap/gmap.component';
+import { InputUrlComponent } from './form/input-url/input-url.component';
 
 @NgModule({
 	declarations: [
@@ -87,18 +90,13 @@ import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
 		CheckPlatformComponent,
 		CookieChoiceComponent,
 		CookiePageComponent,
+		AccordionComponent,
+		AccordionContainerComponent,
+		GmapComponent,
+		InputUrlComponent,
 	],
-	imports: [
-		CommonModule,
-		TranslateModule,
-		FormsModule,
-		ReactiveFormsModule,
-		DeviceDetectorModule.forRoot(),
-		KitModule,
-		RestModule,
-	],
+	imports: [CommonModule, TranslateModule, FormsModule, ReactiveFormsModule, KitModule, RestModule],
 	exports: [
-		DeviceDetectorModule,
 		MessageElementComponent,
 		MessagePageComponent,
 		ErrorFieldComponent,
@@ -138,6 +136,10 @@ import { CookiePageComponent } from './pages/cookie-page/cookie-page.component';
 		CheckPlatformComponent,
 		CookieChoiceComponent,
 		CookiePageComponent,
+		AccordionComponent,
+		AccordionContainerComponent,
+		GmapComponent,
+		InputUrlComponent,
 	],
 })
 export class SharedModule {

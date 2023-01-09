@@ -1,5 +1,6 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
+/* eslint-disable no-useless-escape */
 export class CustomValidators {
 	static isInteger = (control: AbstractControl) => {
 		const numberRegex = /^[0-9]\d*$/;

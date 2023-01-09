@@ -1,6 +1,8 @@
-import { Input } from '@angular/core';
+import { Input, Directive } from '@angular/core';
 import { BaseComponent } from '../../../../abstract/base.component';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseLoadingModel extends BaseComponent {
 	private _loadingColor: string = '#000';
 

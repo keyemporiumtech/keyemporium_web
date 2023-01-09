@@ -48,3 +48,4 @@ Thumbs.db
 
 # Application
 package-lock.json
+.angular

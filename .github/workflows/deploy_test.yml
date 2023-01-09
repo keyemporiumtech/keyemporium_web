@@ -1,0 +1,40 @@
+name: CI -> Deploy TEST
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ""
+
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "10.16.0"
+      - name: Install NPM Modules
+        run: |
+          npm install -g @angular/cli@7.3.1
+          npm install
+
+      - name: Build Project
+        run: npm run build::test
+
+      - name: Copy files
+        run: |
+          xcopy src\config\deploy\test dist\${{ secrets.APP_NAME }} /E/Y
+
+      # FTP
+      - uses: actions/checkout@v1
+
+      - name: Upload FTP
+        uses: sebastianpopp/git-ftp-action@releases/v3
+        with:
+          url: ftp://${{ secrets.FTP_SERVER }}/${{ secrets.PATH_TEST }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          syncroot: "./dist/${{ secrets.APP_NAME }}"
+          options: "--auto-init"

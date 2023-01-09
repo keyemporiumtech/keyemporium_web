@@ -8,7 +8,7 @@ import {
 } from '@ddc/kit';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { LanguageSystemService } from '../../base/language-system.service';
 import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
 import { InputSelectComponent } from '../../../../shared/form/input-select/input-select.component';
@@ -26,7 +26,8 @@ export class AppLanguagesComponent extends BaseComponent {
 
 	@Input() label: string | StringTranslate;
 	@Input() showLabel: boolean = true;
-	@ViewChild('languages') languages: InputSelectComponent;
+	@Input() hideArrows: boolean = false;
+	@ViewChild('languages', { static: false }) languages: InputSelectComponent;
 
 	formLanguage: FormGroup;
 	validations: any = {};
@@ -76,15 +77,18 @@ export class AppLanguagesComponent extends BaseComponent {
 			.valueChanges.pipe(distinctUntilChanged())
 			.pipe(
 				switchMap((language) => {
-					return this.languageSystemService.setupLanguage(language).pipe(
-						map((res) => {
-							this.changeEmit.emit(language);
-							return res;
-						}),
-					);
+					return this.setupAndReload(language);
 				}),
 			)
-			.subscribe();
+			.subscribe((resp) => {
+				this.optionLanguages.length = 0;
+				this.optionLanguages = resp.options;
+				if (this.languages) {
+					this.languages.setOnlySelectedOption(
+						this.optionLanguages.find((el) => el.key === resp.selected),
+					);
+				}
+			});
 	}
 	ngAfterViewInitForChildren() {}
 	ngOnDestroyForChildren() {
@@ -97,5 +101,37 @@ export class AppLanguagesComponent extends BaseComponent {
 	}
 	getClassName(): string {
 		return 'AppLanguagesComponent';
+	}
+
+	private setupAndReload(
+		language: string,
+	): Observable<{ selected: string; options: OptionListModel[] }> {
+		const $obsLanguagesReload = this.showImage
+			? this.languageSystemService.languagesHTML(this.filters)
+			: this.languageSystemService.languages(this.filters);
+		return this.languageSystemService.setupLanguage(language).pipe(
+			switchMap((data) => {
+				this.changeEmit.emit(language);
+				return $obsLanguagesReload.pipe(
+					map((resp) => {
+						return { selected: language, options: resp };
+					}),
+				);
+			}),
+		);
+	}
+
+	// utils
+	selectByCod(cod: string) {
+		const language = this.optionLanguages.find((el) => el.key === cod);
+		if (language && this.languages) {
+			this.languages.selectItem(language);
+		}
+	}
+	select(language: OptionListModel) {
+		const index = this.optionLanguages.findIndex((el) => el.key === language.key);
+		if (index !== -1 && this.languages) {
+			this.languages.selectItem(language);
+		}
 	}
 }

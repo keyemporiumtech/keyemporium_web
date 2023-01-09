@@ -35,7 +35,7 @@ export class EmbedVideoComponent extends BaseComponent {
 	@Output() endedEmit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	// HTML 5
-	@ViewChild('playerElementRef') playerElementRef: ElementRef;
+	@ViewChild('playerElementRef', { static: false }) playerElementRef: ElementRef;
 	player: HTMLAudioElement;
 	duration: number;
 	status: EnumStatusPlayer;

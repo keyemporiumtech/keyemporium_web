@@ -19,6 +19,17 @@ export class ContactreferenceModel extends ApiModel {
 	private _referenceimage: string; // base64
 	private _socialimage: string; // base64
 
+	get text(): string {
+		if (
+			this.tpcontactreferenceEnum === EnumContactreferenceType.TEL ||
+			this.tpcontactreferenceEnum === EnumContactreferenceType.CEL ||
+			this.tpcontactreferenceEnum === EnumContactreferenceType.FAX
+		) {
+			return this.prefix + ' ' + this.val;
+		}
+		return this.val;
+	}
+
 	/**
 	 * Getter cod
 	 * @return {string}

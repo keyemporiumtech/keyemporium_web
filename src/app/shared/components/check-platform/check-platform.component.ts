@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DeviceDetectorService, DeviceInfo } from 'ngx-device-detector';
 import { environment } from '../../../../environments/environment';
 import { BaseComponent, ApplicationLoggerService } from '@ddc/kit';

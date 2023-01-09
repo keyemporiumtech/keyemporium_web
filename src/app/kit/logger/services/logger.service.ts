@@ -252,10 +252,10 @@ export class LoggerService {
 			};
 		} else {
 			// if  log is disabled i skip it
-			writer.info = function() {};
-			writer.debug = function() {};
-			writer.error = function() {};
-			writer.messageColor = function() {};
+			writer.info = function () {};
+			writer.debug = function () {};
+			writer.error = function () {};
+			writer.messageColor = function () {};
 		}
 	}
 }

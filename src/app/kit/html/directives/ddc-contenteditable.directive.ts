@@ -15,11 +15,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 	selector: '[ddcContenteditable]',
 })
 export class DdcContenteditableDirective implements OnChanges {
-	// tslint:disable-next-line:no-input-rename
+	// eslint-disable-next-line @angular-eslint/no-input-rename
 	@Input('model') model: any = '';
-	// tslint:disable-next-line:no-output-rename
+	// eslint-disable-next-line @angular-eslint/no-output-rename
 	@Output('update') update = new EventEmitter();
-	// tslint:disable-next-line:no-input-rename
+	// eslint-disable-next-line @angular-eslint/no-input-rename
 	@Input('html') html?: boolean = true;
 
 	private lastViewModel: any;

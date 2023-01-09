@@ -1,14 +1,18 @@
-<ddc-init-form-page [form]="form" [flgOnInitValidation]="true" [groups]="groups"></ddc-init-form-page>
+<ddc-init-form-page
+	[form]="form"
+	[flgOnInitValidation]="true"
+	[groups]="groups"
+></ddc-init-form-page>
 
 <div>
-  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.UPDATE)">
-    <span class="fa fa-edit mr-2"></span>Modifica
-  </a>
-  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.DETAIL)">
-    <span class="fa fa-eye mr-2"></span>Lettura
-  </a>
-  <button class="btn btn-sm btn-dark text-white mr-2" [disabled]="!form.valid" (click)="save()">
-    <span class="fa fa-save mr-2"></span>Salva
-  </button>
-  <div *ngIf="modelToSave">{{modelToSave | json}}</div>
+	<a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.UPDATE)">
+		<span class="fa fa-edit mr-2"></span>Modifica
+	</a>
+	<a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.DETAIL)">
+		<span class="fa fa-eye mr-2"></span>Lettura
+	</a>
+	<button class="btn btn-sm btn-dark text-white mr-2" [disabled]="!form.valid" (click)="save()">
+		<span class="fa fa-save mr-2"></span>Salva
+	</button>
+	<div *ngIf="modelToSave">{{ modelToSave | json }}</div>
 </div>

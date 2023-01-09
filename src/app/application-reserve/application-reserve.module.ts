@@ -13,8 +13,23 @@ import { LayoutReserveComponent } from './template/layout-reserve/layout-reserve
 import { HeaderReserveComponent } from './template/header-reserve/header-reserve.component';
 import { FooterReserveComponent } from './template/footer-reserve/footer-reserve.component';
 import { AuthenticationModule } from '../modules/authentication/authentication.module';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ValidatorPasswordModule } from '../modules/validator-password/validator-password.module';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ResourcesModule } from '../modules/resources/resources.module';
+import { VicPageComponent } from './pages/vic-page/vic-page.component';
+import { ProfileImageComponent } from './components/profile/profile-image/profile-image.component';
+import { ProfileAddressComponent } from './components/profile/profile-address/profile-address.component';
+import { LocalesystemModule } from '../modules/localesystem/localesystem.module';
+import { ProfileCellComponent } from './components/profile/profile-cell/profile-cell.component';
+import { ProfileListComponent } from './components/profile-list/profile-list.component';
+import { ProfileListImagesComponent } from './components/profile-list/profile-list-images/profile-list-images.component';
+import { ProfileListAttachmentsComponent } from './components/profile-list/profile-list-attachments/profile-list-attachments.component';
+import { ProfileListAddressesComponent } from './components/profile-list/profile-list-addresses/profile-list-addresses.component';
+import { ProfileListPhonesComponent } from './components/profile-list/profile-list-phones/profile-list-phones.component';
+import { ProfileListEmailsComponent } from './components/profile-list/profile-list-emails/profile-list-emails.component';
+import { ProfileListLinksComponent } from './components/profile-list/profile-list-links/profile-list-links.component';
+import { AppKeyemporiumModule } from '../modules/app-keyemporium/app-keyemporium.module';
+import { ProfileAttachmentComponent } from './components/profile/profile-attachment/profile-attachment.component';
 
 @NgModule({
 	declarations: [
@@ -22,7 +37,19 @@ import { ValidatorPasswordModule } from '../modules/validator-password/validator
 		LayoutReserveComponent,
 		HeaderReserveComponent,
 		FooterReserveComponent,
-		ProfilePageComponent,
+		ProfileComponent,
+		ProfileImageComponent,
+		VicPageComponent,
+		ProfileAddressComponent,
+		ProfileCellComponent,
+		ProfileListComponent,
+		ProfileListImagesComponent,
+		ProfileListAttachmentsComponent,
+		ProfileListAddressesComponent,
+		ProfileListPhonesComponent,
+		ProfileListEmailsComponent,
+		ProfileListLinksComponent,
+		ProfileAttachmentComponent,
 	],
 	imports: [
 		CommonModule,
@@ -38,6 +65,9 @@ import { ValidatorPasswordModule } from '../modules/validator-password/validator
 		// modules
 		ValidatorPasswordModule.forRoot(),
 		AuthenticationModule.forRoot(),
+		ResourcesModule.forRoot(),
+		LocalesystemModule.forRoot(),
+		AppKeyemporiumModule.forRoot(),
 	],
 })
 export class ApplicationReserveModule {

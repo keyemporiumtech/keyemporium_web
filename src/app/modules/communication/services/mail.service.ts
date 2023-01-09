@@ -25,6 +25,12 @@ import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.uti
 import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
 import { communicationList } from '../constants/communication.list';
 import { MailDetailConverter } from '../converters/mail-detail.converter';
+import { MailUserModel } from '../models/mail-user.model';
+import { AttachmentModel } from '../../resources/models/attachment.model';
+import { MailConfigModel } from '../models/mail-config.model';
+import { MailUserConverter, MailUserUtilConverter } from '../converters/mail-user.converter';
+import { AttachmentUtilConverter } from '../../resources/converters/attachment.converter';
+import { MailConfigUtilConverter } from '../converters/mail-config.converter';
 
 @Injectable()
 export class MailService extends ApiService {
@@ -160,6 +166,75 @@ export class MailService extends ApiService {
 	}
 
 	// ---------------- DETAILED
+	send(
+		subject: string,
+		message: string,
+		senderIn: MailUserModel,
+		destinatorsIn?: MailUserModel[],
+		ccIn?: MailUserModel[],
+		ccnIn?: MailUserModel[],
+		attachmentsIn?: AttachmentModel[],
+		cidsIn?: AttachmentModel[],
+		mailerIn?: MailConfigModel,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<boolean> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'sender',
+			MailUserUtilConverter.toDto(senderIn),
+		);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'subject', subject);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'destinators',
+			MailUserUtilConverter.toDtoList(destinatorsIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'cc',
+			MailUserUtilConverter.toDtoList(ccIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'ccn',
+			MailUserUtilConverter.toDtoList(ccnIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'attachments',
+			AttachmentUtilConverter.toDtoList(attachmentsIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'cids',
+			AttachmentUtilConverter.toDtoList(cidsIn),
+		);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'message', message);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'mailer',
+			MailConfigUtilConverter.toDto(mailerIn),
+		);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + communicationList.mail.send;
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
+			map((res) => (res === 1 ? true : false)),
+		);
+	}
+
 	detail(
 		id?: string,
 		requestManager?: RequestManagerInterface,

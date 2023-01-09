@@ -11,7 +11,7 @@ export class TestSharedBannerCookieComponent implements OnInit {
 	position: EnumBannerPosition;
 	EnumBannerPosition = EnumBannerPosition;
 	load: boolean;
-	@ViewChild('bannerTest') bannerTest: BannerCookieComponent;
+	@ViewChild('bannerTest', { static: false }) bannerTest: BannerCookieComponent;
 	constructor() {}
 
 	ngOnInit() {}

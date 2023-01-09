@@ -5,15 +5,19 @@ import {
 	BehaviourObserverModel,
 	ObjectUtility,
 } from '@ddc/kit';
-import { Input, OnInit, OnDestroy } from '@angular/core';
+import { Input, OnInit, OnDestroy, Directive } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { PaginatorModel } from '../../pagination/models/paginator.model';
 /**
  * Classe da estendere per la definizione di un componente di ricerca
  */
-export abstract class BaseSearchComponent<M extends BaseModel> extends BaseComponent
-	implements OnInit, OnDestroy {
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
+export abstract class BaseSearchComponent<M extends BaseModel>
+	extends BaseComponent
+	implements OnInit, OnDestroy
+{
 	@Input() searchOnLoad: boolean; // avvio della ricerca all'onLoad del componente
 	@Input() formFilters: FormGroup; // filtri di ricerca iniziali
 	@Input() initFilters: any[]; // filtri di ricerca iniziali

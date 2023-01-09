@@ -1,52 +1,55 @@
-@import "theme/bootstrap-var.scss";
-@import "theme/edit.scss";
-@import "styles-application.scss";
-@import '~angular-tree-component/dist/angular-tree-component.css';
+@import 'theme/bootstrap-var.scss';
+@import 'theme/edit.scss';
+@import 'styles-application.scss';
+@import 'styles-application-media.scss';
+@import 'styles-project.scss';
+@import 'styles-project-media.scss';
+@import '~@circlon/angular-tree-component/css/angular-tree-component.css';
 /* You can add global styles to this file, and also import other style files */
 a {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .cursor-pointer {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .wiki {
-  .separatore {
-    height: 1rem;
-    background-color: black;
-  }
+	.separatore {
+		height: 1rem;
+		background-color: black;
+	}
 }
 
 /* CONTAINER FLEX */
-.container-flex-horizontal{
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  position: relative;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: content-box;
+.container-flex-horizontal {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	position: relative;
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 0 20px;
+	box-sizing: content-box;
 
-  .child{
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      position: relative;
-  }
+	.child {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		position: relative;
+	}
 }

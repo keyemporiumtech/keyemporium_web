@@ -22,6 +22,12 @@ export abstract class BaseApiConverter<M extends ApiModel, D extends ApiDTO> ext
 		if (dto['modified']) {
 			model['modified'] = dto['modified'];
 		}
+		if (dto['grouprelation_cod']) {
+			model['grouprelation_cod'] = dto['grouprelation_cod'];
+		}
+		if (dto['grouprelation_groupcod']) {
+			model['grouprelation_groupcod'] = dto['grouprelation_groupcod'];
+		}
 	}
 
 	convertCommonPropertiesToDto(dto: D, model: M) {

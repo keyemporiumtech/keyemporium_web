@@ -1,0 +1,66 @@
+<div class="container-loading">
+	<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+
+	<div *ngIf="!list || !list.length">{{ 'PERSONAL.VIC.IMAGE.EMPTY_LIST' | translate }}</div>
+
+	<div *ngIf="list && list.length">
+		<div class="row p-2" *ngFor="let image of list">
+			<div *ngIf="image.src" ddcBtsSize [btsSize]="'1|2|12'" [btsPrefix]="'col-'">
+				<img [attr.src]="image.src | escapeurl" class="img-fluid icon-list" />
+			</div>
+			<div ddcBtsSize [btsSize]="'9|7|12'" [btsPrefix]="'col-'">
+				{{ image.name }}.{{ image.ext }} [{{ getSize(image) }}]
+			</div>
+			<div ddcBtsSize [btsSize]="'2|3|12'" [btsPrefix]="'col-'">
+				<a class="mr-2" (click)="modifica(image)" title="{{ 'PERSONAL.BUTTON.EDIT' | translate }}">
+					<span class="fa fa-edit mr-2 text-primary"></span>
+					<span>{{ 'PERSONAL.BUTTON.EDIT' | translate }}</span>
+				</a>
+				<shared-confirmation-modal
+					#delConfirm
+					[text]="getConfirmDelText(image)"
+					(confirm)="elimina(image.id); delConfirm.close()"
+				>
+					<a
+						class="mr-2"
+						(click)="delConfirm.open()"
+						title="{{ 'PERSONAL.BUTTON.DELETE' | translate }}"
+					>
+						<span class="fa fa-trash mr-2 text-danger"></span>
+						<span>{{ 'PERSONAL.BUTTON.DELETE' | translate }}</span>
+					</a>
+				</shared-confirmation-modal>
+			</div>
+		</div>
+	</div>
+
+	<!-- form -->
+	<div *ngIf="editMode" class="card border-primary mt-4 p-3">
+		<div class="card-header">
+			<a class="m-2" (click)="close()" title="{{ 'PERSONAL.BUTTON.CLOSE' | translate }}">
+				<span class="fa fa-times fa-2x mr-2 text-danger"></span>
+			</a>
+		</div>
+		<div class="card-body text-primary">
+			<h5 *ngIf="titleForm" class="card-title">
+				{{ translateKey(titleForm) | translate : translateParams(titleForm) }}
+			</h5>
+			<reserve-profile-image
+				[id_user]="id_user"
+				[id_image]="id_image"
+				[flgPrincipal]="false"
+				[blocked]="blocked"
+				[viewmode]="false"
+				(emitSave)="onSave($event)"
+			>
+			</reserve-profile-image>
+		</div>
+	</div>
+
+	<div class="float-right p-4">
+		<a class="mr-2" (click)="nuova()" title="{{ 'PERSONAL.BUTTON.ADD' | translate }}">
+			<span class="fa fa-plus-circle mr-2 text-primary"></span>
+			<span>{{ 'PERSONAL.BUTTON.ADD' | translate }}</span>
+		</a>
+	</div>
+</div>
