@@ -1,10 +1,18 @@
 <div class="card redial-border-light redial-shadow">
-  <div class="card-body">
-    <ddc-init-app-loading [loading]="!fileEmbed"></ddc-init-app-loading>
-    <ddc-init-embed-file *ngIf="fileEmbed" [object]="fileEmbed"
-      [classLinkClose]="'btn btn-secondary btn-circle redial-rounded-circle-50 float-right m-2'"
-      [classIconClose]="closeIcon" [styleIconClose]="'float:right'" [flagClose]="true" [flagTitle]="true"
-      [width]="width" [height]="height" (close)="closeFile($event)">
-    </ddc-init-embed-file>
-  </div>
+	<div class="card-body">
+		<ddc-init-app-loading [loading]="!fileEmbed"></ddc-init-app-loading>
+		<ddc-init-embed-file
+			*ngIf="fileEmbed"
+			[object]="fileEmbed"
+			[classLinkClose]="'btn btn-secondary btn-circle redial-rounded-circle-50 float-right m-2'"
+			[classIconClose]="closeIcon"
+			[styleIconClose]="'float:right'"
+			[flagClose]="true"
+			[flagTitle]="true"
+			[width]="width"
+			[height]="height"
+			(close)="closeFile($event)"
+		>
+		</ddc-init-embed-file>
+	</div>
 </div>

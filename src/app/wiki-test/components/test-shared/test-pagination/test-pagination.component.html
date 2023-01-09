@@ -1,71 +1,102 @@
 <h4>Pagination con tableList</h4>
 
 <div>
-  Il componente <strong>ddc-init-table-list</strong> ha il compito di disegnare una tabella di ricerca
-  con form di ricerca, tabella e pulsanti di paginazione.<br /><br />
-  In input per la gestione del <strong>Form di ricerca</strong> utilizza :
-  <ul>
-    <li><strong>formFilters: FormGroup</strong> che il form con i campi di ricerca</li>
-    <li><strong>groups: FormGroupModel[]</strong> che è l'insieme dei campi di input da passare al componente
-      <strong>ddc-init-page-form</strong>
-    </li>
-    <li><strong>flgOnInitValidation, flgOnSubmitValidation e submitted</strong> per gestire quando e come gestire il
-      pulsante di ricerca</li>
-  </ul>
+	Il componente <strong>ddc-init-table-list</strong> ha il compito di disegnare una tabella di
+	ricerca con form di ricerca, tabella e pulsanti di paginazione.<br /><br />
+	In input per la gestione del <strong>Form di ricerca</strong> utilizza :
+	<ul>
+		<li><strong>formFilters: FormGroup</strong> che il form con i campi di ricerca</li>
+		<li>
+			<strong>groups: FormGroupModel[]</strong> che è l'insieme dei campi di input da passare al
+			componente
+			<strong>ddc-init-page-form</strong>
+		</li>
+		<li>
+			<strong>flgOnInitValidation, flgOnSubmitValidation e submitted</strong> per gestire quando e
+			come gestire il pulsante di ricerca
+		</li>
+	</ul>
 
-  <br />
-  In input per la gestione della <strong>Tabella</strong> utilizza :
-  <ul>
-    <li><strong>colsTable: ColTableModel[]</strong> che è l'insieme delle colonne della tabella</li>
-    <li><strong>list: any[]</strong> che è la lista dei record da visualizzare</li>
-    <li><strong>orders: any[]</strong> che è un insieme di oggetti key-value per l'ordinamento dei campi</li>
-  </ul>
+	<br />
+	In input per la gestione della <strong>Tabella</strong> utilizza :
+	<ul>
+		<li><strong>colsTable: ColTableModel[]</strong> che è l'insieme delle colonne della tabella</li>
+		<li><strong>list: any[]</strong> che è la lista dei record da visualizzare</li>
+		<li>
+			<strong>orders: any[]</strong> che è un insieme di oggetti key-value per l'ordinamento dei
+			campi
+		</li>
+	</ul>
 
-  <br />
-  In input per la gestione della <strong>Paginazione</strong> utilizza :
-  <ul>
-    <li><strong>pagesNumbers: number[]</strong> che è l'insieme dei numeri di pagina con cui dividere la lista </li>
-    <li><strong>current: number</strong> che è la pagina corrente da cui iniziare la lista</li>
-  </ul>
+	<br />
+	In input per la gestione della <strong>Paginazione</strong> utilizza :
+	<ul>
+		<li>
+			<strong>pagesNumbers: number[]</strong> che è l'insieme dei numeri di pagina con cui dividere
+			la lista
+		</li>
+		<li><strong>current: number</strong> che è la pagina corrente da cui iniziare la lista</li>
+	</ul>
 
-  <br />
-  Per aggiungere una colonna da gestire separatamente è possibile utilizzare due template :
-  <ul>
-    <li><strong>templateActionsIntest: any</strong> che è la visualizzazione nelle colonne th di intestazione</li>
-    <li><strong>templateActionsRow: any</strong> che è la visualizzazione per ogni riga della tabella</li>
-  </ul>
+	<br />
+	Per aggiungere una colonna da gestire separatamente è possibile utilizzare due template :
+	<ul>
+		<li>
+			<strong>templateActionsIntest: any</strong> che è la visualizzazione nelle colonne th di
+			intestazione
+		</li>
+		<li>
+			<strong>templateActionsRow: any</strong> che è la visualizzazione per ogni riga della tabella
+		</li>
+	</ul>
 </div>
 
-
-<button class="btn btn-sm btn-info mr-2 mt-2" type="button" data-toggle="collapse"
-  data-target="#collapsePaginationMinimal" aria-expanded="false" aria-controls="collapsePaginationMinimal"
-  (click)="openCloseBox('PAGINATION_MINIMAL', 'collapsePaginationMinimal')">
-  Paginazione minimale, con setting statici
+<button
+	class="btn btn-sm btn-info mr-2 mt-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapsePaginationMinimal"
+	aria-expanded="false"
+	aria-controls="collapsePaginationMinimal"
+	(click)="openCloseBox('PAGINATION_MINIMAL', 'collapsePaginationMinimal')"
+>
+	Paginazione minimale, con setting statici
 </button>
 
-<button class="btn btn-sm btn-info mr-2 mt-2" type="button" data-toggle="collapse"
-  data-target="#collapsePaginationSimple" aria-expanded="false" aria-controls="collapsePaginationSimple"
-  (click)="openCloseBox('PAGINATION_SIMPLE', 'collapsePaginationSimple')">
-  Paginazione semplice, senza searchOnLoad e senza valori di default
+<button
+	class="btn btn-sm btn-info mr-2 mt-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapsePaginationSimple"
+	aria-expanded="false"
+	aria-controls="collapsePaginationSimple"
+	(click)="openCloseBox('PAGINATION_SIMPLE', 'collapsePaginationSimple')"
+>
+	Paginazione semplice, senza searchOnLoad e senza valori di default
 </button>
 
-<button class="btn btn-sm btn-info mr-2 mt-2" type="button" data-toggle="collapse"
-  data-target="#collapsePaginationDefault" aria-expanded="false" aria-controls="collapsePaginationDefault"
-  (click)="openCloseBox('PAGINATION_DEFAULT', 'collapsePaginationDefault')">
-  Paginazione semplice, con vincoli sui campi di ricerca, con searchOnLoad e con valori di default
+<button
+	class="btn btn-sm btn-info mr-2 mt-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapsePaginationDefault"
+	aria-expanded="false"
+	aria-controls="collapsePaginationDefault"
+	(click)="openCloseBox('PAGINATION_DEFAULT', 'collapsePaginationDefault')"
+>
+	Paginazione semplice, con vincoli sui campi di ricerca, con searchOnLoad e con valori di default
 </button>
-
 
 <hr />
 
 <div class="collapse" id="collapsePaginationMinimal">
-  <wiki-test-pagination-minimal *ngIf="box === 'PAGINATION_MINIMAL'"></wiki-test-pagination-minimal>
+	<wiki-test-pagination-minimal *ngIf="box === 'PAGINATION_MINIMAL'"></wiki-test-pagination-minimal>
 </div>
 
 <div class="collapse" id="collapsePaginationSimple">
-  <wiki-test-pagination-simple *ngIf="box === 'PAGINATION_SIMPLE'"></wiki-test-pagination-simple>
+	<wiki-test-pagination-simple *ngIf="box === 'PAGINATION_SIMPLE'"></wiki-test-pagination-simple>
 </div>
 
 <div class="collapse" id="collapsePaginationDefault">
-  <wiki-test-pagination-default *ngIf="box === 'PAGINATION_DEFAULT'"></wiki-test-pagination-default>
+	<wiki-test-pagination-default *ngIf="box === 'PAGINATION_DEFAULT'"></wiki-test-pagination-default>
 </div>

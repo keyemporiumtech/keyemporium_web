@@ -1,22 +1,24 @@
 <h5>Componente multilingua</h5>
 
-
-<strong>FILTRO ENVIRONMENT</strong>: {{filtersEnv | json}}<br />
+<strong>FILTRO ENVIRONMENT</strong>: {{ filtersEnv | json }}<br />
 
 <div class="row">
-  <div class="col-4">
-    <h6>Passaggio id</h6>
-    <ddc-init-input-multilanguage [idIn]="'1'"></ddc-init-input-multilanguage>
-  </div>
+	<div class="col-4">
+		<h6>Passaggio id</h6>
+		<ddc-init-input-multilanguage [idIn]="'1'"></ddc-init-input-multilanguage>
+	</div>
 
-  <div class="col-4">
-    <h6>Passaggio keys</h6>
-    <ddc-init-input-multilanguage [keys]="{table: 'addresses', field: 'cod', objraw: '1'}">
-    </ddc-init-input-multilanguage>
-  </div>
-  <div class="col-4">
-    <h6>Senza immagini</h6>
-    <ddc-init-input-multilanguage [showImage]="false" [keys]="{table: 'addresses', field: 'cod', objraw: '1'}">
-    </ddc-init-input-multilanguage>
-  </div>
+	<div class="col-4">
+		<h6>Passaggio keys</h6>
+		<ddc-init-input-multilanguage [keys]="{ table: 'addresses', field: 'cod', objraw: '1' }">
+		</ddc-init-input-multilanguage>
+	</div>
+	<div class="col-4">
+		<h6>Senza immagini</h6>
+		<ddc-init-input-multilanguage
+			[showImage]="false"
+			[keys]="{ table: 'addresses', field: 'cod', objraw: '1' }"
+		>
+		</ddc-init-input-multilanguage>
+	</div>
 </div>

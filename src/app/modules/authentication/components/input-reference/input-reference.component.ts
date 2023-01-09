@@ -38,14 +38,16 @@ import { ContactreferenceModel } from '../../models/contactreference.model';
 	templateUrl: './input-reference.component.html',
 	styleUrls: ['./input-reference.component.scss'],
 })
-export class InputReferenceComponent extends BaseReferenceComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+export class InputReferenceComponent
+	extends BaseReferenceComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Input() cssClass: any;
 	@Input() cssStyle: any;
 	@Input() flgHtmlPrefix: boolean;
 	@Input() flgHtmlSocial: boolean;
 	// TP REFERENCE
-	@ViewChild('tpreferenceComponent') tpreferenceComponent: InputSelectComponent;
+	@ViewChild('tpreferenceComponent', { static: false }) tpreferenceComponent: InputSelectComponent;
 	@Input() fieldTpreference: string;
 	@Input() tpreference: EnumContactreferenceType;
 	@Input() tpreferences: EnumContactreferenceType[];

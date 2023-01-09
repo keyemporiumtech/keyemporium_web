@@ -1,43 +1,113 @@
-<div *ngIf="field" class="selectdiv form-control" ddcValidation [validationControl]="field.formControl"
-  [flgOnInitValidation]="field.flgOnInitValidation" [flgOnSubmitValidation]="field.flgOnSubmitValidation"
-  [submitted]="field.submitted" [showValid]="field.showValid" [validations]="field.validations"
-  [supports]="field.supports" [styles]="field.styles" [valids]="field.valids">
-  <a *ngIf="selectedOption && (!selectedOptions || !selectedOptions.length)"
-    class="selected selected-outdor mb-2 {{field && field.formControl && field.formControl.disabled ? 'disabled' : ''}}"
-    [ngClass]="field && field.formControl && field.formControl.disabled ? cssClassDisabled : cssClassSelected"
-    [ngStyle]="field && field.formControl && field.formControl.disabled ? cssStyleDisabled : cssStyleSelected"
-    [innerHTML]="translateKey(selectedOption.text) | translate:translateParams(selectedOption.text) | escapehtml"
-    (click)="clickOpenClose()"></a>
+<div
+	*ngIf="field"
+	class="selectdiv form-control"
+	ddcValidation
+	[validationControl]="field.formControl"
+	[flgOnInitValidation]="field.flgOnInitValidation"
+	[flgOnSubmitValidation]="field.flgOnSubmitValidation"
+	[submitted]="field.submitted"
+	[showValid]="field.showValid"
+	[validations]="field.validations"
+	[supports]="field.supports"
+	[styles]="field.styles"
+	[valids]="field.valids"
+>
+	<a
+		*ngIf="selectedOption && (!selectedOptions || !selectedOptions.length)"
+		class="selected selected-outdor mb-2 {{
+			field && field.formControl && field.formControl.disabled ? 'disabled' : ''
+		}}"
+		[ngClass]="
+			field && field.formControl && field.formControl.disabled ? cssClassDisabled : cssClassSelected
+		"
+		[ngStyle]="
+			field && field.formControl && field.formControl.disabled ? cssStyleDisabled : cssStyleSelected
+		"
+		[innerHTML]="
+			translateKey(selectedOption.text)
+				| translate : translateParams(selectedOption.text)
+				| escapehtml
+		"
+		(click)="clickOpenClose()"
+	></a>
 
-  <ng-container *ngIf="selectedOptions && selectedOptions.length">
-    <ng-container *ngIf="maxSelectedView && selectedOptions.length > maxSelectedView">
-      <a class="selected selected-outdor mb-2 {{field && field.formControl && field.formControl.disabled ? 'disabled' : ''}}"
-        [ngClass]="field && field.formControl && field.formControl.disabled ? cssClassDisabled : cssClassSelected"
-        [ngStyle]="field && field.formControl && field.formControl.disabled ? cssStyleDisabled : cssStyleSelected"
-        (click)="clickOpenClose()">{{selectedOptions.length + '/' + options.length}}</a>
-    </ng-container>
-    <ng-container *ngIf="!maxSelectedView || (maxSelectedView && selectedOptions.length <= maxSelectedView) ">
-      <a *ngFor="let option of selectedOptions"
-        class="selected selected-outdor mb-2 {{field && field.formControl && field.formControl.disabled ? 'disabled' : ''}}"
-        [ngClass]="field && field.formControl && field.formControl.disabled ? cssClassDisabled : cssClassSelected"
-        [ngStyle]="field && field.formControl && field.formControl.disabled ? cssStyleDisabled : cssStyleSelected"
-        [innerHTML]="translateKey(option.text) | translate:translateParams(option.text) | escapehtml"
-        (click)="clickOpenClose()"></a>
-    </ng-container>
-    <a *ngIf="field.formControl.enabled && !hideArrows" class="m-1 float-right" (click)="clickOpenClose()">
-      <span class="fa {{open ? 'fa-arrow-up' : 'fa-arrow-down'}}"></span>
-    </a>
-  </ng-container>
-  <div *ngIf="open && field && field.formControl && field.formControl.enabled" class="items">
-    <div class="item {{!field.formControl.value ? 'selected selected-inner' : ''}}" style="cursor: pointer;"
-      [ngClass]="{'disabled' : field && field.formControl && field.formControl.disabled}"
-      [innerHTML]="translateKey(defaultOption.text) | translate:translateParams(defaultOption.text) | escapehtml"
-      (click)="selectItem(defaultOption)"></div>
+	<ng-container *ngIf="selectedOptions && selectedOptions.length">
+		<ng-container *ngIf="maxSelectedView && selectedOptions.length > maxSelectedView">
+			<a
+				class="selected selected-outdor mb-2 {{
+					field && field.formControl && field.formControl.disabled ? 'disabled' : ''
+				}}"
+				[ngClass]="
+					field && field.formControl && field.formControl.disabled
+						? cssClassDisabled
+						: cssClassSelected
+				"
+				[ngStyle]="
+					field && field.formControl && field.formControl.disabled
+						? cssStyleDisabled
+						: cssStyleSelected
+				"
+				(click)="clickOpenClose()"
+				>{{ selectedOptions.length + '/' + options.length }}</a
+			>
+		</ng-container>
+		<ng-container
+			*ngIf="!maxSelectedView || (maxSelectedView && selectedOptions.length <= maxSelectedView)"
+		>
+			<a
+				*ngFor="let option of selectedOptions"
+				class="selected selected-outdor mb-2 {{
+					field && field.formControl && field.formControl.disabled ? 'disabled' : ''
+				}}"
+				[ngClass]="
+					field && field.formControl && field.formControl.disabled
+						? cssClassDisabled
+						: cssClassSelected
+				"
+				[ngStyle]="
+					field && field.formControl && field.formControl.disabled
+						? cssStyleDisabled
+						: cssStyleSelected
+				"
+				[innerHTML]="
+					translateKey(option.text) | translate : translateParams(option.text) | escapehtml
+				"
+				(click)="clickOpenClose()"
+			></a>
+		</ng-container>
+		<a
+			*ngIf="field.formControl.enabled && !hideArrows"
+			class="m-1 float-right"
+			(click)="clickOpenClose()"
+		>
+			<span class="fa {{ open ? 'fa-arrow-up' : 'fa-arrow-down' }}"></span>
+		</a>
+	</ng-container>
+	<div *ngIf="open && field && field.formControl && field.formControl.enabled" class="items">
+		<div
+			class="item {{ !field.formControl.value ? 'selected selected-inner' : '' }}"
+			style="cursor: pointer"
+			[ngClass]="{ disabled: field && field.formControl && field.formControl.disabled }"
+			[innerHTML]="
+				translateKey(defaultOption.text)
+					| translate : translateParams(defaultOption.text)
+					| escapehtml
+			"
+			(click)="selectItem(defaultOption)"
+		></div>
 
-    <div *ngFor="let option of options" class="item {{isSelected(option) ? 'selected selected-inner' : ''}}"
-      style="cursor: pointer;" class="{{field && field.formControl && field.formControl.disabled ? 'disabled' : ''}}"
-      [ngClass]="option.cssClass" [ngStyle]="option.cssStyle"
-      [innerHTML]="translateKey(option.text) | translate:translateParams(option.text) | escapehtml"
-      (click)="selectItem(option)"></div>
-  </div>
+		<div
+			*ngFor="let option of options"
+			class="item {{ isSelected(option) ? 'selected selected-inner' : '' }} {{
+				field && field.formControl && field.formControl.disabled ? 'disabled' : ''
+			}}"
+			style="cursor: pointer"
+			[ngClass]="option.cssClass"
+			[ngStyle]="option.cssStyle"
+			[innerHTML]="
+				translateKey(option.text) | translate : translateParams(option.text) | escapehtml
+			"
+			(click)="selectItem(option)"
+		></div>
+	</div>
 </div>

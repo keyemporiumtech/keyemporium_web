@@ -3,14 +3,14 @@ export class TypeConverter<A, B> {
 		if (!entity) {
 			return undefined;
 		}
-		return (entity as unknown) as B;
+		return entity as unknown as B;
 	}
 
 	convertToA(entity: B): A {
 		if (!entity) {
 			return undefined;
 		}
-		return (entity as unknown) as A;
+		return entity as unknown as A;
 	}
 
 	public convertToBList(fromArray?: A[]): B[] {

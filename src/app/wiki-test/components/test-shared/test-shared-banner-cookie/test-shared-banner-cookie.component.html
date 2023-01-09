@@ -1,25 +1,38 @@
 <h4>Banner Cookie</h4>
 
-<div>
-  Lo stile del banner dei cookie è definito in <strong>styles.scss</strong>
-</div>
+<div>Lo stile del banner dei cookie è definito in <strong>styles.scss</strong></div>
 
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.TOP)">Posizione TOP</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.TOP)"
+	>Posizione TOP</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.BOTTOM)">Posizione BOTTOM</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.BOTTOM)"
+	>Posizione BOTTOM</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.RIGHT)">Posizione RIGHT</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.RIGHT)"
+	>Posizione RIGHT</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.LEFT)">Posizione LEFT</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="setPosition(EnumBannerPosition.LEFT)"
+	>Posizione LEFT</a
+>
 
 <div class="mt-3">
-  <ddc-init-banner-cookie *ngIf="load" #bannerTest [id]="'test'" [position]="position" [text]="'banner di prova'"
-    [delayLoad]="1000" (emitClose)="close()">
-  </ddc-init-banner-cookie>
+	<ddc-init-banner-cookie
+		*ngIf="load"
+		#bannerTest
+		[id]="'test'"
+		[position]="position"
+		[text]="'banner di prova'"
+		[delayLoad]="1000"
+		(emitClose)="close()"
+	>
+	</ddc-init-banner-cookie>
 </div>
 
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>
       
       Lo stile del banner dei cookie è definito dentro `styles.scss` e si può modificare o sovrascivere in base alle esigenze

@@ -4309,9 +4309,11 @@ input[type="button"].btn-block {
   background-color: var(--background2);
 }
 
+/*
 .custom-file-input:lang(en) ~ .custom-file-label::after {
   content: "Browse";
 }
+*/
 
 .custom-file-input ~ .custom-file-label[data-browse]::after {
   content: attr(data-browse);

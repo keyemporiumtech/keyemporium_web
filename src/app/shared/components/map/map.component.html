@@ -1,11 +1,13 @@
 <div class="container-loading">
-  <ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
-  <div *ngIf="showEnableDisableScroll" class="mt-2">
-    <button *ngIf="notScroll" class="btn btn-xs btn-primary" (click)="enableScroll()">{{'APP.MAP.ENABLE_SCROLL' |
-      translate}}</button>
-    <button *ngIf="!notScroll" class="btn btn-xs btn-primary" (click)="disableScroll()">{{'APP.MAP.DISABLE_SCROLL' |
-      translate}}</button>
-  </div>
-  <hr />
-  <div id="{{id}}" [ngClass]="classMap" [ngStyle]="styleMap" [style.height]="height"></div>
+	<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+	<div *ngIf="showEnableDisableScroll" class="mt-2">
+		<button *ngIf="notScroll" class="btn btn-xs btn-primary" (click)="enableScroll()">
+			{{ 'APP.MAP.ENABLE_SCROLL' | translate }}
+		</button>
+		<button *ngIf="!notScroll" class="btn btn-xs btn-primary" (click)="disableScroll()">
+			{{ 'APP.MAP.DISABLE_SCROLL' | translate }}
+		</button>
+	</div>
+	<hr />
+	<div id="{{ id }}" [ngClass]="classMap" [ngStyle]="styleMap" [style.height]="height"></div>
 </div>

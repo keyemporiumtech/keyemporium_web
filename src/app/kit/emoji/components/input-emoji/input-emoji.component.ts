@@ -23,7 +23,7 @@ export class InputEmojiComponent implements OnInit, OnChanges {
 	@Output() modelChange: any = new EventEmitter();
 	@Input() classInput: any;
 	@Input() styleInput: any;
-	@ViewChild('inputeditable') inputeditable: ElementRef;
+	@ViewChild('inputeditable', { static: false }) inputeditable: ElementRef;
 	@Output() emitKeyEnter: EventEmitter<any> = new EventEmitter<any>();
 	@Output() emitKeyPressCode: EventEmitter<any> = new EventEmitter<any>();
 

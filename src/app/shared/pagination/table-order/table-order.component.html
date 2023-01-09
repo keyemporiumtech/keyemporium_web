@@ -1,6 +1,14 @@
 <ng-container *ngIf="orders && orders.length">
-  <span *ngIf="existOrder(key, 'asc')" class="{{iconAsc}} float-right order"
-    [ngClass]="{'order-selected' : existOrder(key, 'asc')}" (click)="desc()"></span>
-  <span *ngIf="!existOrderByKey(key) || existOrder(key, 'desc')" class="{{iconDesc}} float-right order"
-    [ngClass]="{'order-selected' : existOrder(key, 'desc')}" (click)="asc()"></span>
+	<span
+		*ngIf="existOrder(key, 'asc')"
+		class="{{ iconAsc }} float-right order"
+		[ngClass]="{ 'order-selected': existOrder(key, 'asc') }"
+		(click)="desc()"
+	></span>
+	<span
+		*ngIf="!existOrderByKey(key) || existOrder(key, 'desc')"
+		class="{{ iconDesc }} float-right order"
+		[ngClass]="{ 'order-selected': existOrder(key, 'desc') }"
+		(click)="asc()"
+	></span>
 </ng-container>

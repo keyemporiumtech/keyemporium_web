@@ -1,12 +1,16 @@
-import { OnInit, OnDestroy, AfterViewInit, Input } from '@angular/core';
-import { BaseClassModel } from './base-class.model';
+import { AfterViewInit, Directive, Input, OnDestroy, OnInit } from '@angular/core';
 import { ApplicationLoggerService } from '../logger/services/application-logger.service';
+import { BaseClassModel } from './base-class.model';
 /**
  * Da estendere nella creazione di componenti da includere nelle pagine
  */
-export abstract class BaseComponent extends BaseClassModel
-	implements OnInit, OnDestroy, AfterViewInit {
-	@Input() id: string;
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
+export abstract class BaseComponent
+	extends BaseClassModel
+	implements OnInit, OnDestroy, AfterViewInit
+{
+	@Input() declare id: string;
 	/**
 	 * Usato per passare il loading dall'esterno
 	 */
@@ -33,7 +37,7 @@ export abstract class BaseComponent extends BaseClassModel
 
 		// delete all subscription
 		for (const prop in this) {
-			if (this.hasOwnProperty(prop)) {
+			if (Object.prototype.hasOwnProperty.call(this, prop)) {
 				const property = this[prop];
 				if (property && typeof property['unsubscribe'] === 'function') {
 					property['unsubscribe']();

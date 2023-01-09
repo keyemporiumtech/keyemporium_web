@@ -9,7 +9,7 @@ import { DdcValidationDirective } from './ddc-validation.directive';
 	selector: '[ddcDateValidation]',
 })
 export class DdcDateValidationDirective extends DdcValidationDirective {
-	// tslint:disable:no-input-rename
+	/* eslint-disable @angular-eslint/no-input-rename */
 	@Input('timezoneName') timezoneName: string;
 	@Input('isTime') isTime: boolean;
 
@@ -46,7 +46,7 @@ export class DdcDateValidationDirective extends DdcValidationDirective {
 		this.updateValue(current);
 	}
 
-	// tslint:disable:use-life-cycle-interface
+	/* eslint-disable */
 	ngOnInit() {
 		super.ngOnInit();
 		if (!this.timezoneName) {

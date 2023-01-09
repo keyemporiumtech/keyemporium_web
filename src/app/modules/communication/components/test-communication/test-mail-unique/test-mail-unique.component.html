@@ -1,49 +1,59 @@
 <form [formGroup]="form">
-  <div class="form-row">
-    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
-      <label for="ipname">{{translateKey(FLD_ipname.label)| translate:translateParams(FLD_ipname.label)}}</label>
-      <ddc-init-input-text [id]="'ipname'" [field]="FLD_ipname"></ddc-init-input-text>
-    </div>
-    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
-      <label for="subject">{{translateKey(FLD_subject.label)| translate:translateParams(FLD_subject.label)}}</label>
-      <ddc-init-input-text [id]="'subject'" [field]="FLD_subject"></ddc-init-input-text>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
-      <label for="sendername">{{translateKey(FLD_sendername.label)|
-        translate:translateParams(FLD_sendername.label)}}</label>
-      <ddc-init-input-text [id]="'sendername'" [field]="FLD_sendername"></ddc-init-input-text>
-    </div>
-    <div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
-      <label for="senderemail">{{translateKey(FLD_senderemail.label)|
-        translate:translateParams(FLD_senderemail.label)}}</label>
-      <ddc-init-input-email [id]="'senderemail'" [field]="FLD_senderemail"></ddc-init-input-email>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
-      <label for="message">{{translateKey(FLD_message.label)| translate:translateParams(FLD_message.label)}}</label>
-      <ddc-init-input-textarea [id]="'message'" [field]="FLD_message"></ddc-init-input-textarea>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
-      <label for="dtasend">{{translateKey(FLD_dtasend.label)| translate:translateParams(FLD_dtasend.label)}}</label>
-      <ddc-init-input-date [id]="'dtasend'" [field]="FLD_dtasend"></ddc-init-input-date>
-    </div>
-  </div>
+	<div class="form-row">
+		<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+			<label for="ipname">{{
+				translateKey(FLD_ipname.label) | translate : translateParams(FLD_ipname.label)
+			}}</label>
+			<ddc-init-input-text [id]="'ipname'" [field]="FLD_ipname"></ddc-init-input-text>
+		</div>
+		<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+			<label for="subject">{{
+				translateKey(FLD_subject.label) | translate : translateParams(FLD_subject.label)
+			}}</label>
+			<ddc-init-input-text [id]="'subject'" [field]="FLD_subject"></ddc-init-input-text>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+			<label for="sendername">{{
+				translateKey(FLD_sendername.label) | translate : translateParams(FLD_sendername.label)
+			}}</label>
+			<ddc-init-input-text [id]="'sendername'" [field]="FLD_sendername"></ddc-init-input-text>
+		</div>
+		<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+			<label for="senderemail">{{
+				translateKey(FLD_senderemail.label) | translate : translateParams(FLD_senderemail.label)
+			}}</label>
+			<ddc-init-input-email [id]="'senderemail'" [field]="FLD_senderemail"></ddc-init-input-email>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+			<label for="message">{{
+				translateKey(FLD_message.label) | translate : translateParams(FLD_message.label)
+			}}</label>
+			<ddc-init-input-textarea [id]="'message'" [field]="FLD_message"></ddc-init-input-textarea>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+			<label for="dtasend">{{
+				translateKey(FLD_dtasend.label) | translate : translateParams(FLD_dtasend.label)
+			}}</label>
+			<ddc-init-input-date [id]="'dtasend'" [field]="FLD_dtasend"></ddc-init-input-date>
+		</div>
+	</div>
 </form>
 
 <div>
-  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.UPDATE)">
-    <span class="fa fa-edit mr-2"></span>Modifica
-  </a>
-  <a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.DETAIL)">
-    <span class="fa fa-eye mr-2"></span>Lettura
-  </a>
-  <button class="btn btn-sm btn-dark text-white mr-2" [disabled]="!form.valid" (click)="save()">
-    <span class="fa fa-save mr-2"></span>Salva
-  </button>
-  <div *ngIf="modelToSave">{{modelToSave | json}}</div>
+	<a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.UPDATE)">
+		<span class="fa fa-edit mr-2"></span>Modifica
+	</a>
+	<a class="btn btn-sm btn-dark text-white mr-2" (click)="changeMode(formMode.DETAIL)">
+		<span class="fa fa-eye mr-2"></span>Lettura
+	</a>
+	<button class="btn btn-sm btn-dark text-white mr-2" [disabled]="!form.valid" (click)="save()">
+		<span class="fa fa-save mr-2"></span>Salva
+	</button>
+	<div *ngIf="modelToSave">{{ modelToSave | json }}</div>
 </div>

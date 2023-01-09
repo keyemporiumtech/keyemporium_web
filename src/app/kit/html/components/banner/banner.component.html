@@ -1,13 +1,25 @@
-<div id="{{id}}" class="banner-style" [ngClass]="bannerClass" [ngStyle]="bannerStyle" (click)="bannerClick()">
-  <div *ngIf="flgClose" id="closeBanner{{id}}" class="close" [ngClass]="closeClass" [ngStyle]="closeStyle"
-    (click)="close()">
-    <span *ngIf="closeIcon" class="{{closeIcon}}"></span>
-  </div>
+<div
+	id="{{ id }}"
+	class="banner-style"
+	[ngClass]="bannerClass"
+	[ngStyle]="bannerStyle"
+	(click)="bannerClick()"
+>
+	<div
+		*ngIf="flgClose"
+		id="closeBanner{{ id }}"
+		class="close"
+		[ngClass]="closeClass"
+		[ngStyle]="closeStyle"
+		(click)="close()"
+	>
+		<span *ngIf="closeIcon" class="{{ closeIcon }}"></span>
+	</div>
 
-  <div *ngIf="text" class="text" [ngClass]="textClass" [ngStyle]="textStyle">
-    <span [innerHTML]="translateKey(text) | translate:translateParams(text)"></span>
-    <ng-content select="[inner-text]"></ng-content>
-  </div>
+	<div *ngIf="text" class="text" [ngClass]="textClass" [ngStyle]="textStyle">
+		<span [innerHTML]="translateKey(text) | translate : translateParams(text)"></span>
+		<ng-content select="[inner-text]"></ng-content>
+	</div>
 
-  <ng-content select="[outdor-text]"></ng-content>
+	<ng-content select="[outdor-text]"></ng-content>
 </div>

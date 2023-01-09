@@ -23,7 +23,7 @@ export class TestKitRoutingComponent implements OnInit {
 	splitUrlNavigationExtrasQueryParameters2: any;
 
 	url3: string =
-		// tslint:disable-next-line:max-line-length
+		// eslint-disable-next-line max-len
 		'https://www.google.com/search?q=js+exclude+elements+from+array&rlz=1C1GCEV_enIT838IT838&oq=js+exclude+elements&aqs=chrome.1.69i57j0i22i30l9.5144j0j7&sourceid=chrome&ie=UTF-8';
 
 	cleanUrl3: any;

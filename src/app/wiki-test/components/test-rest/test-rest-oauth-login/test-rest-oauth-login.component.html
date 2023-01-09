@@ -1,33 +1,47 @@
 <h4>Modulo Oauth Login</h4>
 
-
 <ddc-init-loading [loading]="!isReady"></ddc-init-loading>
 <div *ngIf="!isLoggedin && isReady">
-  <div>
-    <button type="button" (click)="signInGoogle()" class="btn btn-danger m-2">Login with Google</button>
-  </div>
-  <div>
-    <button type="button" (click)="signInFacebook()" class="btn btn-info m-2">Login with Facebook</button>
-  </div>
+	<div>
+		<button type="button" (click)="signInGoogle()" class="btn btn-danger m-2">
+			Login with Google
+		</button>
+	</div>
+	<div>
+		<button type="button" (click)="signInFacebook()" class="btn btn-info m-2">
+			Login with Facebook
+		</button>
+	</div>
 </div>
 
 <div *ngIf="isLoggedin && isReady">
-  <div class="form-group">
-    <label>First Name</label>
-    <img [src]="socialUser.photoUrl" referrerpolicy="no-referrer" id="photo" [style.width]="'360px'">
-  </div>
-  <div class="form-group">
-    <label>First Name</label>
-    <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
-  </div>
-  <div class="form-group">
-    <label>Last Name</label>
-    <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
-  </div>
-  <div class="form-group">
-    <label>Email</label>
-    <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
-  </div>
+	<div class="form-group">
+		<label>First Name</label>
+		<img
+			[src]="socialUser.photoUrl"
+			referrerpolicy="no-referrer"
+			id="photo"
+			[style.width]="'360px'"
+		/>
+	</div>
+	<div class="form-group">
+		<label>First Name</label>
+		<input
+			type="text"
+			class="form-control"
+			[value]="socialUser.firstName"
+			id="firstname"
+			readonly
+		/>
+	</div>
+	<div class="form-group">
+		<label>Last Name</label>
+		<input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly />
+	</div>
+	<div class="form-group">
+		<label>Email</label>
+		<input type="text" class="form-control" [value]="socialUser.email" id="email" readonly />
+	</div>
 
-  <button type="button" (click)="signOut()" class="btn btn-primary">Log Out</button>
+	<button type="button" (click)="signOut()" class="btn btn-primary">Log Out</button>
 </div>

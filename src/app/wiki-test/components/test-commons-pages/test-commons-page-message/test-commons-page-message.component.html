@@ -6,32 +6,54 @@
 <span class="ml-2">|</span>
 <a class="ml-2 btn btn-sm btn-danger text-white" (click)="modal(EnumMessageType.ERROR)">ERROR</a>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-danger text-white" (click)="modal(EnumMessageType.EXCEPTION)">EXCEPTION</a>
+<a class="ml-2 btn btn-sm btn-danger text-white" (click)="modal(EnumMessageType.EXCEPTION)"
+	>EXCEPTION</a
+>
 <span class="ml-2">|</span>
 <hr />
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="modal(EnumMessageType.INFO, 200)">CODICE 200</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="modal(EnumMessageType.INFO, 200)"
+	>CODICE 200</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourModal(EnumMessageType.INFO)">BEHAVIOUR</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourModal(EnumMessageType.INFO)"
+	>BEHAVIOUR</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourModal(EnumMessageType.INFO, 'miaModale')">MIA
-  MODALE</a>
+<a
+	class="ml-2 btn btn-sm btn-info text-white"
+	(click)="behaviourModal(EnumMessageType.INFO, 'miaModale')"
+	>MIA MODALE</a
+>
 
-<ddc-init-message-element [typeComponent]="'MODAL'" [idMessage]="'miaModale'"></ddc-init-message-element>
+<ddc-init-message-element
+	[typeComponent]="'MODAL'"
+	[idMessage]="'miaModale'"
+></ddc-init-message-element>
 
 <div id="accordionModal" class="m-3">
-  <div class="card">
-    <div class="card-header" id="headingModal">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseModal" aria-expanded="false"
-          aria-controls="collapseModal">
-          Codice di riferimento
-        </button>
-      </h5>
-    </div>
+	<div class="card">
+		<div class="card-header" id="headingModal">
+			<h5 class="mb-0">
+				<button
+					class="btn btn-link"
+					data-toggle="collapse"
+					data-target="#collapseModal"
+					aria-expanded="false"
+					aria-controls="collapseModal"
+				>
+					Codice di riferimento
+				</button>
+			</h5>
+		</div>
 
-    <div id="collapseModal" class="collapse" aria-labelledby="headingModal" data-parent="#accordionModal">
-      <div class="card-body">
-        <pre>
+		<div
+			id="collapseModal"
+			class="collapse"
+			aria-labelledby="headingModal"
+			data-parent="#accordionModal"
+		>
+			<div class="card-body">
+				<pre>
         <div markdown ngPreserveWhitespaces ngNonBindable>
           Nell'applicazione è già definito un componente per i messaggi in modale costruito in `app.component.html`
           L'id del componente è univoco e definito in `environment.ts`
@@ -91,9 +113,9 @@
           ```
         </div>
       </pre>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <h4>Messaggio applicativo in div</h4>
@@ -104,32 +126,46 @@
 <span class="ml-2">|</span>
 <a class="ml-2 btn btn-sm btn-danger text-white" (click)="div(EnumMessageType.ERROR)">ERROR</a>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-danger text-white" (click)="div(EnumMessageType.EXCEPTION)">EXCEPTION</a>
+<a class="ml-2 btn btn-sm btn-danger text-white" (click)="div(EnumMessageType.EXCEPTION)"
+	>EXCEPTION</a
+>
 <span class="ml-2">|</span>
 <hr />
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="div(EnumMessageType.INFO, 200)">CODICE 200</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="div(EnumMessageType.INFO, 200)"
+	>CODICE 200</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourDiv(EnumMessageType.INFO)">BEHAVIOUR</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourDiv(EnumMessageType.INFO)"
+	>BEHAVIOUR</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourDiv(EnumMessageType.INFO, 'mioDiv')">MIO
-  DIV</a>
+<a
+	class="ml-2 btn btn-sm btn-info text-white"
+	(click)="behaviourDiv(EnumMessageType.INFO, 'mioDiv')"
+	>MIO DIV</a
+>
 
 <ddc-init-message-element [typeComponent]="'DIV'" [idMessage]="'mioDiv'"></ddc-init-message-element>
 
 <div id="accordionDiv" class="m-3">
-  <div class="card">
-    <div class="card-header" id="headingDiv">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseDiv" aria-expanded="false"
-          aria-controls="collapseDiv">
-          Codice di riferimento
-        </button>
-      </h5>
-    </div>
+	<div class="card">
+		<div class="card-header" id="headingDiv">
+			<h5 class="mb-0">
+				<button
+					class="btn btn-link"
+					data-toggle="collapse"
+					data-target="#collapseDiv"
+					aria-expanded="false"
+					aria-controls="collapseDiv"
+				>
+					Codice di riferimento
+				</button>
+			</h5>
+		</div>
 
-    <div id="collapseDiv" class="collapse" aria-labelledby="headingDiv" data-parent="#accordionDiv">
-      <div class="card-body">
-        <pre>
+		<div id="collapseDiv" class="collapse" aria-labelledby="headingDiv" data-parent="#accordionDiv">
+			<div class="card-body">
+				<pre>
         <div markdown ngPreserveWhitespaces ngNonBindable>
           Nell'applicazione è già definito un componente per i messaggi in div costruito in `app.component.html`
           L'id del componente è univoco e definito in `environment.ts`
@@ -146,9 +182,9 @@
           
         </div>
       </pre>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <h4>Messaggio applicativo in routing</h4>
@@ -159,30 +195,49 @@
 <span class="ml-2">|</span>
 <a class="ml-2 btn btn-sm btn-danger text-white" (click)="routing(EnumMessageType.ERROR)">ERROR</a>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-danger text-white" (click)="routing(EnumMessageType.EXCEPTION)">EXCEPTION</a>
+<a class="ml-2 btn btn-sm btn-danger text-white" (click)="routing(EnumMessageType.EXCEPTION)"
+	>EXCEPTION</a
+>
 <span class="ml-2">|</span>
 <hr />
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="routing(EnumMessageType.INFO, 200)">CODICE 200</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="routing(EnumMessageType.INFO, 200)"
+	>CODICE 200</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourDiv(EnumMessageType.INFO)">BEHAVIOUR</a>
+<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourDiv(EnumMessageType.INFO)"
+	>BEHAVIOUR</a
+>
 <span class="ml-2">|</span>
-<a class="ml-2 btn btn-sm btn-info text-white" (click)="behaviourDiv(EnumMessageType.INFO, 'mioDiv')">MIO
-  DIV</a>
+<a
+	class="ml-2 btn btn-sm btn-info text-white"
+	(click)="behaviourDiv(EnumMessageType.INFO, 'mioDiv')"
+	>MIO DIV</a
+>
 
 <div id="accordionRouting" class="m-3">
-  <div class="card">
-    <div class="card-header" id="headingRouting">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseRouting" aria-expanded="false"
-          aria-controls="collapseRouting">
-          Codice di riferimento
-        </button>
-      </h5>
-    </div>
+	<div class="card">
+		<div class="card-header" id="headingRouting">
+			<h5 class="mb-0">
+				<button
+					class="btn btn-link"
+					data-toggle="collapse"
+					data-target="#collapseRouting"
+					aria-expanded="false"
+					aria-controls="collapseRouting"
+				>
+					Codice di riferimento
+				</button>
+			</h5>
+		</div>
 
-    <div id="collapseRouting" class="collapse" aria-labelledby="headingRouting" data-parent="#accordionv">
-      <div class="card-body">
-        <pre>
+		<div
+			id="collapseRouting"
+			class="collapse"
+			aria-labelledby="headingRouting"
+			data-parent="#accordionv"
+		>
+			<div class="card-body">
+				<pre>
         <div markdown ngPreserveWhitespaces ngNonBindable>
           Nell'applicazione sono definite in `environment.ts` la pagina dei messaggi e la pagina di ritorno (back) da un messaggio          
 
@@ -213,7 +268,7 @@
           
         </div>
       </pre>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -6,7 +6,7 @@ import { template } from '../../../../environments/template/template';
 export class DdcInputPasswordDirective implements OnInit {
 	private _shown = false;
 	private _span: any;
-	// tslint:disable:no-input-rename
+	/* eslint-disable @angular-eslint/no-input-rename */
 	@Input('styleSpan') styleSpan: any;
 	@Input('cssShow') cssShow: any;
 	@Input('cssHide') cssHide: any;

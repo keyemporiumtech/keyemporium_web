@@ -27,7 +27,7 @@ export class UserProfilesComponent extends BaseComponent {
 	@Input() isAppend: boolean;
 	@Input() label: string | StringTranslate;
 	@Input() showLabel: boolean = true;
-	@ViewChild('profiles') profiles: InputSelectComponent;
+	@ViewChild('profiles', { static: false }) profiles: InputSelectComponent;
 
 	formUserProfiles: FormGroup;
 	validations: any = {};

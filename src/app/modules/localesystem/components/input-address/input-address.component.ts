@@ -50,15 +50,17 @@ import { InputTextComponent } from '../../../../shared/form/input-text/input-tex
 	templateUrl: './input-address.component.html',
 	styleUrls: ['./input-address.component.scss'],
 })
-export class InputAddressComponent extends BaseAddressComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+export class InputAddressComponent
+	extends BaseAddressComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Input() cssClass: any;
 	@Input() cssStyle: any;
 	@Input() isoForCommunity: string[];
 	@Input() flgAutocomplete: boolean;
 	@Input() flgSearch: boolean;
 	// TP ADDRESS
-	@ViewChild('tpaddressComponent') tpaddressComponent: InputSelectComponent;
+	@ViewChild('tpaddressComponent', { static: false }) tpaddressComponent: InputSelectComponent;
 	@Input() fieldTpaddress: string;
 	@Input() tpaddress: EnumAddressType;
 	@Input() tpaddresses: EnumAddressType[];
@@ -89,8 +91,8 @@ export class InputAddressComponent extends BaseAddressComponent
 	searchFormField: FormFieldModel;
 	// BLUR
 	subBlur: Subscription;
-	@ViewChild('streetComponent') streetComponent: InputTextComponent;
-	@ViewChild('numComponent') numComponent: InputTextComponent;
+	@ViewChild('streetComponent', { static: false }) streetComponent: InputTextComponent;
+	@ViewChild('numComponent', { static: false }) numComponent: InputTextComponent;
 	lastStreet: string = '';
 	lastNum: string = '';
 	// MAP

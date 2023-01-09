@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BaseInfoServerService } from '@ddc/rest';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
-	LocaleService,
-	InnerStorageService,
-	FileService,
 	FileEmbedModel,
+	FileService,
+	InnerStorageService,
+	LocaleService,
 } from '@ddc/kit';
+import { BaseInfoServerService } from '@ddc/rest';
 
 import { Observable, of } from 'rxjs';
 
@@ -15,7 +15,7 @@ import { Observable, of } from 'rxjs';
 	providedIn: 'root',
 })
 export class ApiInitService extends BaseInfoServerService {
-	fileService: FileService;
+	declare fileService: FileService;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,

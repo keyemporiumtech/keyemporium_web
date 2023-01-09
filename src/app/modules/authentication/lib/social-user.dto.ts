@@ -1,10 +1,10 @@
-import { UserDTO } from '../dtos/user.dto';
+import { ApiDTO } from '../../api/cakeutils/base/api.dto';
 import { AddressDTO } from '../../localesystem/dtos/address.dto';
 import { ContactreferenceDTO } from '../dtos/contactreference.dto';
-import { ApiDTO } from '../../api/cakeutils/base/api.dto';
+import { UserDTO } from '../dtos/user.dto';
 
 export class SocialUserDTO extends ApiDTO {
-	public id: string;
+	public declare id: string;
 	public provider: string;
 	public photoUrl: string;
 	public authToken: string;

@@ -1,4 +1,4 @@
-// tslint:disable:max-line-length
+/* eslint-disable max-len */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WikiTestRoutingModule } from './wiki-test-routing.module';
@@ -53,6 +53,8 @@ import { TestRestOauthLoginComponent } from './components/test-rest/test-rest-oa
 import { ValidatorPasswordModule } from '../modules/validator-password/validator-password.module';
 import { TestKitChartsComponent } from './components/test-kit/test-kit-charts/test-kit-charts.component';
 import { TestKitRoutingComponent } from './components/test-kit/test-kit-routing/test-kit-routing.component';
+import { TestKitTreeHtmlComponent } from './components/test-kit/test-kit-tree-html/test-kit-tree-html.component';
+import { TestKitQrcodeComponent } from './components/test-kit/test-kit-qrcode/test-kit-qrcode.component';
 @NgModule({
 	declarations: [
 		TestHomeComponent,
@@ -93,6 +95,8 @@ import { TestKitRoutingComponent } from './components/test-kit/test-kit-routing/
 		TestRestOauthLoginComponent,
 		TestKitChartsComponent,
 		TestKitRoutingComponent,
+		TestKitTreeHtmlComponent,
+		TestKitQrcodeComponent,
 	],
 	imports: [
 		CommonModule,

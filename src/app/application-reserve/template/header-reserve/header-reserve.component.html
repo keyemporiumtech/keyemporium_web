@@ -1,40 +1,61 @@
 <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark">
-
-  <a class="navbar-brand" (click)="home()">
-    <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    <span [innerHtml]="appTitle"></span>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseLocaleChoice"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseUserUtil"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse navbar-right" id="collapseLocaleChoice">
-    LINGUE
-  </div>
-  <div class="collapse navbar-collapse w-100" id="collapseUserUtil">
-    <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <img *ngIf="userImage" [src]="userImage" width="30" class="d-inline-block align-top circle-icon mr-2" />
-          <span *ngIf="!userImage" class="fa fa-2x fa-user circle-icon mr-2"></span>
-          {{ user.name + ' ' + user.surname}}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logout()">{{'APP.BUTTON.LOGOUT' | translate}}</a>
-          <div *ngIf="expiration" class="dropdown-divider"></div>
-          <span *ngIf="expiration" class="dropdown-item text-muted">{{expiration}}</span>
-        </div>
-      </li>
-    </ul>
-
-  </div>
-
+	<a class="navbar-brand" (click)="home()">
+		<img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+		<span [innerHtml]="appTitle"></span>
+	</a>
+	<button
+		class="navbar-toggler"
+		type="button"
+		data-toggle="collapse"
+		data-target="#collapseLocaleChoice"
+		aria-controls="navbarSupportedContent"
+		aria-expanded="false"
+		aria-label="Toggle navigation"
+	>
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<button
+		class="navbar-toggler"
+		type="button"
+		data-toggle="collapse"
+		data-target="#collapseUserUtil"
+		aria-controls="navbarSupportedContent"
+		aria-expanded="false"
+		aria-label="Toggle navigation"
+	>
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse navbar-right" id="collapseLocaleChoice">LINGUE</div>
+	<div class="collapse navbar-collapse w-100" id="collapseUserUtil">
+		<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+			<li class="nav-item dropdown">
+				<a
+					class="nav-link dropdown-toggle"
+					href="#"
+					id="navbarDropdownUser"
+					role="button"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+				>
+					<img
+						*ngIf="userImage"
+						[src]="userImage"
+						width="30"
+						class="d-inline-block align-top circle-icon mr-2"
+					/>
+					<span *ngIf="!userImage" class="fa fa-2x fa-user circle-icon mr-2"></span>
+					{{ user.name + ' ' + user.surname }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+					<a class="dropdown-item" href="#">Action</a>
+					<a class="dropdown-item" href="#">Another action</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" (click)="logout()">{{ 'APP.BUTTON.LOGOUT' | translate }}</a>
+					<div *ngIf="expiration" class="dropdown-divider"></div>
+					<span *ngIf="expiration" class="dropdown-item text-muted">{{ expiration }}</span>
+				</div>
+			</li>
+		</ul>
+	</div>
 </nav>

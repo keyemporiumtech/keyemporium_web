@@ -3,6 +3,7 @@ import { StyleUtility } from '../utils/style.utility';
 import { KeyvalueObject } from '../../config/interface/keyvalue.object';
 
 @Injectable()
+/*eslint-disable no-case-declarations*/
 export class RenderElService {
 	private _renderer: Renderer2;
 

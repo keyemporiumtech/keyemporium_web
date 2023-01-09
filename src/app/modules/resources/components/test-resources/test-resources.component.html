@@ -1,34 +1,48 @@
 <div class="container-fluid">
-  <h4>Modulo resources</h4>
-  <div class="row">
-    <div class="col col-12">
-      <a class="m-2 btn btn-sm btn-danger text-white" (click)="setDetailAttachment()">Test chiamata
-        attachment/unique</a>
-      <span class="m-2">|</span>
-      <a class="m-2 btn btn-sm btn-danger text-white" (click)="set('ATTACHMENT-LIST')">Test chiamata
-        attachment/list</a>
-    </div>
-  </div>
+	<h4>Modulo resources</h4>
+	<div class="row">
+		<div class="col col-12">
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="setDetailAttachment()"
+				>Test chiamata attachment/unique</a
+			>
+			<span class="m-2">|</span>
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="set('ATTACHMENT-LIST')"
+				>Test chiamata attachment/list</a
+			>
+		</div>
+	</div>
 
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="m-2 btn btn-sm btn-danger text-white" (click)="setDetailMimetype()">Test chiamata
-        mimetype/unique</a>
-      <span class="m-2">|</span>
-      <a class="m-2 btn btn-sm btn-danger text-white" (click)="set('MIMETYPE-LIST')">Test chiamata mimetype/list</a>
-    </div>
-  </div>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="setDetailMimetype()"
+				>Test chiamata mimetype/unique</a
+			>
+			<span class="m-2">|</span>
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="set('MIMETYPE-LIST')"
+				>Test chiamata mimetype/list</a
+			>
+		</div>
+	</div>
 
-  <div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
-    <div class="col col-12 p-2">
-      <a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
-      <wiki-test-attachment-unique *ngIf="view==='ATTACHMENT-UNIQUE'" [idIn]="idAttachment">
-      </wiki-test-attachment-unique>
-      <wiki-test-attachment-paginate *ngIf="view==='ATTACHMENT-LIST'" (emitSelected)="setDetailAttachment($event)">
-      </wiki-test-attachment-paginate>
-      <wiki-test-mimetype-unique *ngIf="view==='MIMETYPE-UNIQUE'" [idIn]="idMimetype"></wiki-test-mimetype-unique>
-      <wiki-test-mimetype-paginate *ngIf="view==='MIMETYPE-LIST'" (emitSelected)="setDetailMimetype($event)">
-      </wiki-test-mimetype-paginate>
-    </div>
-  </div>
+	<div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
+		<div class="col col-12 p-2">
+			<a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
+			<wiki-test-attachment-unique *ngIf="view === 'ATTACHMENT-UNIQUE'" [idIn]="idAttachment">
+			</wiki-test-attachment-unique>
+			<wiki-test-attachment-paginate
+				*ngIf="view === 'ATTACHMENT-LIST'"
+				(emitSelected)="setDetailAttachment($event)"
+			>
+			</wiki-test-attachment-paginate>
+			<wiki-test-mimetype-unique
+				*ngIf="view === 'MIMETYPE-UNIQUE'"
+				[idIn]="idMimetype"
+			></wiki-test-mimetype-unique>
+			<wiki-test-mimetype-paginate
+				*ngIf="view === 'MIMETYPE-LIST'"
+				(emitSelected)="setDetailMimetype($event)"
+			>
+			</wiki-test-mimetype-paginate>
+		</div>
+	</div>
 </div>

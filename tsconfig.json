@@ -8,11 +8,12 @@
     "downlevelIteration": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es5",
-    "module": "es2015",
+    "target": "ES2022",
+    "module": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -21,7 +22,7 @@
       "node"
     ],
     "lib": [
-      "es2018",
+      "ES2022",
       "dom",
       "dom.iterable"
     ],
@@ -37,7 +38,30 @@
       "@ddc/oauth-social": [
         "src/app/oauth-social",
         "src/app/oauth-social/*"
+      ],
+      "@zxing/ngx-scanner": [
+        "src/app/zxing-scanner",
+        "src/app/zxing-scanner/*"
+      ],
+      "ngx-device-detector": [
+        "src/app/ngx-device-detector",
+        "src/app/ngx-device-detector/*"
+      ],
+      "@swimlane/ngx-charts": [
+        "src/app/ngx-charts",
+        "src/app/ngx-charts/*"
+      ],
+      "ngx-markdown": [
+        "src/app/ngx-markdown",
+        "src/app/ngx-markdown/*"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": false,
+    "enableIvy": true /* true with cli >= 12.0, false with cli < 12 */
   }
 }

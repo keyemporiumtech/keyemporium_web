@@ -3,8 +3,6 @@ export function formatLabelChart(label: any, isCurrency?: boolean): string {
 		label = label.toLocaleDateString();
 	} else if (isCurrency) {
 		label = label.toLocaleString();
-	} else {
-		label = label;
 	}
 
 	return label;

@@ -1,4 +1,17 @@
-<tree-root #tree [nodes]="nodes" [options]="optionsTree" (toggleExpanded)="onEvent($event)" (activate)="onEvent($event)"
-  (deactivate)="onEvent($event)" (focus)="onEvent($event)" (blur)="onEvent($event)" (initialized)="onEvent($event)"
-  (updateData)="onEvent($event)" (moveNode)="onEvent($event)" (copyNode)="onEvent($event)"
-  (loadNodeChildren)="onEvent($event)" (changeFilter)="onEvent($event)" (stateChange)="onEvent($event)"></tree-root>
+<tree-root
+	#tree
+	[nodes]="nodes"
+	[options]="optionsTree"
+	(toggleExpanded)="onEvent($event)"
+	(activate)="onEvent($event)"
+	(deactivate)="onEvent($event)"
+	(focus)="onEvent($event)"
+	(blur)="onEvent($event)"
+	(initialized)="onEvent($event)"
+	(updateData)="onEvent($event)"
+	(moveNode)="onEvent($event)"
+	(copyNode)="onEvent($event)"
+	(loadNodeChildren)="onEvent($event)"
+	(changeFilter)="onEvent($event)"
+	(stateChange)="onEvent($event)"
+></tree-root>

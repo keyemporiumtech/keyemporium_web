@@ -1,74 +1,107 @@
 <div class="container-loading" *ngIf="form" [ngClass]="cssClass" [ngStyle]="cssStyle">
-  <ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+	<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
 
-  <div *ngIf="labelTitle" [innerHtml]="translateKey(labelTitle) | translate:translateParams(labelTitle)"></div>
+	<div
+		*ngIf="labelTitle"
+		[innerHtml]="translateKey(labelTitle) | translate : translateParams(labelTitle)"
+	></div>
 
-  <div *ngIf="tpaddressFlag" class="row mt-2">
-    <div class="col col-12">
-      <label>{{'APP.LABEL.ADDRESS.TYPE' | translate}}</label>
-      <ddc-init-input-select #tpaddressComponent [field]="tpAddressFormField" [options]="optionsTpaddress">
-      </ddc-init-input-select>
-    </div>
-  </div>
+	<div *ngIf="tpaddressFlag" class="row mt-2">
+		<div class="col col-12">
+			<label>{{ 'APP.LABEL.ADDRESS.TYPE' | translate }}</label>
+			<ddc-init-input-select
+				#tpaddressComponent
+				[field]="tpAddressFormField"
+				[options]="optionsTpaddress"
+			>
+			</ddc-init-input-select>
+		</div>
+	</div>
 
-  <ddc-init-input-autocomplete *ngIf="!readonly && flgAutocomplete" [field]="autocompleteFormField"
-    [list]="listForAutocomplete" (searchEmit)="searchAutocomplete($event)" (overEmit)="mouseOverAutocomplete($event)"
-    (outEmit)="mouseOutAutocomplete($event)" (selectEmit)="clickAutocomplete($event)">
-  </ddc-init-input-autocomplete>
+	<ddc-init-input-autocomplete
+		*ngIf="!readonly && flgAutocomplete"
+		[field]="autocompleteFormField"
+		[list]="listForAutocomplete"
+		(searchEmit)="searchAutocomplete($event)"
+		(overEmit)="mouseOverAutocomplete($event)"
+		(outEmit)="mouseOutAutocomplete($event)"
+		(selectEmit)="clickAutocomplete($event)"
+	>
+	</ddc-init-input-autocomplete>
 
+	<ddc-init-address-search
+		*ngIf="!readonly && flgSearch"
+		[field]="searchFormField"
+		[flgEsri]="true"
+		(addressEmit)="addressByOpenstreet($event)"
+	>
+	</ddc-init-address-search>
 
-  <ddc-init-address-search *ngIf="!readonly && flgSearch" [field]="searchFormField" [flgEsri]="true"
-    (addressEmit)="addressByOpenstreet($event)">
-  </ddc-init-address-search>
-
-
-  <div class="row mt-2">
-    <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
-      <label>{{'APP.LABEL.ADDRESS.NATION' | translate}}</label>
-      <ddc-init-input-select [field]="nationFormField" [options]="nationOptions" [noMargin]="true">
-      </ddc-init-input-select>
-    </div>
-    <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
-      <label>{{'APP.LABEL.ADDRESS.REGION' | translate}}</label>
-      <ddc-init-input-select [field]="regionFormField" [options]="regionOptions" [noMargin]="true">
-      </ddc-init-input-select>
-    </div>
-    <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
-      <label>{{'APP.LABEL.ADDRESS.PROVINCE' | translate}}</label>
-      <ddc-init-input-select [field]="provinceFormField" [options]="provinceOptions" [noMargin]="true">
-      </ddc-init-input-select>
-    </div>
-  </div>
-  <div class="row">
-    <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'" *ngIf="isCommunity()">
-      <label>{{'APP.LABEL.ADDRESS.COMMUNITY' | translate}}</label>
-      <ddc-init-input-select [field]="communityFormField" [options]="communityOptions" [noMargin]="true">
-      </ddc-init-input-select>
-    </div>
-    <div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
-      <label>{{'APP.LABEL.ADDRESS.CITY' | translate}}</label>
-      <ddc-init-input-select [field]="cityFormField" [options]="cityOptions" [noMargin]="true"></ddc-init-input-select>
-    </div>
-    <div ddcBtsSize [btsSize]="'3|4|12'" [btsPrefix]="'col-'">
-      <label>{{'APP.LABEL.ADDRESS.ZIP' | translate}}</label>
-      <ddc-init-input-text [field]="zipFormField"></ddc-init-input-text>
-    </div>
-  </div>
-  <div class="row" *ngIf="fieldStreet && fieldNum">
-    <div ddcBtsSize [btsSize]="'9|9|12'" [btsPrefix]="'col-'">
-      <label>{{'APP.LABEL.ADDRESS.STREET' | translate}}</label>
-      <ddc-init-input-text #streetComponent [field]="streetFormField"></ddc-init-input-text>
-      <!--<input class="form-control" type="text" [formControl]="form.get(fieldStreet)"
+	<div class="row mt-2">
+		<div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+			<label>{{ 'APP.LABEL.ADDRESS.NATION' | translate }}</label>
+			<ddc-init-input-select [field]="nationFormField" [options]="nationOptions" [noMargin]="true">
+			</ddc-init-input-select>
+		</div>
+		<div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+			<label>{{ 'APP.LABEL.ADDRESS.REGION' | translate }}</label>
+			<ddc-init-input-select [field]="regionFormField" [options]="regionOptions" [noMargin]="true">
+			</ddc-init-input-select>
+		</div>
+		<div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+			<label>{{ 'APP.LABEL.ADDRESS.PROVINCE' | translate }}</label>
+			<ddc-init-input-select
+				[field]="provinceFormField"
+				[options]="provinceOptions"
+				[noMargin]="true"
+			>
+			</ddc-init-input-select>
+		</div>
+	</div>
+	<div class="row">
+		<div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'" *ngIf="isCommunity()">
+			<label>{{ 'APP.LABEL.ADDRESS.COMMUNITY' | translate }}</label>
+			<ddc-init-input-select
+				[field]="communityFormField"
+				[options]="communityOptions"
+				[noMargin]="true"
+			>
+			</ddc-init-input-select>
+		</div>
+		<div ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+			<label>{{ 'APP.LABEL.ADDRESS.CITY' | translate }}</label>
+			<ddc-init-input-select
+				[field]="cityFormField"
+				[options]="cityOptions"
+				[noMargin]="true"
+			></ddc-init-input-select>
+		</div>
+		<div ddcBtsSize [btsSize]="'3|4|12'" [btsPrefix]="'col-'">
+			<label>{{ 'APP.LABEL.ADDRESS.ZIP' | translate }}</label>
+			<ddc-init-input-text [field]="zipFormField"></ddc-init-input-text>
+		</div>
+	</div>
+	<div class="row" *ngIf="fieldStreet && fieldNum">
+		<div ddcBtsSize [btsSize]="'9|9|12'" [btsPrefix]="'col-'">
+			<label>{{ 'APP.LABEL.ADDRESS.STREET' | translate }}</label>
+			<ddc-init-input-text #streetComponent [field]="streetFormField"></ddc-init-input-text>
+			<!--<input class="form-control" type="text" [formControl]="form.get(fieldStreet)"
         (blur)="fnChangeStreetInfo(hasStreet)" />-->
-    </div>
-    <div ddcBtsSize [btsSize]="'3|3|12'" [btsPrefix]="'col-'">
-      <label>{{'APP.LABEL.ADDRESS.NUM' | translate}}</label>
-      <ddc-init-input-text #numComponent [field]="numFormField"></ddc-init-input-text>
-      <!--<input class="form-control" type="text" [formControl]="form.get(fieldNum)"
+		</div>
+		<div ddcBtsSize [btsSize]="'3|3|12'" [btsPrefix]="'col-'">
+			<label>{{ 'APP.LABEL.ADDRESS.NUM' | translate }}</label>
+			<ddc-init-input-text #numComponent [field]="numFormField"></ddc-init-input-text>
+			<!--<input class="form-control" type="text" [formControl]="form.get(fieldNum)"
         (blur)="fnChangeStreetInfo(hasStreet)" />-->
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <ddc-init-map *ngIf="flgMap" [id]="'map_'+id" [showEnableDisableScroll]="false" [latitude]="mapGeo1"
-    [longitude]="mapGeo2" [textMarker]="mapAddressText"></ddc-init-map>
+	<ddc-init-map
+		*ngIf="flgMap"
+		[id]="'map_' + id"
+		[showEnableDisableScroll]="false"
+		[latitude]="mapGeo1"
+		[longitude]="mapGeo2"
+		[textMarker]="mapAddressText"
+	></ddc-init-map>
 </div>

@@ -26,7 +26,7 @@ export class AppNationsComponent extends BaseComponent {
 
 	@Input() label: string | StringTranslate;
 	@Input() showLabel: boolean = true;
-	@ViewChild('nations') nations: InputSelectComponent;
+	@ViewChild('nations', { static: false }) nations: InputSelectComponent;
 
 	formNation: FormGroup;
 	validations: any = {};

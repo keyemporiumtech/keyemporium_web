@@ -1,5 +1,13 @@
 import { BaseFormComponent } from './base-form.component';
-import { OnInit, OnDestroy, AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+	OnInit,
+	OnDestroy,
+	AfterViewInit,
+	Output,
+	EventEmitter,
+	Input,
+	Directive,
+} from '@angular/core';
 import { ApplicationLoggerService } from '../../logger/services/application-logger.service';
 import { WizardStepModel } from '../../html/models/wizard-step.model';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
@@ -10,8 +18,12 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
  * - definire una funzione fillForm() per ogni step
  * - definire una funzione extractData() per ogni step
  */
-export abstract class BaseWizardComponent extends BaseFormComponent
-	implements OnInit, OnDestroy, AfterViewInit {
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
+export abstract class BaseWizardComponent
+	extends BaseFormComponent
+	implements OnInit, OnDestroy, AfterViewInit
+{
 	@Output() nextEmit: EventEmitter<number> = new EventEmitter<number>();
 	@Output() prevEmit: EventEmitter<number> = new EventEmitter<number>();
 	@Input() extractDuringNavigation: boolean; // estrae i dati di un step al next o al goToStep

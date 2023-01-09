@@ -34,7 +34,7 @@ export class InputMultilanguageComponent extends BaseFormComponent {
 	// style
 	@Input() languagesSettedStyle: any;
 	@Input() languagesSettedClass: any;
-	@ViewChild('languages') languages: InputSelectComponent;
+	@ViewChild('languages', { static: false }) languages: InputSelectComponent;
 	optionsLanguages: OptionListModel[];
 	languagesSetted: string[];
 	contentField: FormFieldModel;

@@ -5,7 +5,10 @@ import { MessageModel } from '../../message/models/message.model';
 import { EnumMessageType } from '../../message/enums/message-type.enum';
 import { PreviousRouteService } from '../../routing/services/previous-route.service';
 import { ApplicationStorageService } from '../../storage/services/application-storage.service';
+import { Directive } from '@angular/core';
 
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseMessageRoutingComponent extends BaseComponent {
 	private _environment: any;
 	// services

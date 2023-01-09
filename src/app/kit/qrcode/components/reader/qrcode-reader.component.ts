@@ -9,7 +9,7 @@ import { ApplicationLoggerService } from '../../../logger/services/application-l
 	styleUrls: ['./qrcode-reader.component.scss'],
 })
 export class QrcodeReaderComponent extends BaseComponent {
-	@Input() id: any;
+	@Input() declare id: any;
 	@Input() allowEmptyString: boolean = false; // 	Allow empty string
 	@Input() colorlight: string = '#ffffff'; // 	Light color
 	@Input() colordark: string = '#000000'; // 	Dark Color
@@ -17,14 +17,14 @@ export class QrcodeReaderComponent extends BaseComponent {
 	@Input() text: string = ''; // 	String to encode
 	@Input() size: number = 256; // Height/Width (any value)
 	@Input() usesvg: boolean = false; // 	SVG Output
-	@ViewChild('qrcoderef') qrcoderef: QRCodeComponent;
+	@ViewChild('qrcoderef', { static: false }) qrcoderef: QRCodeComponent;
 
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}
 
 	readBlob(): string {
-		const html = this.qrcoderef.el.nativeElement.innerHTML;
+		const html = this.qrcoderef.qrcElement.nativeElement.innerHTML;
 		return html.substr(0, html.length - 2).split('base64,')[1];
 	}
 

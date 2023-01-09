@@ -1,26 +1,66 @@
-<select *ngIf="field && multiple" ddcValidation id="{{id}}" class="form-control" [ngClass]="field.cssClass"
-  [ngStyle]="field.cssStyle" [formControl]="field.formControl" [flgOnInitValidation]="field.flgOnInitValidation"
-  [flgOnSubmitValidation]="field.flgOnSubmitValidation" [submitted]="field.submitted" [showValid]="field.showValid"
-  [validations]="field.validations" [supports]="field.supports" [styles]="field.styles" [valids]="field.valids"
-  [multiple]="true">
-  <option value="{{defaultOption.key}}"
-    [innerHTML]="translateKey(defaultOption.text) | translate:translateParams(defaultOption.text)"></option>
+<select
+	*ngIf="field && multiple"
+	ddcValidation
+	id="{{ id }}"
+	class="form-control"
+	[ngClass]="field.cssClass"
+	[ngStyle]="field.cssStyle"
+	[formControl]="field.formControl"
+	[flgOnInitValidation]="field.flgOnInitValidation"
+	[flgOnSubmitValidation]="field.flgOnSubmitValidation"
+	[submitted]="field.submitted"
+	[showValid]="field.showValid"
+	[validations]="field.validations"
+	[supports]="field.supports"
+	[styles]="field.styles"
+	[valids]="field.valids"
+	[multiple]="true"
+>
+	<option
+		value="{{ defaultOption.key }}"
+		[innerHTML]="translateKey(defaultOption.text) | translate : translateParams(defaultOption.text)"
+	></option>
 
-  <option *ngFor="let option of options" [value]="option.key" class="{{isSelected(option) ? 'selected' : '' }}"
-    [ngClass]="option.cssClass" [ngStyle]="option.cssStyle"
-    [innerHTML]="translateKey(option.text) | translate:translateParams(option.text)" [selected]="isSelected(option)">
-  </option>
+	<option
+		*ngFor="let option of options"
+		[value]="option.key"
+		class="{{ isSelected(option) ? 'selected' : '' }}"
+		[ngClass]="option.cssClass"
+		[ngStyle]="option.cssStyle"
+		[innerHTML]="translateKey(option.text) | translate : translateParams(option.text)"
+		[selected]="isSelected(option)"
+	></option>
 </select>
 
-<select *ngIf="field && !multiple" ddcValidation id="{{id}}" class="form-control" [ngClass]="field.cssClass"
-  [ngStyle]="field.cssStyle" [formControl]="field.formControl" [flgOnInitValidation]="field.flgOnInitValidation"
-  [flgOnSubmitValidation]="field.flgOnSubmitValidation" [submitted]="field.submitted" [showValid]="field.showValid"
-  [validations]="field.validations" [supports]="field.supports" [styles]="field.styles" [valids]="field.valids">
-  <option value="{{defaultOption.key}}"
-    [innerHTML]="translateKey(defaultOption.text) | translate:translateParams(defaultOption.text)"></option>
+<select
+	*ngIf="field && !multiple"
+	ddcValidation
+	id="{{ id }}"
+	class="form-control"
+	[ngClass]="field.cssClass"
+	[ngStyle]="field.cssStyle"
+	[formControl]="field.formControl"
+	[flgOnInitValidation]="field.flgOnInitValidation"
+	[flgOnSubmitValidation]="field.flgOnSubmitValidation"
+	[submitted]="field.submitted"
+	[showValid]="field.showValid"
+	[validations]="field.validations"
+	[supports]="field.supports"
+	[styles]="field.styles"
+	[valids]="field.valids"
+>
+	<option
+		value="{{ defaultOption.key }}"
+		[innerHTML]="translateKey(defaultOption.text) | translate : translateParams(defaultOption.text)"
+	></option>
 
-  <option *ngFor="let option of options" [value]="option.key" class="{{isSelected(option) ? 'selected' : '' }}"
-    [ngClass]="option.cssClass" [ngStyle]="option.cssStyle"
-    [innerHTML]="translateKey(option.text) | translate:translateParams(option.text)" [selected]="isSelected(option)">
-  </option>
+	<option
+		*ngFor="let option of options"
+		[value]="option.key"
+		class="{{ isSelected(option) ? 'selected' : '' }}"
+		[ngClass]="option.cssClass"
+		[ngStyle]="option.cssStyle"
+		[innerHTML]="translateKey(option.text) | translate : translateParams(option.text)"
+		[selected]="isSelected(option)"
+	></option>
 </select>

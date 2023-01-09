@@ -1,12 +1,12 @@
 <h4>Lista senza ricerca e senza paginazione</h4>
 
-
 <div class="mt-3">
-  Per mostrare una tabella con una lista basta solamente passare al componente <strong>ddc-init-table-list</strong>
-  un template di colonne e una lista di elementi
+	Per mostrare una tabella con una lista basta solamente passare al componente
+	<strong>ddc-init-table-list</strong>
+	un template di colonne e una lista di elementi
 </div>
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>            
 
       ```typescript
@@ -42,20 +42,19 @@
     </div>
   </pre>
 </div>
-<ddc-init-table-list [colsTable]="getColsTable()" [list]="getList()">
-</ddc-init-table-list>
+<ddc-init-table-list [colsTable]="getColsTable()" [list]="getList()"> </ddc-init-table-list>
 
 <div class="mt-3">
-  Se vogliamo aggiungere un form di ricerca allora bisogna implementare:
-  <ul>
-    <li>un FormGroup (da passare come <strong>formFilters</strong>)</li>
-    <li>un array di FormGroupModel (da passare come <strong>groups</strong>)</li>
-    <li>una funzione per il reset della ricerca</li>
-    <li>una funzione per l'applicazione dei filtri al click sul pulsante cerca</li>
-  </ul>
+	Se vogliamo aggiungere un form di ricerca allora bisogna implementare:
+	<ul>
+		<li>un FormGroup (da passare come <strong>formFilters</strong>)</li>
+		<li>un array di FormGroupModel (da passare come <strong>groups</strong>)</li>
+		<li>una funzione per il reset della ricerca</li>
+		<li>una funzione per l'applicazione dei filtri al click sul pulsante cerca</li>
+	</ul>
 </div>
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>            
 
       ```typescript
@@ -147,16 +146,23 @@
   </pre>
 </div>
 
-<ddc-init-table-list [groups]="groups" [colsTable]="getColsTable()" [flgOnInitValidation]="true"
-  [formFilters]="formFilters" [list]="list" (resetEmit)="reset()" (searchEmit)="search()">
+<ddc-init-table-list
+	[groups]="groups"
+	[colsTable]="getColsTable()"
+	[flgOnInitValidation]="true"
+	[formFilters]="formFilters"
+	[list]="list"
+	(resetEmit)="reset()"
+	(searchEmit)="search()"
+>
 </ddc-init-table-list>
 
 <div class="mt-3">
-  Se vogliamo aggiungere una colonna personalizzata bisogna creare un template di colonna per l'intestazione e una per
-  il record in tabella
+	Se vogliamo aggiungere una colonna personalizzata bisogna creare un template di colonna per
+	l'intestazione e una per il record in tabella
 </div>
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>            
 
       ```typescript
@@ -191,15 +197,23 @@
   </pre>
 </div>
 
-<ddc-init-table-list [groups]="groups" [colsTable]="getColsTable()" [flgOnInitValidation]="true"
-  [formFilters]="formFilters" [list]="list" (resetEmit)="reset()" (searchEmit)="search()"
-  [templateActionsIntest]="headerActions" [templateActionsRow]="rowActions">
+<ddc-init-table-list
+	[groups]="groups"
+	[colsTable]="getColsTable()"
+	[flgOnInitValidation]="true"
+	[formFilters]="formFilters"
+	[list]="list"
+	(resetEmit)="reset()"
+	(searchEmit)="search()"
+	[templateActionsIntest]="headerActions"
+	[templateActionsRow]="rowActions"
+>
 </ddc-init-table-list>
 
 <ng-template #headerActions>
-  <span class="fa fa-cog"></span>
+	<span class="fa fa-cog"></span>
 </ng-template>
 
 <ng-template #rowActions let-item="item">
-  <span class="fa fa-edit mr-2 cursor-pointer" (click)="edit(item)"></span>
+	<span class="fa fa-edit mr-2 cursor-pointer" (click)="edit(item)"></span>
 </ng-template>

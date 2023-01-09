@@ -56,7 +56,7 @@ export class PageUtility {
 		}
 		return (
 			arrBaseUrl
-				.filter(function(value, index, arr) {
+				.filter(function (value, index, arr) {
 					return (
 						value &&
 						value.indexOf('http') === -1 &&
@@ -112,10 +112,10 @@ export class PageUtility {
 					arrParamKV = param.split('=');
 				}
 				if (arrParamKV && arrParamKV.length && arrParamKV.length === 2) {
-					if (!extrasTmp.hasOwnProperty('queryParams')) {
+					if (!Object.prototype.hasOwnProperty.call(extrasTmp, 'queryParams')) {
 						extrasTmp.queryParams = {};
 					}
-					if (!extrasTmp.queryParams.hasOwnProperty(arrParamKV[0])) {
+					if (!Object.prototype.hasOwnProperty.call(extrasTmp, arrParamKV[0])) {
 						extrasTmp.queryParams[arrParamKV[0]] = arrParamKV[1];
 					}
 				}

@@ -1,25 +1,25 @@
 <h5>Componente input iban</h5>
 
 <div class="row">
-  <div class="col-12">
-    <h5>Uso del componente</h5>
-    <ddc-init-input-iban></ddc-init-input-iban>
-  </div>
+	<div class="col-12">
+		<h5>Uso del componente</h5>
+		<ddc-init-input-iban></ddc-init-input-iban>
+	</div>
 </div>
 
 <div class="row">
-  <div class="col-12">
-    <h5>Uso del componente con input dell'iban</h5>
-    <ddc-init-input-iban [iban]="'IT 67 A 03109 05024 000511362038'"></ddc-init-input-iban>
-  </div>
+	<div class="col-12">
+		<h5>Uso del componente con input dell'iban</h5>
+		<ddc-init-input-iban [iban]="'IT 67 A 03109 05024 000511362038'"></ddc-init-input-iban>
+	</div>
 </div>
 
 <hr />
 <div class="row">
-  <div class="col-12" *ngIf="form">
-    <h5>Uso del componente all'interno di un form</h5>
+	<div class="col-12" *ngIf="form">
+		<h5>Uso del componente all'interno di un form</h5>
 
-    <pre>
+		<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>
         ```typescript
         form: FormGroup;
@@ -38,12 +38,15 @@
     </div>
     </pre>
 
-    <form [formGroup]="form">
-      <ddc-init-input-iban [extControl]="this.form.get('myIban')" [iban]="'IT 67 A 03109 05024 000511362038'">
-      </ddc-init-input-iban>
-    </form>
+		<form [formGroup]="form">
+			<ddc-init-input-iban
+				[extControl]="this.form.get('myIban')"
+				[iban]="'IT 67 A 03109 05024 000511362038'"
+			>
+			</ddc-init-input-iban>
+		</form>
 
-    <br />
-    {{this.form.get('myIban').value}}
-  </div>
+		<br />
+		{{ this.form.get('myIban').value }}
+	</div>
 </div>

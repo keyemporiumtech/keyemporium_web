@@ -55,20 +55,10 @@ export class DateModel {
 	}
 
 	toUTC() {
-		return this._date
-			? this._date
-					.utc()
-					.clone()
-					.format()
-			: undefined;
+		return this._date ? this._date.utc().clone().format() : undefined;
 	}
 	toDTO() {
-		return this._date
-			? +this._date
-					.clone()
-					.utc()
-					.format('x')
-			: undefined;
+		return this._date ? +this._date.clone().utc().format('x') : undefined;
 	}
 	toJSON() {
 		return this.toDTO();

@@ -1,83 +1,91 @@
 <div class="container-fluid" *ngIf="!view">
-  <h2>Info</h2>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('LEGENDA')">legenda</a>
-    </div>
-  </div>
+	<h2>Info</h2>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('LEGENDA')">legenda</a>
+		</div>
+	</div>
 
-  <!-- MODULES -->
-  <h2>Moduli aggiuntivi</h2>
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('API')">api</a>
-    </div>
-  </div>
-  <!---->
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('RESOURCES')">resources</a>
-    </div>
-  </div>
+	<!-- MODULES -->
+	<h2>Moduli aggiuntivi</h2>
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('API')">api</a>
+		</div>
+	</div>
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('RESOURCES')">resources</a>
+		</div>
+	</div>
 
-  <!---->
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('COMMUNICATION')">communication</a>
-    </div>
-  </div>
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('COMMUNICATION')">communication</a>
+		</div>
+	</div>
 
-  <!---->
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('AUTHENTICATION')">authentication</a>
-    </div>
-  </div>
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('AUTHENTICATION')">authentication</a>
+		</div>
+	</div>
 
-  <!---->
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('LOCALESYSTEM')">localesystem</a>
-    </div>
-  </div>
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('LOCALESYSTEM')">localesystem</a>
+		</div>
+	</div>
 
-  <!---->
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('VALIDATOR_IBAN')">validator_iban</a>
-    </div>
-  </div>
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('VALIDATOR_IBAN')">validator_iban</a>
+		</div>
+	</div>
 
-  <!---->
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('VALIDATOR_CREDITCARD')">validator_creditcard</a>
-    </div>
-  </div>
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('VALIDATOR_CREDITCARD')"
+				>validator_creditcard</a
+			>
+		</div>
+	</div>
 
-  <!---->
-  <div class="row mt-2">
-    <div class="col col-12">
-      <a class="btn btn-sm btn-danger text-white" (click)="go('VALIDATOR_PASSWORD')">validator_password</a>
-    </div>
-  </div>
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('VALIDATOR_PASSWORD')"
+				>validator_password</a
+			>
+		</div>
+	</div>
 
-  <hr />
-  <a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
+	<hr />
+	<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
 </div>
 
 <div class="container-fluid" *ngIf="view">
-  <a class="btn btn-sm btn-dark text-white float-right" (click)="go(undefined)">X</a>
-  <wiki-test-modules-legenda *ngIf="view === 'LEGENDA'"></wiki-test-modules-legenda>
-  <!-- MODULES -->
-  <wiki-test-api *ngIf="view === 'API'"></wiki-test-api>
-  <wiki-test-resources *ngIf="view === 'RESOURCES'"></wiki-test-resources>
-  <wiki-test-communication *ngIf="view === 'COMMUNICATION'"></wiki-test-communication>
-  <wiki-test-authentication *ngIf="view === 'AUTHENTICATION'"></wiki-test-authentication>
-  <wiki-test-localesystem *ngIf="view === 'LOCALESYSTEM'"></wiki-test-localesystem>
-  <wiki-test-validator-iban *ngIf="view === 'VALIDATOR_IBAN'"></wiki-test-validator-iban>
-  <wiki-test-validator-creditcard *ngIf="view === 'VALIDATOR_CREDITCARD'"></wiki-test-validator-creditcard>
-  <wiki-test-validator-password *ngIf="view === 'VALIDATOR_PASSWORD'"></wiki-test-validator-password>
-  <hr />
-  <a class="btn btn-sm btn-dark text-white" (click)="back()">BACK</a>
+	<a class="btn btn-sm btn-dark text-white float-right" (click)="go(undefined)">X</a>
+	<wiki-test-modules-legenda *ngIf="view === 'LEGENDA'"></wiki-test-modules-legenda>
+	<!-- MODULES -->
+	<wiki-test-api *ngIf="view === 'API'"></wiki-test-api>
+	<wiki-test-resources *ngIf="view === 'RESOURCES'"></wiki-test-resources>
+	<wiki-test-communication *ngIf="view === 'COMMUNICATION'"></wiki-test-communication>
+	<wiki-test-authentication *ngIf="view === 'AUTHENTICATION'"></wiki-test-authentication>
+	<wiki-test-localesystem *ngIf="view === 'LOCALESYSTEM'"></wiki-test-localesystem>
+	<wiki-test-validator-iban *ngIf="view === 'VALIDATOR_IBAN'"></wiki-test-validator-iban>
+	<wiki-test-validator-creditcard
+		*ngIf="view === 'VALIDATOR_CREDITCARD'"
+	></wiki-test-validator-creditcard>
+	<wiki-test-validator-password
+		*ngIf="view === 'VALIDATOR_PASSWORD'"
+	></wiki-test-validator-password>
+	<hr />
+	<a class="btn btn-sm btn-dark text-white" (click)="back()">BACK</a>
 </div>

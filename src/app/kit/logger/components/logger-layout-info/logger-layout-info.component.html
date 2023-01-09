@@ -1,72 +1,122 @@
 <h4>Logger Colors</h4>
 
 <div class="jumbotron">
-  <h1 class="display-4">Colori definiti nell'environment dell'applicazione {{applicationName}}</h1>
-  <p class="lead">
-    Colori usati dall'oggetto <strong>log</strong> della console javascript del browser.
-  </p>
-  <hr class="my-4">
-  <dl class="row mb-0 redial-line-height-2_5">
-    <dt class="col-sm-8">Log costruttori delle classi <strong>environment.logger.color.constructors</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorConstructor" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log delle informazioni relative ad una request http
-      <strong>environment.logger.color.request</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorRequest" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log delle informazioni relative ad una response http
-      <strong>environment.logger.color.response</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorResponse" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log delle informazioni di sicurezza <strong>environment.logger.color.security</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorSecurity" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log services functions informations <strong>environment.logger.serviceFunctions</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorFunctions" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-  </dl>
+	<h1 class="display-4">
+		Colori definiti nell'environment dell'applicazione {{ applicationName }}
+	</h1>
+	<p class="lead">
+		Colori usati dall'oggetto <strong>log</strong> della console javascript del browser.
+	</p>
+	<hr class="my-4" />
+	<dl class="row mb-0 redial-line-height-2_5">
+		<dt class="col-sm-8">
+			Log costruttori delle classi <strong>environment.logger.color.constructors</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div
+				[style.background]="colorConstructor"
+				[style.height]="'60px'"
+				[style.width]="'60px'"
+			></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log delle informazioni relative ad una request http
+			<strong>environment.logger.color.request</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div [style.background]="colorRequest" [style.height]="'60px'" [style.width]="'60px'"></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log delle informazioni relative ad una response http
+			<strong>environment.logger.color.response</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div [style.background]="colorResponse" [style.height]="'60px'" [style.width]="'60px'"></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log delle informazioni di sicurezza <strong>environment.logger.color.security</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div [style.background]="colorSecurity" [style.height]="'60px'" [style.width]="'60px'"></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log services functions informations <strong>environment.logger.serviceFunctions</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div [style.background]="colorFunctions" [style.height]="'60px'" [style.width]="'60px'"></div>
+		</dd>
+	</dl>
 
-  <hr class="my-4">
-  <h1 class="display-4">Logger di oggetti specifici</h1>
-  <p class="lead">
-    Logger di elementi o gruppi di elementi.<br />
-  </p>
-  <hr class="my-4">
-  <p class="lead"><strong>COMPONENTI</strong></p>
-  <dl class="row mb-0 redial-line-height-2_5">
-    <dt class="col-sm-8">Log di info() su componenti <strong>environment.logger.color.component.info</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorComponent.info" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log di debug() su componenti <strong>environment.logger.color.component.debug</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorComponent.debug" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log di error() su componenti <strong>environment.logger.color.component.error</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorComponent.error" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-  </dl>
+	<hr class="my-4" />
+	<h1 class="display-4">Logger di oggetti specifici</h1>
+	<p class="lead">Logger di elementi o gruppi di elementi.<br /></p>
+	<hr class="my-4" />
+	<p class="lead"><strong>COMPONENTI</strong></p>
+	<dl class="row mb-0 redial-line-height-2_5">
+		<dt class="col-sm-8">
+			Log di info() su componenti <strong>environment.logger.color.component.info</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div
+				[style.background]="colorComponent.info"
+				[style.height]="'60px'"
+				[style.width]="'60px'"
+			></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log di debug() su componenti <strong>environment.logger.color.component.debug</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div
+				[style.background]="colorComponent.debug"
+				[style.height]="'60px'"
+				[style.width]="'60px'"
+			></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log di error() su componenti <strong>environment.logger.color.component.error</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div
+				[style.background]="colorComponent.error"
+				[style.height]="'60px'"
+				[style.width]="'60px'"
+			></div>
+		</dd>
+	</dl>
 
-  <hr class="my-4">
-  <p class="lead"><strong>SERVIZI</strong></p>
-  <dl class="row mb-0 redial-line-height-2_5">
-    <dt class="col-sm-8">Log di info() su servizi <strong>environment.logger.color.service.info</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorService.info" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log di debug() su servizi <strong>environment.logger.color.service.debug</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorService.debug" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-    <dt class="col-sm-8">Log di error() su servizi <strong>environment.logger.color.service.error</strong>: </dt>
-    <dd class="col-sm-4">
-      <div [style.background]="colorService.error" [style.height]="'60px'" [style.width]="'60px'"></div>
-    </dd>
-  </dl>
+	<hr class="my-4" />
+	<p class="lead"><strong>SERVIZI</strong></p>
+	<dl class="row mb-0 redial-line-height-2_5">
+		<dt class="col-sm-8">
+			Log di info() su servizi <strong>environment.logger.color.service.info</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div
+				[style.background]="colorService.info"
+				[style.height]="'60px'"
+				[style.width]="'60px'"
+			></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log di debug() su servizi <strong>environment.logger.color.service.debug</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div
+				[style.background]="colorService.debug"
+				[style.height]="'60px'"
+				[style.width]="'60px'"
+			></div>
+		</dd>
+		<dt class="col-sm-8">
+			Log di error() su servizi <strong>environment.logger.color.service.error</strong>:
+		</dt>
+		<dd class="col-sm-4">
+			<div
+				[style.background]="colorService.error"
+				[style.height]="'60px'"
+				[style.width]="'60px'"
+			></div>
+		</dd>
+	</dl>
 </div>

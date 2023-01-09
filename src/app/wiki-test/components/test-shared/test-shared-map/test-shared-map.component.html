@@ -1,34 +1,43 @@
 <h4>Map</h4>
 
 <div>
-  Componente per la gestione di una mappa.<br />
-  Il componente è usato per la visualizzazione di marker su mappa.<br />
-  Di default viene mostrato un solo marker centrato con le coordinate del centro mappa.<br />
+	Componente per la gestione di una mappa.<br />
+	Il componente è usato per la visualizzazione di marker su mappa.<br />
+	Di default viene mostrato un solo marker centrato con le coordinate del centro mappa.<br />
 
-  Parametri di Input : <br />
-  <ul>
-    <li>latitude: <b>number</b> - <i>latitudine del centro mappa</i></li>
-    <li>longitude: <b>number</b> - <i>longitudine del centro mappa</i></li>
-    <li>zoom: <b>number</b> - <i>zoom della mappa. Default 13</i></li>
-    <li>height : <b>string</b> - <i>altezza del div contenente la mappa. Default '180px'</i></li>
-    <li>layerUrl : <b>string</b> - <i>layer open street.</i></li>
-    <li>layerOptions : <b>any</b> - <i>Oggetto delle opzioni del layer.</i></li>
-    <li>iconMarker : <b>MapIconInterface</b> - <i>Oggetto leaflet di tipo icon. Se non fornito come icon del market
-        mette quella
-        di default di leaflet</i>
-    <li>textMarker : <b>string</b> - <i>Testo da mostrare al click sull'icona centralizzata</i>
-    <li>classMap : <b>any</b> - <i>Classe css del div contenente la mappa</i>
-    <li>styleMap : <b>any</b> - <i>Stile css del div contenente la mappa</i>
-    <li>markers : <b>MapMarkerInterface[]</b> - <i>Lista di markers da mostrare in mappa</i>
-  </ul>
+	Parametri di Input : <br />
+	<ul>
+		<li>latitude: <b>number</b> - <i>latitudine del centro mappa</i></li>
+		<li>longitude: <b>number</b> - <i>longitudine del centro mappa</i></li>
+		<li>zoom: <b>number</b> - <i>zoom della mappa. Default 13</i></li>
+		<li>height : <b>string</b> - <i>altezza del div contenente la mappa. Default '180px'</i></li>
+		<li>layerUrl : <b>string</b> - <i>layer open street.</i></li>
+		<li>layerOptions : <b>any</b> - <i>Oggetto delle opzioni del layer.</i></li>
+		<li>
+			iconMarker : <b>MapIconInterface</b> -
+			<i
+				>Oggetto leaflet di tipo icon. Se non fornito come icon del market mette quella di default
+				di leaflet</i
+			>
+		</li>
 
-  Funzioni : <br />
-  <ul>
-    <li>addMarker(lat: number, lon: number, text?: string, icon?: MapIconInterface, open?:boolean): <b>void</b> -
-      <i>Aggiunge un
-        marker alla mappa e se open=true ed esiste un testo (text || icon.text) allora apre anche il popup</i>
-    </li>
-  </ul>
+		<li>textMarker : <b>string</b> - <i>Testo da mostrare al click sull'icona centralizzata</i></li>
+		<li>classMap : <b>any</b> - <i>Classe css del div contenente la mappa</i></li>
+		<li>styleMap : <b>any</b> - <i>Stile css del div contenente la mappa</i></li>
+		<li>markers : <b>MapMarkerInterface[]</b> - <i>Lista di markers da mostrare in mappa</i></li>
+	</ul>
+
+	Funzioni : <br />
+	<ul>
+		<li>
+			addMarker(lat: number, lon: number, text?: string, icon?: MapIconInterface, open?:boolean):
+			<b>void</b> -
+			<i
+				>Aggiunge un marker alla mappa e se open=true ed esiste un testo (text || icon.text) allora
+				apre anche il popup</i
+			>
+		</li>
+	</ul>
 </div>
 
 <hr class="separatore" />
@@ -44,23 +53,31 @@
   </div>
 </pre>
 
-
 <div class="row m-3">
-  <h6>Mappa con center e text</h6>
-  <div class="col col-12">
-    <ddc-init-map [id]="'map1'" [latitude]="41.909986" [longitude]="12.3959125" [textMarker]="'<b>Roma</b>'">
-    </ddc-init-map>
-  </div>
+	<h6>Mappa con center e text</h6>
+	<div class="col col-12">
+		<ddc-init-map
+			[id]="'map1'"
+			[latitude]="41.909986"
+			[longitude]="12.3959125"
+			[textMarker]="'<b>Roma</b>'"
+		>
+		</ddc-init-map>
+	</div>
 </div>
 <div class="row m-3">
-  <h6>Mappa con disable scroll</h6>
-  <div class="col col-12">
-    <ddc-init-map [id]="'map2'" [latitude]="41.909986" [longitude]="12.3959125" [textMarker]="'<b>Roma</b>'"
-      [notScroll]="true">
-    </ddc-init-map>
-  </div>
+	<h6>Mappa con disable scroll</h6>
+	<div class="col col-12">
+		<ddc-init-map
+			[id]="'map2'"
+			[latitude]="41.909986"
+			[longitude]="12.3959125"
+			[textMarker]="'<b>Roma</b>'"
+			[notScroll]="true"
+		>
+		</ddc-init-map>
+	</div>
 </div>
-
 
 <h5>Esempio di mappa con più marker</h5>
 <pre>
@@ -87,14 +104,23 @@
 </pre>
 
 <div class="row m-3">
-  <div class="col col-12">
-    <ddc-init-map #map3 [id]="'map3'" [latitude]="41.909986" [longitude]="12.3959125" [textMarker]="'<b>Roma</b>'"
-      [notScroll]="true">
-    </ddc-init-map>
-  </div>
+	<div class="col col-12">
+		<ddc-init-map
+			#map3
+			[id]="'map3'"
+			[latitude]="41.909986"
+			[longitude]="12.3959125"
+			[textMarker]="'<b>Roma</b>'"
+			[notScroll]="true"
+		>
+		</ddc-init-map>
+	</div>
 </div>
 
 <a class="btn btn-xs btn-primary" (click)="addMarkerRome(map3, undefined, true)">Aggiungi marker</a>
-<a class="btn btn-xs btn-primary ml-2" (click)="addMarkerRome(map3, icon, true)">Aggiungi marker con icona</a>
-<a class="btn btn-xs btn-primary ml-2" (click)="addMarkerRome(map3, undefined, true, true)">Aggiungi marker con
-  AddressModel automatico</a>
+<a class="btn btn-xs btn-primary ml-2" (click)="addMarkerRome(map3, icon, true)"
+	>Aggiungi marker con icona</a
+>
+<a class="btn btn-xs btn-primary ml-2" (click)="addMarkerRome(map3, undefined, true, true)"
+	>Aggiungi marker con AddressModel automatico</a
+>

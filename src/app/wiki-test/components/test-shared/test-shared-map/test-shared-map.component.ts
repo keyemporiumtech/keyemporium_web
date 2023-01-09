@@ -26,12 +26,8 @@ export class TestSharedMapComponent implements OnInit {
 	) {
 		const lat = 41.909986;
 		const lon = 12.3959125;
-		const rnLat = +Math.random()
-			.toString()
-			.substring(0, 8);
-		const rnLon = +Math.random()
-			.toString()
-			.substring(0, 8);
+		const rnLat = +Math.random().toString().substring(0, 8);
+		const rnLon = +Math.random().toString().substring(0, 8);
 
 		if (textAutomatic) {
 			child.addMarkerWithAddress(rnLat + lat, rnLon + lon, icon, open);

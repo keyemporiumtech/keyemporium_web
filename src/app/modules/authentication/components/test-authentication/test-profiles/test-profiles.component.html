@@ -1,16 +1,14 @@
 <h5>Profili e permessi</h5>
 
 <div class="row">
-  <div class="col-2">
-    <strong>Utente</strong>: {{userLogged.username}}
-  </div>
-  <div class="col-4">
-    <ddc-init-user-profiles></ddc-init-user-profiles>
-  </div>
-  <div class="col-6">
-    <h6>Permissions</h6>
-    {{permissions|json}}
-  </div>
+	<div class="col-2"><strong>Utente</strong>: {{ userLogged.username }}</div>
+	<div class="col-4">
+		<ddc-init-user-profiles></ddc-init-user-profiles>
+	</div>
+	<div class="col-6">
+		<h6>Permissions</h6>
+		{{ permissions | json }}
+	</div>
 </div>
 
 <hr />
@@ -19,89 +17,153 @@
 <h5 class="mt-3">Visibilità per profilo</h5>
 
 <div class="row mt-2">
-  <div class="col-6">
-    <div class="mt-2" *auth-permissions="{permissions: ['SUPERVISOR'], hidden: true}">
-      Div Visibile solo per supervisor
-    </div>
-    <div class="mt-2" *auth-permissions="{permissions: ['PROFILE'], hidden: true}">
-      Div Visibile solo per profile
-    </div>
-    <div class="mt-2" *auth-permissions="{permissions: ['SUPERVISOR'], disabled: true}">
-      Div Abilitato solo per supervisor e disabilitato altrimenti
-    </div>
-    <div class="mt-2"
-      *auth-permissions="{permissions: ['SUPERVISOR'], styleActive: 'border: 2px blue solid;', styleNA: 'border: 2px red solid;'}">
-      Div con stile bordo blue per supervisor e rosso altrimenti
-    </div>
-    <div class="mt-2"
-      *auth-permissions="{permissions: ['SUPERVISOR'], classActive: 'div-active', classNA: 'div-not-active'}">
-      Div con classe active per supervisor e not-active altrimenti
-    </div>
-  </div>
+	<div class="col-6">
+		<div class="mt-2" *auth-permissions="{ permissions: ['SUPERVISOR'], hidden: true }">
+			Div Visibile solo per supervisor
+		</div>
+		<div class="mt-2" *auth-permissions="{ permissions: ['PROFILE'], hidden: true }">
+			Div Visibile solo per profile
+		</div>
+		<div class="mt-2" *auth-permissions="{ permissions: ['SUPERVISOR'], disabled: true }">
+			Div Abilitato solo per supervisor e disabilitato altrimenti
+		</div>
+		<div
+			class="mt-2"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			Div con stile bordo blue per supervisor e rosso altrimenti
+		</div>
+		<div
+			class="mt-2"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				classActive: 'div-active',
+				classNA: 'div-not-active'
+			}"
+		>
+			Div con classe active per supervisor e not-active altrimenti
+		</div>
+	</div>
 
-  <div class="col-6">
-    <button class="btn btn-dark mr-2" *auth-permissions="{permissions: ['SUPERVISOR'], hidden: true}">
-      BTN supervisor
-    </button>
-    <button class="btn btn-dark mr-2" *auth-permissions="{permissions: ['PROFILE'], hidden: true}">
-      BTN profile
-    </button>
-    <button class="btn btn-dark mr-2" *auth-permissions="{permissions: ['SUPERVISOR'], disabled: true}">
-      BTN supervisor able
-    </button>
-    <button class="btn btn-dark mr-2"
-      *auth-permissions="{permissions: ['SUPERVISOR'], styleActive: 'border: 2px blue solid;', styleNA: 'border: 2px red solid;'}">
-      BTN style
-    </button>
-    <button class="btn btn-dark mr-2"
-      *auth-permissions="{permissions: ['SUPERVISOR'], classActive: 'div-active', classNA: 'div-not-active'}">
-      BTN class
-    </button>
-  </div>
-
+	<div class="col-6">
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{ permissions: ['SUPERVISOR'], hidden: true }"
+		>
+			BTN supervisor
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{ permissions: ['PROFILE'], hidden: true }"
+		>
+			BTN profile
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{ permissions: ['SUPERVISOR'], disabled: true }"
+		>
+			BTN supervisor able
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			BTN style
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				classActive: 'div-active',
+				classNA: 'div-not-active'
+			}"
+		>
+			BTN class
+		</button>
+	</div>
 </div>
 
 <h5 class="mt-3">Visibilità per permessi</h5>
 
 <div class="row mt-2">
-  <div class="col-6">
-    <div class="mt-2" *auth-permissions="{permissions: ['ALL_PERMISSIONS'], hidden: true}">
-      Div Visibile solo per ALL_PERMISSIONS
-    </div>
-    <div class="mt-2" *auth-permissions="{permissions: ['OWN_PERMISSIONS'], hidden: true}">
-      Div Visibile solo per OWN_PERMISSIONS
-    </div>
-    <div class="mt-2" *auth-permissions="{permissions: ['ALL_PERMISSIONS'], disabled: true}">
-      Div Abilitato solo per ALL_PERMISSIONS e disabilitato altrimenti
-    </div>
-    <div class="mt-2"
-      *auth-permissions="{permissions: ['ALL_PERMISSIONS'], styleActive: 'border: 2px blue solid;', styleNA: 'border: 2px red solid;'}">
-      Div con stile bordo blue per ALL_PERMISSIONS e rosso altrimenti
-    </div>
-    <div class="mt-2"
-      *auth-permissions="{permissions: ['ALL_PERMISSIONS'], classActive: 'div-active', classNA: 'div-not-active'}">
-      Div con classe active per ALL_PERMISSIONS e not-active altrimenti
-    </div>
-  </div>
+	<div class="col-6">
+		<div class="mt-2" *auth-permissions="{ permissions: ['ALL_PERMISSIONS'], hidden: true }">
+			Div Visibile solo per ALL_PERMISSIONS
+		</div>
+		<div class="mt-2" *auth-permissions="{ permissions: ['OWN_PERMISSIONS'], hidden: true }">
+			Div Visibile solo per OWN_PERMISSIONS
+		</div>
+		<div class="mt-2" *auth-permissions="{ permissions: ['ALL_PERMISSIONS'], disabled: true }">
+			Div Abilitato solo per ALL_PERMISSIONS e disabilitato altrimenti
+		</div>
+		<div
+			class="mt-2"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			Div con stile bordo blue per ALL_PERMISSIONS e rosso altrimenti
+		</div>
+		<div
+			class="mt-2"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				classActive: 'div-active',
+				classNA: 'div-not-active'
+			}"
+		>
+			Div con classe active per ALL_PERMISSIONS e not-active altrimenti
+		</div>
+	</div>
 
-  <div class="col-6">
-    <button class="btn btn-dark mr-2" *auth-permissions="{permissions: ['ALL_PERMISSIONS'], hidden: true}">
-      BTN ALL_PERMISSIONS
-    </button>
-    <button class="btn btn-dark mr-2" *auth-permissions="{permissions: ['OWN_PERMISSIONS'], hidden: true}">
-      BTN OWN_PERMISSIONS
-    </button>
-    <button class="btn btn-dark mr-2" *auth-permissions="{permissions: ['ALL_PERMISSIONS'], disabled: true}">
-      BTN ALL_PERMISSIONS able
-    </button>
-    <button class="btn btn-dark mr-2"
-      *auth-permissions="{permissions: ['ALL_PERMISSIONS'], styleActive: 'border: 2px blue solid;', styleNA: 'border: 2px red solid;'}">
-      BTN style
-    </button>
-    <button class="btn btn-dark mr-2"
-      *auth-permissions="{permissions: ['ALL_PERMISSIONS'], classActive: 'div-active', classNA: 'div-not-active'}">
-      BTN class
-    </button>
-  </div>
-
+	<div class="col-6">
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{ permissions: ['ALL_PERMISSIONS'], hidden: true }"
+		>
+			BTN ALL_PERMISSIONS
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{ permissions: ['OWN_PERMISSIONS'], hidden: true }"
+		>
+			BTN OWN_PERMISSIONS
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{ permissions: ['ALL_PERMISSIONS'], disabled: true }"
+		>
+			BTN ALL_PERMISSIONS able
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			BTN style
+		</button>
+		<button
+			class="btn btn-dark mr-2"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				classActive: 'div-active',
+				classNA: 'div-not-active'
+			}"
+		>
+			BTN class
+		</button>
+	</div>
 </div>

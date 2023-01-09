@@ -17,7 +17,7 @@ export class VersioningComponent implements OnInit {
 
 	private loadModules() {
 		for (const key in this.versioningJson) {
-			if (this.versioningJson.hasOwnProperty(key)) {
+			if (Object.prototype.hasOwnProperty.call(this.versioningJson, key)) {
 				this.modules.push({ module: key, version: this.versioningJson[key] });
 			}
 		}

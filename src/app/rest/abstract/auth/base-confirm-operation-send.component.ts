@@ -1,10 +1,12 @@
 import { BaseComponent, BehaviourObserverModel } from '@ddc/kit';
 import { Observable, Subscription } from 'rxjs';
-import { OnDestroy, Input } from '@angular/core';
+import { OnDestroy, Input, Directive } from '@angular/core';
 
 /**
  * Da estendere per creare un componente che invia un codice di verifica per l'autorizzazione di una determinata operazione
  */
+@Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseConfirmOperationSendComponent extends BaseComponent implements OnDestroy {
 	// sub
 	subSend: Subscription;

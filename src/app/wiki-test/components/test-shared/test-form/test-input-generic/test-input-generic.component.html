@@ -1,14 +1,15 @@
 <h4>Input Generic</h4>
 
 <div>
-  All'interno di un form è possibile usare il componente <strong>ddc-init-input-generic</strong> per disegnare un campo
-  di input.<br />
-  Il suo compito è quello di disegnare un campo del form sulla base dell'Input <strong>field</strong>.
-  Eredita tutte le proprietà dei componenti di input e disegna i div che contengono l'input, consentendo di gestire
-  la label, la disposizione orizzontale, append e prepend etc.etc.
+	All'interno di un form è possibile usare il componente <strong>ddc-init-input-generic</strong> per
+	disegnare un campo di input.<br />
+	Il suo compito è quello di disegnare un campo del form sulla base dell'Input
+	<strong>field</strong>. Eredita tutte le proprietà dei componenti di input e disegna i div che
+	contengono l'input, consentendo di gestire la label, la disposizione orizzontale, append e prepend
+	etc.etc.
 </div>
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>      
 
       ```typescript
@@ -50,10 +51,10 @@
   </pre>
 </div>
 
-<hr class="line line-sm">
+<hr class="line line-sm" />
 <h6 class="mt-3">Modo rapido di gestione delle validazioni</h6>
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>          
 
       ```typescript
@@ -93,10 +94,10 @@
   </pre>
 </div>
 
-<hr class="line line-sm">
+<hr class="line line-sm" />
 <h6 class="mt-3">Label a colonna e placeholder</h6>
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>          
 
       ```typescript
@@ -108,15 +109,15 @@
   </pre>
 </div>
 <form [formGroup]="form1">
-  <div class="form-group">
-    <ddc-init-input-generic [field]="colSingle"></ddc-init-input-generic>
-  </div>
+	<div class="form-group">
+		<ddc-init-input-generic [field]="colSingle"></ddc-init-input-generic>
+	</div>
 </form>
 
-<hr class="line line-sm">
+<hr class="line line-sm" />
 <h6 class="mt-3">Append e Prepend</h6>
 <div class="mt-3">
-  <pre>
+	<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>          
 
       ```typescript
@@ -127,607 +128,976 @@
   </pre>
 </div>
 <form [formGroup]="form1">
-  <div class="form-group">
-    <ddc-init-input-generic [field]="appendPrepend"></ddc-init-input-generic>
-  </div>
+	<div class="form-group">
+		<ddc-init-input-generic [field]="appendPrepend"></ddc-init-input-generic>
+	</div>
 </form>
 
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputTextG"
-  aria-expanded="false" aria-controls="collapseInputTextG">
-  Input Text
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputTextG"
+	aria-expanded="false"
+	aria-controls="collapseInputTextG"
+>
+	Input Text
 </button>
 
 <div class="collapse" id="collapseInputTextG">
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="text1"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'text1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('text1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(text1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('text1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="text1"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'text1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('text1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(text1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('text1')">Reset</button>
+	</form>
 </div>
-
-
 
 <!-- NUMBER -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputNumberG"
-  aria-expanded="false" aria-controls="collapseInputNumberG">
-  Input Number
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputNumberG"
+	aria-expanded="false"
+	aria-controls="collapseInputNumberG"
+>
+	Input Number
 </button>
 
 <div class="collapse" id="collapseInputNumberG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="number1"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'number1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('number1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(number1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('number1')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="number1"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'number1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('number1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(number1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('number1')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="number2" [min]="2" [max]="6"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'number2')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('number2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(number2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('number2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="number2" [min]="2" [max]="6"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'number2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('number2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(number2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('number2')">Reset</button>
+	</form>
 </div>
 
 <!-- DECIMAL -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputDecimalG"
-  aria-expanded="false" aria-controls="collapseInputDecimalG">
-  Input Decimal
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputDecimalG"
+	aria-expanded="false"
+	aria-controls="collapseInputDecimalG"
+>
+	Input Decimal
 </button>
 
 <div class="collapse" id="collapseInputDecimalG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="decimal1"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'decimal1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal1')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="decimal1"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'decimal1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="decimal2" [min]="2" [max]="6"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'decimal2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal2')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="decimal2" [min]="2" [max]="6"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'decimal2')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="decimal3"
+				[min]="2.05"
+				[max]="12.15"
+				[digits]="2"
+			></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2.04, 'decimal3')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal3')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal3)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal3')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="decimal3" [min]="2.05" [max]="12.15" [digits]="2"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2.04, 'decimal3')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal3')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal3)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal3')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="decimal4" [min]="2.05" [max]="12.15" [digits]="3"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2.04, 'decimal4')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal4')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal4)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal4')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="decimal4"
+				[min]="2.05"
+				[max]="12.15"
+				[digits]="3"
+			></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2.04, 'decimal4')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('decimal4')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(decimal4)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('decimal4')">Reset</button>
+	</form>
 </div>
 
 <!-- CURRENCY -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputCurrencyG"
-  aria-expanded="false" aria-controls="collapseInputCurrencyG">
-  Input Currency
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputCurrencyG"
+	aria-expanded="false"
+	aria-controls="collapseInputCurrencyG"
+>
+	Input Currency
 </button>
 
 <div class="collapse" id="collapseInputCurrencyG">
-  <div>
-    Imposta automaticamente in append (se non fornito con l'input) il simbolo del currency di sistema
-  </div>
+	<div>
+		Imposta automaticamente in append (se non fornito con l'input) il simbolo del currency di
+		sistema
+	</div>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="currency1"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1.21, 'currency1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('currency1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(currency1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('currency1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="currency1"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1.21, 'currency1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('currency1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(currency1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('currency1')">Reset</button>
+	</form>
 </div>
-
 
 <!-- SELECT -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputSelectG"
-  aria-expanded="false" aria-controls="collapseInputSelectG">
-  Input Select
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputSelectG"
+	aria-expanded="false"
+	aria-controls="collapseInputSelectG"
+>
+	Input Select
 </button>
 
 <div class="collapse" id="collapseInputSelectG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="select1" [options]="optionList"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'select1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select1')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="select1" [options]="optionList"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'select1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select1')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="select2" [options]="optionList" [multiple]="true"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'select2')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="select2"
+				[options]="optionList"
+				[multiple]="true"
+			></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1, 2], 'select2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select2')">Reset</button>
+	</form>
 </div>
 
 <!-- SELECT_DIV -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputSelectDivG"
-  aria-expanded="false" aria-controls="collapseInputSelectDivG">
-  Input Select DIV
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputSelectDivG"
+	aria-expanded="false"
+	aria-controls="collapseInputSelectDivG"
+>
+	Input Select DIV
 </button>
 
 <div class="collapse" id="collapseInputSelectDivG">
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="select3" [options]="optionListHTML"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'select3')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select3')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select3)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select3')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="select3" [options]="optionListHTML"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'select3')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select3')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select3)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select3')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="select4" [options]="optionListHTML" [multiple]="true"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'select4')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select4')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select4)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select4')">Reset</button>
-  </form>
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="select5" [options]="optionListHTML" [multiple]="true" [maxSelectedView]="5">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'select5')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select5')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select5)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select5')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="select4"
+				[options]="optionListHTML"
+				[multiple]="true"
+			></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1, 2], 'select4')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select4')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select4)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select4')">Reset</button>
+	</form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="select5"
+				[options]="optionListHTML"
+				[multiple]="true"
+				[maxSelectedView]="5"
+			>
+			</ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1, 2], 'select5')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('select5')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(select5)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('select5')">Reset</button>
+	</form>
 </div>
 
 <!-- CHECKBOX -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputCheckboxG"
-  aria-expanded="false" aria-controls="collapseInputCheckboxG">
-  Input Checkbox
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputCheckboxG"
+	aria-expanded="false"
+	aria-controls="collapseInputCheckboxG"
+>
+	Input Checkbox
 </button>
 
 <div class="collapse" id="collapseInputCheckboxG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="check1" [options]="optionSingle"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'check1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check1')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="check1" [options]="optionSingle"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'check1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="check2"
+				[options]="optionList"
+				[multiple]="true"
+			></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1, 2], 'check2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check2')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="check2" [options]="optionList" [multiple]="true"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'check2')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="check3"
+				[options]="optionListHTML"
+				[multiple]="true"
+			></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1, 2], 'check3')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check3')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check3)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check3')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="check3" [options]="optionListHTML" [multiple]="true"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'check3')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check3')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check3)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check3')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="check4" [options]="optionList" [multiple]="true" [isHorizontal]="true">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1,2], 'check4')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check4')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check4)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check4')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="check4"
+				[options]="optionList"
+				[multiple]="true"
+				[isHorizontal]="true"
+			>
+			</ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([1, 2], 'check4')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('check4')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(check4)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('check4')">Reset</button>
+	</form>
 </div>
-
 
 <!-- RADIO -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputRadioG"
-  aria-expanded="false" aria-controls="collapseInputRadioG">
-  Input Radio
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputRadioG"
+	aria-expanded="false"
+	aria-controls="collapseInputRadioG"
+>
+	Input Radio
 </button>
 
 <div class="collapse" id="collapseInputRadioG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="radio1" [options]="optionSingle"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'radio1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio1')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="radio1" [options]="optionSingle"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'radio1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="radio2" [options]="optionList"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio2')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="radio2" [options]="optionList"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio2')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="radio3" [options]="optionListHTML"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio3')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio3')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio3)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio3')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="radio3" [options]="optionListHTML"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio3')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio3')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio3)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio3')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="radio4" [options]="optionList" [isHorizontal]="true">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio4')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio4')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio4)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio4')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="radio4" [options]="optionList" [isHorizontal]="true">
+			</ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(2, 'radio4')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('radio4')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(radio4)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('radio4')">Reset</button>
+	</form>
 </div>
 
 <!-- DATE -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputDateG"
-  aria-expanded="false" aria-controls="collapseInputDateG">
-  Input Date
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputDateG"
+	aria-expanded="false"
+	aria-controls="collapseInputDateG"
+>
+	Input Date
 </button>
 
 <div class="collapse" id="collapseInputDateG">
+	<form [formGroup]="form1">
+		<div>
+			Setta la data nel timezone memorizzato il localStorage (timezone del server settato dal modulo
+			init). Quindi converte la data passata in input nel timezone del server.
+		</div>
+		<div class="form-group">
+			<ddc-init-input-generic [field]="date1"></ddc-init-input-generic>
+		</div>
+		<button
+			class="mt-2 mr-2 btn btn-sm btn-dark"
+			(click)="setValue('2020-10-22 23:00:27-05:00', 'date1')"
+		>
+			2020-10-22 23:00:27-05:00
+		</button>
+		<br />
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date1')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div>
-      Setta la data nel timezone memorizzato il localStorage (timezone del server settato dal modulo init).
-      Quindi converte la data passata in input nel timezone del server.
-    </div>
-    <div class="form-group">
-      <ddc-init-input-generic [field]="date1"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date1')">2020-10-22
-      23:00:27-05:00</button>
-    <br />
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div>Setta la data nel timezone passato con il parametro <strong>timezoneName</strong>.</div>
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="date2"
+				[timezoneName]="'Brazil/Acre'"
+			></ddc-init-input-generic>
+		</div>
+		<button
+			class="mt-2 mr-2 btn btn-sm btn-dark"
+			(click)="setValue('2020-10-22 23:00:27-05:00', 'date2')"
+		>
+			2020-10-22 23:00:27-05:00
+		</button>
+		<br />
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date2')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div>
-      Setta la data nel timezone passato con il parametro <strong>timezoneName</strong>.
-    </div>
-    <div class="form-group">
-      <ddc-init-input-generic [field]="date2" [timezoneName]="'Brazil/Acre'"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date2')">2020-10-22
-      23:00:27-05:00</button>
-    <br />
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="date3" [min]="'2020-10-20'" [max]="'2020-10-29'" [step]="2">
+			</ddc-init-input-generic>
+		</div>
+		<button
+			class="mt-2 mr-2 btn btn-sm btn-dark"
+			(click)="setValue('2020-10-22 23:00:27-05:00', 'date3')"
+		>
+			2020-10-22 23:00:27-05:00
+		</button>
+		<br />
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date3')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date3)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date3')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="date3" [min]="'2020-10-20'" [max]="'2020-10-29'" [step]="2">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date3')">2020-10-22
-      23:00:27-05:00</button>
-    <br />
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date3')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date3)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date3')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="date4" [isTime]="true"></ddc-init-input-generic>
+		</div>
+		<button
+			class="mt-2 mr-2 btn btn-sm btn-dark"
+			(click)="setValue('2020-10-22 23:00:27-05:00', 'date4')"
+		>
+			2020-10-22 23:00:27-05:00
+		</button>
+		<br />
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date4')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date4)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date4')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="date4" [isTime]="true"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date4')">2020-10-22
-      23:00:27-05:00</button>
-    <br />
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date4')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date4)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date4')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="date5"
+				[timezoneName]="'Brazil/Acre'"
+				[isTime]="true"
+			></ddc-init-input-generic>
+		</div>
+		<button
+			class="mt-2 mr-2 btn btn-sm btn-dark"
+			(click)="setValue('2020-10-22 23:00:27-05:00', 'date5')"
+		>
+			2020-10-22 23:00:27-05:00
+		</button>
+		<br />
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date5')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date5)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date5')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="date5" [timezoneName]="'Brazil/Acre'" [isTime]="true"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date5')">2020-10-22
-      23:00:27-05:00</button>
-    <br />
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date5')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date5)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date5')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="date6" [min]="'2020-10-20 00:01:00'" [max]="'2020-10-29 23:59:00'" [step]="2"
-        [isTime]="true"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('2020-10-22 23:00:27-05:00', 'date6')">2020-10-22
-      23:00:27-05:00</button>
-    <br />
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date6')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date6)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date6')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="date6"
+				[min]="'2020-10-20 00:01:00'"
+				[max]="'2020-10-29 23:59:00'"
+				[step]="2"
+				[isTime]="true"
+			></ddc-init-input-generic>
+		</div>
+		<button
+			class="mt-2 mr-2 btn btn-sm btn-dark"
+			(click)="setValue('2020-10-22 23:00:27-05:00', 'date6')"
+		>
+			2020-10-22 23:00:27-05:00
+		</button>
+		<br />
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('date6')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(date6)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('date6')">Reset</button>
+	</form>
 </div>
 
 <!-- TEXTAREA -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputTextareaG"
-  aria-expanded="false" aria-controls="collapseInputTextareaG">
-  Input Textarea
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputTextareaG"
+	aria-expanded="false"
+	aria-controls="collapseInputTextareaG"
+>
+	Input Textarea
 </button>
 
 <div class="collapse" id="collapseInputTextareaG">
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="textarea1"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'textarea1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('textarea1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(textarea1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('textarea1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="textarea1"></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(1, 'textarea1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('textarea1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(textarea1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('textarea1')">Reset</button>
+	</form>
 </div>
 
 <!-- FILE -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputFileG"
-  aria-expanded="false" aria-controls="collapseInputFileG">
-  Input File
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputFileG"
+	aria-expanded="false"
+	aria-controls="collapseInputFileG"
+>
+	Input File
 </button>
 
 <div class="collapse" id="collapseInputFileG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="file1"></ddc-init-input-generic>
+		</div>
+		<ddc-init-input-file [field]="file1"></ddc-init-input-file>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([embedFile], 'file1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(file1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('file1')">Reset</button>
+		<div id="content-file1">
+			{{ form1.get('file1').value | json }}
+		</div>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="file1"></ddc-init-input-generic>
-    </div>
-    <ddc-init-input-file [field]="file1"></ddc-init-input-file>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([embedFile], 'file1')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(file1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('file1')">Reset</button>
-    <div id="content-file1">
-      {{form1.get('file1').value | json}}
-    </div>
-  </form>
-
-  <form [formGroup]="form1" class="mt-4">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="file2" [extensions]="'pdf,doc'" [maxSize]="1"
-        [maxSizeUnit]="EnumSizeFormat.MEGABYTE"></ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([embedFile], 'file2')">Testa Set valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(file2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('file2')">Reset</button>
-    <div id="content-file2">
-      {{form1.get('file2').value | json}}
-    </div>
-  </form>
+	<form [formGroup]="form1" class="mt-4">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="file2"
+				[extensions]="'pdf,doc'"
+				[maxSize]="1"
+				[maxSizeUnit]="EnumSizeFormat.MEGABYTE"
+			></ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue([embedFile], 'file2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(file2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('file2')">Reset</button>
+		<div id="content-file2">
+			{{ form1.get('file2').value | json }}
+		</div>
+	</form>
 </div>
 
 <!-- AUTOCOMPLETE -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputAutocompleteG"
-  aria-expanded="false" aria-controls="collapseInputAutocompleteG">
-  Input Autocomplete
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputAutocompleteG"
+	aria-expanded="false"
+	aria-controls="collapseInputAutocompleteG"
+>
+	Input Autocomplete
 </button>
 
 <div class="collapse" id="collapseInputAutocompleteG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="autocomplete1"
+				[list]="listAutocomplete1"
+				(searchEmit)="searchAutocomplete($event)"
+				(selectEmit)="selectAutocomplete($event)"
+				[digits]="2"
+			>
+			</ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('se', 'autocomplete1')">
+			Testa Set valore string
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(optionItem, 'autocomplete1')">
+			Testa Set valore Option
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(autocomplete1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('autocomplete1')">
+			Reset
+		</button>
+	</form>
+	<div id="content-autocomplete1">
+		{{ form1.get('autocomplete1').value | json }}
+	</div>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="autocomplete1" [list]="listAutocomplete1"
-        (searchEmit)="searchAutocomplete($event)" (selectEmit)="selectAutocomplete($event)" [digits]="2">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('se', 'autocomplete1')">Testa Set valore
-      string</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(optionItem, 'autocomplete1')">Testa Set valore
-      Option</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(autocomplete1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('autocomplete1')">Reset</button>
-  </form>
-  <div id="content-autocomplete1">
-    {{form1.get('autocomplete1').value | json}}
-  </div>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="autocomplete2"
+				[search]="fnSearchAutocomplete"
+				(selectEmit)="selectAutocomplete($event)"
+				[digits]="2"
+			>
+			</ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('se', 'autocomplete2')">
+			Testa Set valore string
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(optionItem, 'autocomplete2')">
+			Testa Set valore Option
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(autocomplete2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('autocomplete2')">
+			Reset
+		</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="autocomplete2" [search]="fnSearchAutocomplete"
-        (selectEmit)="selectAutocomplete($event)" [digits]="2">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('se', 'autocomplete2')">Testa Set valore
-      string</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue(optionItem, 'autocomplete2')">Testa Set valore
-      Option</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(autocomplete2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('autocomplete2')">Reset</button>
-  </form>
-
-  <div id="content-autocomplete2">
-    {{form1.get('autocomplete2').value | json}}
-  </div>
+	<div id="content-autocomplete2">
+		{{ form1.get('autocomplete2').value | json }}
+	</div>
 </div>
 
 <!-- PHONE -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputPhoneG"
-  aria-expanded="false" aria-controls="collapseInputPhoneG">
-  Input Phone
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputPhoneG"
+	aria-expanded="false"
+	aria-controls="collapseInputPhoneG"
+>
+	Input Phone
 </button>
 
 <div class="collapse" id="collapseInputPhoneG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="phone1" [prefixes]="optionsPrefix"> </ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('+39 3447665432', 'phone1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('phone1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(phone1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('phone1')">Reset</button>
+	</form>
 
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="phone1" [prefixes]="optionsPrefix">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('+39 3447665432', 'phone1')">Testa Set
-      valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('phone1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(phone1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('phone1')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="phone2" [prefixes]="optionsPrefixHtml" [dropdownPrefix]="true">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('+39 3447665432', 'phone2')">Testa Set
-      valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('phone2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(phone2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('phone2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic
+				[field]="phone2"
+				[prefixes]="optionsPrefixHtml"
+				[dropdownPrefix]="true"
+			>
+			</ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('+39 3447665432', 'phone2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('phone2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(phone2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('phone2')">Reset</button>
+	</form>
 </div>
 
 <!-- EMAIL -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputEmailG"
-  aria-expanded="false" aria-controls="collapseInputEmailG">
-  Input Email
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputEmailG"
+	aria-expanded="false"
+	aria-controls="collapseInputEmailG"
+>
+	Input Email
 </button>
 
 <div class="collapse" id="collapseInputEmailG">
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="email1">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('prova@email.it', 'email1')">Testa Set
-      valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('email1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(email1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('email1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="email1"> </ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('prova@email.it', 'email1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('email1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(email1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('email1')">Reset</button>
+	</form>
 </div>
 
 <!-- COLOR -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputColorG"
-  aria-expanded="false" aria-controls="collapseInputColorG">
-  Input Color
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputColorG"
+	aria-expanded="false"
+	aria-controls="collapseInputColorG"
+>
+	Input Color
 </button>
 
 <div class="collapse" id="collapseInputColorG">
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="color1">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('#000000', 'color1')">Testa Set
-      valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('color1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(color1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('color1')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="color1"> </ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('#000000', 'color1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('color1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(color1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('color1')">Reset</button>
+	</form>
 </div>
 
 <!-- PASSWORD -->
 <hr class="line line-lg bg-info mt-3" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseInputPasswordG"
-  aria-expanded="false" aria-controls="collapseInputPasswordG">
-  Input Password
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseInputPasswordG"
+	aria-expanded="false"
+	aria-controls="collapseInputPasswordG"
+>
+	Input Password
 </button>
 
 <div class="collapse" id="collapseInputPasswordG">
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="password1"> </ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('pass001', 'password1')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('password1')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(password1)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('password1')">Reset</button>
+	</form>
 
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="password1">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('pass001', 'password1')">Testa Set
-      valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('password1')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(password1)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('password1')">Reset</button>
-  </form>
-
-  <form [formGroup]="form1">
-    <div class="form-group">
-      <ddc-init-input-generic [field]="password2" [automaticValidators]="true">
-      </ddc-init-input-generic>
-    </div>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('pass001', 'password2')">Testa Set
-      valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('password2')">Testa Read valore</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(password2)">Abilita/Disabilita</button>
-    <button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('password2')">Reset</button>
-  </form>
+	<form [formGroup]="form1">
+		<div class="form-group">
+			<ddc-init-input-generic [field]="password2" [automaticValidators]="true">
+			</ddc-init-input-generic>
+		</div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="setValue('pass001', 'password2')">
+			Testa Set valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="readValue('password2')">
+			Testa Read valore
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="enableDisable(password2)">
+			Abilita/Disabilita
+		</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="resetValue('password2')">Reset</button>
+	</form>
 </div>

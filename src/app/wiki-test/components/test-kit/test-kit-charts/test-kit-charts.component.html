@@ -1,38 +1,61 @@
 <h4>Modulo Charts</h4>
 
-
 <!-- EXAMPLES -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseChartExample"
-  aria-expanded="false" aria-controls="collapseChartExample">
-  ChartComponent - Examples
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartExample"
+	aria-expanded="false"
+	aria-controls="collapseChartExample"
+>
+	ChartComponent - Examples
 </button>
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse"
-  data-target="#collapseChartExampleCurrency" aria-expanded="false" aria-controls="collapseChartExampleCurrency">
-  ChartComponent - Examples with Currency
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartExampleCurrency"
+	aria-expanded="false"
+	aria-controls="collapseChartExampleCurrency"
+>
+	ChartComponent - Examples with Currency
 </button>
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse"
-  data-target="#collapseChartExampleTemplate" aria-expanded="false" aria-controls="collapseChartExampleTemplate">
-  ChartComponent - Examples with Tooltip Template
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartExampleTemplate"
+	aria-expanded="false"
+	aria-controls="collapseChartExampleTemplate"
+>
+	ChartComponent - Examples with Tooltip Template
 </button>
 
 <div class="collapse" id="collapseChartExample">
-  <div class="mt-3">
-    Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a barre verticali. I parametri
-    necessari sono:
-    <ul>
-      <li><strong>data: ChartElementInterface[] | ChartElementGroupInterface[]</strong> gli elementi da visualizzare in
-        grafico</li>
-      <li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
-      <li><strong>height</strong> l'altezza del container (default 400px)</li>
-      <li><strong>options.ColorScheme: ChartColorSchemaInterface</strong> definisce i colori da usare nelle barre</li>
-      <li><strong>options.ColorSchemeName: string</strong> definisce i colori da usare secondo il set a disposizione dal
-        component</li>
-    </ul>
-
-  </div>
-  <div class="mt-3">
-    <pre>
+	<div class="mt-3">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a barre
+		verticali. I parametri necessari sono:
+		<ul>
+			<li>
+				<strong>data: ChartElementInterface[] | ChartElementGroupInterface[]</strong> gli elementi
+				da visualizzare in grafico
+			</li>
+			<li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
+			<li><strong>height</strong> l'altezza del container (default 400px)</li>
+			<li>
+				<strong>options.ColorScheme: ChartColorSchemaInterface</strong> definisce i colori da usare
+				nelle barre
+			</li>
+			<li>
+				<strong>options.ColorSchemeName: string</strong> definisce i colori da usare secondo il set
+				a disposizione dal component
+			</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
 
 
@@ -110,41 +133,60 @@
 
       </div>
     </pre>
-  </div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>Vertical Bar semplice</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB1" [typeChart]="chartType.VERTICAL_BAR" [xAxisLabel]="'Products'"
-        [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>Vertical Bar con colori personalizzati</h5>
-      <ddc-init-chart [data]="dataVBColor" [options]="optVB2" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>Vertical Bar con colori settati da options</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBScheme" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
-
+	<div class="row">
+		<div class="col col-4">
+			<h5>Vertical Bar semplice</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB1"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>Vertical Bar con colori personalizzati</h5>
+			<ddc-init-chart
+				[data]="dataVBColor"
+				[options]="optVB2"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>Vertical Bar con colori settati da options</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBScheme"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 </div>
 
 <!-- EXAMPLES CURRENCY -->
 <div class="collapse" id="collapseChartExampleCurrency">
-  <div class="mt-3">
-    Se si vuole mostrare i valori uniti al currency, i parametri sono
-    <ul>
-      <li><strong>showCurrencySymbol: boolean</strong> da settare a true</li>
-      <li><strong>currencySymbol: string</strong> se si vuole un currency specifico, altrimenti si imposta quello di
-        sistema</li>
-    </ul>
-  </div>
+	<div class="mt-3">
+		Se si vuole mostrare i valori uniti al currency, i parametri sono
+		<ul>
+			<li><strong>showCurrencySymbol: boolean</strong> da settare a true</li>
+			<li>
+				<strong>currencySymbol: string</strong> se si vuole un currency specifico, altrimenti si
+				imposta quello di sistema
+			</li>
+		</ul>
+	</div>
 
-  <div class="mt-3">
-    <pre>
+	<div class="mt-3">
+		<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>
 
       ```html
@@ -173,73 +215,120 @@
 
     </div>
   </pre>
-  </div>
+	</div>
 
-  <div class="row">
-    <div class="col col-6">
-      <h5>Currency System - Vertical bar</h5>
-      <ddc-init-chart [data]="dataVBCurrency" [options]="optVBCurrency" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"
-        [showCurrencySymbol]="true"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Currency $ - Vertical bar</h5>
-      <ddc-init-chart [data]="dataVBCurrency" [options]="optVBCurrency" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'" [showCurrencySymbol]="true"
-        [currencySymbol]="'$'"></ddc-init-chart>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-6">
-      <h5>Currency System - Vertical bar grouped</h5>
-      <ddc-init-chart [data]="dataVBCurrencyGroup" [options]="optVBCurrency"
-        [typeChart]="chartType.VERTICAL_BAR_GROUPED" [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'"
-        [yAxisLabel]="'Sale'" [showCurrencySymbol]="true"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Currency $ - Vertical bar grouped</h5>
-      <ddc-init-chart [data]="dataVBCurrencyGroup" [options]="optVBCurrency"
-        [typeChart]="chartType.VERTICAL_BAR_GROUPED" [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'"
-        [yAxisLabel]="'Sale'" [showCurrencySymbol]="true" [currencySymbol]="'$'"></ddc-init-chart>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-6">
-      <h5>Currency System - PIE</h5>
-      <ddc-init-chart [data]="dataVBCurrency" [options]="optVBCurrency" [typeChart]="chartType.PIE"
-        [legendTitle]="'Product Sale Chart'" [showCurrencySymbol]="true"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Currency $ - PIE</h5>
-      <ddc-init-chart [data]="dataVBCurrency" [options]="optVBCurrency" [typeChart]="chartType.PIE"
-        [legendTitle]="'Product Sale Chart'" [showCurrencySymbol]="true" [currencySymbol]="'$'"></ddc-init-chart>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-6">
-      <h5>Currency System - PIE ADVANCED</h5>
-      <ddc-init-chart [data]="dataVBCurrency" [options]="optVBCurrency" [typeChart]="chartType.PIE_ADVANCED"
-        [legendTitle]="'Product Sale Chart'" [showCurrencySymbol]="true"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Currency System - PIE GRID</h5>
-      <ddc-init-chart [data]="dataVBCurrency" [options]="optVBCurrency" [typeChart]="chartType.PIE_GRID"
-        [legendTitle]="'Product Sale Chart'" [showCurrencySymbol]="true"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>Currency System - Vertical bar</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrency"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+				[showCurrencySymbol]="true"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Currency $ - Vertical bar</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrency"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+				[showCurrencySymbol]="true"
+				[currencySymbol]="'$'"
+			></ddc-init-chart>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>Currency System - Vertical bar grouped</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrencyGroup"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+				[showCurrencySymbol]="true"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Currency $ - Vertical bar grouped</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrencyGroup"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+				[showCurrencySymbol]="true"
+				[currencySymbol]="'$'"
+			></ddc-init-chart>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>Currency System - PIE</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrency"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.PIE"
+				[legendTitle]="'Product Sale Chart'"
+				[showCurrencySymbol]="true"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Currency $ - PIE</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrency"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.PIE"
+				[legendTitle]="'Product Sale Chart'"
+				[showCurrencySymbol]="true"
+				[currencySymbol]="'$'"
+			></ddc-init-chart>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>Currency System - PIE ADVANCED</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrency"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.PIE_ADVANCED"
+				[legendTitle]="'Product Sale Chart'"
+				[showCurrencySymbol]="true"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Currency System - PIE GRID</h5>
+			<ddc-init-chart
+				[data]="dataVBCurrency"
+				[options]="optVBCurrency"
+				[typeChart]="chartType.PIE_GRID"
+				[legendTitle]="'Product Sale Chart'"
+				[showCurrencySymbol]="true"
+			></ddc-init-chart>
+		</div>
+	</div>
 </div>
 
 <!-- EXAMPLES TOOLTIP TEMPLATE -->
 <div class="collapse" id="collapseChartExampleTemplate">
-  <div class="mt-3">
-    Se si vuole mostrare un tooltip personalizzato bisogna passare un template
-    <ul>
-      <li><strong>tooltipContent: any</strong> template da sostituire per il tooltip</li>
-    </ul>
-  </div>
+	<div class="mt-3">
+		Se si vuole mostrare un tooltip personalizzato bisogna passare un template
+		<ul>
+			<li><strong>tooltipContent: any</strong> template da sostituire per il tooltip</li>
+		</ul>
+	</div>
 
-  <div class="mt-3">
-    <pre>
+	<div class="mt-3">
+		<pre>
     <div markdown ngPreserveWhitespaces ngNonBindable>
 
       ```htm
@@ -264,166 +353,284 @@
 
     </div>
   </pre>
-  </div>
+	</div>
 
+	<ng-template #myTemplate1 let-model="model">
+		<h5 [style.color]="'yellow'">{{ model.name }}</h5>
+		<span [style.color]="'green'">{{ model.value }}</span>
+	</ng-template>
 
-  <ng-template #myTemplate1 let-model="model">
-    <h5 [style.color]="'yellow'">{{model.name}}</h5>
-    <span [style.color]="'green'">{{model.value}}</span>
-  </ng-template>
+	<div class="row">
+		<div class="col col-4">
+			<h5>Personal template tooltip - Vertical Bar</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+				[tooltipContent]="myTemplate1"
+			></ddc-init-chart>
+		</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>Personal template tooltip - Vertical Bar</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR" [xAxisLabel]="'Products'"
-        [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'" [tooltipContent]="myTemplate1"></ddc-init-chart>
-    </div>
+		<div class="col col-4">
+			<h5>Personal template tooltip - Vertical Bar Grouped</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+				[tooltipContent]="myTemplate1"
+			></ddc-init-chart>
+		</div>
 
-    <div class="col col-4">
-      <h5>Personal template tooltip - Vertical Bar Grouped</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR_GROUPED"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"
-        [tooltipContent]="myTemplate1"></ddc-init-chart>
-    </div>
-
-    <div class="col col-4">
-      <h5>Personal template tooltip - PIE</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE" [legendTitle]="'Product Sale Chart'"
-        [tooltipContent]="myTemplate1"></ddc-init-chart>
-    </div>
-
-  </div>
+		<div class="col col-4">
+			<h5>Personal template tooltip - PIE</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.PIE"
+				[legendTitle]="'Product Sale Chart'"
+				[tooltipContent]="myTemplate1"
+			></ddc-init-chart>
+		</div>
+	</div>
 </div>
 
 <!-- TEMPLATES -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseChartTemplate"
-  aria-expanded="false" aria-controls="collapseChartTemplate">
-  ChartComponent - Tutti i template
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartTemplate"
+	aria-expanded="false"
+	aria-controls="collapseChartTemplate"
+>
+	ChartComponent - Tutti i template
 </button>
 
 <div class="collapse" id="collapseChartTemplate">
-  <div class="mt-3">
-    Il componente <strong>ChartComponent</strong> mette a disposizione i seguenti template di color set
-  </div>
+	<div class="mt-3">
+		Il componente <strong>ChartComponent</strong> mette a disposizione i seguenti template di color
+		set
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>vivid</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeVivid" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>natural</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeNatural" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>cool (<strong>Default</strong>)</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeCool" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>vivid</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeVivid"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>natural</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeNatural"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>cool (<strong>Default</strong>)</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeCool"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>fire</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeFire" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>solar</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeSolar" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>air</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeAir" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>fire</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeFire"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>solar</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeSolar"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>air</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeAir"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>aqua</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeAqua" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>flame</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeFlame" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>ocean</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeOcean" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>aqua</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeAqua"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>flame</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeFlame"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>ocean</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeOcean"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>forest</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeForest" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>horizon</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeHorizon" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>neons</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeNeons" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>forest</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeForest"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>horizon</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeHorizon"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>neons</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeNeons"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>picnic</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemePicnic" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>night</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeNight" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>nightLights</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVBSchemeNightLights" [typeChart]="chartType.VERTICAL_BAR"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
-
+	<div class="row">
+		<div class="col col-4">
+			<h5>picnic</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemePicnic"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>night</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeNight"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>nightLights</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVBSchemeNightLights"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 </div>
 
 <!-- VERTICAL BAR -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseChartVerticalBar"
-  aria-expanded="false" aria-controls="collapseChartVerticalBar">
-  ChartComponent - Vertical and Horizontal
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartVerticalBar"
+	aria-expanded="false"
+	aria-controls="collapseChartVerticalBar"
+>
+	ChartComponent - Vertical and Horizontal
 </button>
 
 <div class="collapse" id="collapseChartVerticalBar">
-  <div class="mt-3">
-    Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a barre verticali.<br />
-    I tipi <strong>VERTICAL_BAR</strong> e <strong>HORIZONTAL_BAR</strong> sono usati per elementi
-    <strong>ChartElementInterface</strong><br />
-    I tipi <strong>VERTICAL_BAR_GROUPED</strong>, <strong>HORIZONTAL_BAR_GROUPED</strong>,
-    <strong>VERTICAL_BAR_STACKED</strong>, <strong>HORIZONTAL_BAR_STACKE</strong>,
-    <strong>VERTICAL_BAR_NORMALIZED</strong> e <strong>HORIZONTAL_BAR_NORMALIZED</strong>
-    sono usati per elementi <strong>ChartElementGroupInterface</strong><br /><br />
+	<div class="mt-3">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a barre
+		verticali.<br />
+		I tipi <strong>VERTICAL_BAR</strong> e <strong>HORIZONTAL_BAR</strong> sono usati per elementi
+		<strong>ChartElementInterface</strong><br />
+		I tipi <strong>VERTICAL_BAR_GROUPED</strong>, <strong>HORIZONTAL_BAR_GROUPED</strong>,
+		<strong>VERTICAL_BAR_STACKED</strong>, <strong>HORIZONTAL_BAR_STACKE</strong>,
+		<strong>VERTICAL_BAR_NORMALIZED</strong> e <strong>HORIZONTAL_BAR_NORMALIZED</strong> sono usati
+		per elementi <strong>ChartElementGroupInterface</strong><br /><br />
 
-    I parametri da usare sono
-    <ul>
-      <li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
-    </ul>
-
-  </div>
-  <div class="mt-3">
-    <pre>
+		I parametri da usare sono
+		<ul>
+			<li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
 
 
@@ -500,88 +707,143 @@
 
       </div>
     </pre>
-  </div>
+	</div>
 
-  <div class="row">
-    <div class="col col-6">
-      <h5>Vertical Bar semplice</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR" [xAxisLabel]="'Products'"
-        [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Horizontal Bar semplice</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.HORIZONTAL_BAR" [xAxisLabel]="'Products'"
-        [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>Vertical Bar semplice</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.VERTICAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Horizontal Bar semplice</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.HORIZONTAL_BAR"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-6">
-      <h5>Vertical Bar 2D</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR_GROUPED"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Horizontal Bar 2D</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.HORIZONTAL_BAR_GROUPED"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>Vertical Bar 2D</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Horizontal Bar 2D</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.HORIZONTAL_BAR_GROUPED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-6">
-      <h5>Vertical Bar Stacked</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR_STACKED"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Horizontal Bar Stacked</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.HORIZONTAL_BAR_STACKED"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>Vertical Bar Stacked</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.VERTICAL_BAR_STACKED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Horizontal Bar Stacked</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.HORIZONTAL_BAR_STACKED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-6">
-      <h5>Vertical Bar Normalized</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR_NORMALIZED"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>Horizontal Bar Normalized</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.HORIZONTAL_BAR_NORMALIZED"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"></ddc-init-chart>
-    </div>
-  </div>
-
+	<div class="row">
+		<div class="col col-6">
+			<h5>Vertical Bar Normalized</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.VERTICAL_BAR_NORMALIZED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>Horizontal Bar Normalized</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.HORIZONTAL_BAR_NORMALIZED"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			></ddc-init-chart>
+		</div>
+	</div>
 </div>
 
 <!-- PIE -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseChartPie"
-  aria-expanded="false" aria-controls="collapseChartPie">
-  ChartComponent - PIE
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartPie"
+	aria-expanded="false"
+	aria-controls="collapseChartPie"
+>
+	ChartComponent - PIE
 </button>
 
 <div class="collapse" id="collapseChartPie">
-  <div class="mt-3">
-    Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a torta.<br />
-    I tipi sono <strong>PIE</strong>, <strong>PIE_ADVANCED</strong> e <strong>PIE_GRID</strong><br /><br />
+	<div class="mt-3">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a torta.<br />
+		I tipi sono <strong>PIE</strong>, <strong>PIE_ADVANCED</strong> e <strong>PIE_GRID</strong
+		><br /><br />
 
-    I parametri da usare per PIE sono
-    <ul>
-      <li><strong>legendTitle</strong> per la label da visualizzare in leggenda</li>
-      <li><strong>showLabels: boolean</strong>indica se mostrare le label sui pezzi</li>
-      <li><strong>explodeSlices: boolean</strong>se a true ridimensiona i pezzi di torta in base al valore</li>
-      <li><strong>doughnut: boolean</strong>se a true mostra la torta a ciambella</li>
-    </ul>
+		I parametri da usare per PIE sono
+		<ul>
+			<li><strong>legendTitle</strong> per la label da visualizzare in leggenda</li>
+			<li><strong>showLabels: boolean</strong>indica se mostrare le label sui pezzi</li>
+			<li>
+				<strong>explodeSlices: boolean</strong>se a true ridimensiona i pezzi di torta in base al
+				valore
+			</li>
+			<li><strong>doughnut: boolean</strong>se a true mostra la torta a ciambella</li>
+		</ul>
 
-    mentre per PIE_ADVANCED e PIE_GRID non sono necessari
-
-
-  </div>
-  <div class="mt-3">
-    <pre>
+		mentre per PIE_ADVANCED e PIE_GRID non sono necessari
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
 
 
@@ -614,73 +876,113 @@
 
       </div>
     </pre>
-  </div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>PIE semplice</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE" [legendTitle]="'Product Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>PIE semplice - explodeSlices a true</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE" [legendTitle]="'Product Sale'"
-        [explodeSlices]="true"></ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>PIE semplice - doughnut a true</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE" [legendTitle]="'Product Sale'"
-        [doughnut]="true"></ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>PIE semplice</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.PIE"
+				[legendTitle]="'Product Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>PIE semplice - explodeSlices a true</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.PIE"
+				[legendTitle]="'Product Sale'"
+				[explodeSlices]="true"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>PIE semplice - doughnut a true</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.PIE"
+				[legendTitle]="'Product Sale'"
+				[doughnut]="true"
+			></ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-6">
-      <h5>PIE_ADVANCED</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE_ADVANCED"
-        [legendTitle]="'Product Sale'"></ddc-init-chart>
-    </div>
-    <div class="col col-6">
-      <h5>PIE_GRID</h5>
-      <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE_GRID" [legendTitle]="'Product Sale'">
-      </ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-6">
+			<h5>PIE_ADVANCED</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.PIE_ADVANCED"
+				[legendTitle]="'Product Sale'"
+			></ddc-init-chart>
+		</div>
+		<div class="col col-6">
+			<h5>PIE_GRID</h5>
+			<ddc-init-chart
+				[data]="dataVB"
+				[options]="optVB"
+				[typeChart]="chartType.PIE_GRID"
+				[legendTitle]="'Product Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+	</div>
 </div>
 
 <!-- LINE -->
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseChartLine"
-  aria-expanded="false" aria-controls="collapseChartLine">
-  ChartComponent - LINE
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartLine"
+	aria-expanded="false"
+	aria-controls="collapseChartLine"
+>
+	ChartComponent - LINE
 </button>
 
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapseChartLineCurves"
-  aria-expanded="false" aria-controls="collapseChartLineCurves">
-  ChartComponent - LINE Curves
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChartLineCurves"
+	aria-expanded="false"
+	aria-controls="collapseChartLineCurves"
+>
+	ChartComponent - LINE Curves
 </button>
 
 <div class="collapse" id="collapseChartLine">
-  <div class="mt-3">
-    Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a linee.<br />
+	<div class="mt-3">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a linee.<br />
 
-    I parametri da usare per LINE sono
-    <ul>
-      <li><strong>data: ChartElementInterface[] | ChartElementGroupInterface[]</strong> gli elementi da visualizzare
-        in
-        grafico</li>
-      <li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
-      <li><strong>height</strong> l'altezza del container (default 400px)</li>
-      <li><strong>options.ColorScheme: ChartColorSchemaInterface</strong> definisce i colori da usare nelle barre</li>
-      <li><strong>options.ColorSchemeName: string</strong> definisce i colori da usare secondo il set a disposizione
-        dal component</li>
-      <li><strong>options.curveType: string</strong> definisce il tipo di curvatura</li>
-    </ul>
-
-
-  </div>
-  <div class="mt-3">
-    <pre>
+		I parametri da usare per LINE sono
+		<ul>
+			<li>
+				<strong>data: ChartElementInterface[] | ChartElementGroupInterface[]</strong> gli elementi
+				da visualizzare in grafico
+			</li>
+			<li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
+			<li><strong>height</strong> l'altezza del container (default 400px)</li>
+			<li>
+				<strong>options.ColorScheme: ChartColorSchemaInterface</strong> definisce i colori da usare
+				nelle barre
+			</li>
+			<li>
+				<strong>options.ColorSchemeName: string</strong> definisce i colori da usare secondo il set
+				a disposizione dal component
+			</li>
+			<li><strong>options.curveType: string</strong> definisce il tipo di curvatura</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
 
 
@@ -733,30 +1035,33 @@
 
       </div>
     </pre>
-  </div>
+	</div>
 
-  <div class="row">
-    <div class="col col-12">
-      <h5>LINE semplice - Linear curve</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.LINE" [xAxisLabel]="'Products'"
-        [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-  </div>
-
+	<div class="row">
+		<div class="col col-12">
+			<h5>LINE semplice - Linear curve</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVB"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+	</div>
 </div>
 
 <div class="collapse" id="collapseChartLineCurves">
-  <div class="mt-3">
-    I parametri da usare per LINE sono
-    <ul>
-      <li><strong>options.curveType: string</strong> definisce il tipo di curvatura</li>
-    </ul>
-
-
-  </div>
-  <div class="mt-3">
-    <pre>
+	<div class="mt-3">
+		I parametri da usare per LINE sono
+		<ul>
+			<li><strong>options.curveType: string</strong> definisce il tipo di curvatura</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>
 
 
@@ -777,111 +1082,200 @@
 
       </div>
     </pre>
-  </div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>LINE Basis</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveBasis" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Basis Closed</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveBasisClosed" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Bundle</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveBundle" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>LINE Basis</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveBasis"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Basis Closed</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveBasisClosed"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Bundle</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveBundle"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>LINE Cardinal</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveCardinal" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Cardinal Closed</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveCardinalClosed" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Natural</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveNatural" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>LINE Cardinal</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveCardinal"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Cardinal Closed</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveCardinalClosed"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Natural</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveNatural"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>LINE Catmull Rom</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveCatmullRom" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Catmull Rom Closed</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveCatmullRomClosed" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Step</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveStep" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>LINE Catmull Rom</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveCatmullRom"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Catmull Rom Closed</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveCatmullRomClosed"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Step</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveStep"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>LINE Step After</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveStepAfter" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Step Before</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveStepBefore" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Step default</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveStepDefault" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-4">
+			<h5>LINE Step After</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveStepAfter"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Step Before</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveStepBefore"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Step default</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveStepDefault"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col col-4">
-      <h5>LINE Linear Closed</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveLinearClosed" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Monotone X</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveMonotoneX" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-    <div class="col col-4">
-      <h5>LINE Monotone Y</h5>
-      <ddc-init-chart [data]="dataVBGroup" [options]="optVBCurveMonotoneY" [typeChart]="chartType.LINE"
-        [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'">
-      </ddc-init-chart>
-    </div>
-  </div>
-
+	<div class="row">
+		<div class="col col-4">
+			<h5>LINE Linear Closed</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveLinearClosed"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Monotone X</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveMonotoneX"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+		<div class="col col-4">
+			<h5>LINE Monotone Y</h5>
+			<ddc-init-chart
+				[data]="dataVBGroup"
+				[options]="optVBCurveMonotoneY"
+				[typeChart]="chartType.LINE"
+				[xAxisLabel]="'Products'"
+				[legendTitle]="'Product Sale Chart'"
+				[yAxisLabel]="'Sale'"
+			>
+			</ddc-init-chart>
+		</div>
+	</div>
 </div>

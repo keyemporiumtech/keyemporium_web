@@ -1,28 +1,34 @@
 <h4>Form Page</h4>
 
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapsePageForm1"
-  aria-expanded="false" aria-controls="collapsePageForm1">
-  con FormGroup in Input
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapsePageForm1"
+	aria-expanded="false"
+	aria-controls="collapsePageForm1"
+>
+	con FormGroup in Input
 </button>
 
 <div class="collapse" id="collapsePageForm1">
-  <div class="mt-3">
-    Questa struttura di <strong>ddc-init-form-page</strong> mostra un uso del componente con passaggio in input di un
-    FormGroup.<br />
-    Questo componente sfrutta un array di <strong>FormGroupModel</strong> per definire le righe e le colonne da mostrare
-    nel form.
-    Quando passiamo il FormGroup è possibile costruire i gruppi utilizzando due metodi
-    <ul>
-      <li><strong>singleField</strong> per campo singolo su una riga</li>
-      <li><strong>multipleField</strong> per più campi su una riga</li>
-    </ul>
+	<div class="mt-3">
+		Questa struttura di <strong>ddc-init-form-page</strong> mostra un uso del componente con
+		passaggio in input di un FormGroup.<br />
+		Questo componente sfrutta un array di <strong>FormGroupModel</strong> per definire le righe e le
+		colonne da mostrare nel form. Quando passiamo il FormGroup è possibile costruire i gruppi
+		utilizzando due metodi
+		<ul>
+			<li><strong>singleField</strong> per campo singolo su una riga</li>
+			<li><strong>multipleField</strong> per più campi su una riga</li>
+		</ul>
 
-    In particolare questa gestione necessita la costruzione del gruppo a partire da oggetti
-    <strong>FormFieldModel</strong>
-  </div>
-  <div class="mt-3">
-    <pre>
+		In particolare questa gestione necessita la costruzione del gruppo a partire da oggetti
+		<strong>FormFieldModel</strong>
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>      
   
         ```typescript
@@ -112,37 +118,46 @@
   
       </div>
     </pre>
-  </div>
+	</div>
 
-  <ddc-init-form-page [form]="form1" [flgOnInitValidation]="true" [groups]="groups1"></ddc-init-form-page>
-
+	<ddc-init-form-page
+		[form]="form1"
+		[flgOnInitValidation]="true"
+		[groups]="groups1"
+	></ddc-init-form-page>
 </div>
 
 <hr class="line line-lg bg-info" />
-<button class="btn btn-sm btn-dark mr-2" type="button" data-toggle="collapse" data-target="#collapsePageForm2"
-  aria-expanded="false" aria-controls="collapsePageForm2">
-  senza FormGroup
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapsePageForm2"
+	aria-expanded="false"
+	aria-controls="collapsePageForm2"
+>
+	senza FormGroup
 </button>
 
 <div class="collapse" id="collapsePageForm2">
-  <div class="mt-3">
-    Questa struttura di <strong>ddc-init-form-page</strong> mostra un uso del componente senza passaggio in input di un
-    FormGroup.<br />
-    Sarà il componente a costruire automaticamente il gruppo di controls a partire da un array di
-    <strong>FormGroupModel</strong>.<br />
-    A differenza del caso precedente è possibile costruire i gruppi utilizzando due metodi
-    <ul>
-      <li><strong>single</strong> per campo singolo su una riga</li>
-      <li><strong>multiple</strong> per più campi su una riga</li>
-    </ul>
+	<div class="mt-3">
+		Questa struttura di <strong>ddc-init-form-page</strong> mostra un uso del componente senza
+		passaggio in input di un FormGroup.<br />
+		Sarà il componente a costruire automaticamente il gruppo di controls a partire da un array di
+		<strong>FormGroupModel</strong>.<br />
+		A differenza del caso precedente è possibile costruire i gruppi utilizzando due metodi
+		<ul>
+			<li><strong>single</strong> per campo singolo su una riga</li>
+			<li><strong>multiple</strong> per più campi su una riga</li>
+		</ul>
 
-    In particolare questa gestione necessita la costruzione del gruppo a partire da oggetti
-    <strong>FormFieldPageModel</strong>.<br />
-    Inoltre non è più necessario definire nei <strong>FormFieldModel</strong> il FormControl, perchè sarà il componente
-    ad assegnarlo automaticamente
-  </div>
-  <div class="mt-3">
-    <pre>
+		In particolare questa gestione necessita la costruzione del gruppo a partire da oggetti
+		<strong>FormFieldPageModel</strong>.<br />
+		Inoltre non è più necessario definire nei <strong>FormFieldModel</strong> il FormControl, perchè
+		sarà il componente ad assegnarlo automaticamente
+	</div>
+	<div class="mt-3">
+		<pre>
       <div markdown ngPreserveWhitespaces ngNonBindable>      
   
         ```typescript
@@ -215,8 +230,7 @@
   
       </div>
     </pre>
-  </div>
+	</div>
 
-  <ddc-init-form-page [flgOnInitValidation]="true" [groups]="groups2"></ddc-init-form-page>
-
+	<ddc-init-form-page [flgOnInitValidation]="true" [groups]="groups2"></ddc-init-form-page>
 </div>

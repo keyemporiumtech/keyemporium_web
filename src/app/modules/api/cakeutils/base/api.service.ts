@@ -238,7 +238,7 @@ export class ApiService extends BaseRestService {
 			converter['getEmptyIfNull'] = true;
 		}
 		params = this.manageFixedParams(requestManager, params);
-		return this.http.get(url, options as object).pipe(
+		return this.http.get(url, options as {}).pipe(
 			map((res: HttpResponse<any>) => {
 				if (this.evalResponse(res, responseManager)) {
 					if (this.receiveTokenSession(responseManager, res)) {
@@ -289,7 +289,7 @@ export class ApiService extends BaseRestService {
 			converter['getEmptyIfNull'] = true;
 		}
 		params = this.manageFixedParams(requestManager, params);
-		return this.http.post(url, params, options as object).pipe(
+		return this.http.post(url, params, options as {}).pipe(
 			map((res: HttpResponse<any>) => {
 				if (this.evalResponse(res, responseManager)) {
 					if (this.receiveTokenSession(responseManager, res)) {

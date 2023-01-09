@@ -1,26 +1,42 @@
 <div class="row">
-  <div class="col-10 autocomplete-container">
-    <ddc-init-app-loading [loading]="loadingResults"></ddc-init-app-loading>
-    <ddc-init-input-text *ngIf="field" [field]="field"></ddc-init-input-text>
-    <div *ngIf="results && results.length" [ngClass]="infoClass" [ngStyle]="infoStyle">
-      <div *ngFor="let item of results" class="item" [ngClass]="item.cssClass" [ngStyle]="item.cssStyle"
-        [innerHTML]="translateKey(item.text) | translate:translateParams(item.text)" (click)="fnSelect(item)"
-        (mouseover)="onOverItem(item)" (mouseout)="onOutItem(item)">
-      </div>
-    </div>
+	<div class="col-10 autocomplete-container">
+		<ddc-init-app-loading [loading]="loadingResults"></ddc-init-app-loading>
+		<ddc-init-input-text *ngIf="field" [field]="field"></ddc-init-input-text>
+		<div *ngIf="results && results.length" [ngClass]="infoClass" [ngStyle]="infoStyle">
+			<div
+				*ngFor="let item of results"
+				class="item"
+				[ngClass]="item.cssClass"
+				[ngStyle]="item.cssStyle"
+				[innerHTML]="translateKey(item.text) | translate : translateParams(item.text)"
+				(click)="fnSelect(item)"
+				(mouseover)="onOverItem(item)"
+				(mouseout)="onOutItem(item)"
+			></div>
+		</div>
 
-    <button *ngIf="results && results.length && flgMore" class="btn btn-xs btn-primary" (click)="more()">
-      <span class="fa fa-chevron-circle-down"></span>
-    </button>
+		<button
+			*ngIf="results && results.length && flgMore"
+			class="btn btn-xs btn-primary"
+			(click)="more()"
+		>
+			<span class="fa fa-chevron-circle-down"></span>
+		</button>
 
-    <div *ngIf="(!results || !results.length) && showNoResults" [ngClass]="infoClass" [ngStyle]="infoStyle">
-      <div class="item item-not-found text-muted"
-        [innerHTML]="translateKey(textNotFound) | translate:translateParams(textNotFound)"></div>
-    </div>
-  </div>
-  <div class="col-2">
-    <button class="btn btn-xs btn-primary" (click)="fnSearch()">
-      <span class="fa fa-search"></span>
-    </button>
-  </div>
+		<div
+			*ngIf="(!results || !results.length) && showNoResults"
+			[ngClass]="infoClass"
+			[ngStyle]="infoStyle"
+		>
+			<div
+				class="item item-not-found text-muted"
+				[innerHTML]="translateKey(textNotFound) | translate : translateParams(textNotFound)"
+			></div>
+		</div>
+	</div>
+	<div class="col-2">
+		<button class="btn btn-xs btn-primary" (click)="fnSearch()">
+			<span class="fa fa-search"></span>
+		</button>
+	</div>
 </div>
