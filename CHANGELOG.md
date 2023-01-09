@@ -1,9 +1,12 @@
 # Changelog
 
+## 1.0.0 - 09/01/2023
 
-## 1.0.0 - XX/11/2021
+> Versione che integra il `template 9.0.0` e aggiorna il progetto alla versione di `angular 15`
 
-> Versione che integra il template 4.1.0
+## 0.2.0 - 20/01/2022
+
+> Versione che integra il template 5.0.0
 
 ### changes
 
