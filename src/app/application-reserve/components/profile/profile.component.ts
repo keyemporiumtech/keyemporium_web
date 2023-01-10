@@ -1,20 +1,20 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {
-	BaseFormComponent,
-	OptionListModel,
 	ApplicationLoggerService,
-	MagicValidatorUtil,
+	BaseFormComponent,
 	BehaviourObserverModel,
 	EnumFormMode,
+	MagicValidatorUtil,
+	OptionListModel,
 } from '@ddc/kit';
-import { FormFieldModel } from '../../../shared/models/form/form-field.model';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { UserService } from '../../../modules/authentication/services/user.service';
 import { Observable, of } from 'rxjs';
-import { TypologicalUtility } from '../../../application-shared/utility/Typological.utility';
-import { UserModel } from '../../../modules/authentication/models/user.model';
+import { TypologicalUtility } from '../../../application-shared/utility/typological.utility';
 import { UserConverter } from '../../../modules/authentication/converters/user.converter';
+import { UserModel } from '../../../modules/authentication/models/user.model';
+import { UserService } from '../../../modules/authentication/services/user.service';
 import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
+import { FormFieldModel } from '../../../shared/models/form/form-field.model';
 
 @Component({
 	selector: 'reserve-profile',
