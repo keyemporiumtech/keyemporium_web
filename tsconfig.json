@@ -1,67 +1,38 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "jasmine",
-      "node"
-    ],
-    "lib": [
-      "ES2022",
-      "dom",
-      "dom.iterable"
-    ],
-    "paths": {
-      "@ddc/kit": [
-        "src/app/kit",
-        "src/app/kit/*"
-      ],
-      "@ddc/rest": [
-        "src/app/rest",
-        "src/app/rest/*"
-      ],
-      "@ddc/oauth-social": [
-        "src/app/oauth-social",
-        "src/app/oauth-social/*"
-      ],
-      "@zxing/ngx-scanner": [
-        "src/app/zxing-scanner",
-        "src/app/zxing-scanner/*"
-      ],
-      "ngx-device-detector": [
-        "src/app/ngx-device-detector",
-        "src/app/ngx-device-detector/*"
-      ],
-      "@swimlane/ngx-charts": [
-        "src/app/ngx-charts",
-        "src/app/ngx-charts/*"
-      ],
-      "ngx-markdown": [
-        "src/app/ngx-markdown",
-        "src/app/ngx-markdown/*"
-      ]
-    }
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": false,
-    "enableIvy": true /* true with cli >= 12.0, false with cli < 12 */
-  }
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"outDir": "./dist/out-tsc",
+		"sourceMap": true,
+		"declaration": false,
+		"downlevelIteration": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "ES2022",
+		"module": "ES2022",
+		"typeRoots": ["node_modules/@types"],
+		"types": ["jasmine", "node"],
+		"lib": ["ES2022", "dom", "dom.iterable"],
+		"skipLibCheck": true,
+		"paths": {
+			"@ddc/kit": ["src/app/kit", "src/app/kit/*"],
+			"@ddc/rest": ["src/app/rest", "src/app/rest/*"],
+			"@ddc/oauth-social": ["src/app/oauth-social", "src/app/oauth-social/*"],
+			"@zxing/ngx-scanner": ["src/app/zxing-scanner", "src/app/zxing-scanner/*"],
+			"ngx-device-detector": ["src/app/ngx-device-detector", "src/app/ngx-device-detector/*"],
+			"@swimlane/ngx-charts": ["src/app/ngx-charts", "src/app/ngx-charts/*"],
+			"ngx-markdown": ["src/app/ngx-markdown", "src/app/ngx-markdown/*"]
+		}
+	},
+	"angularCompilerOptions": {
+		"enableI18nLegacyMessageIdFormat": false,
+		"strictInjectionParameters": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": false,
+		"enableIvy": true /* true with cli >= 12.0, false with cli < 12 */
+	}
 }
