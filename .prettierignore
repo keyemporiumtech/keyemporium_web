@@ -1,5 +1,6 @@
 # Ignore everything:
-  /*
+/*
 
-  # Except myapp:
-  !/src
+# Except myapp:
+!/src
+*.min.*
