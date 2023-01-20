@@ -1,22 +1,22 @@
 import { Component, Input, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {
-	BaseComponent,
 	ApplicationLoggerService,
-	OptionListModel,
 	ApplicationStorageService,
+	BaseComponent,
 	MagicValidatorUtil,
+	OptionListModel,
 	StringTranslate,
 } from '@ddc/kit';
-import { UserprofileService } from '../../services/userprofile.service';
 import { Subscription } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
+import { InputSelectComponent } from '../../../../shared/form/input-select/input-select.component';
+import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
 import { ApiFast } from '../../../api/cakeutils/utility/api-fast.utility';
 import { AuthenticationService } from '../../base/authentication.service';
 import { UserprofileModel } from '../../models/userprofile.model';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
-import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
-import { distinctUntilChanged } from 'rxjs/operators';
-import { InputSelectComponent } from '../../../../shared/form/input-select/input-select.component';
+import { UserprofileService } from '../../services/userprofile.service';
 
 @Component({
 	selector: 'ddc-init-user-profiles',
@@ -62,13 +62,13 @@ export class UserProfilesComponent extends BaseComponent {
 		if (idUserLogged) {
 			this.subProfiles = this.userprofileService
 				.paginate(ApiFast.paginatorList([ApiFast.queryField('user', idUserLogged)]), {
-					belongs: ['profile_fk'],
+					belongs: ['profile_fk', 'activity_fk'],
 				})
 				.subscribe((paginatorModel) => {
 					if (paginatorModel && paginatorModel.list) {
 						paginatorModel.list.forEach((element: UserprofileModel) => {
 							this.optionProfiles.push(
-								new OptionListModel(element.profile.cod, element.profile.name, element.profile),
+								new OptionListModel(element.profile.cod, element.description, element.profile),
 							);
 						});
 					}

@@ -75,6 +75,7 @@ export const authenticationList = {
 		save: 'profilepermission/save',
 		edit: 'profilepermission/edit',
 		delete: 'profilepermission/delete',
+		updatepermissions: 'profilepermission/updatepermissions',
 	},
 	userprofile: {
 		unique: 'userprofile/get',
@@ -82,6 +83,8 @@ export const authenticationList = {
 		save: 'userprofile/save',
 		edit: 'userprofile/edit',
 		delete: 'userprofile/delete',
+		createprofile: 'userprofile/createprofile',
+		removeprofile: 'userprofile/removeprofile',
 	},
 	useroauthsocial: {
 		unique: 'useroauthsocial/get',
@@ -150,6 +153,15 @@ export const authenticationList = {
 		principal: 'activityattachment/getPrincipal',
 		setprincipal: 'activityattachment/setPrincipal',
 		saverelation: 'activityattachment/saveRelation',
+	},
+	activityprofile: {
+		unique: 'activityprofile/get',
+		paginate: 'activityprofile/table',
+		save: 'activityprofile/save',
+		edit: 'activityprofile/edit',
+		delete: 'activityprofile/delete',
+		createprofile: 'userprofile/createprofile',
+		removeprofile: 'userprofile/removeprofile',
 	},
 	oauthlogin: {
 		check: 'oauthlogin/check',
