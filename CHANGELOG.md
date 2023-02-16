@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2 - 16/02/2023
+
+> Versione che fixa la pipeline prod
+
 ## 1.1.1 - 16/02/2023
 
 > Fix dell'environment per il puntamento su https
