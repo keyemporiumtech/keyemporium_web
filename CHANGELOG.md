@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 - 16/02/2023
+
+> Fix dell'environment per il puntamento su https
+
 ## 1.1.0 - 16/02/2023
 
 > Versione che integra il template 9.1.0 e introduce all'uso dei permissions
