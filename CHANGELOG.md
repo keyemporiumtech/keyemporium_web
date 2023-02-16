@@ -1,8 +1,12 @@
 # Changelog
 
+## 1.1.3 - 16/02/2023
+
+> Versione che fixa la pipeline prod cambiando il build --prod in build --configuration=production
+
 ## 1.1.2 - 16/02/2023
 
-> Versione che fixa la pipeline prod
+> Versione che fixa la pipeline prod prendendo le risorse di deploy dalla cartella prod (prima era test)
 
 ## 1.1.1 - 16/02/2023
 
