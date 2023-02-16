@@ -1,12 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
+import { Injectable } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
 	InnerStorageService,
 	MessageService,
 } from '@ddc/kit';
-import { Observable } from 'rxjs';
 import {
 	EnumParamType,
 	PaginatorConverter,
@@ -15,17 +14,18 @@ import {
 	RequestUtility,
 	ResponseManagerInterface,
 } from '@ddc/rest';
-import { Injectable } from '@angular/core';
-import { UserModel } from '../models/user.model';
-import { UserConverter, UserUtilConverter } from '../converters/user.converter';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../../api/cakeutils/base/api.service';
 import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
-import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
-import { authenticationList } from '../constants/authentication.list';
-import { ConfirmoperationRequest } from '../dtos/confirmoperation-request';
 import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utility';
+import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
+import { authenticationList } from '../constants/authentication.list';
+import { UserConverter, UserUtilConverter } from '../converters/user.converter';
+import { ConfirmoperationRequest } from '../dtos/confirmoperation-request';
+import { UserModel } from '../models/user.model';
 
 @Injectable()
 export class UserService extends ApiService {
@@ -255,7 +255,7 @@ export class UserService extends ApiService {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'profile', profile);
-		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_user', id);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
 
 		const url =

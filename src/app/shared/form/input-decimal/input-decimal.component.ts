@@ -11,7 +11,7 @@ import { InputNumberComponent } from '../input-number/input-number.component';
 export class InputDecimalComponent extends InputNumberComponent {
 	@Input() digits: number;
 	@Input() step: string = 'any';
-	declare pattern: string;
+
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}

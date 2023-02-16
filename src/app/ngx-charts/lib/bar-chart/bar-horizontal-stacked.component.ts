@@ -158,7 +158,6 @@ export class BarHorizontalStackedComponent extends BaseChartComponent implements
 	@Input() gradient: boolean;
 	@Input() showGridLines: boolean = true;
 	@Input() activeEntries: any[] = [];
-	@Input() declare schemeType: ScaleType;
 	@Input() trimXAxisTicks: boolean = true;
 	@Input() trimYAxisTicks: boolean = true;
 	@Input() rotateXAxisTicks: boolean = true;

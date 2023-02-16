@@ -32,7 +32,6 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 	@Output() overEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando si passa con il mouse sopra l'item (emette l'item)
 	@Output() outEmit = new EventEmitter<OptionListModel>(); // evento che scatta quando il mouse lascia un item (emette l'item)
 	@Output() focusEmit = new EventEmitter<string>(); // evento che scatta quando il componente di input prende il focus
-	declare subStatus: Subscription;
 	subValue: Subscription;
 	// functions
 	@Input() search: (term: string) => Observable<OptionListModel[]>;

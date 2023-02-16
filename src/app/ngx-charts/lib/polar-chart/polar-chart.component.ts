@@ -174,7 +174,6 @@ export class PolarChartComponent extends BaseChartComponent implements OnInit {
 	@Input() showGridLines: boolean = true;
 	@Input() curve: any = curveCardinalClosed;
 	@Input() activeEntries: any[] = [];
-	@Input() declare schemeType: ScaleType;
 	@Input() rangeFillOpacity: number = 0.15;
 	@Input() trimYAxisTicks: boolean = true;
 	@Input() maxYAxisTickLength: number = 16;

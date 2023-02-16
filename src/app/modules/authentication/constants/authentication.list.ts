@@ -31,6 +31,7 @@ export const authenticationList = {
 		tpactivity: 'activity/tpactivity',
 		tpcat: 'activity/tpcat',
 		tree: 'activity/tree',
+		changeProfile: 'activity/changeProfile',
 	},
 	contactreference: {
 		unique: 'contactreference/get',

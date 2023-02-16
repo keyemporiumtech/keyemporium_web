@@ -34,7 +34,6 @@ export class InputFileComponent extends BaseInputComponent {
 	VALUE_FROM_UPLOAD: boolean;
 	// subscriptions
 	subValues: Subscription;
-	declare subStatus: Subscription;
 
 	lastValue;
 	constructor(applicationLogger: ApplicationLoggerService) {

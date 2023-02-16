@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FileService } from '@ddc/kit';
 import { TranslateService } from '@ngx-translate/core';
 import { EnumFormType } from '../../../../../shared/enums/form/form-type.enum';
@@ -12,8 +12,6 @@ import { TestFormInputsComponent } from '../test-form-inputs/test-form-inputs.co
 	styleUrls: ['./test-input-generic.component.scss'],
 })
 export class TestInputGenericComponent extends TestFormInputsComponent {
-	declare form1: FormGroup;
-	declare validations: any;
 	colSingle: FormFieldModel;
 	appendPrepend: FormFieldModel;
 	// fields
