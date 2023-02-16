@@ -32,11 +32,11 @@ jobs:
         run: npm install -g @angular/cli@15.0.2
 
       - name: Build Project
-        run: ng build --configuration=test --base-href ./
+        run: ng build --prod --base-href ./
 
       - name: Copy deploy files
         run: |
-          cp -R ./src/config/deploy/test/. ./dist/${{ secrets.APP_NAME }}
+          cp -R ./src/config/deploy/prod/. ./dist/${{ secrets.APP_NAME }}
 
       - name: Upload FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
