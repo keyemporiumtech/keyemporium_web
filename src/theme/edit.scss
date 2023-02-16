@@ -1,5 +1,10 @@
 label {
-  font-weight: bolder;
-  font-size: 90%;
-  color: #6c757d;
+	font-weight: bolder;
+	font-size: 90%;
+	color: #6c757d;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+	color: var(--text) !important;
 }

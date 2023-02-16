@@ -1,12 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
-import { PayloadUserInterface } from '../../../modules/authentication/interfaces/payload-user.interface';
 import { ApplicationStorageService } from '@ddc/kit';
+import { ExpirationInfo } from '@ddc/rest';
 import { Subscription } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { AuthenticationService } from '../../../modules/authentication/base/authentication.service';
-import { map } from 'rxjs/operators';
-import { ExpirationInfo } from '../../../rest';
+import { PayloadUserInterface } from '../../../modules/authentication/interfaces/payload-user.interface';
 
 @Component({
 	selector: 'reserve-header-reserve',

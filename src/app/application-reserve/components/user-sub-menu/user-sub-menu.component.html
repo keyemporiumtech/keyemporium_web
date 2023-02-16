@@ -1,0 +1,13 @@
+<div class="p-2">
+	<a
+		*auth-permissions="{
+			permissions: ['SUPERVISOR', 'ALL_PERMISSIONS', 'VIEW_PROFILES'],
+			hidden: true
+		}"
+		class="btn btn-primary btn-sm mr-2"
+		(click)="goToProfileManagement()"
+		title="{{ 'PERSONAL.BUTTON.PROFILE_MANAGEMENT' | translate }}"
+	>
+		{{ 'PERSONAL.BUTTON.PROFILE_MANAGEMENT' | translate }}
+	</a>
+</div>
