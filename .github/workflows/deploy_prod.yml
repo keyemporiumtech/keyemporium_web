@@ -32,7 +32,7 @@ jobs:
         run: npm install -g @angular/cli@15.0.2
 
       - name: Build Project
-        run: ng build --prod --base-href ./
+        run: ng build --configuration=production --base-href ./
 
       - name: Copy deploy files
         run: |
