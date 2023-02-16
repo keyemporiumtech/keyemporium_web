@@ -30,6 +30,8 @@ import { ProfileListEmailsComponent } from './components/profile-list/profile-li
 import { ProfileListLinksComponent } from './components/profile-list/profile-list-links/profile-list-links.component';
 import { AppKeyemporiumModule } from '../modules/app-keyemporium/app-keyemporium.module';
 import { ProfileAttachmentComponent } from './components/profile/profile-attachment/profile-attachment.component';
+import { UserSubMenuComponent } from './components/user-sub-menu/user-sub-menu.component';
+import { PermissionsPageComponent } from './pages/permissions-page/permissions-page.component';
 
 @NgModule({
 	declarations: [
@@ -50,6 +52,8 @@ import { ProfileAttachmentComponent } from './components/profile/profile-attachm
 		ProfileListEmailsComponent,
 		ProfileListLinksComponent,
 		ProfileAttachmentComponent,
+  UserSubMenuComponent,
+  PermissionsPageComponent,
 	],
 	imports: [
 		CommonModule,

@@ -1,0 +1,20 @@
+<ddc-init-accordion-container #containerProfiles [cssContainer]="'m-3'">
+	<ng-container *ngFor="let profile of profiles">
+		<ddc-init-accordion
+			[parent]="containerProfileList"
+			[cssButton]="'btn btn-xs btn-secondary'"
+			[styleButton]="{ width: '100%' }"
+			[label]="profile?.description"
+			(clickEmit)="openPermissions(profile)"
+		>
+			<div
+				class="mt-3"
+				accordion-content
+				[style.border]="'2px gray solid'"
+				[style.padding]="'1rem'"
+			>
+				{{ permissions | json }}
+			</div>
+		</ddc-init-accordion>
+	</ng-container>
+</ddc-init-accordion-container>

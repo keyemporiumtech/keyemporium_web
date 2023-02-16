@@ -1,0 +1,23 @@
+<li *ngIf="optionProfiles && optionProfiles.length && currentProfile" class="nav-item dropdown">
+	<a
+		class="nav-link dropdown-toggle"
+		href="#"
+		id="navbarDropdownProfile"
+		role="button"
+		data-toggle="dropdown"
+		aria-haspopup="true"
+		aria-expanded="false"
+	>
+		{{ currentProfile.text }}
+	</a>
+	<div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+		<ng-container *ngFor="let profile of optionProfiles">
+			<a
+				class="dropdown-item"
+				[ngClass]="{ 'dropdown-item-selected': isCurrent(profile) }"
+				(click)="changeProfile(profile)"
+				>{{ profile?.text }}</a
+			>
+		</ng-container>
+	</div>
+</li>

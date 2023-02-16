@@ -1,12 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
+import { Injectable } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
 	InnerStorageService,
 	MessageService,
 } from '@ddc/kit';
-import { Observable } from 'rxjs';
 import {
 	EnumParamType,
 	PaginatorConverter,
@@ -15,18 +14,21 @@ import {
 	RequestUtility,
 	ResponseManagerInterface,
 } from '@ddc/rest';
-import { Injectable } from '@angular/core';
-import { ProfilepermissionModel } from '../models/profilepermission.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ApiService } from '../../api/cakeutils/base/api.service';
+import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
+import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
+import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
+import { authenticationList } from '../constants/authentication.list';
+import { PermissionUtilConverter } from '../converters/permission.converter';
 import {
 	ProfilepermissionConverter,
 	ProfilepermissionUtilConverter,
 } from '../converters/profilepermission.converter';
-import { map } from 'rxjs/operators';
-import { ApiService } from '../../api/cakeutils/base/api.service';
-import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
-import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
-import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
-import { authenticationList } from '../constants/authentication.list';
+import { PermissionModel } from '../models/permission.model';
+import { ProfilepermissionModel } from '../models/profilepermission.model';
 
 @Injectable()
 export class ProfilepermissionService extends ApiService {
@@ -157,6 +159,34 @@ export class ProfilepermissionService extends ApiService {
 			requestManager && requestManager.url
 				? requestManager.url
 				: this.environment.api.services + authenticationList.profilepermission.delete;
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
+			map((res) => (res === 1 ? true : false)),
+		);
+	}
+
+	// ---- profile
+	updatePermissions(
+		id_profile: string,
+		permissionsIn: PermissionModel[],
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<boolean> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_profile', id_profile);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'permissions',
+			PermissionUtilConverter.toDtoList(permissionsIn),
+		);
+		// body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.profilepermission.updatepermissions;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),
 		);

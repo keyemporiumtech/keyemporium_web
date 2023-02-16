@@ -10,7 +10,7 @@ export abstract class BaseComponent
 	extends BaseClassModel
 	implements OnInit, OnDestroy, AfterViewInit
 {
-	@Input() declare id: string;
+	@Input() id: string;
 	/**
 	 * Usato per passare il loading dall'esterno
 	 */
@@ -29,6 +29,9 @@ export abstract class BaseComponent
 	}
 
 	ngOnInit() {
+		if (!this.id) {
+			this.id = super.getId();
+		}
 		this.ngOnInitForChildren();
 	}
 

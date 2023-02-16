@@ -5,36 +5,46 @@ on:
       - "v*"
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: ""
+      - uses: actions/checkout@v3
 
       - name: Use Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "10.16.0"
+          node-version: "18.10.0"
+
       - name: Install NPM Modules
-        run: |
-          npm install -g @angular/cli@7.3.1
-          npm install
+        run: npm install
+
+      - name: Install barrelsby
+        run: npm install -g barrelsby@1.0.2
+
+      - name: Build Kit Library
+        run: barrelsby --directory ./src/app/kit/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
+
+      - name: Build OAuth Social Library
+        run: barrelsby --directory ./src/app/oauth-social/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
+
+      - name: Build Rest Library
+        run: barrelsby --directory ./src/app/rest/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
+
+      - name: Install angular cli
+        run: npm install -g @angular/cli@15.0.2
 
       - name: Build Project
-        run: npm run build::test
+        run: ng build --configuration=test --base-href ./
 
-      - name: Copy files
+      - name: Copy deploy files
         run: |
-          xcopy src\config\deploy\test dist\${{ secrets.APP_NAME }} /E/Y
-
-      # FTP
-      - uses: actions/checkout@v1
+          cp -R ./src/config/deploy/test/. ./dist/${{ secrets.APP_NAME }}
 
       - name: Upload FTP
-        uses: sebastianpopp/git-ftp-action@releases/v3
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          url: ftp://${{ secrets.FTP_SERVER }}/${{ secrets.PATH_TEST }}
-          user: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          syncroot: "./dist/${{ secrets.APP_NAME }}"
-          options: "--auto-init"
+          local-dir: ./dist/${{ secrets.APP_NAME }}/
+          server-dir: ${{ secrets.PATH_TEST }}/
+          dangerous-clean-slate: true

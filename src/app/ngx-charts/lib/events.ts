@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') {
 	root = global;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
+// tslint:disable-next-line:variable-name
 export const MouseEvent = root.MouseEvent as any & {
 	prototype?: MouseEvent;
 	new (typeArg: string, eventInitDict?: MouseEventInit): MouseEvent;

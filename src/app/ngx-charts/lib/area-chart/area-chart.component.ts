@@ -178,7 +178,6 @@ export class AreaChartComponent extends BaseChartComponent {
 	@Input() showGridLines: boolean = true;
 	@Input() curve: CurveFactory = curveLinear;
 	@Input() activeEntries: any[] = [];
-	@Input() declare schemeType: ScaleType;
 	@Input() trimXAxisTicks: boolean = true;
 	@Input() trimYAxisTicks: boolean = true;
 	@Input() rotateXAxisTicks: boolean = true;

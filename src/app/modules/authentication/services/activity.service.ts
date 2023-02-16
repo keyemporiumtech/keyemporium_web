@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
+import { Injectable } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -7,7 +7,6 @@ import {
 	MessageService,
 	TreeHtmlModel,
 } from '@ddc/kit';
-import { Observable } from 'rxjs';
 import {
 	EnumParamType,
 	PaginatorConverter,
@@ -16,20 +15,22 @@ import {
 	RequestUtility,
 	ResponseManagerInterface,
 } from '@ddc/rest';
-import { Injectable } from '@angular/core';
-import { ActivityModel } from '../models/activity.model';
-import { ActivityConverter, ActivityUtilConverter } from '../converters/activity.converter';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiService } from '../../api/cakeutils/base/api.service';
-import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
-import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
-import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
-import { authenticationList } from '../constants/authentication.list';
-import { TypologicalModel } from '../../api/cakeutils-be/models/typological.model';
+import { TreeConverter } from '../../api/cakeutils-be/converters/tree.converter';
 import { TypologicalConverter } from '../../api/cakeutils-be/converters/typological.converter';
+import { TypologicalModel } from '../../api/cakeutils-be/models/typological.model';
+import { ApiService } from '../../api/cakeutils/base/api.service';
 import { DbFilterInterface } from '../../api/cakeutils/interfaces/db-filter.interface';
 import { DBOrderInterface } from '../../api/cakeutils/interfaces/db-order.interface';
-import { TreeConverter } from '../../api/cakeutils-be/converters/tree.converter';
+import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
+import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
+import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utility';
+import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
+import { authenticationList } from '../constants/authentication.list';
+import { ActivityConverter, ActivityUtilConverter } from '../converters/activity.converter';
+import { ActivityModel } from '../models/activity.model';
 
 @Injectable()
 export class ActivityService extends ApiService {
@@ -265,6 +266,31 @@ export class ActivityService extends ApiService {
 			new TreeConverter(),
 			requestManager,
 			responseManager,
+		);
+	}
+
+	changeProfile(
+		id?: string,
+		piva?: string,
+		id_user?: string,
+		username?: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<boolean> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activity', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'piva', piva);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_user', id_user);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.activity.changeProfile;
+		responseManager = ApiServiceUtility.sendTokenBuildRM(this.applicationStorage, responseManager);
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
+			map((res) => (res === 1 ? true : false)),
 		);
 	}
 }

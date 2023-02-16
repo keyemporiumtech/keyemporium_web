@@ -213,7 +213,6 @@ export class LineChartComponent extends BaseChartComponent implements OnInit {
 	@Input() showGridLines: boolean = true;
 	@Input() curve: any = curveLinear;
 	@Input() activeEntries: any[] = [];
-	@Input() declare schemeType: ScaleType;
 	@Input() rangeFillOpacity: number;
 	@Input() trimXAxisTicks: boolean = true;
 	@Input() trimYAxisTicks: boolean = true;

@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.0 - 16/02/2023
+
+> Versione che integra il template 9.1.0 e introduce all'uso dei permissions
+
+### changes
+
+- `[feature]` **reserve** aggiunto il componente `user-sub-menu`
+- `[feature]` **reserve** aggiunta la pagina `permissions-page`
+- `[feature]` **shared** aggiunto il componente `user-profiles-dropdown`
+- `[feature]` **TEMPLATE** rimozione dei declare
+
 ## 1.0.0 - 09/01/2023
 
 > Versione che integra il `template 9.0.0` e aggiorna il progetto alla versione di `angular 15`

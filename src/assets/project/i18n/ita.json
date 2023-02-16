@@ -1,109 +1,110 @@
 {
-  "PERSONAL": {
-    "BUTTON": {
-      "ADD": "Aggiungi",
-      "BACK": "Annulla",
-      "CLOSE": "Chiudi",
-      "DELETE": "Elimina",
-      "EDIT": "Modifica",
-      "ENTER": "Accedi",
-      "LOAD": "Carica",
-      "LOGIN": "Login"
-    },
-    "CIC": {
-      "DESCRIPTION": "Profilo aziendale di un utente dove sono memorizzate le aziende per cui lavora o di cui è titolare",
-      "TITLE": "Company Identity Card"
-    },
-    "CONFIRM_LOGIN": {
-      "PIN": "Inserisci il codice ricevuto per validare il tuo accesso",
-      "TITLE": "Entra in Keyemporium"
-    },
-    "COOKIE": {
-      "ACCEPT": "Accetta tutti",
-      "DELETE": "Rifiuta",
-      "EDIT": "Personalizza",
-      "INFO": "<strong>Questo sito web utilizza i cookie</strong><br/>Utilizziamo i cookie per personalizzare contenuti ed annunci, per fornire funzionalità dei social media e per analizzare il nostro traffico. Condividiamo inoltre informazioni sul modo in cui utilizza il nostro sito con i nostri partner che si occupano di analisi dei dati web, pubblicità e social media, i quali potrebbero combinarle con altre informazioni che ha fornito loro o che hanno raccolto dal suo utilizzo dei loro servizi.",
-      "INFO_CLOSE": "Chiudendo il banner si accetteranno tutti i cookie.",
-      "INFO_DELETE": "Rifiutando l'utilizzo dei cookie necessari non sarà possibile navigare il sito.",
-      "NAV1": "Consenso",
-      "NAV2": "Personalizza",
-      "NAV3": "Informazione sui cookie",
-      "LINK_EXTERNAL": "Per saperne di più sul fornitore",
-      "NECESSARY": {
-        "TITLE": "Necessari",
-        "DESCRIPTION": "I cookie necessari contribuiscono a rendere fruibile il sito web abilitandone funzionalità di base quali la navigazione sulle pagine e l'accesso alle aree protette del sito. Il sito web non è in grado di funzionare correttamente senza questi cookie.",
-        "CAKEPHP": "Questa tipologia di cookie permette il corretto funzionamento di alcune sezioni del Sito. Sono di tipo persistenti (una volta chiuso il browser non vengono distrutti ma rimangono fino ad una data di scadenza preimpostata). Sono necessari quindi a visualizzare correttamente il sito e sono solo in relazione ai servizi tecnici offerti e verranno quindi sempre utilizzati e inviati, a meno che non si modifichi le impostazioni nel proprio browser"
-      },
-      "PREFERENCE": {
-        "TITLE": "Preferenze",
-        "DESCRIPTION": "I cookie di preferenza consentono al sito web di memorizzare informazioni che ne influenzano il comportamento o l'aspetto, quali la lingua preferita o la località nella quale ti trovi.",
-        "KEYPROFILE": "Questa tipologia di cookie memorizza i dati anagrafici dell'utente per proporre soluzioni di navigazione attinenti a luoghi, età e lingua"
-      }
-    },
-    "COPYRIGHT": "&copy; Keyemporium",
-    "LABEL": {
-      "ATTACHMENT": "Allegato",
-      "BORN": "Data di nascita",
-      "EMAIL": "Indirizzo Email",
-      "EXPIRATION": "Scadenza",
-      "IMAGE": "Immagine",
-      "INFO": "Info",
-      "NAME": "Nome",
-      "PASSWORD": "Password",
-      "SEX": "Sesso",
-      "SURNAME": "Cognome",
-      "TYPE": "Tipo"
-    },
-    "LOGIN": {
-      "REMEMBERME": "Ricordami",
-      "SIGNIN_GOOGLE": "Entra con Google",
-      "SIGNIN_FACEBOOK": "Entra con Facebook",
-      "TITLE": "Entra in Keyemporium"
-    },
-    "PIC": {
-      "DESCRIPTION": "Profilo professionale di un utente dove sono memorizzate le informazioni sulla professione, le passioni e le attitudini",
-      "TITLE": "Professional Identity Card"
-    },
-    "VIC": {
-      "ADDRESS": {
-        "ADD_ADDRESS": "Aggiungi un domicilio",
-        "DELETE_ADDRESS_CONFIRM": "Sei sicuro di voler cancellare {{address}}?",
-        "EDIT_ADDRESS": "Modifica {{address}}",
-        "TITLE_LIST": "Indirizzi",
-        "TITLE_PRINCIPAL": "Indirizzo"
-      },
-      "ATTACHMENT": {
-        "ADD_ADDRESS": "Certificato di residenza",
-        "ADD_CF": "Codice fiscale",
-        "ADD_CI": "Carta di identità",
-        "ADD_DRIVING_LICENSE": "Patente",
-        "ADD_PASSPORT": "Passaporto",
-        "DELETE_ATTACHMENT_CONFIRM": "Sei sicuro di voler cancellare {{tp}}: {{name}}?",
-        "EDIT_ATTACHMENT": "Modifica {{tp}}: {{name}}",
-        "EMPTY_LIST": "Non ci sono allegati caricati",
-        "TITLE_LIST": "Allegati e Documenti"
-      },
-      "DESCRIPTION": "Profilo anagrafico di un utente dove sono memorizzate le informazioni che aumentano la credibilità del profilo stesso",
-      "IMAGE": {
-        "ADD_IMAGE": "Nuova foto",
-        "DELETE_IMAGE_CONFIRM": "Sei sicuro di voler cancellare la foto {{name}}?",
-        "EDIT_IMAGE": "Modifica foto {{name}}",
-        "EMPTY_LIST": "Non ci sono altre foto caricate",
-        "TITLE_LIST": "Foto",
-        "TITLE_PRINCIPAL": "Immagine di profilo"
-      },
-      "LINK": {
-        "TITLE_LIST": "Social, Blog e Siti web"
-      },
-      "PHONE": {
-        "TITLE_LIST": "Numeri di telefono",
-        "TITLE_PRINCIPAL": "Telefono"
-      },
-      "PROFILE": {
-        "TITLE": "Informazioni anagrafiche"
-      },
-      "QRCODE": "codice link",
-      "TITLE": "Virtual Identity Card"
-    }
-  }
+	"PERSONAL": {
+		"BUTTON": {
+			"ADD": "Aggiungi",
+			"BACK": "Annulla",
+			"CLOSE": "Chiudi",
+			"DELETE": "Elimina",
+			"EDIT": "Modifica",
+			"ENTER": "Accedi",
+			"LOAD": "Carica",
+			"LOGIN": "Login",
+			"PROFILE_MANAGEMENT": "Gestione profili utente"
+		},
+		"CIC": {
+			"DESCRIPTION": "Profilo aziendale di un utente dove sono memorizzate le aziende per cui lavora o di cui è titolare",
+			"TITLE": "Company Identity Card"
+		},
+		"CONFIRM_LOGIN": {
+			"PIN": "Inserisci il codice ricevuto per validare il tuo accesso",
+			"TITLE": "Entra in Keyemporium"
+		},
+		"COOKIE": {
+			"ACCEPT": "Accetta tutti",
+			"DELETE": "Rifiuta",
+			"EDIT": "Personalizza",
+			"INFO": "<strong>Questo sito web utilizza i cookie</strong><br/>Utilizziamo i cookie per personalizzare contenuti ed annunci, per fornire funzionalità dei social media e per analizzare il nostro traffico. Condividiamo inoltre informazioni sul modo in cui utilizza il nostro sito con i nostri partner che si occupano di analisi dei dati web, pubblicità e social media, i quali potrebbero combinarle con altre informazioni che ha fornito loro o che hanno raccolto dal suo utilizzo dei loro servizi.",
+			"INFO_CLOSE": "Chiudendo il banner si accetteranno tutti i cookie.",
+			"INFO_DELETE": "Rifiutando l'utilizzo dei cookie necessari non sarà possibile navigare il sito.",
+			"NAV1": "Consenso",
+			"NAV2": "Personalizza",
+			"NAV3": "Informazione sui cookie",
+			"LINK_EXTERNAL": "Per saperne di più sul fornitore",
+			"NECESSARY": {
+				"TITLE": "Necessari",
+				"DESCRIPTION": "I cookie necessari contribuiscono a rendere fruibile il sito web abilitandone funzionalità di base quali la navigazione sulle pagine e l'accesso alle aree protette del sito. Il sito web non è in grado di funzionare correttamente senza questi cookie.",
+				"CAKEPHP": "Questa tipologia di cookie permette il corretto funzionamento di alcune sezioni del Sito. Sono di tipo persistenti (una volta chiuso il browser non vengono distrutti ma rimangono fino ad una data di scadenza preimpostata). Sono necessari quindi a visualizzare correttamente il sito e sono solo in relazione ai servizi tecnici offerti e verranno quindi sempre utilizzati e inviati, a meno che non si modifichi le impostazioni nel proprio browser"
+			},
+			"PREFERENCE": {
+				"TITLE": "Preferenze",
+				"DESCRIPTION": "I cookie di preferenza consentono al sito web di memorizzare informazioni che ne influenzano il comportamento o l'aspetto, quali la lingua preferita o la località nella quale ti trovi.",
+				"KEYPROFILE": "Questa tipologia di cookie memorizza i dati anagrafici dell'utente per proporre soluzioni di navigazione attinenti a luoghi, età e lingua"
+			}
+		},
+		"COPYRIGHT": "&copy; Keyemporium",
+		"LABEL": {
+			"ATTACHMENT": "Allegato",
+			"BORN": "Data di nascita",
+			"EMAIL": "Indirizzo Email",
+			"EXPIRATION": "Scadenza",
+			"IMAGE": "Immagine",
+			"INFO": "Info",
+			"NAME": "Nome",
+			"PASSWORD": "Password",
+			"SEX": "Sesso",
+			"SURNAME": "Cognome",
+			"TYPE": "Tipo"
+		},
+		"LOGIN": {
+			"REMEMBERME": "Ricordami",
+			"SIGNIN_GOOGLE": "Entra con Google",
+			"SIGNIN_FACEBOOK": "Entra con Facebook",
+			"TITLE": "Entra in Keyemporium"
+		},
+		"PIC": {
+			"DESCRIPTION": "Profilo professionale di un utente dove sono memorizzate le informazioni sulla professione, le passioni e le attitudini",
+			"TITLE": "Professional Identity Card"
+		},
+		"VIC": {
+			"ADDRESS": {
+				"ADD_ADDRESS": "Aggiungi un domicilio",
+				"DELETE_ADDRESS_CONFIRM": "Sei sicuro di voler cancellare {{address}}?",
+				"EDIT_ADDRESS": "Modifica {{address}}",
+				"TITLE_LIST": "Indirizzi",
+				"TITLE_PRINCIPAL": "Indirizzo"
+			},
+			"ATTACHMENT": {
+				"ADD_ADDRESS": "Certificato di residenza",
+				"ADD_CF": "Codice fiscale",
+				"ADD_CI": "Carta di identità",
+				"ADD_DRIVING_LICENSE": "Patente",
+				"ADD_PASSPORT": "Passaporto",
+				"DELETE_ATTACHMENT_CONFIRM": "Sei sicuro di voler cancellare {{tp}}: {{name}}?",
+				"EDIT_ATTACHMENT": "Modifica {{tp}}: {{name}}",
+				"EMPTY_LIST": "Non ci sono allegati caricati",
+				"TITLE_LIST": "Allegati e Documenti"
+			},
+			"DESCRIPTION": "Profilo anagrafico di un utente dove sono memorizzate le informazioni che aumentano la credibilità del profilo stesso",
+			"IMAGE": {
+				"ADD_IMAGE": "Nuova foto",
+				"DELETE_IMAGE_CONFIRM": "Sei sicuro di voler cancellare la foto {{name}}?",
+				"EDIT_IMAGE": "Modifica foto {{name}}",
+				"EMPTY_LIST": "Non ci sono altre foto caricate",
+				"TITLE_LIST": "Foto",
+				"TITLE_PRINCIPAL": "Immagine di profilo"
+			},
+			"LINK": {
+				"TITLE_LIST": "Social, Blog e Siti web"
+			},
+			"PHONE": {
+				"TITLE_LIST": "Numeri di telefono",
+				"TITLE_PRINCIPAL": "Telefono"
+			},
+			"PROFILE": {
+				"TITLE": "Informazioni anagrafiche"
+			},
+			"QRCODE": "codice link",
+			"TITLE": "Virtual Identity Card"
+		}
+	}
 }

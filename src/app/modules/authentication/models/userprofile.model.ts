@@ -1,11 +1,24 @@
 import { ApiModel } from '../../api/cakeutils/base/api.model';
-import { UserModel } from './user.model';
+import { ActivityModel } from './activity.model';
 import { ProfileModel } from './profile.model';
+import { UserModel } from './user.model';
 
 export class UserprofileModel extends ApiModel {
 	private _cod: string;
 	private _user: UserModel;
 	private _profile: ProfileModel;
+	private _activity: ActivityModel;
+
+	get description(): string {
+		let name = '';
+		if (this.profile && this.profile.name) {
+			name = this.profile.name;
+		}
+		if (this.activity && this.activity.namecod) {
+			name += ' (' + this.activity.namecod + ')';
+		}
+		return name;
+	}
 
 	/**
 	 * Getter cod
@@ -53,5 +66,21 @@ export class UserprofileModel extends ApiModel {
 	 */
 	public set profile(value: ProfileModel) {
 		this._profile = value;
+	}
+
+	/**
+	 * Getter activity
+	 * @return {ActivityModel}
+	 */
+	public get activity(): ActivityModel {
+		return this._activity;
+	}
+
+	/**
+	 * Setter activity
+	 * @param {ActivityModel} value
+	 */
+	public set activity(value: ActivityModel) {
+		this._activity = value;
 	}
 }

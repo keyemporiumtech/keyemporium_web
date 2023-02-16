@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EnvironmentLoaderService, KitModule } from '@ddc/kit';
-import { environment } from '../../environments/environment';
-import { RestModule } from '@ddc/rest';
-import { SharedModule } from '../shared/shared.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PageContainerComponent } from './components/page-container/page-container.component';
-import { SexHtmlPipe } from './pipes/sex-html.pipe';
-import { SubTitleComponent } from './components/sub-title/sub-title.component';
-import { LineFilledComponent } from './components/line-filled/line-filled.component';
+import { EnvironmentLoaderService, KitModule } from '@ddc/kit';
+import { RestModule } from '@ddc/rest';
+import { TranslateModule } from '@ngx-translate/core';
+import { environment } from '../../environments/environment';
+import { SharedModule } from '../shared/shared.module';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { LineFilledComponent } from './components/line-filled/line-filled.component';
+import { PageContainerComponent } from './components/page-container/page-container.component';
+import { SubTitleComponent } from './components/sub-title/sub-title.component';
+import { UserProfilesDropdownComponent } from './components/user-profiles-dropdown/user-profiles-dropdown.component';
+import { SexHtmlPipe } from './pipes/sex-html.pipe';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 		SubTitleComponent,
 		LineFilledComponent,
 		ConfirmationModalComponent,
+		UserProfilesDropdownComponent,
 	],
 	imports: [
 		CommonModule,
@@ -36,6 +38,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 		SubTitleComponent,
 		LineFilledComponent,
 		ConfirmationModalComponent,
+		UserProfilesDropdownComponent,
 	],
 })
 export class ApplicationSharedModule {

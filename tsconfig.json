@@ -26,6 +26,7 @@
       "dom",
       "dom.iterable"
     ],
+    "skipLibCheck": true,
     "paths": {
       "@ddc/kit": [
         "src/app/kit",
@@ -62,6 +63,6 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": false,
-    "enableIvy": true /* true with cli >= 12.0, false with cli < 12 */
+    "enableIvy": true
   }
 }

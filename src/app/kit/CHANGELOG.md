@@ -1,5 +1,14 @@
 # CHANGELOG KIT
 
+## 2.3.0 - XX/01/2023
+
+> Versione che
+
+### changes
+
+- `[fix]` **abstract**: Fix del campo id per le classi `BaseClass` e `BaseComponent`. Il declare non permetteva il recupero dell'id dalla superclasse
+- `[fix]` **qrcode**: Rimozione della riscrittura dell'input id
+
 ## 2.2.0 - 17/10/2022
 
 > Versione che perfeziona il servizio `BrowserService` e aggiunge una funzione al mode Edit di un form.
@@ -13,9 +22,9 @@
 - `[fix]` **html** : Fix in `input-autocomplete` con aggiunta della pipe escapehtml per i testi in option
 - `[feature]` **html** e **abstract** : Aggiunta la gestione degli eventi `termEmitter` e `focusEmitter` e un nuovo input `listAll` per far caricare una lista completa al focus sull'`input-autocomplete` con term vuoto
 - `[feature]` **timing**: Aggiunta la pipe `datemodel`
-- `[fix]` **filemanager**: reimpostata la gestione di content e resource all'upload del file in `upload-file` 
-- `[feature]` **filemanager**: Aggiunti gli input `showProgress` e `showFiles` in `upload-file` 
-- `[feature]` **filemanager**: Aggiunta la gestione di singolo file quando la property `multiple` è false in `upload-file` 
+- `[fix]` **filemanager**: reimpostata la gestione di content e resource all'upload del file in `upload-file`
+- `[feature]` **filemanager**: Aggiunti gli input `showProgress` e `showFiles` in `upload-file`
+- `[feature]` **filemanager**: Aggiunta la gestione di singolo file quando la property `multiple` è false in `upload-file`
 - `[feature]` **config**: Modificato il metodo `getBrowserName` di `BrowserService` per consentire di trovare edge anche con il codice edg
 - `[feature]` **abstract**: Aggiunto il parametro `initUpdate` alla funzione `changeMode` di `BaseForm` per consentire di eseguire una funzione al change mode edit
 - `[fix]` **routing**: Fixato il metodo `splitUrlNavigationExtrasQueryParameters` di `PageUtility` per consentire che un parametro già presente in url venga aggiornato se richiesto
@@ -45,6 +54,7 @@
 ### changes
 
 - `[update]` Aggiunta del modulo `charts`
+
 ## 1.2.0 - 11/11/2021
 
 > Versione che aggiunge la direttiva `DdcCssVar` per il settaggio dei valori css variabili

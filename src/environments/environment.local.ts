@@ -12,7 +12,7 @@ export const environment = {
 	activityPIVA: undefined,
 	api: {
 		tokenApp: 'ab7414e3975ae96b2d6ef4bf641252feda9d633b',
-		services: 'http://localhost/keyemporium_rest',
+		services: 'http://localhost/keyemporium_rest/',
 		mobile: 'http://localhost:8100',
 		privacyPolicy: undefined, // '_projects/keyemporium/privacy.pdf'
 		cookiePolicy: undefined, // '_projects/keyemporium/cookie.pdf'

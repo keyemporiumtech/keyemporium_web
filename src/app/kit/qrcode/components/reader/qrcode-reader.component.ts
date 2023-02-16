@@ -9,7 +9,6 @@ import { ApplicationLoggerService } from '../../../logger/services/application-l
 	styleUrls: ['./qrcode-reader.component.scss'],
 })
 export class QrcodeReaderComponent extends BaseComponent {
-	@Input() declare id: any;
 	@Input() allowEmptyString: boolean = false; // 	Allow empty string
 	@Input() colorlight: string = '#ffffff'; // 	Light color
 	@Input() colordark: string = '#000000'; // 	Dark Color
