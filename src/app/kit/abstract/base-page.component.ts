@@ -1,16 +1,17 @@
-import { BaseComponent } from './base.component';
+import { Directive, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
+import { combineLatest, Observable, of, Subscription } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { ApplicationLoggerService } from '../logger/services/application-logger.service';
-import { Subscription } from 'rxjs';
-import { OnDestroy, Component, Directive } from '@angular/core';
-import { Data, ParamMap, Router, ActivatedRoute } from '@angular/router';
 import { RouteNavigationUtility } from '../routing/utility/route-navigation.utility';
+import { BaseComponent } from './base.component';
 
 /**
  * Da estendere nella creazione di componenti di pagina navigabili
  */
 @Directive()
 // eslint-disable-next-line @angular-eslint/directive-class-suffix
-export abstract class BasePageComponent extends BaseComponent implements OnDestroy {
+export abstract class BasePageComponent extends BaseComponent implements OnInit, OnDestroy {
 	router: Router;
 	activatedRoute: ActivatedRoute;
 	routeManager: RouteNavigationUtility;
@@ -19,11 +20,16 @@ export abstract class BasePageComponent extends BaseComponent implements OnDestr
 	readyData: boolean;
 	readyParamsMap: boolean;
 	readyQueryParamsMap: boolean;
+	finishData: boolean;
+	finishParamsMap: boolean;
+	finishQueryParamsMap: boolean;
 	private _readyParams: boolean;
+	private _finishParams: boolean;
 	// subscriptions
-	subData: Subscription;
-	subParamsMap: Subscription;
-	subQueryParamsMap: Subscription;
+	// subData: Subscription;
+	// subParamsMap: Subscription;
+	// subQueryParamsMap: Subscription;
+	subParams: Subscription;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -36,11 +42,6 @@ export abstract class BasePageComponent extends BaseComponent implements OnDestr
 		this.activatedRoute = activatedRoute;
 		this.routeManager = new RouteNavigationUtility(this.router, this.activatedRoute);
 		this.tpRoute = tpRoute ? tpRoute : 'static';
-		if (this.tpRoute === 'dynamic') {
-			this.onParameters();
-		} else {
-			this.onSnapshot();
-		}
 	}
 
 	set readyParams(val: boolean) {
@@ -53,56 +54,96 @@ export abstract class BasePageComponent extends BaseComponent implements OnDestr
 		return this.readyData && this.readyParamsMap && this.readyQueryParamsMap;
 	}
 
-	private onParameters() {
-		this.readyParams = false;
+	set finishParams(val: boolean) {
+		this.finishData = val;
+		this.finishParamsMap = val;
+		this.finishQueryParamsMap = val;
+		this._finishParams = val;
+	}
+	get finishParams(): boolean {
+		return this.finishData && this.finishParamsMap && this.finishQueryParamsMap;
+	}
 
-		this.subData = this.routeManager.waitData().subscribe(
-			(res) => {
-				this.manageDataParams(res);
-				this.readyData = true;
-			},
-			(err) => {
-				this.readyData = false;
-			},
-		);
-
-		this.subParamsMap = this.routeManager.waitParamMap().subscribe(
-			(res) => {
-				this.manageRouteParams(res);
-				this.readyParamsMap = true;
-			},
-			(err) => {
-				this.readyParamsMap = false;
-			},
-		);
-
-		this.subQueryParamsMap = this.routeManager.waitQueryParamMap().subscribe(
-			(res) => {
-				this.manageQueryParams(res);
-				this.readyQueryParamsMap = true;
-			},
-			(err) => {
-				this.readyQueryParamsMap = false;
-			},
+	private onParameters(): Observable<any> {
+		return combineLatest([
+			this.routeManager.waitData(),
+			this.routeManager.waitParamMap(),
+			this.routeManager.waitQueryParamMap(),
+		]).pipe(
+			map((data) => {
+				return this.manageData(data);
+			}),
+			catchError((err) => {
+				this.log.error('Keep onParameters params error', err);
+				return of({
+					data: false,
+					params: false,
+					queryParams: false,
+				});
+			}),
 		);
 	}
-	private onSnapshot() {
-		this.readyParams = false;
-		this.manageDataParams(this.routeManager.snapshot.data);
-		this.manageRouteParams(this.routeManager.snapshot.paramMap);
-		this.manageQueryParams(this.routeManager.snapshot.queryParamMap);
-		this.readyParams = true;
+
+	private onSnapshot(): Observable<{ data: boolean; params: boolean; queryParams: boolean }> {
+		return combineLatest([
+			of(this.routeManager.snapshot.data),
+			of(this.routeManager.snapshot.paramMap),
+			of(this.routeManager.snapshot.queryParamMap),
+		]).pipe(
+			map((data) => {
+				return this.manageData(data);
+			}),
+			catchError((err) => {
+				this.log.error('Keep onSnapshot params error', err);
+				return of({
+					data: false,
+					params: false,
+					queryParams: false,
+				});
+			}),
+		);
+	}
+
+	private manageData(data: any[]): { data: boolean; params: boolean; queryParams: boolean } {
+		if (data[0]) {
+			this.manageDataParams(data[0]);
+			this.readyData = true;
+		}
+		if (data[1]) {
+			this.manageRouteParams(data[1]);
+			this.readyParamsMap = true;
+		}
+		if (data[2]) {
+			this.manageQueryParams(data[2]);
+			this.readyQueryParamsMap = true;
+		}
+		this.finishData = true;
+		this.finishParamsMap = true;
+		this.finishQueryParamsMap = true;
+		return {
+			data: Object.keys(data[0]).length > 0,
+			params: data[1].keys.length > 0,
+			queryParams: data[2].keys.length > 0,
+		};
+	}
+
+	ngOnInit() {
+		let $obs: Observable<{ data: boolean; params: boolean; queryParams: boolean }>;
+		if (this.tpRoute === 'dynamic') {
+			$obs = this.onParameters();
+		} else {
+			$obs = this.onSnapshot();
+		}
+
+		this.subParams = $obs.subscribe((res) => {
+			this.log.info('parameters by route', res);
+			super.ngOnInit();
+		});
 	}
 
 	ngOnDestroy() {
-		if (this.subData) {
-			this.subData.unsubscribe();
-		}
-		if (this.subParamsMap) {
-			this.subParamsMap.unsubscribe();
-		}
-		if (this.subQueryParamsMap) {
-			this.subQueryParamsMap.unsubscribe();
+		if (this.subParams) {
+			this.subParams.unsubscribe();
 		}
 		super.ngOnDestroy();
 	}

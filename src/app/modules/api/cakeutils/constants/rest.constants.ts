@@ -2,8 +2,7 @@
 export const restConstants = {
 	innertoken:
 		'RGd5eEU3RE9GbDF4bjNhQ3lMTG1OV1hzL2p6UTNubUUyUjVXK1h0Um5IUVZLSHZoOGdPMWhLNGJGZTlKYVA0Tw==',
-	clienttoken:
-		'YUxOQnhIQ0dkVlJzZHB2VTlDN2Y5cktBZXQwR05LOXZQK0gxdkF6cG5kZz0=.2cfddde91fafb155ea37150b44db1e54624217db',
+	clienttoken: 'aW5wYmM5bzM4czByM3VlaWNUcEJ5QT09.4447ae5c7b93e7fd9acbfddd834d87b38023a514',
 	clienttokenname: 'token',
 	sessiontokenname: 'authtoken',
 };

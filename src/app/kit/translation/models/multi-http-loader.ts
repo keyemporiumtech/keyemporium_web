@@ -1,7 +1,7 @@
-import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
-import { forkJoin } from 'rxjs';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export function translateLoader(http: HttpClient) {
 	return new MultiTranslateHttpLoader(http, [], '.json');
@@ -16,7 +16,7 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
 	 * @returns any
 	 */
 	public getTranslation(lang: string): any {
-		return forkJoin(
+		return combineLatest(
 			this.resources.map((resource) => {
 				return this.http.get(resource + lang + this.suffix);
 			}),

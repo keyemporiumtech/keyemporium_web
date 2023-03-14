@@ -1,12 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
 import {
 	ApplicationLoggerService,
-	FileEmbedModel,
-	StringTranslate,
 	ApplicationStorageService,
 	BasePageComponent,
+	FileEmbedModel,
+	StringTranslate,
 } from '@ddc/kit';
-import { ParamMap, Data, Router, ActivatedRoute } from '@angular/router';
 import { template } from '../../../../environments/template/template';
 
 @Component({
@@ -36,14 +36,13 @@ export class FilePageComponent extends BasePageComponent {
 	manageDataParams(data: Data) {}
 	manageRouteParams(data: ParamMap) {
 		this.page = data.get('page');
-	}
-	manageQueryParams(data: ParamMap) {}
-	ngOnInitForChildren() {
 		if (this.page) {
 			this.fileEmbed = this.applicationStorage.fileEmbed.getObj();
 			this.title = this.fileEmbed.title;
 		}
 	}
+	manageQueryParams(data: ParamMap) {}
+	ngOnInitForChildren() {}
 	ngAfterViewInitForChildren() {}
 	ngOnDestroyForChildren() {}
 	getClassName(): string {

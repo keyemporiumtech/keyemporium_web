@@ -1,41 +1,41 @@
-import {
-	BaseAuthService,
-	ResponseMessageInterface,
-	RequestManagerInterface,
-	ResponseManagerInterface,
-	AuthUtility,
-	TokenDecodeInterface,
-	PaginatorModel,
-	QueryUtility,
-} from '@ddc/rest';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
-	InnerStorageService,
 	BehaviourObserverModel,
 	FileService,
+	InnerStorageService,
 } from '@ddc/kit';
-import { restConstants } from '../../api/cakeutils/constants/rest.constants';
-import { Observable, throwError, forkJoin, of } from 'rxjs';
-import { UserService } from '../services/user.service';
-import { ConfirmoperationRequest } from '../dtos/confirmoperation-request';
-import { PayloadUserInterface } from '../interfaces/payload-user.interface';
+import {
+	AuthUtility,
+	BaseAuthService,
+	PaginatorModel,
+	QueryUtility,
+	RequestManagerInterface,
+	ResponseManagerInterface,
+	ResponseMessageInterface,
+	TokenDecodeInterface,
+} from '@ddc/rest';
+import { TranslateService } from '@ngx-translate/core';
+import { combineLatest, Observable, of, throwError } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { TranslateService } from '@ngx-translate/core';
-import { UserprofileService } from '../services/userprofile.service';
+import { restConstants } from '../../api/cakeutils/constants/rest.constants';
 import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
-import { UserprofileModel } from '../models/userprofile.model';
-import { UserModel } from '../models/user.model';
-import { ProfilepermissionService } from '../services/profilepermission.service';
 import { ApiFast } from '../../api/cakeutils/utility/api-fast.utility';
-import { HttpClient } from '@angular/common/http';
 import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utility';
-import { UserattachmentService } from '../services/userattachment.service';
 import { EnumAttachmentType } from '../../resources/enums/attachment-type.enum';
-import { UserattachmentModel } from '../models/userattachment.model';
 import { AttachmentModel } from '../../resources/models/attachment.model';
+import { ConfirmoperationRequest } from '../dtos/confirmoperation-request';
+import { PayloadUserInterface } from '../interfaces/payload-user.interface';
+import { UserModel } from '../models/user.model';
+import { UserattachmentModel } from '../models/userattachment.model';
+import { UserprofileModel } from '../models/userprofile.model';
+import { ProfilepermissionService } from '../services/profilepermission.service';
+import { UserService } from '../services/user.service';
+import { UserattachmentService } from '../services/userattachment.service';
+import { UserprofileService } from '../services/userprofile.service';
 
 @Injectable({
 	providedIn: 'root',
@@ -456,7 +456,7 @@ export class AuthenticationService extends BaseAuthService {
 			const conditionsAttachment: RequestConditionInterface = {
 				belongs: ['attachment_fk'],
 			};
-			return forkJoin(
+			return combineLatest([
 				this.userprofileService.paginate(
 					ApiFast.paginatorList([
 						ApiFast.queryField('user_fk.username', user.username),
@@ -473,7 +473,7 @@ export class AuthenticationService extends BaseAuthService {
 					undefined,
 					QueryUtility.SKIP_ERROR_RES,
 				),
-			).pipe(
+			]).pipe(
 				map((data) => {
 					const userAuth: UserAuthResponse = {};
 					const paginatorModel: PaginatorModel = data[0];

@@ -1,54 +1,54 @@
 {
-  "VALIDATION": {
-    "ADDRESS": {
-      "ALMOST_NATION_CITY": "Indiquez le pays et la ville"
-    },
-    "ALMOST_ONE_LOWER": "Le champ doit contenir au moins un caractère minuscule",
-    "ALMOST_ONE_UPPER": "Le champ doit contenir au moins un caractère majuscule",
-    "ALMOST_ONE_NUMBER": "Le champ doit contenir au moins un caractère numérique",
-    "CREDITCARD": "Creditcard invalide",
-    "DATE": {
-      "NOT_VALID": "Date invalide",
-      "DATE_GREATER_OR_EQUAL_THEN": "La date doit être supérieure ou égale à {{other}}",
-      "DATE_GREATER_THEN": "La date doit être supérieure à {{other}}",
-      "DATE_GREATER_OR_EQUAL_THEN_CURRENT": "La date doit être supérieure ou égale à la date actuelle",
-      "DATE_GREATER_THEN_CURRENT": "La date doit être supérieure à la date actuelle",
-      "DATE_LESS_OR_EQUAL_THEN": "La date doit être inférieure ou égale à {{other}}",
-      "DATE_LESS_THEN": "La date doit être inférieure à {{other}}",
-      "DATE_LESS_OR_EQUAL_THEN_CURRENT": "La date doit être inférieure ou égale à la date actuelle",
-      "DATE_LESS_THEN_CURRENT": "La date doit être inférieure à la date actuelle"
-    },
-    "DOUBLE_PRECISION": "Les valeurs décimales double précision sont autorisées",
-    "SPECIFIC_PRECISION": "Sono ammessi solo {{ digits }} valori decimali dopo la virgola",
-    "EMAIL": "Email invalide",
-    "IBAN": "Iban invalide",
-    "INTEGER": "Seuls les numéros sont autorisés",
-    "INVALID": "Valeur invalide",
-    "MIN_LENGTH": "Le champ doit comporter plus de {{min}} caractères",
-    "MAX_LENGTH": "Le champ doit contenir moins de {{max}} caractères",
-    "MIN_MAX_LENGTH": "Le champ doit comporter plus de {{min}} caractères et moins de {{max}} caractères",
-    "NOT_EQUAL": "La valeur de champ \"{{field1}}\" est différente de la valeur de champ \"{{field2}}\"",
-    "NUMBER": {
-      "MAX": "Non sono ammessi valori maggiori di {{ max }}",
-      "MIN": "Non sono ammessi valori inferiori di {{ min }}"
-    },
-    "PASSWORD": "Password non valida",
-    "PATTERN": "Pattern {{ pattern }} non rispettato",
-    "REFERENCE": {
-      "PHONE": "Indiquez le numéro de téléphone",
-      "PREFIX": "Indiquez le préfixe",
-      "PREFIX_AND_PHONE": "Indiquez le préfixe et le numéro de téléphone"
-    },
-    "REQUIRED": "Champ obligatoire",
-    "UPLOAD": {
-      "FILE_EXT": "Le fichier {{filename}} a l'extension {{fileext}} alors que seules les extensions {{ext}} sont autorisées",
-      "FILE_EXT_INFO": "Extensions {{ ext }}",
-      "GENERIC_ERROR": "Errore di upload",
-      "MAX_SIZE": "Le fichier {{filename}} a une taille {{filesize}} alors que seuls les fichiers de taille maximale {{size}} {{unit}} sont autorisés",
-      "MAX_SIZE_INFO": "Taille maximale {{ size }} {{ unit }}",
-      "MAX_NUM_UPLOAD": "Un maximum de {{max}} fichiers peuvent être joints",
-      "MAX_NUM_UPLOAD_INFO": "Un maximum de {{max}} fichiers"
-    },
-    "URL": "URL non valide (doit avoir http: // ou https: // ou www. Prefix)"
-  }
+	"VALIDATION": {
+		"ADDRESS": {
+			"ALMOST_NATION_CITY": "Indiquez le pays et la ville"
+		},
+		"ALMOST_ONE_LOWER": "Le champ doit contenir au moins un caractère minuscule",
+		"ALMOST_ONE_UPPER": "Le champ doit contenir au moins un caractère majuscule",
+		"ALMOST_ONE_NUMBER": "Le champ doit contenir au moins un caractère numérique",
+		"CREDITCARD": "Creditcard invalide",
+		"DATE": {
+			"NOT_VALID": "Date invalide",
+			"DATE_GREATER_OR_EQUAL_THEN": "La date doit être supérieure ou égale à {{other}}",
+			"DATE_GREATER_THEN": "La date doit être supérieure à {{other}}",
+			"DATE_GREATER_OR_EQUAL_THEN_CURRENT": "La date doit être supérieure ou égale à la date actuelle",
+			"DATE_GREATER_THEN_CURRENT": "La date doit être supérieure à la date actuelle",
+			"DATE_LESS_OR_EQUAL_THEN": "La date doit être inférieure ou égale à {{other}}",
+			"DATE_LESS_THEN": "La date doit être inférieure à {{other}}",
+			"DATE_LESS_OR_EQUAL_THEN_CURRENT": "La date doit être inférieure ou égale à la date actuelle",
+			"DATE_LESS_THEN_CURRENT": "La date doit être inférieure à la date actuelle"
+		},
+		"DOUBLE_PRECISION": "Les valeurs décimales double précision sont autorisées",
+		"SPECIFIC_PRECISION": "Seules les {{ digits }} valeurs décimales après la virgule sont autorisées",
+		"EMAIL": "Email invalide",
+		"IBAN": "Iban invalide",
+		"INTEGER": "Seuls les numéros sont autorisés",
+		"INVALID": "Valeur invalide",
+		"MIN_LENGTH": "Le champ doit comporter plus de {{min}} caractères",
+		"MAX_LENGTH": "Le champ doit contenir moins de {{max}} caractères",
+		"MIN_MAX_LENGTH": "Le champ doit comporter plus de {{min}} caractères et moins de {{max}} caractères",
+		"NOT_EQUAL": "La valeur de champ \"{{field1}}\" est différente de la valeur de champ \"{{field2}}\"",
+		"NUMBER": {
+			"MAX": "Les valeurs supérieures à {{ max }} ne sont pas autorisées ",
+			"MIN": "Les valeurs inférieures à {{ min }} ne sont pas autorisées"
+		},
+		"PASSWORD": "Mot de passe incorrect",
+		"PATTERN": "Motif {{ pattern }} non respecté",
+		"REFERENCE": {
+			"PHONE": "Indiquez le numéro de téléphone",
+			"PREFIX": "Indiquez le préfixe",
+			"PREFIX_AND_PHONE": "Indiquez le préfixe et le numéro de téléphone"
+		},
+		"REQUIRED": "Champ obligatoire",
+		"UPLOAD": {
+			"FILE_EXT": "Le fichier {{filename}} a l'extension {{fileext}} alors que seules les extensions {{ext}} sont autorisées",
+			"FILE_EXT_INFO": "Extensions {{ ext }}",
+			"GENERIC_ERROR": "Errore di upload",
+			"MAX_SIZE": "Le fichier {{filename}} a une taille {{filesize}} alors que seuls les fichiers de taille maximale {{size}} {{unit}} sont autorisés",
+			"MAX_SIZE_INFO": "Taille maximale {{ size }} {{ unit }}",
+			"MAX_NUM_UPLOAD": "Un maximum de {{max}} fichiers peuvent être joints",
+			"MAX_NUM_UPLOAD_INFO": "Un maximum de {{max}} fichiers"
+		},
+		"URL": "URL non valide (doit avoir http: // ou https: // ou www. Prefix)"
+	}
 }

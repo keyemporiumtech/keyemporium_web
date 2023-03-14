@@ -1,15 +1,15 @@
 import {
-	BaseService,
 	ApplicationLoggerService,
 	ApplicationStorageService,
-	LocaleService,
-	InnerStorageService,
+	BaseService,
+	EnumTypeMime,
 	FileEmbedModel,
 	FileService,
-	EnumTypeMime,
+	InnerStorageService,
+	LocaleService,
 } from '@ddc/kit';
-import { Observable, forkJoin, of } from 'rxjs';
-import { map, catchError, retryWhen, tap, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { catchError, map, retryWhen, switchMap, tap } from 'rxjs/operators';
 
 /**
  * Classe usata per impostare i valori di riferimento nello storage applicativo
@@ -130,7 +130,7 @@ export abstract class BaseInfoServerService extends BaseService {
 	}
 
 	private first(): Observable<any> {
-		return forkJoin(this.fnLanguage(), this.fnCurrency(), this.fnNation());
+		return combineLatest([this.fnLanguage(), this.fnCurrency(), this.fnNation()]);
 	}
 	private second(): Observable<any> {
 		const $obsList = [
@@ -145,7 +145,7 @@ export abstract class BaseInfoServerService extends BaseService {
 			$obsList.push(...this.mapOthers.values());
 		}
 
-		return forkJoin($obsList);
+		return combineLatest($obsList);
 	}
 
 	// ---------- LANGUAGE environment.default.language -> applicationStorage.language

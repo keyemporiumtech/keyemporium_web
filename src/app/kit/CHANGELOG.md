@@ -1,8 +1,17 @@
 # CHANGELOG KIT
 
-## 2.3.0 - XX/01/2023
+## 2.4.0 - 14/03/2023
 
-> Versione che
+> Versione che adegua la gestione dei wait parameters in `BasePageComponent` e rimuove il `forkJoin` deprecato
+
+### changes
+
+- `[fix]` **abstract**: Fix sulla gestione dei wait parameters in `BasePageComponent` con gestione dell'onInit dopo l'acquisizione dei parametri
+- `[feature]` **translation**: Sostituzione della `forkJoin` con `combineLastest` in `multi-http.loader`
+
+## 2.3.0 - 15/02/2023
+
+> Versione che rimuove i declare
 
 ### changes
 
