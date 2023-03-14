@@ -1,0 +1,110 @@
+{
+	"APP": {
+		"I18N": "Deutsch",
+		"COPYRIGHT": "&copy; DDC INIT",
+		"BUTTON": {
+			"BACK": "Zurück",
+			"CANCEL": "Stornieren",
+			"CONFIRM": "Bestätigen",
+			"EDIT": "Bearbeiten",
+			"HIDE": "Verstecken",
+			"LOGIN": "Login",
+			"LOGOUT": "Logout",
+			"OK": "Ok",
+			"READ": "Lesen",
+			"RESET": "Zurücksetzen",
+			"PAGE": "Gehen Sie zur Seite",
+			"SAVE": "Speichern",
+			"SEARCH": "Suchen",
+			"SHOW": "Zeigen"
+		},
+		"COOKIE": {
+			"ACCEPT": "Akzeptieren",
+			"ATTENTION_CLOSE": "WARNUNG! Beim Schließen werden Cookies akzeptiert. Sie können Ihre Auswahl immer noch auf der Seite Cookie-Verwaltung ändern",
+			"CHOICE": {
+				"ACCEPT": "Akzeptieren ausgewählt",
+				"ACCEPT_ALL": "Akzeptiere alle",
+				"EDIT": "Anpassen",
+				"NAV1": "Zustimmung",
+				"NAV1_INFO": "<strong>Diese Website verwendet Cookies</strong><br/>Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien bereitzustellen und unseren Datenverkehr zu analysieren. Wir geben auch Informationen darüber, wie Sie unsere Website nutzen, an unsere Webanalyse-, Werbe- und Social-Media-Partner weiter, die diese möglicherweise mit anderen Informationen kombinieren, die Sie ihnen zur Verfügung gestellt haben oder die sie aus Ihrer Nutzung ihrer Dienste gesammelt haben.",
+				"NAV2": "Anpassen",
+				"NAV2_INFO": "In diesem Abschnitt können Sie die Details jedes Anwendungscookies analysieren und die Gruppe der zu akzeptierenden Cookies anpassen",
+				"NAV3": "Informationen zu Cookies",
+				"NAV3_INFO1": "Cookies sind kleine Textdateien, die von Websites verwendet werden können, um die Benutzererfahrung effizienter zu gestalten.",
+				"NAV3_INFO2": "Das Gesetz besagt, dass wir Cookies auf Ihrem Gerät speichern können, wenn sie für den Betrieb dieser Website unbedingt erforderlich sind. Für alle anderen Arten von Cookies benötigen wir Ihre Zustimmung.",
+				"NAV3_INFO3": "Diese Website verwendet verschiedene Arten von Cookies. Einige Cookies werden von Drittanbietern platziert, die auf unseren Seiten erscheinen.",
+				"NAV3_INFO4": "You can change or revoke your consent on our website at any time from the ",
+				"NAV3_INFO4_LINK": "Cookie-Erklärung",
+				"NAV3_INFO5": "Erfahren Sie mehr darüber, wer wir sind, wie Sie uns kontaktieren können und wie wir personenbezogene Daten in unserem verarbeiten ",
+				"NAV3_INFO5_LINK": "Datenschutz-Bestimmungen",
+				"NAV3_INFO6": "Erfahren Sie mehr darüber, wie wir mit Cookies umgehen, in unserem ",
+				"NAV3_INFO6_LINK": "Cookie-Richtlinie",
+				"REFUSE": "Ablehnen",
+				"TITLE": "Cookie-Verwaltung"
+			},
+			"INFO": "Dies ist die Nachricht, die im Cookie-Banner erscheinen muss",
+			"LAST_UPDATE": "Cookie-Erklärung aktualisiert am {{ dtaCookie }} von {{ appName }}",
+			"LINK_EXTERNAL": "Erfahren Sie mehr über den Anbieter",
+			"MARKETING": {
+				"TITLE": "Marketing",
+				"DESCRIPTION": "Marketing-Cookies werden verwendet, um Besucher von Websites zu verfolgen. Der Zweck besteht darin, Werbung zu präsentieren, die für den einzelnen Benutzer relevant und ansprechend ist und daher für Drittanbieter und Werbetreibende von größerem Wert ist."
+			},
+			"MORE_INFO": "Mehr Info",
+			"NECESSARY": {
+				"TITLE": "Notwendig",
+				"DESCRIPTION": "Notwendige Cookies tragen zur Benutzerfreundlichkeit der Website bei, indem sie grundlegende Funktionen wie Seitennavigation und Zugriff auf sichere Bereiche der Website ermöglichen. Ohne diese Cookies kann die Website nicht richtig funktionieren.",
+				"CAKEPHP": "Diese Art von Cookie sorgt dafür, dass bestimmte Bereiche der Website ordnungsgemäß funktionieren. Sie sind vom dauerhaften Typ (sobald der Browser geschlossen wird, werden sie nicht zerstört, sondern bleiben bis zu einem voreingestellten Ablaufdatum erhalten). Sie sind daher notwendig, um die Seite korrekt anzuzeigen und stehen nur im Zusammenhang mit den angebotenen technischen Diensten und werden daher immer verwendet und gesendet, es sei denn, Sie ändern die Einstellungen in Ihrem Browser"
+			},
+			"NOT_CLASSIFIED": {
+				"TITLE": "Nicht klassifiziert",
+				"DESCRIPTION": "Nicht klassifizierte Cookies sind Cookies, die gerade klassifiziert werden, zusammen mit einzelnen Cookie-Anbietern."
+			},
+			"PREFERENCE": {
+				"TITLE": "Einstellungen",
+				"DESCRIPTION": "Präferenz-Cookies ermöglichen es der Website, Informationen zu speichern, die ihr Verhalten oder Aussehen beeinflussen, wie z. B. Ihre bevorzugte Sprache oder Ihren Standort.",
+				"PROFILE": "Diese Art von Cookie speichert die biografischen Daten des Benutzers, um ihm standort-, alters- und sprachbezogene Navigationslösungen vorzuschlagen"
+			},
+			"STATISTIC": {
+				"TITLE": "Statistiken",
+				"DESCRIPTION": "Statistik-Cookies helfen Website-Eigentümern zu verstehen, wie Besucher mit den Websites interagieren, indem sie Informationen in anonymer Form sammeln und übertragen."
+			},
+			"TITLE": "Cookie-Richtlinie"
+		},
+		"LABEL": {
+			"ADDRESS": {
+				"TYPE": "Adresstyp",
+				"NATION": "Nation",
+				"REGION": "Region",
+				"PROVINCE": "Provinz",
+				"CITY": "Stadt",
+				"COMMUNITY": "Community",
+				"ZIP": "PLZ",
+				"STREET": "Straße/Platz",
+				"NUM": "Nummer"
+			},
+			"CREDITCARD": "Kreditkartennummer",
+			"EXPIRATION": "Ablauf",
+			"IBAN": "IBAN",
+			"LANGUAGE": "Sprache",
+			"NATION": "Nation",
+			"PROFILE": "Profil",
+			"TYPE": "Typ"
+		},
+		"LOADER": {
+			"MESSAGE_WAIT": "Wait"
+		},
+		"MAP": {
+			"DISABLE_SCROLL": "Scrollen deaktivieren",
+			"ENABLE_SCROLL": "Bildlauf aktivieren"
+		},
+		"PLATFORM": {
+			"MESSAGE_IS_MOBILE": "Möchten Sie die mobile Anwendung durchsuchen?"
+		},
+		"PRIVACY": {
+			"TITLE": "Datenschutz-Bestimmungen"
+		},
+		"TERM": {
+			"TITLE": "Nutzungsbedingungen"
+		}
+	}
+}

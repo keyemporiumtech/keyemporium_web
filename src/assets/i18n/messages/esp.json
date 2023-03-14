@@ -1,0 +1,37 @@
+{
+	"MESSAGE": {
+		"AUTH": {
+			"TOKEN_NOT_VALID": "Token de aplicación no válido"
+		},
+		"CONFIRM_OPERATION": {
+			"TITLE": "Código de confirmación de operación",
+			"QUESTION_MAIL": "Introduce el código que te enviamos por email",
+			"QUESTION_SMS": "Introduce el código que te enviamos por sms"
+		},
+		"GENERIC_ERROR": "Ha ocurrido un error de servidor",
+		"NO_OPERATION": "Operación no exitosa",
+		"NO_RECORD": "Datos no presentes o entrada no válida",
+		"NO_RECORDS": "No hay elementos",
+		"RESOURCE": {
+			"FILE_CREATED": "Archivo {{filename}} creado",
+			"FILE_EXISTS": "El archivo {{filename}} ya existe",
+			"FILE_NOT_EXISTS": "El archivo {{filename}} no existe",
+			"FILES_CREATED": "Todos los archivos han sido creados.",
+			"FOLDER_CREATED": "Carpeta {{path}} creada",
+			"FOLDER_EXISTS": "La carpeta {{path}} ya existe",
+			"FOLDER_NOT_EXISTS": "La carpeta {{path}} no existe",
+			"FOLDER_REMOVED": "Carpeta {{path}} eliminada",
+			"FOLDER_REMOVED_RECURSIVELY": "Carpeta {{path}} eliminada recursivamente",
+			"NOT_FOUND": "Recurso no disponible"
+		},
+		"SESSION_INVALID": "Sesión inválida",
+		"TITLE": {
+			"INFO": "Información",
+			"WARNING": "Advertencia",
+			"ERROR": "Error"
+		}
+	},
+	"EXCEPTION": {
+		"TOKEN_ERROR": "Sesión inválida"
+	}
+}

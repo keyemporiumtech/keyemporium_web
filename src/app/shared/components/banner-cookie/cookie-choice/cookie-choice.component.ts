@@ -1,25 +1,25 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CookieUtils } from '../../../utils/cookie-utils';
-import { EnumCookieType } from '../../../enums/cookie/cookie-type.enum';
-import { EnumCookieOperation } from '../../../enums/cookie/cookie-operation.enum';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import {
+	ApplicationLoggerService,
 	ApplicationStorageService,
 	BaseComponent,
-	ApplicationLoggerService,
 	FileEmbedModel,
 	PreviousRouteService,
 } from '@ddc/kit';
-import { Router } from '@angular/router';
-import { EnumCookieNavigation } from '../../../enums/cookie/cookie-navigation.enum';
-import { cookies } from '../../../../../config/cookie/cookies';
+import { combineLatest, Subscription } from 'rxjs';
 import { cookieInfo } from '../../../../../config/cookie/cookie-info';
+import { cookies } from '../../../../../config/cookie/cookies';
 import { environment } from '../../../../../environments/environment';
-import { Subscription, forkJoin } from 'rxjs';
-import { CookiemanagerService } from '../../../../modules/api/cakeutils-be/services/cookiemanager.service';
-import { CookieModel } from '../../../../modules/api/cakeutils-be/models/cookie.model';
 import { CookieConverter } from '../../../../modules/api/cakeutils-be/converters/cookie.converter';
 import { CookieDTO } from '../../../../modules/api/cakeutils-be/dtos/cookie.dto';
 import { CookieStatusModel } from '../../../../modules/api/cakeutils-be/models/cookie-status.model';
+import { CookieModel } from '../../../../modules/api/cakeutils-be/models/cookie.model';
+import { CookiemanagerService } from '../../../../modules/api/cakeutils-be/services/cookiemanager.service';
+import { EnumCookieNavigation } from '../../../enums/cookie/cookie-navigation.enum';
+import { EnumCookieOperation } from '../../../enums/cookie/cookie-operation.enum';
+import { EnumCookieType } from '../../../enums/cookie/cookie-type.enum';
+import { CookieUtils } from '../../../utils/cookie-utils';
 
 @Component({
 	selector: 'ddc-init-cookie-choice',
@@ -94,10 +94,10 @@ export class CookieChoiceComponent extends BaseComponent {
 
 	ngOnInitForChildren() {
 		if (this.flgRemote) {
-			this.subCookies = forkJoin(
+			this.subCookies = combineLatest([
 				this.cookiemanager.cookies(),
 				this.cookiemanager.status(),
-			).subscribe((data) => {
+			]).subscribe((data) => {
 				this.cookies = data[0];
 				this.filterList();
 				this.evalInitiStatus(data[1]);
@@ -247,7 +247,9 @@ export class CookieChoiceComponent extends BaseComponent {
 
 	goToPageCookie() {
 		this.linkEmit.emit(EnumCookieNavigation.COOKIE_CHOICE);
-		this.previouseRoute.navigate(['commons', 'cookies']);
+		if (!this.isPage) {
+			this.previouseRoute.navigate(['commons', 'cookies']);
+		}
 	}
 	goToPrivacyPolicy() {
 		this.linkEmit.emit(EnumCookieNavigation.PRIVACY_POLICY);

@@ -1,0 +1,168 @@
+{
+    "STATUS_RESPONSE": {
+        "100" : {
+            "NAME": "Continue",
+            "DEFAULT_MESSAGE": "The initial part of the request has been received. You can continue by sending the remainder of the request"
+        },
+        "101" : {
+            "NAME": "Switching Protocols",
+            "DEFAULT_MESSAGE": "HTTP protocol is changed"
+        },
+        "200" : {
+            "NAME": "OK",
+            "DEFAULT_MESSAGE": "The request has succeeded",
+            "GET": "An entity corresponding to the requested resource is sent in the response",
+            "HEAD": "The entity-header fields corresponding to the requested resource are sent in the response without any message-body",
+            "POST": "An entity describing or containing the result of the action",
+            "TRACE": "An entity containing the request message as received by the end server"
+        },
+        "201" : {
+            "NAME": "Created",
+            "DEFAULT_MESSAGE": "A new resource being created"
+        },
+        "202" : {
+            "NAME": "Accepted",
+            "DEFAULT_MESSAGE": "The request has been accepted for processing, but the processing has not been completed"
+        },
+        "203" : {
+            "NAME": "Non-Authoritative Information",
+            "DEFAULT_MESSAGE": "The returned metainformation in the entity-header is not the definitive"
+        },
+        "204" : {
+            "NAME": "No Content",
+            "DEFAULT_MESSAGE": "The server has fulfilled the request"
+        },
+        "205" : {
+            "NAME": "Reset Content",
+            "DEFAULT_MESSAGE": "The server has fulfilled the request and resetted the document view"
+        },
+        "206" : {
+            "NAME": "Partial Content",
+            "DEFAULT_MESSAGE": "The server has fulfilled the partial request"
+        },
+        "300" : {
+            "NAME": "Multiple Choices",
+            "DEFAULT_MESSAGE": "The requested resource corresponds to any one of a set of representations"
+        },
+        "301" : {
+            "NAME": "Moved Permanently",
+            "DEFAULT_MESSAGE": "The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs"
+        },
+        "302" : {
+            "NAME": "Found",
+            "DEFAULT_MESSAGE": "The requested resource resides temporarily under a different URI"
+        },
+        "303" : {
+            "NAME": "See Other",
+            "DEFAULT_MESSAGE": "The response to the request can be found under a different URI and should be retrieved using a GET method on that resource"
+        },
+        "304" : {
+            "NAME": "Not Modified",
+            "DEFAULT_MESSAGE": "The document request has not been modified"
+        },
+        "305" : {
+            "NAME": "Use Proxy",
+            "DEFAULT_MESSAGE": "The requested resource must be accessed through the proxy given by the Location field"
+        },
+        "307" : {
+            "NAME": "Temporary Redirect",
+            "DEFAULT_MESSAGE": "The requested resource resides temporarily under a different URI. Since the redirection may be altered on occasion, the client should continue to use the Request-URI for future requests"
+        },
+        "400" : {
+            "NAME": "Bad Request",
+            "DEFAULT_MESSAGE": "The request could not be understood by the server due to malformed syntax"
+        },
+        "401" : {
+            "NAME": "Unauthorized",
+            "DEFAULT_MESSAGE": "The request requires user authentication"
+        },
+        "402" : {
+            "NAME": "Payment Required",
+            "DEFAULT_MESSAGE": "The request requires user payment"
+        },
+        "403" : {
+            "NAME": "Forbidden",
+            "DEFAULT_MESSAGE": "The server understood the request, but is refusing to fulfill it."
+        },
+        "404" : {
+            "NAME": "Not Found",
+            "DEFAULT_MESSAGE": "The server has not found anything matching the Request-URI."
+        },
+        "405" : {
+            "NAME": "Method Not Allowed",
+            "DEFAULT_MESSAGE": "The method specified in the Request-Line is not allowed for the resource identified by the Request-URI. The response must include an Allow header containing a list of valid methods for the requested resource."
+        },
+        "406" : {
+            "NAME": "Not Acceptable",
+            "DEFAULT_MESSAGE": "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
+        },
+        "407" : {
+            "NAME": "Proxy Authentication Required",
+            "DEFAULT_MESSAGE": "The client must first authenticate itself with the proxy."
+        },
+        "408" : {
+            "NAME": "Request Timeout",
+            "DEFAULT_MESSAGE": "The client did not produce a request within the time that the server was prepared to wait."
+        },
+        "409" : {
+            "NAME": "Conflict",
+            "DEFAULT_MESSAGE": "The request could not be completed due to a conflict with the current state of the resource"
+        },
+        "410" : {
+            "NAME": "Gone",
+            "DEFAULT_MESSAGE": "The requested resource is no longer available at the server and no forwarding address is known"
+        },
+        "411" : {
+            "NAME": "Length Required",
+            "DEFAULT_MESSAGE": "The server refuses to accept the request without a defined Content-Length"
+        },
+        "412" : {
+            "NAME": "Precondition Failed",
+            "DEFAULT_MESSAGE": "The precondition given in one or more of the request-header fields evaluated to false when it was tested on the server."
+        },
+        "413" : {
+            "NAME": "Request Entity Too Large",
+            "DEFAULT_MESSAGE": "The server is refusing to process a request because the request entity is larger than the server is willing or able to process"
+        },
+        "414" : {
+            "NAME": "Request-URI Too Long",
+            "DEFAULT_MESSAGE": "The server is refusing to service the request because the Request-URI is longer than the server is willing to interpret"
+        },
+        "415" : {
+            "NAME": "Unsupported Media Type",
+            "DEFAULT_MESSAGE": "The entity of the request is in a format not supported by the requested resource for the requested method"
+        },
+        "416" : {
+            "NAME": "Requested Range Not Satisfiable",
+            "DEFAULT_MESSAGE": "The request included a Range request-header field and none of the range-specifier values in this field overlap the current extent of the selected resource"
+        },
+        "417" : {
+            "NAME": "Expectation Failed",
+            "DEFAULT_MESSAGE": "The expectation given in an Expect request-header field could not be met by this server"
+        },
+        "500" : {
+            "NAME": "Internal Server Error",
+            "DEFAULT_MESSAGE": "The server encountered an unexpected condition which prevented it from fulfilling the request"
+        },
+        "501" : {
+            "NAME": "Not Implemented",
+            "DEFAULT_MESSAGE": "The server does not support the functionality required to fulfill the request"
+        },
+        "502" : {
+            "NAME": "Bad Gateway",
+            "DEFAULT_MESSAGE": "The server received an invalid response from the upstream server it accessed in attempting to fulfill the request."
+        },
+        "503" : {
+            "NAME": "Service Unavailable",
+            "DEFAULT_MESSAGE": "The server is currently unable to handle the request due to a temporary overloading or maintenance of the server"
+        },
+        "504" : {
+            "NAME": "Gateway Timeout",
+            "DEFAULT_MESSAGE": "The server did not receive a timely response from the upstream server specified by the URI (e.g. HTTP, FTP, LDAP) or some other auxiliary server (e.g. DNS) it needed to access in attempting to complete the request."
+        },
+        "505" : {
+            "NAME": "HTTP Version Not Supported",
+            "DEFAULT_MESSAGE": "The server does not support, or refuses to support, the HTTP protocol version that was used in the request message"
+        }
+    }
+}

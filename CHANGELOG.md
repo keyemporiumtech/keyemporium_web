@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0 - 14/03/2023
+
+> Versione che integra il template 9.2.0
+
 ## 1.1.3 - 16/02/2023
 
 > Versione che fixa la pipeline prod cambiando il build --prod in build --configuration=production

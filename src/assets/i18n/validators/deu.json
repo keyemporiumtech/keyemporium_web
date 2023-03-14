@@ -1,0 +1,54 @@
+{
+	"VALIDATION": {
+		"ADDRESS": {
+			"ALMOST_NATION_CITY": "Geben Sie das Land und die Stadt an"
+		},
+		"ALMOST_ONE_LOWER": "Das Feld muss mindestens einen Kleinbuchstaben enthalten",
+		"ALMOST_ONE_UPPER": "Das Feld muss mindestens einen Großbuchstaben enthalten",
+		"ALMOST_ONE_NUMBER": "Das Feld muss mindestens ein numerisches Zeichen enthalten",
+		"CREDITCARD": "Ungültige Kreditkarte",
+		"DATE": {
+			"NOT_VALID": "Ungültiges Datum",
+			"DATE_GREATER_OR_EQUAL_THEN": "Das Datum muss größer oder gleich {{ other }} sein",
+			"DATE_GREATER_THEN": "Datum muss größer sein als {{ other }}",
+			"DATE_GREATER_OR_EQUAL_THEN_CURRENT": "Das Datum muss größer oder gleich dem aktuellen Datum sein",
+			"DATE_GREATER_THEN_CURRENT": "Das Datum muss größer als das aktuelle Datum sein",
+			"DATE_LESS_OR_EQUAL_THEN": "Das Datum muss kleiner oder gleich {{ other }} sein",
+			"DATE_LESS_THEN": "Das Datum muss kleiner als {{ other }} sein",
+			"DATE_LESS_OR_EQUAL_THEN_CURRENT": "Das Datum muss kleiner oder gleich dem aktuellen Datum sein",
+			"DATE_LESS_THEN_CURRENT": "Das Datum muss vor dem aktuellen Datum liegen"
+		},
+		"DOUBLE_PRECISION": "Dezimalwerte mit doppelter Genauigkeit sind zulässig",
+		"SPECIFIC_PRECISION": "Es sind nur {{ digits }} Dezimalwerte nach dem Komma erlaubt",
+		"EMAIL": "Ungültige E-Mail",
+		"IBAN": "Ungültige IBAN",
+		"INTEGER": "Es sind nur Zahlen erlaubt",
+		"INVALID": "Ungültiger Wert",
+		"MIN_LENGTH": "Das Feld muss länger als {{ min }} Zeichen sein",
+		"MAX_LENGTH": "Das Feld muss weniger als {{ max }} Zeichen lang sein",
+		"MIN_MAX_LENGTH": "Das Feld muss mehr als {{ min }} Zeichen und weniger als {{ max }} Zeichen umfassen",
+		"NOT_EQUAL": "Feldwert \"{{ field1 }}\" unterscheidet sich von Feldwert \"{{ field2 }}\"",
+		"NUMBER": {
+			"MAX": "Werte größer als {{ max }} sind nicht erlaubt",
+			"MIN": "Werte kleiner als {{ min }} sind nicht erlaubt"
+		},
+		"PASSWORD": "Ungültiges Passwort",
+		"PATTERN": "Muster {{ pattern }} nicht eingehalten",
+		"REFERENCE": {
+			"PHONE": "Geben Sie die Telefonnummer an",
+			"PREFIX": "Geben Sie die Vorwahl an",
+			"PREFIX_AND_PHONE": "Geben Sie die Vorwahl und Telefonnummer an"
+		},
+		"REQUIRED": "Pflichtfeld",
+		"UPLOAD": {
+			"FILE_EXT": "Die Datei {{ filename }} hat die Erweiterung {{ fileext }}, wobei nur die Erweiterungen {{ ext }} erlaubt sind",
+			"FILE_EXT_INFO": "Erweiterungen {{ext}}",
+			"GENERIC_ERROR": "Upload-Fehler",
+			"MAX_SIZE": "Die Datei {{ filename }} hat die Größe {{ filesize }}, wobei nur Dateien der maximalen Größe {{ size }} {{ unit }} erlaubt sind",
+			"MAX_SIZE_INFO": "Maximale Größe {{ size }} {{ unit }}",
+			"MAX_NUM_UPLOAD": "Es können maximal {{ max }} Dateien angehängt werden",
+			"MAX_NUM_UPLOAD_FILE": "Maximal {{ max }} Dateien"
+		},
+		"URL": "Ungültige URL (muss http:// oder https:// oder www vorangestellt werden.)"
+	}
+}

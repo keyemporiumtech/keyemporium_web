@@ -1,19 +1,19 @@
+import { Directive, OnDestroy } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
-	BehaviourObserverModel,
-	BaseService,
-	InnerStorageService,
 	ArrayUtility,
+	BaseService,
+	BehaviourObserverModel,
+	InnerStorageService,
 } from '@ddc/kit';
-import { Observable, BehaviorSubject, forkJoin, of, Subscription } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Directive, OnDestroy } from '@angular/core';
-import { ResponseManagerInterface } from '../../response/interfaces/response-manager.interface';
-import { ResponseMessageInterface } from '../../response/interfaces/response-message.interface';
-import { RequestManagerInterface } from '../../request/interfaces/request-manager.interface';
 import { ExpirationInfo } from '../../auth/interfaces/expiration-info.interface';
 import { AuthUtility } from '../../auth/utility/auth.utility';
+import { RequestManagerInterface } from '../../request/interfaces/request-manager.interface';
+import { ResponseManagerInterface } from '../../response/interfaces/response-manager.interface';
+import { ResponseMessageInterface } from '../../response/interfaces/response-message.interface';
 
 /**
  * Classe per la gestione delle informazioni utente e di sessione.
@@ -185,11 +185,11 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 
 	setProfile(profile: string, username?: string, callback?: () => any) {
 		const $obsProfile = username ? this.changeProfile(username, profile) : of(true);
-		this.subProfile = forkJoin(
+		this.subProfile = combineLatest([
 			this.loadPermissions(profile),
 			this.loadSedi(profile),
 			$obsProfile,
-		).subscribe((data) => {
+		]).subscribe((data) => {
 			this.permissions = data[0];
 			this.sedi = data[1];
 			if (callback) {
@@ -329,10 +329,10 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 			switchMap((res) => {
 				if (res) {
 					this.applicationStorage.memoLogin.setObj(user);
-					return forkJoin(
+					return combineLatest([
 						this.fnSendVerifyPinEmail(user, requestManagerEmail, responseManagerEmail),
 						this.fnSendVerifyPinPhone(user, requestManagerPhone, responseManagerPhone),
-					).pipe(
+					]).pipe(
 						map((data) => {
 							return data[0] && data[1];
 						}),
@@ -404,10 +404,10 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 		responseManagerPhone?: ResponseManagerInterface,
 	): Observable<boolean> {
 		const memoUser: T = user ? user : (this.applicationStorage.memoLogin.getObj() as T);
-		return forkJoin(
+		return combineLatest([
 			this.fnVerifyPinEmail(pin_email, memoUser, requestManagerEmail, responseManagerEmail),
 			this.fnVerifyPinPhone(pin_phone, memoUser, requestManagerPhone, responseManagerPhone),
-		).pipe(
+		]).pipe(
 			map((data) => {
 				return data[0] && data[1];
 			}),
@@ -484,10 +484,10 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 		responseManagerPhone?: ResponseManagerInterface,
 	): Observable<any> {
 		const memoUser: T = user ? user : (this.applicationStorage.memoLogin.getObj() as T);
-		return forkJoin(
+		return combineLatest([
 			this.fnVerifyPinEmail(pin_email, memoUser, requestManagerEmail, responseManagerEmail),
 			this.fnVerifyPinPhone(pin_phone, memoUser, requestManagerPhone, responseManagerPhone),
-		).pipe(
+		]).pipe(
 			switchMap((data) => {
 				if (data[0] && data[1]) {
 					return this.login(memoUser);

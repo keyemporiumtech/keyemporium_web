@@ -1,0 +1,54 @@
+{
+	"VALIDATION": {
+		"ADDRESS": {
+			"ALMOST_NATION_CITY": "Indique el país y la ciudad"
+		},
+		"ALMOST_ONE_LOWER": "El campo debe contener al menos un carácter en minúscula",
+		"ALMOST_ONE_UPPER": "El campo debe contener al menos un carácter en mayúscula",
+		"ALMOST_ONE_NUMBER": "El campo debe contener al menos un carácter numérico",
+		"CREDITCARD": "Tarjeta de Credito invalible",
+		"DATE": {
+			"NOT_VALID": "Fecha invalida",
+			"DATE_GREATER_OR_EQUAL_THEN": "La fecha debe ser mayor o igual a la de {{ other }}",
+			"DATE_GREATER_THEN": "La fecha debe ser mayor que {{ other }}",
+			"DATE_GREATER_OR_EQUAL_THEN_CURRENT": "La fecha debe ser mayor o igual a la fecha actual",
+			"DATE_GREATER_THEN_CURRENT": "La fecha debe ser posterior a la fecha actual",
+			"DATE_LESS_OR_EQUAL_THEN": "La fecha debe ser menor o igual a {{ other }}",
+			"DATE_LESS_THEN": "La fecha debe ser anterior a {{ other }}",
+			"DATE_LESS_OR_EQUAL_THEN_CURRENT": "La fecha debe ser menor o igual a la fecha actual",
+			"DATE_LESS_THEN_CURRENT": "La fecha debe ser anterior a la fecha actual"
+		},
+		"DOUBLE_PRECISION": "Se permiten valores decimales de doble precisión",
+		"SPECIFIC_PRECISION": "Solo se permiten {{ digits }} valores decimales después de la coma",
+		"EMAIL": "Email inválido",
+		"IBAN": "Iban inválidos",
+		"INTEGER": "Solo se permiten números",
+		"INVALID": "valor no válido",
+		"MIN_LENGTH": "El campo debe tener más de {{ min }} caracteres",
+		"MAX_LENGTH": "El campo debe tener menos de {{ max }} caracteres",
+		"MIN_MAX_LENGTH": "El campo debe tener más de {{ min }} caracteres y menos de {{ max }} caracteres",
+		"NOT_EQUAL": "El valor de campo \"{{ field1 }}\" es diferente del valor de campo \"{{ field2 }}\"",
+		"NUMBER": {
+			"MAX": "No se permiten valores mayores a {{ max }}",
+			"MIN": "No se permiten valores inferiores a {{ min }}"
+		},
+		"PASSWORD": "Contraseña invalida",
+		"PATTERN": "Patrón {{ pattern }} no respetado",
+		"REFERENCE": {
+			"PHONE": "Indique el número de teléfono",
+			"PREFIX": "Indique el código de área",
+			"PREFIX_AND_PHONE": "Indique el código de área y el número de teléfono"
+		},
+		"REQUIRED": "Campo requerido",
+		"UPLOAD": {
+			"FILE_EXT": "El archivo {{ filename }} tiene la extensión {{ fileext }} mientras que solo se permiten las extensiones {{ ext }}",
+			"FILE_EXT_INFO": "Extensiones {{ ext }}",
+			"GENERIC_ERROR": "Error al Subir",
+			"MAX_SIZE": "El archivo {{ filename }} tiene un tamaño de {{ filesize }} mientras que solo se permiten archivos de tamaño máximo {{ size }} {{ unit }}",
+			"MAX_SIZE_INFO": "Talla máxima {{ size }} {{ unit }}",
+			"MAX_NUM_UPLOAD": "Se pueden unir como máximo {{ max }} files",
+			"MAX_NUM_UPLOAD_FILE": "Massimo {{ max }} files"
+		},
+		"URL": "URL no válida (debe tener el prefijo http:// o https:// o www.)"
+	}
+}

@@ -1,110 +1,110 @@
 {
-  "APP": {
-    "I18N": "Italiano",
-    "COPYRIGHT": "&copy; DDC INIT",
-    "BUTTON": {
-      "BACK": "Indietro",
-      "CANCEL": "Annulla",
-      "CONFIRM": "Conferma",
-      "EDIT": "Modifica",
-      "HIDE": "Nascondi",
-      "LOGIN": "Login",
-      "LOGOUT": "Logout",
-      "OK": "Ok",
-      "READ": "Leggi",
-      "RESET": "Pulisici",
-      "PAGE": "Vai a Pagina",
-      "SAVE": "Salva",
-      "SEARCH": "Cerca",
-      "SHOW": "Mostra"
-    },
-    "COOKIE": {
-      "ACCEPT": "Accept",
-      "ATTENTION_CLOSE": "WARNING! Closing will accept cookies. You will still be able to change your choice from the Cookie Management page",
-      "CHOICE": {
-        "ACCEPT": "Accept selected",
-        "ACCEPT_ALL": "Accept all",
-        "EDIT": "Customise",
-        "NAV1": "Consent",
-        "NAV1_INFO": "<strong>This website uses cookies</strong><br/>We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about how you use our site with our web analytics, advertising and social media partners, who may combine it with other information you have provided to them or that they have collected from your use of their services.",
-        "NAV2": "Customise",
-        "NAV2_INFO": "In this section you can analyse the details of each application cookie and customise the group of cookies to be accepted",
-        "NAV3": "Information on cookies",
-        "NAV3_INFO1": "Cookies are small text files that can be used by websites to make the user experience more efficient.",
-        "NAV3_INFO2": "The law states that we can store cookies on your device if they are strictly necessary for the operation of this site. For all other types of cookies we need your permission.",
-        "NAV3_INFO3": "This site uses different types of cookies. Some cookies are placed by third-party services that appear on our pages.",
-        "NAV3_INFO4": "You can change or revoke your consent on our website at any time from the ",
-        "NAV3_INFO4_LINK": "Cookie Declaration",
-        "NAV3_INFO5": "Find out more about who we are, how you can contact us and how we process personal data in our ",
-        "NAV3_INFO5_LINK": "Privacy policy",
-        "NAV3_INFO6": "Find out more about how we handle cookies in our ",
-        "NAV3_INFO6_LINK": "Cookie policy",
-        "REFUSE": "Reject",
-        "TITLE": "Cookie Management"
-      },
-      "INFO": "Questo è il messaggio che deve comparire nel banner cookie",
-      "LAST_UPDATE": "Cookie Statement updated on {{ dtaCookie }} by {{ appName }}",
-      "LINK_EXTERNAL": "Learn more about the supplier",
-      "MARKETING": {
-        "TITLE": "Marketing",
-        "DESCRIPTION": "Marketing cookies are used to track visitors to websites. The purpose is to present advertisements that are relevant and engaging to the individual user and therefore of greater value to third-party publishers and advertisers."
-      },
-      "MORE_INFO": "More Info",
-      "NECESSARY": {
-        "TITLE": "Necessary",
-        "DESCRIPTION": "Necessary cookies contribute to the usability of the website by enabling basic functionality such as page navigation and access to secure areas of the website. The website cannot function properly without these cookies.",
-        "CAKEPHP": "This type of cookie allows certain sections of the Site to function properly. They are of the persistent type (once the browser is closed, they are not destroyed but remain until a preset expiry date). They are therefore necessary to display the site correctly and are only in relation to the technical services offered and will therefore always be used and sent, unless you change the settings in your browser"
-      },
-      "NOT_CLASSIFIED": {
-        "TITLE": "Unclassified",
-        "DESCRIPTION": "Unclassified cookies are cookies that are in the process of being classified, along with individual cookie providers."
-      },
-      "PREFERENCE": {
-        "TITLE": "Preferences",
-        "DESCRIPTION": "Preference cookies allow the website to store information that influences its behaviour or appearance, such as your preferred language or location.",
-        "PROFILE": "This type of cookie stores the user's biographical data in order to propose navigation solutions relevant to location, age and language"
-      },
-      "STATISTIC": {
-        "TITLE": "Statistics",
-        "DESCRIPTION": "Statistical cookies help website owners understand how visitors interact with the sites by collecting and transmitting information in an anonymous form."
-      },
-      "TITLE": "Cookie Policy"
-    },
-    "LABEL": {
-      "ADDRESS": {
-        "TYPE": "Tipo di indirizzo",
-        "NATION": "Nazione",
-        "REGION": "Regione",
-        "PROVINCE": "Provincia",
-        "CITY": "Città",
-        "COMMUNITY": "Community",
-        "ZIP": "C.A.P.",
-        "STREET": "Via/Piazza/Contrada",
-        "NUM": "Numero Civico"
-      },
-      "CREDITCARD": "Numero di carta di credito",
-      "EXPIRATION": "Scadenza",
-      "IBAN": "IBAN",
-      "LANGUAGE": "Lingua",
-      "NATION": "Nazione",
-      "PROFILE": "Profilo",
-      "TYPE": "Tipo"
-    },
-    "LOADER": {
-      "MESSAGE_WAIT": "Attendere"
-    },
-    "MAP": {
-      "DISABLE_SCROLL": "Disabilita Scroll",
-      "ENABLE_SCROLL": "Abilita Scroll"
-    },
-    "PLATFORM": {
-      "MESSAGE_IS_MOBILE": "Vuoi navigare l'applicazione mobile ?"
-    },
-    "PRIVACY": {
-      "TITLE": "Privacy Policy"
-    },
-    "TERM": {
-      "TITLE": "Condizioni d'uso"
-    }
-  }
+	"APP": {
+		"I18N": "English",
+		"COPYRIGHT": "&copy; DDC INIT",
+		"BUTTON": {
+			"BACK": "Back",
+			"CANCEL": "Cancel",
+			"CONFIRM": "Confirm",
+			"EDIT": "Edit",
+			"HIDE": "Hide",
+			"LOGIN": "Login",
+			"LOGOUT": "Logout",
+			"OK": "Ok",
+			"READ": "Read",
+			"RESET": "Reset",
+			"PAGE": "Go to page",
+			"SAVE": "Save",
+			"SEARCH": "Search",
+			"SHOW": "Show"
+		},
+		"COOKIE": {
+			"ACCEPT": "Accept",
+			"ATTENTION_CLOSE": "WARNING! Closing will accept cookies. You will still be able to change your choice from the Cookie Management page",
+			"CHOICE": {
+				"ACCEPT": "Accept selected",
+				"ACCEPT_ALL": "Accept all",
+				"EDIT": "Customise",
+				"NAV1": "Consent",
+				"NAV1_INFO": "<strong>This website uses cookies</strong><br/>We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about how you use our site with our web analytics, advertising and social media partners, who may combine it with other information you have provided to them or that they have collected from your use of their services.",
+				"NAV2": "Customise",
+				"NAV2_INFO": "In this section you can analyse the details of each application cookie and customise the group of cookies to be accepted",
+				"NAV3": "Information on cookies",
+				"NAV3_INFO1": "Cookies are small text files that can be used by websites to make the user experience more efficient.",
+				"NAV3_INFO2": "The law states that we can store cookies on your device if they are strictly necessary for the operation of this site. For all other types of cookies we need your permission.",
+				"NAV3_INFO3": "This site uses different types of cookies. Some cookies are placed by third-party services that appear on our pages.",
+				"NAV3_INFO4": "You can change or revoke your consent on our website at any time from the ",
+				"NAV3_INFO4_LINK": "Cookie Declaration",
+				"NAV3_INFO5": "Find out more about who we are, how you can contact us and how we process personal data in our ",
+				"NAV3_INFO5_LINK": "Privacy policy",
+				"NAV3_INFO6": "Find out more about how we handle cookies in our ",
+				"NAV3_INFO6_LINK": "Cookie policy",
+				"REFUSE": "Reject",
+				"TITLE": "Cookie Management"
+			},
+			"INFO": "This is the message that must appear in the cookie banner",
+			"LAST_UPDATE": "Cookie Statement updated on {{ dtaCookie }} by {{ appName }}",
+			"LINK_EXTERNAL": "Learn more about the supplier",
+			"MARKETING": {
+				"TITLE": "Marketing",
+				"DESCRIPTION": "Marketing cookies are used to track visitors to websites. The purpose is to present advertisements that are relevant and engaging to the individual user and therefore of greater value to third-party publishers and advertisers."
+			},
+			"MORE_INFO": "More Info",
+			"NECESSARY": {
+				"TITLE": "Necessary",
+				"DESCRIPTION": "Necessary cookies contribute to the usability of the website by enabling basic functionality such as page navigation and access to secure areas of the website. The website cannot function properly without these cookies.",
+				"CAKEPHP": "This type of cookie allows certain sections of the Site to function properly. They are of the persistent type (once the browser is closed, they are not destroyed but remain until a preset expiry date). They are therefore necessary to display the site correctly and are only in relation to the technical services offered and will therefore always be used and sent, unless you change the settings in your browser"
+			},
+			"NOT_CLASSIFIED": {
+				"TITLE": "Unclassified",
+				"DESCRIPTION": "Unclassified cookies are cookies that are in the process of being classified, along with individual cookie providers."
+			},
+			"PREFERENCE": {
+				"TITLE": "Preferences",
+				"DESCRIPTION": "Preference cookies allow the website to store information that influences its behaviour or appearance, such as your preferred language or location.",
+				"PROFILE": "This type of cookie stores the user's biographical data in order to propose navigation solutions relevant to location, age and language"
+			},
+			"STATISTIC": {
+				"TITLE": "Statistics",
+				"DESCRIPTION": "Statistical cookies help website owners understand how visitors interact with the sites by collecting and transmitting information in an anonymous form."
+			},
+			"TITLE": "Cookie Policy"
+		},
+		"LABEL": {
+			"ADDRESS": {
+				"TYPE": "Address type",
+				"NATION": "Nation",
+				"REGION": "Region",
+				"PROVINCE": "Province",
+				"CITY": "City",
+				"COMMUNITY": "Community",
+				"ZIP": "Zip code",
+				"STREET": "Street/Square",
+				"NUM": "Number"
+			},
+			"CREDITCARD": "Credit Card Number",
+			"EXPIRATION": "Expiration",
+			"IBAN": "IBAN",
+			"LANGUAGE": "Language",
+			"NATION": "Nation",
+			"PROFILE": "Profile",
+			"TYPE": "Type"
+		},
+		"LOADER": {
+			"MESSAGE_WAIT": "Wait"
+		},
+		"MAP": {
+			"DISABLE_SCROLL": "Disable Scroll",
+			"ENABLE_SCROLL": "Enable Scroll"
+		},
+		"PLATFORM": {
+			"MESSAGE_IS_MOBILE": "Do you want to browse the mobile application ?"
+		},
+		"PRIVACY": {
+			"TITLE": "Privacy Policy"
+		},
+		"TERM": {
+			"TITLE": "Terms of use"
+		}
+	}
 }

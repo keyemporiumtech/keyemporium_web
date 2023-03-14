@@ -1,49 +1,48 @@
 import {
+	AfterViewInit,
 	Component,
-	OnInit,
-	OnDestroy,
-	Input,
 	EventEmitter,
+	Input,
+	OnDestroy,
+	OnInit,
 	Output,
 	ViewChild,
-	AfterViewInit,
 } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {
 	ApplicationLoggerService,
-	OptionListModel,
 	BehaviourObserverModel,
 	MagicValidatorUtil,
+	OptionListModel,
 	WaitElementsUtility,
 } from '@ddc/kit';
 import {
 	BaseAddressComponent,
-	OpenstreetAddressModel,
-	OpenstreetLocationModel,
-	OpenstreetmapService,
 	EsriGeoService,
 	GeoUtility,
+	OpenstreetAddressModel,
+	OpenstreetmapService,
 } from '@ddc/rest';
+import { combineLatest, Observable, of, Subscription } from 'rxjs';
+import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
+import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
+import { InputSelectComponent } from '../../../../shared/form/input-select/input-select.component';
+import { InputTextComponent } from '../../../../shared/form/input-text/input-text.component';
+import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
+import { TypologicalModel } from '../../../api/cakeutils-be/models/typological.model';
+import { EnumDBLike } from '../../../api/cakeutils/enums/db-like.enum';
+import { DbFilterInterface } from '../../../api/cakeutils/interfaces/db-filter.interface';
+import { RequestConditionInterface } from '../../../api/cakeutils/interfaces/request-conditions.interface';
+import { RequestPaginatorInterface } from '../../../api/cakeutils/interfaces/request-paginator.interface';
+import { ApiFast } from '../../../api/cakeutils/utility/api-fast.utility';
+import { EnumAddressType } from '../../enums/address-type.enum';
+import { AddressModel } from '../../models/address.model';
+import { CityModel } from '../../models/city.model';
 import { NationModel } from '../../models/nation.model';
 import { AddressService } from '../../services/address.service';
-import { EnumAddressType } from '../../enums/address-type.enum';
-import { Subscription, Observable, of, forkJoin } from 'rxjs';
-import { DbFilterInterface } from '../../../api/cakeutils/interfaces/db-filter.interface';
-import { ApiFast } from '../../../api/cakeutils/utility/api-fast.utility';
-import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
-import { InputSelectComponent } from '../../../../shared/form/input-select/input-select.component';
-import { RequestPaginatorInterface } from '../../../api/cakeutils/interfaces/request-paginator.interface';
-import { RequestConditionInterface } from '../../../api/cakeutils/interfaces/request-conditions.interface';
-import { NationService } from '../../services/nation.service';
-import { CityModel } from '../../models/city.model';
 import { CityService } from '../../services/city.service';
-import { AddressModel } from '../../models/address.model';
-import { EnumDBLike } from '../../../api/cakeutils/enums/db-like.enum';
-import { TypologicalModel } from '../../../api/cakeutils-be/models/typological.model';
+import { NationService } from '../../services/nation.service';
 import { AddressUtility } from '../../utility/address.utility';
-import { FormFieldModel } from '../../../../shared/models/form/form-field.model';
-import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { InputTextComponent } from '../../../../shared/form/input-text/input-text.component';
 
 @Component({
 	selector: 'ddc-init-input-address',
@@ -205,7 +204,7 @@ export class InputAddressComponent
 				});
 			}),
 		);
-		this.subBlur = forkJoin($obs1, $obs2).subscribe();
+		this.subBlur = combineLatest([$obs1, $obs2]).subscribe();
 	}
 
 	// SPECIFIC MANAGEMENT

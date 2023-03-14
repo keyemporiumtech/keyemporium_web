@@ -1,0 +1,110 @@
+{
+	"APP": {
+		"I18N": "Español",
+		"COPYRIGHT": "&copy; DDC INIT",
+		"BUTTON": {
+			"BACK": "Atrás",
+			"CANCEL": "Cancelar",
+			"CONFIRM": "Confirmar",
+			"EDIT": "Editar",
+			"HIDE": "Esconder",
+			"LOGIN": "Login",
+			"LOGOUT": "Logout",
+			"OK": "Ok",
+			"READ": "Leer",
+			"RESET": "Reiniciar",
+			"PAGE": "Ir a la página",
+			"SAVE": "Ahorrar",
+			"SEARCH": "Buscar",
+			"SHOW": "Muéstrame"
+		},
+		"COOKIE": {
+			"ACCEPT": "Aceptar",
+			"ATTENTION_CLOSE": "¡ADVERTENCIA! El cierre aceptará cookies. Todavía podrá cambiar su elección desde la página de Administración de cookies",
+			"CHOICE": {
+				"ACCEPT": "Aceptar seleccionado",
+				"ACCEPT_ALL": "Aceptar todo",
+				"EDIT": "Personalizar",
+				"NAV1": "Consentir",
+				"NAV1_INFO": "<strong>Este sitio web utiliza cookies</strong><br/>Usamos cookies para personalizar el contenido y los anuncios, para proporcionar funciones de redes sociales y para analizar nuestro tráfico. También compartimos información sobre cómo usa nuestro sitio con nuestros socios de análisis web, publicidad y redes sociales, quienes pueden combinarla con otra información que les haya proporcionado o que hayan recopilado a partir del uso de sus servicios.",
+				"NAV2": "Personalizar",
+				"NAV2_INFO": "En este apartado puedes analizar el detalle de cada cookie de aplicación y personalizar el grupo de cookies a aceptar",
+				"NAV3": "Información sobre las cookies",
+				"NAV3_INFO1": "Las cookies son pequeños archivos de texto que los sitios web pueden utilizar para hacer que la experiencia del usuario sea más eficiente.",
+				"NAV3_INFO2": "La ley establece que podemos almacenar cookies en su dispositivo si son estrictamente necesarias para el funcionamiento de este sitio. Para todos los demás tipos de cookies necesitamos su permiso.",
+				"NAV3_INFO3": "Este sitio utiliza diferentes tipos de cookies. Algunas cookies son colocadas por servicios de terceros que aparecen en nuestras páginas.",
+				"NAV3_INFO4": "Puede cambiar o revocar su consentimiento en nuestro sitio web en cualquier momento desde el ",
+				"NAV3_INFO4_LINK": "Declaración de cookies",
+				"NAV3_INFO5": "Obtenga más información sobre quiénes somos, cómo puede contactarnos y cómo procesamos los datos personales en nuestro ",
+				"NAV3_INFO5_LINK": "Política de privacidad",
+				"NAV3_INFO6": "Obtenga más información sobre cómo manejamos las cookies en nuestro ",
+				"NAV3_INFO6_LINK": "Política de cookies",
+				"REFUSE": "Rechazar",
+				"TITLE": "Gestión de cookies"
+			},
+			"INFO": "Este es el mensaje que debe aparecer en el banner de cookies",
+			"LAST_UPDATE": "Declaración de cookies actualizada el {{ dtaCookie }} por {{ appName }}",
+			"LINK_EXTERNAL": "Más información sobre el proveedor",
+			"MARKETING": {
+				"TITLE": "Marketing",
+				"DESCRIPTION": "Las cookies de marketing se utilizan para rastrear a los visitantes de los sitios web. El propósito es presentar anuncios que sean relevantes y atractivos para el usuario individual y, por lo tanto, de mayor valor para los editores y anunciantes de terceros."
+			},
+			"MORE_INFO": "Más información",
+			"NECESSARY": {
+				"TITLE": "Necesario",
+				"DESCRIPTION": "Las cookies necesarias contribuyen a la usabilidad del sitio web al habilitar funciones básicas como la navegación por la página y el acceso a áreas seguras del sitio web. El sitio web no puede funcionar correctamente sin estas cookies.",
+				"CAKEPHP": "Este tipo de cookie permite que ciertas secciones del Sitio funcionen correctamente. Son del tipo persistentes (una vez cerrado el navegador no se destruyen sino que permanecen hasta una fecha de caducidad preestablecida). Por lo tanto, son necesarios para mostrar el sitio correctamente y solo están relacionados con los servicios técnicos ofrecidos y, por lo tanto, siempre se utilizarán y enviarán, a menos que cambie la configuración de su navegador."
+			},
+			"NOT_CLASSIFIED": {
+				"TITLE": "Desclasificado",
+				"DESCRIPTION": "Las cookies no clasificadas son cookies que están en proceso de clasificación, junto con los proveedores de cookies individuales."
+			},
+			"PREFERENCE": {
+				"TITLE": "Preferencias",
+				"DESCRIPTION": "Las cookies de preferencia permiten que el sitio web almacene información que influye en su comportamiento o apariencia, como su idioma preferido o ubicación.",
+				"PROFILE": "Este tipo de cookie almacena datos biográficos del usuario con el fin de proponer soluciones de navegación relacionadas con la ubicación, la edad y el idioma."
+			},
+			"STATISTIC": {
+				"TITLE": "Estadísticas",
+				"DESCRIPTION": "Las cookies estadísticas ayudan a los propietarios de sitios web a comprender cómo los visitantes interactúan con los sitios al recopilar y transmitir información de forma anónima."
+			},
+			"TITLE": "Política de cookies"
+		},
+		"LABEL": {
+			"ADDRESS": {
+				"TYPE": "Tipo de dirección",
+				"NATION": "Nación",
+				"REGION": "Región",
+				"PROVINCE": "Provincia",
+				"CITY": "Ciudad",
+				"COMMUNITY": "Community",
+				"ZIP": "Código postal",
+				"STREET": "Calle/Plaza",
+				"NUM": "Número"
+			},
+			"CREDITCARD": "Número de Tarjeta de Crédito",
+			"EXPIRATION": "Vencimiento",
+			"IBAN": "IBAN",
+			"LANGUAGE": "Idioma",
+			"NATION": "Nación",
+			"PROFILE": "Perfil",
+			"TYPE": "Tipo"
+		},
+		"LOADER": {
+			"MESSAGE_WAIT": "Esperar"
+		},
+		"MAP": {
+			"DISABLE_SCROLL": "Deshabilitar Scroll",
+			"ENABLE_SCROLL": "Habilitar Scroll"
+		},
+		"PLATFORM": {
+			"MESSAGE_IS_MOBILE": "Quieres navegar por la aplicación móvil?"
+		},
+		"PRIVACY": {
+			"TITLE": "política de privacidad"
+		},
+		"TERM": {
+			"TITLE": "Condiciones de uso"
+		}
+	}
+}

@@ -1,15 +1,15 @@
+import { HttpHeaders } from '@angular/common/http';
+import { combineLatest, Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { OpenstreetExtratagDTO } from '../dtos/openstreet-extratag.dto';
+import { OpenstreetLocationDTO } from '../dtos/openstreet-location.dto';
 import {
-	OpenstreetRequestSearch,
+	OpenstreetRequest,
 	OpenstreetRequestDetails,
 	OpenstreetRequestLimit,
 	OpenstreetRequestPolygon,
-	OpenstreetRequest,
+	OpenstreetRequestSearch,
 } from '../interfaces/openstreet-request.interface';
-import { HttpHeaders } from '@angular/common/http';
-import { Observable, of, forkJoin } from 'rxjs';
-import { OpenstreetLocationDTO } from '../dtos/openstreet-location.dto';
-import { switchMap, map } from 'rxjs/operators';
-import { OpenstreetExtratagDTO } from '../dtos/openstreet-extratag.dto';
 import { OpenstreetmapService } from '../services/openstreetmap.service';
 
 export class OpenstreetUtility {
@@ -167,7 +167,7 @@ export class OpenstreetUtility {
 					locs.forEach((loc) => {
 						$obsExtratags.push(openstreetService.extratags(this.getExtratagsParam(loc), language));
 					});
-					return forkJoin($obsExtratags).pipe(
+					return combineLatest($obsExtratags).pipe(
 						map((data) => {
 							data.forEach((tags, index) => {
 								locs[index].tags = tags;

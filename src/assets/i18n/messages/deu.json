@@ -1,0 +1,37 @@
+{
+	"MESSAGE": {
+		"AUTH": {
+			"TOKEN_NOT_VALID": "Ungültiges Anwendungstoken"
+		},
+		"CONFIRM_OPERATION": {
+			"TITLE": "Vorgangsbestätigungscode",
+			"QUESTION_MAIL": "Geben Sie den Code ein, den wir Ihnen per E-Mail gesendet haben",
+			"QUESTION_SMS": "Geben Sie den Code ein, den wir Ihnen per SMS gesendet haben"
+		},
+		"GENERIC_ERROR": "Ein Serverfehler ist aufgetreten",
+		"NO_OPERATION": "Vorgang nicht erfolgreich",
+		"NO_RECORD": "Daten nicht vorhanden oder ungültige Eingabe",
+		"NO_RECORDS": "Es sind keine Artikel vorhanden",
+		"RESOURCE": {
+			"FILE_CREATED": "Datei {{filename}} erstellt",
+			"FILE_EXISTS": "Datei {{filename}} existiert bereits",
+			"FILE_NOT_EXISTS": "Datei {{filename}} existiert nicht",
+			"FILES_CREATED": "Alle Dateien wurden erstellt",
+			"FOLDER_CREATED": "Ordner {{path}} erstellt",
+			"FOLDER_EXISTS": "Ordner {{path}} existiert bereits",
+			"FOLDER_NOT_EXISTS": "Ordner {{path}} existiert nicht",
+			"FOLDER_REMOVED": "Ordner {{path}} entfernt",
+			"FOLDER_REMOVED_RECURSIVELY": "Ordner {{path}} rekursiv entfernt",
+			"NOT_FOUND": "Ressource nicht verfügbar"
+		},
+		"SESSION_INVALID": "Ungültige Sitzung",
+		"TITLE": {
+			"INFO": "Information",
+			"WARNING": "Warnung",
+			"ERROR": "Fehler"
+		}
+	},
+	"EXCEPTION": {
+		"TOKEN_ERROR": "Ungültige Sitzung"
+	}
+}

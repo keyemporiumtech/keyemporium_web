@@ -1,5 +1,15 @@
 # CHANGELOG REST
 
+## 3.3.0 - 14/03/2023
+
+> Versione che rimuove il `forkJoin` deprecato
+
+### changes
+
+- `[feature]` **abstract**: Sostituzione della `forkJoin` con `combineLastest` in `base-auth.service`
+- `[feature]` **abstract**: Sostituzione della `forkJoin` con `combineLastest` in `base-info-server.service`
+- `[feature]` **openstreetmap**: Sostituzione della `forkJoin` con `combineLastest` in `openstreet.utility`
+
 ## 3.2.0 - 17/10/2022
 
 > Versione che aggiunge l'invio in header del clientId e i metodi da utilizzare in previous route per la gestione dei parametri tramite oggetti queryParams
@@ -30,6 +40,7 @@
 ## 2.0.0 - 23/09/2021
 
 - `[BREAKING CHANGE]` **module**: Sostituzione del modulo `social-oauth` dipendente dalla libreria `angularx-social-login` con il modulo `social` che dipende dalla libreria `@ddc/oauth-social`
+
 ## 1.1.0 - 21/09/2021
 
 - `[feature]` **module**: Aggiunta del modulo `social-oauth`
