@@ -1,5 +1,13 @@
 # CHANGELOG KIT
 
+## 2.5.0 - XX/03/2023
+
+> Versione che
+
+### changes
+
+- `[feature]` **quill-editor**: Aggiunto il modulo `quill-editor` con integrazione della libreria `ngx-quill`
+
 ## 2.4.0 - 14/03/2023
 
 > Versione che adegua la gestione dei wait parameters in `BasePageComponent` e rimuove il `forkJoin` deprecato

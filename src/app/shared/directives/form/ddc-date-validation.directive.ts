@@ -1,8 +1,8 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { DateModel } from '@ddc/kit';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { DateModel } from '@ddc/kit';
 import { DdcValidationDirective } from './ddc-validation.directive';
 
 @Directive({
@@ -64,7 +64,7 @@ export class DdcDateValidationDirective extends DdcValidationDirective {
 		if (this.subChange) {
 			this.subChange.unsubscribe();
 		}
-		this.destroy$.next();
+		this.destroy$.next({});
 		this.destroy$.complete();
 	}
 }

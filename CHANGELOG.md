@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 - XX/03/2023
+
+> Versione che integra il template 10.0.0
+
+- `[update]` Integrazione `ngx-quill` e aggiornamento angular cli 
+
 ## 1.2.0 - 14/03/2023
 
 > Versione che integra il template 9.2.0
