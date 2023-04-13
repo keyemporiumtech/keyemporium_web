@@ -1,12 +1,14 @@
 # CHANGELOG KIT
 
-## 2.5.0 - XX/03/2023
+## 2.5.0 - XX/04/2023
 
 > Versione che
 
 ### changes
 
 - `[feature]` **quill-editor**: Aggiunto il modulo `quill-editor` con integrazione della libreria `ngx-quill`
+- `[feature]` **filemanager**: Aggiunto il componente `download-file` per gestire un link di download
+- `[feature]` **storage**: Aggiunta la chiave `passauthtoken` per settare l'informazione di far mandare il token ai service rest
 
 ## 2.4.0 - 14/03/2023
 

@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { FileUploadModule } from 'ng2-file-upload';
-import { FileService } from './services/file.service';
-import { EmbedAudioComponent } from './components/embed-audio/embed-audio.component';
-import { EmbedVideoComponent } from './components/embed-video/embed-video.component';
-import { EmbedYoutubeComponent } from './components/embed-youtube/embed-youtube.component';
-import { EmbedFileComponent } from './components/embed-file/embed-file.component';
-import { HtmlModule } from '../html/html.module';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { FileUploadModule } from 'ng2-file-upload';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { HtmlModule } from '../html/html.module';
+import { DownloadFileComponent } from './components/download-file/download-file.component';
+import { EmbedAudioComponent } from './components/embed-audio/embed-audio.component';
+import { EmbedFileComponent } from './components/embed-file/embed-file.component';
+import { EmbedVideoComponent } from './components/embed-video/embed-video.component';
+import { EmbedYoutubeComponent } from './components/embed-youtube/embed-youtube.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { FileService } from './services/file.service';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
 		EmbedYoutubeComponent,
 		EmbedFileComponent,
 		UploadFileComponent,
+		DownloadFileComponent,
 	],
 	imports: [
 		CommonModule,
@@ -37,6 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
 		EmbedYoutubeComponent,
 		EmbedFileComponent,
 		UploadFileComponent,
+		DownloadFileComponent,
 	],
 })
 export class FilemanagerModule {

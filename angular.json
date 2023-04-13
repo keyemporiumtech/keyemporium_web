@@ -51,7 +51,9 @@
               "pdfjs-dist/es5/web/pdf_viewer",
               "pdfjs-dist/es5/build/pdf",
               "moment",
-              "clone-deep"
+              "clone-deep",
+              "mobx",
+              "quill"
             ]
           },
           "configurations": {

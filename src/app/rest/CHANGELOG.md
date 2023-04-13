@@ -1,5 +1,13 @@
 # CHANGELOG REST
 
+## 3.4.0 - XX/04/2023
+
+> Versione che
+
+### changes
+
+- `[feature]` **request**: Modificati in `request.utility` i metodi per il calcolo dei query parameters, con aggiunta di parametri array di stringhe oltre che stringa
+
 ## 3.3.0 - 14/03/2023
 
 > Versione che rimuove il `forkJoin` deprecato

@@ -1,0 +1,10 @@
+<div
+	*ngIf="flgView && !flgError"
+	class="cursor-pointer"
+	[ngClass]="inputClass"
+	[ngStyle]="inputStyle"
+	(click)="download()"
+>
+	<ng-content></ng-content>
+	<span *ngIf="flgSpanName">{{ filename }}</span>
+</div>

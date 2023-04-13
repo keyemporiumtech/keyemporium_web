@@ -1,32 +1,32 @@
 import {
+	HttpClient,
+	HttpErrorResponse,
+	HttpHeaders,
+	HttpParams,
+	HttpResponse,
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import {
 	ApplicationLoggerService,
-	MessageService,
 	ApplicationStorageService,
-	EnumMessageType,
-	MessageModel,
-	InnerStorageService,
 	BaseConverter,
+	EnumMessageType,
+	InnerStorageService,
+	MessageModel,
+	MessageService,
 } from '@ddc/kit';
 import {
-	HttpResponse,
-	HttpErrorResponse,
-	HttpClient,
-	HttpParams,
-	HttpHeaders,
-} from '@angular/common/http';
-import {
 	BaseRestService,
-	TokenDecodeInterface,
 	BehaviourMessageModel,
 	RequestManagerInterface,
 	ResponseManagerInterface,
+	TokenDecodeInterface,
 } from '@ddc/rest';
-import { EnumStatusCode } from '../enums/status-code.enum';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { ResponseCakeUtility } from '../utility/response-cake.utility';
 import { restConstants } from '../constants/rest.constants';
+import { EnumStatusCode } from '../enums/status-code.enum';
+import { ResponseCakeUtility } from '../utility/response-cake.utility';
 /**
  * Definisce il comportamento generico di chiamate per il backend.<br/>
  * <i>Si interfaccia con il comportamento di AppGenericUI del be mod_rest ed usa </i>
@@ -360,5 +360,17 @@ export class ApiService extends BaseRestService {
 			responseManager = {};
 		}
 		super.receiveToken(restConstants.sessiontokenname, responseManager);
+	}
+
+	// OVERRIDES TOKENAUTH
+	sendTokenSession(responseManager?: ResponseManagerInterface, headers?: HttpHeaders): HttpHeaders {
+		if (this.applicationStorage.passauthtoken.get()) {
+			headers = headers.append(
+				restConstants.sessiontokenname,
+				this.applicationStorage.authtoken.get(),
+			);
+			return headers;
+		}
+		return super.sendTokenSession(responseManager, headers);
 	}
 }

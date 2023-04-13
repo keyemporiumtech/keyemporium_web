@@ -1,6 +1,6 @@
+import { Injectable } from '@angular/core';
 import { BaseService } from '../../abstract/base.service';
 import { ApplicationLoggerService } from '../../logger/services/application-logger.service';
-import { Injectable } from '@angular/core';
 import { ApplicationStorageModel } from '../models/application-storage.model';
 
 @Injectable({
@@ -32,6 +32,7 @@ export class ApplicationStorageService extends BaseService {
 	private _messageException: ApplicationStorageModel;
 	// REST authhentication
 	private _authtoken: ApplicationStorageModel;
+	private _passauthtoken: ApplicationStorageModel;
 	private _payload: ApplicationStorageModel;
 
 	private _userLogged: ApplicationStorageModel;
@@ -72,6 +73,7 @@ export class ApplicationStorageService extends BaseService {
 		this.messageCode = new ApplicationStorageModel('messageCode');
 		this.messageException = new ApplicationStorageModel('messageException');
 		this.authtoken = new ApplicationStorageModel('authtoken');
+		this.passauthtoken = new ApplicationStorageModel('passauthtoken'); // abilita il passaggio del token
 		this.payload = new ApplicationStorageModel('payload');
 		this.bannerStatus = new ApplicationStorageModel('banner');
 		this.fileEmbed = new ApplicationStorageModel('fileEmbed');
@@ -613,5 +615,21 @@ export class ApplicationStorageService extends BaseService {
 	 */
 	public set storedUrls(value: ApplicationStorageModel) {
 		this._storedUrls = value;
+	}
+
+	/**
+	 * Getter passauthtoken
+	 * @return {ApplicationStorageModel}
+	 */
+	public get passauthtoken(): ApplicationStorageModel {
+		return this._passauthtoken;
+	}
+
+	/**
+	 * Setter passauthtoken
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set passauthtoken(value: ApplicationStorageModel) {
+		this._passauthtoken = value;
 	}
 }

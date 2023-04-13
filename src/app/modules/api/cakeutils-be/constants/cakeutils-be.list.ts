@@ -30,4 +30,13 @@ export const cakeutilsBeList = {
 		edit: 'grouprelation/edit',
 		delete: 'grouprelation/delete',
 	},
+	cryptnote: {
+		unique: 'cryptnote/get',
+		paginate: 'cryptnote/table',
+		save: 'cryptnote/save',
+		edit: 'cryptnote/edit',
+		delete: 'cryptnote/delete',
+		saveattachment: 'cryptnote/saveattachment',
+		deleteattachment: 'cryptnote/deleteattachment',
+	},
 };
