@@ -1,5 +1,15 @@
 # CHANGELOG KIT
 
+## 2.5.0 - 14/04/2023
+
+> Versione che aggiunge i componenti `quill-editor` e `download-file` e mette a disposizione la chiave `passauthtoken` in application storage
+
+### changes
+
+- `[feature]` **quill-editor**: Aggiunto il modulo `quill-editor` con integrazione della libreria `ngx-quill`
+- `[feature]` **filemanager**: Aggiunto il componente `download-file` per gestire un link di download
+- `[feature]` **storage**: Aggiunta la chiave `passauthtoken` per settare l'informazione di far mandare il token ai service rest
+
 ## 2.4.0 - 14/03/2023
 
 > Versione che adegua la gestione dei wait parameters in `BasePageComponent` e rimuove il `forkJoin` deprecato

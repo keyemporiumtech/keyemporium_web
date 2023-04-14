@@ -1,0 +1,13 @@
+<h4>Modulo Quill Editor</h4>
+
+<hr class="line line-lg bg-info" />
+
+<ddc-init-quill #quilly1></ddc-init-quill>
+
+<hr />
+Content: {{ quilly1?.contentHTML }}
+
+<hr class="line line-lg bg-info" />
+<ddc-init-quill #quilly2 [initValue]="'Proviamo <strong>initValue</strong>'"></ddc-init-quill>
+<hr />
+Content: {{ quilly2?.contentHTML }}

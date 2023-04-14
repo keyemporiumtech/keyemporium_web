@@ -1,8 +1,8 @@
 import { HttpParams } from '@angular/common/http';
+import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+import { delay, distinctUntilChanged, first, switchMap } from 'rxjs/operators';
 import { EnumParamType } from '../enums/param-type.enum';
-import { AsyncValidatorFn, AbstractControl } from '@angular/forms';
-import { of, Observable } from 'rxjs';
-import { switchMap, delay, distinctUntilChanged, first } from 'rxjs/operators';
 
 export class RequestUtility {
 	static addParam(
@@ -42,10 +42,10 @@ export class RequestUtility {
 		return ret;
 	}
 
-	static getObjQueryParametersByMap(params: Map<string, string>, qp?: any): any {
+	static getObjQueryParametersByMap(params: Map<string, string | string[]>, qp?: any): any {
 		const paramsArr: string[] = [];
 		for (const [key, value] of params.entries()) {
-			paramsArr.push(key + '=' + value);
+			paramsArr.push(key + '=' + this.getStringByIn(value));
 		}
 		return this.getObjQueryParametersByArray(paramsArr, qp);
 	}
@@ -54,10 +54,10 @@ export class RequestUtility {
 		return params && params.length ? '?' + params.join('&') : undefined;
 	}
 
-	static getQueryParametersByMap(params: Map<string, string>): string {
+	static getQueryParametersByMap(params: Map<string, string | string[]>): string {
 		const paramsArr: string[] = [];
 		for (const [key, value] of params.entries()) {
-			paramsArr.push(key + '=' + value);
+			paramsArr.push(key + '=' + this.getStringByIn(value));
 		}
 		return this.getQueryParametersByArray(paramsArr);
 	}
@@ -80,5 +80,12 @@ export class RequestUtility {
 			switchMap(() => async),
 			first(),
 		);
+	}
+
+	static getStringByIn(inStr: any): string {
+		if (Array.isArray(inStr)) {
+			return inStr.join(';');
+		}
+		return inStr;
 	}
 }
