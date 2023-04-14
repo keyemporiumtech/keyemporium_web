@@ -1,8 +1,8 @@
 # CHANGELOG REST
 
-## 3.4.0 - XX/04/2023
+## 3.4.0 - 14/04/2023
 
-> Versione che
+> Versione che aggiunge i parametri array di stringhe in `request.utility`
 
 ### changes
 

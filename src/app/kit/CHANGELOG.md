@@ -1,8 +1,8 @@
 # CHANGELOG KIT
 
-## 2.5.0 - XX/04/2023
+## 2.5.0 - 14/04/2023
 
-> Versione che
+> Versione che aggiunge i componenti `quill-editor` e `download-file` e mette a disposizione la chiave `passauthtoken` in application storage
 
 ### changes
 
