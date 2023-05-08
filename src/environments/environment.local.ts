@@ -4,6 +4,7 @@
 import packageInfo from '../../package.json';
 import versioningInfo from '../../versioning.json';
 export const environment = {
+	name: 'LOCAL',
 	VERSION: packageInfo.version,
 	TEMPLATE_VERSION: versioningInfo.template,
 	production: true,
