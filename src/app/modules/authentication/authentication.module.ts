@@ -23,6 +23,8 @@ import { ActivityaddressService } from './services/activityaddress.service';
 import { ActivityattachmentService } from './services/activityattachment.service';
 import { ActivityprofileService } from './services/activityprofile.service';
 import { ActivityreferenceService } from './services/activityreference.service';
+import { ActivityrelationService } from './services/activityrelation.service';
+import { ActivityrelationpermissionService } from './services/activityrelationpermission.service';
 import { AuthCommonService } from './services/auth-common.service';
 import { ClienttokenService } from './services/clienttoken.service';
 import { ContactreferenceService } from './services/contactreference.service';
@@ -36,6 +38,8 @@ import { UserattachmentService } from './services/userattachment.service';
 import { UseroauthsocialService } from './services/useroauthsocial.service';
 import { UserprofileService } from './services/userprofile.service';
 import { UserreferenceService } from './services/userreference.service';
+import { UserrelationService } from './services/userrelation.service';
+import { UserrelationpermissionService } from './services/userrelationpermission.service';
 import { UserreportService } from './services/userreport.service';
 
 @NgModule({
@@ -100,6 +104,10 @@ export class AuthenticationModule {
 				ActivityattachmentService,
 				ActivityprofileService,
 				OauthloginService,
+				UserrelationService,
+				UserrelationpermissionService,
+				ActivityrelationService,
+				ActivityrelationpermissionService,
 			],
 		};
 	}

@@ -1,5 +1,14 @@
 # CHANGELOG REST
 
+## 3.5.0 - XX/05/2023
+
+> Versione che
+
+### changes
+
+- `[feature]` **request**: Aggiunta del campo `others` in `request-manager.interfare` per consentire il passaggio di parametri aggiuntivi
+- `[feature]` **response**: Aggiunta del campo `others` in `response-manager.interfare` per consentire il passaggio di parametri aggiuntivi
+
 ## 3.4.0 - 14/04/2023
 
 > Versione che aggiunge i parametri array di stringhe in `request.utility`

@@ -1,6 +1,6 @@
-import { ResponseManagerInterface, RequestManagerInterface } from '@ddc/rest';
-import { restConstants } from '../constants/rest.constants';
 import { ApplicationStorageService } from '@ddc/kit';
+import { RequestManagerInterface, ResponseManagerInterface } from '@ddc/rest';
+import { restConstants } from '../constants/rest.constants';
 
 export class ApiServiceUtility {
 	static setTypeBody(
@@ -49,5 +49,34 @@ export class ApiServiceUtility {
 		}
 		responseManager.toMessage.handlePositiveMessage = true;
 		return responseManager;
+	}
+
+	static sendUserInfo(requestManager?: RequestManagerInterface) {
+		if (!requestManager) {
+			requestManager = {};
+		}
+		if (!requestManager.others) {
+			requestManager.others = {};
+		}
+		requestManager.others.sendUserInfo = true;
+		return requestManager;
+	}
+
+	static sendActivityInfo(requestManager?: RequestManagerInterface) {
+		if (!requestManager) {
+			requestManager = {};
+		}
+		if (!requestManager.others) {
+			requestManager.others = {};
+		}
+		requestManager.others.sendActivityInfo = true;
+		return requestManager;
+	}
+
+	static isSendUserInfo(requestManager?: RequestManagerInterface) {
+		return requestManager && requestManager.others && requestManager.others.sendUserInfo;
+	}
+	static isSendActivityInfo(requestManager?: RequestManagerInterface) {
+		return requestManager && requestManager.others && requestManager.others.sendActivityInfo;
 	}
 }

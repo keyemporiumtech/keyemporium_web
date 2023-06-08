@@ -9,4 +9,5 @@ export interface RequestManagerInterface {
 	url?: string;
 	skipInternalDb?: boolean;
 	headerParams?: KeyvalueObject[];
+	others?: any;
 }

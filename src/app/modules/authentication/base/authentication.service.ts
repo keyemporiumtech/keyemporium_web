@@ -18,7 +18,7 @@ import {
 	TokenDecodeInterface,
 } from '@ddc/rest';
 import { TranslateService } from '@ngx-translate/core';
-import { combineLatest, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, combineLatest, forkJoin, Observable, of, throwError } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { restConstants } from '../../api/cakeutils/constants/rest.constants';
@@ -32,6 +32,7 @@ import { PayloadUserInterface } from '../interfaces/payload-user.interface';
 import { UserModel } from '../models/user.model';
 import { UserattachmentModel } from '../models/userattachment.model';
 import { UserprofileModel } from '../models/userprofile.model';
+import { ActivityService } from '../services/activity.service';
 import { ProfilepermissionService } from '../services/profilepermission.service';
 import { UserService } from '../services/user.service';
 import { UserattachmentService } from '../services/userattachment.service';
@@ -41,6 +42,8 @@ import { UserprofileService } from '../services/userprofile.service';
 	providedIn: 'root',
 })
 export class AuthenticationService extends BaseAuthService {
+	activityChange: BehaviorSubject<string> = new BehaviorSubject<string>('');
+	activity: Observable<string> = this.activityChange.asObservable();
 	http: HttpClient;
 	translateService: TranslateService;
 	fileService: FileService;
@@ -48,6 +51,7 @@ export class AuthenticationService extends BaseAuthService {
 	userprofileService: UserprofileService;
 	profilepermissionService: ProfilepermissionService;
 	userattachmentService: UserattachmentService;
+	activityService: ActivityService;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -60,6 +64,7 @@ export class AuthenticationService extends BaseAuthService {
 		userprofileService: UserprofileService,
 		profilepermissionService: ProfilepermissionService,
 		userattachmentService: UserattachmentService,
+		activityService: ActivityService,
 	) {
 		super(applicationLogger, applicationStorage, innerStorage);
 		this.http = http;
@@ -69,6 +74,7 @@ export class AuthenticationService extends BaseAuthService {
 		this.userprofileService = userprofileService;
 		this.profilepermissionService = profilepermissionService;
 		this.userattachmentService = userattachmentService;
+		this.activityService = activityService;
 	}
 
 	getDefaultMessage(): ResponseMessageInterface {
@@ -113,7 +119,21 @@ export class AuthenticationService extends BaseAuthService {
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 	): Observable<UserAuthResponse> {
-		return super.login(user, requestManager, responseManager);
+		this.loginBehaviour().actionPre();
+		return this.fnLogin(
+			user,
+			this.getResponseNameForSessionTokenAuthentication(),
+			requestManager,
+			responseManager,
+		).pipe(
+			map((res) => {
+				this.setProfileWithActivity(this.getProfileFromLogin(res), this.getUsernameFromLogin(res));
+				this.applicationStorage.userLogged.setObj(this.getUserLoggedByResponse(res));
+				this.applicationStorage.userId.set(this.getUserLoggedIdByResponse(res));
+				this.applicationStorage.userImage.set(this.getUserLoggedImageByResponse(res));
+				return this.loginBehaviour().actionResponse(res);
+			}),
+		);
 	}
 	/**
 	 * Funzione di login chiamata dal metodo di login
@@ -223,7 +243,10 @@ export class AuthenticationService extends BaseAuthService {
 				switchMap((authtoken) => {
 					return this.completeLogin(authtoken, memoUser, responseManager).pipe(
 						map((res) => {
-							this.setProfile(this.getProfileFromLogin(res));
+							this.setProfileWithActivity(
+								this.getProfileFromLogin(res),
+								this.getUsernameFromLogin(res),
+							);
 							this.applicationStorage.userLogged.setObj(this.getUserLoggedByResponse(res));
 							this.applicationStorage.userId.set(this.getUserLoggedIdByResponse(res));
 							this.applicationStorage.userImage.set(this.getUserLoggedImageByResponse(res));
@@ -434,6 +457,14 @@ export class AuthenticationService extends BaseAuthService {
 		return 'AuthenticationService';
 	}
 
+	/**
+	 * Svuota la cache di autenticazione utente
+	 */
+	emptyAuthSession() {
+		super.emptyAuthSession();
+		this.applicationStorage.activityPIVA.del();
+	}
+
 	// OTHERS
 	private completeLogin(
 		authtoken: string,
@@ -497,6 +528,50 @@ export class AuthenticationService extends BaseAuthService {
 		} else {
 			return throwError(this.translateService.instant('MESSAGE.AUTH.TOKEN_NOT_VALID'));
 		}
+	}
+
+	// ---- MANAGE ACTIVITY
+	checkActivity(piva?: string): Observable<string> {
+		return piva ? of(piva) : this.activityService.profile();
+	}
+
+	changeActivity(username: string, piva?: string): Observable<string> {
+		return this.checkActivity(piva).pipe(
+			switchMap((pivaLogged) => {
+				if (pivaLogged) {
+					return this.activityService
+						.changeProfile(undefined, pivaLogged, undefined, username)
+						.pipe(
+							map((res) => {
+								return pivaLogged;
+							}),
+						);
+				} else {
+					return of(undefined);
+				}
+			}),
+		);
+	}
+
+	setProfileWithActivity(profile: string, username?: string, piva?: string, callback?: () => any) {
+		const $obsProfile = username ? this.changeProfile(username, profile) : of(true);
+		const $obsActivity = this.changeActivity(username, piva);
+		this.subProfile = forkJoin([
+			this.loadPermissions(profile),
+			this.loadSedi(profile),
+			$obsProfile,
+			$obsActivity,
+		]).subscribe((data) => {
+			this.permissions = data[0];
+			this.sedi = data[1];
+			if (callback) {
+				callback();
+			}
+			this.applicationStorage.profile.set(profile);
+			this.profileChange.next(profile);
+			this.applicationStorage.activityPIVA.set(data[3]);
+			this.activityChange.next(data[3]);
+		});
 	}
 }
 

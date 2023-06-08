@@ -245,6 +245,20 @@ export class UserService extends ApiService {
 		);
 	}
 
+	profile(
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<string> {
+		const body: HttpParams = new HttpParams();
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.user.profile;
+		responseManager = ApiServiceUtility.sendTokenBuildRM(this.applicationStorage, responseManager);
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
+	}
+
 	changeProfile(
 		profile: string,
 		id?: string,

@@ -10,7 +10,6 @@ import {
 	HostListener,
 } from '@angular/core';
 import { select } from 'd3-selection';
-import { Transition } from 'd3-transition';
 import { BarOrientation } from '../common/types/bar-orientation.enum';
 import { Gradient } from '../common/types/gradient.interface';
 import { id } from '../utils/id';

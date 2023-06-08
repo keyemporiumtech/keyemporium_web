@@ -30,6 +30,7 @@ import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utili
 import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
 import { authenticationList } from '../constants/authentication.list';
 import { ActivityConverter, ActivityUtilConverter } from '../converters/activity.converter';
+import { UserConverter } from '../converters/user.converter';
 import { ActivityModel } from '../models/activity.model';
 
 @Injectable()
@@ -269,6 +270,20 @@ export class ActivityService extends ApiService {
 		);
 	}
 
+	profile(
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<string> {
+		const body: HttpParams = new HttpParams();
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.activity.profile;
+		responseManager = ApiServiceUtility.sendTokenBuildRM(this.applicationStorage, responseManager);
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
+	}
+
 	changeProfile(
 		id?: string,
 		piva?: string,
@@ -291,6 +306,39 @@ export class ActivityService extends ApiService {
 		responseManager = ApiServiceUtility.sendTokenBuildRM(this.applicationStorage, responseManager);
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),
+		);
+	}
+
+	// ------------------ employers
+	employers(
+		id?: string,
+		piva?: string,
+		paginator?: RequestPaginatorInterface,
+		conditions?: RequestConditionInterface,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<PaginatorModel> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_activity', id);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'piva', piva);
+
+		body = RequestCakeUtility.addPaginator(body, paginator);
+		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.activity.employers;
+		return this.get(
+			this.httpHeaders,
+			url,
+			body,
+			new PaginatorConverter(new UserConverter()),
+			requestManager,
+			responseManager,
 		);
 	}
 }

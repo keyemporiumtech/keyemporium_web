@@ -1,5 +1,13 @@
 # CHANGELOG KIT
 
+## 2.6.0 - XX/05/2023
+
+> Versione che
+
+### changes
+
+- `[feature]` **storage**: Aggiunta la chiave `activityPIVA` per settare la partita IVA di un'activity loggata
+
 ## 2.5.0 - 14/04/2023
 
 > Versione che aggiunge i componenti `quill-editor` e `download-file` e mette a disposizione la chiave `passauthtoken` in application storage
