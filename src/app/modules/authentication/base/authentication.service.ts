@@ -313,6 +313,10 @@ export class AuthenticationService extends BaseAuthService {
 		if (!payload) {
 			return of(true);
 		}
+		if (!responseManager) {
+			responseManager = {};
+		}
+		super.sendTokenAuth(responseManager);
 		return this.userService.logout(payload.username, requestManager, responseManager);
 	}
 
@@ -339,6 +343,10 @@ export class AuthenticationService extends BaseAuthService {
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 	): Observable<string[]> {
+		if (!responseManager) {
+			responseManager = {};
+		}
+		super.sendTokenAuth(responseManager);
 		const conditions: RequestConditionInterface = {
 			belongs: ['profile_fk', 'permission_fk'],
 		};
@@ -401,6 +409,10 @@ export class AuthenticationService extends BaseAuthService {
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 	): Observable<boolean> {
+		if (!responseManager) {
+			responseManager = {};
+		}
+		super.sendTokenAuth(responseManager);
 		return this.userService.changeProfile(
 			profile,
 			undefined,
@@ -476,9 +488,14 @@ export class AuthenticationService extends BaseAuthService {
 			environment.security.servername,
 		);
 		if (decodedToken.auth) {
+			if (!responseManager) {
+				responseManager = {};
+			}
 			// memorizzo authtoken e payload
 			this.userService.evalToken(authtoken, responseManager);
 
+			// preparo l'invio del token di login
+			super.sendTokenAuth(responseManager);
 			// uso i dati di decodifica per ottenere le info di profilo, utente e immagine
 			const userPayload = JSON.parse(decodedToken.payload.data);
 			const conditionsProfile: RequestConditionInterface = {
@@ -494,15 +511,17 @@ export class AuthenticationService extends BaseAuthService {
 						ApiFast.queryField('flgdefault', 1),
 					]),
 					conditionsProfile,
+					undefined,
+					responseManager,
 				),
-				this.userService.unique(undefined, user.username),
+				this.userService.unique(undefined, user.username, undefined, undefined, responseManager),
 				this.userattachmentService.principal(
 					undefined,
 					user.username,
 					EnumAttachmentType.IMAGE,
 					conditionsAttachment,
 					undefined,
-					QueryUtility.SKIP_ERROR_RES,
+					QueryUtility.fnResponseManager(undefined, responseManager, QueryUtility.SKIP_ERROR_RES),
 				),
 			]).pipe(
 				map((data) => {
@@ -539,8 +558,10 @@ export class AuthenticationService extends BaseAuthService {
 		return this.checkActivity(piva).pipe(
 			switchMap((pivaLogged) => {
 				if (pivaLogged) {
+					const responseManager: ResponseManagerInterface = {};
+					super.sendTokenAuth(responseManager);
 					return this.activityService
-						.changeProfile(undefined, pivaLogged, undefined, username)
+						.changeProfile(undefined, pivaLogged, undefined, username, undefined, responseManager)
 						.pipe(
 							map((res) => {
 								return pivaLogged;

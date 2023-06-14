@@ -41,6 +41,18 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 		this.innerStorage = innerStorage;
 	}
 
+	sendTokenAuth(responseManager?: ResponseManagerInterface) {
+		if (!responseManager) {
+			responseManager = {};
+		}
+		if (!responseManager.tokenManager) {
+			responseManager.tokenManager = {};
+		}
+		responseManager.tokenManager.tokenKeyRequest =
+			this.getRequestNameForSessionTokenAuthentication();
+		responseManager.tokenManager.tokenValue = this.applicationStorage.authtoken.get();
+	}
+
 	/**
 	 * Svuota la cache di autenticazione utente
 	 */
