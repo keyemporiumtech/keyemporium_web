@@ -1,0 +1,70 @@
+<div
+	*ngIf="!hide"
+	[ngClass]="cssClass"
+	[ngStyle]="cssStyle"
+	[style.display]="displayInline ? 'inline-flex' : null"
+>
+	<div
+		class="circular"
+		[style.height]="height"
+		[style.width]="height"
+		[style.display]="displayInline ? 'inline-flex' : null"
+		[style.padding-top]="circularPadding"
+	>
+		<div
+			class="inner"
+			[style.height]="innerHeight"
+			[style.width]="innerHeight"
+			[style.margin]="innerMargin"
+			[style.background-color]="backgroundColorInner"
+		></div>
+		<div
+			class="outer"
+			[style.background-color]="backgroundColor"
+			[style.border]="'.1rem ' + borderColor + ' solid'"
+		></div>
+		<div *ngIf="showText" class="numb" [style.color]="colorText">{{ current }}%</div>
+		<div class="circle">
+			<div
+				*ngIf="showDot"
+				#dotEl
+				class="dot"
+				[ngClass]="{ 'animation-dot': status !== 'STOP' }"
+				[style.height]="dotHeight"
+				[style.margin-top]="dotMarginTop"
+				[style.animation-play-state]="animationStatus"
+				[style.animation-duration]="intervalGrowForAnimation * 2 + 's'"
+			>
+				<span
+					[style.height]="dotHeight"
+					[style.width]="dotHeight"
+					[style.background-color]="color"
+				></span>
+			</div>
+			<div class="bar left" [style.clip]="barRect">
+				<div
+					#barLeftProgressEl
+					class="progress"
+					[ngClass]="{ 'animation-left': status !== 'STOP' }"
+					[style.clip]="barProgressRect"
+					[style.animation-play-state]="animationStatus"
+					[style.animation-duration]="intervalGrowForAnimation + 's'"
+					[style.animation-delay]="delayLeft + 's'"
+					[style.background-color]="color"
+				></div>
+			</div>
+			<div class="bar right" [style.clip]="barRect">
+				<div
+					#barRightProgressEl
+					class="progress"
+					[ngClass]="{ 'animation-right': status !== 'STOP' }"
+					[style.clip]="barProgressRect"
+					[style.animation-play-state]="animationStatus"
+					[style.animation-duration]="intervalGrowForAnimation + 's'"
+					[style.animation-delay]="delayRight + 's'"
+					[style.background-color]="color"
+				></div>
+			</div>
+		</div>
+	</div>
+</div>

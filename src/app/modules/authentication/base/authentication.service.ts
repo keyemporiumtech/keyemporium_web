@@ -347,6 +347,9 @@ export class AuthenticationService extends BaseAuthService {
 			responseManager = {};
 		}
 		super.sendTokenAuth(responseManager);
+		if (!requestManager) {
+			requestManager = {};
+		}
 		const conditions: RequestConditionInterface = {
 			belongs: ['profile_fk', 'permission_fk'],
 		};
@@ -354,7 +357,7 @@ export class AuthenticationService extends BaseAuthService {
 			.paginate(
 				ApiFast.paginatorList([ApiFast.queryField('profile_fk.cod', profile)]),
 				conditions,
-				requestManager,
+				QueryUtility.fnRequestManager(undefined, ApiServiceUtility.sendUserInfo(requestManager)),
 				responseManager,
 			)
 			.pipe(
@@ -576,7 +579,7 @@ export class AuthenticationService extends BaseAuthService {
 
 	setProfileWithActivity(profile: string, username?: string, piva?: string, callback?: () => any) {
 		const $obsProfile = username ? this.changeProfile(username, profile) : of(true);
-		const $obsActivity = this.changeActivity(username, piva);
+		const $obsActivity = username && piva ? this.changeActivity(username, piva) : of(undefined);
 		this.subProfile = forkJoin([
 			this.loadPermissions(profile),
 			this.loadSedi(profile),

@@ -8,6 +8,8 @@
 
 - `[feature]` **request**: Aggiunta del campo `others` in `request-manager.interfare` per consentire il passaggio di parametri aggiuntivi
 - `[feature]` **response**: Aggiunta del campo `others` in `response-manager.interfare` per consentire il passaggio di parametri aggiuntivi
+- `[fix]` **abstract**: Fix di `sendToken` in `base-rest.service` per il check sulla property tokenManager
+- `[feature]` **abstract**, **auth**: Aggiunta di `sendTokenAuth` in `base-auth.service` per l'invio rapido del token di authenticazione prima di una chiamata rest
 
 ## 3.4.0 - 14/04/2023
 

@@ -1,0 +1,35 @@
+<div [ngClass]="cssClass" [ngStyle]="cssStyle">
+	<div *ngIf="a2fa" [ngClass]="cssCodeClass" [ngStyle]="cssCodeStyle">
+		{{ a2fa.lastCod }}
+	</div>
+	<ng-container *ngIf="!circle">
+		<br />
+		<ddc-init-progress-bar
+			#loadingFillCmp
+			[intervalGrow]="startIntervalGrow"
+			[showText]="showText"
+			[backgroundColor]="backgroundColor"
+			[color]="color"
+			[height]="height"
+			[size]="size"
+			(emitStatus)="onStatus($event)"
+			[cssStyle]="{ 'margin-bottom': '2rem' }"
+		></ddc-init-progress-bar>
+	</ng-container>
+
+	<ng-container *ngIf="circle">
+		<ddc-init-progress-circle
+			#loadingFillCmp
+			[intervalGrow]="startIntervalGrow"
+			[showText]="showText"
+			[fillfull]="true"
+			[backgroundColor]="backgroundColor"
+			[backgroundColorInner]="backgroundColorInner"
+			[color]="color"
+			[colorText]="colorText"
+			[height]="height"
+			[size]="size"
+			(emitStatus)="onStatus($event)"
+		></ddc-init-progress-circle>
+	</ng-container>
+</div>

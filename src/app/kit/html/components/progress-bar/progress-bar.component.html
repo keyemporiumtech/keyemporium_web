@@ -7,12 +7,14 @@
 >
 	<div
 		class="progress-container"
+		[ngClass]="{ 'border-rounded': rounded }"
 		[style.background-color]="backgroundColor"
 		[style.height]="height"
 	>
 		<div
 			#progress
 			class="progress-grow"
+			[ngClass]="{ 'border-rounded': rounded }"
 			[style.background-color]="color"
 			[style.height]="height"
 			[style.width]="'0px'"

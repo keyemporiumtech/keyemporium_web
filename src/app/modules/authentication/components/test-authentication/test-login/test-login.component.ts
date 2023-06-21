@@ -1,16 +1,17 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ApplicationStorageService, MagicValidatorUtil, OptionListModel } from '@ddc/kit';
+import { ExpirationInfo, PayloadInterface } from '@ddc/rest';
+import { Subscription } from 'rxjs';
+import { EnumFormType } from '../../../../../shared/enums/form/form-type.enum';
+import { FormFieldModel } from '../../../../../shared/models/form/form-field.model';
 import {
 	AuthenticationService,
-	UserAuthResponse,
 	UserAuthRequest,
+	UserAuthResponse,
 } from '../../../base/authentication.service';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { MagicValidatorUtil, OptionListModel, ApplicationStorageService } from '@ddc/kit';
-import { FormFieldModel } from '../../../../../shared/models/form/form-field.model';
-import { EnumFormType } from '../../../../../shared/enums/form/form-type.enum';
-import { Subscription } from 'rxjs';
-import { PayloadInterface, ExpirationInfo } from '@ddc/rest';
 import { PayloadUserInterface } from '../../../interfaces/payload-user.interface';
+import { AuthCommonService } from '../../../services/auth-common.service';
 
 @Component({
 	selector: 'wiki-test-login',
@@ -18,10 +19,10 @@ import { PayloadUserInterface } from '../../../interfaces/payload-user.interface
 	styleUrls: ['./test-login.component.scss'],
 })
 export class TestLoginComponent implements OnInit, OnDestroy {
-	@Output() emitLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
 	fb: FormBuilder;
 	applicationStorage: ApplicationStorageService;
 	authentication: AuthenticationService;
+	authCommonService: AuthCommonService;
 
 	form: FormGroup;
 	username: FormFieldModel;
@@ -48,10 +49,12 @@ export class TestLoginComponent implements OnInit, OnDestroy {
 		fb: FormBuilder,
 		applicationStorage: ApplicationStorageService,
 		authentication: AuthenticationService,
+		authCommonService: AuthCommonService,
 	) {
 		this.fb = fb;
 		this.applicationStorage = applicationStorage;
 		this.authentication = authentication;
+		this.authCommonService = authCommonService;
 		this.form = this.fb.group({
 			username: new MagicValidatorUtil((this.validations.username = []), 'test2@gmail.com')
 				.required()
@@ -87,7 +90,9 @@ export class TestLoginComponent implements OnInit, OnDestroy {
 		this.optionRememberme = [new OptionListModel(1, 'Ricordami')];
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.checkSession();
+	}
 	ngOnDestroy() {
 		if (this.subLogin) {
 			this.subLogin.unsubscribe();
@@ -116,6 +121,11 @@ export class TestLoginComponent implements OnInit, OnDestroy {
 	checkSession() {
 		this.subSession = this.authentication.checkSession().subscribe((res) => {
 			this.messageSession = res ? 'SESSIONE ATTIVA' : 'SESSIONE SCADUTA O NON VALIDA';
+			if (res) {
+				this.evalStorage();
+			} else {
+				this.authentication.emptyAuthSession();
+			}
 		});
 	}
 
@@ -137,6 +147,6 @@ export class TestLoginComponent implements OnInit, OnDestroy {
 		// expiration
 		this.expirationInfo = this.authentication.getExpirationInfo();
 
-		this.emitLogin.emit(this.userId ? true : false);
+		this.authCommonService.notifySession(this.userId ? true : false);
 	}
 }

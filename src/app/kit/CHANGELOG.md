@@ -7,6 +7,9 @@
 ### changes
 
 - `[feature]` **storage**: Aggiunta la chiave `activityPIVA` per settare la partita IVA di un'activity loggata
+- `[feature]` **html**: Aggiunta della property `rounded` per il componente `progress-bar.component`
+- `[feature]` **html**: Aggiunto il componente `progress-circle.component`
+- `[feature]` **config**: Aggiunto il metodo `percentInverse` nell'utility `MathUtility`
 
 ## 2.5.0 - 14/04/2023
 

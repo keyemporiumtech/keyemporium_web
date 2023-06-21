@@ -6,8 +6,26 @@
 		}"
 		class="btn btn-primary btn-sm mr-2"
 		(click)="goToProfileManagement()"
-		title="{{ 'PERSONAL.BUTTON.PROFILE_MANAGEMENT' | translate }}"
+		title="{{ 'PERSONAL.BUTTON.PROFILE_USER_MANAGEMENT' | translate }}"
 	>
-		{{ 'PERSONAL.BUTTON.PROFILE_MANAGEMENT' | translate }}
+		{{ 'PERSONAL.BUTTON.PROFILE_USER_MANAGEMENT' | translate }}
+	</a>
+	<a
+		*auth-permissions="{
+			permissions: [
+				'SUPERVISOR',
+				'ALL_PERMISSIONS',
+				'VIEW_PROFILES',
+				'MANAGER',
+				'ALL_ACTIVITY_PERMISSIONS',
+				'VIEW_ACTIVITY_PROFILES'
+			],
+			hidden: true
+		}"
+		class="btn btn-primary btn-sm mr-2"
+		(click)="goToProfileManagement(true)"
+		title="{{ 'PERSONAL.BUTTON.PROFILE_ACTIVITY_MANAGEMENT' | translate }}"
+	>
+		{{ 'PERSONAL.BUTTON.PROFILE_ACTIVITY_MANAGEMENT' | translate }}
 	</a>
 </div>

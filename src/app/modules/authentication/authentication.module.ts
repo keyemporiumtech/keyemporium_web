@@ -8,7 +8,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { ApiModule } from '../api/api.module';
 import { AuthenticationGuard } from './base/authentication.guard';
 import { AuthenticationService } from './base/authentication.service';
+import { Auth2faGeneratorComponent } from './components/auth-2fa-generator/auth-2fa-generator.component';
 import { InputReferenceComponent } from './components/input-reference/input-reference.component';
+import { TestA2faCheckComponent } from './components/test-authentication/test-a2fa-check/test-a2fa-check.component';
+import { TestA2FAComponent } from './components/test-authentication/test-a2fa/test-a2fa.component';
 import { TestAuthenticationComponent } from './components/test-authentication/test-authentication.component';
 import { TestInputReferenceComponent } from './components/test-authentication/test-input-reference/test-input-reference.component';
 import { TestLoginComponent } from './components/test-authentication/test-login/test-login.component';
@@ -26,6 +29,7 @@ import { ActivityreferenceService } from './services/activityreference.service';
 import { ActivityrelationService } from './services/activityrelation.service';
 import { ActivityrelationpermissionService } from './services/activityrelationpermission.service';
 import { AuthCommonService } from './services/auth-common.service';
+import { Authentication2faService } from './services/authentication2fa.service';
 import { ClienttokenService } from './services/clienttoken.service';
 import { ContactreferenceService } from './services/contactreference.service';
 import { OauthloginService } from './services/oauthlogin.service';
@@ -54,6 +58,9 @@ import { UserreportService } from './services/userreport.service';
 		TestUserOauthComponent,
 		InputReferenceComponent,
 		TestInputReferenceComponent,
+		TestA2FAComponent,
+		Auth2faGeneratorComponent,
+		TestA2faCheckComponent,
 	],
 	imports: [
 		CommonModule,
@@ -76,6 +83,9 @@ import { UserreportService } from './services/userreport.service';
 		TestUserOauthComponent,
 		InputReferenceComponent,
 		TestInputReferenceComponent,
+		TestA2FAComponent,
+		Auth2faGeneratorComponent,
+		TestA2faCheckComponent,
 	],
 })
 export class AuthenticationModule {
@@ -108,6 +118,7 @@ export class AuthenticationModule {
 				UserrelationpermissionService,
 				ActivityrelationService,
 				ActivityrelationpermissionService,
+				Authentication2faService,
 			],
 		};
 	}

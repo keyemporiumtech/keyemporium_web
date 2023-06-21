@@ -1,0 +1,81 @@
+<div class="container-loading" *ngIf="form">
+	<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+
+	<form *ngIf="!viewmode" [formGroup]="form">
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+				<label for="cod">{{
+					translateKey(FLD_cod.label) | translate : translateParams(FLD_cod.label)
+				}}</label>
+				<ddc-init-input-text [id]="'cod'" [field]="FLD_cod"></ddc-init-input-text>
+			</div>
+			<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+				<label for="name">{{
+					translateKey(FLD_name.label) | translate : translateParams(FLD_name.label)
+				}}</label>
+				<ddc-init-input-text [id]="'name'" [field]="FLD_name"></ddc-init-input-text>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+				<label for="description">{{
+					translateKey(FLD_description.label) | translate : translateParams(FLD_description.label)
+				}}</label>
+				<ddc-init-input-text [id]="'description'" [field]="FLD_description"></ddc-init-input-text>
+			</div>
+		</div>
+	</form>
+
+	<div *ngIf="viewmode && form">
+		<dl class="row mb-0 redial-line-height-2_5">
+			<dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">
+				{{ translateKey(FLD_cod.label) | translate : translateParams(FLD_cod.label) }}
+			</dt>
+			<dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{ form.get('cod')?.value }}</dd>
+		</dl>
+		<dl class="row mb-0 redial-line-height-2_5">
+			<dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">
+				{{ translateKey(FLD_name.label) | translate : translateParams(FLD_name.label) }}
+			</dt>
+			<dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">{{ form.get('name')?.value }}</dd>
+		</dl>
+		<dl class="row mb-0 redial-line-height-2_5">
+			<dt ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">
+				{{
+					translateKey(FLD_description.label) | translate : translateParams(FLD_description.label)
+				}}
+			</dt>
+			<dd ddcBtsSize [btsSize]="'3|3|3'" [btsPrefix]="'col-'">
+				{{ form.get('description')?.value }}
+			</dd>
+		</dl>
+	</div>
+
+	<div *ngIf="!blocked && !hideButtons" class="mt-2">
+		<a
+			*ngIf="id_profile && mode === formMode.DETAIL"
+			class="mr-2"
+			(click)="changeViewMode(false)"
+			title="{{ 'APP.BUTTON.EDIT' | translate }}"
+		>
+			<span class="fa fa-edit mr-2 text-primary"></span>
+		</a>
+		<a
+			*ngIf="id_profile && mode !== formMode.DETAIL"
+			class="mr-2"
+			(click)="changeViewMode(true)"
+			title="{{ 'PERSONAL.BUTTON.BACK' | translate }}"
+		>
+			<span class="fa fa-times mr-2 text-danger"></span>
+		</a>
+		<a
+			*ngIf="!readonly && form.valid"
+			class="mr-2"
+			(click)="save()"
+			title="{{ 'APP.BUTTON.SAVE' | translate }}"
+		>
+			<span class="fa fa-save mr-2 text-success"></span>
+		</a>
+		<!--<div *ngIf="modelToSave">{{modelToSave | json}}</div>-->
+	</div>
+</div>

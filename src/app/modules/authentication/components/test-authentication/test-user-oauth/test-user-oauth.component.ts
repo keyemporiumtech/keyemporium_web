@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { UserModel } from '../../../models/user.model';
-import { SocialUserModel } from '../../../lib/social-user.model';
+import { Component, OnInit } from '@angular/core';
 import { SocialUserUtilConverter } from '../../../converters/social-user.converter';
+import { SocialUserModel } from '../../../lib/social-user.model';
+import { UserModel } from '../../../models/user.model';
+import { AuthCommonService } from '../../../services/auth-common.service';
 
 @Component({
 	selector: 'wiki-test-user-oauth',
@@ -9,8 +10,8 @@ import { SocialUserUtilConverter } from '../../../converters/social-user.convert
 	styleUrls: ['./test-user-oauth.component.scss'],
 })
 export class TestUserOauthComponent implements OnInit {
-	@Output() emitLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
-	constructor() {}
+	user: UserModel;
+	constructor(private authCommonService: AuthCommonService) {}
 
 	ngOnInit() {}
 
@@ -19,6 +20,7 @@ export class TestUserOauthComponent implements OnInit {
 	}
 	onPageUser(user: UserModel) {
 		// console.error('Login System', user);
-		this.emitLogin.emit(user ? true : false);
+		this.user = user;
+		this.authCommonService.notifySession(this.user ? true : false);
 	}
 }

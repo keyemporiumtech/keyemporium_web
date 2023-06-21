@@ -32,6 +32,10 @@ import { AppKeyemporiumModule } from '../modules/app-keyemporium/app-keyemporium
 import { ProfileAttachmentComponent } from './components/profile/profile-attachment/profile-attachment.component';
 import { UserSubMenuComponent } from './components/user-sub-menu/user-sub-menu.component';
 import { PermissionsPageComponent } from './pages/permissions-page/permissions-page.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { RolePermissionsComponent } from './components/roles/role-permissions/role-permissions.component';
+import { RoleDetailComponent } from './components/roles/role-detail/role-detail.component';
+import { RolePageComponent } from './pages/role-page/role-page.component';
 
 @NgModule({
 	declarations: [
@@ -54,6 +58,10 @@ import { PermissionsPageComponent } from './pages/permissions-page/permissions-p
 		ProfileAttachmentComponent,
   UserSubMenuComponent,
   PermissionsPageComponent,
+  RolesComponent,
+  RolePermissionsComponent,
+  RoleDetailComponent,
+  RolePageComponent,
 	],
 	imports: [
 		CommonModule,

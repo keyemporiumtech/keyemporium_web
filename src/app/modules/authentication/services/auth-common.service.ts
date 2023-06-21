@@ -1,19 +1,21 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../api/cakeutils/base/api.service';
 import {
 	ApplicationLoggerService,
-	MessageService,
 	ApplicationStorageService,
 	InnerStorageService,
+	MessageService,
 } from '@ddc/kit';
 import { RequestManagerInterface, ResponseManagerInterface } from '@ddc/rest';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { authenticationList } from '../constants/authentication.list';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiService } from '../../api/cakeutils/base/api.service';
 import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utility';
+import { authenticationList } from '../constants/authentication.list';
 
 @Injectable()
 export class AuthCommonService extends ApiService {
+	private waitSession: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
 	constructor(
 		applicationLogger: ApplicationLoggerService,
 		messageService: MessageService,
@@ -51,5 +53,13 @@ export class AuthCommonService extends ApiService {
 				? requestManager.url
 				: this.environment.api.services + authenticationList.authentication.loginvalid;
 		return this.get(this.httpHeaders, url, body, undefined, requestManager, responseManager);
+	}
+
+	notifySession(val: boolean) {
+		this.waitSession.next(val);
+	}
+
+	listenSession(): Observable<boolean> {
+		return this.waitSession.asObservable();
 	}
 }

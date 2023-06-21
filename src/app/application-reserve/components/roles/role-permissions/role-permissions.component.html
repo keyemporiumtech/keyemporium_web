@@ -1,0 +1,17 @@
+<div *ngIf="editMode; else viewMode">
+	<form [formGroup]="formPermissions">
+		<ddc-init-input-checkbox
+			[field]="FLD_checkPermissions"
+			[options]="optionsPermissions"
+			[multiple]="true"
+		></ddc-init-input-checkbox>
+	</form>
+</div>
+
+<ng-template #viewMode>
+	<dl class="row mb-0 redial-line-height-2_5" *ngFor="let permission of permissions">
+		<dd ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+			{{ '[' + permission.cod + '] - ' + permission.name }}
+		</dd>
+	</dl>
+</ng-template>

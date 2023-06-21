@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApplicationLoggerService, BaseComponent } from '@ddc/kit';
+import { NavigationExtras, Router } from '@angular/router';
+import {
+	ApplicationLoggerService,
+	ApplicationStorageService,
+	BaseComponent,
+	PageUtility,
+} from '@ddc/kit';
 
 @Component({
 	selector: 'reserve-user-sub-menu',
@@ -8,8 +13,14 @@ import { ApplicationLoggerService, BaseComponent } from '@ddc/kit';
 	styleUrls: ['./user-sub-menu.component.scss'],
 })
 export class UserSubMenuComponent extends BaseComponent {
-	constructor(applicationLogger: ApplicationLoggerService, private router: Router) {
+	piva: string;
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		private applicationStorage: ApplicationStorageService,
+		private router: Router,
+	) {
 		super(applicationLogger);
+		this.piva = this.applicationStorage.activityPIVA.get();
 	}
 	ngOnInitForChildren() {}
 	ngAfterViewInitForChildren() {}
@@ -18,7 +29,11 @@ export class UserSubMenuComponent extends BaseComponent {
 		return 'UserSubMenuComponent';
 	}
 
-	goToProfileManagement() {
-		this.router.navigate(['reserve', 'permissions']);
+	goToProfileManagement(flgActivity?: boolean) {
+		const extras: NavigationExtras = {};
+		if (flgActivity) {
+			extras.queryParams = { PIVA: PageUtility.encodeParam(this.piva) };
+		}
+		this.router.navigate(['reserve', 'permissions'], extras);
 	}
 }
