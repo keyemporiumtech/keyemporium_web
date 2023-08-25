@@ -1,8 +1,8 @@
 # CHANGELOG REST
 
-## 3.5.0 - XX/05/2023
+## 3.5.0 - 25/08/2023
 
-> Versione che
+> Versione che aggiunge la possibilità di gestione campi aggiuntivi per le chiamate in response e request e adegua l'utilizzo di invio dei token di autenticazione
 
 ### changes
 

@@ -1,8 +1,8 @@
 # CHANGELOG KIT
 
-## 1.1.1 - XX/05/2023
+## 1.1.1 - 25/08/2023
 
-> Versione che
+> Versione che rimuove un import non usato
 
 ### changes
 

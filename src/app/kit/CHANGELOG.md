@@ -1,8 +1,8 @@
 # CHANGELOG KIT
 
-## 2.6.0 - XX/05/2023
+## 2.6.0 - 25/08/2023
 
-> Versione che
+> Versione che aggiunge la gestione di activity loggata su profilo utente e il componente `progress-circle.component`
 
 ### changes
 
