@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.0 - 25/08/2023
+
+> Versione che integra il template 10.1.0
+
+- `[feature]` Rimozione di script inutilizzati
+- `[feature]` Fix environment
+
 ## 2.0.0 - 14/04/2023
 
 > Versione che integra il template 10.0.0

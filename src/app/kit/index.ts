@@ -48,6 +48,7 @@ export * from "./emoji/services/emoji-util.service";
 export * from "./emoji/utils/emoji-builder.util";
 export * from "./emoji/utils/emoji.dblist";
 export * from "./filemanager/filemanager.module";
+export * from "./filemanager/components/download-file/download-file.component";
 export * from "./filemanager/components/embed-audio/embed-audio.component";
 export * from "./filemanager/components/embed-file/embed-file.component";
 export * from "./filemanager/components/embed-video/embed-video.component";
@@ -83,6 +84,7 @@ export * from "./html/components/loading/loading-spinner/loading-spinner.compone
 export * from "./html/components/loading/models/base-loading.model";
 export * from "./html/components/progress/progress.component";
 export * from "./html/components/progress-bar/progress-bar.component";
+export * from "./html/components/progress-circle/progress-circle.component";
 export * from "./html/directives/ddc-contenteditable.directive";
 export * from "./html/directives/ddc-css-var.directive";
 export * from "./html/directives/ddc-input-password.directive";

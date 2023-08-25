@@ -57,6 +57,7 @@ export class HeaderReserveComponent implements OnInit, OnDestroy {
 	logout() {
 		this.subLogout = this.authenticationService.logout(this.user).subscribe((res) => {
 			if (res) {
+				this.applicationStorage.passauthtoken.del();
 				this.router.navigate(environment.url.home);
 			}
 		});

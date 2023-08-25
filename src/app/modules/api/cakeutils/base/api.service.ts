@@ -18,7 +18,9 @@ import {
 import {
 	BaseRestService,
 	BehaviourMessageModel,
+	EnumParamType,
 	RequestManagerInterface,
+	RequestUtility,
 	ResponseManagerInterface,
 	TokenDecodeInterface,
 } from '@ddc/rest';
@@ -26,6 +28,7 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { restConstants } from '../constants/rest.constants';
 import { EnumStatusCode } from '../enums/status-code.enum';
+import { ApiServiceUtility } from '../utility/api-service.utility';
 import { ResponseCakeUtility } from '../utility/response-cake.utility';
 /**
  * Definisce il comportamento generico di chiamate per il backend.<br/>
@@ -238,6 +241,8 @@ export class ApiService extends BaseRestService {
 			converter['getEmptyIfNull'] = true;
 		}
 		params = this.manageFixedParams(requestManager, params);
+		params = this.sendUserInfo(requestManager, params);
+		params = this.sendActivityInfo(requestManager, params);
 		return this.http.get(url, options as {}).pipe(
 			map((res: HttpResponse<any>) => {
 				if (this.evalResponse(res, responseManager)) {
@@ -289,6 +294,8 @@ export class ApiService extends BaseRestService {
 			converter['getEmptyIfNull'] = true;
 		}
 		params = this.manageFixedParams(requestManager, params);
+		params = this.sendUserInfo(requestManager, params);
+		params = this.sendActivityInfo(requestManager, params);
 		return this.http.post(url, params, options as {}).pipe(
 			map((res: HttpResponse<any>) => {
 				if (this.evalResponse(res, responseManager)) {
@@ -372,5 +379,40 @@ export class ApiService extends BaseRestService {
 			return headers;
 		}
 		return super.sendTokenSession(responseManager, headers);
+	}
+
+	// SEND INFO USER AND ACTIVITY
+	sendUserInfo(requestManager?: RequestManagerInterface, params?: HttpParams): HttpParams {
+		if (ApiServiceUtility.isSendUserInfo(requestManager)) {
+			if (params && !params.has('username')) {
+				const userLogged = this.applicationStorage.userLogged.getObj();
+				RequestUtility.addParam(
+					params,
+					EnumParamType.STRING,
+					'username',
+					userLogged ? userLogged.username : '',
+				);
+			}
+		}
+		return params;
+	}
+
+	sendActivityInfo(requestManager?: RequestManagerInterface, params?: HttpParams): HttpParams {
+		if (ApiServiceUtility.isSendActivityInfo(requestManager)) {
+			if (params && !params.has('username')) {
+				const userLogged = this.applicationStorage.userLogged.getObj();
+				RequestUtility.addParam(
+					params,
+					EnumParamType.STRING,
+					'username',
+					userLogged ? userLogged.username : '',
+				);
+			}
+			if (params && !params.has('piva')) {
+				const pivaLogged = this.applicationStorage.activityPIVA.get();
+				RequestUtility.addParam(params, EnumParamType.STRING, 'piva', pivaLogged);
+			}
+		}
+		return params;
 	}
 }

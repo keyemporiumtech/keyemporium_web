@@ -1,5 +1,16 @@
 # CHANGELOG KIT
 
+## 2.6.0 - 25/08/2023
+
+> Versione che aggiunge la gestione di activity loggata su profilo utente e il componente `progress-circle.component`
+
+### changes
+
+- `[feature]` **storage**: Aggiunta la chiave `activityPIVA` per settare la partita IVA di un'activity loggata
+- `[feature]` **html**: Aggiunta della property `rounded` per il componente `progress-bar.component`
+- `[feature]` **html**: Aggiunto il componente `progress-circle.component`
+- `[feature]` **config**: Aggiunto il metodo `percentInverse` nell'utility `MathUtility`
+
 ## 2.5.0 - 14/04/2023
 
 > Versione che aggiunge i componenti `quill-editor` e `download-file` e mette a disposizione la chiave `passauthtoken` in application storage

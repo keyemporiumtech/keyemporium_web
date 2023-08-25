@@ -9,7 +9,8 @@
 			"ENTER": "Accedi",
 			"LOAD": "Carica",
 			"LOGIN": "Login",
-			"PROFILE_MANAGEMENT": "Gestione profili utente"
+			"PROFILE_USER_MANAGEMENT": "Gestione profili utente",
+			"PROFILE_ACTIVITY_MANAGEMENT": "Gestione profile aziendali"
 		},
 		"CIC": {
 			"DESCRIPTION": "Profilo aziendale di un utente dove sono memorizzate le aziende per cui lavora o di cui è titolare",
@@ -42,6 +43,9 @@
 			}
 		},
 		"COPYRIGHT": "&copy; Keyemporium",
+		"ERROR": {
+			"USER_NOT_AUTH": "Utente non autorizzato alla visualizzazione di questa pagina"
+		},
 		"LABEL": {
 			"ATTACHMENT": "Allegato",
 			"BORN": "Data di nascita",
@@ -60,6 +64,24 @@
 			"SIGNIN_GOOGLE": "Entra con Google",
 			"SIGNIN_FACEBOOK": "Entra con Facebook",
 			"TITLE": "Entra in Keyemporium"
+		},
+		"PROFILE": {
+			"ADD": "Aggiungi profilo",
+			"ADD_ACTIVTY": "Aggiungi profilo aziendale",
+			"DELETE": "Rimuovi profilo",
+			"DELETE_ACTIVITY": "Rimuovi profilo aziendale",
+			"EDIT": "Modifica profilo",
+			"EDIT_ACTIVITY": "Modifica profilo aziendale",
+			"LABEL": {
+				"COD": "Codice profilo",
+				"NAME": "Titolo profilo",
+				"DESCRIPTION": "Descrizione profilo"
+			}
+		},
+		"PERMISSION": {
+			"ADD": "Aggiungi permesso",
+			"DELETE": "Rimuovi permesso",
+			"EDIT": "Modifica permesso"
 		},
 		"PIC": {
 			"DESCRIPTION": "Profilo professionale di un utente dove sono memorizzate le informazioni sulla professione, le passioni e le attitudini",

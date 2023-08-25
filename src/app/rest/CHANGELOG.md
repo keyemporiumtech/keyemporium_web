@@ -1,5 +1,16 @@
 # CHANGELOG REST
 
+## 3.5.0 - 25/08/2023
+
+> Versione che aggiunge la possibilità di gestione campi aggiuntivi per le chiamate in response e request e adegua l'utilizzo di invio dei token di autenticazione
+
+### changes
+
+- `[feature]` **request**: Aggiunta del campo `others` in `request-manager.interfare` per consentire il passaggio di parametri aggiuntivi
+- `[feature]` **response**: Aggiunta del campo `others` in `response-manager.interfare` per consentire il passaggio di parametri aggiuntivi
+- `[fix]` **abstract**: Fix di `sendToken` in `base-rest.service` per il check sulla property tokenManager
+- `[feature]` **abstract**, **auth**: Aggiunta di `sendTokenAuth` in `base-auth.service` per l'invio rapido del token di authenticazione prima di una chiamata rest
+
 ## 3.4.0 - 14/04/2023
 
 > Versione che aggiunge i parametri array di stringhe in `request.utility`

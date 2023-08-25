@@ -1,28 +1,18 @@
 import {
-	HttpHeaders,
-	HttpResponse,
-	HttpErrorResponse,
-	HttpClient,
-	HttpParams,
+  HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse
 } from '@angular/common/http';
 import {
-	BaseService,
-	ApplicationLoggerService,
-	MessageService,
-	ApplicationStorageService,
-	InnerStorageService,
-	MessageModel,
-	EnumMessageType,
-	BaseConverter,
+  ApplicationLoggerService, ApplicationStorageService, BaseConverter, BaseService, EnumMessageType, InnerStorageService,
+  MessageModel, MessageService
 } from '@ddc/kit';
-import { AuthUtility } from '../auth/utility/auth.utility';
-import { BehaviourMessageModel } from '../response/models/behaviour-message.model';
 import { Observable, of } from 'rxjs';
-import { RequestManagerInterface } from '../request/interfaces/request-manager.interface';
-import { ResponseManagerInterface } from '../response/interfaces/response-manager.interface';
 import { TokenDecodeInterface } from '../auth/interfaces/token-decode.interface';
-import { RequestUtility } from '../request/utility/request.utility';
+import { AuthUtility } from '../auth/utility/auth.utility';
 import { EnumParamType } from '../request/enums/param-type.enum';
+import { RequestManagerInterface } from '../request/interfaces/request-manager.interface';
+import { RequestUtility } from '../request/utility/request.utility';
+import { ResponseManagerInterface } from '../response/interfaces/response-manager.interface';
+import { BehaviourMessageModel } from '../response/models/behaviour-message.model';
 
 /**
  * Definisce il comportamento generico di chiamate per il backend.
@@ -184,6 +174,9 @@ export abstract class BaseRestService extends BaseService {
 	sendToken(paramName: string, tokenValue: string, responseManager?: ResponseManagerInterface) {
 		if (!responseManager) {
 			responseManager = {};
+		}
+		if (!responseManager.tokenManager) {
+			responseManager.tokenManager = {};
 		}
 		responseManager.tokenManager.tokenKeyRequest = paramName;
 		responseManager.tokenManager.tokenValue = tokenValue;

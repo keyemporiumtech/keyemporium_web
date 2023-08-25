@@ -1,10 +1,10 @@
-import { Component, Input, Renderer2, ViewChild } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { BaseComponent } from '../../../abstract/base.component';
 import { ApplicationLoggerService } from '../../../logger/services/application-logger.service';
 import { StyleUtility } from '../../utils/style.utility';
-import { style, animate, transition, trigger } from '@angular/animations';
 
 @Component({
 	selector: 'ddc-init-progress-bar',
@@ -25,12 +25,16 @@ import { style, animate, transition, trigger } from '@angular/animations';
 	],
 })
 export class ProgressBarComponent extends BaseComponent {
+	@Output() emitStatus: EventEmitter<'PAUSE' | 'STOP' | 'PLAY'> = new EventEmitter<
+		'PAUSE' | 'STOP' | 'PLAY'
+	>();
 	@Input() backgroundColor: string;
 	@Input() color: string;
 	@Input() height: string;
 	@Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xlg';
 	@Input() cssClass: any;
 	@Input() cssStyle: any;
+	@Input() rounded: boolean; // se true mostra i bordi arrotondati
 	@Input() showText: boolean;
 	@Input() hideOnComplete: boolean; // nascondi quando ha finito
 	@Input() showOnStart: boolean; // mostra quando inizia
@@ -49,6 +53,12 @@ export class ProgressBarComponent extends BaseComponent {
 	}
 
 	ngOnInitForChildren() {
+		if (!this.size) {
+			this.size = 'md';
+		}
+		if (this.height) {
+			this.size = undefined;
+		}
 		if (!this.backgroundColor) {
 			this.backgroundColor = StyleUtility.getProperty('--mute');
 		}
@@ -73,7 +83,6 @@ export class ProgressBarComponent extends BaseComponent {
 				this.height = '25px';
 				break;
 			default:
-				this.height = '15px';
 				break;
 		}
 		this.evalHideOnStart();
@@ -89,23 +98,29 @@ export class ProgressBarComponent extends BaseComponent {
 	}
 
 	start(init?: number) {
-		this.status = 'PLAY';
-		this.evalHideOnStart();
-		if (!init) {
-			init = 0;
+		if (this.status !== 'PLAY') {
+			this.status = 'PLAY';
+			this.emitStatus.emit(this.status);
+			this.evalHideOnStart();
+			if (!init) {
+				init = 0;
+			}
+			this.subProgress = interval(this.intervalGrowMillisecond)
+				.pipe(filter((res1) => Math.round(res1 + init) <= 100))
+				.subscribe((res2) => {
+					const width = res2 + init;
+					this.current = Math.round(width);
+					this.renderer.setStyle(this.progress.nativeElement, 'width', width + '%');
+					if (this.current === 100) {
+						this.stop();
+					}
+				});
 		}
-		this.subProgress = interval(this.intervalGrowMillisecond)
-			.pipe(filter((res1) => Math.round(res1 + init) <= 100))
-			.subscribe((res2) => {
-				const width = res2 + init;
-				this.current = Math.round(width);
-				this.renderer.setStyle(this.progress.nativeElement, 'width', width + '%');
-				this.evalHideOnComplete();
-			});
 	}
 
 	pause() {
 		this.status = 'PAUSE';
+		this.emitStatus.emit(this.status);
 		if (this.subProgress) {
 			this.subProgress.unsubscribe();
 		}
@@ -119,6 +134,7 @@ export class ProgressBarComponent extends BaseComponent {
 
 	stop() {
 		this.status = 'STOP';
+		this.emitStatus.emit(this.status);
 		if (this.subProgress) {
 			this.subProgress.unsubscribe();
 		}

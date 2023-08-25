@@ -7,7 +7,9 @@ import {
 } from '@ddc/kit';
 import { Subscription } from 'rxjs';
 import { ApiFast } from '../../../modules/api/cakeutils/utility/api-fast.utility';
+import { ApiServiceUtility } from '../../../modules/api/cakeutils/utility/api-service.utility';
 import { AuthenticationService } from '../../../modules/authentication/base/authentication.service';
+import { PayloadUserInterface } from '../../../modules/authentication/interfaces/payload-user.interface';
 import { UserprofileModel } from '../../../modules/authentication/models/userprofile.model';
 import { UserprofileService } from '../../../modules/authentication/services/userprofile.service';
 
@@ -39,19 +41,26 @@ export class UserProfilesDropdownComponent extends BaseComponent {
 		const idUserLogged: string = this.applicationStorage.userId.get();
 		if (idUserLogged) {
 			this.subProfiles = this.userprofileService
-				.paginate(ApiFast.paginatorList([ApiFast.queryField('user', idUserLogged)]), {
-					belongs: ['profile_fk', 'activity_fk'],
-				})
-				.subscribe((paginatorModel) => {
-					if (paginatorModel && paginatorModel.list) {
-						paginatorModel.list.forEach((element: UserprofileModel) => {
-							this.optionProfiles.push(
-								new OptionListModel(element.profile.cod, element.description, element.profile),
-							);
-						});
-						this.manageListen();
-					}
-				});
+				.paginate(
+					ApiFast.paginatorList([ApiFast.queryField('user', idUserLogged)]),
+					{
+						belongs: ['profile_fk', 'activity_fk'],
+					},
+					ApiServiceUtility.sendUserInfo(),
+				)
+				.subscribe(
+					(paginatorModel) => {
+						if (paginatorModel && paginatorModel.list) {
+							paginatorModel.list.forEach((element: UserprofileModel) => {
+								this.optionProfiles.push(
+									new OptionListModel(element.profile.cod, element.description, element),
+								);
+							});
+							this.manageListen();
+						}
+					},
+					(err) => console.error(err),
+				);
 		}
 	}
 
@@ -101,18 +110,14 @@ export class UserProfilesDropdownComponent extends BaseComponent {
 	}
 
 	changeProfile(option: OptionListModel) {
-		this.applicationStorage.activityPrincipal.del();
-		const isAppend = option && option.payload && option.payload.activity;
-
-		if (isAppend) {
-			this.applicationStorage.activityPrincipal.setObj(option.payload.activity);
-			this.authenticationService.appendProfile(
-				this.authenticationService.loadPermissions(option.key),
-				option.key,
-			);
-		} else {
-			this.authenticationService.setProfile(option.key);
-		}
+		const userLogged: PayloadUserInterface = this.applicationStorage.userLogged.getObj();
+		const userProfile: UserprofileModel = option.payload;
+		this.authenticationService.setProfileWithActivity(
+			option.key,
+			userLogged.username,
+			userProfile.activity && userProfile.activity.id ? userProfile.activity.piva : undefined,
+		);
+		this.setCurrent(option.key);
 	}
 
 	isCurrent(option: OptionListModel) {

@@ -40,6 +40,7 @@ export class ApplicationStorageService extends BaseService {
 	private _userImage: ApplicationStorageModel;
 	private _profile: ApplicationStorageModel;
 	private _memoLogin: ApplicationStorageModel;
+	private _activityPIVA: ApplicationStorageModel;
 	// REST init values
 	private _cookiePolicyResource: ApplicationStorageModel;
 	private _privacyPolicyResource: ApplicationStorageModel;
@@ -86,6 +87,7 @@ export class ApplicationStorageService extends BaseService {
 		this.profile = new ApplicationStorageModel('currentProfile');
 		this.activityPrincipal = new ApplicationStorageModel('activityPrincipal');
 		this.memoLogin = new ApplicationStorageModel('memoLogin');
+		this.activityPIVA = new ApplicationStorageModel('activityPIVA');
 	}
 
 	getClassName(): string {
@@ -631,5 +633,21 @@ export class ApplicationStorageService extends BaseService {
 	 */
 	public set passauthtoken(value: ApplicationStorageModel) {
 		this._passauthtoken = value;
+	}
+
+	/**
+	 * Getter activityPIVA
+	 * @return {ApplicationStorageModel}
+	 */
+	public get activityPIVA(): ApplicationStorageModel {
+		return this._activityPIVA;
+	}
+
+	/**
+	 * Setter activityPIVA
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set activityPIVA(value: ApplicationStorageModel) {
+		this._activityPIVA = value;
 	}
 }

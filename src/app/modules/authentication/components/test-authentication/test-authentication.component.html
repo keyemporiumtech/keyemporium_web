@@ -31,6 +31,18 @@
 			<a class="m-2 btn btn-sm btn-danger text-white" (click)="set('USER-OAUTH')"
 				>Test Oauth external</a
 			>
+			<span class="m-2">|</span>
+			<button
+				class="m-2 btn btn-sm btn-danger text-white"
+				(click)="set('A2FA')"
+				[disabled]="!enableProfiles"
+			>
+				Test Generatore Codici Auth 2FA
+			</button>
+			<span class="m-2">|</span>
+			<button class="m-2 btn btn-sm btn-danger text-white" (click)="set('A2FA_VERIFY')">
+				Test Verifica Codici Auth 2FA
+			</button>
 		</div>
 		<div class="row">
 			<div class="col col-12"><strong>Clienttoken:</strong> {{ currentToken }}</div>
@@ -40,20 +52,13 @@
 	<div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
 		<div class="col col-12 p-2">
 			<a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
-			<wiki-test-input-reference
-				*ngIf="view === 'REFERENCE'"
-				(emitLogin)="evalLogin($event)"
-			></wiki-test-input-reference>
-			<wiki-test-login *ngIf="view === 'LOGIN'" (emitLogin)="evalLogin($event)"></wiki-test-login>
-			<wiki-test-verify
-				*ngIf="view === 'VERIFY'"
-				(emitLogin)="evalLogin($event)"
-			></wiki-test-verify>
+			<wiki-test-input-reference *ngIf="view === 'REFERENCE'"></wiki-test-input-reference>
+			<wiki-test-login *ngIf="view === 'LOGIN'"></wiki-test-login>
+			<wiki-test-verify *ngIf="view === 'VERIFY'"></wiki-test-verify>
 			<wiki-test-profiles *ngIf="view === 'PROFILES' && enableProfiles"></wiki-test-profiles>
-			<wiki-test-user-oauth
-				*ngIf="view === 'USER-OAUTH'"
-				(emitLogin)="evalLogin($event)"
-			></wiki-test-user-oauth>
+			<wiki-test-user-oauth *ngIf="view === 'USER-OAUTH'"></wiki-test-user-oauth>
+			<wiki-test-a2fa *ngIf="view === 'A2FA'"></wiki-test-a2fa>
+			<wiki-test-a2fa-check *ngIf="view === 'A2FA_VERIFY'"></wiki-test-a2fa-check>
 		</div>
 	</div>
 </div>

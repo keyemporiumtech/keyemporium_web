@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
-import { ApplicationLoggerService, ApplicationStorageService, PageUtility } from '@ddc/kit';
+import {
+	ApplicationLoggerService,
+	ApplicationStorageService,
+	MessageService,
+	PageUtility,
+	PreviousRouteService,
+} from '@ddc/kit';
 import { KeBasePageComponent } from '../../../application-shared/components/ke-base-page.component';
 import { AuthenticationService } from '../../../modules/authentication/base/authentication.service';
 
@@ -24,10 +30,20 @@ export class VicPageComponent extends KeBasePageComponent {
 		applicationLogger: ApplicationLoggerService,
 		router: Router,
 		activatedRoute: ActivatedRoute,
+		previousRoute: PreviousRouteService,
+		messageService: MessageService,
 		applicationStorage: ApplicationStorageService,
 		authenticationService: AuthenticationService,
 	) {
-		super(applicationLogger, router, activatedRoute, applicationStorage, authenticationService);
+		super(
+			applicationLogger,
+			router,
+			activatedRoute,
+			previousRoute,
+			messageService,
+			applicationStorage,
+			authenticationService,
+		);
 	}
 
 	ngOnInitForChildren() {

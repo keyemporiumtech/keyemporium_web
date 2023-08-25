@@ -8,7 +8,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { ApiModule } from '../api/api.module';
 import { AuthenticationGuard } from './base/authentication.guard';
 import { AuthenticationService } from './base/authentication.service';
+import { Auth2faGeneratorComponent } from './components/auth-2fa-generator/auth-2fa-generator.component';
 import { InputReferenceComponent } from './components/input-reference/input-reference.component';
+import { TestA2faCheckComponent } from './components/test-authentication/test-a2fa-check/test-a2fa-check.component';
+import { TestA2FAComponent } from './components/test-authentication/test-a2fa/test-a2fa.component';
 import { TestAuthenticationComponent } from './components/test-authentication/test-authentication.component';
 import { TestInputReferenceComponent } from './components/test-authentication/test-input-reference/test-input-reference.component';
 import { TestLoginComponent } from './components/test-authentication/test-login/test-login.component';
@@ -23,7 +26,10 @@ import { ActivityaddressService } from './services/activityaddress.service';
 import { ActivityattachmentService } from './services/activityattachment.service';
 import { ActivityprofileService } from './services/activityprofile.service';
 import { ActivityreferenceService } from './services/activityreference.service';
+import { ActivityrelationService } from './services/activityrelation.service';
+import { ActivityrelationpermissionService } from './services/activityrelationpermission.service';
 import { AuthCommonService } from './services/auth-common.service';
+import { Authentication2faService } from './services/authentication2fa.service';
 import { ClienttokenService } from './services/clienttoken.service';
 import { ContactreferenceService } from './services/contactreference.service';
 import { OauthloginService } from './services/oauthlogin.service';
@@ -36,6 +42,8 @@ import { UserattachmentService } from './services/userattachment.service';
 import { UseroauthsocialService } from './services/useroauthsocial.service';
 import { UserprofileService } from './services/userprofile.service';
 import { UserreferenceService } from './services/userreference.service';
+import { UserrelationService } from './services/userrelation.service';
+import { UserrelationpermissionService } from './services/userrelationpermission.service';
 import { UserreportService } from './services/userreport.service';
 
 @NgModule({
@@ -50,6 +58,9 @@ import { UserreportService } from './services/userreport.service';
 		TestUserOauthComponent,
 		InputReferenceComponent,
 		TestInputReferenceComponent,
+		TestA2FAComponent,
+		Auth2faGeneratorComponent,
+		TestA2faCheckComponent,
 	],
 	imports: [
 		CommonModule,
@@ -72,6 +83,9 @@ import { UserreportService } from './services/userreport.service';
 		TestUserOauthComponent,
 		InputReferenceComponent,
 		TestInputReferenceComponent,
+		TestA2FAComponent,
+		Auth2faGeneratorComponent,
+		TestA2faCheckComponent,
 	],
 })
 export class AuthenticationModule {
@@ -100,6 +114,11 @@ export class AuthenticationModule {
 				ActivityattachmentService,
 				ActivityprofileService,
 				OauthloginService,
+				UserrelationService,
+				UserrelationpermissionService,
+				ActivityrelationService,
+				ActivityrelationpermissionService,
+				Authentication2faService,
 			],
 		};
 	}

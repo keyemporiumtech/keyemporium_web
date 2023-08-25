@@ -1,0 +1,24 @@
+<reserve-role-detail
+	#roleDetail
+	[modeIn]="modeIn"
+	[viewmode]="false"
+	[blocked]="false"
+	[hideButtons]="true"
+	(saveEmit)="OnSaveRole($event)"
+></reserve-role-detail>
+<reserve-role-permissions
+	[editMode]="editModePermissions"
+	[id_profile]="id_profile"
+	(emitPermissions)="selectPermissions($event)"
+></reserve-role-permissions>
+
+<button
+	*ngIf="!roleDetail.readonly"
+	class="mt-2 mr-2 btn btn-sm btn-success"
+	(click)="roleDetail.save()"
+	title="{{ 'APP.BUTTON.SAVE' | translate }}"
+	[attr.disabled]="roleDetail.form.valid"
+>
+	<span class="fa fa-save mr-2"></span>
+	{{ 'APP.BUTTON.SAVE' | translate }}
+</button>

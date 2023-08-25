@@ -30,7 +30,7 @@ jobs:
         run: barrelsby --directory ./src/app/rest/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
 
       - name: Install angular cli
-        run: npm install -g @angular/cli@15.0.2
+        run: npm install -g @angular/cli@15.2.1
 
       - name: Build Project
         run: ng build --configuration=test --base-href ./

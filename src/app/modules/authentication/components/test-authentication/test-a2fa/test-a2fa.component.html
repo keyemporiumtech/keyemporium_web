@@ -1,0 +1,24 @@
+<h5>Test Authentication 2FA</h5>
+
+<div>
+	<strong>Generator</strong>
+
+	<h6>Esempio default</h6>
+	<ddc-init-auth-2fa-generator
+		[cssCodeStyle]="{
+			border: '1px solid #000',
+			width: 'fit-content',
+			padding: '.5rem',
+			display: 'inline-flex',
+			'margin-right': '1rem'
+		}"
+		[key]="key"
+	></ddc-init-auth-2fa-generator>
+
+	<h6>Esempio barra di scorrimento</h6>
+	<ddc-init-auth-2fa-generator
+		[cssCodeStyle]="{ border: '1px solid #000', width: 'fit-content', padding: '.5rem' }"
+		[key]="key"
+		[circle]="false"
+	></ddc-init-auth-2fa-generator>
+</div>

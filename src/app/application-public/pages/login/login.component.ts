@@ -1,23 +1,25 @@
 import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
-	BaseFormComponent,
 	ApplicationLoggerService,
-	MagicValidatorUtil,
+	ApplicationStorageService,
+	BaseFormComponent,
 	BehaviourObserverModel,
+	MagicValidatorUtil,
 	OptionListModel,
 } from '@ddc/kit';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { FormFieldModel } from '../../../shared/models/form/form-field.model';
-import { Observable, of } from 'rxjs';
-import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
-import { InputPasswordAsyncComponent } from '../../../modules/validator-password/components/input-password-async/input-password-async.component';
 import { EnumOauthLoginType, SocialLoginService } from '@ddc/rest';
+import { map, Observable, of } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import {
-	UserAuthRequest,
 	AuthenticationService,
+	UserAuthRequest,
 } from '../../../modules/authentication/base/authentication.service';
 import { ConfirmoperationRequest } from '../../../modules/authentication/dtos/confirmoperation-request';
-import { Router } from '@angular/router';
+import { InputPasswordAsyncComponent } from '../../../modules/validator-password/components/input-password-async/input-password-async.component';
+import { EnumFormType } from '../../../shared/enums/form/form-type.enum';
+import { FormFieldModel } from '../../../shared/models/form/form-field.model';
 
 @Component({
 	selector: 'public-login',
@@ -35,6 +37,7 @@ export class LoginComponent extends BaseFormComponent {
 		applicationLogger: ApplicationLoggerService,
 		fb: FormBuilder,
 		private router: Router,
+		private applicationStorage: ApplicationStorageService,
 		private oauthService: SocialLoginService,
 		private authenticationService: AuthenticationService,
 	) {
@@ -96,7 +99,9 @@ export class LoginComponent extends BaseFormComponent {
 		return 'email';
 	}
 	saveModel(model: UserAuthRequest): Observable<boolean> {
-		return this.authenticationService.loginPin(model, model.confirm);
+		return environment.name === 'LOCAL'
+			? this.authenticationService.login(model).pipe(map((res) => (res ? true : false)))
+			: this.authenticationService.loginPin(model, model.confirm);
 	}
 	updateModel(model: any): Observable<any> {
 		return of(model);
@@ -105,7 +110,10 @@ export class LoginComponent extends BaseFormComponent {
 		const funPre = () => {};
 		const funOk = (res: boolean) => {
 			if (res) {
-				this.router.navigate(['app', 'confirm_login']);
+				this.applicationStorage.passauthtoken.set('1');
+				environment.name === 'LOCAL'
+					? this.router.navigate(['reserve'])
+					: this.router.navigate(['app', 'confirm_login']);
 			}
 		};
 		const funError = (err: any) => {};

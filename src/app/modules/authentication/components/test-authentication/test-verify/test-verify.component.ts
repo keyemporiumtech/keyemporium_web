@@ -1,12 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TestLoginComponent } from '../test-login/test-login.component';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ApplicationStorageService, MagicValidatorUtil } from '@ddc/kit';
+import { Subscription } from 'rxjs';
+import { EnumFormType } from '../../../../../shared/enums/form/form-type.enum';
+import { FormFieldModel } from '../../../../../shared/models/form/form-field.model';
 import { AuthenticationService, UserAuthRequest } from '../../../base/authentication.service';
 import { ConfirmoperationRequest } from '../../../dtos/confirmoperation-request';
-import { config, Subscription } from 'rxjs';
-import { FormFieldModel } from '../../../../../shared/models/form/form-field.model';
-import { EnumFormType } from '../../../../../shared/enums/form/form-type.enum';
+import { AuthCommonService } from '../../../services/auth-common.service';
+import { TestLoginComponent } from '../test-login/test-login.component';
 
 @Component({
 	selector: 'wiki-test-verify',
@@ -23,8 +24,9 @@ export class TestVerifyComponent extends TestLoginComponent implements OnInit, O
 		fb: FormBuilder,
 		applicationStorage: ApplicationStorageService,
 		authentication: AuthenticationService,
+		authCommonService: AuthCommonService,
 	) {
-		super(fb, applicationStorage, authentication);
+		super(fb, applicationStorage, authentication, authCommonService);
 		this.formCode = this.fb.group({
 			code: new MagicValidatorUtil((this.validations.code = []), undefined).required().build(),
 		});
@@ -40,6 +42,7 @@ export class TestVerifyComponent extends TestLoginComponent implements OnInit, O
 
 	ngOnInit() {
 		super.ngOnInit();
+		this.evalStorage();
 	}
 
 	ngOnDestroy() {

@@ -1,0 +1,19 @@
+<h5>Verifica authentication 2FA</h5>
+
+<form [formGroup]="form">
+	<div class="form-group">
+		<label>{{ code.label }}</label>
+		<ddc-init-input-text [field]="code"></ddc-init-input-text>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" [disabled]="!form.valid" (click)="check()">
+			Verifica
+		</button>
+	</div>
+</form>
+
+<div class="pt-3">
+	<div class="mt-4">
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{ verified ? 'CODICE VALIDO' : 'CODICE NON VALIDO' }}
+		</div>
+	</div>
+</div>
