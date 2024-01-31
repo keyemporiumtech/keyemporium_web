@@ -1,22 +1,16 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RouteNavigationUtility } from '@ddc/kit';
+import { ApplicationLoggerService, BasePageComponent } from '@ddc/kit';
 
-export class BaseModuleWikiPage {
+export class BaseModuleWikiPage extends BasePageComponent {
 	subQueryParamsMap: Subscription;
-	router: Router;
-	activatedRoute: ActivatedRoute;
 
-	constructor(router: Router, activatedRoute: ActivatedRoute) {
-		this.router = router;
-		this.activatedRoute = activatedRoute;
-		const routeManager = new RouteNavigationUtility(router, activatedRoute);
-
-		this.subQueryParamsMap = routeManager.waitQueryParamMap().subscribe((res) => {
-			if (res && res.get('view')) {
-				this.set(res.get('view'));
-			}
-		});
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		router: Router,
+		activatedRoute: ActivatedRoute,
+	) {
+		super(applicationLogger, router, activatedRoute);
 	}
 	view: any;
 
@@ -26,5 +20,21 @@ export class BaseModuleWikiPage {
 
 	home() {
 		this.router.navigate(['wiki']);
+	}
+
+	manageDataParams(data: Data) {}
+	manageRouteParams(data: ParamMap) {}
+	manageQueryParams(data: ParamMap) {
+		if (data && data.get('view')) {
+			this.set(data.get('view'));
+		} else {
+			this.set(undefined);
+		}
+	}
+	ngOnInitForChildren() {}
+	ngAfterViewInitForChildren() {}
+	ngOnDestroyForChildren() {}
+	getClassName(): string {
+		return 'BaseModuleWikiPage';
 	}
 }

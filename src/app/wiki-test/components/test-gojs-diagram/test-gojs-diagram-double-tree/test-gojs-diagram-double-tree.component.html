@@ -1,0 +1,22 @@
+<h4>Double Tree Diagram</h4>
+
+<gojs-cmp-double-tree
+	#doubleTreeCmp
+	[diagramModel]="diagramModel"
+	[diagramProperties]="diagramProperties"
+	[divId]="divId"
+	(onDiagram)="buildDiagram($event)"
+	[templateBody]="templateBody"
+	[templateFooter]="templateFooter"
+></gojs-cmp-double-tree>
+
+<ng-template #plusTemplateBody>
+	{{ dataShow | json }}
+</ng-template>
+
+<ng-template #asteriskTemplateBody> <strong>Nome:</strong>{{ dataShow.name }} </ng-template>
+<ng-template #asteriskTemplateFooter>
+	<button class="btn btn-primary">Example</button>
+</ng-template>
+
+<wiki-gojs-diagram-common-btn [cmpDiagram]="doubleTreeCmp"></wiki-gojs-diagram-common-btn>

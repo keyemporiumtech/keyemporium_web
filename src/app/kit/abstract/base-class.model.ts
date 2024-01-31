@@ -1,21 +1,17 @@
 import { ApplicationLoggerService } from '../logger/services/application-logger.service';
 import { LoggerService, LoggerWriter } from '../logger/services/logger.service';
 import { StringTranslate } from '../translation/models/string-translate.model';
+import { BaseIdModel } from './base-id.model';
 
-export abstract class BaseClassModel {
-	idClass: string;
+export abstract class BaseClassModel extends BaseIdModel {
 	log: LoggerWriter;
 	applicationLogger: ApplicationLoggerService;
 
 	constructor(applicationLoggerService: ApplicationLoggerService) {
+		super();
 		this.log = LoggerService.getLogger(this.getClassName());
 		this.applicationLogger = applicationLoggerService;
-		this.idClass = Math.random().toString(36).replace('0.', '');
 		this.applicationLogger.logConstructor(this.log, this.getClassName(), this.getId());
-	}
-
-	getId(): string {
-		return this.idClass;
 	}
 
 	loggami(first?: string) {

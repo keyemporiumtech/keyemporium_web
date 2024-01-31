@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BaseLoadingModel } from '../models/base-loading.model';
 import { ApplicationLoggerService } from '../../../../logger/services/application-logger.service';
 
@@ -8,18 +8,23 @@ import { ApplicationLoggerService } from '../../../../logger/services/applicatio
 	styleUrls: ['./loading-circle.component.scss'],
 })
 export class LoadingCircleComponent extends BaseLoadingModel {
+	@ViewChild('el') el: ElementRef;
+
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}
 
-	selectors(): any[] {
-		const array: any[] = [];
-		array.push(document.querySelector('.lds-circle > div'));
-		return array;
+	setSelectors(): void {
+		this.selectorsLoading.length = 0;
+		// array.push(document.querySelector('.lds-circle > div')); work only for one
+		const element = this.el.nativeElement;
+		this.selectorsLoading.push(element.querySelector('div'));
 	}
 
 	ngOnInitForChildren() {}
-	ngAfterViewInitForChildren() {}
+	ngAfterViewInitForChildren() {
+		super.ngAfterViewInitForChildren();
+	}
 	ngOnDestroyForChildren() {}
 	getClassName(): string {
 		return 'LoadingCircleComponent';

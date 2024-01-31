@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationLoggerService } from '@ddc/kit';
 import { BaseModuleWikiPage } from '../../../shared/wiki-test/base-module-wiki.page';
 
 @Component({
@@ -7,10 +8,12 @@ import { BaseModuleWikiPage } from '../../../shared/wiki-test/base-module-wiki.p
 	templateUrl: './test-kit.component.html',
 	styleUrls: ['./test-kit.component.scss'],
 })
-export class TestKitComponent extends BaseModuleWikiPage implements OnInit {
-	constructor(router: Router, activatedRoute: ActivatedRoute) {
-		super(router, activatedRoute);
+export class TestKitComponent extends BaseModuleWikiPage {
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		router: Router,
+		activatedRoute: ActivatedRoute,
+	) {
+		super(applicationLogger, router, activatedRoute);
 	}
-
-	ngOnInit() {}
 }

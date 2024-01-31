@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChatbotModule } from './chatbot/chatbot.module';
 import { ChartsModule } from './charts/charts.module';
 import { ConfigModule } from './config/config.module';
 import { EmojiModule } from './emoji/emoji.module';
@@ -18,6 +19,7 @@ import { TimingModule } from './timing/timing.module';
 import { TranslationModule } from './translation/translation.module';
 import { TreeHtmlModule } from './tree-html/tree-html.module';
 import { ValidatorsModule } from './validators/validators.module';
+import { SeoModule } from './seo/seo.module';
 
 @NgModule({
 	declarations: [],
@@ -44,6 +46,8 @@ import { ValidatorsModule } from './validators/validators.module';
 		ValidatorsModule.forRoot(),
 		ChartsModule.forRoot(),
 		QuillEditorModule.forRoot(),
+		ChatbotModule.forRoot(),
+		SeoModule.forRoot(),
 	],
 	exports: [
 		ConfigModule,
@@ -62,6 +66,8 @@ import { ValidatorsModule } from './validators/validators.module';
 		ValidatorsModule,
 		ChartsModule,
 		QuillEditorModule,
+		ChatbotModule,
+		SeoModule,
 	],
 })
 export class KitModule {

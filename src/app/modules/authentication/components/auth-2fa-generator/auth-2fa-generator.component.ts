@@ -5,10 +5,10 @@ import {
 	BaseComponent,
 	MathUtility,
 	ProgressBarComponent,
+	ProgressCircleComponent,
 } from '@ddc/kit';
 import * as _moment from 'moment-timezone';
 import { Subscription } from 'rxjs';
-import { ProgressCircleComponent } from '../../../../kit/html/components/progress-circle/progress-circle.component';
 import { ApiServiceUtility } from '../../../api/cakeutils/utility/api-service.utility';
 import { Authentication2faModel } from '../../models/authentication2fa.model';
 import { Authentication2faService } from '../../services/authentication2fa.service';

@@ -1,0 +1,82 @@
+<div [hidden]="mode !== EnumFormMode.DETAIL">
+	<strong>{{ translateKey(labels.name) | translate : translateParams(labels.name) }}</strong>
+	: {{ model.name }}<br />
+	<strong>{{ translateKey(labels.cod) | translate : translateParams(labels.cod) }}</strong>
+	: {{ model.matricola }}<br />
+	<strong>{{ translateKey(labels.role) | translate : translateParams(labels.role) }}</strong>
+	: {{ model.role }}<br />
+	<div *ngIf="model.parent">
+		<strong>{{ translateKey(labels.parent) | translate : translateParams(labels.parent) }}</strong>
+		{{ model.parentObj?.name + ' (' + model.parentObj?.role + ')' }}
+	</div>
+	<hr />
+	<strong>{{ translateKey(labels.skills) | translate : translateParams(labels.skills) }}</strong>
+	<ng-container *ngFor="let skill of skills">
+		<div>
+			{{ skill }}
+		</div>
+	</ng-container>
+</div>
+
+<div [hidden]="mode === EnumFormMode.DETAIL">
+	<form>
+		<div>
+			<label>{{ translateKey(labels.name) | translate : translateParams(labels.name) }}</label>
+			<input #inputName type="text" id="nameToSave" name="nameToSave" class="form-control" />
+		</div>
+		<div>
+			<label>{{ translateKey(labels.cod) | translate : translateParams(labels.cod) }}</label>
+			<input
+				#inputMatricola
+				type="text"
+				id="matricolaToSave"
+				name="matricolaToSave"
+				class="form-control"
+			/>
+		</div>
+		<div>
+			<label>{{ translateKey(labels.role) | translate : translateParams(labels.role) }}</label>
+			<input #inputRole type="text" id="roleToSave" name="roleToSave" class="form-control" />
+		</div>
+		<div>
+			<label>{{ translateKey(labels.parent) | translate : translateParams(labels.parent) }}</label>
+			<select #selectParent id="parentToSave" name="parentToSave" [style.margin-left]="'.5rem'">
+				<option value="">---</option>
+				<ng-container *ngFor="let parent of listParents">
+					<option value="{{ parent.key }}" [disabled]="isDisabledParent(parent)">
+						{{ parent.name + ' (' + parent.role + ')' }}
+					</option>
+				</ng-container>
+			</select>
+		</div>
+		<div class="mt-2">
+			<label>{{
+				translateKey(labels.addSkill) | translate : translateParams(labels.addSkill)
+			}}</label>
+			<div class="row">
+				<div class="col col-9">
+					<input #inputSkill type="text" id="skillToSave" name="skillToSave" class="form-control" />
+				</div>
+				<div class="col col-2">
+					<button (click)="addSkill()" class="ml-1">
+						<span class="fa fa-plus"></span>
+					</button>
+				</div>
+			</div>
+
+			<hr />
+			<ng-container *ngFor="let skill of skills">
+				<div class="mt-1">
+					{{ skill }}
+					<button
+						(click)="removeSkill(skill)"
+						class="ml-1"
+						[title]="translateKey(labels.delSkill) | translate : translateParams(labels.delSkill)"
+					>
+						<span class="fa fa-trash"></span>
+					</button>
+				</div>
+			</ng-container>
+		</div>
+	</form>
+</div>

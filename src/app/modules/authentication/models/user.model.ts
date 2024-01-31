@@ -22,6 +22,10 @@ export class UserModel extends ApiModel {
 		return dateModel.toString();
 	}
 
+	public get completeName(): string {
+		return (this.name ? this.name + ' ' : '') + (this.surname ? this.surname : '');
+	}
+
 	/**
 	 * Getter username
 	 * @return {string}

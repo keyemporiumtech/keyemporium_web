@@ -1,0 +1,29 @@
+<div [style.margin-top]="'2rem'">
+	<div [style.margin]="'1rem'">
+		<button
+			id="DownloadButton"
+			class="btn btn-sm btn-success"
+			[style.margin-right]="'.5rem'"
+			(click)="download()"
+		>
+			DOWNLOAD Image
+		</button>
+		<button
+			id="SaveButton"
+			class="btn btn-sm btn-primary"
+			[style.margin-right]="'.5rem'"
+			(click)="saveJson()"
+		>
+			SAVE Json
+		</button>
+		<button
+			id="LoadButton"
+			class="btn btn-sm btn-primary"
+			[style.margin-right]="'.5rem'"
+			(click)="loadJson()"
+		>
+			LOAD Json
+		</button>
+	</div>
+	<textarea #textJson style="width: 50%; height: 270px; margin: 1rem"></textarea>
+</div>

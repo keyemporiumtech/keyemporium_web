@@ -205,4 +205,18 @@ export const authenticationList = {
 		check: 'oauthlogin/check',
 		login: 'oauthlogin/login',
 	},
+	activitydiagram: {
+		unique: 'activitydiagram/get',
+		paginate: 'activitydiagram/table',
+		save: 'activitydiagram/save',
+		edit: 'activitydiagram/edit',
+		delete: 'activitydiagram/delete',
+	},
+	userdiagram: {
+		unique: 'userdiagram/get',
+		paginate: 'userdiagram/table',
+		save: 'userdiagram/save',
+		edit: 'userdiagram/edit',
+		delete: 'userdiagram/delete',
+	},
 };

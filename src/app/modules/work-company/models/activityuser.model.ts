@@ -8,6 +8,7 @@ export class ActivityuserModel extends ApiModel {
 	private _activity: ActivityModel;
 	private _user: UserModel;
 	private _role: WorkroleModel;
+	private _father: UserModel;
 
 	/**
 	 * Getter cod
@@ -42,6 +43,14 @@ export class ActivityuserModel extends ApiModel {
 	}
 
 	/**
+	 * Getter father
+	 * @return {UserModel}
+	 */
+	public get father(): UserModel {
+		return this._father;
+	}
+
+	/**
 	 * Setter cod
 	 * @param {string} value
 	 */
@@ -71,5 +80,13 @@ export class ActivityuserModel extends ApiModel {
 	 */
 	public set role(value: WorkroleModel) {
 		this._role = value;
+	}
+
+	/**
+	 * Setter father
+	 * @param {UserModel} value
+	 */
+	public set father(value: UserModel) {
+		this._father = value;
 	}
 }

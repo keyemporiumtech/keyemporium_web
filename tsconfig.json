@@ -55,6 +55,10 @@
       "ngx-markdown": [
         "src/app/ngx-markdown",
         "src/app/ngx-markdown/*"
+      ],
+      "gojs-diagram": [
+        "src/app/gojs-diagram",
+        "src/app/gojs-diagram/*"
       ]
     }
   },

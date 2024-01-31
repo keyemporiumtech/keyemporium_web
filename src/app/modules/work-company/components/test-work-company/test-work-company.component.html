@@ -1,0 +1,79 @@
+<div class="container-fluid">
+	<h4>Modulo work company</h4>
+	<div class="row">
+		<div class="col col-12">
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="clickView('ACTIVITY-ORG-TREE')"
+				>Activity Tree Diagram</a
+			>
+			<span class="m-2">|</span>
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="clickView('CU-SEQUENCE')"
+				>CU Sequence Diagram</a
+			>
+			<span class="m-2">|</span>
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="clickView('TASK-GANTT')"
+				>Task Gantt Diagram</a
+			>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-12">
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="clickView('ACTIVITY-ORG-TREE-MAKER')"
+				>Activity Tree Maker</a
+			>
+			<span class="m-2">|</span>
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="clickView('CU-SEQUENCE')"
+				>CU Sequence Diagram</a
+			>
+			<span class="m-2">|</span>
+			<a class="m-2 btn btn-sm btn-danger text-white" (click)="clickView('TASK-GANTT')"
+				>Task Gantt Diagram</a
+			>
+		</div>
+	</div>
+
+	<div *ngIf="tmpView && ready" class="mt-3 p-2" style="border: 1px #000 solid">
+		<div>
+			<h5>Json Diagrams</h5>
+			<hr />
+		</div>
+		<div *ngFor="let diagram of list">
+			<a (click)="set(tmpView, diagram)">{{ diagram.title }}</a>
+		</div>
+		<div>
+			<a (click)="setExample(tmpView)">Example</a>
+		</div>
+	</div>
+
+	<div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
+		<div class="col col-12 p-2">
+			<a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
+			<wiki-test-activity-tree-diagram
+				*ngIf="view === 'ACTIVITY-ORG-TREE'"
+				[piva]="piva"
+				[id_diagram]="idDiagram"
+				(saveJsonEmit)="onJsonSave($event)"
+			></wiki-test-activity-tree-diagram>
+			<wiki-test-cu-sequence-diagram
+				*ngIf="view === 'CU-SEQUENCE'"
+				[piva]="piva"
+				[id_diagram]="idDiagram"
+				[cod]="codCu"
+				(saveJsonEmit)="onJsonSave($event)"
+			></wiki-test-cu-sequence-diagram>
+			<wiki-test-task-gantt-diagram
+				*ngIf="view === 'TASK-GANTT'"
+				[piva]="piva"
+				[id_diagram]="idDiagram"
+				[cod]="codProject"
+				(saveJsonEmit)="onJsonSave($event)"
+			></wiki-test-task-gantt-diagram>
+			<!--MAKERS-->
+			<wiki-test-activity-tree-maker
+				*ngIf="view === 'ACTIVITY-ORG-TREE-MAKER'"
+				[piva]="piva"
+				[id_diagram]="idDiagram"
+				(saveJsonEmit)="onJsonSave($event)"
+			></wiki-test-activity-tree-maker>
+		</div>
+	</div>
+</div>

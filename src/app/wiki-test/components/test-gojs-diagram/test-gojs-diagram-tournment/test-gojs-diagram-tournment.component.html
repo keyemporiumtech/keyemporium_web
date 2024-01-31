@@ -1,0 +1,75 @@
+<h4>Tournment Diagram</h4>
+
+<div class="p-1">
+	<button
+		id="DefaultButton"
+		class="btn btn-sm btn-primary"
+		[style.margin-right]="'.5rem'"
+		(click)="clickDefault()"
+		ddcTooltip
+		[tooltip]="defaultTitle"
+	>
+		Default
+	</button>
+	<button
+		id="RandomButton"
+		class="btn btn-sm btn-primary"
+		[style.margin-right]="'.5rem'"
+		(click)="clickRandom()"
+		ddcTooltip
+		[tooltip]="randomTitle"
+	>
+		Random
+	</button>
+	<button
+		id="DynamicButton"
+		class="btn btn-sm btn-primary"
+		[style.margin-right]="'.5rem'"
+		(click)="clickDynamic()"
+		ddcTooltip
+		[tooltip]="dynamicTitle"
+	>
+		Dynamic
+	</button>
+	<button
+		id="StyleButton"
+		class="btn btn-sm btn-danger"
+		[style.margin-right]="'.5rem'"
+		(click)="clickStyle()"
+		ddcTooltip
+		[tooltip]="styleTitle"
+	>
+		Change Style
+	</button>
+	<button
+		id="StyleLevelButton"
+		class="btn btn-sm btn-danger"
+		[style.margin-right]="'.5rem'"
+		(click)="clickStyleLevel()"
+		ddcTooltip
+		[tooltip]="styleLevelTitle"
+	>
+		Change Style for Level
+	</button>
+</div>
+
+<gojs-cmp-tournment
+	#tournmentCmp
+	[diagramModel]="diagramModel"
+	[diagramProperties]="diagramProperties"
+	[divId]="divId"
+	(onDiagram)="buildDiagram($event)"
+	[templateBody]="templateBody"
+	[templateFooter]="templateFooter"
+></gojs-cmp-tournment>
+
+<ng-template #plusTemplateBody>
+	{{ dataShow | json }}
+</ng-template>
+
+<ng-template #asteriskTemplateBody> <strong>Nome:</strong>{{ dataShow.name }} </ng-template>
+<ng-template #asteriskTemplateFooter>
+	<button class="btn btn-primary">Example</button>
+</ng-template>
+
+<wiki-gojs-diagram-common-btn [cmpDiagram]="tournmentCmp"></wiki-gojs-diagram-common-btn>

@@ -7,7 +7,7 @@ import { EnumFormType } from '../../../../shared/enums/form/form-type.enum';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { PasswordService } from '../../services/password.service';
 import { PasswordValidator } from '../../validators/password.validator';
-import { RequestUtility } from '../../../../rest';
+import { RequestUtility } from '@ddc/rest';
 
 @Component({
 	selector: 'ddc-init-input-password-async',

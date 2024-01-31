@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BaseLoadingModel } from '../models/base-loading.model';
 import { ApplicationLoggerService } from '../../../../logger/services/application-logger.service';
 
@@ -8,23 +8,25 @@ import { ApplicationLoggerService } from '../../../../logger/services/applicatio
 	styleUrls: ['./loading-spinner.component.scss'],
 })
 export class LoadingSpinnerComponent extends BaseLoadingModel {
+	@ViewChild('el') el: ElementRef;
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}
 
-	selectors(): any[] {
-		const array: any[] = [];
-		const spinner = document.querySelector('.lds-spinner');
+	setSelectors(): void {
+		// const spinner = document.querySelector('.lds-spinner');
+		this.selectorsLoading.length = 0;
+		const spinner = this.el.nativeElement;
 		const numElements = spinner.querySelectorAll('div').length;
 		for (let i = 0; i < numElements; i++) {
-			array.push(spinner.querySelectorAll('div')[i]);
+			this.selectorsLoading.push(spinner.querySelectorAll('div')[i]);
 		}
-
-		return array;
 	}
 
 	ngOnInitForChildren() {}
-	ngAfterViewInitForChildren() {}
+	ngAfterViewInitForChildren() {
+		super.ngAfterViewInitForChildren();
+	}
 	ngOnDestroyForChildren() {}
 	getClassName(): string {
 		return 'LoadingSpinnerComponent';

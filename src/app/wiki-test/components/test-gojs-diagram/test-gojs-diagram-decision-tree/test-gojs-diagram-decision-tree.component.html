@@ -1,0 +1,41 @@
+<h4>Decision Tree Diagram</h4>
+<!--
+<div class="p-1">
+	<button
+		id="RandomButton"
+		class="btn btn-sm btn-primary"
+		[style.margin-right]="'.5rem'"
+		(click)="makeRandomTournment()"
+	>
+		Make Random
+	</button>
+	<button
+		id="DynamicButton"
+		class="btn btn-sm btn-primary"
+		[style.margin-right]="'.5rem'"
+		(click)="makeDynamicTournment()"
+	>
+		Make Dynamic
+	</button>
+</div>
+-->
+<gojs-cmp-decision-tree
+	#decisionTreeCmp
+	[diagramModel]="diagramModel"
+	[diagramProperties]="diagramProperties"
+	[divId]="divId"
+	(onDiagram)="buildDiagram($event)"
+	[templateBody]="templateBody"
+	[templateFooter]="templateFooter"
+></gojs-cmp-decision-tree>
+
+<ng-template #plusTemplateBody>
+	{{ dataShow | json }}
+</ng-template>
+
+<ng-template #asteriskTemplateBody> <strong>Nome:</strong>{{ dataShow.name }} </ng-template>
+<ng-template #asteriskTemplateFooter>
+	<button class="btn btn-primary">Example</button>
+</ng-template>
+
+<wiki-gojs-diagram-common-btn [cmpDiagram]="decisionTreeCmp"></wiki-gojs-diagram-common-btn>

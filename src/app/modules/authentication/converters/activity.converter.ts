@@ -1,13 +1,13 @@
-import { BaseApiConverter } from '../../api/cakeutils/base/base-api.converter';
-import { ActivityDTO } from '../dtos/activity.dto';
-import { ActivityModel } from '../models/activity.model';
-import { TypologicalModel } from '../../api/cakeutils-be/models/typological.model';
+import { TypeConverter } from '@ddc/kit';
 import {
 	TypologicalConverter,
 	TypologicalUtilConverter,
 } from '../../api/cakeutils-be/converters/typological.converter';
-import { TypeConverter } from '@ddc/kit';
+import { TypologicalModel } from '../../api/cakeutils-be/models/typological.model';
+import { BaseApiConverter } from '../../api/cakeutils/base/base-api.converter';
+import { ActivityDTO } from '../dtos/activity.dto';
 import { EnumActivityType } from '../enums/activity-type.enum';
+import { ActivityModel } from '../models/activity.model';
 
 export class ActivityConverter extends BaseApiConverter<ActivityModel, ActivityDTO> {
 	private tpactivityEnumConverter = new TypeConverter<string, EnumActivityType>();
@@ -81,14 +81,14 @@ export class ActivityConverter extends BaseApiConverter<ActivityModel, ActivityD
 		const model = new ActivityModel();
 		model.tpactivity = TypologicalUtilConverter.toModel();
 		model.tpcat = TypologicalUtilConverter.toModel();
-		model.parent = ActivityUtilConverter.toModel();
+		// model.parent = ActivityUtilConverter.toModel();
 		return model;
 	}
 	public getEmptyDto(): ActivityDTO {
 		const dto = new ActivityDTO();
 		dto.tpactivity_fk = TypologicalUtilConverter.toDto();
 		dto.tpcat_fk = TypologicalUtilConverter.toDto();
-		dto.parent_fk = ActivityUtilConverter.toDto();
+		// dto.parent_fk = ActivityUtilConverter.toDto();
 		return dto;
 	}
 }

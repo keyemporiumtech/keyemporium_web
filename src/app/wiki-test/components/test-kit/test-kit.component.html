@@ -19,6 +19,8 @@
 			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-QUILL-EDITOR')"
 				>Modulo Quill Editor</a
 			>
+			<span class="ml-2">|</span>
+			<a class="ml-2 btn btn-sm btn-warning" (click)="set('KIT-CHATBOT')">Modulo Chatbot</a>
 		</div>
 	</div>
 
@@ -32,6 +34,7 @@
 			<wiki-test-kit-tree-html *ngIf="view === 'KIT-TREE-HTML'"></wiki-test-kit-tree-html>
 			<wiki-test-kit-qrcode *ngIf="view === 'KIT-QRCODE'"></wiki-test-kit-qrcode>
 			<wiki-test-kit-quill-editor *ngIf="view === 'KIT-QUILL-EDITOR'"></wiki-test-kit-quill-editor>
+			<wiki-test-kit-chatbot *ngIf="view === 'KIT-CHATBOT'"></wiki-test-kit-chatbot>
 		</div>
 	</div>
 

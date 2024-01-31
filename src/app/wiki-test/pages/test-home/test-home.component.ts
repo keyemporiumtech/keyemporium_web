@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApplicationStorageService } from '@ddc/kit';
+import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
+import { ApplicationLoggerService, ApplicationStorageService, BasePageComponent } from '@ddc/kit';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -8,7 +8,7 @@ import { environment } from '../../../../environments/environment';
 	templateUrl: './test-home.component.html',
 	styleUrls: ['./test-home.component.scss'],
 })
-export class TestHomeComponent implements OnInit {
+export class TestHomeComponent extends BasePageComponent {
 	timezoneServer: string;
 	timezoneServerName: string;
 	languageCod: string;
@@ -19,7 +19,13 @@ export class TestHomeComponent implements OnInit {
 	nationCod: string;
 	nationName: string;
 	appTitle: string;
-	constructor(private applicationStorage: ApplicationStorageService, private router: Router) {
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		router: Router,
+		activatedRoute: ActivatedRoute,
+		private applicationStorage: ApplicationStorageService,
+	) {
+		super(applicationLogger, router, activatedRoute);
 		this.timezoneServer = localStorage.getItem('timezoneServer');
 		this.timezoneServerName = localStorage.getItem('timezoneNameServer');
 		this.languageCod = this.applicationStorage.language.get();
@@ -32,7 +38,15 @@ export class TestHomeComponent implements OnInit {
 		this.appTitle = environment.appName;
 	}
 
-	ngOnInit() {}
+	manageDataParams(data: Data) {}
+	manageRouteParams(data: ParamMap) {}
+	manageQueryParams(data: ParamMap) {}
+	ngOnInitForChildren() {}
+	ngAfterViewInitForChildren() {}
+	ngOnDestroyForChildren() {}
+	getClassName(): string {
+		return 'TestHomeComponent';
+	}
 
 	home() {
 		this.router.navigate(environment.url.home);

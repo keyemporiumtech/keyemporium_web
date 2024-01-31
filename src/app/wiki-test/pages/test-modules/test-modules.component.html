@@ -44,6 +44,13 @@
 	<!---->
 	<div class="row mt-2">
 		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('WORK_COMPANY')">work_company</a>
+		</div>
+	</div>
+
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
 			<a class="btn btn-sm btn-danger text-white" (click)="go('VALIDATOR_IBAN')">validator_iban</a>
 		</div>
 	</div>
@@ -79,6 +86,7 @@
 	<wiki-test-communication *ngIf="view === 'COMMUNICATION'"></wiki-test-communication>
 	<wiki-test-authentication *ngIf="view === 'AUTHENTICATION'"></wiki-test-authentication>
 	<wiki-test-localesystem *ngIf="view === 'LOCALESYSTEM'"></wiki-test-localesystem>
+	<wiki-test-work-company *ngIf="view === 'WORK_COMPANY'"></wiki-test-work-company>
 	<wiki-test-validator-iban *ngIf="view === 'VALIDATOR_IBAN'"></wiki-test-validator-iban>
 	<wiki-test-validator-creditcard
 		*ngIf="view === 'VALIDATOR_CREDITCARD'"

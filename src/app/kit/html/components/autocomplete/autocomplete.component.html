@@ -23,6 +23,7 @@
 	<div
 		*ngFor="let item of list"
 		class="item"
+		[style.cursor]="'pointer'"
 		[ngClass]="item.cssClass"
 		[ngStyle]="item.cssStyle"
 		[innerHTML]="translateKey(item.text) | translate : translateParams(item.text) | escapehtml"

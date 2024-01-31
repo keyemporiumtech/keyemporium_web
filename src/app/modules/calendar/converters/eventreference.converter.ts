@@ -13,7 +13,7 @@ import {
 import { TypologicalModel } from '../../api/cakeutils-be/models/typological.model';
 import { EventConverter, EventUtilConverter } from './event.converter';
 import { EventModel } from '../models/event.model';
-import { TypeConverter } from '../../../kit';
+import { TypeConverter } from '@ddc/kit';
 import { EnumContactreferenceType } from '../../authentication/enums/contactreference-type.enum';
 
 export class EventreferenceConverter extends BaseApiConverter<

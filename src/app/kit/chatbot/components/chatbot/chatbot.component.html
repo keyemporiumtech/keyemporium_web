@@ -1,0 +1,86 @@
+<button
+	class="chatbot-toggler"
+	[style.background]="toggleBackground ? toggleBackground : themeColor"
+	(click)="openClose()"
+>
+	<img *ngIf="chatbotImage" [src]="chatbotImage" [style.width]="'inherit'" />
+	<span
+		*ngIf="chatbotIcon && !chatbotImage"
+		class="fa fa-{{ chatbotIcon }}"
+		[style.color]="toggleText ? toggleText : chatbotText"
+	></span>
+</button>
+<div *ngIf="showChatbot" class="show-chatbot">
+	<div class="chatbot">
+		<header [style.background]="themeColor" [style.color]="chatbotText">
+			<h2>{{ name }}</h2>
+			<span class="fa fa-times" [style.color]="chatbotText" (click)="openClose()"></span>
+		</header>
+		<ul class="chatbox" [style.background]="chatbotBackground">
+			<ng-container *ngFor="let message of messages">
+				<li *ngIf="message.type === 'IN'" class="chat incoming">
+					<img *ngIf="chatbotImage" [src]="chatbotImage" [style.width]="'inherit'" />
+					<span
+						*ngIf="chatbotIcon && !chatbotImage"
+						class="fa fa-{{ chatbotIcon }}"
+						[style.color]="chatbotText"
+						[style.background]="themeColor"
+					></span>
+					<p
+						[style.color]="textStyle.chbCol"
+						[style.background]="textStyle.chbBkg"
+						[innerHTML]="message.value | escapehtml"
+					></p>
+				</li>
+				<li *ngIf="message.type === 'OUT'" class="chat outgoing">
+					<p
+						[style.color]="textStyle.reqCol"
+						[style.background]="textStyle.reqBkg"
+						[innerHTML]="message.value | escapehtml"
+					></p>
+				</li>
+				<li *ngIf="message.type === 'ERROR'" class="chat error">
+					<img *ngIf="chatbotImage" [src]="chatbotImage" [style.width]="'inherit'" />
+					<span
+						*ngIf="chatbotIcon && !chatbotImage"
+						class="fa fa-{{ chatbotIcon }}"
+						[style.color]="chatbotText"
+						[style.background]="themeColor"
+					></span>
+					<p
+						[style.color]="textStyle.errCol"
+						[style.background]="textStyle.errBkg"
+						[innerHTML]="message.value | escapehtml"
+					></p>
+				</li>
+			</ng-container>
+			<li *ngIf="templateResults" [style.display]="'unset'">
+				<ng-container *ngTemplateOutlet="templateResults"></ng-container>
+			</li>
+			<li *ngIf="showChatLoading" class="chat incoming" [style.margin-left]="'40%'">
+				<ddc-init-generic-loading
+					[color]="textStyle.chbBkg"
+					[typeCss]="typeLoading"
+				></ddc-init-generic-loading>
+			</li>
+		</ul>
+		<div class="chat-input">
+			<textarea
+				#textInput
+				placeholder="{{
+					translateKey(placeholderText) | translate : translateParams(placeholderText)
+				}}"
+				spellcheck="false"
+				(keydown)="manageKeydownTextarea($event)"
+				(keyup)="manageKeyupTextarea($event)"
+				required
+			></textarea>
+			<span
+				id="send-btn"
+				class="fa fa-angle-double-right"
+				[style.color]="themeColor"
+				(click)="sendRequest()"
+			></span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,71 @@
+<ng-container *ngIf="diagramModel">
+	<div *ngIf="labels.flagShowJson || labels.flagSaveJson">
+		<button
+			*ngIf="labels.flagShowJson"
+			class="btn mr-1 mb-2"
+			[ngClass]="labels.showJsonBtnClass"
+			[ngStyle]="labels.showJsonBtnStyle"
+			(click)="showJson()"
+		>
+			{{ translateKey(labels.showJson) | translate : translateParams(labels.showJson) }}
+		</button>
+		<button
+			*ngIf="labels.flagSaveJson"
+			class="btn mr-1 mb-2"
+			[ngClass]="labels.saveJsonBtnClass"
+			[ngStyle]="labels.saveJsonBtnStyle"
+			(click)="saveJson()"
+		>
+			{{ translateKey(labels.saveJson) | translate : translateParams(labels.saveJson) }}
+		</button>
+	</div>
+	<gojs-cmp-gantt
+		#diagramCmp
+		[diagramModel]="diagramModel"
+		[diagramProperties]="diagramProperties"
+		[divId]="divId"
+		(onDiagram)="buildDiagram($event)"
+		[templateBody]="templateBody"
+		[templateFooter]="templateFooter"
+	></gojs-cmp-gantt>
+
+	<ng-template #templateJson>
+		<textarea [style.width]="'100%'" [style.height]="'70vh'" disabled="true">
+      {{ diagramCmp.getJsonString() }}
+    </textarea>
+	</ng-template>
+	<ng-template #templateSaveJson>
+		<ddc-init-json-save-form
+			#frmJsonCmp
+			(confirmEmit)="confirmJson($event)"
+		></ddc-init-json-save-form>
+	</ng-template>
+	<ng-template #templateMessage>
+		<div *ngFor="let message of internalMessages">
+			{{ message }}
+		</div>
+	</ng-template>
+	<ng-template #templateForm>
+		<!--
+		<ddc-init-activity-tree-form
+			#frmCmp
+			[modelIn]="model"
+			[id_activity]="id_activity"
+			[piva]="piva"
+			[list]="list"
+			(saveEmit)="onSaveForm($event)"
+		></ddc-init-activity-tree-form>
+    -->
+	</ng-template>
+	<ng-template #templateButtons>
+		<!--
+		<button
+			class="btn btn-sm btn-primary"
+			[disabled]="!frmCmp || !frmCmp.form || !frmCmp.form.valid"
+			(click)="frmCmp.save()"
+		>
+			{{ 'APP.BUTTON.SAVE' | translate }}
+		</button>
+    -->
+	</ng-template>
+</ng-container>

@@ -1,0 +1,50 @@
+<div *ngIf="imageUrl" [ngStyle]="getStylePosition()">
+	<img [attr.src]="imageUrl" [ngClass]="imageClass" [ngStyle]="imageStyle" />
+</div>
+
+<div *ngIf="!imageUrl" [ngStyle]="getStylePosition()">
+	<ddc-init-loading-circle
+		*ngIf="typeCss === typeCssLoader.CIRCLE"
+		[color]="color"
+	></ddc-init-loading-circle>
+	<ddc-init-loading-dual-ring
+		*ngIf="typeCss === typeCssLoader.DUAL_RING"
+		[color]="color"
+	></ddc-init-loading-dual-ring>
+	<ddc-init-loading-fb
+		*ngIf="typeCss === typeCssLoader.FACEBOOK"
+		[color]="color"
+	></ddc-init-loading-fb>
+	<ddc-init-loading-heart
+		*ngIf="typeCss === typeCssLoader.HEART"
+		[color]="color"
+	></ddc-init-loading-heart>
+	<ddc-init-loading-ring
+		*ngIf="typeCss === typeCssLoader.RING"
+		[color]="color"
+	></ddc-init-loading-ring>
+	<ddc-init-loading-default
+		*ngIf="typeCss === typeCssLoader.DEFAULT"
+		[color]="color"
+	></ddc-init-loading-default>
+	<ddc-init-loading-ellipsis
+		*ngIf="typeCss === typeCssLoader.ELLIPSIS"
+		[color]="color"
+	></ddc-init-loading-ellipsis>
+	<ddc-init-loading-grid
+		*ngIf="typeCss === typeCssLoader.GRID"
+		[color]="color"
+	></ddc-init-loading-grid>
+	<ddc-init-loading-hourglass
+		*ngIf="typeCss === typeCssLoader.HOURGLASS"
+		[color]="color"
+	></ddc-init-loading-hourglass>
+	<ddc-init-loading-ripple
+		*ngIf="typeCss === typeCssLoader.RIPPLE"
+		[color]="color"
+	></ddc-init-loading-ripple>
+	<ddc-init-loading-spinner
+		*ngIf="typeCss === typeCssLoader.SPINNER"
+		[color]="color"
+	></ddc-init-loading-spinner>
+</div>

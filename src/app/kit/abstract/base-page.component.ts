@@ -41,6 +41,7 @@ export abstract class BasePageComponent extends BaseComponent implements OnInit,
 		this.router = router;
 		this.activatedRoute = activatedRoute;
 		this.routeManager = new RouteNavigationUtility(this.router, this.activatedRoute);
+		this.applicationLogger.logMetaTag(this.log, this.activatedRoute);
 		this.tpRoute = tpRoute ? tpRoute : 'static';
 	}
 

@@ -24,6 +24,7 @@ import { AuthenticationPermissionsDirective } from './directives/authentication-
 import { ActivityService } from './services/activity.service';
 import { ActivityaddressService } from './services/activityaddress.service';
 import { ActivityattachmentService } from './services/activityattachment.service';
+import { ActivitydiagramService } from './services/activitydiagram.service';
 import { ActivityprofileService } from './services/activityprofile.service';
 import { ActivityreferenceService } from './services/activityreference.service';
 import { ActivityrelationService } from './services/activityrelation.service';
@@ -39,6 +40,7 @@ import { ProfilepermissionService } from './services/profilepermission.service';
 import { UserService } from './services/user.service';
 import { UseraddressService } from './services/useraddress.service';
 import { UserattachmentService } from './services/userattachment.service';
+import { UserdiagramService } from './services/userdiagram.service';
 import { UseroauthsocialService } from './services/useroauthsocial.service';
 import { UserprofileService } from './services/userprofile.service';
 import { UserreferenceService } from './services/userreference.service';
@@ -119,6 +121,8 @@ export class AuthenticationModule {
 				ActivityrelationService,
 				ActivityrelationpermissionService,
 				Authentication2faService,
+				ActivitydiagramService,
+				UserdiagramService,
 			],
 		};
 	}

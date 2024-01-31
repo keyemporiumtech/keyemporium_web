@@ -1,5 +1,29 @@
 # CHANGELOG KIT
 
+## 3.0.0 - XX/09/2023
+
+> Versione che
+
+### changes
+
+- `[feature]` **asbtract**: Aggiunta la classe base `BaseModalComponent` da estendere in qualsiasi componente di modale
+- `[feature]` **html**: Aggiunto il cursor pointer sulla lista del componente `AutocompleteComponent`
+- `[feature]` **html**: Aggiunta la direttiva `ddcTooltip` e il componente `TooltipComponent`
+- `[feature]` **config**: Aggiunto il metodo `shuffle` in `ArrayUtility` per mischiare un array
+- `[feature]` **html**: Creazione del componente `GenericLoadingComponent` per l'uso del loading come componente senza patina a tutto schermo
+- `[feature]` **html**: Refactoring di `BaseLoadingModel` per consentire la visualizzazione di più loading dello stesso tipo in una pagina
+- `[feature]` **chatbot**: Aggiunta del modulo `Chatbot` e relativo componente per la creazione di chatbot
+  - servizi per le chiamate a **StackOverflow**
+- `[feature]` **config**: Aggiunta l'utility `JsUtility` con la funzione statica `moveCursor` per spostare un cursore all'interno di un elemento
+- `[feature]` **config**: Aggiunta la funzione `objectParamsToUrl` per convertire un oggetto in query string
+- `[feature]` **seo**: Aggiunta del modulo `SeoModule` per la gestione dei tag meta
+- `[feature]` **asbtract**: Aggiunta la classe base `BaseIdModel` che contiene la gestione dell'id per ogni classe che la estende
+- `[update]` refactoring con l'integrazione della classe base `BaseIdModel`
+  - Aggiunta l'estensione in `BaseClassModel`
+- `[feature]` **logger**: Aggiunta l'inject del servizio `MetaTagService` e del metodo `logMetaTag` per l'abilitazione del cambio dei tag meta in base al routing current url e alla SEO_LIST presente nel servizio
+- `[feature]` **asbtract**: Aggiunta in `BasePageComponent` l'invocazione di `applicationLogger.logMetaTag` per abilitare i cambiamenti dei tag meta sui componenti di pagina
+- `[fix]` **storage**: Rimosso import inutilizzato in `StorageModule`
+
 ## 2.6.0 - 25/08/2023
 
 > Versione che aggiunge la gestione di activity loggata su profilo utente e il componente `progress-circle.component`

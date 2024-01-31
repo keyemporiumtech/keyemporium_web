@@ -1,0 +1,22 @@
+<h4>Sequence Diagram</h4>
+
+<gojs-cmp-sequence
+	#sequenceCmp
+	[diagramModel]="diagramModel"
+	[diagramProperties]="diagramProperties"
+	[divId]="divId"
+	(onDiagram)="buildDiagram($event)"
+	[templateBody]="templateBody"
+	[templateFooter]="templateFooter"
+></gojs-cmp-sequence>
+
+<ng-template #plusTemplateBody>
+	{{ dataShow | json }}
+</ng-template>
+
+<ng-template #asteriskTemplateBody> <strong>Nome:</strong>{{ dataShow.name }} </ng-template>
+<ng-template #asteriskTemplateFooter>
+	<button class="btn btn-primary">Example</button>
+</ng-template>
+
+<wiki-gojs-diagram-common-btn [cmpDiagram]="sequenceCmp"></wiki-gojs-diagram-common-btn>

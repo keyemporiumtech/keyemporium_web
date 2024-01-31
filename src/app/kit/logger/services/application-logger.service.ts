@@ -1,8 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { EnvironmentLoaderService } from '../../config/services/environment-loader.service';
 import { LoggerWriter } from './logger.service';
 import { MessageModel } from '../../message/models/message.model';
 import { FormGroup } from '@angular/forms';
+import { MetaTagService } from '../../seo/services/meta-tag.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root',
@@ -10,7 +12,10 @@ import { FormGroup } from '@angular/forms';
 export class ApplicationLoggerService {
 	private _environment: any;
 
-	constructor(private _environmentLoader: EnvironmentLoaderService) {
+	constructor(
+		private _environmentLoader: EnvironmentLoaderService,
+		private metaTagService: MetaTagService,
+	) {
 		// console.error('ApplicationLoggerService: ' + Math.random());
 		this.environment = this._environmentLoader.getEnvironment();
 		// this.environment = environment;
@@ -106,6 +111,11 @@ export class ApplicationLoggerService {
 		if (this.environment.enable.debugMode) {
 			log.info('Nome del Timezone server settato in localStorage ' + key + '=' + timezoneName);
 		}
+	}
+
+	// META TAG
+	logMetaTag(log: LoggerWriter, activatedRoute: ActivatedRoute) {
+		this.metaTagService.setTagsForPage(activatedRoute, log);
 	}
 
 	/**

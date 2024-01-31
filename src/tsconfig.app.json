@@ -9,8 +9,8 @@
     "polyfills.ts"
   ],
   "include": [
-    "**/*.d.ts",
-    "*.ts"
+    "src/**/*.d.ts",
+    "src/**/*.ts"
   ],
   "exclude": [
     "test.ts",

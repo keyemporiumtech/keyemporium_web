@@ -1,0 +1,57 @@
+<div>
+	<div
+		style="width: 100%; height: 100vh; display: flex; justify-content: space-between"
+		[style.border]="'solid 1px ' + borderColor"
+	>
+		<div
+			id="{{ divPaletteId }}"
+			[style.width]="'10%'"
+			[style.height]="'80vh'"
+			[style.margin-right]="'2px'"
+			[style.background-color]="backgroundColor"
+		></div>
+		<!--<div id="myDiagramDiv" style="flex-grow: 1; height: 750px; background-color: #282c34"></div>-->
+		<div
+			class="left"
+			id="{{ divId }}"
+			[style.width]="'100%'"
+			[style.height]="'80vh'"
+			[style.flex-grow]="'1'"
+			[style.background-color]="backgroundColor"
+		></div>
+	</div>
+</div>
+
+<gojs-cmp-gojs-modal-operations
+	#modalShared
+	*ngIf="modalProperties"
+	[classModal]="modalProperties.classModal"
+	[classAnimation]="modalProperties.classAnimation"
+	[classDialog]="modalProperties.classDialog"
+	[classDimension]="modalProperties.classDimension"
+	[classContent]="modalProperties.classContent"
+	[classHeader]="modalProperties.classHeader"
+	[classTitle]="modalProperties.classTitle"
+	[title]="modalProperties.title"
+	[classBody]="modalProperties.classBody"
+	[classText]="modalProperties.classText"
+	[text]="modalProperties.text"
+	[classFooter]="modalProperties.classFooter"
+	[flagButtonClose]="modalProperties.flagButtonClose"
+	[classButtonClose]="modalProperties.classButtonClose"
+	[textButtonClose]="modalProperties.textButtonClose"
+	[flagButtonOk]="modalProperties.flagButtonOk"
+	[classButtonOk]="modalProperties.classButtonOk"
+	[textButtonOk]="modalProperties.textButtonOk"
+	[scrollable]="modalProperties.scrollable"
+	[centered]="modalProperties.centered"
+	(ok)="onClickOk($event)"
+	(close)="onClickClose($event)"
+>
+	<ng-container *ngIf="templateBody" body>
+		<ng-template [ngTemplateOutlet]="templateBody"></ng-template>
+	</ng-container>
+	<ng-container *ngIf="templateFooter" footer>
+		<ng-template [ngTemplateOutlet]="templateFooter"></ng-template>
+	</ng-container>
+</gojs-cmp-gojs-modal-operations>

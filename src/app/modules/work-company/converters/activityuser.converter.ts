@@ -1,13 +1,13 @@
 import { BaseApiConverter } from '../../api/cakeutils/base/base-api.converter';
-import { ActivityuserDTO } from '../dtos/activityuser.dto';
-import { ActivityuserModel } from '../models/activityuser.model';
 import {
 	ActivityConverter,
 	ActivityUtilConverter,
 } from '../../authentication/converters/activity.converter';
 import { UserConverter, UserUtilConverter } from '../../authentication/converters/user.converter';
-import { UserModel } from '../../authentication/models/user.model';
 import { ActivityModel } from '../../authentication/models/activity.model';
+import { UserModel } from '../../authentication/models/user.model';
+import { ActivityuserDTO } from '../dtos/activityuser.dto';
+import { ActivityuserModel } from '../models/activityuser.model';
 import { WorkroleModel } from '../models/workrole.model';
 import { WorkroleConverter, WorkroleUtilConverter } from './workrole.converter';
 
@@ -37,6 +37,12 @@ export class ActivityuserConverter extends BaseApiConverter<ActivityuserModel, A
 			this.getPropertyForFk('role', 'role_fk', new WorkroleConverter()),
 			new WorkroleModel(),
 		);
+		this.convertForeignKeyToModel(
+			dto,
+			model,
+			this.getPropertyForFk('father', 'father_fk', new UserConverter()),
+			new UserModel(),
+		);
 		return model;
 	}
 	public convertToDto(model?: ActivityuserModel): ActivityuserDTO {
@@ -61,6 +67,11 @@ export class ActivityuserConverter extends BaseApiConverter<ActivityuserModel, A
 			model,
 			this.getPropertyForFk('role', 'role_fk', new WorkroleConverter()),
 		);
+		this.convertForeignKeyToDto(
+			dto,
+			model,
+			this.getPropertyForFk('father', 'father_fk', new UserConverter()),
+		);
 		return dto;
 	}
 	public getEmptyModel(): ActivityuserModel {
@@ -68,6 +79,7 @@ export class ActivityuserConverter extends BaseApiConverter<ActivityuserModel, A
 		model.activity = ActivityUtilConverter.toModel();
 		model.user = UserUtilConverter.toModel();
 		model.role = WorkroleUtilConverter.toModel();
+		model.father = UserUtilConverter.toModel();
 		return model;
 	}
 	public getEmptyDto(): ActivityuserDTO {
@@ -75,6 +87,7 @@ export class ActivityuserConverter extends BaseApiConverter<ActivityuserModel, A
 		dto.activity_fk = ActivityUtilConverter.toDto();
 		dto.user_fk = UserUtilConverter.toDto();
 		dto.role_fk = WorkroleUtilConverter.toDto();
+		dto.father_fk = UserUtilConverter.toDto();
 		return dto;
 	}
 }

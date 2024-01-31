@@ -18,9 +18,7 @@ export class LoadingGridComponent extends BaseLoadingModel {
 		return style;
 	}
 
-	selectors(): any[] {
-		return [];
-	}
+	setSelectors(): void {}
 
 	ngOnInitForChildren() {}
 	ngAfterViewInitForChildren() {}

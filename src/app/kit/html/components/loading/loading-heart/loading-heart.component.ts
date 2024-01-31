@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BaseLoadingModel } from '../models/base-loading.model';
 import { ApplicationLoggerService } from '../../../../logger/services/application-logger.service';
 
@@ -8,18 +8,23 @@ import { ApplicationLoggerService } from '../../../../logger/services/applicatio
 	styleUrls: ['./loading-heart.component.scss'],
 })
 export class LoadingHeartComponent extends BaseLoadingModel {
+	@ViewChild('el') el: ElementRef;
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}
 
-	selectors(): any[] {
-		const array: any[] = [];
-		array.push(document.querySelector('.lds-heart div'));
-		return array;
+	setSelectors(): void {
+		// const array: any[] = [];
+		// array.push(document.querySelector('.lds-heart div'));
+		this.selectorsLoading.length = 0;
+		const element = this.el.nativeElement;
+		this.selectorsLoading.push(element.querySelector('div'));
 	}
 
 	ngOnInitForChildren() {}
-	ngAfterViewInitForChildren() {}
+	ngAfterViewInitForChildren() {
+		super.ngAfterViewInitForChildren();
+	}
 	ngOnDestroyForChildren() {}
 	getClassName(): string {
 		return 'LoadingHeartComponent';
