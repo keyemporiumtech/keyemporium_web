@@ -71,6 +71,17 @@ export class ApiService extends BaseRestService {
 		// const status = res.headers.get("statuscod");
 		// const msg = res.headers.get("message");
 		if (status && +status.statusCod === EnumStatusCode.ERROR) {
+			if (this.environment.enable.apiLogError) {
+				console.error(
+					'[' + res.url + ']',
+					status.applicationMessage && status.applicationMessage.type.toString() !== ''
+						? status.applicationMessage.type
+						: EnumMessageType.WARNING,
+					status.responseCod,
+					status.applicationMessage ? status.applicationMessage.message : '',
+					status.exceptionMessage ? status.exceptionMessage.message : '',
+				);
+			}
 			if (responseManager && responseManager.fnError && responseManager.fnError.flag) {
 				responseManager.fnError.fn();
 			}

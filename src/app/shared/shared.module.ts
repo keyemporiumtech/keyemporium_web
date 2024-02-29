@@ -48,6 +48,7 @@ import { AccordionComponent } from './components/accordion/accordion.component';
 import { AccordionContainerComponent } from './components/accordion-container/accordion-container.component';
 import { GmapComponent } from './components/gmap/gmap.component';
 import { InputUrlComponent } from './form/input-url/input-url.component';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
 	declarations: [
@@ -95,7 +96,16 @@ import { InputUrlComponent } from './form/input-url/input-url.component';
 		GmapComponent,
 		InputUrlComponent,
 	],
-	imports: [CommonModule, TranslateModule, FormsModule, ReactiveFormsModule, KitModule, RestModule],
+	imports: [
+		CommonModule,
+		TranslateModule,
+		FormsModule,
+		ReactiveFormsModule,
+		RecaptchaModule,
+		RecaptchaFormsModule,
+		KitModule,
+		RestModule,
+	],
 	exports: [
 		MessageElementComponent,
 		MessagePageComponent,

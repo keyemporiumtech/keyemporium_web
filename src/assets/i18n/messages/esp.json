@@ -9,6 +9,14 @@
 			"QUESTION_SMS": "Introduce el código que te enviamos por sms"
 		},
 		"GENERIC_ERROR": "Ha ocurrido un error de servidor",
+    "GOOGLE_RECAPTCHA": {
+			"MISSING_INPUT_SECRET": "Falta el parámetro secret.",
+			"INVALID_INPUT_SECRET": "El parámetro secret no es válido o tiene un formato incorrecto.",
+			"MISSING_INPUT_RESPONSE": "Falta el parámetro de response.",
+			"INVALID_INPUT_RESPONSE": "El parámetro de response no es válido o tiene un formato incorrecto.",
+			"BAD_REQUEST": "La solicitud no es válida o tiene un formato incorrecto.",
+      "TIMEOUT_OR_DUPLICATE": "La respuesta ya no es válida: o es demasiado antigua o se ha utilizado anteriormente."
+		},
 		"NO_OPERATION": "Operación no exitosa",
 		"NO_RECORD": "Datos no presentes o entrada no válida",
 		"NO_RECORDS": "No hay elementos",

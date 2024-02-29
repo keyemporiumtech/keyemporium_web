@@ -83,6 +83,9 @@
 				"STREET": "Via/Piazza/Contrada",
 				"NUM": "Numero Civico"
 			},
+      "CAPTCHA": {
+        "NOT_ROBOT": "Non sono un robot"
+      },
 			"CONTACTREFERENCE": {
 				"DESCRIPTION": "Titolo del contatto",
 				"TYPE": "Tipo di contatto",

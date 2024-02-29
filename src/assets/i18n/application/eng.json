@@ -82,6 +82,16 @@
 				"STREET": "Street/Square",
 				"NUM": "Number"
 			},
+      "CAPTCHA": {
+        "NOT_ROBOT": "I'm not a robot"
+      },
+			"CONTACTREFERENCE": {
+				"DESCRIPTION": "Contact title",
+				"TYPE": "Contact type",
+				"TEL": "Prefix",
+				"SOCIAL": "Type of social media",
+				"VAL": "Contact"
+			},
 			"CREDITCARD": "Credit Card Number",
 			"EXPIRATION": "Expiration",
 			"IBAN": "IBAN",

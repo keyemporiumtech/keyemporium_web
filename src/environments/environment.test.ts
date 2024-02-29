@@ -116,6 +116,7 @@ export const environment = {
 		nations: true,
 		init: true,
 		cookie: true,
+		apiLogError: false,
 	},
 	logger: {
 		request: true,

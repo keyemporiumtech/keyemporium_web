@@ -1,0 +1,39 @@
+<h5>Componente recaptcha</h5>
+<div class="lead">
+	Componente per la gestione di un captcha da google.<br />
+
+	Parametri di Input: <br />
+	<ul>
+		<li>
+			field: <b>FormFieldModel</b> - <i>Necessario per memorizzazione dei valori e validazioni</i>
+		</li>
+		<li>keyClient: <b>string</b> - <i>Chiave necessaria per la generazione del token</i></li>
+		<li>
+			automaticVerify : <b>boolean</b> -
+			<i>Se impostato a true verifica automaticamente la validità del token generato</i>
+		</li>
+	</ul>
+
+	Parametri di Output: <br />
+	<ul>
+		<li>
+			verified: <b>EventEmitter boolean</b> - <i>Emette il risultato della verifica del token</i>
+		</li>
+	</ul>
+</div>
+
+<form [formGroup]="formCaptcha">
+	<label>Captcha con pulsante di validazione</label>
+	<div [style.width]="'20%'">
+		<ddc-init-input-recaptcha
+			#captcha1
+			[keyClient]="'6Ld5hX0pAAAAAI0GKl6cBgZ4RobIrLH8AXEK-5Sq'"
+			[field]="field1"
+			(verified)="verified1($event)"
+		></ddc-init-input-recaptcha>
+		<button class="btn btn-sm btn-primary" (click)="captcha1.verify()">Verifica</button>
+		<br />
+		KEY: {{ formCaptcha.get('captcha1').value }}<br />
+		VERIFICA: {{ verify1 }}<br />
+	</div>
+</form>

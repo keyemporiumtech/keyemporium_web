@@ -20,6 +20,7 @@ import { TranslationModule } from './translation/translation.module';
 import { TreeHtmlModule } from './tree-html/tree-html.module';
 import { ValidatorsModule } from './validators/validators.module';
 import { SeoModule } from './seo/seo.module';
+import { GRecaptchaModule } from './g-recaptcha/g-recaptcha.module';
 
 @NgModule({
 	declarations: [],
@@ -48,6 +49,7 @@ import { SeoModule } from './seo/seo.module';
 		QuillEditorModule.forRoot(),
 		ChatbotModule.forRoot(),
 		SeoModule.forRoot(),
+		GRecaptchaModule.forRoot(),
 	],
 	exports: [
 		ConfigModule,
@@ -68,6 +70,7 @@ import { SeoModule } from './seo/seo.module';
 		QuillEditorModule,
 		ChatbotModule,
 		SeoModule,
+		GRecaptchaModule,
 	],
 })
 export class KitModule {

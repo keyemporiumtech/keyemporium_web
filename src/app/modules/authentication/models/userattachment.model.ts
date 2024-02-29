@@ -6,7 +6,7 @@ import { EnumAttachmentType } from '../../resources/enums/attachment-type.enum';
 
 export class UserattachmentModel extends ApiModel {
 	private _cod: string;
-	private _flgprincipal: number; // boolean
+	private _flgprincipal: boolean;
 	private _user: UserModel;
 	private _attachment: AttachmentModel;
 	private _tpattachment: TypologicalModel;
@@ -25,9 +25,9 @@ export class UserattachmentModel extends ApiModel {
 
 	/**
 	 * Getter flgprincipal
-	 * @return {number}
+	 * @return {boolean}
 	 */
-	public get flgprincipal(): number {
+	public get flgprincipal(): boolean {
 		return this._flgprincipal;
 	}
 
@@ -81,9 +81,9 @@ export class UserattachmentModel extends ApiModel {
 
 	/**
 	 * Setter flgprincipal
-	 * @param {number} value
+	 * @param {boolean} value
 	 */
-	public set flgprincipal(value: number) {
+	public set flgprincipal(value: boolean) {
 		this._flgprincipal = value;
 	}
 

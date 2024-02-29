@@ -6,6 +6,10 @@
 
 ### changes
 
+- `[feature]` **g-recaptcha**: Aggiunta del modulo `GRecaptcha` e relativo componente per la gestione di google re-captcha
+- `[feature]` **tree-html**: Aggiunto il campo payload al `TreeHtmlModel` 
+- `[feature]` **config**: Modificati i metodi `sortAscByField` e `sortDescByField` in `ArrayUtility` per considerare anche l'ordinamento per DateModel
+- `[feature]` **timing**: Aggiunti i metodi `getAge` e `getAgeAtDate` in `DateUtility` per calcolare gli anni trascorsi da una data o tra due date
 - `[feature]` **asbtract**: Aggiunta la classe base `BaseModalComponent` da estendere in qualsiasi componente di modale
 - `[feature]` **html**: Aggiunto il cursor pointer sulla lista del componente `AutocompleteComponent`
 - `[feature]` **html**: Aggiunta la direttiva `ddcTooltip` e il componente `TooltipComponent`

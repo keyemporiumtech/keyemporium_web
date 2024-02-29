@@ -74,6 +74,8 @@ import { TestGojsDiagramTournmentComponent } from './components/test-gojs-diagra
 import { TestGojsDiagramDecisionTreeComponent } from './components/test-gojs-diagram/test-gojs-diagram-decision-tree/test-gojs-diagram-decision-tree.component';
 import { MetaTagService } from '../kit/seo/services/meta-tag.service';
 import { metaTags } from '../../environments/meta/meta-tag';
+import { TestKitRecaptchaComponent } from './components/test-kit/test-kit-recaptcha/test-kit-recaptcha.component';
+import { CaptchaModule } from '../modules/captcha/captcha.module';
 
 @NgModule({
 	declarations: [
@@ -132,6 +134,7 @@ import { metaTags } from '../../environments/meta/meta-tag';
 		TestGojsDiagramDoubleTreeComponent,
 		TestGojsDiagramTournmentComponent,
 		TestGojsDiagramDecisionTreeComponent,
+		TestKitRecaptchaComponent,
 	],
 	imports: [
 		CommonModule,
@@ -152,6 +155,7 @@ import { metaTags } from '../../environments/meta/meta-tag';
 		ValidatorIbanModule.forRoot(),
 		ValidatorCreditcardModule.forRoot(),
 		ValidatorPasswordModule.forRoot(),
+		CaptchaModule.forRoot(),
 	],
 })
 export class WikiTestModule {

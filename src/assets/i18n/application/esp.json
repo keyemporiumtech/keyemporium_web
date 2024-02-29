@@ -82,6 +82,16 @@
 				"STREET": "Calle/Plaza",
 				"NUM": "Número"
 			},
+      "CAPTCHA": {
+        "NOT_ROBOT": "No soy un robot"
+      },
+			"CONTACTREFERENCE": {
+				"DESCRIPTION": "Título del contacto",
+				"TYPE": "Tipo de Contacto",
+				"TEL": "Prefijo",
+				"SOCIAL": "tipo de redes sociales",
+				"VAL": "Contacto"
+			},
 			"CREDITCARD": "Número de Tarjeta de Crédito",
 			"EXPIRATION": "Vencimiento",
 			"IBAN": "IBAN",

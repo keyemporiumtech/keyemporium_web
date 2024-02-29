@@ -33,7 +33,7 @@
 	[ngClass]="cssAccordion"
 	[ngStyle]="styleAccordion"
 >
-	<div *ngIf="open" class="accordion-body" [ngClass]="cssContent" [ngStyle]="styleContent">
+	<div class="accordion-body" [ngClass]="cssContent" [ngStyle]="styleContent">
 		<ng-content select="[accordion-content]"></ng-content>
 	</div>
 </div>

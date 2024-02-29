@@ -51,6 +51,8 @@ export class ApplicationStorageService extends BaseService {
 	private _fileEmbed: ApplicationStorageModel;
 	// INIT load
 	private _activityPrincipal: ApplicationStorageModel;
+	// APP info
+	private _applicationInfo: ApplicationStorageModel;
 
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
@@ -88,6 +90,7 @@ export class ApplicationStorageService extends BaseService {
 		this.activityPrincipal = new ApplicationStorageModel('activityPrincipal');
 		this.memoLogin = new ApplicationStorageModel('memoLogin');
 		this.activityPIVA = new ApplicationStorageModel('activityPIVA');
+		this.applicationInfo = new ApplicationStorageModel('applicationInfo');
 	}
 
 	getClassName(): string {
@@ -649,5 +652,21 @@ export class ApplicationStorageService extends BaseService {
 	 */
 	public set activityPIVA(value: ApplicationStorageModel) {
 		this._activityPIVA = value;
+	}
+
+	/**
+	 * Getter applicationInfo
+	 * @return {ApplicationStorageModel}
+	 */
+	public get applicationInfo(): ApplicationStorageModel {
+		return this._applicationInfo;
+	}
+
+	/**
+	 * Setter applicationInfo
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set applicationInfo(value: ApplicationStorageModel) {
+		this._applicationInfo = value;
 	}
 }

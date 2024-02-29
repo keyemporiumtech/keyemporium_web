@@ -73,6 +73,13 @@
 		</div>
 	</div>
 
+	<!---->
+	<div class="row mt-2">
+		<div class="col col-12">
+			<a class="btn btn-sm btn-danger text-white" (click)="go('CAPTCHA')">captcha</a>
+		</div>
+	</div>
+
 	<hr />
 	<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
 </div>
@@ -94,6 +101,7 @@
 	<wiki-test-validator-password
 		*ngIf="view === 'VALIDATOR_PASSWORD'"
 	></wiki-test-validator-password>
+	<wiki-test-captcha *ngIf="view === 'CAPTCHA'"></wiki-test-captcha>
 	<hr />
 	<a class="btn btn-sm btn-dark text-white" (click)="back()">BACK</a>
 </div>

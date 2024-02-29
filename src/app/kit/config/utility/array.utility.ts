@@ -1,3 +1,5 @@
+import { DateModel } from '../../timing/models/date.model';
+
 export class ArrayUtility {
 	static sameByField(a: any[], b: any[], field: string): boolean {
 		for (let i = 0; i < a.length; i++) {
@@ -11,8 +13,18 @@ export class ArrayUtility {
 	static sortAscByField(items: any, field: string) {
 		return items.sort(function (a, b) {
 			if (a[field] && b[field]) {
-				const nameA = typeof a[field] === 'string' ? a[field].toUpperCase() : a[field]; // ignora maiuscole e minuscole
-				const nameB = typeof b[field] === 'string' ? b[field].toUpperCase() : b[field]; // ignora maiuscole e minuscole
+				const nameA =
+					typeof a[field] === 'string'
+						? a[field].toUpperCase()
+						: a[field] instanceof DateModel
+						? a[field].date
+						: a[field]; // ignora maiuscole e minuscole
+				const nameB =
+					typeof b[field] === 'string'
+						? b[field].toUpperCase()
+						: b[field] instanceof DateModel
+						? b[field].date
+						: b[field]; // ignora maiuscole e minuscole
 				if (nameA < nameB) {
 					return -1;
 				}
@@ -28,8 +40,18 @@ export class ArrayUtility {
 	static sortDescByField(items: any, field: string) {
 		return items.sort(function (a, b) {
 			if (a[field] && b[field]) {
-				const nameA = typeof a[field] === 'string' ? a[field].toUpperCase() : a[field]; // ignora maiuscole e minuscole
-				const nameB = typeof b[field] === 'string' ? b[field].toUpperCase() : b[field]; // ignora maiuscole e minuscole
+				const nameA =
+					typeof a[field] === 'string'
+						? a[field].toUpperCase()
+						: a[field] instanceof DateModel
+						? a[field].date
+						: a[field]; // ignora maiuscole e minuscole
+				const nameB =
+					typeof b[field] === 'string'
+						? b[field].toUpperCase()
+						: b[field] instanceof DateModel
+						? b[field].date
+						: b[field]; // ignora maiuscole e minuscole
 				if (nameA < nameB) {
 					return 1;
 				}

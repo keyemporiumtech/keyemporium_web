@@ -1,0 +1,50 @@
+<h4>Modulo GRecaptcha</h4>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseGRecaptchaEx1"
+	aria-expanded="false"
+	aria-controls="collapseGRecaptchaEx1"
+>
+	RecaptchaComponent
+</button>
+
+<div class="collapse" id="collapseGRecaptchaEx1">
+	<div class="mt-3"></div>
+
+	<h5>Uso del componente</h5>
+	<!-- NOT USED VERIFY FOR CORS PROBLEM
+	<ddc-init-recaptcha
+		[keyClient]="'6Ld5hX0pAAAAAI0GKl6cBgZ4RobIrLH8AXEK-5Sq'"
+		[keyServer]="'6Ld5hX0pAAAAANFmu3aBd25ul8Yr7YrXC7cRA9IE'"
+		(resolved)="onResolved1($event)"
+		(validation)="onValidation1($event)"
+	></ddc-init-recaptcha>
+  -->
+	<ddc-init-recaptcha
+		[keyClient]="'6Ld5hX0pAAAAAI0GKl6cBgZ4RobIrLH8AXEK-5Sq'"
+		(resolved)="onResolved1($event)"
+	></ddc-init-recaptcha>
+	<br />
+	TOKEN : {{ message1 }}<br />
+	<div *ngIf="response1">
+		<strong>RESPONSE: </strong><br />
+		ESITO: {{ response1.success }}<br />
+		DATA: {{ response1.challenge }} {{ response1.challengeModel.toString('DD/MM/YYYY HH:mm:ss')
+		}}<br />
+		HOSTNAME: {{ response1.hostname }}<br />
+		ERRORS:
+		<ul>
+			<li *ngFor="let error of response1.errors">{{ error }}</li>
+		</ul>
+		<br />
+		MESSAGES:
+		<ul>
+			<li *ngFor="let message of response1.messages">{{ message }}</li>
+		</ul>
+		<br />
+	</div>
+</div>

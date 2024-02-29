@@ -9,6 +9,14 @@
 			"QUESTION_SMS": "Geben Sie den Code ein, den wir Ihnen per SMS gesendet haben"
 		},
 		"GENERIC_ERROR": "Ein Serverfehler ist aufgetreten",
+    "GOOGLE_RECAPTCHA": {
+			"MISSING_INPUT_SECRET": "Der geheime Parameter fehlt.",
+			"INVALID_INPUT_SECRET": "Der geheime Parameter ist ungültig oder fehlerhaft.",
+			"MISSING_INPUT_RESPONSE": "Der Antwortparameter fehlt.",
+			"INVALID_INPUT_RESPONSE": "Der Antwortparameter ist ungültig oder fehlerhaft.",
+			"BAD_REQUEST": "Die Anfrage ist ungültig oder fehlerhaft.",
+      "TIMEOUT_OR_DUPLICATE": "Die Antwort ist nicht mehr gültig: Entweder ist sie zu alt oder wurde bereits verwendet."
+		},
 		"NO_OPERATION": "Vorgang nicht erfolgreich",
 		"NO_RECORD": "Daten nicht vorhanden oder ungültige Eingabe",
 		"NO_RECORDS": "Es sind keine Artikel vorhanden",

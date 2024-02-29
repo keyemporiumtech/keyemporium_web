@@ -260,7 +260,7 @@ export class ActivityService extends ApiService {
 			requestManager && requestManager.url
 				? requestManager.url
 				: this.environment.api.services + authenticationList.activity.tree;
-		return this.get(
+		return this.getList(
 			this.httpHeaders,
 			url,
 			body,
