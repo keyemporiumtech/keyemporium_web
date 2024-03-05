@@ -2,10 +2,18 @@
 	"APP": {
 		"I18N": "Español",
 		"COPYRIGHT": "&copy; DDC INIT",
+    "AUTH2FA": {
+      "APPLICATION_NOT_FOUND": "Solicitud no registrada en {{ appkeys }}.<br/>Contacte con el administrador del sistema y solicite el censo",
+      "USER_NOT_FOUND": "Usuario no registrado en {{ appkeys }}.<br/>Por favor regístrese antes de iniciar sesión nuevamente",
+      "USER_NOT_AUTH": "Usuario no autorizado por {{ appkeys }}",
+      "USER_NOT_AUTH_PAGE": "Usuario no autorizado para ver esta página",
+      "USE_CODE": "Utilice este código para confirmar la operación"
+    },
 		"BUTTON": {
 			"BACK": "Atrás",
 			"CANCEL": "Cancelar",
 			"CONFIRM": "Confirmar",
+      "DETAIL": "Detalle",
 			"EDIT": "Editar",
 			"HIDE": "Esconder",
 			"LOGIN": "Login",

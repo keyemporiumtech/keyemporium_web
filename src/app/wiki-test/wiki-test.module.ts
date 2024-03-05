@@ -76,6 +76,7 @@ import { MetaTagService } from '../kit/seo/services/meta-tag.service';
 import { metaTags } from '../../environments/meta/meta-tag';
 import { TestKitRecaptchaComponent } from './components/test-kit/test-kit-recaptcha/test-kit-recaptcha.component';
 import { CaptchaModule } from '../modules/captcha/captcha.module';
+import { TestSharedAuth2faPageComponent } from './components/test-shared/test-shared-auth2fa-page/test-shared-auth2fa-page.component';
 
 @NgModule({
 	declarations: [
@@ -135,6 +136,7 @@ import { CaptchaModule } from '../modules/captcha/captcha.module';
 		TestGojsDiagramTournmentComponent,
 		TestGojsDiagramDecisionTreeComponent,
 		TestKitRecaptchaComponent,
+		TestSharedAuth2faPageComponent,
 	],
 	imports: [
 		CommonModule,

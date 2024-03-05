@@ -1,9 +1,19 @@
 import {
-  HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse
+	HttpClient,
+	HttpErrorResponse,
+	HttpHeaders,
+	HttpParams,
+	HttpResponse,
 } from '@angular/common/http';
 import {
-  ApplicationLoggerService, ApplicationStorageService, BaseConverter, BaseService, EnumMessageType, InnerStorageService,
-  MessageModel, MessageService
+	ApplicationLoggerService,
+	ApplicationStorageService,
+	BaseConverter,
+	BaseService,
+	EnumMessageType,
+	InnerStorageService,
+	MessageModel,
+	MessageService,
 } from '@ddc/kit';
 import { Observable, of } from 'rxjs';
 import { TokenDecodeInterface } from '../auth/interfaces/token-decode.interface';
@@ -171,7 +181,11 @@ export abstract class BaseRestService extends BaseService {
 	 * @param tokenValue valore del token
 	 * @param responseManager oggetto per la gestione della call
 	 */
-	sendToken(paramName: string, tokenValue: string, responseManager?: ResponseManagerInterface) {
+	sendToken(
+		paramName: string,
+		tokenValue: string,
+		responseManager?: ResponseManagerInterface,
+	): ResponseManagerInterface {
 		if (!responseManager) {
 			responseManager = {};
 		}
@@ -180,6 +194,7 @@ export abstract class BaseRestService extends BaseService {
 		}
 		responseManager.tokenManager.tokenKeyRequest = paramName;
 		responseManager.tokenManager.tokenValue = tokenValue;
+		return responseManager;
 	}
 
 	/**
@@ -187,11 +202,15 @@ export abstract class BaseRestService extends BaseService {
 	 * @param paramName nome del parametro token che riceviamo in header
 	 * @param responseManager oggetto per la gestione della call
 	 */
-	receiveToken(paramName: string, responseManager?: ResponseManagerInterface) {
+	receiveToken(
+		paramName: string,
+		responseManager?: ResponseManagerInterface,
+	): ResponseManagerInterface {
 		if (!responseManager) {
 			responseManager = {};
 		}
 		responseManager.tokenManager.tokenKeyResponse = paramName;
+		return responseManager;
 	}
 	/**
 	 * Gestisce se richiesto da <b>responseManager</b> la ricezione del token di autenticazione dal servizio rest
@@ -304,6 +323,10 @@ export abstract class BaseRestService extends BaseService {
 	setHeaderParams(request: RequestManagerInterface, headers?: HttpHeaders): HttpHeaders {
 		if (request && request.headerParams && request.headerParams.length > 0) {
 			request.headerParams.forEach((param) => {
+				if (headers.has(param.key)) {
+					headers = headers.delete(param.key);
+				}
+
 				headers = headers.append(param.key, param.value);
 			});
 		}

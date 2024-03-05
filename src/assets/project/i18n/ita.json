@@ -65,6 +65,12 @@
 			"SIGNIN_FACEBOOK": "Entra con Facebook",
 			"TITLE": "Entra in Keyemporium"
 		},
+    "KEYS": {
+      "AUTH2FA": {
+        "BUTTON_GENERATE": "Rigenera un nuovo codice",
+        "LABEL_GENERATE": "Usa questo codice per confermare l'autenticazione"
+      }
+    },
 		"PROFILE": {
 			"ADD": "Aggiungi profilo",
 			"ADD_ACTIVTY": "Aggiungi profilo aziendale",

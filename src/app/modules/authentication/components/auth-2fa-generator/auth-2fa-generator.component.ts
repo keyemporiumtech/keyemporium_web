@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 import { ApiServiceUtility } from '../../../api/cakeutils/utility/api-service.utility';
 import { Authentication2faModel } from '../../models/authentication2fa.model';
 import { Authentication2faService } from '../../services/authentication2fa.service';
+import { VerificationKeysService } from '../../services/verification-keys.service';
 const moment = _moment;
 
 @Component({
@@ -21,6 +22,7 @@ const moment = _moment;
 })
 export class Auth2faGeneratorComponent extends BaseComponent {
 	@Input() key: string;
+	@Input() token: string;
 	@Input() circle: boolean;
 	// style
 	@Input() cssClass: any;
@@ -37,6 +39,8 @@ export class Auth2faGeneratorComponent extends BaseComponent {
 	@Input() colorText: string;
 	@Input() backgroundColorInner: string;
 
+	// logica
+	@Input() isExternalService: boolean;
 	@ViewChild('loadingFillCmp') loadingFillCmp: ProgressBarComponent | ProgressCircleComponent;
 
 	// variables
@@ -49,7 +53,7 @@ export class Auth2faGeneratorComponent extends BaseComponent {
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
-		private applicationStorage: ApplicationStorageService,
+		private verificationKeysService: VerificationKeysService,
 		private authentication2faService: Authentication2faService,
 	) {
 		super(applicationLogger);
@@ -77,21 +81,20 @@ export class Auth2faGeneratorComponent extends BaseComponent {
 
 	// check
 	call() {
-		const responseManager = ApiServiceUtility.sendTokenBuildRM(this.applicationStorage, {});
-
-		this.subGenerate = this.authentication2faService
-			.generate(this.key, undefined, responseManager)
-			.subscribe((a2fa) => {
-				this.a2fa = a2fa;
-				if (this.a2fa) {
-					this.startIntervalGrow = a2fa.timeWait / 100;
-					setTimeout(() => {
-						this.checkLoader(a2fa);
-					}, 0);
-				} else {
-					// utente non loggato
-				}
-			});
+		const $obs = this.isExternalService
+			? this.verificationKeysService.generateCode(this.token)
+			: this.authentication2faService.generate(this.token, this.key);
+		this.subGenerate = $obs.subscribe((a2fa) => {
+			this.a2fa = a2fa;
+			if (this.a2fa) {
+				this.startIntervalGrow = a2fa.timeWait / 100;
+				setTimeout(() => {
+					this.checkLoader(a2fa);
+				}, 0);
+			} else {
+				// utente non loggato
+			}
+		});
 	}
 	checkLoader(a2fa: Authentication2faModel) {
 		if (a2fa && a2fa.lastTime) {

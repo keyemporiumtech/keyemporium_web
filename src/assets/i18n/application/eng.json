@@ -2,10 +2,18 @@
 	"APP": {
 		"I18N": "English",
 		"COPYRIGHT": "&copy; DDC INIT",
+    "AUTH2FA": {
+      "APPLICATION_NOT_FOUND": "Application not registered in {{ appkeys }}.<br/>Contact the system administrator and request the census",
+      "USER_NOT_FOUND": "User not registered in {{ appkeys }}.<br/>Please register before logging in again",
+      "USER_NOT_AUTH": "User not authorized by {{ appkeys }}",
+      "USER_NOT_AUTH_PAGE": "User not authorized to view this page",
+      "USE_CODE": "Use this code to confirm the operation"
+    },
 		"BUTTON": {
 			"BACK": "Back",
 			"CANCEL": "Cancel",
 			"CONFIRM": "Confirm",
+      "DETAIL": "Detail",
 			"EDIT": "Edit",
 			"HIDE": "Hide",
 			"LOGIN": "Login",

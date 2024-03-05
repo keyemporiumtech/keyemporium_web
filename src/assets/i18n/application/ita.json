@@ -2,6 +2,13 @@
 	"APP": {
 		"I18N": "Italiano",
 		"COPYRIGHT": "&copy; DDC INIT",
+    "AUTH2FA": {
+      "APPLICATION_NOT_FOUND": "Applicazione non censita in {{ appkeys }}.<br/>Contattare l'amministratore di sistema e richiedere il censimento",
+      "USER_NOT_FOUND": "Utente non registrato in {{ appkeys }}.<br/>Registrati prima di effettuare nuovamente il login",
+      "USER_NOT_AUTH": "Utente non autorizzato da {{ appkeys }}",
+      "USER_NOT_AUTH_PAGE": "Utente non autorizzato alla visualizzazione di questa pagina",
+      "USE_CODE": "Usa questo codice per confermare l'operazione"
+    },
 		"BUTTON": {
 			"BACK": "Indietro",
 			"CANCEL": "Annulla",

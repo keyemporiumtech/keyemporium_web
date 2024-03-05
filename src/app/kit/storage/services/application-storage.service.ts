@@ -32,6 +32,7 @@ export class ApplicationStorageService extends BaseService {
 	private _messageException: ApplicationStorageModel;
 	// REST authhentication
 	private _authtoken: ApplicationStorageModel;
+	private _authtoken2FA: ApplicationStorageModel;
 	private _passauthtoken: ApplicationStorageModel;
 	private _payload: ApplicationStorageModel;
 
@@ -76,6 +77,7 @@ export class ApplicationStorageService extends BaseService {
 		this.messageCode = new ApplicationStorageModel('messageCode');
 		this.messageException = new ApplicationStorageModel('messageException');
 		this.authtoken = new ApplicationStorageModel('authtoken');
+		this.authtoken2FA = new ApplicationStorageModel('authtoken2FA');
 		this.passauthtoken = new ApplicationStorageModel('passauthtoken'); // abilita il passaggio del token
 		this.payload = new ApplicationStorageModel('payload');
 		this.bannerStatus = new ApplicationStorageModel('banner');
@@ -668,5 +670,21 @@ export class ApplicationStorageService extends BaseService {
 	 */
 	public set applicationInfo(value: ApplicationStorageModel) {
 		this._applicationInfo = value;
+	}
+
+	/**
+	 * Getter authtoken2FA
+	 * @return {ApplicationStorageModel}
+	 */
+	public get authtoken2FA(): ApplicationStorageModel {
+		return this._authtoken2FA;
+	}
+
+	/**
+	 * Setter authtoken2FA
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set authtoken2FA(value: ApplicationStorageModel) {
+		this._authtoken2FA = value;
 	}
 }

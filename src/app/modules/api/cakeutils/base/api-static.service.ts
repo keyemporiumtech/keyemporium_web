@@ -17,9 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
  * Rispetto all'implementazione di ApiService necessita di gestire gli errori in fase di eval response,
  * in quanto il messaggio viene inviato in body con status 200
  */
-@Injectable({
-	providedIn: 'root',
-})
+
 export class ApiStaticService extends ApiService {
 	translate: TranslateService;
 	constructor(

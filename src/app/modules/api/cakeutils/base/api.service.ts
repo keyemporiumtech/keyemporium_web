@@ -37,9 +37,6 @@ import { ResponseCakeUtility } from '../utility/response-cake.utility';
  * E' possibile estendere il comportamento di questo servizio ridefinendo semplicemente
  * il behaviour dei messaggi con l'override della funzione getBehaviourMessageModel()
  */
-@Injectable({
-	providedIn: 'root',
-})
 export class ApiService extends BaseRestService {
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -358,11 +355,11 @@ export class ApiService extends BaseRestService {
 	 * Usabile direttamente come parametro responseManager delle api call
 	 * @param responseManager oggetto ResponseManagerInterface esistente se previsto, altrimenti lo crea
 	 */
-	sendTokenApi(responseManager?: ResponseManagerInterface) {
+	sendTokenApi(responseManager?: ResponseManagerInterface): ResponseManagerInterface {
 		if (!responseManager) {
 			responseManager = {};
 		}
-		super.sendToken(
+		return super.sendToken(
 			restConstants.sessiontokenname,
 			this.applicationStorage.authtoken.get(),
 			responseManager,
@@ -373,11 +370,11 @@ export class ApiService extends BaseRestService {
 	 * Usabile direttamente come parametro responseManager delle api call
 	 * @param responseManager oggetto ResponseManagerInterface esistente se previsto, altrimenti lo crea
 	 */
-	receiveTokenApi(responseManager?: ResponseManagerInterface) {
+	receiveTokenApi(responseManager?: ResponseManagerInterface): ResponseManagerInterface {
 		if (!responseManager) {
 			responseManager = {};
 		}
-		super.receiveToken(restConstants.sessiontokenname, responseManager);
+		return super.receiveToken(restConstants.sessiontokenname, responseManager);
 	}
 
 	// OVERRIDES TOKENAUTH

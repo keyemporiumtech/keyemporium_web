@@ -2,10 +2,18 @@
 	"APP": {
 		"I18N": "Deutsch",
 		"COPYRIGHT": "&copy; DDC INIT",
+    "AUTH2FA": {
+      "APPLICATION_NOT_FOUND": "Anwendung nicht in {{ appkeys }} registriert.<br/>Kontaktieren Sie den Systemadministrator und fordern Sie die Volkszählung an",
+      "USER_NOT_FOUND": "Der Benutzer ist nicht in {{ appkeys }} registriert.<br/>Bitte registrieren Sie sich, bevor Sie sich erneut anmelden",
+      "USER_NOT_AUTH": "Benutzer nicht autorisiert von {{ appkeys }}",
+      "USER_NOT_AUTH_PAGE": "Der Benutzer ist nicht berechtigt, diese Seite anzuzeigen",
+      "USE_CODE": "Verwenden Sie diesen Code, um den Vorgang zu bestätigen"
+    },
 		"BUTTON": {
 			"BACK": "Zurück",
 			"CANCEL": "Stornieren",
 			"CONFIRM": "Bestätigen",
+      "DETAIL": "Detail",
 			"EDIT": "Bearbeiten",
 			"HIDE": "Verstecken",
 			"LOGIN": "Login",

@@ -1,0 +1,21 @@
+<div *ngIf="showLoader" class="text-center p-4">
+	<label>{{ 'PERSONAL.KEYS.AUTH2FA.LABEL_GENERATE' | translate }}</label>
+	<ddc-init-auth-2fa-generator
+		[key]="applicationname"
+		[token]="token"
+	></ddc-init-auth-2fa-generator>
+	<!--
+	<div class="mt-3">
+		<a href="javascript:void(0)" (click)="generaAuth2fa()">
+			{{ 'PERSONAL.KEYS.AUTH2FA.BUTTON_GENERATE' | translate }}
+		</a>
+	</div>
+  -->
+</div>
+<div *ngIf="showLogin">
+	<key-login-application
+		[applicationname]="applicationname"
+		[username]="username"
+		(emitToken)="check($event)"
+	></key-login-application>
+</div>

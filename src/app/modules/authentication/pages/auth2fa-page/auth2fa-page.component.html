@@ -1,0 +1,14 @@
+<div *ngIf="token && applicationname" class="text-center p-4">
+	<label>{{ 'APP.AUTH2FA.USE_CODE' | translate }}</label>
+	<ddc-init-auth-2fa-generator
+		[key]="applicationname"
+		[token]="token"
+		[isExternalService]="true"
+	></ddc-init-auth-2fa-generator>
+</div>
+
+<div class="text-center p-4">
+	<button class="mt-2 mr-2 btn btn-sm btn-primary" (click)="back()">
+		{{ 'APP.BUTTON.BACK' | translate }}
+	</button>
+</div>

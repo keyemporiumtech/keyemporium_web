@@ -3,6 +3,15 @@ export const authenticationList = {
 		tokenvalid: 'authentication/tokenValid',
 		loginvalid: 'authentication/loginValid',
 	},
+	application: {
+		unique: 'application/get',
+		paginate: 'application/table',
+		save: 'application/save',
+		edit: 'application/edit',
+		delete: 'application/delete',
+		generate: 'application/generate',
+		check: 'application/check',
+	},
 	authentication2fa: {
 		generate: 'authentication2fa/generate',
 		check: 'authentication2fa/check',

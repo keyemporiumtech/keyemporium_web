@@ -21,6 +21,7 @@ import { TestVerifyComponent } from './components/test-authentication/test-verif
 import { UserOauthComponent } from './components/user-oauth/user-oauth.component';
 import { UserProfilesComponent } from './components/user-profiles/user-profiles.component';
 import { AuthenticationPermissionsDirective } from './directives/authentication-permission.directive';
+import { Auth2faPageComponent } from './pages/auth2fa-page/auth2fa-page.component';
 import { ActivityService } from './services/activity.service';
 import { ActivityaddressService } from './services/activityaddress.service';
 import { ActivityattachmentService } from './services/activityattachment.service';
@@ -29,6 +30,7 @@ import { ActivityprofileService } from './services/activityprofile.service';
 import { ActivityreferenceService } from './services/activityreference.service';
 import { ActivityrelationService } from './services/activityrelation.service';
 import { ActivityrelationpermissionService } from './services/activityrelationpermission.service';
+import { ApplicationService } from './services/application.service';
 import { AuthCommonService } from './services/auth-common.service';
 import { Authentication2faService } from './services/authentication2fa.service';
 import { ClienttokenService } from './services/clienttoken.service';
@@ -47,6 +49,7 @@ import { UserreferenceService } from './services/userreference.service';
 import { UserrelationService } from './services/userrelation.service';
 import { UserrelationpermissionService } from './services/userrelationpermission.service';
 import { UserreportService } from './services/userreport.service';
+import { VerificationKeysService } from './services/verification-keys.service';
 
 @NgModule({
 	declarations: [
@@ -63,6 +66,7 @@ import { UserreportService } from './services/userreport.service';
 		TestA2FAComponent,
 		Auth2faGeneratorComponent,
 		TestA2faCheckComponent,
+		Auth2faPageComponent,
 	],
 	imports: [
 		CommonModule,
@@ -88,6 +92,7 @@ import { UserreportService } from './services/userreport.service';
 		TestA2FAComponent,
 		Auth2faGeneratorComponent,
 		TestA2faCheckComponent,
+		Auth2faPageComponent,
 	],
 })
 export class AuthenticationModule {
@@ -123,6 +128,8 @@ export class AuthenticationModule {
 				Authentication2faService,
 				ActivitydiagramService,
 				UserdiagramService,
+				ApplicationService,
+				VerificationKeysService,
 			],
 		};
 	}

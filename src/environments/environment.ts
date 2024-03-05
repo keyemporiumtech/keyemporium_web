@@ -9,11 +9,12 @@ export const environment = {
 	TEMPLATE_VERSION: versioningInfo.template,
 	production: false,
 	appName: '&copy; Keyemporium',
-	clientId: 'KEYEMPORIUM_REST',
+	clientId: 'keyemporim-web',
 	activityPIVA: undefined,
 	api: {
 		tokenApp: 'ab7414e3975ae96b2d6ef4bf641252feda9d633b',
 		services: window.location.origin + '/REST/',
+		servicesKeys: window.location.origin + '/REST/',
 		mobile: 'http://localhost:8100',
 		privacyPolicy: undefined, // '_projects/keyemporium/privacy.pdf'
 		cookiePolicy: undefined, // '_projects/keyemporium/cookie.pdf'

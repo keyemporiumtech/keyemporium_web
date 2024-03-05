@@ -37,6 +37,7 @@ import { ProfilepermissionService } from '../services/profilepermission.service'
 import { UserService } from '../services/user.service';
 import { UserattachmentService } from '../services/userattachment.service';
 import { UserprofileService } from '../services/userprofile.service';
+import { VerificationKeysService } from '../services/verification-keys.service';
 
 @Injectable({
 	providedIn: 'root',
@@ -52,6 +53,7 @@ export class AuthenticationService extends BaseAuthService {
 	profilepermissionService: ProfilepermissionService;
 	userattachmentService: UserattachmentService;
 	activityService: ActivityService;
+	verificationKeysService: VerificationKeysService;
 
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -65,6 +67,7 @@ export class AuthenticationService extends BaseAuthService {
 		profilepermissionService: ProfilepermissionService,
 		userattachmentService: UserattachmentService,
 		activityService: ActivityService,
+		verificationKeysService: VerificationKeysService,
 	) {
 		super(applicationLogger, applicationStorage, innerStorage);
 		this.http = http;
@@ -75,6 +78,7 @@ export class AuthenticationService extends BaseAuthService {
 		this.profilepermissionService = profilepermissionService;
 		this.userattachmentService = userattachmentService;
 		this.activityService = activityService;
+		this.verificationKeysService = verificationKeysService;
 	}
 
 	getDefaultMessage(): ResponseMessageInterface {
@@ -478,6 +482,7 @@ export class AuthenticationService extends BaseAuthService {
 	emptyAuthSession() {
 		super.emptyAuthSession();
 		this.applicationStorage.activityPIVA.del();
+		this.applicationStorage.authtoken2FA.del();
 	}
 
 	// OTHERS
@@ -596,6 +601,80 @@ export class AuthenticationService extends BaseAuthService {
 			this.applicationStorage.activityPIVA.set(data[3]);
 			this.activityChange.next(data[3]);
 		});
+	}
+
+	/******* AUTHENTICATION 2FA (a due fattori) *************/
+	loginAuth2fa(
+		user: UserAuthRequest,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		automaticRegister?: boolean,
+	): Observable<UserAuthResponse> {
+		return this.verificationKeysService
+			.getmeToken(user.username, requestManager, responseManager)
+			.pipe(
+				switchMap((data) => {
+					if (data) {
+						this.applicationStorage.authtoken2FA.set(data);
+						return this.fnLogin(user, undefined);
+					} else if (automaticRegister) {
+						return this.automaticRegisterAuth2fa(user, requestManager, responseManager);
+					}
+					return of(undefined);
+				}),
+			);
+	}
+
+	registerAuth2fa(
+		user: UserModel,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<string> {
+		return this.verificationKeysService.registermeApplication(
+			user,
+			requestManager,
+			responseManager,
+		);
+	}
+
+	automaticRegisterAuth2fa(
+		user: UserAuthRequest,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<UserAuthResponse> {
+		return this.userService.unique(undefined, user.username).pipe(
+			switchMap((userIn) => {
+				if (userIn) {
+					userIn.password = user.password;
+					return this.registerAuth2fa(userIn).pipe(
+						switchMap((id_user) => {
+							return id_user
+								? this.loginAuth2fa(user, requestManager, responseManager, false)
+								: of(undefined);
+						}),
+					);
+				}
+				return of(undefined);
+			}),
+		);
+	}
+
+	verifyAuth2fa(
+		cod: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+	): Observable<boolean> {
+		return this.verificationKeysService
+			.verifyCode(this.applicationStorage.authtoken2FA.get(), cod, requestManager, responseManager)
+			.pipe(
+				map((data) => {
+					if (data) {
+						return true;
+					}
+					this.emptyAuthSession();
+					return false;
+				}),
+			);
 	}
 }
 

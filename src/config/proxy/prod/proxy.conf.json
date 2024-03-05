@@ -7,5 +7,14 @@
         "^/REST": ""
         },
         "logLevel": "debug"
+    },
+    "/KEYS": {
+      "target": "https://okdqanqhr.preview.infomaniak.website",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/KEYS": ""
+      },
+      "logLevel": "debug"
     }
 }
