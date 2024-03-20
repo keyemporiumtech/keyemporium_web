@@ -35,6 +35,10 @@ export const authenticationList = {
 		logout: 'user/logout',
 		profile: 'user/profile',
 		changeProfile: 'user/changeProfile',
+		restorePassword: 'user/restorePassword',
+		remindPassword: 'user/remindPassword',
+		changePassword: 'user/changePassword',
+		register: 'user/register',
 	},
 	userrelation: {
 		unique: 'userrelation/get',

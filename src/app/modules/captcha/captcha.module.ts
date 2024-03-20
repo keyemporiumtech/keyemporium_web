@@ -13,6 +13,7 @@ import { TestCaptchaComponent } from './components/test-captcha/test-captcha.com
 import { TestInputRecaptchaComponent } from './components/test-captcha/test-input-recaptcha/test-input-recaptcha.component';
 import { TestInputCaptchaComponent } from './components/test-captcha/test-input-captcha/test-input-captcha.component';
 import { InputCaptchaComponent } from './components/input-captcha/input-captcha.component';
+import { VerificationCaptchaService } from './services/verification-captcha.service';
 
 @NgModule({
 	declarations: [
@@ -44,7 +45,7 @@ export class CaptchaModule {
 	static forRoot() {
 		return {
 			ngModule: CaptchaModule,
-			providers: [GooglerecaptchaService, CaptchaService],
+			providers: [GooglerecaptchaService, CaptchaService, VerificationCaptchaService],
 		};
 	}
 }

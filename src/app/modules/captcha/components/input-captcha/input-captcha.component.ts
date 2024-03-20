@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ApplicationLoggerService, StringTranslate } from '@ddc/kit';
 import { BaseInputComponent } from '../../../../shared/form/base-input.component';
 import { CaptchaService } from '../../services/captcha.service';
+import { VerificationCaptchaService } from '../../services/verification-captcha.service';
 
 @Component({
 	selector: 'ddc-init-input-captcha',
@@ -20,6 +21,10 @@ export class InputCaptchaComponent extends BaseInputComponent {
 	// css - single
 	@Input() borderColor: string = '#000';
 	@Input() imageHeight: string = '3.5rem';
+
+	// logica
+	@Input() isExternalService: boolean;
+
 	@Output() generated: EventEmitter<string> = new EventEmitter<string>();
 	@Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -28,7 +33,11 @@ export class InputCaptchaComponent extends BaseInputComponent {
 	subGenerate: Subscription;
 	subVerify: Subscription;
 
-	constructor(applicationLogger: ApplicationLoggerService, private captchaService: CaptchaService) {
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		private captchaService: CaptchaService,
+		private verificationCaptchaService: VerificationCaptchaService,
+	) {
 		super(applicationLogger);
 	}
 	ngOnInitForChildren() {
@@ -96,7 +105,10 @@ export class InputCaptchaComponent extends BaseInputComponent {
 	}
 
 	generate() {
-		this.subGenerate = this.captchaService.generate(this.keyClient).subscribe((res) => {
+		const $obs = this.isExternalService
+			? this.verificationCaptchaService.generateCode()
+			: this.captchaService.generate(this.keyClient);
+		this.subGenerate = $obs.subscribe((res) => {
 			this.control.setValue(res);
 			this.generated.emit(res);
 			this.checked = true;
@@ -104,7 +116,10 @@ export class InputCaptchaComponent extends BaseInputComponent {
 	}
 
 	verify() {
-		this.subVerify = this.captchaService.verify(this.control.value).subscribe((res) => {
+		const $obs = this.isExternalService
+			? this.verificationCaptchaService.verifyCode(this.control.value)
+			: this.captchaService.verify(this.control.value);
+		this.subVerify = $obs.subscribe((res) => {
 			this.verified.emit(res);
 		});
 	}

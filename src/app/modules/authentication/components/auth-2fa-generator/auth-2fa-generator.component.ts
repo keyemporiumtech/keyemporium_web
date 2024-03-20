@@ -1,7 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import {
 	ApplicationLoggerService,
-	ApplicationStorageService,
 	BaseComponent,
 	MathUtility,
 	ProgressBarComponent,
@@ -9,7 +8,6 @@ import {
 } from '@ddc/kit';
 import * as _moment from 'moment-timezone';
 import { Subscription } from 'rxjs';
-import { ApiServiceUtility } from '../../../api/cakeutils/utility/api-service.utility';
 import { Authentication2faModel } from '../../models/authentication2fa.model';
 import { Authentication2faService } from '../../services/authentication2fa.service';
 import { VerificationKeysService } from '../../services/verification-keys.service';

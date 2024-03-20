@@ -1,5 +1,6 @@
 import { EnumMessageType } from '../enums/message-type.enum';
 import { StringTranslate } from '../../translation/models/string-translate.model';
+import { RouteUrlModel } from '../../routing/models/route-url.model';
 
 export class MessageModel {
 	private _type: EnumMessageType;
@@ -7,6 +8,8 @@ export class MessageModel {
 	private _title: string | StringTranslate;
 	private _text: string | StringTranslate;
 	private _exception: string | StringTranslate;
+	// solo per routing
+	private _backUrl: RouteUrlModel;
 
 	constructor(
 		type: EnumMessageType,
@@ -100,5 +103,21 @@ export class MessageModel {
 	 */
 	public set exception(value: string | StringTranslate) {
 		this._exception = value;
+	}
+
+	/**
+	 * Getter backUrl
+	 * @return {RouteUrlModel}
+	 */
+	public get backUrl(): RouteUrlModel {
+		return this._backUrl;
+	}
+
+	/**
+	 * Setter backUrl
+	 * @param {RouteUrlModel} value
+	 */
+	public set backUrl(value: RouteUrlModel) {
+		this._backUrl = value;
 	}
 }

@@ -28,9 +28,22 @@ export class PreviousRouteService extends BaseService {
 	}
 
 	navigateStore(to: RouteUrlModel, from?: RouteUrlModel) {
-		this.currentUrl = from ? from.urlNavigate : this.router.url;
+		this.currentUrl = from ? this.evalInstanceNavigate(from) : this.router.url;
 		this.applicationStorage.backUrl.set(this.currentUrl);
-		this.router.navigateByUrl(to.urlNavigate);
+		this.router.navigateByUrl(this.evalInstanceNavigate(to));
+	}
+	evalInstanceNavigate(url: any): string {
+		if (!url) {
+			return '';
+		}
+		if (url['urlNavigate']) {
+			return url['urlNavigate'];
+		} else if (url['url'] && url['url'] instanceof Array) {
+			return url['url'].join('/') + (url['params'] ? url['params'] : '');
+		} else if (url['url']) {
+			return url['url'] + (url['params'] ? url['params'] : '');
+		}
+		return '';
 	}
 
 	/**
@@ -40,11 +53,11 @@ export class PreviousRouteService extends BaseService {
 	 * @param from url a cui tornare con il metodo [back]{@link PreviousRouteService#back}
 	 */
 	navigateStoreEncode(url: string | string[], params?: string[], from?: RouteUrlModel) {
-		this.currentUrl = from ? from.urlNavigate : this.router.url;
+		this.currentUrl = from ? this.evalInstanceNavigate(from) : this.router.url;
 		this.applicationStorage.backUrl.set(this.currentUrl);
 		const urlEncode: string[] = PageUtility.encodeUrl(url, params);
 		const to: RouteUrlModel = new RouteUrlModel(urlEncode);
-		this.router.navigateByUrl(to.urlNavigate);
+		this.router.navigateByUrl(this.evalInstanceNavigate(to));
 	}
 
 	back() {

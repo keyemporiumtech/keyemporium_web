@@ -58,7 +58,7 @@
 
 		<span
 			*ngIf="iconClassPrefix"
-			style="float: right; left: -25px; margin-top: -25px; position: relative; cursor: pointer"
+			[attr.style]="styleIcon"
 			[ngClass]="iconClassPrefix"
 			[style.color]="iconColorPrefix"
 		></span>
@@ -72,14 +72,14 @@
 		/>
 		<span
 			*ngIf="iconClassPhone"
-			style="float: right; left: -25px; margin-top: -25px; position: relative; cursor: pointer"
+			[attr.style]="styleIcon"
 			[ngClass]="iconClassPhone"
 			[style.color]="iconColorPhone"
 		></span>
 	</div>
 	<span
 		*ngIf="iconClass"
-		style="float: right; left: -25px; margin-top: -25px; position: relative; cursor: pointer"
+		[attr.style]="styleIcon"
 		[ngClass]="iconClass"
 		[style.color]="iconColor"
 	></span>

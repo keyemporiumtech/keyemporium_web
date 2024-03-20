@@ -22,9 +22,6 @@ import { UserService } from './user.service';
 
 @Injectable()
 export class VerificationKeysService extends ApiKeysService {
-	// applicationService: ApplicationService;
-	// auth2faService: Authentication2faService;
-	// userService: UserService;
 	constructor(
 		applicationLogger: ApplicationLoggerService,
 		messageService: MessageService,
@@ -36,9 +33,6 @@ export class VerificationKeysService extends ApiKeysService {
 		private userService: UserService,
 	) {
 		super(applicationLogger, messageService, applicationStorage, innerStorage, http);
-		// this.applicationService = applicationService;
-		// this.auth2faService = auth2faService;
-		// this.userService = userService;
 		this.flgInnerToken = false;
 	}
 

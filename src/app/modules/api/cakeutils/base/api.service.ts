@@ -5,7 +5,6 @@ import {
 	HttpParams,
 	HttpResponse,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -337,13 +336,16 @@ export class ApiService extends BaseRestService {
 	 * per un messaggio, basandosi sul tipo di messaggio da mostrare
 	 * @param type tipo di messaggio
 	 */
-	getTitleByType(type: EnumMessageType): string {
+	getTitleByType(type: EnumMessageType | string): string {
 		switch (type) {
 			case EnumMessageType.INFO:
+			case '1':
 				return 'MESSAGE.TITLE.INFO';
 			case EnumMessageType.WARNING:
+			case '2':
 				return 'MESSAGE.TITLE.WARNING';
 			case EnumMessageType.ERROR:
+			case '3':
 				return 'MESSAGE.TITLE.ERROR';
 			default:
 				return 'MESSAGE.TITLE.WARNING';

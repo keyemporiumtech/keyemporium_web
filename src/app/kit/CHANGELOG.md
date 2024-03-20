@@ -1,13 +1,19 @@
 # CHANGELOG KIT
 
-## 3.0.0 - XX/09/2023
+## 3.0.0 - XX/XX/2024
 
 > Versione che
 
 ### changes
 
+- `[feature]` **config**: Aggiunta la funzione `randomString` in `CryptoUtility` per la generazione di stringhe random
+- `[fix]` **routing**: Fixati i metodi `navigateStore` e `navigateStoreEncode` in `PreviousRouteService` con la valutazione della proprietà urlNavigate che potrebbe essere undefined
+- `[feature]` **message**: Aggiunto il campo `backUrl` in `MessageModel`
+- `[update]` Modificato lo stile dell'icona da visualizzare nelle validazioni dei componenti con accesso alla configurazione del file `environment/template` e lettura dal campo `template.styles.inputIcon`
+  - **html** Applicazione style icon in `AutocompleteComponent`
+  - **filemanager** Applicazione style icon in `UploadComponent`
 - `[feature]` **g-recaptcha**: Aggiunta del modulo `GRecaptcha` e relativo componente per la gestione di google re-captcha
-- `[feature]` **tree-html**: Aggiunto il campo payload al `TreeHtmlModel` 
+- `[feature]` **tree-html**: Aggiunto il campo payload al `TreeHtmlModel`
 - `[feature]` **config**: Modificati i metodi `sortAscByField` e `sortDescByField` in `ArrayUtility` per considerare anche l'ordinamento per DateModel
 - `[feature]` **timing**: Aggiunti i metodi `getAge` e `getAgeAtDate` in `DateUtility` per calcolare gli anni trascorsi da una data o tra due date
 - `[feature]` **asbtract**: Aggiunta la classe base `BaseModalComponent` da estendere in qualsiasi componente di modale

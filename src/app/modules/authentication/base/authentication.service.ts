@@ -604,27 +604,64 @@ export class AuthenticationService extends BaseAuthService {
 	}
 
 	/******* AUTHENTICATION 2FA (a due fattori) *************/
+	/**
+	 * Effettua il login, stacca un token autorizzativo dall'applicazione keys e lo setta nello storage authtoken2FA
+	 * @param user utente da loggare
+	 * @param requestManager request manager del getmetoken
+	 * @param responseManager response manager del getmetoken
+	 * @param automaticRegister se è settato a true e il token non viene staccato (utente non censito) allora registra automaticamente l'utente sull'applicazione keys
+	 * @returns UserAuthResponse utente
+	 */
 	loginAuth2fa(
 		user: UserAuthRequest,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 		automaticRegister?: boolean,
 	): Observable<UserAuthResponse> {
-		return this.verificationKeysService
-			.getmeToken(user.username, requestManager, responseManager)
-			.pipe(
-				switchMap((data) => {
-					if (data) {
-						this.applicationStorage.authtoken2FA.set(data);
-						return this.fnLogin(user, undefined);
-					} else if (automaticRegister) {
-						return this.automaticRegisterAuth2fa(user, requestManager, responseManager);
-					}
+		return this.login(user, requestManager, responseManager).pipe(
+			switchMap((userRes) => {
+				if (userRes) {
+					// Login avvenuto su app1
+					return this.verificationKeysService.getmeToken(user.username).pipe(
+						switchMap((token) => {
+							this.applicationStorage.authtoken2FA.set(token);
+							if (token) {
+								// token staccato da appKeys
+								return of(userRes);
+							} else if (automaticRegister) {
+								// token non staccato da appKeys e richiesta di registrazione
+								return this.automaticRegisterAuth2fa(user).pipe(
+									map((tokenpost) => {
+										if (!tokenpost) {
+											this.emptyAuthSession();
+											return undefined;
+										}
+										return userRes;
+									}),
+								);
+							} else {
+								// token non staccato da appKeys
+								this.emptyAuthSession();
+								return of(undefined);
+							}
+						}),
+					);
+				} else {
+					// Login non avvenuto su app1
+					this.emptyAuthSession();
 					return of(undefined);
-				}),
-			);
+				}
+			}),
+		);
 	}
 
+	/**
+	 * Registra un utente sull'applicazione keys
+	 * @param user utente da registrare sull'applicazione keys
+	 * @param requestManager request manager del registermeApplication
+	 * @param responseManager response manager del registermeApplication
+	 * @returns id dell'utente salvato in application keys
+	 */
 	registerAuth2fa(
 		user: UserModel,
 		requestManager?: RequestManagerInterface,
@@ -637,19 +674,20 @@ export class AuthenticationService extends BaseAuthService {
 		);
 	}
 
-	automaticRegisterAuth2fa(
-		user: UserAuthRequest,
-		requestManager?: RequestManagerInterface,
-		responseManager?: ResponseManagerInterface,
-	): Observable<UserAuthResponse> {
-		return this.userService.unique(undefined, user.username).pipe(
+	/**
+	 * Registra un utente sull'applicazione keys e dopo averlo registrato stacca il token
+	 * @param user utente da registrare sull'applicazione keys
+	 * @returns token staccato dall'applicazione keys
+	 */
+	automaticRegisterAuth2fa(user: UserAuthRequest): Observable<string> {
+		return this.userService.unique(undefined, user.username, undefined).pipe(
 			switchMap((userIn) => {
 				if (userIn) {
 					userIn.password = user.password;
 					return this.registerAuth2fa(userIn).pipe(
 						switchMap((id_user) => {
 							return id_user
-								? this.loginAuth2fa(user, requestManager, responseManager, false)
+								? this.verificationKeysService.getmeToken(user.username)
 								: of(undefined);
 						}),
 					);
@@ -659,6 +697,13 @@ export class AuthenticationService extends BaseAuthService {
 		);
 	}
 
+	/**
+	 * Verifica se un codice è stato generato dall'applicazione keys ed è valido
+	 * @param cod codice da verificare
+	 * @param requestManager request manager di verifyCode
+	 * @param responseManager response manager di verifyCode
+	 * @returns true se il codice è valido, false altrimenti
+	 */
 	verifyAuth2fa(
 		cod: string,
 		requestManager?: RequestManagerInterface,

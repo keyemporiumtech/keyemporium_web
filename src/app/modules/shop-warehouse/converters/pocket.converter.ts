@@ -8,6 +8,8 @@ import {
 import { AttachmentModel } from '../../resources/models/attachment.model';
 import { PriceConverter, PriceUtilConverter } from './price.converter';
 import { PriceModel } from '../models/price.model';
+import { CategoryConverter, CategoryUtilConverter } from './category.converter';
+import { CategoryModel } from '../models/category.model';
 
 export class PocketConverter extends BaseApiConverter<PocketModel, PocketDTO> {
 	public convertToModel(dto?: PocketDTO): PocketModel {
@@ -28,11 +30,18 @@ export class PocketConverter extends BaseApiConverter<PocketModel, PocketDTO> {
 		this.convertForeignKeyToModel(
 			dto,
 			model,
+			this.getPropertyForFk('category', 'category_fk', new CategoryConverter()),
+			new CategoryModel(),
+		);
+		this.convertForeignKeyToModel(
+			dto,
+			model,
 			this.getPropertyForFk('price', 'price_fk', new PriceConverter()),
 			new PriceModel(),
 		);
 		model.note = dto.note;
 		this.convertBooleanToModel(dto, model, 'flgreleted');
+		this.convertBooleanToModel(dto, model, 'flgreserve');
 		this.convertBooleanToModel(dto, model, 'flgdeleted');
 		return model;
 	}
@@ -53,22 +62,30 @@ export class PocketConverter extends BaseApiConverter<PocketModel, PocketDTO> {
 		this.convertForeignKeyToDto(
 			dto,
 			model,
+			this.getPropertyForFk('category', 'category_fk', new CategoryConverter()),
+		);
+		this.convertForeignKeyToDto(
+			dto,
+			model,
 			this.getPropertyForFk('price', 'price_fk', new PriceConverter()),
 		);
 		dto.note = model.note;
 		this.convertBooleanToDto(dto, model, 'flgreleted');
+		this.convertBooleanToDto(dto, model, 'flgreserve');
 		this.convertBooleanToDto(dto, model, 'flgdeleted');
 		return dto;
 	}
 	public getEmptyModel(): PocketModel {
 		const model = new PocketModel();
 		model.image = AttachmentUtilConverter.toModel();
+		model.category = CategoryUtilConverter.toModel();
 		model.price = PriceUtilConverter.toModel();
 		return model;
 	}
 	public getEmptyDto(): PocketDTO {
 		const dto = new PocketDTO();
 		dto.image_fk = AttachmentUtilConverter.toDto();
+		dto.category_fk = CategoryUtilConverter.toDto();
 		dto.price_fk = PriceUtilConverter.toDto();
 		return dto;
 	}
