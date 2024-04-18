@@ -13,9 +13,9 @@ export const environment = {
 	activityPIVA: undefined,
 	api: {
 		tokenApp: 'ab7414e3975ae96b2d6ef4bf641252feda9d633b',
-		services: 'http://localhost/keyemporium_rest/',
-		servicesKeys: 'http://localhost/keyemporium_rest/',
-		mobile: 'http://localhost:8100',
+		services: 'http://localhost:81/keyemporium_rest/',
+		servicesKeys: 'http://localhost:81/keyemporium_rest/',
+		mobile: '',
 		privacyPolicy: undefined, // '_projects/keyemporium/privacy.pdf'
 		cookiePolicy: undefined, // '_projects/keyemporium/cookie.pdf'
 		termPolicy: undefined, // '_projects/keyemporium/conditions.pdf'

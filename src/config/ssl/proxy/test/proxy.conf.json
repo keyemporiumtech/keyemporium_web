@@ -1,11 +1,20 @@
 {
-    "/REST": {
-        "target": "http://okdqanqhw.preview.infomaniak.website/",
-        "changeOrigin": true,
-        "secure": false,
-        "pathRewrite": {
-        "^/REST": ""
-        },
-        "logLevel": "debug"
-    }
+  "/REST": {
+      "target": "https://okdqanqhw.preview.infomaniak.website/",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+      "^/REST": ""
+      },
+      "logLevel": "debug"
+  },
+  "/KEYS": {
+    "target": "https://okdqanqhw.preview.infomaniak.website",
+    "changeOrigin": true,
+    "secure": false,
+    "pathRewrite": {
+      "^/KEYS": ""
+    },
+    "logLevel": "debug"
+  }
 }

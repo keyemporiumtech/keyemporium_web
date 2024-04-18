@@ -1,3 +1,3 @@
 <?php echo getcwd(); ?>
 <br/>
-<?php var_dump(get_headers('http://okdqyfis.preview.infomaniak.website/'));?>
+<?php var_dump(get_headers('https://keyemporium.com/'));?>

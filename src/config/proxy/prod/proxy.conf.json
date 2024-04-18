@@ -9,7 +9,7 @@
         "logLevel": "debug"
     },
     "/KEYS": {
-      "target": "https://okdqanqhr.preview.infomaniak.website",
+      "target": "http://okdqanqhr.preview.infomaniak.website",
       "changeOrigin": true,
       "secure": false,
       "pathRewrite": {
