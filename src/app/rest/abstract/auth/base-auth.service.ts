@@ -25,6 +25,8 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 	innerStorage: InnerStorageService;
 	profileChange: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	profile: Observable<string> = this.profileChange.asObservable();
+	userChange: BehaviorSubject<any> = new BehaviorSubject<any>({});
+	user: Observable<any> = this.userChange.asObservable();
 	permissions: string[] = [];
 	sedi: any[] = [];
 	applicationStorage: ApplicationStorageService;
@@ -63,6 +65,8 @@ export abstract class BaseAuthService extends BaseService implements OnDestroy {
 		this.applicationStorage.userId.del();
 		this.applicationStorage.userImage.del();
 		this.applicationStorage.profile.del();
+		this.profileChange.next(undefined);
+		this.userChange.next(undefined);
 	}
 
 	/**

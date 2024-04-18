@@ -133,6 +133,7 @@ export class AuthenticationService extends BaseAuthService {
 			map((res) => {
 				this.setProfileWithActivity(this.getProfileFromLogin(res), this.getUsernameFromLogin(res));
 				this.applicationStorage.userLogged.setObj(this.getUserLoggedByResponse(res));
+				this.userChange.next(this.getUserLoggedByResponse(res));
 				this.applicationStorage.userId.set(this.getUserLoggedIdByResponse(res));
 				this.applicationStorage.userImage.set(this.getUserLoggedImageByResponse(res));
 				return this.loginBehaviour().actionResponse(res);
@@ -252,6 +253,7 @@ export class AuthenticationService extends BaseAuthService {
 								this.getUsernameFromLogin(res),
 							);
 							this.applicationStorage.userLogged.setObj(this.getUserLoggedByResponse(res));
+							this.userChange.next(this.getUserLoggedByResponse(res));
 							this.applicationStorage.userId.set(this.getUserLoggedIdByResponse(res));
 							this.applicationStorage.userImage.set(this.getUserLoggedImageByResponse(res));
 							return res;
@@ -483,6 +485,7 @@ export class AuthenticationService extends BaseAuthService {
 		super.emptyAuthSession();
 		this.applicationStorage.activityPIVA.del();
 		this.applicationStorage.authtoken2FA.del();
+		this.activityChange.next(undefined);
 	}
 
 	// OTHERS
