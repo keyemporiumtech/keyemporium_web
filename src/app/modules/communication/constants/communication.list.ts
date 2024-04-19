@@ -37,6 +37,13 @@ export const communicationList = {
 		edit: 'mailcid/edit',
 		delete: 'mailcid/delete',
 	},
+	mailnewsletter: {
+		unique: 'mailnewsletter/get',
+		paginate: 'mailnewsletter/table',
+		save: 'mailnewsletter/save',
+		edit: 'mailnewsletter/edit',
+		delete: 'mailnewsletter/delete',
+	},
 	phone: {
 		unique: 'phone/get',
 		paginate: 'phone/table',

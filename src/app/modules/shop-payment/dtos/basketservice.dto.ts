@@ -7,6 +7,9 @@ export class BasketserviceDTO extends ApiDTO {
 	public title: string;
 	public service: string;
 	public service_fk: ServiceDTO;
+	public quantity: number;
 	public basket: string;
 	public basket_fk: BasketDTO;
+	public dtainit: string;
+	public dtaend: string;
 }

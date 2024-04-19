@@ -40,7 +40,7 @@ export class CryptoUtility {
 	 * @param {String} an Optional (alphanumeric), "a" (alpha), "n" (numeric)
 	 * @return {String}
 	 */
-	static randomString(len: number, an: string) {
+	static randomString(len: number, an?: string) {
 		an = an && an.toLowerCase();
 		var str = '',
 			i = 0,

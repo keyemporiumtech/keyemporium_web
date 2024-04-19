@@ -1,11 +1,11 @@
 # CHANGELOG REST
 
-## 4.0.0 - 25/08/2023
 
 > Versione che 
 
 ### changes
 
+- `[feature]` **abstract** Aggiunto `userChange` in `BaseAuthService` per la gestione degli aggiornamenti sull'utente loggato
 - `[fix]` Modificato il metodo `setHeaderParams` in `BaseRestService` per fare il replace di chiavi esistenti in header params
 - `[update]` **abstract** Rimosso l'Injectable provided root in `BaseRestService`
 - `[fix]` Modificati i metodi `sendToken` e `receiveToken` in `BaseRestService` per consentire la modifica del parametro passato in input

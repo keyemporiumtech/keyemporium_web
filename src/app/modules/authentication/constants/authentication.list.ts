@@ -232,4 +232,25 @@ export const authenticationList = {
 		edit: 'userdiagram/edit',
 		delete: 'userdiagram/delete',
 	},
+	newsletter: {
+		unique: 'newsletter/get',
+		paginate: 'newsletter/table',
+		save: 'newsletter/save',
+		edit: 'newsletter/edit',
+		delete: 'newsletter/delete',
+	},
+	activitynewsletter: {
+		unique: 'activitynewsletter/get',
+		paginate: 'activitynewsletter/table',
+		save: 'activitynewsletter/save',
+		edit: 'activitynewsletter/edit',
+		delete: 'activitynewsletter/delete',
+	},
+	usernewsletter: {
+		unique: 'usernewsletter/get',
+		paginate: 'usernewsletter/table',
+		save: 'usernewsletter/save',
+		edit: 'usernewsletter/edit',
+		delete: 'usernewsletter/delete',
+	},
 };

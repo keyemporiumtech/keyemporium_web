@@ -175,6 +175,8 @@ export class UserService extends ApiService {
 		celIn?: ContactreferenceModel,
 		homeIn?: AddressModel,
 		bornIn?: AddressModel,
+		newsletters?: string[],
+		profiles?: string[],
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 		conditionsGroup?: RequestGroupsConditionsInterface,
@@ -211,6 +213,8 @@ export class UserService extends ApiService {
 			'born',
 			AddressUtilConverter.toDto(bornIn),
 		);
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'newsletters', newsletters);
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'profiles', profiles);
 		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
 
 		const url =

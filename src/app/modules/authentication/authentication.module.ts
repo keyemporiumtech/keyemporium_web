@@ -26,6 +26,7 @@ import { ActivityService } from './services/activity.service';
 import { ActivityaddressService } from './services/activityaddress.service';
 import { ActivityattachmentService } from './services/activityattachment.service';
 import { ActivitydiagramService } from './services/activitydiagram.service';
+import { ActivitynewsletterService } from './services/activitynewsletter.service';
 import { ActivityprofileService } from './services/activityprofile.service';
 import { ActivityreferenceService } from './services/activityreference.service';
 import { ActivityrelationService } from './services/activityrelation.service';
@@ -35,6 +36,7 @@ import { AuthCommonService } from './services/auth-common.service';
 import { Authentication2faService } from './services/authentication2fa.service';
 import { ClienttokenService } from './services/clienttoken.service';
 import { ContactreferenceService } from './services/contactreference.service';
+import { NewsletterService } from './services/newsletter.service';
 import { OauthloginService } from './services/oauthlogin.service';
 import { PermissionService } from './services/permission.service';
 import { ProfileService } from './services/profile.service';
@@ -43,6 +45,7 @@ import { UserService } from './services/user.service';
 import { UseraddressService } from './services/useraddress.service';
 import { UserattachmentService } from './services/userattachment.service';
 import { UserdiagramService } from './services/userdiagram.service';
+import { UsernewsletterService } from './services/usernewsletter.service';
 import { UseroauthsocialService } from './services/useroauthsocial.service';
 import { UserprofileService } from './services/userprofile.service';
 import { UserreferenceService } from './services/userreference.service';
@@ -130,6 +133,9 @@ export class AuthenticationModule {
 				UserdiagramService,
 				ApplicationService,
 				VerificationKeysService,
+				NewsletterService,
+				ActivitynewsletterService,
+				UsernewsletterService,
 			],
 		};
 	}

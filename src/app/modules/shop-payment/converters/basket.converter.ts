@@ -39,6 +39,12 @@ export class BasketConverter extends BaseApiConverter<BasketModel, BasketDTO> {
 		model.phoneto = dto.phoneto;
 		model.strto = dto.strto;
 		model.note = dto.note;
+		// calculated
+		model.price = dto.price;
+		model.iva = dto.iva;
+		model.discount = dto.discount;
+		model.tax = dto.tax;
+		model.totalsum = dto.totalsum;
 		return model;
 	}
 	public convertToDto(model?: BasketModel): BasketDTO {

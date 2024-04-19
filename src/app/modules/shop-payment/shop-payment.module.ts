@@ -14,6 +14,7 @@ import { BasketService } from './services/basket.service';
 import { BasketproductService } from './services/basketproduct.service';
 import { BasketserviceService } from './services/basketservice.service';
 import { BasketticketService } from './services/basketticket.service';
+import { BasketpocketService } from './services/basketpocket.service';
 
 @NgModule({
 	declarations: [],
@@ -42,6 +43,7 @@ export class ShopPaymentModule {
 				BasketproductService,
 				BasketserviceService,
 				BasketticketService,
+				BasketpocketService,
 			],
 		};
 	}

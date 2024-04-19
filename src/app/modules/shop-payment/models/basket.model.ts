@@ -16,6 +16,12 @@ export class BasketModel extends ApiModel {
 	private _phoneto: string;
 	private _strto: string;
 	private _note: string;
+	// calculated
+	private _price: number;
+	private _iva: number;
+	private _discount: number;
+	private _tax: number;
+	private _totalsum: number;
 
 	/**
 	 * Getter cod
@@ -223,5 +229,85 @@ export class BasketModel extends ApiModel {
 	 */
 	public set note(value: string) {
 		this._note = value;
+	}
+
+	/**
+	 * Getter price
+	 * @return {number}
+	 */
+	public get price(): number {
+		return this._price;
+	}
+
+	/**
+	 * Getter iva
+	 * @return {number}
+	 */
+	public get iva(): number {
+		return this._iva;
+	}
+
+	/**
+	 * Getter discount
+	 * @return {number}
+	 */
+	public get discount(): number {
+		return this._discount;
+	}
+
+	/**
+	 * Getter tax
+	 * @return {number}
+	 */
+	public get tax(): number {
+		return this._tax;
+	}
+
+	/**
+	 * Getter totalsum
+	 * @return {number}
+	 */
+	public get totalsum(): number {
+		return this._totalsum;
+	}
+
+	/**
+	 * Setter price
+	 * @param {number} value
+	 */
+	public set price(value: number) {
+		this._price = value;
+	}
+
+	/**
+	 * Setter iva
+	 * @param {number} value
+	 */
+	public set iva(value: number) {
+		this._iva = value;
+	}
+
+	/**
+	 * Setter discount
+	 * @param {number} value
+	 */
+	public set discount(value: number) {
+		this._discount = value;
+	}
+
+	/**
+	 * Setter tax
+	 * @param {number} value
+	 */
+	public set tax(value: number) {
+		this._tax = value;
+	}
+
+	/**
+	 * Setter totalsum
+	 * @param {number} value
+	 */
+	public set totalsum(value: number) {
+		this._totalsum = value;
 	}
 }

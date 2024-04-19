@@ -40,6 +40,8 @@ export const shopPaymentList = {
 		save: 'basket/save',
 		edit: 'basket/edit',
 		delete: 'basket/delete',
+		saveBasket: 'basket/saveBasket',
+		editBasket: 'basket/editBasket',
 	},
 	basketproduct: {
 		unique: 'basketproduct/get',
@@ -61,5 +63,12 @@ export const shopPaymentList = {
 		save: 'basketticket/save',
 		edit: 'basketticket/edit',
 		delete: 'basketticket/delete',
+	},
+	basketpocket: {
+		unique: 'basketpocket/get',
+		paginate: 'basketpocket/table',
+		save: 'basketpocket/save',
+		edit: 'basketpocket/edit',
+		delete: 'basketpocket/delete',
 	},
 };

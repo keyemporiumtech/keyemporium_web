@@ -5,6 +5,7 @@ export class ApiModel extends BaseModel {
 	modified: string; // date
 	grouprelation_cod: string[];
 	grouprelation_groupcod: string[];
+	payload?: any;
 
 	public get createdModel(): DateModel {
 		return new DateModel(this.created);

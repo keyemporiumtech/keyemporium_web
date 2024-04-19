@@ -7,6 +7,9 @@ export class BasketticketDTO extends ApiDTO {
 	public title: string;
 	public ticket: string;
 	public ticket_fk: TicketDTO;
+	public quantity: number;
 	public basket: string;
 	public basket_fk: BasketDTO;
+	public dtainit: string;
+	public dtaend: string;
 }

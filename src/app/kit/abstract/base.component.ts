@@ -1,4 +1,12 @@
-import { AfterViewInit, Directive, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+	AfterViewInit,
+	Directive,
+	EventEmitter,
+	Input,
+	OnDestroy,
+	OnInit,
+	Output,
+} from '@angular/core';
 import { ApplicationLoggerService } from '../logger/services/application-logger.service';
 import { BaseClassModel } from './base-class.model';
 /**
@@ -20,6 +28,8 @@ export abstract class BaseComponent
 	private _loading: boolean;
 	debugMode: boolean;
 	loaders: number;
+	@Output() onStartLoading: EventEmitter<number> = new EventEmitter<number>();
+	@Output() onStopLoading: EventEmitter<number> = new EventEmitter<number>();
 
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
@@ -58,10 +68,24 @@ export abstract class BaseComponent
 	startLoading() {
 		// this.loading = true;
 		this.loaders++;
+		this.onStartLoading.emit(this.loaders);
 	}
 	stopLoading() {
 		// this.loading = false;
 		this.loaders--;
+		this.onStopLoading.emit(this.loaders);
+	}
+
+	childrenStartLoading(val?: number) {
+		setTimeout(() => {
+			this.startLoading();
+		}, 200);
+	}
+
+	childrenStopLoading(val?: number) {
+		setTimeout(() => {
+			this.stopLoading();
+		}, 200);
 	}
 
 	/**
