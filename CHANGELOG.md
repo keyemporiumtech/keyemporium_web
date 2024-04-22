@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0 - 22/04/2024
+
+> Versione che integra il template 11.0.0
+
 ## 2.1.0 - 25/08/2023
 
 > Versione che integra il template 10.1.0

@@ -15,7 +15,7 @@ jobs:
           node-version: "18.10.0"
 
       - name: Install NPM Modules
-        run: npm install
+        run: npm install --force
 
       - name: Install barrelsby
         run: npm install -g barrelsby@1.0.2
