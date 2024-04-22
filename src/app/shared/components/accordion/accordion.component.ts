@@ -34,14 +34,18 @@ export class AccordionComponent extends BaseComponent {
 		this.makeIds();
 		this.ready = true;
 	}
-	ngAfterViewInitForChildren() {}
+	ngAfterViewInitForChildren() {
+		setTimeout(() => {
+			this.disposeEvents();
+		}, 200);
+	}
 	ngOnDestroyForChildren() {}
 	getClassName(): string {
 		return 'AccordionComponent';
 	}
 
 	onClick() {
-		this.open = !this.open;
+		// this.open = !this.open;
 		this.clickEmit.emit(this.open);
 	}
 
@@ -49,4 +53,18 @@ export class AccordionComponent extends BaseComponent {
 		this.headingId = 'heading' + this.id;
 		this.accordionId = 'accordion' + this.id;
 	}
+
+	disposeEvents() {
+		window['$']('#' + this.accordionId).on('hide.bs.collapse', this.closeAccordion);
+		window['$']('#' + this.accordionId).on('show.bs.collapse', this.openAccordion);
+	}
+
+	closeAccordion = () => {
+		this.open = false;
+		// console.error('Ho chiuso ' + this.accordionId, this.open);
+	};
+	openAccordion = () => {
+		this.open = true;
+		// console.error('Ho aperto ' + this.accordionId, this.open);
+	};
 }

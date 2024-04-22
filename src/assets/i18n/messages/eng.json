@@ -9,6 +9,14 @@
 			"QUESTION_SMS": "Enter the code we sent you by sms"
 		},
 		"GENERIC_ERROR": "A server error has occurred",
+    "GOOGLE_RECAPTCHA": {
+			"MISSING_INPUT_SECRET": "The secret parameter is missing.",
+			"INVALID_INPUT_SECRET": "The secret parameter is invalid or malformed.",
+			"MISSING_INPUT_RESPONSE": "The response parameter is missing.",
+			"INVALID_INPUT_RESPONSE": "The response parameter is invalid or malformed.",
+			"BAD_REQUEST": "The request is invalid or malformed.",
+      "TIMEOUT_OR_DUPLICATE": "The response is no longer valid: either is too old or has been used previously."
+		},
 		"NO_OPERATION": "Operation not successful",
 		"NO_RECORD": "Data not present or invalid input",
 		"NO_RECORDS": "There are no items",

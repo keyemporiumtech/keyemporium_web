@@ -1,0 +1,86 @@
+<div class="container-fluid">
+	<h4>Libreria gojs-diagram</h4>
+	<div class="row">
+		<div class="col col-12">
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-FAMILY-TREE')">
+				Esempio Family Tree
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-GENOGRAM')">
+				Esempio Genogram
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-GANTT')"> Esempio Gantt </a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-KANBAN-BOARD')">
+				Esempio Kanban Board
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-ORG-TREE')">
+				Esempio Org Tree
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-FLOWCHART')">
+				Esempio Flowchart
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-SEQUENCE')">
+				Esempio Sequence Diagram
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-UML')">
+				Esempio UML Diagram
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-DOUBLETREE')">
+				Esempio Double Tree Diagram
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-TOURNMENT')">
+				Esempio Tournment Diagram
+			</a>
+			<span class="ml-2 mt-1">|</span>
+			<a class="ml-2 mt-1 btn btn-sm btn-warning" (click)="set('GOJS-DECISION-TREE')">
+				Esempio Decision Tree Diagram
+			</a>
+		</div>
+	</div>
+
+	<div *ngIf="view" class="row mt-3" style="border: 1px #000 solid">
+		<div class="col col-12 p-2">
+			<a class="btn btn-sm btn-dark text-white float-right" (click)="set(undefined)">X</a>
+			<wiki-test-gojs-diagram-family-tree
+				*ngIf="view === 'GOJS-FAMILY-TREE'"
+			></wiki-test-gojs-diagram-family-tree>
+			<wiki-test-gojs-diagram-genogram
+				*ngIf="view === 'GOJS-GENOGRAM'"
+			></wiki-test-gojs-diagram-genogram>
+			<wiki-test-gojs-diagram-gantt *ngIf="view === 'GOJS-GANTT'"></wiki-test-gojs-diagram-gantt>
+			<wiki-test-gojs-diagram-kanban-board
+				*ngIf="view === 'GOJS-KANBAN-BOARD'"
+			></wiki-test-gojs-diagram-kanban-board>
+			<wiki-test-gojs-diagram-org-tree
+				*ngIf="view === 'GOJS-ORG-TREE'"
+			></wiki-test-gojs-diagram-org-tree>
+			<wiki-test-gojs-diagram-flowchart
+				*ngIf="view === 'GOJS-FLOWCHART'"
+			></wiki-test-gojs-diagram-flowchart>
+			<wiki-test-gojs-diagram-sequence
+				*ngIf="view === 'GOJS-SEQUENCE'"
+			></wiki-test-gojs-diagram-sequence>
+			<wiki-test-gojs-diagram-uml *ngIf="view === 'GOJS-UML'"></wiki-test-gojs-diagram-uml>
+			<wiki-test-gojs-diagram-double-tree
+				*ngIf="view === 'GOJS-DOUBLETREE'"
+			></wiki-test-gojs-diagram-double-tree>
+			<wiki-test-gojs-diagram-tournment
+				*ngIf="view === 'GOJS-TOURNMENT'"
+			></wiki-test-gojs-diagram-tournment>
+			<wiki-test-gojs-diagram-decision-tree
+				*ngIf="view === 'GOJS-DECISION-TREE'"
+			></wiki-test-gojs-diagram-decision-tree>
+		</div>
+	</div>
+
+	<hr />
+	<a class="btn btn-sm btn-dark text-white" [routerLink]="'/wiki'">BACK</a>
+</div>

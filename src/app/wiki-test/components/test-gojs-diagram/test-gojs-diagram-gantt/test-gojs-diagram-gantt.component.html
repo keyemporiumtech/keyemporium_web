@@ -1,0 +1,22 @@
+<h1>Gantt {{ ganttCmp && ganttCmp.dataInizio ? ganttCmp.dataInizio.toLocaleDateString() : '' }}</h1>
+
+<gojs-cmp-gantt
+	#ganttCmp
+	[diagramModel]="diagramModel"
+	[diagramProperties]="diagramProperties"
+	[divId]="divId"
+	(onDiagram)="buildDiagram($event)"
+	[templateBody]="templateBody"
+	[templateFooter]="templateFooter"
+></gojs-cmp-gantt>
+
+<ng-template #plusTemplateBody>
+	{{ dataShow | json }}
+</ng-template>
+
+<ng-template #asteriskTemplateBody> <strong>Titolo:</strong>{{ dataShow.text }} </ng-template>
+<ng-template #asteriskTemplateFooter>
+	<button class="btn btn-primary">Example</button>
+</ng-template>
+
+<wiki-gojs-diagram-common-btn [cmpDiagram]="ganttCmp"></wiki-gojs-diagram-common-btn>

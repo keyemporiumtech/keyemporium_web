@@ -1,117 +1,128 @@
 {
-  "APP": {
-    "I18N": "Italiano",
-    "COPYRIGHT": "&copy; DDC INIT",
-    "BUTTON": {
-      "BACK": "Indietro",
-      "CANCEL": "Annulla",
-      "CONFIRM": "Conferma",
-      "EDIT": "Modifica",
-      "HIDE": "Nascondi",
-      "LOGIN": "Login",
-      "LOGOUT": "Logout",
-      "OK": "Ok",
-      "READ": "Leggi",
-      "RESET": "Pulisici",
-      "PAGE": "Vai a Pagina",
-      "SAVE": "Salva",
-      "SEARCH": "Cerca",
-      "SHOW": "Mostra"
+	"APP": {
+		"I18N": "Italiano",
+		"COPYRIGHT": "&copy; DDC INIT",
+    "AUTH2FA": {
+      "APPLICATION_NOT_FOUND": "Applicazione non censita in {{ appkeys }}.<br/>Contattare l'amministratore di sistema e richiedere il censimento",
+      "USER_NOT_FOUND": "Utente non registrato in {{ appkeys }}.<br/>Registrati prima di effettuare nuovamente il login",
+      "USER_NOT_AUTH": "Utente non autorizzato da {{ appkeys }}",
+      "USER_NOT_AUTH_PAGE": "Utente non autorizzato alla visualizzazione di questa pagina",
+      "USE_CODE": "Usa questo codice per confermare l'operazione"
     },
-    "COOKIE": {
-      "ACCEPT": "Accetta",
-      "ATTENTION_CLOSE": "ATTENZIONE!! Chiudendo si accetteranno i cookie. Resterà comunque possibile modificare la scelta dalla pagina di Gestione dei cookie",
-      "CHOICE": {
-        "ACCEPT": "Accetta selezionati",
-        "ACCEPT_ALL": "Accetta tutti",
-        "EDIT": "Personalizza",
-        "NAV1": "Consenso",
-        "NAV1_INFO": "<strong>Questo sito web utilizza i cookie</strong><br/>Utilizziamo i cookie per personalizzare contenuti ed annunci, per fornire funzionalità dei social media e per analizzare il nostro traffico. Condividiamo inoltre informazioni sul modo in cui utilizza il nostro sito con i nostri partner che si occupano di analisi dei dati web, pubblicità e social media, i quali potrebbero combinarle con altre informazioni che ha fornito loro o che hanno raccolto dal suo utilizzo dei loro servizi.",
-        "NAV2": "Personalizza",
-        "NAV2_INFO": "In questa sezione è possibile analizzare il dettaglio di ogni cookie applicativo e personalizzare l'accettazione del gruppo di cookies da accettare",
-        "NAV3": "Informazione sui cookie",
-        "NAV3_INFO1": "I cookie sono piccoli file di testo che possono essere utilizzati dai siti web per rendere più efficiente l'esperienza per l'utente.",
-        "NAV3_INFO2": "La legge afferma che possiamo memorizzare i cookie sul suo dispositivo se sono strettamente necessari per il funzionamento di questo sito. Per tutti gli altri tipi di cookie abbiamo bisogno del suo permesso.",
-        "NAV3_INFO3": "Questo sito utilizza diversi tipi di cookie. Alcuni cookie sono collocate da servizi di terzi che compaiono sulle nostre pagine.",
-        "NAV3_INFO4": "In qualsiasi momento è possibile modificare o revocare il proprio consenso sul nostro sito Web dalla ",
-        "NAV3_INFO4_LINK": "Dichiarazione dei cookie",
-        "NAV3_INFO5": "Scopra di più su chi siamo, come può contattarci e come trattiamo i dati personali nella nostra ",
-        "NAV3_INFO5_LINK": "Informativa sulla privacy",
-        "NAV3_INFO6": "Scopra di più su come gestiamo i cookie nella nostra ",
-        "NAV3_INFO6_LINK": "Informativa sui cookie",
-        "REFUSE": "Rifiuta",
-        "TITLE": "Gestione dei Cookie"
+		"BUTTON": {
+			"BACK": "Indietro",
+			"CANCEL": "Annulla",
+			"CONFIRM": "Conferma",
+			"DETAIL": "Dettaglio",
+			"EDIT": "Modifica",
+			"HIDE": "Nascondi",
+			"LOGIN": "Login",
+			"LOGOUT": "Logout",
+			"OK": "Ok",
+			"READ": "Leggi",
+			"RESET": "Pulisici",
+			"PAGE": "Vai a Pagina",
+			"SAVE": "Salva",
+			"SEARCH": "Cerca",
+			"SHOW": "Mostra"
+		},
+		"COOKIE": {
+			"ACCEPT": "Accetta",
+			"ATTENTION_CLOSE": "ATTENZIONE!! Chiudendo si accetteranno i cookie. Resterà comunque possibile modificare la scelta dalla pagina di Gestione dei cookie",
+			"CHOICE": {
+				"ACCEPT": "Accetta selezionati",
+				"ACCEPT_ALL": "Accetta tutti",
+				"EDIT": "Personalizza",
+				"NAV1": "Consenso",
+				"NAV1_INFO": "<strong>Questo sito web utilizza i cookie</strong><br/>Utilizziamo i cookie per personalizzare contenuti ed annunci, per fornire funzionalità dei social media e per analizzare il nostro traffico. Condividiamo inoltre informazioni sul modo in cui utilizza il nostro sito con i nostri partner che si occupano di analisi dei dati web, pubblicità e social media, i quali potrebbero combinarle con altre informazioni che ha fornito loro o che hanno raccolto dal suo utilizzo dei loro servizi.",
+				"NAV2": "Personalizza",
+				"NAV2_INFO": "In questa sezione è possibile analizzare il dettaglio di ogni cookie applicativo e personalizzare l'accettazione del gruppo di cookies da accettare",
+				"NAV3": "Informazione sui cookie",
+				"NAV3_INFO1": "I cookie sono piccoli file di testo che possono essere utilizzati dai siti web per rendere più efficiente l'esperienza per l'utente.",
+				"NAV3_INFO2": "La legge afferma che possiamo memorizzare i cookie sul suo dispositivo se sono strettamente necessari per il funzionamento di questo sito. Per tutti gli altri tipi di cookie abbiamo bisogno del suo permesso.",
+				"NAV3_INFO3": "Questo sito utilizza diversi tipi di cookie. Alcuni cookie sono collocate da servizi di terzi che compaiono sulle nostre pagine.",
+				"NAV3_INFO4": "In qualsiasi momento è possibile modificare o revocare il proprio consenso sul nostro sito Web dalla ",
+				"NAV3_INFO4_LINK": "Dichiarazione dei cookie",
+				"NAV3_INFO5": "Scopra di più su chi siamo, come può contattarci e come trattiamo i dati personali nella nostra ",
+				"NAV3_INFO5_LINK": "Informativa sulla privacy",
+				"NAV3_INFO6": "Scopra di più su come gestiamo i cookie nella nostra ",
+				"NAV3_INFO6_LINK": "Informativa sui cookie",
+				"REFUSE": "Rifiuta",
+				"TITLE": "Gestione dei Cookie"
+			},
+			"INFO": "Questo è il messaggio che deve comparire nel banner cookie",
+			"LAST_UPDATE": "Dichiarazione Cookie aggiornata il {{ dtaCookie }} da {{ appName }}",
+			"LINK_EXTERNAL": "Per saperne di più sul fornitore",
+			"MARKETING": {
+				"TITLE": "Marketing",
+				"DESCRIPTION": "I cookie di marketing vengono utilizzati per tracciare i visitatori sui siti web. La finalità è quella di presentare annunci pubblicitari che siano rilevanti e coinvolgenti per il singolo utente e quindi di maggior valore per editori e inserzionisti di terze parti."
+			},
+			"MORE_INFO": "Leggi",
+			"NECESSARY": {
+				"TITLE": "Necessari",
+				"DESCRIPTION": "I cookie necessari contribuiscono a rendere fruibile il sito web abilitandone funzionalità di base quali la navigazione sulle pagine e l'accesso alle aree protette del sito. Il sito web non è in grado di funzionare correttamente senza questi cookie.",
+				"CAKEPHP": "Questa tipologia di cookie permette il corretto funzionamento di alcune sezioni del Sito. Sono di tipo persistenti (una volta chiuso il browser non vengono distrutti ma rimangono fino ad una data di scadenza preimpostata). Sono necessari quindi a visualizzare correttamente il sito e sono solo in relazione ai servizi tecnici offerti e verranno quindi sempre utilizzati e inviati, a meno che non si modifichi le impostazioni nel proprio browser"
+			},
+			"NOT_CLASSIFIED": {
+				"TITLE": "Non classificati",
+				"DESCRIPTION": "I cookie non classificati sono i cookie che sono in fase di classificazione, insieme ai fornitori di cookie individuali."
+			},
+			"PREFERENCE": {
+				"TITLE": "Preferenze",
+				"DESCRIPTION": "I cookie di preferenza consentono al sito web di memorizzare informazioni che ne influenzano il comportamento o l'aspetto, quali la lingua preferita o la località nella quale ti trovi.",
+				"PROFILE": "Questa tipologia di cookie memorizza i dati anagrafici dell'utente per proporre soluzioni di navigazione attinenti a luoghi, età e lingua"
+			},
+			"STATISTIC": {
+				"TITLE": "Statistiche",
+				"DESCRIPTION": "I cookie statistici aiutano i proprietari del sito web a capire come i visitatori interagiscono con i siti raccogliendo e trasmettendo informazioni in forma anonima."
+			},
+			"TITLE": "Cookie Policy"
+		},
+		"LABEL": {
+			"ADDRESS": {
+				"TYPE": "Tipo di indirizzo",
+				"NATION": "Nazione",
+				"REGION": "Regione",
+				"PROVINCE": "Provincia",
+				"CITY": "Città",
+				"COMMUNITY": "Community",
+				"ZIP": "C.A.P.",
+				"STREET": "Via/Piazza/Contrada",
+				"NUM": "Numero Civico"
+			},
+      "CAPTCHA": {
+        "NOT_ROBOT": "Non sono un robot"
       },
-      "INFO": "Questo è il messaggio che deve comparire nel banner cookie",
-      "LAST_UPDATE": "Dichiarazione Cookie aggiornata il {{ dtaCookie }} da {{ appName }}",
-      "LINK_EXTERNAL": "Per saperne di più sul fornitore",
-      "MARKETING": {
-        "TITLE": "Marketing",
-        "DESCRIPTION": "I cookie di marketing vengono utilizzati per tracciare i visitatori sui siti web. La finalità è quella di presentare annunci pubblicitari che siano rilevanti e coinvolgenti per il singolo utente e quindi di maggior valore per editori e inserzionisti di terze parti."
-      },
-      "MORE_INFO": "Leggi",
-      "NECESSARY": {
-        "TITLE": "Necessari",
-        "DESCRIPTION": "I cookie necessari contribuiscono a rendere fruibile il sito web abilitandone funzionalità di base quali la navigazione sulle pagine e l'accesso alle aree protette del sito. Il sito web non è in grado di funzionare correttamente senza questi cookie.",
-        "CAKEPHP": "Questa tipologia di cookie permette il corretto funzionamento di alcune sezioni del Sito. Sono di tipo persistenti (una volta chiuso il browser non vengono distrutti ma rimangono fino ad una data di scadenza preimpostata). Sono necessari quindi a visualizzare correttamente il sito e sono solo in relazione ai servizi tecnici offerti e verranno quindi sempre utilizzati e inviati, a meno che non si modifichi le impostazioni nel proprio browser"
-      },
-      "NOT_CLASSIFIED": {
-        "TITLE": "Non classificati",
-        "DESCRIPTION": "I cookie non classificati sono i cookie che sono in fase di classificazione, insieme ai fornitori di cookie individuali."
-      },
-      "PREFERENCE": {
-        "TITLE": "Preferenze",
-        "DESCRIPTION": "I cookie di preferenza consentono al sito web di memorizzare informazioni che ne influenzano il comportamento o l'aspetto, quali la lingua preferita o la località nella quale ti trovi.",
-        "PROFILE": "Questa tipologia di cookie memorizza i dati anagrafici dell'utente per proporre soluzioni di navigazione attinenti a luoghi, età e lingua"
-      },
-      "STATISTIC": {
-        "TITLE": "Statistiche",
-        "DESCRIPTION": "I cookie statistici aiutano i proprietari del sito web a capire come i visitatori interagiscono con i siti raccogliendo e trasmettendo informazioni in forma anonima."
-      },
-      "TITLE": "Cookie Policy"
-    },
-    "LABEL": {
-      "ADDRESS": {
-        "TYPE": "Tipo di indirizzo",
-        "NATION": "Nazione",
-        "REGION": "Regione",
-        "PROVINCE": "Provincia",
-        "CITY": "Città",
-        "COMMUNITY": "Community",
-        "ZIP": "C.A.P.",
-        "STREET": "Via/Piazza/Contrada",
-        "NUM": "Numero Civico"
-      },
-      "CONTACTREFERENCE": {
-        "DESCRIPTION": "Titolo del contatto",
-        "TYPE": "Tipo di contatto",
-        "TEL": "Prefisso",
-        "SOCIAL": "Tipo di social",
-        "VAL": "Contatto"
-      },
-      "CREDITCARD": "Numero di carta di credito",
-      "EXPIRATION": "Scadenza",
-      "IBAN": "IBAN",
-      "LANGUAGE": "Lingua",
-      "NATION": "Nazione",
-      "PROFILE": "Profilo",
-      "TYPE": "Tipo"
-    },
-    "LOADER": {
-      "MESSAGE_WAIT": "Attendere"
-    },
-    "MAP": {
-      "DISABLE_SCROLL": "Disabilita Scroll",
-      "ENABLE_SCROLL": "Abilita Scroll"
-    },
-    "PLATFORM": {
-      "MESSAGE_IS_MOBILE": "Vuoi navigare l'applicazione mobile ?"
-    },
-    "PRIVACY": {
-      "TITLE": "Privacy Policy"
-    },
-    "TERM": {
-      "TITLE": "Condizioni d'uso"
-    }
-  }
+			"CONTACTREFERENCE": {
+				"DESCRIPTION": "Titolo del contatto",
+				"TYPE": "Tipo di contatto",
+				"TEL": "Prefisso",
+				"SOCIAL": "Tipo di social",
+				"VAL": "Contatto"
+			},
+			"CREDITCARD": "Numero di carta di credito",
+			"EXPIRATION": "Scadenza",
+			"IBAN": "IBAN",
+			"LANGUAGE": "Lingua",
+			"NATION": "Nazione",
+			"PROFILE": "Profilo",
+			"TYPE": "Tipo"
+		},
+		"LOADER": {
+			"MESSAGE_WAIT": "Attendere"
+		},
+		"MAP": {
+			"DISABLE_SCROLL": "Disabilita Scroll",
+			"ENABLE_SCROLL": "Abilita Scroll"
+		},
+		"PLATFORM": {
+			"MESSAGE_IS_MOBILE": "Vuoi navigare l'applicazione mobile ?"
+		},
+		"PRIVACY": {
+			"TITLE": "Privacy Policy"
+		},
+		"TERM": {
+			"TITLE": "Condizioni d'uso"
+		}
+	}
 }

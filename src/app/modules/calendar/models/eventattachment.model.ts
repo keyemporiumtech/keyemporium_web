@@ -6,7 +6,7 @@ import { EnumAttachmentType } from '../../resources/enums/attachment-type.enum';
 
 export class EventattachmentModel extends ApiModel {
 	private _cod: string;
-	private _flgprincipal: boolean; // boolean
+	private _flgprincipal: boolean;
 	private _attachment: AttachmentModel;
 	private _tpattachment: TypologicalModel;
 	private _event: EventModel;

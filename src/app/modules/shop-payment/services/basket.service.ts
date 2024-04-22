@@ -24,6 +24,14 @@ import {
 import { shopPaymentList } from '../constants/shop-payment.list';
 import { BasketModel } from '../models/basket.model';
 import { BasketConverter, BasketUtilConverter } from '../converters/basket.converter';
+import { BasketproductModel } from '../models/basketproduct.model';
+import { BasketserviceModel } from '../models/basketservice.model';
+import { BasketticketModel } from '../models/basketticket.model';
+import { BasketpocketModel } from '../models/basketpocket.model';
+import { BasketproductUtilConverter } from '../converters/basketproduct.converter';
+import { BasketserviceUtilConverter } from '../converters/basketservice.converter';
+import { BasketticketUtilConverter } from '../converters/basketticket.converter';
+import { BasketpocketUtilConverter } from '../converters/basketpocket.converter';
 
 @Injectable()
 export class BasketService extends ApiService {
@@ -145,12 +153,14 @@ export class BasketService extends ApiService {
 
 	delete(
 		id: string,
+		all?: boolean,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
 	): Observable<boolean> {
 		let body: HttpParams = new HttpParams();
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_basket', id);
+		body = RequestUtility.addParam(body, EnumParamType.BOOLEAN, 'all', all);
 
 		const url =
 			requestManager && requestManager.url
@@ -159,5 +169,109 @@ export class BasketService extends ApiService {
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),
 		);
+	}
+
+	saveBasket(
+		basketIn: BasketModel,
+		basketproductsIn?: BasketproductModel[],
+		basketservicesIn?: BasketserviceModel[],
+		basketticketsIn?: BasketticketModel[],
+		basketpocketsIn?: BasketpocketModel[],
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<string> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'basket',
+			BasketUtilConverter.toDto(basketIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'basketproducts',
+			BasketproductUtilConverter.toDtoList(basketproductsIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'basketservices',
+			BasketserviceUtilConverter.toDtoList(basketservicesIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'baskettickets',
+			BasketticketUtilConverter.toDtoList(basketticketsIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'basketpockets',
+			BasketpocketUtilConverter.toDtoList(basketpocketsIn),
+		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + shopPaymentList.basket.saveBasket;
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
+	}
+
+	editBasket(
+		basketIn: BasketModel,
+		id?: string,
+		basketproductsIn?: BasketproductModel[],
+		basketservicesIn?: BasketserviceModel[],
+		basketticketsIn?: BasketticketModel[],
+		basketpocketsIn?: BasketpocketModel[],
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<string> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'basket',
+			BasketUtilConverter.toDto(basketIn),
+		);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_basket', id);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'basketproducts',
+			BasketproductUtilConverter.toDtoList(basketproductsIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'basketservices',
+			BasketserviceUtilConverter.toDtoList(basketservicesIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'baskettickets',
+			BasketticketUtilConverter.toDtoList(basketticketsIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.ARRAY,
+			'basketpockets',
+			BasketpocketUtilConverter.toDtoList(basketpocketsIn),
+		);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + shopPaymentList.basket.editBasket;
+		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager);
 	}
 }

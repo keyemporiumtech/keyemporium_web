@@ -7,8 +7,13 @@
 	></span>
 	<span
 		*ngIf="!existOrderByKey(key) || existOrder(key, 'desc')"
-		class="{{ iconDesc }} float-right order"
+		class="{{ !existOrderByKey(key) ? iconAscDesc : iconDesc }} float-right order"
 		[ngClass]="{ 'order-selected': existOrder(key, 'desc') }"
 		(click)="asc()"
+	></span>
+	<span
+		*ngIf="flgClean && orders.length > 1 && (existOrder(key, 'asc') || existOrder(key, 'desc'))"
+		class="fa fa-times float-right order"
+		(click)="clean()"
 	></span>
 </ng-container>

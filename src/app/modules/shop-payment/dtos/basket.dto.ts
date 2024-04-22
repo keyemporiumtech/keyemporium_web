@@ -18,4 +18,10 @@ export class BasketDTO extends ApiDTO {
 	public phoneto: string;
 	public strto: string;
 	public note: string;
+	// calculated
+	public price: number;
+	public iva: number;
+	public discount: number;
+	public tax: number;
+	public totalsum: number;
 }

@@ -35,6 +35,7 @@ import { TestModulesComponent } from './pages/test-modules/test-modules.componen
 import { WikiTestRoutingModule } from './wiki-test-routing.module';
 // MODULES
 import { KitModule } from '@ddc/kit';
+import { GojsDiagramModule } from '../gojs-diagram';
 import { ApiModule } from '../modules/api/api.module';
 import { AuthenticationModule } from '../modules/authentication/authentication.module';
 import { CommunicationModule } from '../modules/communication/communication.module';
@@ -43,12 +44,23 @@ import { ResourcesModule } from '../modules/resources/resources.module';
 import { ValidatorCreditcardModule } from '../modules/validator-creditcard/validator-creditcard.module';
 import { ValidatorIbanModule } from '../modules/validator-iban/validator-iban.module';
 import { ValidatorPasswordModule } from '../modules/validator-password/validator-password.module';
+import { WorkCompanyModule } from '../modules/work-company/work-company.module';
+import { GojsDiagramCommonBtnComponent } from './components/test-gojs-diagram/gojs-diagram-common-btn/gojs-diagram-common-btn.component';
+import { TestGojsDiagramFamilyTreeComponent } from './components/test-gojs-diagram/test-gojs-diagram-family-tree/test-gojs-diagram-family-tree.component';
+import { TestGojsDiagramFlowchartComponent } from './components/test-gojs-diagram/test-gojs-diagram-flowchart/test-gojs-diagram-flowchart.component';
+import { TestGojsDiagramGanttComponent } from './components/test-gojs-diagram/test-gojs-diagram-gantt/test-gojs-diagram-gantt.component';
+import { TestGojsDiagramGenogramComponent } from './components/test-gojs-diagram/test-gojs-diagram-genogram/test-gojs-diagram-genogram.component';
+import { TestGojsDiagramKanbanBoardComponent } from './components/test-gojs-diagram/test-gojs-diagram-kanban-board/test-gojs-diagram-kanban-board.component';
+import { TestGojsDiagramOrgTreeComponent } from './components/test-gojs-diagram/test-gojs-diagram-org-tree/test-gojs-diagram-org-tree.component';
+import { TestGojsDiagramSequenceComponent } from './components/test-gojs-diagram/test-gojs-diagram-sequence/test-gojs-diagram-sequence.component';
+import { TestGojsDiagramComponent } from './components/test-gojs-diagram/test-gojs-diagram.component';
 import { TestKitChartsComponent } from './components/test-kit/test-kit-charts/test-kit-charts.component';
 import { TestKitHtmlComponent } from './components/test-kit/test-kit-html/test-kit-html.component';
 import { TestKitQrcodeComponent } from './components/test-kit/test-kit-qrcode/test-kit-qrcode.component';
 import { TestKitQuillEditorComponent } from './components/test-kit/test-kit-quill-editor/test-kit-quill-editor.component';
 import { TestKitRoutingComponent } from './components/test-kit/test-kit-routing/test-kit-routing.component';
 import { TestKitTreeHtmlComponent } from './components/test-kit/test-kit-tree-html/test-kit-tree-html.component';
+import { TestKitChatbotComponent } from './components/test-kit/test-kit-chatbot/test-kit-chatbot.component';
 import { TestRestOauthLoginComponent } from './components/test-rest/test-rest-oauth-login/test-rest-oauth-login.component';
 import { TestRestOpenstreetmapComponent } from './components/test-rest/test-rest-openstreetmap/test-rest-openstreetmap.component';
 import { TestRestComponent } from './components/test-rest/test-rest.component';
@@ -56,6 +68,16 @@ import { TestSharedAddressSearchComponent } from './components/test-shared/test-
 import { TestSharedMapComponent } from './components/test-shared/test-shared-map/test-shared-map.component';
 import { TestSharedPlaylistAudioComponent } from './components/test-shared/test-shared-playlist/test-shared-playlist-audio/test-shared-playlist-audio.component';
 import { TestSharedPlaylistComponent } from './components/test-shared/test-shared-playlist/test-shared-playlist.component';
+import { TestGojsDiagramUmlComponent } from './components/test-gojs-diagram/test-gojs-diagram-uml/test-gojs-diagram-uml.component';
+import { TestGojsDiagramDoubleTreeComponent } from './components/test-gojs-diagram/test-gojs-diagram-double-tree/test-gojs-diagram-double-tree.component';
+import { TestGojsDiagramTournmentComponent } from './components/test-gojs-diagram/test-gojs-diagram-tournment/test-gojs-diagram-tournment.component';
+import { TestGojsDiagramDecisionTreeComponent } from './components/test-gojs-diagram/test-gojs-diagram-decision-tree/test-gojs-diagram-decision-tree.component';
+import { MetaTagService } from '../kit/seo/services/meta-tag.service';
+import { metaTags } from '../../environments/meta/meta-tag';
+import { TestKitRecaptchaComponent } from './components/test-kit/test-kit-recaptcha/test-kit-recaptcha.component';
+import { CaptchaModule } from '../modules/captcha/captcha.module';
+import { TestSharedAuth2faPageComponent } from './components/test-shared/test-shared-auth2fa-page/test-shared-auth2fa-page.component';
+
 @NgModule({
 	declarations: [
 		TestHomeComponent,
@@ -99,6 +121,22 @@ import { TestSharedPlaylistComponent } from './components/test-shared/test-share
 		TestKitTreeHtmlComponent,
 		TestKitQrcodeComponent,
 		TestKitQuillEditorComponent,
+		TestKitChatbotComponent,
+		TestGojsDiagramComponent,
+		TestGojsDiagramFamilyTreeComponent,
+		TestGojsDiagramGanttComponent,
+		TestGojsDiagramKanbanBoardComponent,
+		TestGojsDiagramOrgTreeComponent,
+		TestGojsDiagramFlowchartComponent,
+		GojsDiagramCommonBtnComponent,
+		TestGojsDiagramSequenceComponent,
+		TestGojsDiagramGenogramComponent,
+		TestGojsDiagramUmlComponent,
+		TestGojsDiagramDoubleTreeComponent,
+		TestGojsDiagramTournmentComponent,
+		TestGojsDiagramDecisionTreeComponent,
+		TestKitRecaptchaComponent,
+		TestSharedAuth2faPageComponent,
 	],
 	imports: [
 		CommonModule,
@@ -110,16 +148,22 @@ import { TestSharedPlaylistComponent } from './components/test-shared/test-share
 		// MODULES
 		ApiModule,
 		KitModule,
+		GojsDiagramModule.forRoot(),
 		ResourcesModule.forRoot(),
 		CommunicationModule.forRoot(),
 		AuthenticationModule.forRoot(),
 		LocalesystemModule.forRoot(),
+		WorkCompanyModule.forRoot(),
 		ValidatorIbanModule.forRoot(),
 		ValidatorCreditcardModule.forRoot(),
 		ValidatorPasswordModule.forRoot(),
+		CaptchaModule.forRoot(),
 	],
 })
 export class WikiTestModule {
+	constructor(private metaTagService: MetaTagService) {
+		this.metaTagService.initList(metaTags);
+	}
 	static forRoot() {
 		return {
 			ngModule: WikiTestModule,

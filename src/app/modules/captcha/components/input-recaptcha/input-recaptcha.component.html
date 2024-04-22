@@ -1,0 +1,25 @@
+<ddc-init-recaptcha
+	[keyClient]="keyClient"
+	(resolved)="onResolved($event)"
+	(errored)="onError($event)"
+></ddc-init-recaptcha>
+
+<div *ngFor="let support of field.supports" class="input-support-message">
+	{{ translateKey(support) | translate : translateParams(support) }}
+</div>
+
+<div *ngFor="let error of errorMessages" class="input-invalid-message">
+	{{ translateKey(error) | translate : translateParams(error) }}
+</div>
+
+<div *ngFor="let valid of validMessages" class="input-valid-message">
+	{{ translateKey(valid) | translate : translateParams(valid) }}
+</div>
+
+<div
+	*ngFor="let styleMessage of styleMessages"
+	[ngClass]="styleMessage.class ? styleMessage.class + '-message' : 'input-generic-message'"
+	[style.color]="styleMessage.color"
+>
+	{{ translateKey(styleMessage) | translate : translateParams(styleMessage) }}
+</div>

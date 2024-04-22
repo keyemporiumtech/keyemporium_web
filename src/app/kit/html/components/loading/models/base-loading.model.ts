@@ -5,6 +5,7 @@ import { BaseComponent } from '../../../../abstract/base.component';
 // eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class BaseLoadingModel extends BaseComponent {
 	private _loadingColor: string = '#000';
+	selectorsLoading: any[] = [];
 
 	get color(): string {
 		return this._loadingColor;
@@ -12,12 +13,23 @@ export abstract class BaseLoadingModel extends BaseComponent {
 	@Input()
 	set color(val: string) {
 		this._loadingColor = val;
-		if (this.selectors() && this.selectors().length) {
-			for (const selector of this.selectors()) {
+		this.workSelectors();
+	}
+
+	ngAfterViewInitForChildren() {
+		setTimeout(() => {
+			this.setSelectors();
+			this.workSelectors();
+		}, 500);
+	}
+
+	private workSelectors() {
+		if (this.selectorsLoading && this.selectorsLoading.length) {
+			for (const selector of this.selectorsLoading) {
 				selector.style.setProperty('--loadingColor', this._loadingColor);
 			}
 		}
 	}
 
-	abstract selectors(): any[];
+	abstract setSelectors(): void;
 }

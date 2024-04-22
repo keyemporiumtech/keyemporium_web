@@ -1,12 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
+import { Injectable } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
 	InnerStorageService,
 	MessageService,
 } from '@ddc/kit';
-import { Observable } from 'rxjs';
 import {
 	EnumParamType,
 	PaginatorConverter,
@@ -15,15 +14,16 @@ import {
 	RequestUtility,
 	ResponseManagerInterface,
 } from '@ddc/rest';
-import { Injectable } from '@angular/core';
-import { WorkroleModel } from '../models/workrole.model';
-import { WorkroleConverter, WorkroleUtilConverter } from '../converters/workrole.converter';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../../api/cakeutils/base/api.service';
 import { RequestConditionInterface } from '../../api/cakeutils/interfaces/request-conditions.interface';
-import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
+import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
+import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
 import { WorkCompanyList } from '../constants/work-company.list';
+import { WorkroleConverter, WorkroleUtilConverter } from '../converters/workrole.converter';
+import { WorkroleModel } from '../models/workrole.model';
 
 @Injectable()
 export class WorkroleService extends ApiService {
@@ -35,7 +35,6 @@ export class WorkroleService extends ApiService {
 		http: HttpClient,
 	) {
 		super(applicationLogger, messageService, applicationStorage, innerStorage, http);
-		this.flgInnerToken = true;
 	}
 
 	unique(

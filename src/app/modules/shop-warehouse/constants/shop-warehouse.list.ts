@@ -26,6 +26,7 @@ export const shopWarehouseList = {
 		save: 'category/save',
 		edit: 'category/edit',
 		delete: 'category/delete',
+		tree: 'category/tree',
 	},
 	categoryattachment: {
 		unique: 'categoryattachment/get',

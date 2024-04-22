@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { inject, NgModule } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from '../modules/authentication/base/authentication.guard';
 import { HomeReserveComponent } from './pages/home-reserve/home-reserve.component';
 import { PermissionsPageComponent } from './pages/permissions-page/permissions-page.component';
@@ -11,7 +11,10 @@ const routes: Routes = [
 	{
 		path: '',
 		component: LayoutReserveComponent,
-		canActivate: [AuthenticationGuard],
+		canActivate: [(next: ActivatedRouteSnapshot) => inject(AuthenticationGuard).canActivate(next)],
+		canActivateChild: [
+			(next: ActivatedRouteSnapshot) => inject(AuthenticationGuard).canActivate(next),
+		],
 		children: [
 			{ path: '', component: HomeReserveComponent },
 			{ path: 'vic', component: VicPageComponent },

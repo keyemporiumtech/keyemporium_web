@@ -1,5 +1,6 @@
 import { ApiModel } from '../../api/cakeutils/base/api.model';
 import { AttachmentModel } from '../../resources/models/attachment.model';
+import { CategoryModel } from './category.model';
 import { PriceModel } from './price.model';
 
 export class PocketModel extends ApiModel {
@@ -7,9 +8,11 @@ export class PocketModel extends ApiModel {
 	private _name: string;
 	private _description: string;
 	private _image: AttachmentModel;
+	private _category: CategoryModel;
 	private _price: PriceModel;
 	private _note: string;
 	private _flgreleted: boolean;
+	private _flgreserve: boolean;
 	private _flgdeleted: boolean;
 
 	/**
@@ -138,5 +141,37 @@ export class PocketModel extends ApiModel {
 	 */
 	public set flgdeleted(value: boolean) {
 		this._flgdeleted = value;
+	}
+
+	/**
+	 * Getter category
+	 * @return {CategoryModel}
+	 */
+	public get category(): CategoryModel {
+		return this._category;
+	}
+
+	/**
+	 * Getter flgreserve
+	 * @return {boolean}
+	 */
+	public get flgreserve(): boolean {
+		return this._flgreserve;
+	}
+
+	/**
+	 * Setter category
+	 * @param {CategoryModel} value
+	 */
+	public set category(value: CategoryModel) {
+		this._category = value;
+	}
+
+	/**
+	 * Setter flgreserve
+	 * @param {boolean} value
+	 */
+	public set flgreserve(value: boolean) {
+		this._flgreserve = value;
 	}
 }

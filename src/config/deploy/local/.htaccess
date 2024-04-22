@@ -5,5 +5,5 @@ RewriteEngine On
     RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
     RewriteRule ^ - [L,P]
     # If the requested resource doesn't exist, use index.html
-    RewriteRule ^ ddcwiki/index.html
+    RewriteRule ^ keyemporium_web/index.html
 </IfModule>

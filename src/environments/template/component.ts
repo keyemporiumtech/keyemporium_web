@@ -18,8 +18,9 @@ export const component = {
 	},
 	pagination: {
 		numRows: 10,
-		iconOrderAsc: 'fa fa-caret-down',
-		iconOrderDesc: 'fa fa-caret-up',
+		iconOrderAsc: 'fa fa-sort-down',
+		iconOrderDesc: 'fa fa-sort-up',
+		iconOrderAscDesc: 'fa fa-sort',
 	},
 	chat: {
 		maxInitialMessages: 50,

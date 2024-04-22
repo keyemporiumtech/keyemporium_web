@@ -268,6 +268,307 @@
 	class="btn btn-sm btn-dark mr-2"
 	type="button"
 	data-toggle="collapse"
+	data-target="#collapseLoading"
+	aria-expanded="false"
+	aria-controls="collapseLoading"
+>
+	LoadingComponent
+</button>
+
+<div class="collapse" id="collapseLoading">
+	<div class="mt-3">
+		Il componente <strong>Loading</strong> mostra diversi modelli di loader da visualizzare
+		oscurando la pagina e inibendo le azioni utente durante il loading.<br />
+		è possibile usare il componente alternativo <strong>GenericLoadingComponent</strong> per
+		visualizzare il loading in qualsiasi punto della pagina e non a tutto schermo con patina
+		<ul>
+			<li>
+				<strong>loading: boolean</strong> deve essere true per mostrare il loading. Default false
+			</li>
+			<li><strong>color: string</strong> colore del loader. Default #000</li>
+			<li>
+				<strong>typeCss: TypCssLoading</strong> tipo di loader. Default DEFAULT<br />
+				<ul>
+					<li>CIRCLE</li>
+					<li>DUAL_RING</li>
+					<li>FACEBOOK</li>
+					<li>HEART</li>
+					<li>RING</li>
+					<li>DEFAULT</li>
+					<li>ELLIPSIS</li>
+					<li>GRID</li>
+					<li>HOURGLASS</li>
+					<li>RIPPLE</li>
+					<li>SPINNER</li>
+				</ul>
+			</li>
+			<li>
+				<strong>imageUrl: string</strong> se definito ignora il type e mette l'immagine come loader
+			</li>
+			<li>
+				<strong>imageClass: any</strong> e <strong>imageStyle: any</strong> per definire le
+				proprietà dell'immagine se definito imageUrl
+			</li>
+			<li>
+				<strong>position: 'center' | 'left' | 'right' = 'center'</strong> definisce la posizione.
+				Default center
+			</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+
+          &lt;ddc-init-loading [loading]="true" [position]="'left'" [typeCss]="'circle'"&gt; &lt;/ddc-init-loading&gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>Loading DEFAULT</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(1)">Start</a>
+	<ddc-init-loading [loading]="loading1"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading CIRCLE</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(2)">Start</a>
+	<ddc-init-loading [loading]="loading2" [typeCss]="TypCssLoading.CIRCLE"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading DUAL_RING</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(3)">Start</a>
+	<ddc-init-loading [loading]="loading3" [typeCss]="TypCssLoading.DUAL_RING"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading FACEBOOK</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(4)">Start</a>
+	<ddc-init-loading [loading]="loading4" [typeCss]="TypCssLoading.FACEBOOK"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading HEART</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(5)">Start</a>
+	<ddc-init-loading [loading]="loading5" [typeCss]="TypCssLoading.HEART"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading RING</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(6)">Start</a>
+	<ddc-init-loading [loading]="loading6" [typeCss]="TypCssLoading.RING"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading ELLIPSIS</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(7)">Start</a>
+	<ddc-init-loading [loading]="loading7" [typeCss]="TypCssLoading.ELLIPSIS"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading GRID</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(8)">Start</a>
+	<ddc-init-loading [loading]="loading8" [typeCss]="TypCssLoading.GRID"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading HOURGLASS</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(9)">Start</a>
+	<ddc-init-loading [loading]="loading9" [typeCss]="TypCssLoading.HOURGLASS"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading RIPPLE</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(10)">Start</a>
+	<ddc-init-loading [loading]="loading10" [typeCss]="TypCssLoading.RIPPLE"></ddc-init-loading>
+	<hr />
+
+	<h5>Loading SPINNER</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="startTypeLoading(11)">Start</a>
+	<ddc-init-loading [loading]="loading11" [typeCss]="TypCssLoading.SPINNER"></ddc-init-loading>
+	<hr />
+</div>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseGLoading"
+	aria-expanded="false"
+	aria-controls="collapseGLoading"
+>
+	GenericLoadingComponent
+</button>
+
+<div class="collapse" id="collapseGLoading">
+	<div class="mt-3">
+		Il componente <strong>GenericLoading</strong> è l'equivalente del Loading ma non applicato a
+		tutta pagina
+		<ul>
+			<li><strong>color: string</strong> colore del loader. Default #000</li>
+			<li>
+				<strong>typeCss: TypCssLoading</strong> tipo di loader. Default DEFAULT<br />
+				<ul>
+					<li>CIRCLE</li>
+					<li>DUAL_RING</li>
+					<li>FACEBOOK</li>
+					<li>HEART</li>
+					<li>RING</li>
+					<li>DEFAULT</li>
+					<li>ELLIPSIS</li>
+					<li>GRID</li>
+					<li>HOURGLASS</li>
+					<li>RIPPLE</li>
+					<li>SPINNER</li>
+				</ul>
+			</li>
+			<li>
+				<strong>imageUrl: string</strong> se definito ignora il type e mette l'immagine come loader
+			</li>
+			<li>
+				<strong>imageClass: any</strong> e <strong>imageStyle: any</strong> per definire le
+				proprietà dell'immagine se definito imageUrl
+			</li>
+			<li>
+				<strong>position: 'center' | 'left' | 'right' = 'center'</strong> definisce la posizione.
+				Default center
+			</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+
+          &lt;ddc-init-generic-loading [position]="'left'" [typeCss]="'circle'"&gt; &lt;/ddc-init-generic-loading&gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>Loadings</h5>
+	<div class="row">
+		<div class="col col-1">
+			DEFAULT
+			<ddc-init-generic-loading [color]="'yellow'" [position]="'left'"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			CIRCLE
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.CIRCLE"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			DUAL_RING
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.DUAL_RING"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			FACEBOOK
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.FACEBOOK"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			HEART
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.HEART"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			RING
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.RING"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			ELLIPSIS
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.ELLIPSIS"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			GRID
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.GRID"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			HOURGLASS
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.HOURGLASS"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			RIPPLE
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.RIPPLE"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			SPINNER
+			<ddc-init-generic-loading [typeCss]="TypCssLoading.SPINNER"></ddc-init-generic-loading>
+		</div>
+	</div>
+	<hr />
+
+	<h5>Loading color</h5>
+	<div class="row">
+		<div class="col col-1">
+			<ddc-init-generic-loading [color]="'yellow'" [position]="'left'"></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'green'"
+				[typeCss]="TypCssLoading.CIRCLE"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'red'"
+				[typeCss]="TypCssLoading.DUAL_RING"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'blue'"
+				[typeCss]="TypCssLoading.FACEBOOK"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'darkred'"
+				[typeCss]="TypCssLoading.HEART"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'pink'"
+				[typeCss]="TypCssLoading.RING"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'cyan'"
+				[typeCss]="TypCssLoading.ELLIPSIS"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'olive'"
+				[typeCss]="TypCssLoading.GRID"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'purple'"
+				[typeCss]="TypCssLoading.HOURGLASS"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'teal'"
+				[typeCss]="TypCssLoading.RIPPLE"
+			></ddc-init-generic-loading>
+		</div>
+		<div class="col col-1">
+			<ddc-init-generic-loading
+				[color]="'burlywood'"
+				[typeCss]="TypCssLoading.SPINNER"
+			></ddc-init-generic-loading>
+		</div>
+	</div>
+	<hr />
+</div>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
 	data-target="#collapseCssVars"
 	aria-expanded="false"
 	aria-controls="collapseCssVars"
@@ -309,5 +610,127 @@
 	>
 		<span class="m-2">Text for div</span>
 	</div>
+	<hr />
+</div>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseTooltip"
+	aria-expanded="false"
+	aria-controls="collapseTooltip"
+>
+	DdcTooltip
+</button>
+
+<div class="collapse" id="collapseTooltip">
+	<div class="mt-3">
+		La direttiva <strong>DdcTooltip</strong> consente di aggiungere un tooltip ad un elemento HTML
+		<ul>
+			<li>
+				<strong>tooltip: [<i>string | StringTranslate</i>]</strong> testo del tooltip (<i
+					>è accettato anche l'html</i
+				>)
+			</li>
+			<li>
+				<strong>placement: [<i>'top' | 'left' | 'bottom' | 'right'</i>] DEFAULT top</strong> indica
+				il posizionamento del tooltip
+			</li>
+			<li>
+				<strong>delay: [<i>number</i>] DEFAULT 500</strong> indica in millisecondi il ritardo del
+				fade di scomparsa
+			</li>
+			<li><strong>fontSize: [<i>string</i>] DEFAULT 14</strong> indica la dimensione del testo</li>
+			<li>
+				<strong>background: [<i>string</i>] DEFAULT #282a36</strong> indica il colore di sfondo del
+				tooltip
+			</li>
+			<li><strong>color: [<i>string</i>] DEFAULT #f8f8f2</strong> colore del testo</li>
+			<li><strong>textAlign: [<i>string</i>] DEFAULT center</strong> allineamento del testo</li>
+			<li><strong>borderSize: [<i>string</i>] DEFAULT 2px</strong> colore del testo</li>
+			<li>
+				<strong>borderColor: [<i>string</i>]</strong> colore del bordo. Se non passato viene settato
+				uguale al background
+			</li>
+			<li>
+				<strong>arrowColor: [<i>string</i>]</strong> colore della freccia. Se non passato viene
+				settato uguale al background
+			</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+          &lt;div ddcTooltip [cssVars]="[&#123;key:'background', value:'dark'&#125;, &#123;key:'color', value:'light'&#125;]"&gt;Text for div&lt;/div&gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>Esempio di settaggio variabili</h5>
+	<button type="button" class="btn btn-sm btn-primary m-2" ddcTooltip [tooltip]="'ciao'">
+		<span class="m-2">Tooltip</span>
+	</button>
+	<button type="button" class="btn btn-sm btn-primary m-2" ddcTooltip [tooltip]="'<i>ciao</i>'">
+		<span class="m-2">Tooltip html</span>
+	</button>
+	<button
+		type="button"
+		class="btn btn-sm btn-primary m-2"
+		ddcTooltip
+		[tooltip]="'Ciao'"
+		[background]="'darkred'"
+		[color]="'yellow'"
+		[fontSize]="'18'"
+		[textAlign]="'left'"
+		[borderColor]="'yellow'"
+		[arrowColor]="'green'"
+	>
+		<span class="m-2">Tooltip style</span>
+	</button>
+	<hr />
+	<h6>Placement</h6>
+	<button
+		type="button"
+		class="btn btn-sm btn-primary m-2"
+		ddcTooltip
+		[tooltip]="'ciao'"
+		[placement]="'top'"
+	>
+		<span class="m-2">Top</span>
+	</button>
+	<button
+		type="button"
+		class="btn btn-sm btn-primary m-2"
+		ddcTooltip
+		[tooltip]="'ciao'"
+		[placement]="'left'"
+	>
+		<span class="m-2">Left</span>
+	</button>
+	<button
+		type="button"
+		class="btn btn-sm btn-primary m-2"
+		ddcTooltip
+		[tooltip]="'ciao'"
+		[placement]="'bottom'"
+	>
+		<span class="m-2">Bottom</span>
+	</button>
+	<button
+		type="button"
+		class="btn btn-sm btn-primary m-2"
+		ddcTooltip
+		[tooltip]="'ciao'"
+		[placement]="'right'"
+	>
+		<span class="m-2">Right</span>
+	</button>
 	<hr />
 </div>

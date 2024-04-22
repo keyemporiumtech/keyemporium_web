@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { component } from '../../../../../environments/template/component';
+import { template } from '../../../../../environments/template/template';
 import { BaseAutocompleteComponent } from '../../../abstract/html/base-autocomplete.component';
 import { ApplicationLoggerService } from '../../../logger/services/application-logger.service';
 import { StringTranslate } from '../../../translation/models/string-translate.model';
@@ -25,11 +26,14 @@ export class AutocompleteComponent extends BaseAutocompleteComponent {
 	// control
 	form: FormGroup;
 
+	styleIcon: any;
+
 	constructor(applicationLogger: ApplicationLoggerService, private fb: FormBuilder) {
 		super(applicationLogger);
 		this.form = this.fb.group({
 			text: [''],
 		});
+		this.styleIcon = template.styles.inputIcon;
 	}
 
 	getTextNotFoundResults(): string | StringTranslate {

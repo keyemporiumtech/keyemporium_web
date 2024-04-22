@@ -1,0 +1,60 @@
+<h5>Login</h5>
+
+<form *ngIf="!checkAble" [formGroup]="form">
+	<div class="form-group">
+		<label>{{ username.label }}</label>
+		<ddc-init-input-text [field]="username"></ddc-init-input-text>
+		<label>{{ password.label }}</label>
+		<ddc-init-input-password
+			[field]="password"
+			[almostOneLower]="true"
+			[almostOneUpper]="true"
+			[almostOneNumber]="true"
+			[automaticValidators]="true"
+		></ddc-init-input-password>
+		<ddc-init-input-checkbox
+			[field]="rememberme"
+			[options]="optionRememberme"
+		></ddc-init-input-checkbox>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="goToAuth2fa()">Login</button>
+	</div>
+</form>
+
+<form *ngIf="checkAble" [formGroup]="form">
+	<div class="form-group">
+		<label>{{ code.label }}</label>
+		<ddc-init-input-text [field]="code"></ddc-init-input-text>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="login()">Login</button>
+	</div>
+</form>
+
+<div class="p-2">
+	<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="reload()">Ricarica</button>
+</div>
+
+<div *ngIf="codeVerified" class="pt-3">
+	<div>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="checkSession()">CheckSession</button>
+		<button class="mt-2 mr-2 btn btn-sm btn-dark" (click)="logout()">Logout</button>
+	</div>
+	<div class="mt-4">
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{ messageSession }}
+		</div>
+	</div>
+</div>
+
+<strong>authtoken</strong>: {{ authtoken }}<br />
+<strong>payload</strong>: {{ payload | json }}<br />
+<strong>userLogged</strong>: {{ userLogged | json }}<br />
+<strong>userId</strong>: {{ userId }}<br />
+<strong>userImage</strong>: {{ userImage }}<br />
+<strong>profile</strong>: {{ profile }}<br />
+<div *ngIf="expirationInfo" class="mt-2">
+	<strong>Expiration created</strong>: {{ expirationInfo?.createAt.toString('DD/MM/YYYY HH:mm:ss')
+	}}<br />
+	<strong>Expiration started</strong>: {{ expirationInfo?.startAt.toString('DD/MM/YYYY HH:mm:ss')
+	}}<br />
+	<strong>Expiration expired</strong>: {{ expirationInfo?.expireAt.toString('DD/MM/YYYY HH:mm:ss')
+	}}<br />
+</div>

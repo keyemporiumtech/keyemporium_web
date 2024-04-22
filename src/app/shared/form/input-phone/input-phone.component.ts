@@ -42,6 +42,8 @@ export class InputPhoneComponent extends BaseInputComponent {
 	subPrefix: Subscription;
 	subPhone: Subscription;
 
+	styleIcon: any;
+
 	constructor(
 		applicationLogger: ApplicationLoggerService,
 		private fb: FormBuilder,
@@ -53,6 +55,7 @@ export class InputPhoneComponent extends BaseInputComponent {
 			prefix: [undefined],
 			phone: [undefined],
 		});
+		this.styleIcon = template.styles.inputIcon;
 	}
 
 	ngOnInitForChildren() {

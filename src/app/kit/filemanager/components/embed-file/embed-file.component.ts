@@ -1,7 +1,7 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { BaseComponent } from '../../../abstract/base.component';
 import { FileEmbedModel } from '../../models/file-embed.model';
-import { RenderTextMode } from 'ng2-pdf-viewer';
+import { PDFDocumentProxy, RenderTextMode } from 'ng2-pdf-viewer';
 import { ApplicationLoggerService } from '../../../logger/services/application-logger.service';
 import { EnumBrowserName } from '../../../html/enums/browser-name.enum';
 import { EnumTypeEmbed } from '../../enums/type-embed-enum';
@@ -19,18 +19,29 @@ export class EmbedFileComponent extends BaseComponent {
 	@Input() object: FileEmbedModel;
 	@Input() width: string;
 	@Input() height: string;
+	// close
 	@Input() classIconClose: any = 'fas fa-2x fa-times-circle icon-close';
 	@Input() classLinkClose: any;
 	@Input() styleIconClose: any = 'float-right';
 	@Input() styleLinkClose: any;
 	@Input() htmlIconClose: string;
+	// print
+	@Input() classIconPrint: any = 'fas fa-2x fa-print icon-print';
+	@Input() classLinkPrint: any;
+	@Input() styleIconPrint: any = 'float-right';
+	@Input() styleLinkPrint: any;
+	@Input() htmlIconPrint: string;
+
 	@Input() flagTitle: boolean = true;
 	@Input() flagClose: boolean = true;
+	@Input() flagPrint: boolean = false;
 	// PDF properties
 	@Input() pdfTextSelection: boolean = true;
 	renderText: RenderTextMode;
 	@Input() pdfOriginalSize: boolean = true;
 	autoresize: boolean = false;
+	isPdfLoaded = false;
+	private pdf: PDFDocumentProxy;
 
 	typeEmbed = EnumTypeEmbed;
 	typeMime = EnumTypeMime;
@@ -72,6 +83,28 @@ export class EmbedFileComponent extends BaseComponent {
 		return this.object && this.object.mime && this.object.content
 			? this.fileService.getBase64ByContent(this.object.content, this.object.mime)
 			: undefined;
+	}
+
+	onLoadedPdf(pdf: PDFDocumentProxy) {
+		this.pdf = pdf;
+		this.isPdfLoaded = true;
+	}
+
+	printPdf() {
+		if (this.getTypeEmbed() === EnumTypeEmbed.PDF) {
+			this.pdf.getData().then((u8) => {
+				const blob = new Blob([u8.buffer], {
+					type: 'application/pdf',
+				});
+
+				const blobUrl = window.URL.createObjectURL(blob);
+				const iframe = document.createElement('iframe');
+				iframe.style.display = 'none';
+				iframe.src = blobUrl;
+				document.body.appendChild(iframe);
+				iframe.contentWindow.print();
+			});
+		}
 	}
 
 	onClose($event: any) {

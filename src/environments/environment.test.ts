@@ -6,12 +6,13 @@ export const environment = {
 	TEMPLATE_VERSION: versioningInfo.template,
 	production: true,
 	appName: '&copy; Keyemporium',
-	clientId: 'KEYEMPORIUM_REST',
+	clientId: 'keyemporim-web',
 	activityPIVA: undefined,
 	api: {
 		tokenApp: 'ab7414e3975ae96b2d6ef4bf641252feda9d633b',
 		services: 'http://okdqanqhw.preview.infomaniak.website/',
-		mobile: 'http://localhost:8100',
+		servicesKeys: 'http://okdqanqhw.preview.infomaniak.website/',
+		mobile: '',
 		privacyPolicy: undefined, // '_projects/keyemporium/privacy.pdf'
 		cookiePolicy: undefined, // '_projects/keyemporium/cookie.pdf'
 		termPolicy: undefined, // '_projects/keyemporium/conditions.pdf'
@@ -116,6 +117,7 @@ export const environment = {
 		nations: true,
 		init: true,
 		cookie: true,
+		apiLogError: false,
 	},
 	logger: {
 		request: true,

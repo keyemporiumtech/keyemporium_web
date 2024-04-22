@@ -24,12 +24,15 @@ export class BasketserviceConverter extends BaseApiConverter<BasketserviceModel,
 			this.getPropertyForFk('service', 'service_fk', new ServiceConverter()),
 			new ServiceModel(),
 		);
+		model.quantity = dto.quantity;
 		this.convertForeignKeyToModel(
 			dto,
 			model,
 			this.getPropertyForFk('basket', 'basket_fk', new BasketConverter()),
 			new BasketModel(),
 		);
+		model.dtainit = dto.dtainit;
+		model.dtaend = dto.dtaend;
 		return model;
 	}
 	public convertToDto(model?: BasketserviceModel): BasketserviceDTO {
@@ -45,11 +48,14 @@ export class BasketserviceConverter extends BaseApiConverter<BasketserviceModel,
 			model,
 			this.getPropertyForFk('service', 'service_fk', new ServiceConverter()),
 		);
+		dto.quantity = model.quantity;
 		this.convertForeignKeyToDto(
 			dto,
 			model,
 			this.getPropertyForFk('basket', 'basket_fk', new BasketConverter()),
 		);
+		this.convertDateToDto(dto, model, 'dtainit', 'dtainitModel');
+		this.convertDateToDto(dto, model, 'dtaend', 'dtaendModel');
 		return dto;
 	}
 	public getEmptyModel(): BasketserviceModel {

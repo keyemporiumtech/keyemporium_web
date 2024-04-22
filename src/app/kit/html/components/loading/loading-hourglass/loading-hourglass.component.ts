@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BaseLoadingModel } from '../models/base-loading.model';
 import { ApplicationLoggerService } from '../../../../logger/services/application-logger.service';
 
@@ -8,18 +8,21 @@ import { ApplicationLoggerService } from '../../../../logger/services/applicatio
 	styleUrls: ['./loading-hourglass.component.scss'],
 })
 export class LoadingHourglassComponent extends BaseLoadingModel {
+	@ViewChild('el') el: ElementRef;
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
 	}
 
-	selectors(): any[] {
-		const array: any[] = [];
-		array.push(document.querySelector('.lds-hourglass'));
-		return array;
+	setSelectors(): void {
+		// array.push(document.querySelector('.lds-hourglass'));
+		this.selectorsLoading.length = 0;
+		this.selectorsLoading.push(this.el.nativeElement);
 	}
 
 	ngOnInitForChildren() {}
-	ngAfterViewInitForChildren() {}
+	ngAfterViewInitForChildren() {
+		super.ngAfterViewInitForChildren();
+	}
 	ngOnDestroyForChildren() {}
 	getClassName(): string {
 		return 'LoadingHourglassComponent';

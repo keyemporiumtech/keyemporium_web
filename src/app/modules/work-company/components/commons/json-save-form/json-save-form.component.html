@@ -1,0 +1,19 @@
+<div class="container-loading" *ngIf="form">
+	<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+
+	<form [formGroup]="form">
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+				<label for="title">{{
+					translateKey(FLD_title.label) | translate : translateParams(FLD_title.label)
+				}}</label>
+				<ddc-init-input-text [id]="'title'" [field]="FLD_title"></ddc-init-input-text>
+			</div>
+		</div>
+	</form>
+
+	<hr />
+	<button class="btn btn-sm btn-primary" [disabled]="!form || !form.valid" (click)="confirm()">
+		{{ 'APP.BUTTON.SAVE' | translate }}
+	</button>
+</div>

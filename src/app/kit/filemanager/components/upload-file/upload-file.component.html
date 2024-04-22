@@ -11,12 +11,7 @@
 	ngDefaultControl
 />
 
-<span
-	*ngIf="icon"
-	style="float: right; left: -25px; margin-top: -25px; position: relative; cursor: pointer"
-	[ngClass]="icon"
-	[style.color]="iconColor"
-></span>
+<span *ngIf="icon" [attr.style]="styleIcon" [ngClass]="icon" [style.color]="iconColor"></span>
 
 <ddc-init-progress-bar
 	*ngIf="showProgress"

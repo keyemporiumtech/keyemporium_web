@@ -27,6 +27,7 @@ export abstract class BaseTreeApiConverter<D extends ApiDTO> extends BaseTreeCon
 		model.children = this.convertToModelList(
 			dto[this.fieldForChildren() ? this.fieldForChildren() : 'children'],
 		);
+		model.payload = dto;
 		return model;
 	}
 	public convertToDto(model?: TreeHtmlModel): any {

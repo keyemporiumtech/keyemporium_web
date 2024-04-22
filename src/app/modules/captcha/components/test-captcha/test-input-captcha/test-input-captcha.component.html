@@ -1,0 +1,51 @@
+<h5>Componente captcha</h5>
+<div class="lead">
+	Componente per la gestione di un captcha homemade.<br />
+
+	Parametri di Input: <br />
+	<ul>
+		<li>
+			field: <b>FormFieldModel</b> - <i>Necessario per memorizzazione dei valori e validazioni</i>
+		</li>
+		<li>keyClient: <b>string</b> - <i>Chiave necessaria per la generazione del token</i></li>
+		<li>
+			automaticVerify : <b>boolean</b> -
+			<i>Se impostato a true verifica automaticamente la validità del token generato</i>
+		</li>
+		<li>
+			label: <b>string | StringTranslate</b> -
+			<i>Label da mostrare: Di default è 'APP.LABEL.CAPTCHA.NOT_ROBOT'</i>
+		</li>
+		<li>cssClass: <b>any</b> - <i>Classe css contenitore</i></li>
+		<li>cssStyle: <b>any</b> - <i>Stile css contenitore</i></li>
+		<li>cssClassImage: <b>any</b> - <i>Classe css immagine captcha</i></li>
+		<li>cssStyleImage: <b>any</b> - <i>Stile css immagine captcha</i></li>
+		<li>borderColor: <b>string</b> - <i>Colore del bordo: Default '#000'</i></li>
+		<li>imageHeight: <b>string</b> - <i>Altezza immagine captcha: Default '3.5rem'</i></li>
+	</ul>
+
+	Parametri di Output: <br />
+	<ul>
+		<li>generated: <b>EventEmitter string</b> - <i>Emette il token generato al click</i></li>
+		<li>
+			verified: <b>EventEmitter boolean</b> - <i>Emette il risultato della verifica del token</i>
+		</li>
+	</ul>
+</div>
+
+<form [formGroup]="formCaptcha">
+	<label>Captcha con pulsante di validazione</label>
+	<div [style.width]="'20%'">
+		<ddc-init-input-captcha
+			#captcha1
+			[keyClient]="'client1'"
+			[field]="field1"
+			(generated)="generate1($event)"
+			(verified)="verified1($event)"
+		></ddc-init-input-captcha>
+		<button class="btn btn-sm btn-primary" (click)="captcha1.verify()">Verifica</button>
+		<br />
+		KEY: {{ formCaptcha.get('captcha1').value }}<br />
+		VERIFICA: {{ verify1 }}<br />
+	</div>
+</form>

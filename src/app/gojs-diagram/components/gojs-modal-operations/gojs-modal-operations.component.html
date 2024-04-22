@@ -1,0 +1,60 @@
+<div
+	class="modal {{ classAnimation }}"
+	id="{{ id }}"
+	[ngClass]="classModal"
+	tabindex="-1"
+	role="dialog"
+>
+	<div
+		class="modal-dialog {{ classDimension }} {{ scrollableClass }} {{ centeredClass }}"
+		[ngClass]="classDialog"
+		role="document"
+	>
+		<div class="modal-content" [ngClass]="classContent">
+			<div class="modal-header" [ngClass]="classHeader">
+				<h5 class="modal-title" [ngClass]="classTitle">
+					{{ translateKey(title) | translate : translateParams(title) }}
+				</h5>
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close"
+					(click)="onClickClose($event)"
+				>
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" [ngClass]="classBody">
+				<ng-content select="[body]"></ng-content>
+				<ng-container *ngTemplateOutlet="messagesBlock"></ng-container>
+			</div>
+			<div class="modal-footer" [ngClass]="classFooter">
+				<button
+					*ngIf="flagButtonClose"
+					type="button"
+					[ngClass]="classButtonClose"
+					data-dismiss="modal"
+					[innerHTML]="translateKey(textButtonClose) | translate : translateParams(textButtonClose)"
+					(click)="onClickClose($event)"
+				></button>
+				<button
+					*ngIf="flagButtonOk"
+					type="button"
+					[ngClass]="classButtonOk"
+					[innerHTML]="translateKey(textButtonOk) | translate : translateParams(textButtonOk)"
+					(click)="onClickOk($event)"
+				></button>
+				<ng-content select="[footer]"></ng-content>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ng-template #messagesBlock>
+	<div *ngIf="hasMessage()" class="alert alert-danger mt-2" role="alert">
+		<div *ngFor="let message of messages">
+			{{ message }}
+		</div>
+	</div>
+</ng-template>

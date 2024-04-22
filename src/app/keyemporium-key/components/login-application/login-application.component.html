@@ -1,0 +1,30 @@
+<div class="text-center">
+	<form class="form-signin" [formGroup]="formLogin">
+		<h1 class="h3 mb-3 font-weight-normal">{{ 'PERSONAL.LOGIN.TITLE' | translate }}</h1>
+
+		<label for="inputEmail">
+			{{ translateKey(FLD_email.label) | translate : translateParams(FLD_email.label) }}
+		</label>
+		<ddc-init-input-text [id]="'inputEmail'" [field]="FLD_email"></ddc-init-input-text>
+
+		<ng-container *ngIf="!hideApplicationField">
+			<label for="inputApplication">
+				{{
+					translateKey(FLD_application.label) | translate : translateParams(FLD_application.label)
+				}}
+			</label>
+			<ddc-init-input-text
+				[id]="'inputApplication'"
+				[field]="FLD_application"
+			></ddc-init-input-text>
+		</ng-container>
+
+		<button
+			class="btn btn-lg btn-primary btn-block mt-2"
+			[disabled]="!formLogin.valid"
+			(click)="generateToken()"
+		>
+			{{ 'PERSONAL.BUTTON.LOGIN' | translate }}
+		</button>
+	</form>
+</div>

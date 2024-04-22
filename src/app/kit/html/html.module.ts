@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { GenericLoadingComponent } from './components/loading/generic-loading/generic-loading.component';
 import { LoadingCircleComponent } from './components/loading/loading-circle/loading-circle.component';
 import { LoadingDefaultComponent } from './components/loading/loading-default/loading-default.component';
 import { LoadingDualRingComponent } from './components/loading/loading-dual-ring/loading-dual-ring.component';
@@ -20,9 +21,11 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { ProgressCircleComponent } from './components/progress-circle/progress-circle.component';
 import { ProgressComponent } from './components/progress/progress.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { DdcContenteditableDirective } from './directives/ddc-contenteditable.directive';
 import { DdcCssVarDirective } from './directives/ddc-css-var.directive';
 import { DdcInputPasswordDirective } from './directives/ddc-input-password.directive';
+import { TooltipDirective } from './directives/tooltip.directive';
 import { EscapeHtmlPipe } from './pipes/escape-html.pipe';
 import { EscapeUrlPipe } from './pipes/escape-url.pipe';
 import { RenderElService } from './services/render-el.service';
@@ -37,6 +40,7 @@ import { RenderElService } from './services/render-el.service';
 		ProgressComponent,
 		// components - loading
 		LoadingComponent,
+		GenericLoadingComponent,
 		LoadingCircleComponent,
 		LoadingDualRingComponent,
 		LoadingFbComponent,
@@ -53,6 +57,8 @@ import { RenderElService } from './services/render-el.service';
 		AutocompleteComponent,
 		ProgressBarComponent,
 		ProgressCircleComponent,
+		TooltipComponent,
+		TooltipDirective,
 	],
 	imports: [
 		CommonModule,
@@ -70,6 +76,7 @@ import { RenderElService } from './services/render-el.service';
 		ProgressComponent,
 		// components - loading
 		LoadingComponent,
+		GenericLoadingComponent,
 		LoadingCircleComponent,
 		LoadingDualRingComponent,
 		LoadingFbComponent,
@@ -86,6 +93,8 @@ import { RenderElService } from './services/render-el.service';
 		AutocompleteComponent,
 		ProgressBarComponent,
 		ProgressCircleComponent,
+		TooltipComponent,
+		TooltipDirective,
 	],
 })
 export class HtmlModule {

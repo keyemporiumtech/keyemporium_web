@@ -12,17 +12,13 @@
 	ngDefaultControl
 />
 
-<span
-	*ngIf="icon"
-	style="float: right; left: -25px; margin-top: -25px; position: relative; cursor: pointer"
-	[ngClass]="icon"
-	[style.color]="iconColor"
-></span>
+<span *ngIf="icon" [attr.style]="styleIcon" [ngClass]="icon" [style.color]="iconColor"></span>
 
 <div *ngIf="list && list.length" [ngClass]="infoClass" [ngStyle]="infoStyle">
 	<div
 		*ngFor="let item of list"
 		class="item"
+		[style.cursor]="'pointer'"
 		[ngClass]="item.cssClass"
 		[ngStyle]="item.cssStyle"
 		[innerHTML]="translateKey(item.text) | translate : translateParams(item.text) | escapehtml"

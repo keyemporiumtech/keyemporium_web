@@ -17,9 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
  * Rispetto all'implementazione di ApiService necessita di gestire gli errori in fase di eval response,
  * in quanto il messaggio viene inviato in body con status 200
  */
-@Injectable({
-	providedIn: 'root',
-})
+
 export class ApiStaticService extends ApiService {
 	translate: TranslateService;
 	constructor(
@@ -44,6 +42,17 @@ export class ApiStaticService extends ApiService {
 			? this.translate.instant(body.message, body.message_params ? body.message_params : undefined)
 			: '';
 		if (status && +status === EnumStaticStatusCode.ERROR) {
+			if (this.environment.enable.apiLogError) {
+				console.error(
+					'[' + res.url + ']',
+					status.applicationMessage && status.applicationMessage.type.toString() !== ''
+						? status.applicationMessage.type
+						: EnumMessageType.WARNING,
+					status.responseCod,
+					status.applicationMessage ? status.applicationMessage.message : '',
+					status.exceptionMessage ? status.exceptionMessage.message : '',
+				);
+			}
 			if (responseManager && responseManager.fnError && responseManager.fnError.flag) {
 				responseManager.fnError.fn();
 			}

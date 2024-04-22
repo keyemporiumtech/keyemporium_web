@@ -117,6 +117,7 @@ export class ObjectUtility {
 
 	/**
 	 * Converte una url di query parameters in un oggetto chiave->valore
+	 * @param url stringa url
 	 */
 	static urlParamsToObject(url: string): any {
 		const obj = {};
@@ -134,6 +135,40 @@ export class ObjectUtility {
 			}
 		}
 		return obj;
+	}
+
+	/**
+	 * Converte un object chiave->valore in una stringa di parametri url
+	 * @param obj oggetto
+	 */
+	static objectParamsToUrl(obj: any): string {
+		if (!obj) {
+			return undefined;
+		}
+		const arr = [];
+
+		for (const prop in obj) {
+			if (
+				Object.prototype.hasOwnProperty.call(obj, prop) &&
+				obj[prop] !== undefined &&
+				obj[prop] !== null
+			) {
+				switch (typeof obj[prop]) {
+					case 'object':
+						break;
+					case 'string':
+					case 'number':
+					default:
+						arr.push(prop + '=' + obj[prop]);
+						break;
+					case 'boolean':
+						arr.push(prop + '=' + obj[prop].toString());
+						break;
+				}
+			}
+		}
+		const str = arr.length ? arr.join('&') : undefined;
+		return str;
 	}
 
 	/**

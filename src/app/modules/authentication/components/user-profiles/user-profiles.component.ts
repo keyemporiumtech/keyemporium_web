@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {
 	ApplicationLoggerService,
@@ -28,6 +28,7 @@ export class UserProfilesComponent extends BaseComponent {
 	@Input() label: string | StringTranslate;
 	@Input() showLabel: boolean = true;
 	@ViewChild('profiles', { static: false }) profiles: InputSelectComponent;
+	@Output() emitCount: EventEmitter<number> = new EventEmitter<number>();
 
 	formUserProfiles: FormGroup;
 	validations: any = {};
@@ -70,6 +71,7 @@ export class UserProfilesComponent extends BaseComponent {
 							this.optionProfiles.push(
 								new OptionListModel(element.profile.cod, element.description, element.profile),
 							);
+							this.emitCount.emit(this.optionProfiles.length);
 						});
 					}
 				});

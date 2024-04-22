@@ -27,6 +27,11 @@ const routes: Routes = [
 					),
 			},
 			{
+				path: 'keys',
+				loadChildren: () =>
+					import('./keyemporium-key/keyemporium-key.module').then((m) => m.KeyemporiumKeyModule),
+			},
+			{
 				path: 'commons',
 				loadChildren: () =>
 					import('./commons-pages/commons-pages.module').then((m) => m.CommonsPagesModule),

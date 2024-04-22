@@ -22,9 +22,15 @@ import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces
 import { RequestPaginatorInterface } from '../../api/cakeutils/interfaces/request-paginator.interface';
 import { ApiServiceUtility } from '../../api/cakeutils/utility/api-service.utility';
 import { RequestCakeUtility } from '../../api/cakeutils/utility/request-cake.utility';
+import { AddressUtilConverter } from '../../localesystem/converters/address.converter';
+import { AddressModel } from '../../localesystem/models/address.model';
+import { AttachmentUtilConverter } from '../../resources/converters/attachment.converter';
+import { AttachmentModel } from '../../resources/models/attachment.model';
 import { authenticationList } from '../constants/authentication.list';
+import { ContactreferenceUtilConverter } from '../converters/contactreference.converter';
 import { UserConverter, UserUtilConverter } from '../converters/user.converter';
 import { ConfirmoperationRequest } from '../dtos/confirmoperation-request';
+import { ContactreferenceModel } from '../models/contactreference.model';
 import { UserModel } from '../models/user.model';
 
 @Injectable()
@@ -161,6 +167,63 @@ export class UserService extends ApiService {
 		);
 	}
 
+	// ------------ REGISTER
+
+	register(
+		userIn: UserModel,
+		imageIn?: AttachmentModel,
+		celIn?: ContactreferenceModel,
+		homeIn?: AddressModel,
+		bornIn?: AddressModel,
+		newsletters?: string[],
+		profiles?: string[],
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<string> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'user',
+			UserUtilConverter.toDto(userIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'image',
+			AttachmentUtilConverter.toDto(imageIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'cel',
+			ContactreferenceUtilConverter.toDto(celIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'home',
+			AddressUtilConverter.toDto(homeIn),
+		);
+		body = RequestUtility.addParam(
+			body,
+			EnumParamType.OBJECT,
+			'born',
+			AddressUtilConverter.toDto(bornIn),
+		);
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'newsletters', newsletters);
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'profiles', profiles);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.user.register;
+		return this.post(this.httpHeaders, url, body, undefined, requestManager, responseManager);
+	}
+
 	// ------------ SESSION
 	login(
 		username: string,
@@ -243,6 +306,73 @@ export class UserService extends ApiService {
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),
 		);
+	}
+
+	restorePassword(
+		id_user?: string,
+		username?: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<string> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id', id_user);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
+
+		requestManager = ApiServiceUtility.setTypeBody('text', requestManager);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.user.restorePassword;
+		return this.post(this.httpHeaders, url, body, undefined, requestManager, responseManager);
+	}
+
+	remindPassword(
+		id_user?: string,
+		username?: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<string> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id', id_user);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
+
+		requestManager = ApiServiceUtility.setTypeBody('text', requestManager);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.user.remindPassword;
+		return this.post(this.httpHeaders, url, body, undefined, requestManager, responseManager);
+	}
+
+	changePassword(
+		oldpassword: string,
+		newpassword: string,
+		id_user?: string,
+		username?: string,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<string> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'oldpassword', oldpassword);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'newpassword', newpassword);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id', id_user);
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'username', username);
+
+		requestManager = ApiServiceUtility.setTypeBody('text', requestManager);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + authenticationList.user.changePassword;
+		return this.post(this.httpHeaders, url, body, undefined, requestManager, responseManager);
 	}
 
 	profile(

@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MailModel } from '../../models/mail.model';
 import { BaseModuleWikiPage } from '../../../../shared/wiki-test/base-module-wiki.page';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ApplicationLoggerService } from '@ddc/kit';
 
 @Component({
 	selector: 'wiki-test-communication',
 	templateUrl: './test-communication.component.html',
 	styleUrls: ['./test-communication.component.scss'],
 })
-export class TestCommunicationComponent extends BaseModuleWikiPage implements OnInit {
+export class TestCommunicationComponent extends BaseModuleWikiPage {
 	idMail: string;
-	constructor(router: Router, activatedRoute: ActivatedRoute) {
-		super(router, activatedRoute);
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		router: Router,
+		activatedRoute: ActivatedRoute,
+	) {
+		super(applicationLogger, router, activatedRoute);
 	}
-
-	ngOnInit() {}
 
 	setDetailMail(mail?: MailModel) {
 		this.idMail = mail ? mail.id : undefined;

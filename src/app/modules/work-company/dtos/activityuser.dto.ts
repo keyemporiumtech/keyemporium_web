@@ -11,4 +11,6 @@ export class ActivityuserDTO extends ApiDTO {
 	public user_fk: UserDTO;
 	public role: string;
 	public role_fk: WorkroleDTO;
+	public father: string;
+	public father_fk: UserDTO;
 }

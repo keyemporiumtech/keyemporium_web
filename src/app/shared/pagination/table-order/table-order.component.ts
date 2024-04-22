@@ -10,16 +10,20 @@ import { component } from '../../../../environments/template/component';
 export class TableOrderComponent implements OnInit {
 	@Input() orders: any[]; // devono avere i campi key (nome campo) e value (asc|desc)
 	@Input() key: string;
+	@Input() flgClean: boolean; // indica se mostrare l'icona per la cancellazione del filtro
 	@Input() label: string | StringTranslate;
 	@Output() descEmit: EventEmitter<any> = new EventEmitter<any>();
 	@Output() ascEmit: EventEmitter<any> = new EventEmitter<any>();
+	@Output() cleanEmit: EventEmitter<any> = new EventEmitter<any>();
 	iconAsc: string;
 	iconDesc: string;
+	iconAscDesc: string;
 
 	constructor() {
 		this.orders = [];
 		this.iconAsc = component.pagination.iconOrderAsc;
 		this.iconDesc = component.pagination.iconOrderDesc;
+		this.iconAscDesc = component.pagination.iconOrderAscDesc;
 	}
 
 	ngOnInit() {}
@@ -29,6 +33,9 @@ export class TableOrderComponent implements OnInit {
 	}
 	desc() {
 		this.descEmit.emit(true);
+	}
+	clean() {
+		this.cleanEmit.emit(true);
 	}
 
 	existOrder(name: string, type?: 'asc' | 'desc'): boolean {

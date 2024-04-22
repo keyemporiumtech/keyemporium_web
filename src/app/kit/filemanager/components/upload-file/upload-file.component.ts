@@ -9,6 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 import { StringTranslate } from '../../../translation/models/string-translate.model';
 import { ProgressBarComponent } from '../../../html/components/progress-bar/progress-bar.component';
 import { StyleUtility } from '../../../html/utils/style.utility';
+import { template } from '../../../../../environments/template/template';
 
 @Component({
 	selector: 'ddc-init-upload-file',
@@ -80,6 +81,7 @@ export class UploadFileComponent extends BaseComponent {
 	// icons
 	@Input() closeItem: string = 'fa fa-times';
 	@Input() deleteItems: string = 'fa fa-trash';
+	styleIcon: any;
 	// sub
 	subAddFile: Subscription;
 	subLoadFile: Subscription;
@@ -96,6 +98,7 @@ export class UploadFileComponent extends BaseComponent {
 			inputReadOnly: [''],
 			inputFile: [''],
 		});
+		this.styleIcon = template.styles.inputIcon;
 	}
 
 	ngOnInitForChildren() {

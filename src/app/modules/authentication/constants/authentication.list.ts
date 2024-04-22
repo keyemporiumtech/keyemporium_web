@@ -3,6 +3,15 @@ export const authenticationList = {
 		tokenvalid: 'authentication/tokenValid',
 		loginvalid: 'authentication/loginValid',
 	},
+	application: {
+		unique: 'application/get',
+		paginate: 'application/table',
+		save: 'application/save',
+		edit: 'application/edit',
+		delete: 'application/delete',
+		generate: 'application/generate',
+		check: 'application/check',
+	},
 	authentication2fa: {
 		generate: 'authentication2fa/generate',
 		check: 'authentication2fa/check',
@@ -26,6 +35,10 @@ export const authenticationList = {
 		logout: 'user/logout',
 		profile: 'user/profile',
 		changeProfile: 'user/changeProfile',
+		restorePassword: 'user/restorePassword',
+		remindPassword: 'user/remindPassword',
+		changePassword: 'user/changePassword',
+		register: 'user/register',
 	},
 	userrelation: {
 		unique: 'userrelation/get',
@@ -204,5 +217,40 @@ export const authenticationList = {
 	oauthlogin: {
 		check: 'oauthlogin/check',
 		login: 'oauthlogin/login',
+	},
+	activitydiagram: {
+		unique: 'activitydiagram/get',
+		paginate: 'activitydiagram/table',
+		save: 'activitydiagram/save',
+		edit: 'activitydiagram/edit',
+		delete: 'activitydiagram/delete',
+	},
+	userdiagram: {
+		unique: 'userdiagram/get',
+		paginate: 'userdiagram/table',
+		save: 'userdiagram/save',
+		edit: 'userdiagram/edit',
+		delete: 'userdiagram/delete',
+	},
+	newsletter: {
+		unique: 'newsletter/get',
+		paginate: 'newsletter/table',
+		save: 'newsletter/save',
+		edit: 'newsletter/edit',
+		delete: 'newsletter/delete',
+	},
+	activitynewsletter: {
+		unique: 'activitynewsletter/get',
+		paginate: 'activitynewsletter/table',
+		save: 'activitynewsletter/save',
+		edit: 'activitynewsletter/edit',
+		delete: 'activitynewsletter/delete',
+	},
+	usernewsletter: {
+		unique: 'usernewsletter/get',
+		paginate: 'usernewsletter/table',
+		save: 'usernewsletter/save',
+		edit: 'usernewsletter/edit',
+		delete: 'usernewsletter/delete',
 	},
 };

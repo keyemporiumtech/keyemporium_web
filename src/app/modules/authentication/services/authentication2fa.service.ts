@@ -15,6 +15,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../../api/cakeutils/base/api.service';
+import { restConstants } from '../../api/cakeutils/constants/rest.constants';
 import { RequestGroupsConditionsInterface } from '../../api/cakeutils/interfaces/request-groups-conditions.interface';
 import { authenticationList } from '../constants/authentication.list';
 import { Authentication2faConverter } from '../converters/authentication2fa.converter';
@@ -33,6 +34,7 @@ export class Authentication2faService extends ApiService {
 	}
 
 	generate(
+		token: string,
 		key?: string,
 		requestManager?: RequestManagerInterface,
 		responseManager?: ResponseManagerInterface,
@@ -41,6 +43,8 @@ export class Authentication2faService extends ApiService {
 		let body: HttpParams = new HttpParams();
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'key', key);
 		// body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		responseManager = super.sendToken(restConstants.sessiontokenname, token, responseManager);
 
 		const url =
 			requestManager && requestManager.url
@@ -57,6 +61,7 @@ export class Authentication2faService extends ApiService {
 	}
 
 	check(
+		token: string,
 		key: string,
 		cod: string,
 		requestManager?: RequestManagerInterface,
@@ -66,6 +71,8 @@ export class Authentication2faService extends ApiService {
 
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'key', key);
 		body = RequestUtility.addParam(body, EnumParamType.STRING, 'cod', cod);
+
+		responseManager = super.sendToken(restConstants.sessiontokenname, token, responseManager);
 
 		const url =
 			requestManager && requestManager.url

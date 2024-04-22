@@ -19,9 +19,7 @@ export class LoadingRingComponent extends BaseLoadingModel {
 		return style;
 	}
 
-	selectors(): any[] {
-		return [];
-	}
+	setSelectors(): void {}
 
 	ngOnInitForChildren() {}
 	ngAfterViewInitForChildren() {}

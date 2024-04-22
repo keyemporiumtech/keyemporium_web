@@ -28,7 +28,7 @@ import { MailDetailConverter } from '../converters/mail-detail.converter';
 import { MailUserModel } from '../models/mail-user.model';
 import { AttachmentModel } from '../../resources/models/attachment.model';
 import { MailConfigModel } from '../models/mail-config.model';
-import { MailUserConverter, MailUserUtilConverter } from '../converters/mail-user.converter';
+import { MailUserUtilConverter } from '../converters/mail-user.converter';
 import { AttachmentUtilConverter } from '../../resources/converters/attachment.converter';
 import { MailConfigUtilConverter } from '../converters/mail-config.converter';
 

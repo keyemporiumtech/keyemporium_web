@@ -5,6 +5,8 @@ export class TreeHtmlModel {
 	private _hasChildren: boolean;
 	private _isExpanded: boolean;
 
+	payload?: any;
+
 	/**
 	 * Getter id
 	 * @return any

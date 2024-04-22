@@ -1,0 +1,38 @@
+<div
+	class="captcha-div cursor-pointer"
+	[ngClass]="cssClass"
+	[ngStyle]="cssStyle"
+	(click)="manageClick()"
+>
+	<h6 *ngIf="label">{{ translateKey(label) | translate : translateParams(label) }}</h6>
+	<hr />
+	<span *ngIf="!checked" class="fa fa-2x fa-circle"></span>
+	<span *ngIf="checked" class="fa fa-2x fa-check-circle"></span>
+
+	<img
+		src="assets/images/captcha.png"
+		[ngClass]="cssClassImage"
+		[ngStyle]="cssStyleImage"
+		class="img-fluid ml-2"
+	/>
+</div>
+
+<div *ngFor="let support of field.supports" class="input-support-message">
+	{{ translateKey(support) | translate : translateParams(support) }}
+</div>
+
+<div *ngFor="let error of errorMessages" class="input-invalid-message">
+	{{ translateKey(error) | translate : translateParams(error) }}
+</div>
+
+<div *ngFor="let valid of validMessages" class="input-valid-message">
+	{{ translateKey(valid) | translate : translateParams(valid) }}
+</div>
+
+<div
+	*ngFor="let styleMessage of styleMessages"
+	[ngClass]="styleMessage.class ? styleMessage.class + '-message' : 'input-generic-message'"
+	[style.color]="styleMessage.color"
+>
+	{{ translateKey(styleMessage) | translate : translateParams(styleMessage) }}
+</div>

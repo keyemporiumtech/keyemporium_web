@@ -11,6 +11,13 @@ export class DateUtility {
 		return new DateModel(moment().startOf('minute'));
 	}
 
+	static getAge(born: DateModel): number {
+		return moment().diff(moment(born.date, 'DD MMM YYYY'), 'years');
+	}
+	static getAgeAtDate(born: DateModel, dateRif: DateModel): number {
+		return dateRif.date.diff(moment(born.date, 'DD MMM YYYY'), 'years');
+	}
+
 	static printDateByString(dta: momentNs.Moment | Date | string | number, format?: string) {
 		const data = new DateModel(dta);
 		return data.toString(format);

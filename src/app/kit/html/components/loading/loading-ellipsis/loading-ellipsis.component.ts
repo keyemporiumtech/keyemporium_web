@@ -20,9 +20,7 @@ export class LoadingEllipsisComponent extends BaseLoadingModel {
 		return style;
 	}
 
-	selectors(): any[] {
-		return [];
-	}
+	setSelectors(): void {}
 
 	ngOnInitForChildren() {
 		if (this.numDivs) {

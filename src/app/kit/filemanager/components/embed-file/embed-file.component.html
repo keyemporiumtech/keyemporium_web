@@ -1,9 +1,15 @@
-<div *ngIf="flagTitle || flagClose" class="row">
-	<div *ngIf="flagTitle" class="col col-11">
+<div *ngIf="flagTitle || flagClose || flagPrint" class="row">
+	<div *ngIf="flagTitle" class="col" [ngClass]="flagClose && flagPrint ? 'col-10' : 'col-11'">
 		<h2
 			class="file-title"
 			[innerHTML]="translateKey(object?.title) | translate : translateParams(object?.title)"
 		></h2>
+	</div>
+	<div *ngIf="flagPrint" class="col col-1">
+		<a (click)="printPdf()" [ngClass]="classLinkPrint" [ngStyle]="styleLinkPrint">
+			<div *ngIf="htmlIconPrint" [innerHTML]="htmlIconPrint"></div>
+			<span *ngIf="classIconPrint" [ngClass]="classIconPrint"></span>
+		</a>
 	</div>
 	<div *ngIf="flagClose" class="col col-1">
 		<a (click)="onClose($event)" [ngClass]="classLinkClose" [ngStyle]="styleLinkClose">
@@ -22,6 +28,7 @@
 		[original-size]="pdfOriginalSize"
 		[show-all]="true"
 		[autoresize]="autoresize"
+		(after-load-complete)="onLoadedPdf($event)"
 	>
 	</pdf-viewer>
 

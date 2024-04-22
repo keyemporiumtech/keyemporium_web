@@ -6,7 +6,7 @@ import { EnumAddressType } from '../../localesystem/enums/address-type.enum';
 
 export class UseraddressModel extends ApiModel {
 	private _cod: string;
-	private _flgprincipal: number; // boolean
+	private _flgprincipal: boolean;
 	private _user: UserModel;
 	private _address: AddressModel;
 	private _tpaddress: TypologicalModel;
@@ -24,9 +24,9 @@ export class UseraddressModel extends ApiModel {
 
 	/**
 	 * Getter flgprincipal
-	 * @return {number}
+	 * @return {boolean}
 	 */
-	public get flgprincipal(): number {
+	public get flgprincipal(): boolean {
 		return this._flgprincipal;
 	}
 
@@ -80,9 +80,9 @@ export class UseraddressModel extends ApiModel {
 
 	/**
 	 * Setter flgprincipal
-	 * @param {number} value
+	 * @param {boolean} value
 	 */
-	public set flgprincipal(value: number) {
+	public set flgprincipal(value: boolean) {
 		this._flgprincipal = value;
 	}
 

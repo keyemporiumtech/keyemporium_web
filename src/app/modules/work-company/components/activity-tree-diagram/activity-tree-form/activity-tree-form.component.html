@@ -1,0 +1,98 @@
+<div class="container-loading" *ngIf="form">
+	<ddc-init-app-loading [loading]="loading"></ddc-init-app-loading>
+
+	<form [formGroup]="form">
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+				<label for="name">{{
+					translateKey(FLD_name.label) | translate : translateParams(FLD_name.label)
+				}}</label>
+				<ddc-init-input-text [id]="'name'" [field]="FLD_name"></ddc-init-input-text>
+			</div>
+			<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+				<label for="surname">{{
+					translateKey(FLD_surname.label) | translate : translateParams(FLD_surname.label)
+				}}</label>
+				<ddc-init-input-text [id]="'surname'" [field]="FLD_surname"></ddc-init-input-text>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'8|8|12'" [btsPrefix]="'col-'">
+				<label for="born">{{
+					translateKey(FLD_born.label) | translate : translateParams(FLD_born.label)
+				}}</label>
+				<ddc-init-input-date [id]="'born'" [field]="FLD_born"></ddc-init-input-date>
+			</div>
+			<div class="form-group" ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+				<label for="sex">{{
+					translateKey(FLD_sex.label) | translate : translateParams(FLD_sex.label)
+				}}</label>
+				<ddc-init-input-select
+					[id]="'sex'"
+					[field]="FLD_sex"
+					[options]="optionsSex"
+					[noMargin]="true"
+				>
+				</ddc-init-input-select>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+				<label for="cf">{{
+					translateKey(FLD_cf.label) | translate : translateParams(FLD_cf.label)
+				}}</label>
+				<ddc-init-input-text [id]="'cf'" [field]="FLD_cf"></ddc-init-input-text>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+				<label for="cod">{{
+					translateKey(FLD_cod.label) | translate : translateParams(FLD_cod.label)
+				}}</label>
+				<ddc-init-input-text [id]="'cod'" [field]="FLD_cod"></ddc-init-input-text>
+			</div>
+			<div class="form-group" ddcBtsSize [btsSize]="'6|6|12'" [btsPrefix]="'col-'">
+				<label for="parent">{{
+					translateKey(FLD_parent.label) | translate : translateParams(FLD_parent.label)
+				}}</label>
+				<ddc-init-input-select
+					[id]="'parent'"
+					[field]="FLD_parent"
+					[options]="optionsParents"
+					[noMargin]="true"
+				>
+				</ddc-init-input-select>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'12|12|12'" [btsPrefix]="'col-'">
+				<label for="role">{{
+					translateKey(FLD_roleSearch.label) | translate : translateParams(FLD_roleSearch.label)
+				}}</label>
+
+				<ddc-init-autocomplete
+					*ngIf="mode !== formMode.DETAIL"
+					[field]="FLD_roleSearch"
+					[list]="optionsRoles"
+					(searchEmit)="searchRole($event)"
+					(selectEmit)="selectRole($event)"
+				></ddc-init-autocomplete>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group" ddcBtsSize [btsSize]="'4|4|12'" [btsPrefix]="'col-'">
+				<label for="role">{{
+					translateKey(FLD_role1.label) | translate : translateParams(FLD_role1.label)
+				}}</label>
+				<ddc-init-input-text [id]="'role1'" [field]="FLD_role1"></ddc-init-input-text>
+			</div>
+			<div class="form-group" ddcBtsSize [btsSize]="'8|8|12'" [btsPrefix]="'col-'">
+				<label for="role">{{
+					translateKey(FLD_role2.label) | translate : translateParams(FLD_role2.label)
+				}}</label>
+				<ddc-init-input-text [id]="'role2'" [field]="FLD_role2"></ddc-init-input-text>
+			</div>
+		</div>
+	</form>
+</div>

@@ -2,10 +2,18 @@
 	"APP": {
 		"I18N": "Français",
 		"COPYRIGHT": "&copy; DDC INIT",
+    "AUTH2FA": {
+      "APPLICATION_NOT_FOUND": "Application non enregistrée dans {{ appkeys }}.<br/>Contactez l'administrateur système et demandez le recensement",
+      "USER_NOT_FOUND": "Utilisateur non enregistré dans {{ appkeys }}.<br/>Veuillez vous inscrire avant de vous reconnecter",
+      "USER_NOT_AUTH": "Utilisateur non autorisé par {{ appkeys }}",
+      "USER_NOT_AUTH_PAGE": "Utilisateur non autorisé à consulter cette page",
+      "USE_CODE": "Utilisez ce code pour confirmer l'opération"
+    },
 		"BUTTON": {
 			"BACK": "Retourner",
 			"CANCEL": "Annuler",
 			"CONFIRM": "Confirmer",
+      "DETAIL": "Détail",
 			"EDIT": "Modifier",
 			"HIDE": "Cacher",
 			"LOGIN": "Login",
@@ -81,6 +89,16 @@
 				"ZIP": "Code postal",
 				"STREET": "Rue/Place",
 				"NUM": "Numéro"
+			},
+      "CAPTCHA": {
+        "NOT_ROBOT": "je ne suis pas un robot"
+      },
+			"CONTACTREFERENCE": {
+				"DESCRIPTION": "Titre du contact",
+				"TYPE": "Type de contact",
+				"TEL": "Préfixe",
+				"SOCIAL": "Type de médias sociaux",
+				"VAL": "Contact"
 			},
 			"CREDITCARD": "Numéro de Carte de Crédit",
 			"EXPIRATION": "Expiration",

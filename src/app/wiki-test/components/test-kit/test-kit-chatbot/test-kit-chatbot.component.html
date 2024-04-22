@@ -1,0 +1,405 @@
+<h4>Modulo Chatbot</h4>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChatbotEx1"
+	aria-expanded="false"
+	aria-controls="collapseChatbotEx1"
+>
+	ChatbotComponent
+</button>
+
+<div class="collapse" id="collapseChatbotEx1">
+	<div class="mt-3">
+		Il componente <strong>Chatbot</strong> consente di creare una chatbox che invoca un servizio per
+		consentire agli utenti di fare delle domande.<br />
+		Di seguito i parametri di input accettati dal componente:
+
+		<ul>
+			<li>
+				<strong>placeholderText: string | StringTranslate</strong> Testo iniziale dell'input
+				textarea. Default "Enter a message ..."
+			</li>
+			<li><strong>name: string</strong> che definisce il titolo della chatbot</li>
+			<li>
+				<strong>messages: ChatbotMessageInterface[]</strong> che definisce un array di messaggi
+				iniziali da mostrare all'apertura del chatbot
+			</li>
+			<li>
+				<strong>toggleBackground: string</strong> se definito colora il background del toggler,
+				altrimenti mette themeColor
+			</li>
+			<li>
+				<strong>toggleText: string</strong> se definito colora l'icona del toggler, altrimenti mette
+				chatbotText
+			</li>
+			<li><strong>themeColor: string</strong> che definisce il colore principale da usare</li>
+			<li><strong>chatbotBackground: string</strong> background della chat</li>
+			<li><strong>chatbotText: string</strong> colore del testo che va su themeColor</li>
+			<li><strong>chatbotImage: string</strong> immagine da usare come icona del bot</li>
+			<li>
+				<strong>chatbotIcon: string</strong> icona fontaweson da usare come icona del bot se
+				chatbotIamge è nullo
+			</li>
+			<li>
+				<strong>textStyle: any</strong> è un parametro che definisce i colori dei contenuti in
+				chat:<br />
+				<ul>
+					<li><strong>chbBkg</strong> e <strong>chbCol</strong> colori per i messaggi del bot</li>
+					<li>
+						<strong>reqBkg</strong> e <strong>rewCol</strong> colori per i le domande dell'utente
+					</li>
+					<li>
+						<strong>errBkg</strong> e <strong>errCol</strong> colori per i messaggi di errore del
+						bot
+					</li>
+				</ul>
+			</li>
+			<li>
+				<strong>typeLoading: TypCssLoading</strong> che definisce il tipo di loading da mostrare in
+				attesa delle risposte. Di default FACEBOOK
+			</li>
+			<li>
+				<strong>templateResults: any</strong> se viene passato un template lo visualizza nella chat
+			</li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```ts
+
+        messages: ChatbotMessageInterface[] = [
+          &#123; type: 'IN', value: 'Sono il tuo assistente. Come posso aiutarti ?' &#125;,
+        ];
+
+        @ViewChild('chatbot1') chatbot1: ChatbotComponent;
+        subAsk: Subscription;
+
+        ask(text: string) &#123;
+          let $obs;
+          if (this.messages.length % 2) &#123;
+            $obs = ChatbotUtility.exampleRes(text, 'IN');
+          &#125;  else &#123;
+            $obs = ChatbotUtility.exampleRes(text, 'ERROR');
+          &#125;
+
+          this.subAsk = $obs.subscribe((message) => &#123;
+            this.chatbot1.receiveService(message);
+          &#125; );
+        &#125;
+
+        ```
+
+        ```html
+
+          &lt;ddc-init-chatbot [messages]="messages" (onCall)="ask($event)"&gt;&lt;/ddc-init-chatbot &gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>Chatbot default</h5>
+	<a class="btn btn-xs btn-primary mr-2" (click)="viewChatbot(1, true)">Open</a>
+	<a class="btn btn-xs btn-danger mr-2" (click)="viewChatbot(1, false)">Close</a>
+	<ddc-init-chatbot
+		*ngIf="flgChatbot1"
+		#chatbot1
+		[messages]="messages"
+		(onCall)="ask1($event, chatbot1)"
+	>
+	</ddc-init-chatbot>
+	<hr />
+
+	<h5>Chatbot Inputs</h5>
+	<div>
+		Prova con titolo, tema, background, icona e colori personalizzati.<br />Inoltre i messaggi
+		contengono codice html
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+
+          &lt;ddc-init-chatbot [messages]="messages" [name]="'Titolo mio'"
+            [themeColor]="'green'"
+            [chatbotBackground]="'yellow'"
+            [chatbotText]="'white'"
+            [chatbotIcon]="'wrench'"
+            [textStyle]="&#123;
+              chbBkg: 'green',
+              chbCol: 'white',
+              reqBkg: 'gray',
+              reqCol: 'black',
+              errBkg: 'darkred',
+              errCol: 'white',
+            &#125;"
+            (onCall)="ask($event)"&gt;&lt;/ddc-init-chatbot &gt;
+
+        ```
+
+      </div>
+    </pre>
+	</div>
+	<a class="btn btn-xs btn-primary mr-2" (click)="viewChatbot(2, true)">Open</a>
+	<a class="btn btn-xs btn-danger mr-2" (click)="viewChatbot(2, false)">Close</a>
+	<ddc-init-chatbot
+		*ngIf="flgChatbot2"
+		#chatbot2
+		[messages]="messages"
+		[name]="'Titolo mio'"
+		[themeColor]="'green'"
+		[chatbotBackground]="'yellow'"
+		[chatbotText]="'white'"
+		[chatbotIcon]="'wrench'"
+		[textStyle]="styleChatbot2"
+		(onCall)="ask1($event, chatbot2, true)"
+	>
+	</ddc-init-chatbot>
+	<hr />
+
+	<h5>Chatbot Response template</h5>
+	<div>Prova con in risposta dei template</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```ts
+
+        @ViewChild('template1') template1: any;
+        @ViewChild('template2') template2: any;
+
+
+        ask(text: string) &#123;
+          if (this.messages.length % 2) &#123;
+            this.templateCurrent = this.template1;
+          &#125;  else &#123;
+            this.templateCurrent = this.template2;
+          &#125;
+        &#125;
+
+        ```
+
+        ```html
+
+          &lt;ddc-init-chatbot [messages]="messages" [name]="'Buttons'"
+            [templateResults]="templateCurrent"
+            (onCall)="ask($event)"&gt;&lt;/ddc-init-chatbot &gt;
+
+          &lt;ng-template #template1&gt;
+            Questo è un template &lt;strong&gt;positivo&lt;/strong&gt;
+          &lt;/ng-template&gt;
+
+          &lt;ng-template #template2&gt;
+            Questo è un template &lt;strong&gt;negativo&lt;/strong&gt;
+          &lt;/ng-template&gt;
+        ```
+
+      </div>
+    </pre>
+	</div>
+	<a class="btn btn-xs btn-primary mr-2" (click)="viewChatbot(3, true)">Open</a>
+	<a class="btn btn-xs btn-danger mr-2" (click)="viewChatbot(3, false)">Close</a>
+	<ddc-init-chatbot
+		*ngIf="flgChatbot3"
+		#chatbot3
+		[messages]="messages"
+		[name]="'Buttons'"
+		[templateResults]="templateCurrent"
+		(onCall)="ask2($event, chatbot3)"
+	>
+	</ddc-init-chatbot>
+	<ng-template #template1>
+		Questo è un template <strong>positivo</strong><br />
+		<a class="btn btn-xs btn-danger mr-2" (click)="viewChatbot(3, false)">Chiudi la chatbot</a>
+	</ng-template>
+	<ng-template #template2>
+		Questo è un template <strong [style.color]="'darkred'">negativo</strong><br />
+		<a class="btn btn-xs btn-primary mr-2" (click)="viewChatbot(3, false)">Chiudi la chatbot</a>
+	</ng-template>
+	<hr />
+
+	<h5>Chatbot Image Logo</h5>
+	<div>Prova con immagine</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```html
+
+          &lt;ddc-init-chatbot [messages]="messages" [name]="'DDC'"
+            [chatbotImage]="'assets/logo.png'"
+            (onCall)="ask($event)"&gt;&lt;/ddc-init-chatbot &gt;
+        ```
+
+      </div>
+    </pre>
+	</div>
+	<a class="btn btn-xs btn-primary mr-2" (click)="viewChatbot(4, true)">Open</a>
+	<a class="btn btn-xs btn-danger mr-2" (click)="viewChatbot(4, false)">Close</a>
+	<ddc-init-chatbot
+		*ngIf="flgChatbot4"
+		#chatbot4
+		[messages]="messages"
+		[toggleBackground]="'transparent'"
+		[chatbotImage]="'assets/logo.png'"
+		(onCall)="ask1($event, chatbot4)"
+	>
+	</ddc-init-chatbot>
+	<hr />
+</div>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseChatbotEx2"
+	aria-expanded="false"
+	aria-controls="collapseChatbotEx2"
+>
+	ChatbotComponent con Stackoverflow service
+</button>
+
+<div class="collapse" id="collapseChatbotEx2">
+	<div class="mt-3">
+		Il servizio <strong>StackOverflowService</strong> implementa l'interfaccia
+		<strong>ChatbotBaseService</strong> per chiamare i servizi di api di stack overflow.<br />
+		I modelli utilizzati sono:
+
+		<ul>
+			<li></li>
+		</ul>
+	</div>
+	<div class="mt-3">
+		<pre>
+        <div markdown ngPreserveWhitespaces ngNonBindable>
+
+          ```ts
+            flgChatbotStackOverflow: boolean;
+            @ViewChild('chatbotStackOverflow') chatbotStackOverflow: ChatbotComponent;
+            @ViewChild('templateStackOverflow') templateStackOverflow: any;
+            listMessagesStackOverflow: ChatbotMessageInterface[] = [];
+
+            constructor(private stackOverflowService: StackOverflowService) &#123;&#125;
+
+            askStackOverflow(text?: string) &#123;
+              if (text) &#123;
+                this.listMessagesStackOverflow.length = 0;
+                this.subAsk = this.stackOverflowService
+                  .ask(text, &#123; page: 1, pagesize: 5 &#125;)
+                  .subscribe((res) => &#123;
+                    this.listMessagesStackOverflow = res;
+                    this.chatbotStackOverflow.receiveService(undefined);
+                  &#125;);
+              &#125;
+            &#125;
+
+          ```
+
+          ```html
+            &lt;ddc-init-chatbot
+              #chatbotStackOverflow
+              ...
+              [templateResults]="templateStackOverflow"
+              (onCall)="askStackOverflow($event)"
+            &gt;
+            &lt;/ddc-init-chatbot&gt;
+            &lt;ng-template #templateStackOverflow&gt;
+              &lt;ng-container *ngFor="let message of listMessagesStackOverflow"&gt;
+                &lt;div *ngIf="message.type === 'IN'" class="mt-1"&gt;
+                  &lt;a
+                    href="&#123;&#123; message.payload.link &#125;&#125;"
+                    [style.width]="'100%'"
+                    class="btn btn-xs btn-primary"
+                    &gt;&#123;&#123; message.payload.title &#125;&#125;&lt;/a
+                  &gt;
+                  &lt;a
+                    href="&#123;&#123; message.payload.author_page &#125;&#125;"
+                    [style.width]="'60%'"
+                    [style.margin-left]="'40%'"
+                    class="btn btn-xs btn-warning"
+                    &gt;&#123;&#123; message.payload.author &#125;&#125;&lt;/a
+                  &gt;
+                  &lt;div [style.width]="'60%'" [style.margin-left]="'40%'"&gt;
+                    &#123;&#123; message.payload.dtaCreation.toString() &#125;&#125;
+                  &lt;/div&gt;
+                  &lt;hr /&gt;
+                &lt;/div&gt;
+                &lt;div *ngIf="message.type === 'ERROR'" class="mt-1"&gt;
+                  &lt;div [style.width]="'100%'" class="alert alert-danger"&gt;
+                    &lt;strong&gt;Si è verificato un errore&lt;/strong&gt;&lt;br /&gt;
+                    codice: &#123;&#123; message.payload.error_id &#125;&#125;&lt;br /&gt;
+                    titolo: &#123;&#123; message.payload.error_name &#125;&#125;&lt;br /&gt;
+                    messaggio: &#123;&#123; message.payload.error_message &#125;&#125;&lt;br /&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/ng-container&gt;
+            &lt;/ng-template&gt;
+
+          ```
+
+        </div>
+      </pre>
+	</div>
+
+	<a
+		class="btn btn-xs btn-primary mr-2"
+		(click)="viewChatbot('StackOverflow', true); showErrorAsk = false"
+		>Open</a
+	>
+	<a
+		class="btn btn-xs btn-primary mr-2"
+		(click)="viewChatbot('StackOverflow', true); showErrorAsk = true"
+		>Open with Error</a
+	>
+	<a class="btn btn-xs btn-danger mr-2" (click)="viewChatbot('StackOverflow', false)">Close</a>
+	<ddc-init-chatbot
+		*ngIf="flgChatbotStackOverflow"
+		#chatbotStackOverflow
+		[messages]="messages"
+		[toggleBackground]="'transparent'"
+		[chatbotImage]="'assets/logo.png'"
+		[templateResults]="templateStackOverflow"
+		(onCall)="askStackOverflow($event)"
+	>
+	</ddc-init-chatbot>
+	<ng-template #templateStackOverflow>
+		<ng-container *ngFor="let message of listMessagesStackOverflow">
+			<div *ngIf="message.type === 'IN'" class="mt-1">
+				<a
+					href="{{ message.payload.link }}"
+					[style.width]="'100%'"
+					class="btn btn-xs btn-primary"
+					>{{ message.payload.title }}</a
+				>
+				<a
+					href="{{ message.payload.author_page }}"
+					[style.width]="'60%'"
+					[style.margin-left]="'40%'"
+					class="btn btn-xs btn-warning"
+					>{{ message.payload.author }}</a
+				>
+				<div [style.width]="'60%'" [style.margin-left]="'40%'">
+					{{ message.payload.dtaCreation.toString() }}
+				</div>
+				<hr />
+			</div>
+			<div *ngIf="message.type === 'ERROR'" class="mt-1">
+				<div [style.width]="'100%'" class="alert alert-danger">
+					<strong>Si è verificato un errore</strong><br />
+					codice: {{ message.payload.error_id }}<br />
+					titolo: {{ message.payload.error_name }}<br />
+					messaggio: {{ message.payload.error_message }}<br />
+				</div>
+			</div>
+		</ng-container>
+	</ng-template>
+</div>

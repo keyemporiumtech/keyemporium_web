@@ -5,7 +5,6 @@ import {
 	HttpParams,
 	HttpResponse,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import {
 	ApplicationLoggerService,
 	ApplicationStorageService,
@@ -37,9 +36,6 @@ import { ResponseCakeUtility } from '../utility/response-cake.utility';
  * E' possibile estendere il comportamento di questo servizio ridefinendo semplicemente
  * il behaviour dei messaggi con l'override della funzione getBehaviourMessageModel()
  */
-@Injectable({
-	providedIn: 'root',
-})
 export class ApiService extends BaseRestService {
 	constructor(
 		applicationLogger: ApplicationLoggerService,
@@ -71,6 +67,17 @@ export class ApiService extends BaseRestService {
 		// const status = res.headers.get("statuscod");
 		// const msg = res.headers.get("message");
 		if (status && +status.statusCod === EnumStatusCode.ERROR) {
+			if (this.environment.enable.apiLogError) {
+				console.error(
+					'[' + res.url + ']',
+					status.applicationMessage && status.applicationMessage.type.toString() !== ''
+						? status.applicationMessage.type
+						: EnumMessageType.WARNING,
+					status.responseCod,
+					status.applicationMessage ? status.applicationMessage.message : '',
+					status.exceptionMessage ? status.exceptionMessage.message : '',
+				);
+			}
 			if (responseManager && responseManager.fnError && responseManager.fnError.flag) {
 				responseManager.fnError.fn();
 			}
@@ -329,13 +336,16 @@ export class ApiService extends BaseRestService {
 	 * per un messaggio, basandosi sul tipo di messaggio da mostrare
 	 * @param type tipo di messaggio
 	 */
-	getTitleByType(type: EnumMessageType): string {
+	getTitleByType(type: EnumMessageType | string): string {
 		switch (type) {
 			case EnumMessageType.INFO:
+			case '1':
 				return 'MESSAGE.TITLE.INFO';
 			case EnumMessageType.WARNING:
+			case '2':
 				return 'MESSAGE.TITLE.WARNING';
 			case EnumMessageType.ERROR:
+			case '3':
 				return 'MESSAGE.TITLE.ERROR';
 			default:
 				return 'MESSAGE.TITLE.WARNING';
@@ -347,11 +357,11 @@ export class ApiService extends BaseRestService {
 	 * Usabile direttamente come parametro responseManager delle api call
 	 * @param responseManager oggetto ResponseManagerInterface esistente se previsto, altrimenti lo crea
 	 */
-	sendTokenApi(responseManager?: ResponseManagerInterface) {
+	sendTokenApi(responseManager?: ResponseManagerInterface): ResponseManagerInterface {
 		if (!responseManager) {
 			responseManager = {};
 		}
-		super.sendToken(
+		return super.sendToken(
 			restConstants.sessiontokenname,
 			this.applicationStorage.authtoken.get(),
 			responseManager,
@@ -362,11 +372,11 @@ export class ApiService extends BaseRestService {
 	 * Usabile direttamente come parametro responseManager delle api call
 	 * @param responseManager oggetto ResponseManagerInterface esistente se previsto, altrimenti lo crea
 	 */
-	receiveTokenApi(responseManager?: ResponseManagerInterface) {
+	receiveTokenApi(responseManager?: ResponseManagerInterface): ResponseManagerInterface {
 		if (!responseManager) {
 			responseManager = {};
 		}
-		super.receiveToken(restConstants.sessiontokenname, responseManager);
+		return super.receiveToken(restConstants.sessiontokenname, responseManager);
 	}
 
 	// OVERRIDES TOKENAUTH

@@ -12,6 +12,7 @@ import {
 	ApplicationStorageService,
 	InnerStorageService,
 	MessageService,
+	TreeHtmlModel,
 } from '@ddc/kit';
 import {
 	EnumParamType,
@@ -24,6 +25,9 @@ import {
 import { shopWarehouseList } from '../constants/shop-warehouse.list';
 import { CategoryModel } from '../models/category.model';
 import { CategoryConverter, CategoryUtilConverter } from '../converters/category.converter';
+import { DbFilterInterface } from '../../api/cakeutils/interfaces/db-filter.interface';
+import { DBOrderInterface } from '../../api/cakeutils/interfaces/db-order.interface';
+import { TreeConverter } from '../../api/cakeutils-be/converters/tree.converter';
 
 @Injectable()
 export class CategoryService extends ApiService {
@@ -160,6 +164,46 @@ export class CategoryService extends ApiService {
 				: this.environment.api.services + shopWarehouseList.category.delete;
 		return this.post(this.httpHeaders, url, body, undefined, undefined, responseManager).pipe(
 			map((res) => (res === 1 ? true : false)),
+		);
+	}
+
+	// ---------------- TREE
+	tree(
+		id_root: string,
+		async?: boolean,
+		filters?: DbFilterInterface[],
+		orders?: DBOrderInterface[],
+		fields?: string[],
+		conditions?: RequestConditionInterface,
+		requestManager?: RequestManagerInterface,
+		responseManager?: ResponseManagerInterface,
+		conditionsGroup?: RequestGroupsConditionsInterface,
+	): Observable<TreeHtmlModel[]> {
+		let body: HttpParams = new HttpParams();
+
+		body = RequestUtility.addParam(body, EnumParamType.STRING, 'id_category', id_root);
+		body = RequestUtility.addParam(body, EnumParamType.BOOLEAN, 'async', async);
+		body = RequestUtility.addParam(body, EnumParamType.ARRAY, 'fields', fields);
+		const paginator: RequestPaginatorInterface = {
+			filters: filters,
+			orders: orders,
+			paginate: undefined,
+		};
+		body = RequestCakeUtility.addPaginator(body, paginator);
+		body = RequestCakeUtility.addConditions(body, conditions);
+		body = RequestCakeUtility.addConditionsGroups(body, conditionsGroup);
+
+		const url =
+			requestManager && requestManager.url
+				? requestManager.url
+				: this.environment.api.services + shopWarehouseList.category.tree;
+		return this.getList(
+			this.httpHeaders,
+			url,
+			body,
+			new TreeConverter(),
+			requestManager,
+			responseManager,
 		);
 	}
 }

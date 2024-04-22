@@ -1,0 +1,69 @@
+<h4>Kanban Board</h4>
+
+<div class="p-1">
+	<button
+		id="DefaultButton"
+		class="btn btn-sm btn-primary"
+		[style.margin-right]="'.5rem'"
+		(click)="clickDefault()"
+		ddcTooltip
+		[tooltip]="defaultTitle"
+	>
+		Default
+	</button>
+	<button
+		id="AdvancedButton"
+		class="btn btn-sm btn-primary"
+		[style.margin-right]="'.5rem'"
+		(click)="clickAdvanced()"
+		ddcTooltip
+		[tooltip]="advancedTitle"
+	>
+		Advanced
+	</button>
+
+	<button
+		id="StyleButton"
+		class="btn btn-sm btn-danger"
+		[style.margin-right]="'.5rem'"
+		(click)="clickStyle()"
+		ddcTooltip
+		[tooltip]="styleTitle"
+	>
+		Change Style
+	</button>
+</div>
+
+<gojs-cmp-kanban-board
+	#kanbanBoardCmp
+	[diagramModel]="diagramModel"
+	[diagramProperties]="diagramProperties"
+	[divId]="divId"
+	(onDiagram)="buildDiagram($event)"
+	[templateBody]="templateBody"
+	[templateFooter]="templateFooter"
+></gojs-cmp-kanban-board>
+
+<ng-template #plusTemplateBody>
+	{{ dataShow | json }}
+</ng-template>
+
+<ng-template #asteriskTemplateBody> <strong>Nome:</strong>{{ dataShow.name }} </ng-template>
+<ng-template #asteriskTemplateFooter>
+	<button class="btn btn-primary">Example</button>
+</ng-template>
+
+<ng-template #familyTemplateBody>
+	<strong>Nome:</strong>{{ dataShow.name }} <br />
+	<strong>Spouse:</strong>{{ spouse ? spouse.name : 'Nessuno' }} <br />
+	<strong>Childrens:</strong><br />
+	<div *ngFor="let children of childrens">
+		{{ children.name }}
+	</div>
+	<strong>Brothers:</strong><br />
+	<div *ngFor="let brother of brothers">
+		{{ brother.name }}
+	</div>
+</ng-template>
+
+<wiki-gojs-diagram-common-btn [cmpDiagram]="kanbanBoardCmp"></wiki-gojs-diagram-common-btn>

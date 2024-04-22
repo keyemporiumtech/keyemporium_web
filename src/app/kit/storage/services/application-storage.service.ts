@@ -32,6 +32,7 @@ export class ApplicationStorageService extends BaseService {
 	private _messageException: ApplicationStorageModel;
 	// REST authhentication
 	private _authtoken: ApplicationStorageModel;
+	private _authtoken2FA: ApplicationStorageModel;
 	private _passauthtoken: ApplicationStorageModel;
 	private _payload: ApplicationStorageModel;
 
@@ -51,6 +52,8 @@ export class ApplicationStorageService extends BaseService {
 	private _fileEmbed: ApplicationStorageModel;
 	// INIT load
 	private _activityPrincipal: ApplicationStorageModel;
+	// APP info
+	private _applicationInfo: ApplicationStorageModel;
 
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
@@ -74,6 +77,7 @@ export class ApplicationStorageService extends BaseService {
 		this.messageCode = new ApplicationStorageModel('messageCode');
 		this.messageException = new ApplicationStorageModel('messageException');
 		this.authtoken = new ApplicationStorageModel('authtoken');
+		this.authtoken2FA = new ApplicationStorageModel('authtoken2FA');
 		this.passauthtoken = new ApplicationStorageModel('passauthtoken'); // abilita il passaggio del token
 		this.payload = new ApplicationStorageModel('payload');
 		this.bannerStatus = new ApplicationStorageModel('banner');
@@ -88,6 +92,7 @@ export class ApplicationStorageService extends BaseService {
 		this.activityPrincipal = new ApplicationStorageModel('activityPrincipal');
 		this.memoLogin = new ApplicationStorageModel('memoLogin');
 		this.activityPIVA = new ApplicationStorageModel('activityPIVA');
+		this.applicationInfo = new ApplicationStorageModel('applicationInfo');
 	}
 
 	getClassName(): string {
@@ -649,5 +654,37 @@ export class ApplicationStorageService extends BaseService {
 	 */
 	public set activityPIVA(value: ApplicationStorageModel) {
 		this._activityPIVA = value;
+	}
+
+	/**
+	 * Getter applicationInfo
+	 * @return {ApplicationStorageModel}
+	 */
+	public get applicationInfo(): ApplicationStorageModel {
+		return this._applicationInfo;
+	}
+
+	/**
+	 * Setter applicationInfo
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set applicationInfo(value: ApplicationStorageModel) {
+		this._applicationInfo = value;
+	}
+
+	/**
+	 * Getter authtoken2FA
+	 * @return {ApplicationStorageModel}
+	 */
+	public get authtoken2FA(): ApplicationStorageModel {
+		return this._authtoken2FA;
+	}
+
+	/**
+	 * Setter authtoken2FA
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set authtoken2FA(value: ApplicationStorageModel) {
+		this._authtoken2FA = value;
 	}
 }

@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseModuleWikiPage } from '../../../../shared/wiki-test/base-module-wiki.page';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationLoggerService } from '@ddc/kit';
 
 @Component({
 	selector: 'wiki-test-localesystem',
 	templateUrl: './test-localesystem.component.html',
 	styleUrls: ['./test-localesystem.component.scss'],
 })
-export class TestLocalesystemComponent extends BaseModuleWikiPage implements OnInit {
-	constructor(router: Router, activatedRoute: ActivatedRoute) {
-		super(router, activatedRoute);
+export class TestLocalesystemComponent extends BaseModuleWikiPage {
+	constructor(
+		applicationLogger: ApplicationLoggerService,
+		router: Router,
+		activatedRoute: ActivatedRoute,
+	) {
+		super(applicationLogger, router, activatedRoute);
 	}
-
-	ngOnInit() {}
 }

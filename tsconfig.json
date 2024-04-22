@@ -15,7 +15,9 @@
     "target": "ES2022",
     "module": "ES2022",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules/@angular/core",
+      "node_modules/rxjs"
     ],
     "types": [
       "jasmine",
@@ -55,6 +57,10 @@
       "ngx-markdown": [
         "src/app/ngx-markdown",
         "src/app/ngx-markdown/*"
+      ],
+      "gojs-diagram": [
+        "src/app/gojs-diagram",
+        "src/app/gojs-diagram/*"
       ]
     }
   },

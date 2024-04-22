@@ -1,4 +1,11 @@
-import { FileEmbedModel, FileService, StringTranslate, SizeFormat, EnumSizeFormat } from '@ddc/kit';
+import {
+	FileEmbedModel,
+	FileService,
+	StringTranslate,
+	SizeFormat,
+	EnumSizeFormat,
+	EnumTypeMime,
+} from '@ddc/kit';
 import { AttachmentModel } from '../models/attachment.model';
 import { AttachmentConverter } from '../converters/attachment.converter';
 import { ContentUtility } from '../../api/utility/content.utility';
@@ -55,5 +62,29 @@ export class AttachmentUtility {
 		// file.type = attachment.type;
 		file.title = title;
 		return file;
+	}
+
+	static memoInfoForAttachments(attachments: AttachmentModel[], fileService: FileService) {
+		if (attachments && attachments.length > 0) {
+			for (const attachment of attachments) {
+				this.memoInfoForAttachment(attachment, fileService);
+			}
+		}
+	}
+	static memoInfoForAttachment(attachment: AttachmentModel, fileService: FileService) {
+		if (attachment) {
+			if (attachment.size) {
+				attachment.sizeFormat = fileService.getSizeFormatFromBytes(attachment.size);
+			}
+			if (attachment.content) {
+				attachment.fileEmbed = fileService.buildFileEmbed(
+					attachment.name,
+					attachment.mimetype,
+					attachment.type as EnumTypeMime,
+					attachment.ext,
+					attachment.content,
+				);
+			}
+		}
 	}
 }
