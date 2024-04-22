@@ -1,7 +1,7 @@
 # Progetto: keyemporium_web
 
-- Version 2.1.0
-- Template 10.1.0
+- Version 3.0.0
+- Template 12.0.0
 
 # INFO
 
