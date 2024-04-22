@@ -1,6 +1,6 @@
 {
   "name": "keyemporium-web",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "scripts": {
     "ng": "node ./node_modules/@angular/cli/bin/ng",
     "start": "npm run ng serve",
