@@ -1,8 +1,8 @@
 # CHANGELOG KIT
 
-## 3.1.0 - XX/XX/2024
+## 3.1.0 - 03/05/2024
 
-> Versione che 
+> Versione che aggiunge il campo `applicationSID` in `ApplicationStorageService`
 
 ### changes
 
