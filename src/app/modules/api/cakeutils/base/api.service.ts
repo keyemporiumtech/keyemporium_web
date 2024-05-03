@@ -63,6 +63,12 @@ export class ApiService extends BaseRestService {
 		if (responseManager && responseManager.fnOk && responseManager.fnOk.flag) {
 			responseManager.fnOk.fn();
 		}
+
+		// Manage APP-COOKIE
+		if (res.headers.has('SID')) {
+			this.applicationStorage.applicationSID.set(res.headers.get('SID'));
+		}
+
 		const status = ResponseCakeUtility.buildMessageStatus(res);
 		// const status = res.headers.get("statuscod");
 		// const msg = res.headers.get("message");

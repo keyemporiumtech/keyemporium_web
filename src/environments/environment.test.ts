@@ -10,8 +10,8 @@ export const environment = {
 	activityPIVA: undefined,
 	api: {
 		tokenApp: 'ab7414e3975ae96b2d6ef4bf641252feda9d633b',
-		services: 'http://okdqanqhw.preview.infomaniak.website/',
-		servicesKeys: 'http://okdqanqhw.preview.infomaniak.website/',
+		services: 'https://okdqanqhw.preview.infomaniak.website/',
+		servicesKeys: 'https://okdqanqhw.preview.infomaniak.website/',
 		mobile: '',
 		privacyPolicy: undefined, // '_projects/keyemporium/privacy.pdf'
 		cookiePolicy: undefined, // '_projects/keyemporium/cookie.pdf'

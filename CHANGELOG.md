@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0 - 03/05/2024
+
+> Versione che integra il template 11.1.0 con l'aggiunta del custom interceptor con with credentials a true
+
 ## 3.0.0 - 22/04/2024
 
 > Versione che integra il template 11.0.0
