@@ -1,8 +1,16 @@
 # CHANGELOG KIT
 
-## 3.0.0 - XX/XX/2024
+## 3.1.0 - XX/XX/2024
 
-> Versione che
+> Versione che 
+
+### changes
+
+- `[feature]` **storage**: Aggiunto il campo `applicationSID` in `ApplicationStorageService`
+
+## 3.0.0 - 22/04/2024
+
+> Versione che aggiunge il modulo `GRecaptcha`, modifica l'uso di `template.styles.inputIcon` per i componenti, effettua modifiche di navigazione del routing nella gestione di `backUrl`, fixa la gestione di ordinamento per i campi di tipo DateModel e ne aggiunge i metodi `getAge` e `getAgeAtDate`, aggiunge il modulo `SeoModule` per la gestione dei meta tags e rifattorizza la classe `BaseClassModel` con l'aggiunta di `BaseIdModel` per la gestione degli id.
 
 ### changes
 

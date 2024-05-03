@@ -54,6 +54,7 @@ export class ApplicationStorageService extends BaseService {
 	private _activityPrincipal: ApplicationStorageModel;
 	// APP info
 	private _applicationInfo: ApplicationStorageModel;
+	private _applicationSID: ApplicationStorageModel;
 
 	constructor(applicationLogger: ApplicationLoggerService) {
 		super(applicationLogger);
@@ -93,6 +94,7 @@ export class ApplicationStorageService extends BaseService {
 		this.memoLogin = new ApplicationStorageModel('memoLogin');
 		this.activityPIVA = new ApplicationStorageModel('activityPIVA');
 		this.applicationInfo = new ApplicationStorageModel('applicationInfo');
+		this.applicationSID = new ApplicationStorageModel('applicationSID');
 	}
 
 	getClassName(): string {
@@ -686,5 +688,21 @@ export class ApplicationStorageService extends BaseService {
 	 */
 	public set authtoken2FA(value: ApplicationStorageModel) {
 		this._authtoken2FA = value;
+	}
+
+	/**
+	 * Getter applicationSID
+	 * @return {ApplicationStorageModel}
+	 */
+	public get applicationSID(): ApplicationStorageModel {
+		return this._applicationSID;
+	}
+
+	/**
+	 * Setter applicationSID
+	 * @param {ApplicationStorageModel} value
+	 */
+	public set applicationSID(value: ApplicationStorageModel) {
+		this._applicationSID = value;
 	}
 }

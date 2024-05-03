@@ -49,6 +49,7 @@ import { AccordionContainerComponent } from './components/accordion-container/ac
 import { GmapComponent } from './components/gmap/gmap.component';
 import { InputUrlComponent } from './form/input-url/input-url.component';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { CustomInterceptor } from './services/custom.interceptor';
 
 @NgModule({
 	declarations: [
@@ -159,7 +160,7 @@ export class SharedModule {
 	static forRoot() {
 		return {
 			ngModule: SharedModule,
-			providers: [],
+			providers: [CustomInterceptor],
 		};
 	}
 }

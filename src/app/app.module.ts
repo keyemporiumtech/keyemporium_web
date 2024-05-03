@@ -4,7 +4,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { EnvironmentLoaderService, MultiTranslateHttpLoader } from '@ddc/kit';
@@ -14,6 +14,7 @@ import { RestModule } from '@ddc/rest';
 import { InitModule } from './init/init.module';
 import { ApiModule } from './modules/api/api.module';
 import { ApplicationSharedModule } from './application-shared/application-shared.module';
+import { CustomInterceptor } from './shared/services/custom.interceptor';
 // import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 // import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
@@ -64,6 +65,11 @@ export function createTranslateLoader(http: HttpClient) {
 			useClass: HashLocationStrategy,
 			// useClass: environment.production ? HashLocationStrategy : PathLocationStrategy,
 		}, // Hash for reload on server
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: CustomInterceptor,
+			multi: true,
+		},
 		/*
 		{
 			provide: 'SocialAuthServiceConfig',
