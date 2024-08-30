@@ -104,12 +104,12 @@ export class InputSelectComponent extends BaseInputComponent {
 
 	setAutomaticValidations() {}
 	setPropertiesFromField() {
-		this.options = this.field.property.options;
-		this.defaultOption = this.field.property.defaultOption;
-		this.defaultOptionText = this.field.property.defaultOptionText;
-		this.multiple = this.field.property.multiple;
-		this.maxSelectedView = this.field.property.maxSelectedView;
-		this.changeIfEnable = this.field.property.changeIfEnable;
+		this.evalProperty('options');
+		this.evalProperty('defaultOption');
+		this.evalProperty('defaultOptionText');
+		this.evalProperty('multiple');
+		this.evalProperty('maxSelectedView');
+		this.evalProperty('changeIfEnable');
 	}
 
 	// checked

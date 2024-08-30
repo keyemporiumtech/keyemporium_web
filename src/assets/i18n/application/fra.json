@@ -12,7 +12,9 @@
 		"BUTTON": {
 			"BACK": "Retourner",
 			"CANCEL": "Annuler",
+      "CLOSE": "Fermer",
 			"CONFIRM": "Confirmer",
+      "DELETE": "Supprimer",
       "DETAIL": "Détail",
 			"EDIT": "Modifier",
 			"HIDE": "Cacher",

@@ -93,10 +93,10 @@ export class InputPasswordComponent extends BaseInputComponent {
 	}
 
 	setPropertiesFromField() {
-		this.minLength = this.field.property.minLength;
-		this.maxLength = this.field.property.maxLength;
-		this.almostOneNumber = this.field.property.almostOneNumber;
-		this.almostOneUpper = this.field.property.almostOneUpper;
-		this.almostOneLower = this.field.property.almostOneLower;
+		this.evalProperty('minLength');
+		this.evalProperty('maxLength');
+		this.evalProperty('almostOneNumber');
+		this.evalProperty('almostOneUpper');
+		this.evalProperty('almostOneLower');
 	}
 }

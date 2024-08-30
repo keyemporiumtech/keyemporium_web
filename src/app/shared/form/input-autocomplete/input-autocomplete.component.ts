@@ -125,15 +125,15 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 				term,
 				this.debounce,
 				this.search(term),
-			).subscribe(
-				(list) => {
+			).subscribe({
+				next: (list) => {
 					this.list = list;
 					this.loadingResults = false;
 				},
-				(err) => {
+				error: (err) => {
 					this.loadingResults = false;
 				},
-			);
+			});
 		}
 	}
 	onTerm(term: string) {
@@ -158,8 +158,8 @@ export class InputAutocompleteComponent extends BaseInputComponent {
 
 	setAutomaticValidations() {}
 	setPropertiesFromField() {
-		this.textNoRecords = this.field.property.textNoRecords;
-		this.list = this.field.property.list;
-		this.search = this.field.property.search;
+		this.evalProperty('textNoRecords');
+		this.evalProperty('list');
+		this.evalProperty('search');
 	}
 }

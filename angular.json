@@ -53,7 +53,9 @@
               "moment",
               "clone-deep",
               "mobx",
-              "quill"
+              "quill",
+              "jstat",
+              "mathjs"
             ]
           },
           "configurations": {

@@ -1,0 +1,106 @@
+<h4>Modulo Statistic</h4>
+
+<hr class="line line-lg bg-info" />
+<button
+	class="btn btn-sm btn-dark mr-2"
+	type="button"
+	data-toggle="collapse"
+	data-target="#collapseStatisticEx1"
+	aria-expanded="false"
+	aria-controls="collapseStatisticEx1"
+>
+	Chi Square - PValue
+</button>
+
+<div class="collapse" id="collapseStatisticEx1">
+	<div class="mt-3">
+		Il calcolo del chi square è fornito dall'utility <strong>ChiSquareUtility</strong>:
+	</div>
+	<div class="mt-3">
+		<pre>
+      <div markdown ngPreserveWhitespaces ngNonBindable>
+
+        ```ts
+        ```
+
+        ```html
+        ```
+
+      </div>
+    </pre>
+	</div>
+
+	<h5>Valore percentila sulla tabella di distribuzione chi quadro</h5>
+	<div class="row">
+		<div class="col col-4">
+			<label for="df">Gradi di libertà</label>
+			<input class="form-control" id="df" type="number" step="any" [(ngModel)]="df" />
+		</div>
+		<div class="col col-4">
+			<label for="alpha">Alpha</label>
+			<input class="form-control" id="alpha" type="number" step="any" [(ngModel)]="alpha" />
+		</div>
+		<div class="col col-4">
+			<a class="btn btn-xs btn-primary mr-2" (click)="calcPercentile()">
+				Calcola il valore teorico sulla tabella percentile
+			</a>
+		</div>
+	</div>
+
+	<div class="mt-1">{{ tablePercentile }}</div>
+	<hr />
+
+	<h5>Calcolo del chi quadro 2x2</h5>
+	<div class="row p-1">
+		<div class="col col-2">&nbsp;</div>
+		<div class="col col-2">
+			<input class="form-control" id="labelC1" type="string" [(ngModel)]="labelC1" />
+		</div>
+		<div class="col col-2">
+			<input class="form-control" id="labelC2" type="string" [(ngModel)]="labelC2" />
+		</div>
+	</div>
+	<div class="row p-1">
+		<div class="col col-2">
+			<input class="form-control" id="labelR1" type="string" [(ngModel)]="labelR1" />
+		</div>
+		<div class="col col-2">
+			<input class="form-control" id="val1_1" type="number" step="any" [(ngModel)]="val1_1" />
+		</div>
+		<div class="col col-2">
+			<input class="form-control" id="val1_2" type="number" step="any" [(ngModel)]="val1_2" />
+		</div>
+	</div>
+	<div class="row p-1">
+		<div class="col col-2">
+			<input class="form-control" id="labelR2" type="string" [(ngModel)]="labelR2" />
+		</div>
+		<div class="col col-2">
+			<input class="form-control" id="val2_1" type="number" step="any" [(ngModel)]="val2_1" />
+		</div>
+		<div class="col col-2">
+			<input class="form-control" id="val2_2" type="number" step="any" [(ngModel)]="val2_2" />
+		</div>
+	</div>
+	<div class="row p-1">
+		<div class="col col-4">
+			<label for="alpha">Alpha</label>
+			<input class="form-control" id="alpha2x2" type="number" step="any" [(ngModel)]="alpha2x2" />
+		</div>
+	</div>
+
+	<a class="btn btn-xs btn-primary mt-2" (click)="calcChiSquare2x2()"> Calcola il chi quadro </a>
+
+	<div class="mt-1"><strong>CHI-SQUARE =</strong> {{ chiSquare2x2 }}</div>
+	<div class="mt-1"><strong>SOGLIA =</strong>{{ tablePercentile2x2 }}</div>
+	<div class="mt-1"><strong>GRADI DI LIBERTA' =</strong>{{ df2x2 }}</div>
+	<div *ngIf="chiSquare2x2 <= tablePercentile2x2" class="mt-1 text-warning">
+		La proporzione di <strong>{{ labelC1 }}</strong> tra <strong>{{ labelR1 }}</strong> e
+		<strong>{{ labelR2 }}</strong> non è statisticamente significativa
+	</div>
+	<div *ngIf="chiSquare2x2 > tablePercentile2x2" class="mt-1 text-success">
+		La proporzione di <strong>{{ labelC1 }}</strong> tra <strong>{{ labelR1 }}</strong> e
+		<strong>{{ labelR2 }}</strong> è statisticamente significativa
+	</div>
+	<hr />
+</div>

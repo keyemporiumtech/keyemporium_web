@@ -1,5 +1,15 @@
 # CHANGELOG KIT
 
+## 3.2.0 - XX/XX/2024
+
+> Versione che
+
+### changes
+
+- `[feature]` **html**: Aggiunta la rimozione del tooltip nel ciclo destroy della direttiva `ddcTooltip`
+- `[feature]` **statistic**: Aggiunto il modulo `statistic` per il calcolo di funzioni statistiche
+- `[feature]` **config**: Aggiunta le funzioni `median` in `MathUtility`
+
 ## 3.1.0 - 03/05/2024
 
 > Versione che aggiunge il campo `applicationSID` in `ApplicationStorageService`

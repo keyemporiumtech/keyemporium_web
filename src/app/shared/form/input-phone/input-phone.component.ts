@@ -147,12 +147,12 @@ export class InputPhoneComponent extends BaseInputComponent {
 	}
 
 	setPropertiesFromField() {
-		this.prefixes = this.field.property.prefixes;
-		this.defaultPrefixText = this.field.property.defaultPrefixText;
-		this.dropdownPrefix = this.field.property.dropdownPrefix;
-		this.cssDropdownClass = this.field.property.cssDropdownClass;
-		this.cssDropdownStyle = this.field.property.cssDropdownStyle;
-		this.cssDropdownButtonClass = this.field.property.cssDropdownButtonClass;
+		this.evalProperty('prefixes');
+		this.evalProperty('defaultPrefixText');
+		this.evalProperty('dropdownPrefix');
+		this.evalProperty('cssDropdownClass');
+		this.evalProperty('cssDropdownStyle');
+		this.evalProperty('cssDropdownButtonClass');
 	}
 
 	// OVERRIDES

@@ -33,7 +33,7 @@ export class InputRadioComponent extends BaseInputComponent {
 	}
 	setAutomaticValidations() {}
 	setPropertiesFromField() {
-		this.isHorizontal = this.field.property.isHorizontal;
+		this.evalProperty('isHorizontal');
 	}
 
 	selectItem(option: OptionListModel) {

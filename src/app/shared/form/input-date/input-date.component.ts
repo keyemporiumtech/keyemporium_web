@@ -84,13 +84,13 @@ export class InputDateComponent extends BaseInputComponent {
 	}
 
 	setPropertiesFromField() {
-		this.min = this.field.property.min;
-		this.max = this.field.property.max;
+		this.evalProperty('min');
+		this.evalProperty('max');
 		if (this.field.property.step && typeof this.field.property.step === 'number') {
-			this.step = this.field.property.step;
+			this.evalProperty('step');
 		}
-		this.timezoneName = this.field.property.timezoneName;
-		this.isTime = this.field.property.isTime;
+		this.evalProperty('timezoneName');
+		this.evalProperty('isTime');
 	}
 
 	private getDateModelForMinMax(value: any | Date | string | number | DateModel): DateModel {

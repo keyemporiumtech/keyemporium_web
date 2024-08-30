@@ -4,6 +4,7 @@ import {
 	HostListener,
 	Input,
 	OnChanges,
+	OnDestroy,
 	OnInit,
 	Renderer2,
 	SimpleChanges,
@@ -15,7 +16,7 @@ import { TranslateUtility } from '../../translation/utility/translate.utility';
 @Directive({
 	selector: '[ddcTooltip]',
 })
-export class TooltipDirective implements OnInit, OnChanges {
+export class TooltipDirective implements OnInit, OnChanges, OnDestroy {
 	@Input('tooltip') tooltipTitle: string | StringTranslate;
 	@Input() placement: 'top' | 'left' | 'bottom' | 'right' = 'top';
 	@Input() delay: number = 500;
@@ -47,6 +48,11 @@ export class TooltipDirective implements OnInit, OnChanges {
 	ngOnChanges(changes: SimpleChanges) {
 		if (changes.arrowColor && this.arrowColor && this.tooltip) {
 			this.tooltip.style.setProperty(`--tooltip-arrow-color`, this.arrowColor);
+		}
+	}
+	ngOnDestroy(): void {
+		if (this.tooltip) {
+			this.hide();
 		}
 	}
 

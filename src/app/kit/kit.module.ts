@@ -21,6 +21,7 @@ import { TreeHtmlModule } from './tree-html/tree-html.module';
 import { ValidatorsModule } from './validators/validators.module';
 import { SeoModule } from './seo/seo.module';
 import { GRecaptchaModule } from './g-recaptcha/g-recaptcha.module';
+import { StatisticModule } from './statistic/statistic.module';
 
 @NgModule({
 	declarations: [],
@@ -50,6 +51,7 @@ import { GRecaptchaModule } from './g-recaptcha/g-recaptcha.module';
 		ChatbotModule.forRoot(),
 		SeoModule.forRoot(),
 		GRecaptchaModule.forRoot(),
+		StatisticModule.forRoot(),
 	],
 	exports: [
 		ConfigModule,
@@ -71,6 +73,7 @@ import { GRecaptchaModule } from './g-recaptcha/g-recaptcha.module';
 		ChatbotModule,
 		SeoModule,
 		GRecaptchaModule,
+		StatisticModule,
 	],
 })
 export class KitModule {

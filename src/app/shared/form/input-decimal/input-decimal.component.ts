@@ -53,9 +53,9 @@ export class InputDecimalComponent extends InputNumberComponent {
 
 	setPropertiesFromField() {
 		super.setPropertiesFromField();
-		this.digits = this.field.property.digits;
+		this.evalProperty('digits');
 		if (this.field.property.step && typeof this.field.property.step === 'string') {
-			this.step = this.field.property.step;
+			this.evalProperty('step');
 		}
 	}
 }

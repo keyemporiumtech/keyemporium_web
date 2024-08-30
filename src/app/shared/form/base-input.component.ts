@@ -120,6 +120,16 @@ export abstract class BaseInputComponent extends BaseComponent {
 	 */
 	abstract setPropertiesFromField();
 
+	evalProperty(propThis: any, propName?: string) {
+		if (
+			this.field &&
+			this.field.property &&
+			Object.prototype.hasOwnProperty.call(this.field.property, propName ? propName : propThis)
+		) {
+			this[propThis] = this.field.property[propName ? propName : propThis];
+		}
+	}
+
 	// ----------------VALIDATIONS
 	/**
 	 * Serve a gestire le validazioni automatiche all'init del componente.

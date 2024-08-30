@@ -53,10 +53,10 @@ export class InputNumberComponent extends BaseInputComponent {
 
 	setPropertiesFromField() {
 		if (this.field.property.min && typeof this.field.property.min === 'number') {
-			this.min = this.field.property.min;
+			this.evalProperty('min');
 		}
 		if (this.field.property.max && typeof this.field.property.max === 'number') {
-			this.max = this.field.property.max;
+			this.evalProperty('max');
 		}
 	}
 }

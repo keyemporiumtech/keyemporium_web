@@ -12,7 +12,9 @@
 		"BUTTON": {
 			"BACK": "Indietro",
 			"CANCEL": "Annulla",
+      "CLOSE": "Chiudi",
 			"CONFIRM": "Conferma",
+      "DELETE": "Elimina",
 			"DETAIL": "Dettaglio",
 			"EDIT": "Modifica",
 			"HIDE": "Nascondi",

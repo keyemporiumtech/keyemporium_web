@@ -129,14 +129,14 @@ export class InputFileComponent extends BaseInputComponent {
 	setAutomaticValidations() {}
 
 	setPropertiesFromField() {
-		this.name = this.field.property.name;
-		this.multiple = this.field.property.multiple;
-		this.numMaxFiles = this.field.property.numMaxFiles;
-		this.maxSize = this.field.property.maxSize;
-		this.maxSizeUnit = this.field.property.maxSizeUnit;
-		this.extensions = this.field.property.extensions;
-		this.closeItem = this.field.property.closeItem;
-		this.deleteItems = this.field.property.deleteItems;
+		this.evalProperty('name');
+		this.evalProperty('multiple');
+		this.evalProperty('numMaxFiles');
+		this.evalProperty('maxSize');
+		this.evalProperty('maxSizeUnit');
+		this.evalProperty('extensions');
+		this.evalProperty('closeItem');
+		this.evalProperty('deleteItems');
 	}
 
 	onAddFiles(val: FileEmbedModel[]) {

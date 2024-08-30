@@ -51,6 +51,7 @@ export class TestFormInputsComponent implements OnInit, OnDestroy {
 	check2: FormFieldModel;
 	check3: FormFieldModel;
 	check4: FormFieldModel;
+	checkExampleProperty: FormFieldModel;
 	radio1: FormFieldModel;
 	radio2: FormFieldModel;
 	radio3: FormFieldModel;
@@ -137,6 +138,7 @@ export class TestFormInputsComponent implements OnInit, OnDestroy {
 			check2: [undefined, [Validators.required]],
 			check3: [undefined, [Validators.required]],
 			check4: [undefined, [Validators.required]],
+			checkExampleProperty: [undefined, [Validators.required]],
 			radio1: [undefined, [Validators.required]],
 			radio2: [undefined, [Validators.required]],
 			radio3: [undefined, [Validators.required]],
@@ -446,6 +448,16 @@ export class TestFormInputsComponent implements OnInit, OnDestroy {
 			'Checkbox multipla horizontal',
 		)
 			.validation(this.validations.campo1)
+			.onInit();
+
+		this.checkExampleProperty = new FormFieldModel(
+			EnumFormType.CHECKBOX,
+			this.form1.get('checkExampleProperty') as FormControl,
+			'Checkbox multipla set Property',
+		)
+			.validation(this.validations.campo1)
+			.setProperty('options', this.optionList)
+			.setProperty('multiple', true)
 			.onInit();
 	}
 

@@ -45,7 +45,7 @@ export class InputTextComponent extends BaseInputComponent {
 	}
 
 	setPropertiesFromField() {
-		this.minLength = this.field.property.minLength;
-		this.maxLength = this.field.property.maxLength;
+		this.evalProperty('minLength');
+		this.evalProperty('maxLength');
 	}
 }
